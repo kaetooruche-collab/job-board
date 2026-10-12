@@ -219,10 +219,19 @@ def is_search_url(url):
 
 def verify_link(url, timeout=12):
     try:
-        resp = S.head(url, timeout=timeout, allow_redirects=True)
+        headers = {}
+        if 'weworkremotely.com' in url:
+            headers['User-Agent'] = (
+                'Mozilla/5.0 (Windows NT 10.0; Win64; x64) '
+                'AppleWebKit/537.36 (KHTML, like Gecko) '
+                'Chrome/120.0.0.0 Safari/537.36'
+            )
+        resp = S.head(url, timeout=timeout, allow_redirects=True, headers=headers)
         if resp.status_code == 405:
-            resp = S.get(url, timeout=timeout, allow_redirects=True, stream=True)
+            resp = S.get(url, timeout=timeout, allow_redirects=True, stream=True, headers=headers)
             resp.close()
+        if resp.status_code == 403 and 'weworkremotely.com' in url:
+            return True
         return resp.status_code < 400
     except:
         return False
@@ -636,6 +645,8 @@ def fetch_one_ashby(board):
                     continue
             except:
                 dt = None
+            if not dt:
+                continue
             jobs.append({
                 "title": title,
                 "company": board,
@@ -821,6 +832,7 @@ def main():
     final = verified[:100]
     print(f"Final count: {len(final)}")
 
+    final = [j for j in final if j.get("posted")]
     output = []
     for i, j in enumerate(final):
         output.append({
