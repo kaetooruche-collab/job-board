@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How We Verify — Remote Jobs</title>
+  <meta name="description" content="How we verify every listing on our free remote job board. Our trust rules, verification process and what we check before publishing.">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #fafafa;
+      --surface: #ffffff;
+      --text: #1a1a2e;
+      --text-secondary: #5f6368;
+      --accent: #1a73e8;
+      --accent-hover: #1557b0;
+      --accent-light: #e8f0fe;
+      --border: #e0e0e0;
+      --tag-bg: #f1f3f4;
+      --green: #0d9488;
+      --green-light: #f0fdfa;
+      --yellow-dark: #f59e0b;
+      --radius: 10px;
+      --shadow: 0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.06);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) {
+        --bg: #0f0f1a;
+        --surface: #1a1a2e;
+        --text: #e8e8f0;
+        --text-secondary: #9ca3af;
+        --accent: #60a5fa;
+        --accent-hover: #93bbfd;
+        --accent-light: #1e3a5f;
+        --border: #2d2d44;
+        --tag-bg: #252540;
+        --green: #2dd4bf;
+        --green-light: #0d2d2a;
+        color-scheme: dark;
+      }
+    }
+    :root[data-theme="dark"] {
+      --bg: #0f0f1a;
+      --surface: #1a1a2e;
+      --text: #e8e8f0;
+      --text-secondary: #9ca3af;
+      --accent: #60a5fa;
+      --accent-hover: #93bbfd;
+      --accent-light: #1e3a5f;
+      --border: #2d2d44;
+      --tag-bg: #252540;
+      --green: #2dd4bf;
+      --green-light: #0d2d2a;
+      color-scheme: dark;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    nav {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 0.75rem 1.5rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .nav-brand {
+      font-weight: 800;
+      font-size: 1.25rem;
+      color: var(--text);
+      text-decoration: none;
+      letter-spacing: -0.5px;
+    }
+    .nav-brand span { color: var(--accent); }
+    .nav-links { display: flex; align-items: center; gap: 1rem; }
+    .nav-link {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+    }
+    .nav-link:hover { color: var(--accent); }
+    .nav-link.active { color: var(--accent); font-weight: 600; }
+    .nav-cta {
+      background: var(--accent);
+      color: #fff;
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 600;
+      transition: background 0.2s;
+    }
+    .nav-cta:hover { background: var(--accent-hover); }
+
+    .container {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 2.5rem 1.5rem;
+    }
+
+    h1 {
+      font-size: clamp(1.5rem, 4vw, 2rem);
+      font-weight: 800;
+      margin-bottom: 0.75rem;
+      letter-spacing: -0.5px;
+    }
+
+    .page-intro {
+      font-size: 1rem;
+      color: var(--text-secondary);
+      margin-bottom: 2.5rem;
+      line-height: 1.7;
+      max-width: 600px;
+    }
+
+    .trust-rules {
+      margin-bottom: 3rem;
+    }
+    .trust-rules h2 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin-bottom: 1.25rem;
+    }
+    .trust-rule {
+      display: flex;
+      gap: 1rem;
+      padding: 1rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .trust-rule:last-child { border-bottom: none; }
+    .trust-rule-number {
+      flex-shrink: 0;
+      width: 2rem;
+      height: 2rem;
+      background: var(--green-light);
+      color: var(--green);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.82rem;
+      font-weight: 700;
+    }
+    .trust-rule-text {
+      font-size: 0.92rem;
+      color: var(--text);
+      line-height: 1.6;
+      padding-top: 0.25rem;
+    }
+
+    .process-section {
+      margin-bottom: 3rem;
+    }
+    .process-section h2 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin-bottom: 1.25rem;
+    }
+    .process-step {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 0.75rem;
+    }
+    .process-step h3 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      margin-bottom: 0.35rem;
+    }
+    .process-step p {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    .listing-standard {
+      margin-bottom: 3rem;
+    }
+    .listing-standard h2 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin-bottom: 1.25rem;
+    }
+    .standard-list {
+      list-style: none;
+      padding: 0;
+    }
+    .standard-list li {
+      padding: 0.6rem 0 0.6rem 1.75rem;
+      position: relative;
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      border-bottom: 1px solid var(--border);
+    }
+    .standard-list li:last-child { border-bottom: none; }
+    .standard-list li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      color: var(--green);
+      font-weight: 700;
+    }
+
+    .report-section {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.75rem;
+      text-align: center;
+    }
+    .report-section h2 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+    .report-section p {
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      margin-bottom: 1.25rem;
+    }
+    .report-links {
+      display: flex;
+      justify-content: center;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+    .report-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.6rem 1.15rem;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text);
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .report-link:hover { border-color: var(--accent); color: var(--accent); }
+
+    footer {
+      text-align: center;
+      padding: 2rem 1.5rem;
+      color: var(--text-secondary);
+      font-size: 0.82rem;
+      border-top: 1px solid var(--border);
+      margin-top: 2rem;
+    }
+    footer a { color: var(--accent); text-decoration: none; }
+
+    @media (max-width: 600px) {
+      .container { padding: 1.5rem 1rem; }
+      .nav-links { gap: 0.5rem; }
+      .nav-link { display: none; }
+      .process-step { padding: 1rem 1.15rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="/" class="nav-brand">Remote<span>Jobs</span></a>
+    <div class="nav-links">
+      <a href="/" class="nav-link">Jobs</a>
+      <a href="/verify" class="nav-link active">How We Verify</a>
+      <a href="/services" class="nav-cta">Get Job-Ready</a>
+    </div>
+  </nav>
+
+  <div class="container">
+
+    <h1>How we verify listings</h1>
+    <p class="page-intro">Every listing on this board goes through a verification process before it appears. We built this board for job seekers who are tired of broken links, vague descriptions and roles that don't exist. Here is exactly what we check and what we promise.</p>
+
+    <section class="trust-rules">
+      <h2>Our trust rules</h2>
+      <div class="trust-rule">
+        <div class="trust-rule-number">1</div>
+        <div class="trust-rule-text">We never charge a job seeker to apply or to see a listing's apply link.</div>
+      </div>
+      <div class="trust-rule">
+        <div class="trust-rule-number">2</div>
+        <div class="trust-rule-text">We never post a listing that asks applicants to pay.</div>
+      </div>
+      <div class="trust-rule">
+        <div class="trust-rule-number">3</div>
+        <div class="trust-rule-text">Commission-only roles are excluded.</div>
+      </div>
+      <div class="trust-rule">
+        <div class="trust-rule-number">4</div>
+        <div class="trust-rule-text">Every listing shows its source, posting date and when we last checked it.</div>
+      </div>
+      <div class="trust-rule">
+        <div class="trust-rule-number">5</div>
+        <div class="trust-rule-text">Every claim we publish links to the posting that supports it.</div>
+      </div>
+      <div class="trust-rule">
+        <div class="trust-rule-number">6</div>
+        <div class="trust-rule-text">A wrong listing is corrected in public within one day.</div>
+      </div>
+    </section>
+
+    <section class="process-section">
+      <h2>What we check before publishing</h2>
+      <div class="process-step">
+        <h3>Direct link to the posting</h3>
+        <p>Every listing links to the employer's actual job posting on their applicant tracking system or the original source. We never link to a homepage, search page or category page.</p>
+      </div>
+      <div class="process-step">
+        <h3>Original posting date</h3>
+        <p>The posted date comes from the source, using the original posting date rather than the last edit. Anything older than 30 days or past its apply-before date is automatically removed.</p>
+      </div>
+      <div class="process-step">
+        <h3>Worldwide eligibility</h3>
+        <p>The posting text must state it is open to applicants worldwide. We still advise applicants to check each employer's eligibility requirements for their location.</p>
+      </div>
+      <div class="process-step">
+        <h3>Pay verification</h3>
+        <p>Pay is shown only when the employer states it in the posting. We never invent or estimate figures. If pay is not stated, we show "Not stated".</p>
+      </div>
+      <div class="process-step">
+        <h3>Link check</h3>
+        <p>Every listing's link is checked at each update. If a page shows "no longer accepting", "expired", "position filled" or similar closed-role wording, the listing is removed.</p>
+      </div>
+      <div class="process-step">
+        <h3>Entry-level focus</h3>
+        <p>We exclude roles with senior titles (Head of, Director, VP, Chief, Principal, Staff, Senior) to keep listings relevant for students and early-career professionals.</p>
+      </div>
+    </section>
+
+    <section class="listing-standard">
+      <h2>A listing is published only if all of these hold</h2>
+      <ul class="standard-list">
+        <li>The URL opens the specific posting, not a homepage or search page.</li>
+        <li>The posted date comes from the source.</li>
+        <li>The posting states it is open to applicants worldwide.</li>
+        <li>Pay is shown only if the posting states it.</li>
+        <li>The source is credited and linked.</li>
+        <li>The link passed a check at the last run and shows no closed-role wording.</li>
+        <li>It is not commission-only and charges no applicant fee.</li>
+        <li>It is not older than 30 days or past its apply-before date.</li>
+      </ul>
+    </section>
+
+    <section class="report-section">
+      <h2>See something wrong?</h2>
+      <p>If a listing is incorrect, expired or suspicious, let us know and we will fix it within one day.</p>
+      <div class="report-links">
+        <a href="mailto:remotenc.jobs@gmail.com" class="report-link">Email us</a>
+        <a href="https://wa.me/905338225854" target="_blank" rel="noopener" class="report-link">WhatsApp</a>
+      </div>
+    </section>
+
+  </div>
+
+  <footer>
+    <p>Built for students and graduates looking for remote work worldwide.</p>
+    <p style="margin-top:0.25rem;">Questions? <a href="mailto:remotenc.jobs@gmail.com">remotenc.jobs@gmail.com</a></p>
+  </footer>
+
+  <script data-goatcounter="https://kayzglobal.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Career Services — Remote Jobs</title>
+  <meta name="description" content="Get help landing your first remote role. Application strategy, interview preparation and job search coaching for students and graduates.">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #fafafa;
+      --surface: #ffffff;
+      --text: #1a1a2e;
+      --text-secondary: #5f6368;
+      --accent: #1a73e8;
+      --accent-hover: #1557b0;
+      --accent-light: #e8f0fe;
+      --border: #e0e0e0;
+      --tag-bg: #f1f3f4;
+      --green: #0d9488;
+      --green-light: #f0fdfa;
+      --yellow-dark: #f59e0b;
+      --radius: 10px;
+      --shadow: 0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.06);
+      --shadow-md: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) {
+        --bg: #0f0f1a;
+        --surface: #1a1a2e;
+        --text: #e8e8f0;
+        --text-secondary: #9ca3af;
+        --accent: #60a5fa;
+        --accent-hover: #93bbfd;
+        --accent-light: #1e3a5f;
+        --border: #2d2d44;
+        --tag-bg: #252540;
+        --green: #2dd4bf;
+        --green-light: #0d2d2a;
+        color-scheme: dark;
+      }
+    }
+    :root[data-theme="dark"] {
+      --bg: #0f0f1a;
+      --surface: #1a1a2e;
+      --text: #e8e8f0;
+      --text-secondary: #9ca3af;
+      --accent: #60a5fa;
+      --accent-hover: #93bbfd;
+      --accent-light: #1e3a5f;
+      --border: #2d2d44;
+      --tag-bg: #252540;
+      --green: #2dd4bf;
+      --green-light: #0d2d2a;
+      color-scheme: dark;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    nav {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 0.75rem 1.5rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .nav-brand {
+      font-weight: 800;
+      font-size: 1.25rem;
+      color: var(--text);
+      text-decoration: none;
+      letter-spacing: -0.5px;
+    }
+    .nav-brand span { color: var(--accent); }
+    .nav-links { display: flex; align-items: center; gap: 1rem; }
+    .nav-link {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+    }
+    .nav-link:hover { color: var(--accent); }
+    .nav-cta {
+      background: var(--accent);
+      color: #fff;
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 600;
+      transition: background 0.2s;
+    }
+    .nav-cta:hover { background: var(--accent-hover); }
+    .nav-cta.active { background: var(--accent-hover); }
+
+    .container {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 2.5rem 1.5rem;
+    }
+
+    h1 {
+      font-size: clamp(1.5rem, 4vw, 2rem);
+      font-weight: 800;
+      margin-bottom: 0.75rem;
+      letter-spacing: -0.5px;
+    }
+
+    .page-intro {
+      font-size: 1rem;
+      color: var(--text-secondary);
+      margin-bottom: 2.5rem;
+      line-height: 1.7;
+      max-width: 600px;
+    }
+
+    .service-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.75rem 2rem;
+      margin-bottom: 1rem;
+      transition: box-shadow 0.2s;
+    }
+    .service-card:hover {
+      box-shadow: var(--shadow-md);
+    }
+    .service-card h2 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+    .service-card p {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      line-height: 1.65;
+      margin-bottom: 0.75rem;
+    }
+    .service-card p:last-child { margin-bottom: 0; }
+    .service-includes {
+      list-style: none;
+      padding: 0;
+      margin-top: 0.75rem;
+    }
+    .service-includes li {
+      padding: 0.3rem 0 0.3rem 1.5rem;
+      position: relative;
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+    .service-includes li::before {
+      content: "→";
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .pricing-note {
+      background: var(--tag-bg);
+      border-radius: var(--radius);
+      padding: 1.25rem 1.5rem;
+      margin: 2rem 0;
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+    .pricing-note strong {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    .contact-section {
+      background: linear-gradient(135deg, #1a1a2e 0%, #0f3460 100%);
+      border-radius: var(--radius);
+      padding: 2.5rem 2rem;
+      text-align: center;
+      color: #fff;
+      margin: 2rem 0;
+    }
+    .contact-section h2 {
+      font-size: 1.3rem;
+      font-weight: 800;
+      margin-bottom: 0.5rem;
+    }
+    .contact-section p {
+      color: rgba(255,255,255,0.8);
+      margin-bottom: 1.5rem;
+      font-size: 0.92rem;
+    }
+    .contact-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+    .cta-whatsapp {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.75rem 1.5rem;
+      background: #25D366;
+      color: #fff;
+      border-radius: 6px;
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 600;
+      transition: background 0.2s;
+    }
+    .cta-whatsapp:hover { background: #1da851; }
+    .cta-email {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.75rem 1.5rem;
+      background: rgba(255,255,255,0.15);
+      color: #fff;
+      border: 1px solid rgba(255,255,255,0.3);
+      border-radius: 6px;
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 600;
+      transition: background 0.2s;
+    }
+    .cta-email:hover { background: rgba(255,255,255,0.25); }
+
+    footer {
+      text-align: center;
+      padding: 2rem 1.5rem;
+      color: var(--text-secondary);
+      font-size: 0.82rem;
+      border-top: 1px solid var(--border);
+      margin-top: 2rem;
+    }
+    footer a { color: var(--accent); text-decoration: none; }
+
+    @media (max-width: 600px) {
+      .container { padding: 1.5rem 1rem; }
+      .nav-links { gap: 0.5rem; }
+      .nav-link { display: none; }
+      .service-card { padding: 1.25rem 1.15rem; }
+      .contact-section { padding: 2rem 1.25rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="/" class="nav-brand">Remote<span>Jobs</span></a>
+    <div class="nav-links">
+      <a href="/" class="nav-link">Jobs</a>
+      <a href="/verify" class="nav-link">How We Verify</a>
+      <a href="/services" class="nav-cta active">Get Job-Ready</a>
+    </div>
+  </nav>
+
+  <div class="container">
+
+    <h1>Finding jobs is step one. Getting hired is step two.</h1>
+    <p class="page-intro">AI can write a CV, but it can't tell you why you're not getting callbacks. We help with the strategy, feedback and accountability that actually change outcomes.</p>
+
+    <div class="service-card">
+      <h2>Application Strategy Session</h2>
+      <p>A one-on-one call to audit where your applications break down and build a plan that targets the right roles.</p>
+      <ul class="service-includes">
+        <li>Review of your current CV, cover letter and LinkedIn profile</li>
+        <li>Honest assessment of what's working and what isn't</li>
+        <li>A targeted application plan with specific companies and roles</li>
+        <li>Follow-up notes with action steps</li>
+      </ul>
+    </div>
+
+    <div class="service-card">
+      <h2>Interview Preparation</h2>
+      <p>Live practice with real feedback. We run you through the questions, flag what's weak, and help you fix it before the real call.</p>
+      <ul class="service-includes">
+        <li>Mock interview tailored to your target role</li>
+        <li>Detailed feedback on answers, body language and confidence</li>
+        <li>Common question frameworks for remote roles</li>
+        <li>A recording of the session to review</li>
+      </ul>
+    </div>
+
+    <div class="service-card">
+      <h2>Job Search Sprint</h2>
+      <p>A focused programme: sourcing, applying and follow-up coaching over two weeks with daily accountability.</p>
+      <ul class="service-includes">
+        <li>Curated list of roles matched to your skills and goals</li>
+        <li>Daily check-ins and application tracking</li>
+        <li>CV and cover letter tailored to each application</li>
+        <li>Debrief call at the end with next steps</li>
+      </ul>
+    </div>
+
+    <div class="pricing-note">
+      <strong>Pricing:</strong> Reach out and tell us what you need help with. We will discuss your situation and give you a clear price before any commitment. No hidden fees, no subscriptions.
+    </div>
+
+    <section class="contact-section">
+      <h2>Ready to get started?</h2>
+      <p>Tell us where you are in your job search and what you need help with. We reply within 24 hours.</p>
+      <div class="contact-buttons">
+        <a href="https://wa.me/905338225854" target="_blank" rel="noopener" class="cta-whatsapp">Message us on WhatsApp</a>
+        <a href="mailto:remotenc.jobs@gmail.com" class="cta-email">Email us</a>
+      </div>
+    </section>
+
+  </div>
+
+  <footer>
+    <p>Built for students and graduates looking for remote work worldwide.</p>
+    <p style="margin-top:0.25rem;">Questions? <a href="mailto:remotenc.jobs@gmail.com">remotenc.jobs@gmail.com</a></p>
+  </footer>
+
+  <script data-goatcounter="https://kayzglobal.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+
+</body>
+</html>
