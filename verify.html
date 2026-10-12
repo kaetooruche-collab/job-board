@@ -3,55 +3,56 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>How We Verify — Remote Jobs</title>
-  <meta name="description" content="How we verify every listing on our free remote job board. Our trust rules, verification process and what we check before publishing.">
+  <title>How We Verify — TrueRemote</title>
+  <meta name="description" content="How TrueRemote verifies every listing. Our trust rules, verification process and what we check before publishing.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%231a1a2e'/><path d='M28 55 L43 70 L72 35' stroke='%2360a5fa' stroke-width='10' stroke-linecap='round' stroke-linejoin='round' fill='none'/></svg>">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
     :root {
-      --bg: #fafafa;
+      --bg: #f8f9fb;
       --surface: #ffffff;
       --text: #1a1a2e;
       --text-secondary: #5f6368;
-      --accent: #1a73e8;
-      --accent-hover: #1557b0;
-      --accent-light: #e8f0fe;
-      --border: #e0e0e0;
-      --tag-bg: #f1f3f4;
+      --accent: #2563eb;
+      --accent-hover: #1d4ed8;
+      --accent-light: #eff6ff;
+      --border: #e2e5e9;
+      --tag-bg: #f1f3f5;
       --green: #0d9488;
       --green-light: #f0fdfa;
       --yellow-dark: #f59e0b;
       --radius: 10px;
-      --shadow: 0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.06);
+      --shadow: 0 1px 3px rgba(0,0,0,0.06);
     }
 
     @media (prefers-color-scheme: dark) {
       :root:not([data-theme="light"]) {
-        --bg: #0f0f1a;
-        --surface: #1a1a2e;
+        --bg: #0c0c18;
+        --surface: #161625;
         --text: #e8e8f0;
         --text-secondary: #9ca3af;
         --accent: #60a5fa;
         --accent-hover: #93bbfd;
-        --accent-light: #1e3a5f;
-        --border: #2d2d44;
-        --tag-bg: #252540;
+        --accent-light: #1e293b;
+        --border: #262640;
+        --tag-bg: #1e1e36;
         --green: #2dd4bf;
         --green-light: #0d2d2a;
         color-scheme: dark;
       }
     }
     :root[data-theme="dark"] {
-      --bg: #0f0f1a;
-      --surface: #1a1a2e;
+      --bg: #0c0c18;
+      --surface: #161625;
       --text: #e8e8f0;
       --text-secondary: #9ca3af;
       --accent: #60a5fa;
       --accent-hover: #93bbfd;
-      --accent-light: #1e3a5f;
-      --border: #2d2d44;
-      --tag-bg: #252540;
+      --accent-light: #1e293b;
+      --border: #262640;
+      --tag-bg: #1e1e36;
       --green: #2dd4bf;
       --green-light: #0d2d2a;
       color-scheme: dark;
@@ -68,10 +69,11 @@
     nav {
       background: var(--surface);
       border-bottom: 1px solid var(--border);
-      padding: 0.75rem 1.5rem;
+      padding: 0 1.5rem;
+      height: 56px;
       position: sticky;
       top: 0;
-      z-index: 100;
+      z-index: 200;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -82,9 +84,12 @@
       color: var(--text);
       text-decoration: none;
       letter-spacing: -0.5px;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
     }
     .nav-brand span { color: var(--accent); }
-    .nav-links { display: flex; align-items: center; gap: 1rem; }
+    .nav-links { display: flex; align-items: center; gap: 1.25rem; }
     .nav-link {
       color: var(--text-secondary);
       text-decoration: none;
@@ -96,7 +101,7 @@
     .nav-cta {
       background: var(--accent);
       color: #fff;
-      padding: 0.5rem 1rem;
+      padding: 0.45rem 1rem;
       border-radius: 6px;
       text-decoration: none;
       font-size: 0.85rem;
@@ -104,6 +109,39 @@
       transition: background 0.2s;
     }
     .nav-cta:hover { background: var(--accent-hover); }
+
+    .hamburger {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0.25rem;
+      color: var(--text);
+    }
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 56px;
+      left: 0;
+      right: 0;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 1rem 1.5rem;
+      z-index: 199;
+      flex-direction: column;
+      gap: 0.75rem;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      color: var(--text);
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 500;
+      padding: 0.5rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .mobile-menu a:last-child { border-bottom: none; }
 
     .container {
       max-width: 720px;
@@ -209,7 +247,7 @@
     }
     .standard-list li:last-child { border-bottom: none; }
     .standard-list li::before {
-      content: "✓";
+      content: "\2713";
       position: absolute;
       left: 0;
       color: var(--green);
@@ -258,16 +296,16 @@
       text-align: center;
       padding: 2rem 1.5rem;
       color: var(--text-secondary);
-      font-size: 0.82rem;
+      font-size: 0.8rem;
       border-top: 1px solid var(--border);
       margin-top: 2rem;
     }
     footer a { color: var(--accent); text-decoration: none; }
 
-    @media (max-width: 600px) {
+    @media (max-width: 640px) {
       .container { padding: 1.5rem 1rem; }
-      .nav-links { gap: 0.5rem; }
-      .nav-link { display: none; }
+      .nav-links { display: none; }
+      .hamburger { display: block; }
       .process-step { padding: 1rem 1.15rem; }
     }
   </style>
@@ -275,18 +313,29 @@
 <body>
 
   <nav>
-    <a href="/" class="nav-brand">Remote<span>Jobs</span></a>
+    <a href="/" class="nav-brand">
+      <svg width="22" height="22" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="100" height="100" rx="20" fill="var(--accent)"/><path d="M28 55 L43 70 L72 35" stroke="#fff" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      True<span>Remote</span>
+    </a>
     <div class="nav-links">
       <a href="/" class="nav-link">Jobs</a>
       <a href="/verify" class="nav-link active">How We Verify</a>
       <a href="/services" class="nav-cta">Get Job-Ready</a>
     </div>
+    <button class="hamburger" onclick="document.getElementById('mobile-menu').classList.toggle('open')" aria-label="Toggle navigation menu">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
   </nav>
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="/">Jobs</a>
+    <a href="/verify">How We Verify</a>
+    <a href="/services">Get Job-Ready</a>
+  </div>
 
   <div class="container">
 
     <h1>How we verify listings</h1>
-    <p class="page-intro">Every listing on this board goes through a verification process before it appears. We built this board for job seekers who are tired of broken links, vague descriptions and roles that don't exist. Here is exactly what we check and what we promise.</p>
+    <p class="page-intro">Every listing on TrueRemote goes through a verification process before it appears. We built this board for job seekers who are tired of broken links, vague descriptions and roles that don't exist. Here is exactly what we check and what we promise.</p>
 
     <section class="trust-rules">
       <h2>Our trust rules</h2>
@@ -370,7 +419,7 @@
   </div>
 
   <footer>
-    <p>Built for students and graduates looking for remote work worldwide.</p>
+    <p>TrueRemote &mdash; Built for students and graduates looking for remote work worldwide.</p>
     <p style="margin-top:0.25rem;">Questions? <a href="mailto:remotenc.jobs@gmail.com">remotenc.jobs@gmail.com</a></p>
   </footer>
 

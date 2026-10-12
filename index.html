@@ -3,65 +3,78 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Remote Jobs — Verified Entry-Level Opportunities</title>
-  <meta name="description" content="Free job board of verified, worldwide-eligible, entry-level remote jobs. Find real opportunities in customer support, operations, data, content and more.">
+  <title>TrueRemote — Verified Entry-Level Remote Jobs</title>
+  <meta name="description" content="Free job board of verified, worldwide-eligible, entry-level remote jobs. Every listing links to the real posting with the real date. No broken links, no guesswork.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%231a1a2e'/><path d='M28 55 L43 70 L72 35' stroke='%2360a5fa' stroke-width='10' stroke-linecap='round' stroke-linejoin='round' fill='none'/></svg>">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
     :root {
-      --bg: #fafafa;
+      --bg: #f8f9fb;
       --surface: #ffffff;
       --text: #1a1a2e;
       --text-secondary: #5f6368;
-      --accent: #1a73e8;
-      --accent-hover: #1557b0;
-      --accent-light: #e8f0fe;
-      --border: #e0e0e0;
-      --tag-bg: #f1f3f4;
+      --accent: #2563eb;
+      --accent-hover: #1d4ed8;
+      --accent-light: #eff6ff;
+      --border: #e2e5e9;
+      --tag-bg: #f1f3f5;
       --green: #0d9488;
       --green-light: #f0fdfa;
       --yellow: #fbbc04;
       --yellow-dark: #f59e0b;
       --radius: 10px;
-      --shadow: 0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.06);
-      --shadow-md: 0 4px 12px rgba(0,0,0,0.1);
+      --shadow: 0 1px 3px rgba(0,0,0,0.06);
+      --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
       --disclaimer-bg: #fffbeb;
       --disclaimer-border: #fbbf24;
+      --new-bg: #fef3c7;
+      --new-text: #92400e;
+      --verified-bg: #ecfdf5;
+      --verified-text: #065f46;
     }
 
     @media (prefers-color-scheme: dark) {
       :root:not([data-theme="light"]) {
-        --bg: #0f0f1a;
-        --surface: #1a1a2e;
+        --bg: #0c0c18;
+        --surface: #161625;
         --text: #e8e8f0;
         --text-secondary: #9ca3af;
         --accent: #60a5fa;
         --accent-hover: #93bbfd;
-        --accent-light: #1e3a5f;
-        --border: #2d2d44;
-        --tag-bg: #252540;
+        --accent-light: #1e293b;
+        --border: #262640;
+        --tag-bg: #1e1e36;
         --green: #2dd4bf;
         --green-light: #0d2d2a;
         --disclaimer-bg: #1c1a0f;
         --disclaimer-border: #92400e;
+        --new-bg: #451a03;
+        --new-text: #fde68a;
+        --verified-bg: #052e16;
+        --verified-text: #6ee7b7;
         color-scheme: dark;
       }
     }
     :root[data-theme="dark"] {
-      --bg: #0f0f1a;
-      --surface: #1a1a2e;
+      --bg: #0c0c18;
+      --surface: #161625;
       --text: #e8e8f0;
       --text-secondary: #9ca3af;
       --accent: #60a5fa;
       --accent-hover: #93bbfd;
-      --accent-light: #1e3a5f;
-      --border: #2d2d44;
-      --tag-bg: #252540;
+      --accent-light: #1e293b;
+      --border: #262640;
+      --tag-bg: #1e1e36;
       --green: #2dd4bf;
       --green-light: #0d2d2a;
       --disclaimer-bg: #1c1a0f;
       --disclaimer-border: #92400e;
+      --new-bg: #451a03;
+      --new-text: #fde68a;
+      --verified-bg: #052e16;
+      --verified-text: #6ee7b7;
       color-scheme: dark;
     }
 
@@ -77,10 +90,11 @@
     nav {
       background: var(--surface);
       border-bottom: 1px solid var(--border);
-      padding: 0.75rem 1.5rem;
+      padding: 0 1.5rem;
+      height: 56px;
       position: sticky;
       top: 0;
-      z-index: 100;
+      z-index: 200;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -91,24 +105,29 @@
       color: var(--text);
       text-decoration: none;
       letter-spacing: -0.5px;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
     }
     .nav-brand span { color: var(--accent); }
+    .nav-brand svg { flex-shrink: 0; }
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 1rem;
+      gap: 1.25rem;
     }
     .nav-link {
       color: var(--text-secondary);
       text-decoration: none;
       font-size: 0.85rem;
       font-weight: 500;
+      transition: color 0.15s;
     }
     .nav-link:hover { color: var(--accent); }
     .nav-cta {
       background: var(--accent);
       color: #fff;
-      padding: 0.5rem 1rem;
+      padding: 0.45rem 1rem;
       border-radius: 6px;
       text-decoration: none;
       font-size: 0.85rem;
@@ -117,35 +136,76 @@
     }
     .nav-cta:hover { background: var(--accent-hover); }
 
+    /* HAMBURGER */
+    .hamburger {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0.25rem;
+      color: var(--text);
+    }
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 56px;
+      left: 0;
+      right: 0;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 1rem 1.5rem;
+      z-index: 199;
+      flex-direction: column;
+      gap: 0.75rem;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      color: var(--text);
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 500;
+      padding: 0.5rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .mobile-menu a:last-child { border-bottom: none; }
+
     /* HERO */
     .hero {
       background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
       color: #fff;
-      padding: 4rem 1.5rem 3rem;
+      padding: 3.5rem 1.5rem 3rem;
       text-align: center;
     }
     .hero h1 {
       font-size: clamp(1.75rem, 5vw, 2.75rem);
       font-weight: 800;
       line-height: 1.15;
-      margin-bottom: 1rem;
+      margin-bottom: 0.75rem;
       letter-spacing: -1px;
     }
     .hero h1 em {
       font-style: normal;
-      color: #fbbc04;
+      color: #60a5fa;
+    }
+    .hero-tagline {
+      font-size: 1.1rem;
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 1.5rem;
+      font-weight: 500;
+      letter-spacing: 0.3px;
     }
     .hero p {
-      font-size: 1.05rem;
-      color: rgba(255,255,255,0.8);
-      max-width: 560px;
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.65);
+      max-width: 540px;
       margin: 0 auto 2rem;
       line-height: 1.6;
     }
     .hero-stats {
       display: flex;
       justify-content: center;
-      gap: 2rem;
+      gap: 2.5rem;
       flex-wrap: wrap;
     }
     .hero-stat {
@@ -153,15 +213,17 @@
     }
     .hero-stat strong {
       display: block;
-      font-size: 1.5rem;
+      font-size: 1.75rem;
       font-weight: 800;
-      color: #fbbc04;
+      color: #fff;
+      font-variant-numeric: tabular-nums;
     }
     .hero-stat small {
-      font-size: 0.8rem;
-      color: rgba(255,255,255,0.65);
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.5);
       text-transform: uppercase;
-      letter-spacing: 0.5px;
+      letter-spacing: 0.75px;
+      font-weight: 500;
     }
 
     /* MAIN */
@@ -176,9 +238,9 @@
       background: var(--disclaimer-bg);
       border: 1px solid var(--disclaimer-border);
       border-radius: var(--radius);
-      padding: 1rem 1.25rem;
+      padding: 0.85rem 1.15rem;
       margin-bottom: 1.5rem;
-      font-size: 0.85rem;
+      font-size: 0.82rem;
       color: var(--text-secondary);
       line-height: 1.6;
     }
@@ -187,25 +249,49 @@
       font-weight: 600;
     }
 
-    /* FILTERS */
+    /* SEARCH + FILTERS BAR */
+    .toolbar {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1rem 1.25rem;
+      margin-bottom: 1.25rem;
+      position: sticky;
+      top: 56px;
+      z-index: 100;
+    }
+    .search-bar input {
+      width: 100%;
+      padding: 0.65rem 1rem 0.65rem 2.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      font-size: 0.9rem;
+      font-family: inherit;
+      color: var(--text);
+      background: var(--bg) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%235f6368' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='11' cy='11' r='8'/%3E%3Cline x1='21' y1='21' x2='16.65' y2='16.65'/%3E%3C/svg%3E") 0.8rem center no-repeat;
+      transition: border-color 0.2s;
+    }
+    .search-bar input:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px var(--accent-light);
+    }
     .filters {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.5rem;
-      margin-bottom: 1.5rem;
-      padding-bottom: 1rem;
-      border-bottom: 1px solid var(--border);
+      gap: 0.4rem;
+      margin-top: 0.75rem;
     }
     .filter-btn {
-      padding: 0.4rem 0.9rem;
+      padding: 0.35rem 0.8rem;
       border-radius: 20px;
       border: 1px solid var(--border);
-      background: var(--surface);
+      background: transparent;
       color: var(--text-secondary);
-      font-size: 0.82rem;
+      font-size: 0.78rem;
       font-weight: 500;
       cursor: pointer;
-      transition: all 0.2s;
+      transition: all 0.15s;
       font-family: inherit;
     }
     .filter-btn:hover {
@@ -218,27 +304,6 @@
       border-color: var(--accent);
     }
 
-    /* SEARCH */
-    .search-bar {
-      margin-bottom: 1.5rem;
-    }
-    .search-bar input {
-      width: 100%;
-      padding: 0.75rem 1rem 0.75rem 2.75rem;
-      border-radius: var(--radius);
-      border: 1px solid var(--border);
-      font-size: 0.95rem;
-      font-family: inherit;
-      color: var(--text);
-      background: var(--surface) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='%235f6368' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='11' cy='11' r='8'/%3E%3Cline x1='21' y1='21' x2='16.65' y2='16.65'/%3E%3C/svg%3E") 0.85rem center no-repeat;
-      transition: border-color 0.2s;
-    }
-    .search-bar input:focus {
-      outline: none;
-      border-color: var(--accent);
-      box-shadow: 0 0 0 3px var(--accent-light);
-    }
-
     /* JOB COUNT + UPDATED */
     .job-meta {
       display: flex;
@@ -246,15 +311,15 @@
       align-items: center;
       flex-wrap: wrap;
       gap: 0.5rem;
-      margin-bottom: 1rem;
+      margin-bottom: 0.75rem;
     }
     .job-count {
-      font-size: 0.85rem;
+      font-size: 0.82rem;
       color: var(--text-secondary);
     }
     .job-count strong { color: var(--text); }
     .last-updated {
-      font-size: 0.78rem;
+      font-size: 0.75rem;
       color: var(--text-secondary);
     }
 
@@ -263,13 +328,14 @@
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: var(--radius);
-      padding: 1.25rem 1.5rem;
-      margin-bottom: 0.75rem;
-      transition: box-shadow 0.2s, border-color 0.2s;
+      padding: 1.15rem 1.35rem;
+      margin-bottom: 0.6rem;
+      transition: box-shadow 0.15s, border-color 0.15s;
       cursor: pointer;
       text-decoration: none;
       display: block;
       color: inherit;
+      position: relative;
     }
     .job-card:hover {
       box-shadow: var(--shadow-md);
@@ -284,54 +350,72 @@
       justify-content: space-between;
       align-items: flex-start;
       gap: 1rem;
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.4rem;
     }
     .job-title {
-      font-size: 1.05rem;
+      font-size: 1rem;
       font-weight: 700;
       color: var(--text);
       line-height: 1.3;
     }
     .job-salary {
-      font-size: 0.85rem;
+      font-size: 0.8rem;
       font-weight: 600;
       color: var(--green);
       background: var(--green-light);
-      padding: 0.2rem 0.6rem;
+      padding: 0.2rem 0.55rem;
       border-radius: 4px;
       white-space: nowrap;
     }
     .job-company {
-      font-size: 0.9rem;
+      font-size: 0.85rem;
       color: var(--text-secondary);
-      margin-bottom: 0.35rem;
+      margin-bottom: 0.3rem;
     }
     .job-date {
-      font-size: 0.78rem;
-      color: var(--text-secondary);
-      margin-bottom: 0.5rem;
-    }
-    .job-date time {
-      color: var(--text-secondary);
-    }
-    .job-source {
       font-size: 0.75rem;
       color: var(--text-secondary);
-      opacity: 0.8;
+      margin-bottom: 0.4rem;
     }
     .job-tags {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.4rem;
-      margin-top: 0.5rem;
+      gap: 0.35rem;
+      align-items: center;
     }
     .job-tag {
-      font-size: 0.75rem;
-      padding: 0.2rem 0.6rem;
+      font-size: 0.72rem;
+      padding: 0.15rem 0.5rem;
       border-radius: 4px;
       background: var(--tag-bg);
       color: var(--text-secondary);
       font-weight: 500;
+    }
+    .badge-new {
+      font-size: 0.68rem;
+      padding: 0.15rem 0.5rem;
+      border-radius: 4px;
+      background: var(--new-bg);
+      color: var(--new-text);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .badge-verified {
+      font-size: 0.68rem;
+      padding: 0.15rem 0.5rem;
+      border-radius: 4px;
+      background: var(--verified-bg);
+      color: var(--verified-text);
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.2rem;
+    }
+    .job-source {
+      font-size: 0.72rem;
+      color: var(--text-secondary);
+      opacity: 0.7;
     }
 
     /* CTA SECTION */
@@ -344,17 +428,22 @@
       margin: 2.5rem 0;
     }
     .cta-section h2 {
-      font-size: 1.5rem;
+      font-size: 1.35rem;
       font-weight: 800;
-      margin-bottom: 0.75rem;
+      margin-bottom: 0.5rem;
     }
     .cta-section p {
-      color: rgba(255,255,255,0.8);
-      margin-bottom: 1.5rem;
-      font-size: 0.95rem;
+      color: rgba(255,255,255,0.75);
+      margin-bottom: 1.25rem;
+      font-size: 0.92rem;
       max-width: 480px;
       margin-left: auto;
       margin-right: auto;
+    }
+    .cta-social-proof {
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.5);
+      margin-top: 0.75rem;
     }
     .cta-form {
       display: flex;
@@ -369,11 +458,13 @@
       border: none;
       font-size: 0.9rem;
       font-family: inherit;
+      background: #fff;
+      color: #1a1a2e;
     }
     .cta-form button {
       padding: 0.7rem 1.25rem;
-      background: #fbbc04;
-      color: #1a1a1a;
+      background: #60a5fa;
+      color: #fff;
       border: none;
       border-radius: 6px;
       font-weight: 700;
@@ -383,7 +474,7 @@
       white-space: nowrap;
       transition: background 0.2s;
     }
-    .cta-form button:hover { background: #f9a825; }
+    .cta-form button:hover { background: #3b82f6; }
 
     /* SERVICES SECTION */
     .services {
@@ -394,14 +485,14 @@
       margin: 2rem 0;
     }
     .services h2 {
-      font-size: 1.3rem;
+      font-size: 1.2rem;
       font-weight: 800;
       margin-bottom: 0.5rem;
     }
     .services > p {
       color: var(--text-secondary);
       margin-bottom: 1.5rem;
-      font-size: 0.92rem;
+      font-size: 0.9rem;
     }
     .service-grid {
       display: grid;
@@ -414,7 +505,7 @@
       border-radius: 8px;
     }
     .service-item h3 {
-      font-size: 0.95rem;
+      font-size: 0.92rem;
       font-weight: 700;
       margin-bottom: 0.35rem;
     }
@@ -431,7 +522,7 @@
       text-align: center;
     }
     .service-cta > p {
-      font-size: 0.95rem;
+      font-size: 0.92rem;
       font-weight: 600;
       color: var(--text);
       margin-bottom: 1rem;
@@ -446,31 +537,31 @@
       display: inline-flex;
       align-items: center;
       gap: 0.4rem;
-      padding: 0.65rem 1.25rem;
+      padding: 0.6rem 1.15rem;
       background: #25D366;
       color: #fff;
       border-radius: 6px;
       text-decoration: none;
-      font-size: 0.88rem;
+      font-size: 0.85rem;
       font-weight: 600;
       transition: background 0.2s;
     }
     .cta-whatsapp:hover { background: #1da851; }
-    .cta-email {
+    .cta-email-btn {
       display: inline-flex;
       align-items: center;
       gap: 0.4rem;
-      padding: 0.65rem 1.25rem;
+      padding: 0.6rem 1.15rem;
       background: var(--surface);
       color: var(--text);
       border: 1px solid var(--border);
       border-radius: 6px;
       text-decoration: none;
-      font-size: 0.88rem;
+      font-size: 0.85rem;
       font-weight: 600;
       transition: border-color 0.2s;
     }
-    .cta-email:hover { border-color: var(--accent); color: var(--accent); }
+    .cta-email-btn:hover { border-color: var(--accent); color: var(--accent); }
 
     /* HOW WE VERIFY */
     .verify-section {
@@ -481,7 +572,7 @@
       margin: 2rem 0;
     }
     .verify-section h2 {
-      font-size: 1.3rem;
+      font-size: 1.2rem;
       font-weight: 800;
       margin-bottom: 1rem;
     }
@@ -490,29 +581,97 @@
       padding: 0;
     }
     .verify-list li {
-      padding: 0.6rem 0;
+      padding: 0.55rem 0;
       padding-left: 1.75rem;
       position: relative;
-      font-size: 0.9rem;
+      font-size: 0.88rem;
       color: var(--text-secondary);
       line-height: 1.5;
       border-bottom: 1px solid var(--border);
     }
     .verify-list li:last-child { border-bottom: none; }
     .verify-list li::before {
-      content: "✓";
+      content: "\2713";
       position: absolute;
       left: 0;
       color: var(--green);
       font-weight: 700;
     }
 
+    /* PLATFORMS SECTION */
+    .platforms-section {
+      margin: 2.5rem 0;
+    }
+    .platforms-section h2 {
+      font-size: 1.2rem;
+      font-weight: 800;
+      margin-bottom: 0.5rem;
+    }
+    .platforms-section > p {
+      color: var(--text-secondary);
+      font-size: 0.88rem;
+      margin-bottom: 1.25rem;
+    }
+    .platform-card {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1rem 1.25rem;
+      margin-bottom: 0.5rem;
+      gap: 1rem;
+      transition: border-color 0.15s;
+    }
+    .platform-card:hover { border-color: var(--accent); }
+    .platform-info { min-width: 0; flex: 1; }
+    .platform-name {
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 0.15rem;
+    }
+    .platform-desc {
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      line-height: 1.4;
+    }
+    .platform-badges {
+      display: flex;
+      gap: 0.35rem;
+      margin-top: 0.3rem;
+      flex-wrap: wrap;
+    }
+    .platform-badge {
+      font-size: 0.7rem;
+      padding: 0.12rem 0.45rem;
+      border-radius: 4px;
+      font-weight: 500;
+    }
+    .platform-badge.free { background: var(--green-light); color: var(--green); }
+    .platform-badge.paid { background: var(--disclaimer-bg); color: var(--yellow-dark); }
+    .platform-badge.signup { background: var(--tag-bg); color: var(--text-secondary); }
+    .platform-visit {
+      padding: 0.45rem 0.9rem;
+      background: var(--accent);
+      color: #fff;
+      border-radius: 6px;
+      text-decoration: none;
+      font-size: 0.8rem;
+      font-weight: 600;
+      white-space: nowrap;
+      transition: background 0.2s;
+      flex-shrink: 0;
+    }
+    .platform-visit:hover { background: var(--accent-hover); }
+
     /* FOOTER */
     footer {
       text-align: center;
       padding: 2rem 1.5rem;
       color: var(--text-secondary);
-      font-size: 0.82rem;
+      font-size: 0.8rem;
       border-top: 1px solid var(--border);
       margin-top: 2rem;
     }
@@ -533,111 +692,58 @@
       color: var(--text);
     }
 
-    /* PLATFORMS SECTION */
-    .platforms-section {
-      margin: 2.5rem 0;
-    }
-    .platforms-section h2 {
-      font-size: 1.3rem;
-      font-weight: 800;
-      margin-bottom: 0.5rem;
-    }
-    .platforms-section > p {
-      color: var(--text-secondary);
-      font-size: 0.9rem;
-      margin-bottom: 1.25rem;
-    }
-    .platform-card {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 1rem 1.25rem;
-      margin-bottom: 0.5rem;
-      gap: 1rem;
-      transition: border-color 0.2s;
-    }
-    .platform-card:hover { border-color: var(--accent); }
-    .platform-info { min-width: 0; flex: 1; }
-    .platform-name {
-      font-size: 0.95rem;
-      font-weight: 700;
-      color: var(--text);
-      margin-bottom: 0.15rem;
-    }
-    .platform-desc {
-      font-size: 0.82rem;
-      color: var(--text-secondary);
-      line-height: 1.4;
-    }
-    .platform-badges {
-      display: flex;
-      gap: 0.4rem;
-      margin-top: 0.35rem;
-      flex-wrap: wrap;
-    }
-    .platform-badge {
-      font-size: 0.72rem;
-      padding: 0.15rem 0.5rem;
-      border-radius: 4px;
-      font-weight: 500;
-    }
-    .platform-badge.free { background: var(--green-light); color: var(--green); }
-    .platform-badge.paid { background: var(--disclaimer-bg); color: var(--yellow-dark); }
-    .platform-badge.signup { background: var(--tag-bg); color: var(--text-secondary); }
-    .platform-visit {
-      padding: 0.5rem 1rem;
-      background: var(--accent);
-      color: #fff;
-      border-radius: 6px;
-      text-decoration: none;
-      font-size: 0.82rem;
-      font-weight: 600;
-      white-space: nowrap;
-      transition: background 0.2s;
-      flex-shrink: 0;
-    }
-    .platform-visit:hover { background: var(--accent-hover); }
-
     /* RESPONSIVE */
-    @media (max-width: 600px) {
+    @media (max-width: 640px) {
       .hero { padding: 2.5rem 1.25rem 2rem; }
-      .hero-stats { gap: 1.25rem; }
+      .hero-stats { gap: 1.5rem; }
       .container { padding: 1rem; }
-      .job-card { padding: 1rem 1.15rem; }
+      .toolbar { padding: 0.75rem 1rem; margin-left: -1rem; margin-right: -1rem; border-radius: 0; border-left: none; border-right: none; }
+      .job-card { padding: 1rem 1.1rem; }
       .job-card-header { flex-direction: column; gap: 0.4rem; }
       .cta-form { flex-direction: column; }
       .cta-section { padding: 2rem 1.25rem; }
       .service-grid { grid-template-columns: 1fr; }
-      .nav-links { gap: 0.5rem; }
-      .nav-link { display: none; }
+      .nav-links { display: none; }
+      .hamburger { display: block; }
       .platform-card { flex-direction: column; align-items: stretch; }
       .platform-visit { text-align: center; }
     }
   </style>
+  <script src="site-config.js"></script>
 </head>
 <body>
 
   <!-- NAV -->
   <nav>
-    <a href="#" class="nav-brand">Remote<span>Jobs</span></a>
+    <a href="/" class="nav-brand">
+      <svg width="22" height="22" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="100" height="100" rx="20" fill="var(--accent)"/><path d="M28 55 L43 70 L72 35" stroke="#fff" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      True<span>Remote</span>
+    </a>
     <div class="nav-links">
       <a href="#platforms" class="nav-link">Platforms</a>
       <a href="/verify" class="nav-link">How We Verify</a>
       <a href="/services" class="nav-cta">Get Job-Ready</a>
     </div>
+    <button class="hamburger" onclick="toggleMenu()" aria-label="Toggle navigation menu">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
   </nav>
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="/" onclick="closeMenu()">Jobs</a>
+    <a href="#platforms" onclick="closeMenu()">Platforms</a>
+    <a href="/verify" onclick="closeMenu()">How We Verify</a>
+    <a href="/services" onclick="closeMenu()">Get Job-Ready</a>
+  </div>
 
   <!-- HERO -->
   <section class="hero">
     <h1>Verified remote jobs for <em>students &amp; graduates</em></h1>
-    <p>Real entry-level opportunities from companies that hire worldwide. Every listing links to the actual posting with the real date and source.</p>
+    <p class="hero-tagline">Every listing verified. Every link real.</p>
+    <p>Entry-level remote opportunities from companies that hire worldwide. We check every link, every date, every claim.</p>
     <div class="hero-stats">
       <div class="hero-stat">
         <strong id="total-jobs">0</strong>
-        <small>Open Listings</small>
+        <small>Verified Listings</small>
       </div>
       <div class="hero-stat">
         <strong id="total-companies">0</strong>
@@ -645,7 +751,7 @@
       </div>
       <div class="hero-stat">
         <strong>100%</strong>
-        <small>Remote</small>
+        <small>Link-Checked</small>
       </div>
     </div>
   </section>
@@ -655,17 +761,17 @@
 
     <!-- DISCLAIMER -->
     <div class="disclaimer">
-      <strong>How these listings work:</strong> Every job below links directly to the employer's posting on their applicant tracking system. We show the original posting date and source. Pay is shown only when the employer states it. Before applying, check each employer's eligibility requirements for your location.
+      <strong>How these listings work:</strong> Every job links directly to the employer's posting. We show the original posting date and source. Pay is shown only when the employer states it. Before applying, check each employer's eligibility requirements for your location.
     </div>
 
-    <!-- SEARCH -->
-    <div class="search-bar">
-      <input type="text" id="search-input" placeholder="Search jobs by title, company, or keyword..." aria-label="Search jobs">
-    </div>
-
-    <!-- FILTERS -->
-    <div class="filters" id="filter-container">
-      <button class="filter-btn active" data-category="all">All Jobs</button>
+    <!-- STICKY TOOLBAR: SEARCH + FILTERS -->
+    <div class="toolbar">
+      <div class="search-bar">
+        <input type="text" id="search-input" placeholder="Search by title, company or keyword..." aria-label="Search jobs">
+      </div>
+      <div class="filters" id="filter-container">
+        <button class="filter-btn active" data-category="all">All</button>
+      </div>
     </div>
 
     <!-- JOB META -->
@@ -686,10 +792,10 @@
 
     <!-- CTA: EMAIL SIGNUP -->
     <section class="cta-section" id="subscribe">
-      <h2>New jobs in your inbox every week</h2>
-      <p>Get curated remote opportunities for students and graduates, delivered every Monday.</p>
+      <h2>Get verified remote jobs in your inbox</h2>
+      <p>A weekly shortlist of real, link-checked entry-level remote opportunities. No spam, no broken links.</p>
       <iframe name="brevo-frame" style="display:none;" title="Form submission target"></iframe>
-      <form class="cta-form" action="https://83bc9f70.sibforms.com/serve/MUIFACGtGEoSn3jE56VZDDnLlJfzppyzZA-kCNtZs5AVp3x6KjQpqE8k2RWMDh87O7Jj0GsjLaIKPZ2WsaIz3zujHnUuyrMu_xeAOzQoYbeHMWABgo4IoRDJC-41RXhrS1FjKwLPt2S_pHGlOkXOEkxZmI73tuqKaQ8OmTJyTBasS2XQqJE7HSgIA0fOVUijmMpYS-p1Hq4zeg3VHg==" method="POST" target="brevo-frame" onsubmit="handleSignup()">
+      <form class="cta-form" id="signup-form" method="POST" target="brevo-frame" onsubmit="handleSignup()">
         <input type="email" placeholder="Your email address" id="email-input" name="EMAIL" required aria-label="Email address">
         <input type="text" name="email_address_check" value="" style="display:none;" tabindex="-1" aria-hidden="true">
         <input type="hidden" name="locale" value="en">
@@ -697,6 +803,7 @@
         <button type="submit">Subscribe Free</button>
       </form>
       <p id="signup-msg" style="margin-top:0.75rem; font-size:0.85rem; display:none;"></p>
+      <p class="cta-social-proof">Join job seekers worldwide who trust TrueRemote for verified opportunities.</p>
     </section>
 
     <!-- SERVICES -->
@@ -721,7 +828,7 @@
         <p>Interested? Reach out and tell us what you need help with.</p>
         <div class="service-cta-buttons">
           <a href="https://wa.me/905338225854" target="_blank" rel="noopener" class="cta-whatsapp">Message us on WhatsApp</a>
-          <a href="mailto:remotenc.jobs@gmail.com" class="cta-email">Email us</a>
+          <a href="mailto:remotenc.jobs@gmail.com" class="cta-email-btn">Email us</a>
         </div>
       </div>
     </section>
@@ -737,11 +844,11 @@
         <li>Every claim we publish links to the posting that supports it.</li>
         <li>A wrong listing is corrected in public within one day.</li>
       </ul>
-      <p style="margin-top:1rem; font-size:0.88rem;"><a href="/verify" style="color: var(--accent); font-weight:600; text-decoration:none;">Read our full verification process →</a></p>
+      <p style="margin-top:1rem; font-size:0.85rem;"><a href="/verify" style="color: var(--accent); font-weight:600; text-decoration:none;">Read our full verification process &rarr;</a></p>
     </section>
 
     <!-- REPORT -->
-    <div style="text-align:center; padding: 1rem 0; font-size: 0.85rem; color: var(--text-secondary);">
+    <div style="text-align:center; padding: 1rem 0; font-size: 0.82rem; color: var(--text-secondary);">
       See something wrong? <a href="mailto:remotenc.jobs@gmail.com" style="color: var(--accent);">Report a listing</a> or <a href="https://wa.me/905338225854" target="_blank" rel="noopener" style="color: var(--accent);">message us on WhatsApp</a>.
     </div>
 
@@ -749,88 +856,119 @@
 
   <!-- FOOTER -->
   <footer>
-    <p>Built for students and graduates looking for remote work worldwide.</p>
+    <p>TrueRemote &mdash; Built for students and graduates looking for remote work worldwide.</p>
     <p style="margin-top:0.25rem;">Questions? <a href="mailto:remotenc.jobs@gmail.com">remotenc.jobs@gmail.com</a></p>
   </footer>
 
   <script>
+    // Set Brevo form action from config
+    (function() {
+      var form = document.getElementById('signup-form');
+      if (typeof SITE !== 'undefined' && SITE.brevoFormAction) {
+        form.action = SITE.brevoFormAction;
+      }
+    })();
+
     let allJobs = [];
     let activeCategory = 'all';
     let searchQuery = '';
 
+    function toggleMenu() {
+      document.getElementById('mobile-menu').classList.toggle('open');
+    }
+    function closeMenu() {
+      document.getElementById('mobile-menu').classList.remove('open');
+    }
+
     function timeAgo(dateStr) {
       if (!dateStr) return '';
       try {
-        const date = new Date(dateStr);
+        var date = new Date(dateStr);
         if (isNaN(date.getTime())) return '';
-        const now = new Date();
-        const diffMs = now - date;
-        const diffMins = Math.floor(diffMs / 60000);
-        const diffHours = Math.floor(diffMs / 3600000);
-        const diffDays = Math.floor(diffMs / 86400000);
+        var now = new Date();
+        var diffMs = now - date;
+        var diffMins = Math.floor(diffMs / 60000);
+        var diffHours = Math.floor(diffMs / 3600000);
+        var diffDays = Math.floor(diffMs / 86400000);
         if (diffDays > 0) return diffDays === 1 ? '1 day ago' : diffDays + ' days ago';
         if (diffHours > 0) return diffHours === 1 ? '1 hour ago' : diffHours + ' hours ago';
         if (diffMins > 0) return diffMins === 1 ? '1 minute ago' : diffMins + ' minutes ago';
         return 'just now';
-      } catch { return ''; }
+      } catch(e) { return ''; }
     }
 
     function formatDate(dateStr) {
       if (!dateStr) return '';
       try {
-        const date = new Date(dateStr);
+        var date = new Date(dateStr);
         if (isNaN(date.getTime())) return '';
         return date.toLocaleDateString(undefined, {
           year: 'numeric', month: 'short', day: 'numeric',
           hour: '2-digit', minute: '2-digit', timeZoneName: 'short'
         });
-      } catch { return ''; }
+      } catch(e) { return ''; }
+    }
+
+    function isNew(dateStr) {
+      if (!dateStr) return false;
+      try {
+        var date = new Date(dateStr);
+        if (isNaN(date.getTime())) return false;
+        return (new Date() - date) < 48 * 3600000;
+      } catch(e) { return false; }
     }
 
     async function init() {
       try {
-        const res = await fetch('./jobs.json');
+        var res = await fetch('./jobs.json');
         allJobs = await res.json();
         document.getElementById('total-jobs').textContent = allJobs.length;
-        const companies = new Set(allJobs.map(j => j.company));
+        var companies = new Set(allJobs.map(function(j) { return j.company; }));
         document.getElementById('total-companies').textContent = companies.size;
         buildFilters();
         renderJobs();
         updateLastUpdated();
-      } catch (err) {
+      } catch(err) {
         document.getElementById('job-list').innerHTML =
-          '<div class="no-results"><h3>No listings right now</h3><p>We\'re updating our listings. Subscribe above to get notified when new jobs are added.</p></div>';
+          '<div class="no-results"><h3>No verified listings right now</h3><p>We refuse to show unverified jobs. Subscribe above to get notified when new verified listings are added.</p></div>';
       }
     }
 
     function updateLastUpdated() {
       if (allJobs.length > 0) {
-        const latest = allJobs.reduce((a, b) =>
-          (a.lastVerifiedAt || '') > (b.lastVerifiedAt || '') ? a : b
-        );
+        var latest = allJobs.reduce(function(a, b) {
+          return (a.lastVerifiedAt || '') > (b.lastVerifiedAt || '') ? a : b;
+        });
         if (latest.lastVerifiedAt) {
-          const el = document.getElementById('last-updated');
-          el.textContent = 'Last updated: ' + timeAgo(latest.lastVerifiedAt);
+          document.getElementById('last-updated').textContent = 'Last updated: ' + timeAgo(latest.lastVerifiedAt);
         }
       }
     }
 
     function buildFilters() {
-      const categories = [...new Set(allJobs.map(j => j.category))].sort();
-      const container = document.getElementById('filter-container');
-      categories.forEach(cat => {
-        const btn = document.createElement('button');
+      var categories = [];
+      var seen = {};
+      allJobs.forEach(function(j) {
+        if (!seen[j.category]) {
+          seen[j.category] = true;
+          categories.push(j.category);
+        }
+      });
+      categories.sort();
+      var container = document.getElementById('filter-container');
+      categories.forEach(function(cat) {
+        var btn = document.createElement('button');
         btn.className = 'filter-btn';
         btn.dataset.category = cat;
-        btn.textContent = cat.split(' ').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
-        btn.onclick = () => setFilter(cat);
+        btn.textContent = cat.split(' ').map(function(w) { return w.charAt(0).toUpperCase() + w.slice(1); }).join(' ');
+        btn.onclick = function() { setFilter(cat); };
         container.appendChild(btn);
       });
     }
 
     function setFilter(cat) {
       activeCategory = cat;
-      document.querySelectorAll('.filter-btn').forEach(b => {
+      document.querySelectorAll('.filter-btn').forEach(function(b) {
         b.classList.toggle('active', b.dataset.category === cat);
       });
       if (cat !== 'all') {
@@ -839,75 +977,83 @@
       renderJobs();
     }
 
-    document.querySelector('[data-category="all"]').onclick = () => {
+    document.querySelector('[data-category="all"]').onclick = function() {
       activeCategory = 'all';
-      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.filter-btn').forEach(function(b) { b.classList.remove('active'); });
       document.querySelector('[data-category="all"]').classList.add('active');
       renderJobs();
     };
 
-    document.getElementById('search-input').addEventListener('input', (e) => {
+    document.getElementById('search-input').addEventListener('input', function(e) {
       searchQuery = e.target.value.toLowerCase();
       renderJobs();
     });
 
     function renderJobs() {
-      let filtered = allJobs;
+      var filtered = allJobs;
 
       if (activeCategory !== 'all') {
-        filtered = filtered.filter(j => j.category === activeCategory);
+        filtered = filtered.filter(function(j) { return j.category === activeCategory; });
       }
 
       if (searchQuery) {
-        filtered = filtered.filter(j =>
-          j.title.toLowerCase().includes(searchQuery) ||
-          j.company.toLowerCase().includes(searchQuery) ||
-          (j.description || '').toLowerCase().includes(searchQuery) ||
-          j.category.toLowerCase().includes(searchQuery)
-        );
+        filtered = filtered.filter(function(j) {
+          return j.title.toLowerCase().indexOf(searchQuery) !== -1 ||
+            j.company.toLowerCase().indexOf(searchQuery) !== -1 ||
+            (j.description || '').toLowerCase().indexOf(searchQuery) !== -1 ||
+            j.category.toLowerCase().indexOf(searchQuery) !== -1;
+        });
       }
 
-      const countEl = document.getElementById('job-count');
-      countEl.innerHTML = 'Showing <strong>' + filtered.length + '</strong> of ' + allJobs.length + ' listings';
+      var countEl = document.getElementById('job-count');
+      countEl.innerHTML = 'Showing <strong>' + filtered.length + '</strong> of ' + allJobs.length + ' verified listings';
 
-      const list = document.getElementById('job-list');
+      var list = document.getElementById('job-list');
 
       if (filtered.length === 0) {
-        list.innerHTML = '<div class="no-results"><h3>No jobs match your search</h3><p>Try a different keyword or category.</p></div>';
+        if (allJobs.length === 0) {
+          list.innerHTML = '<div class="no-results"><h3>No verified listings right now</h3><p>We refuse to show unverified jobs. Subscribe above to get notified when new verified listings are added.</p></div>';
+        } else {
+          list.innerHTML = '<div class="no-results"><h3>No jobs match your search</h3><p>Try a different keyword or category.</p></div>';
+        }
         return;
       }
 
-      list.innerHTML = filtered.map(job => {
-        const posted = job.postedAt;
-        const relative = timeAgo(posted);
-        const absolute = formatDate(posted);
-        const dateDisplay = posted
+      list.innerHTML = filtered.map(function(job) {
+        var posted = job.postedAt;
+        var relative = timeAgo(posted);
+        var absolute = formatDate(posted);
+        var dateDisplay = posted
           ? '<div class="job-date">Posted: <time datetime="' + posted + '" title="' + absolute + '">' + relative + '</time> (' + absolute + ')</div>'
           : '';
 
-        const salaryDisplay = job.salaryText
+        var salaryDisplay = job.salaryText
           ? '<span class="job-salary">' + job.salaryText + '</span>'
           : '';
 
-        const sourceDisplay = job.sourceName
-          ? '<span class="job-source">Source: ' + job.sourceName + '</span>'
+        var newBadge = isNew(job.firstSeenAt || job.postedAt)
+          ? '<span class="badge-new">New</span>'
           : '';
 
-        const region = job.regionAsStated || 'Remote';
+        var verifiedBadge = '<span class="badge-verified">✓ Verified</span>';
 
-        return '<a href="' + job.sourceUrl + '" target="_blank" rel="noopener" class="job-card" onclick="trackApply(\'' + job.id + '\', \'' + job.sourceName + '\')">'
+        var region = job.regionAsStated || 'Remote';
+
+        return '<a href="' + job.sourceUrl + '" target="_blank" rel="noopener" class="job-card" onclick="trackApply(\'' + job.id + '\', \'' + (job.sourceName || '').replace(/'/g, "\\'") + '\')">'
           + '<div class="job-card-header">'
           + '<div>'
           + '<div class="job-title">' + job.title + '</div>'
-          + '<div class="job-company">' + job.company + ' · ' + region + '</div>'
+          + '<div class="job-company">' + job.company + ' &middot; ' + region + '</div>'
           + '</div>'
           + salaryDisplay
           + '</div>'
           + dateDisplay
           + '<div class="job-tags">'
+          + newBadge
+          + verifiedBadge
           + '<span class="job-tag">' + job.category + '</span>'
           + (job.jobType ? '<span class="job-tag">' + job.jobType + '</span>' : '')
-          + sourceDisplay
+          + '<span class="job-source">Source: ' + (job.sourceName || '') + '</span>'
           + '</div>'
           + '</a>';
       }).join('');
@@ -925,21 +1071,21 @@
     }
 
     function handleSignup() {
-      const msg = document.getElementById('signup-msg');
-      const emailInput = document.getElementById('email-input');
+      var msg = document.getElementById('signup-msg');
+      var emailInput = document.getElementById('email-input');
       msg.textContent = "You're in! Check your inbox.";
       msg.style.display = 'block';
       msg.style.color = '#86efac';
-      setTimeout(() => { emailInput.value = ''; }, 100);
+      setTimeout(function() { emailInput.value = ''; }, 100);
     }
 
     async function loadPlatforms() {
       try {
-        const res = await fetch('./platforms.json');
-        const platforms = await res.json();
-        const list = document.getElementById('platform-list');
-        list.innerHTML = platforms.map(p => {
-          const badges = [];
+        var res = await fetch('./platforms.json');
+        var platforms = await res.json();
+        var list = document.getElementById('platform-list');
+        list.innerHTML = platforms.map(function(p) {
+          var badges = [];
           if (p.free) badges.push('<span class="platform-badge free">Free</span>');
           else badges.push('<span class="platform-badge paid">Paid membership</span>');
           if (p.signupRequired) badges.push('<span class="platform-badge signup">Signup required</span>');
@@ -952,7 +1098,7 @@
             + '<a href="' + p.url + '" target="_blank" rel="noopener" class="platform-visit">Visit</a>'
             + '</div>';
         }).join('');
-      } catch {}
+      } catch(e) {}
     }
 
     init();
