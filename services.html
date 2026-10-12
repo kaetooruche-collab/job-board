@@ -649,6 +649,16 @@
       margin-top: 0.25rem;
     }
     .pricing-card .btn { width: 100%; justify-content: center; }
+    .pricing-question-link {
+      display: block;
+      text-align: center;
+      font-size: 0.78rem;
+      color: var(--text-secondary);
+      text-decoration: none;
+      margin-top: 0.5rem;
+      transition: color 0.2s;
+    }
+    .pricing-question-link:hover { color: var(--accent); }
 
     .pricing-note {
       background: var(--tag-bg);
@@ -1212,10 +1222,10 @@
         <div class="growth-note">
           Building a genuine professional network takes time. LinkedIn limits how quickly connections can grow, so this is a 30-day engagement that builds lasting professional presence — not a quick fix.
         </div>
-        <a href="https://wa.me/905338225854?text=Hi%2C%20I'm%20interested%20in%20the%2030-Day%20LinkedIn%20Growth%20Package%20(%24199)." target="_blank" rel="noopener" class="btn btn-primary" onclick="trackClick('growth-whatsapp')">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.126.553 4.12 1.52 5.856L.057 23.64l5.93-1.557A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.82c-1.98 0-3.832-.544-5.42-1.49l-.388-.231-3.516.922.938-3.43-.253-.402A9.788 9.788 0 012.18 12c0-5.422 4.398-9.82 9.82-9.82 5.422 0 9.82 4.398 9.82 9.82 0 5.422-4.398 9.82-9.82 9.82z"/></svg>
+        <a href="#" data-payhip="growth" data-fallback="https://wa.me/905338225854?text=Hi%2C%20I'm%20interested%20in%20the%2030-Day%20LinkedIn%20Growth%20Package%20(%24199)." target="_blank" rel="noopener" class="btn btn-primary" onclick="trackClick('growth-checkout')">
           Get started — $199
         </a>
+        <a href="https://wa.me/905338225854?text=Hi%2C%20I%20have%20a%20question%20about%20the%20LinkedIn%20Growth%20Package." target="_blank" rel="noopener" class="pricing-question-link" style="text-align:center;display:block;margin-top:0.75rem;" onclick="trackClick('growth-question')">Questions? Chat first</a>
       </div>
     </section>
 
@@ -1244,7 +1254,8 @@
             <li class="excluded">LinkedIn profile optimization</li>
             <li class="excluded">Personal statement</li>
           </ul>
-          <a href="https://wa.me/905338225854?text=Hi%2C%20I'm%20interested%20in%20the%20Essential%20CV%20package%20(%2479)." target="_blank" rel="noopener" class="btn btn-outline" onclick="trackClick('pricing-essential')">Get started</a>
+          <a href="#" data-payhip="essential" data-fallback="https://wa.me/905338225854?text=Hi%2C%20I'm%20interested%20in%20the%20Essential%20CV%20package%20(%2479)." target="_blank" rel="noopener" class="btn btn-outline" onclick="trackClick('pricing-essential')">Get started — $79</a>
+          <a href="https://wa.me/905338225854?text=Hi%2C%20I%20have%20a%20question%20about%20the%20Essential%20CV%20package." target="_blank" rel="noopener" class="pricing-question-link" onclick="trackClick('pricing-essential-question')">Questions? Chat first</a>
         </div>
 
         <!-- Professional -->
@@ -1279,7 +1290,8 @@
             <li class="excluded">Personal statement</li>
             <li class="excluded">Interview preparation</li>
           </ul>
-          <a href="https://wa.me/905338225854?text=Hi%2C%20I'm%20interested%20in%20the%20Professional%20package%20(%24149)." target="_blank" rel="noopener" class="btn btn-secondary" onclick="trackClick('pricing-professional')">Get started</a>
+          <a href="#" data-payhip="professional" data-fallback="https://wa.me/905338225854?text=Hi%2C%20I'm%20interested%20in%20the%20Professional%20package%20(%24149)." target="_blank" rel="noopener" class="btn btn-secondary" onclick="trackClick('pricing-professional')">Get started — $149</a>
+          <a href="https://wa.me/905338225854?text=Hi%2C%20I%20have%20a%20question%20about%20the%20Professional%20package." target="_blank" rel="noopener" class="pricing-question-link" onclick="trackClick('pricing-professional-question')">Questions? Chat first</a>
         </div>
 
         <!-- Complete -->
@@ -1315,7 +1327,8 @@
             <li>30 days of revision support</li>
             <li>Delivered in 7 working days</li>
           </ul>
-          <a href="https://wa.me/905338225854?text=Hi%2C%20I'm%20interested%20in%20the%20Complete%20package%20(%24199)." target="_blank" rel="noopener" class="btn btn-outline" onclick="trackClick('pricing-complete')">Get started</a>
+          <a href="#" data-payhip="complete" data-fallback="https://wa.me/905338225854?text=Hi%2C%20I'm%20interested%20in%20the%20Complete%20package%20(%24199)." target="_blank" rel="noopener" class="btn btn-outline" onclick="trackClick('pricing-complete')">Get started — $199</a>
+          <a href="https://wa.me/905338225854?text=Hi%2C%20I%20have%20a%20question%20about%20the%20Complete%20package." target="_blank" rel="noopener" class="pricing-question-link" onclick="trackClick('pricing-complete-question')">Questions? Chat first</a>
         </div>
       </div>
 
@@ -1329,18 +1342,18 @@
       <div class="steps-grid">
         <div class="step-item">
           <div class="step-number">1</div>
-          <h3>Tell us about yourself</h3>
-          <p>Message us on WhatsApp with your current CV and the roles you're targeting. We'll ask a few questions to understand your goals.</p>
+          <h3>Choose your package</h3>
+          <p>Pick the package that fits your needs and check out securely online. You'll get a confirmation email straight away.</p>
         </div>
         <div class="step-item">
           <div class="step-number">2</div>
-          <h3>We write and optimise</h3>
-          <p>Your documents are written from scratch, tailored to your industry and formatted for real-world applications.</p>
+          <h3>Send us your details</h3>
+          <p>After purchase, message us on WhatsApp with your current CV and the roles you're targeting. We'll ask a few questions to understand your goals.</p>
         </div>
         <div class="step-item">
           <div class="step-number">3</div>
           <h3>Review and apply</h3>
-          <p>You receive everything within the agreed timeframe. Review it, request revisions, and start applying with confidence.</p>
+          <p>Your documents are written from scratch and delivered within the agreed timeframe. Review, request revisions, and start applying with confidence.</p>
         </div>
       </div>
     </section>
@@ -1386,7 +1399,7 @@
         </details>
         <details>
           <summary>How do I pay?</summary>
-          <div class="faq-answer">You can pay securely online through our checkout. We also accept bank transfers and other common payment methods. No subscriptions, no hidden fees — you pay once for the package you choose.</div>
+          <div class="faq-answer">Click "Get started" on any package and you'll be taken to our secure checkout page. You can pay with credit/debit card or PayPal. No subscriptions, no hidden fees — you pay once for the package you choose. After payment, message us on WhatsApp with your details and we'll get started right away.</div>
         </details>
         <details>
           <summary>Is this only for remote job seekers?</summary>
@@ -1424,13 +1437,29 @@
   <!-- GoatCounter -->
   <script data-goatcounter="https://kayzglobal.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 
-  <!-- Click tracking -->
+  <script src="/site-config.js"></script>
+
+  <!-- Click tracking & Payhip checkout wiring -->
   <script>
     function trackClick(name) {
       if (window.goatcounter && window.goatcounter.count) {
         window.goatcounter.count({ path: 'services-click-' + name, title: 'Services: ' + name, event: true });
       }
     }
+
+    (function () {
+      var keys = (typeof SITE !== 'undefined' && SITE.payhip) ? SITE.payhip : {};
+      var buttons = document.querySelectorAll('[data-payhip]');
+      for (var i = 0; i < buttons.length; i++) {
+        var btn = buttons[i];
+        var key = keys[btn.getAttribute('data-payhip')];
+        if (key) {
+          btn.href = 'https://payhip.com/buy?link=' + key;
+        } else {
+          btn.href = btn.getAttribute('data-fallback') || '#';
+        }
+      }
+    })();
   </script>
 
 </body>
