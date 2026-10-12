@@ -533,6 +533,74 @@
       color: var(--text);
     }
 
+    /* PLATFORMS SECTION */
+    .platforms-section {
+      margin: 2.5rem 0;
+    }
+    .platforms-section h2 {
+      font-size: 1.3rem;
+      font-weight: 800;
+      margin-bottom: 0.5rem;
+    }
+    .platforms-section > p {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      margin-bottom: 1.25rem;
+    }
+    .platform-card {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1rem 1.25rem;
+      margin-bottom: 0.5rem;
+      gap: 1rem;
+      transition: border-color 0.2s;
+    }
+    .platform-card:hover { border-color: var(--accent); }
+    .platform-info { min-width: 0; flex: 1; }
+    .platform-name {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 0.15rem;
+    }
+    .platform-desc {
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+      line-height: 1.4;
+    }
+    .platform-badges {
+      display: flex;
+      gap: 0.4rem;
+      margin-top: 0.35rem;
+      flex-wrap: wrap;
+    }
+    .platform-badge {
+      font-size: 0.72rem;
+      padding: 0.15rem 0.5rem;
+      border-radius: 4px;
+      font-weight: 500;
+    }
+    .platform-badge.free { background: var(--green-light); color: var(--green); }
+    .platform-badge.paid { background: var(--disclaimer-bg); color: var(--yellow-dark); }
+    .platform-badge.signup { background: var(--tag-bg); color: var(--text-secondary); }
+    .platform-visit {
+      padding: 0.5rem 1rem;
+      background: var(--accent);
+      color: #fff;
+      border-radius: 6px;
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 600;
+      white-space: nowrap;
+      transition: background 0.2s;
+      flex-shrink: 0;
+    }
+    .platform-visit:hover { background: var(--accent-hover); }
+
     /* RESPONSIVE */
     @media (max-width: 600px) {
       .hero { padding: 2.5rem 1.25rem 2rem; }
@@ -545,6 +613,8 @@
       .service-grid { grid-template-columns: 1fr; }
       .nav-links { gap: 0.5rem; }
       .nav-link { display: none; }
+      .platform-card { flex-direction: column; align-items: stretch; }
+      .platform-visit { text-align: center; }
     }
   </style>
 </head>
@@ -554,6 +624,7 @@
   <nav>
     <a href="#" class="nav-brand">Remote<span>Jobs</span></a>
     <div class="nav-links">
+      <a href="#platforms" class="nav-link">Platforms</a>
       <a href="#how-we-verify" class="nav-link">How We Verify</a>
       <a href="#services" class="nav-cta">Get Job-Ready</a>
     </div>
@@ -605,6 +676,13 @@
 
     <!-- JOB LIST -->
     <div id="job-list"></div>
+
+    <!-- PLATFORMS -->
+    <section class="platforms-section" id="platforms">
+      <h2>Platforms you can sign up to</h2>
+      <p>These platforms list remote jobs from multiple employers. We verified each signup page. No posting dates are shown because these are platforms, not individual listings.</p>
+      <div id="platform-list"></div>
+    </section>
 
     <!-- CTA: EMAIL SIGNUP -->
     <section class="cta-section" id="subscribe">
@@ -854,7 +932,30 @@
       setTimeout(() => { emailInput.value = ''; }, 100);
     }
 
+    async function loadPlatforms() {
+      try {
+        const res = await fetch('./platforms.json');
+        const platforms = await res.json();
+        const list = document.getElementById('platform-list');
+        list.innerHTML = platforms.map(p => {
+          const badges = [];
+          if (p.free) badges.push('<span class="platform-badge free">Free</span>');
+          else badges.push('<span class="platform-badge paid">Paid membership</span>');
+          if (p.signupRequired) badges.push('<span class="platform-badge signup">Signup required</span>');
+          return '<div class="platform-card">'
+            + '<div class="platform-info">'
+            + '<div class="platform-name">' + p.name + '</div>'
+            + '<div class="platform-desc">' + p.description + '</div>'
+            + '<div class="platform-badges">' + badges.join('') + '</div>'
+            + '</div>'
+            + '<a href="' + p.url + '" target="_blank" rel="noopener" class="platform-visit">Visit</a>'
+            + '</div>';
+        }).join('');
+      } catch {}
+    }
+
     init();
+    loadPlatforms();
   </script>
 
   <script data-goatcounter="https://kayzglobal.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
