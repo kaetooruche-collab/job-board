@@ -13,6 +13,7 @@ to data/review_queue.json for a human look.
 """
 
 import hashlib
+import html
 import json
 import os
 import re
@@ -382,8 +383,8 @@ def to_record(j, first_seen):
     desc = C.clean_text(j.get("description", ""))
     return {
         "id": "j" + hashlib.sha1(j["url"].encode()).hexdigest()[:10],
-        "title": j["title"],
-        "company": j["company"],
+        "title": html.unescape(j["title"]),
+        "company": html.unescape(j["company"]),
         "category": r["primaryCategory"],
         "categories": r["categories"],
         "jobType": ", ".join(r["employmentTypes"]),

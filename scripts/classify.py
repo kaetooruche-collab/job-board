@@ -193,7 +193,8 @@ STRONG_REMOTE = [
     (r"\btelecommut\w+", 3.0),
     (r"\bhome[- ]based\b", 3.0),
     (r"\bvirtual (?:position|role|job|opportunity|assistant position)\b", 3.0),
-    (r"\bremote (?:position|role|job|opportunity|work)\b", 3.0),
+    (r"\bremote (?:position|role|job|opportunity)\b", 3.0),
+    (r"\bremote work\b", 1.0),
     (r"\b(?:this|the) (?:position|role|job) is (?:fully |100% )?remote\b", 3.0),
     (r"\bremote,? (?:work|working) (?:environment|arrangement)\b", 3.0),
     (r"\b(?:work )?location\s*:?\s*[-]?\s*(?:fully\s+)?remote\b", 3.0),
@@ -210,7 +211,8 @@ COMPANY_LEVEL_RE = re.compile(
     r"|(?:options|flexibility|ability|opportunity|opportunities) (?:for|to) work(?:ing)? remotely"
     r"|we (?:also )?offer (?:flexible|remote|hybrid)|remote work (?:options|policy|perks?|benefits?)"
     r"|depending on (?:the )?(?:role|position|team|location)|role[- ]dependent|varies (?:by|depending)|where (?:the )?(?:role|position) allows"
-    r"|(?:we|our) (?:employees|team members|people)", re.I)
+    r"|(?:we|our) (?:employees|team members|people)"
+    r"|\bremote work,\s|\bremote work (?:stipend|budget|setup|allowance|equipment)|\bwork from home (?:stipend|budget|allowance|setup|equipment)", re.I)
 
 HYBRID_PATTERNS = [
     (re.compile(r"\bhybrid\b", re.I), 3.0, "hybrid wording"),
@@ -493,6 +495,8 @@ WORLDWIDE_DESC = re.compile(
     r"from anywhere|any time ?zone|all time ?zones|no location restrictions?|location[- ]independent|open to (?:candidates|applicants|talent) (?:from )?(?:anywhere|all|any|around the world|across the world))\b", re.I)
 APPLICANT_CONTEXT = re.compile(r"\b(candidates?|applicants?|hir(?:e|ing)|apply|work from|located|based|open to|eligible|team members?|you can|join us|talent|employees?|contractors?)\b", re.I)
 RESTRICTION_CUES = [
+    re.compile(r"^\W{0,3}(?:work |job )?location\s*:", re.I),
+    re.compile(r"\b(?:candidates|applicants|residents|those)\s+who\s+(?:reside|live|are (?:located|based|resident))\s+in\b", re.I),
     re.compile(r"\b(?:must|need to|have to|required to|should)\s+(?:be\s+)?(?:legally\s+)?(?:located|based|resid\w+|living|live)\s+(?:in|within)\b", re.I),
     re.compile(r"\b(?:candidates|applicants|you|we)\s+(?:must|should|need to|can only|are only able to|are unable to)\s+(?:be\s+)?(?:legally\s+)?(?:authori[sz]ed|eligible|entitled|permitted|able|hire|accept|consider)", re.I),
     re.compile(r"\b(?:authori[sz]ed|eligible|legally entitled|right) to work (?:in|within|from)\b", re.I),
@@ -522,7 +526,7 @@ def _label_for(places_countries, regions, worldwide, tz):
         if len(explicit_countries) <= 3:
             parts.extend(explicit_countries)
         else:
-            parts.append(f"{len(explicit_countries)} countries")
+            parts.append(f"{len(explicit_countries)} locations")
     if parts:
         if len(parts) == 1 and not regions:
             return f"{parts[0]} only"
@@ -532,7 +536,7 @@ def _label_for(places_countries, regions, worldwide, tz):
     return "Eligibility unclear"
 
 
-def assess_eligibility(title, location, description, remote_evidence=False, remote_feed=False):
+def assess_eligibility(title, location, description, remote_evidence=False, remote_feed=False, remote_hint=False):
     g = geo()
     loc = location or ""
     text = clean_text(description)
@@ -545,6 +549,8 @@ def assess_eligibility(title, location, description, remote_evidence=False, remo
     loc_places = g.find_places(loc, allow_state_abbr=True)
     loc_has_remote = bool(LOC_REMOTE.search(loc))
     if not loc_has_remote and remote_evidence and loc_places and all(p["kind"] in ("country", "region") for p in loc_places):
+        loc_has_remote = True
+    if not loc_has_remote and remote_hint and loc_places:
         loc_has_remote = True
 
     # title suffixes like "- Canada" or "(UK)"
@@ -568,7 +574,7 @@ def assess_eligibility(title, location, description, remote_evidence=False, remo
 
     restricted_places = []
     restricted_from = []
-    if loc_places and (loc_has_remote or not loc_ww):
+    if loc_places and (loc_has_remote or not loc_ww) and not (desc_places and not loc_has_remote):
         restricted_places.extend(loc_places)
         restricted_from.append(("location field", loc))
     for s, places in desc_places:
@@ -589,8 +595,15 @@ def assess_eligibility(title, location, description, remote_evidence=False, remo
     countries, regions = g.expand(restricted_places)
     explicit = []
     for p in restricted_places:
-        if p["kind"] != "region" and p["name"] not in explicit:
-            explicit.append(p["name"])
+        if p["kind"] in ("state", "city"):
+            label_name = re.sub(r"\s+", " ", p["raw"]).strip()
+            label_name = label_name.upper() if len(label_name) <= 3 else label_name.title()
+        elif p["kind"] == "country":
+            label_name = p["name"]
+        else:
+            continue
+        if label_name not in explicit:
+            explicit.append(label_name)
 
     etype = "unclear"
     confidence = "low"
@@ -825,7 +838,8 @@ def classify_listing(title, location="", description="", hint=None, declared_typ
     work = assess_work_arrangement(title, location, description, hint=hint, remote_feed=remote_feed)
     elig = assess_eligibility(title, location, description,
                               remote_evidence=work["arrangement"] in (FULLY_REMOTE, REMOTE_UNCLEAR),
-                              remote_feed=remote_feed)
+                              remote_feed=remote_feed,
+                              remote_hint=_hint_value(hint) == "remote")
     if (work["arrangement"] == REMOTE_UNCLEAR and not remote_feed and elig["type"] in ("countries", "region")
             and elig["evidence"] and all(e["signal"] in ("location field", "title") for e in elig["evidence"])):
         elig["notes"].append(f"The location field lists {elig['statedLocation']}, but the listing does not confirm the role is remote there.")

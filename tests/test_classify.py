@@ -225,6 +225,25 @@ class Eligibility(unittest.TestCase):
                    "Fully remote. We hire talent from anywhere in the world.", remote_feed=True)
         self.assertIn("Canada", r["eligibility"]["countries"])
 
+    def test_benefits_list_remote_work_is_not_role_evidence(self):
+        r, d = run("Field Sales Director", "Chicago, IL",
+                   "Remote work, medical insurance, flexible time off and retirement savings are just some of our benefits. Lead your market with in-person execution.")
+        self.assertNotEqual(d, "publish")
+
+    def test_remote_hint_with_state_location(self):
+        r, d = run("Testing Psychologist", "California", "Perform psychological assessments.", hint="remote")
+        self.assertEqual(r["eligibility"]["label"], "California only")
+        self.assertIn("United States", r["eligibility"]["countries"])
+
+    def test_candidates_who_reside_in(self):
+        r, _ = run("Customer Service Representative", "Dallas, Texas",
+                   "This is a remote position, open to candidates who reside in Florida.")
+        self.assertEqual(r["eligibility"]["label"], "Florida only")
+
+    def test_location_line_names_country(self):
+        r, _ = run("Search Evaluator", "Oslo", "Location: Norway (Work from Home).", hint="remote")
+        self.assertIn("Norway", r["eligibility"]["countries"])
+
 
 class ExperienceAndCategories(unittest.TestCase):
     def test_assistant_with_years_not_entry(self):
