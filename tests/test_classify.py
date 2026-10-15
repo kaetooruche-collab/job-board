@@ -257,6 +257,13 @@ class Eligibility(unittest.TestCase):
         r, _ = run("Support Agent", "Egypt; Kenya; Nigeria; Ghana; Morocco; Tunisia", "Fully remote.")
         self.assertEqual(r["eligibility"]["label"], "Egypt, Kenya, Nigeria +3 more")
 
+    def test_countries_we_cannot_hire_in_are_not_eligible_places(self):
+        r, _ = run("Support Agent", "Remote - United States",
+                   "Fully remote. We are unable to hire in the following countries: Belarus, Cuba, Iran, North Korea, Syria, Russia.")
+        self.assertEqual(r["eligibility"]["label"], "United States only")
+        self.assertNotIn("Cuba", r["eligibility"]["countries"])
+        self.assertTrue(any("cannot hire in" in n for n in r["eligibility"]["notes"]))
+
 
 class ExperienceAndCategories(unittest.TestCase):
     def test_assistant_with_years_not_entry(self):

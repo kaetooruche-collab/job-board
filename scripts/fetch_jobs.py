@@ -402,7 +402,7 @@ def to_record(j, first_seen):
         "eligibility": {
             "type": el["type"], "label": el["label"], "countries": [] if el["type"] == "region" else el["countries"], "regions": el["regions"],
             "authorizationRequired": el["authorizationRequired"], "contractorNote": el["contractorNote"],
-            "confidence": el["confidence"], "notes": el["notes"][:2],
+            "confidence": el["confidence"], "notes": el["notes"][:3],
         },
         "salaryText": j.get("salary"),
         "postedAt": j["posted"].isoformat(),
