@@ -71,6 +71,7 @@ class _Geo:
         self.regions = lex["regions"]
         self.us_states = lex["usStates"]
         self.us_abbr = set(lex["usStateAbbreviations"])
+        self.abbr_to_state = {a: n.replace(" (US)", "") for a, n in zip(lex["usStateAbbreviations"], lex["usStates"])}
         self.cities = lex["cities"]
         self.provinces = lex["provinces"]
         self.timezones = lex["timezones"]
@@ -146,10 +147,13 @@ class _Geo:
         if allow_state_abbr:
             for m in self.re_state_abbr.finditer(text):
                 if m.group(1) in self.us_abbr:
-                    k = ("state", "United States", m.group(1))
+                    full = self.abbr_to_state[m.group(1)]
+                    if any(f["kind"] == "state" and f["raw"].lower() == full.lower() for f in found):
+                        continue
+                    k = ("state", "United States", full.lower())
                     if k not in seen:
                         seen.add(k)
-                        found.append({"kind": "state", "name": "United States", "raw": m.group(1)})
+                        found.append({"kind": "state", "name": "United States", "raw": full})
         return found
 
     def expand(self, places):
@@ -515,7 +519,7 @@ AUTH_RE = re.compile(r"\b(?:existing|current|valid|legal)\s+(?:right|authori[sz]
 CONTRACTOR_RE = re.compile(r"\b(?:international |overseas |global )?(?:independent )?contractors?\b[^.]{0,60}\b(?:worldwide|any country|anywhere|around the world|globally|international)\b|\b(?:hire|engage)s? (?:contractors?|freelancers?)[^.]{0,30}\b(?:worldwide|anywhere|globally|in (?:many|most|any|over \d+) countries)\b", re.I)
 
 
-def _label_for(places_countries, regions, worldwide, tz):
+def _label_for(places_countries, regions, worldwide, tz, home_countries=()):
     if worldwide:
         return "Worldwide"
     parts = []
@@ -523,10 +527,12 @@ def _label_for(places_countries, regions, worldwide, tz):
         parts.append(r)
     explicit_countries = places_countries
     if explicit_countries:
-        if len(explicit_countries) <= 3:
+        if len(explicit_countries) <= 4:
             parts.extend(explicit_countries)
         else:
-            parts.append(f"{len(explicit_countries)} locations")
+            home = sorted(set(home_countries))
+            where = f" in {home[0]}" if len(home) == 1 else ""
+            parts.append(f"{len(explicit_countries)} locations{where}")
     if parts:
         if len(parts) == 1 and not regions:
             return f"{parts[0]} only"
@@ -652,7 +658,8 @@ def assess_eligibility(title, location, description, remote_evidence=False, remo
     if authorization:
         notes.append("Applicants may need existing work authorisation; check the posting.")
 
-    label = _label_for(explicit, regions, etype == "worldwide", tz_hit if etype == "timezone" else None) if etype not in ("unclear",) else "Eligibility unclear"
+    label = _label_for(explicit, regions, etype == "worldwide", tz_hit if etype == "timezone" else None,
+                       [c for c in countries]) if etype not in ("unclear",) else "Eligibility unclear"
     if etype == "region" and regions:
         label = ", ".join(regions)
 

@@ -471,6 +471,10 @@
     .show-more { display: block; margin: 1rem auto; padding: 0.6rem 1.4rem; border-radius: 8px; border: 1px solid var(--accent); background: transparent; color: var(--accent); font-weight: 700; font-family: inherit; cursor: pointer; }
     .show-more:hover { background: var(--accent-light); }
     .show-more:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+    @media (max-width: 720px) {
+      .filters { flex-wrap: nowrap; overflow-x: auto; padding-bottom: 0.5rem; scroll-snap-type: x proximity; -webkit-overflow-scrolling: touch; }
+      .filter-btn { flex: 0 0 auto; white-space: nowrap; scroll-snap-align: start; }
+    }
     @media (max-width: 480px) {
       .job-card-header { flex-direction: column; gap: 0.4rem; }
       .job-card { padding: 1rem; }
@@ -752,8 +756,12 @@
 
     /* RESPONSIVE */
     @media (max-width: 640px) {
-      .hero { padding: 2.5rem 1.25rem 2rem; }
-      .hero-stats { gap: 1.5rem; }
+      .hero { padding: 1.75rem 1.25rem 1.5rem; }
+      .hero-tagline { font-size: 0.95rem; margin-bottom: 0.75rem; }
+      .hero p { font-size: 0.85rem; margin-bottom: 1.1rem; line-height: 1.5; }
+      .hero-stats { gap: 1.25rem; }
+      .hero-stat strong { font-size: 1.35rem; }
+      .disclaimer { font-size: 0.78rem; padding: 0.7rem 0.9rem; margin-bottom: 1rem; }
       .container { padding: 1rem; }
       .toolbar { padding: 0.75rem 1rem; margin-left: -1rem; margin-right: -1rem; border-radius: 0; border-left: none; border-right: none; }
       .job-card { padding: 1rem 1.1rem; }
@@ -1187,7 +1195,7 @@
       var html = '';
       if (job.regionAsStated) html += '<div class="why-head">Location as the employer states it</div><ul><li>' + esc(job.regionAsStated) + '</li></ul>';
       if (items.length) html += '<div class="why-head">Why we labelled it this way</div><ul>' + items.join('') + '</ul>';
-      var notes = ((job.unresolvedQuestions || []).concat((job.eligibility || {}).notes || []));
+      var notes = ((job.unresolvedQuestions || []).concat((job.eligibility || {}).notes || [])).filter(function(n, i, a) { return a.indexOf(n) === i; });
       if (notes.length) html += '<div class="why-head">What we could not confirm</div><ul>' + notes.slice(0, 3).map(function(n) { return '<li>' + esc(n) + '</li>'; }).join('') + '</ul>';
       if ((job.eligibility || {}).authorizationRequired) html += '<div class="why-head">Work authorisation</div><ul><li>The posting mentions work authorisation or visa rules. Check it before applying.</li></ul>';
       if (!html) return '';

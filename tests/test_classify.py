@@ -244,6 +244,15 @@ class Eligibility(unittest.TestCase):
         r, _ = run("Search Evaluator", "Oslo", "Location: Norway (Work from Home).", hint="remote")
         self.assertIn("Norway", r["eligibility"]["countries"])
 
+    def test_state_abbreviation_is_expanded_not_duplicated(self):
+        r, _ = run("Support Agent", "New York, NY (Remote)", "Fully remote.")
+        self.assertEqual(r["eligibility"]["label"], "New York only")
+
+    def test_many_states_summarised(self):
+        r, _ = run("Support Agent", "Dallas, Texas",
+                   "This is a remote position, open to candidates who reside in Arizona, Florida, Georgia, Texas, Ohio or Utah.")
+        self.assertTrue(r["eligibility"]["label"].startswith("6 locations in United States"))
+
 
 class ExperienceAndCategories(unittest.TestCase):
     def test_assistant_with_years_not_entry(self):
