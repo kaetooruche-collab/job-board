@@ -478,6 +478,8 @@ def fetch_one_ashby(board):
             return jobs
         for j in resp.json().get("jobs", []):
             title = j.get("title", "")
+            if j.get("isListed") is False:
+                continue
             if is_senior(title):
                 continue
             loc = j.get("location", "")
@@ -485,7 +487,7 @@ def fetch_one_ashby(board):
                 loc = str(loc)
             if not is_location_ok(loc):
                 continue
-            pub = j.get("publishedDate", "")
+            pub = j.get("publishedAt", "")
             try:
                 dt = datetime.fromisoformat(pub.replace("Z", "+00:00")) if pub else None
                 if dt and dt < THIRTY_DAYS_AGO:
