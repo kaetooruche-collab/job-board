@@ -1,0 +1,1466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Career Services — TrueRemote</title>
+  <meta name="description" content="Professional CV writing, LinkedIn optimization, cover letters and personal statements. Built for remote job seekers who want callbacks, not silence.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%231a1a2e'/><path d='M28 55 L43 70 L72 35' stroke='%2360a5fa' stroke-width='10' stroke-linecap='round' stroke-linejoin='round' fill='none'/></svg>">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #f8f9fb;
+      --surface: #ffffff;
+      --text: #1a1a2e;
+      --text-secondary: #5f6368;
+      --accent: #2563eb;
+      --accent-hover: #1d4ed8;
+      --accent-light: #eff6ff;
+      --border: #e2e5e9;
+      --tag-bg: #f1f3f5;
+      --green: #0d9488;
+      --green-light: #f0fdfa;
+      --red: #dc2626;
+      --red-light: #fef2f2;
+      --yellow-dark: #f59e0b;
+      --purple: #7c3aed;
+      --radius: 10px;
+      --shadow: 0 1px 3px rgba(0,0,0,0.06);
+      --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
+      --shadow-lg: 0 8px 24px rgba(0,0,0,0.12);
+      --navy: #1a1a2e;
+      --navy-mid: #0f3460;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) {
+        --bg: #0c0c18;
+        --surface: #161625;
+        --text: #e8e8f0;
+        --text-secondary: #9ca3af;
+        --accent: #60a5fa;
+        --accent-hover: #93bbfd;
+        --accent-light: #1e293b;
+        --border: #262640;
+        --tag-bg: #1e1e36;
+        --green: #2dd4bf;
+        --green-light: #0d2d2a;
+        --red: #f87171;
+        --red-light: #2d1515;
+        --purple: #a78bfa;
+        color-scheme: dark;
+      }
+    }
+    :root[data-theme="dark"] {
+      --bg: #0c0c18;
+      --surface: #161625;
+      --text: #e8e8f0;
+      --text-secondary: #9ca3af;
+      --accent: #60a5fa;
+      --accent-hover: #93bbfd;
+      --accent-light: #1e293b;
+      --border: #262640;
+      --tag-bg: #1e1e36;
+      --green: #2dd4bf;
+      --green-light: #0d2d2a;
+      --red: #f87171;
+      --red-light: #2d1515;
+      --purple: #a78bfa;
+      color-scheme: dark;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── Nav ── */
+    nav {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 0 1.5rem;
+      height: 56px;
+      position: sticky;
+      top: 0;
+      z-index: 200;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .nav-brand {
+      font-weight: 800;
+      font-size: 1.25rem;
+      color: var(--text);
+      text-decoration: none;
+      letter-spacing: -0.5px;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+    .nav-brand span { color: var(--accent); }
+    .nav-links { display: flex; align-items: center; gap: 1.25rem; }
+    .nav-link {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+    }
+    .nav-link:hover { color: var(--accent); }
+    .nav-cta {
+      background: var(--accent);
+      color: #fff;
+      padding: 0.45rem 1rem;
+      border-radius: 6px;
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 600;
+      transition: background 0.2s;
+    }
+    .nav-cta:hover { background: var(--accent-hover); }
+    .nav-cta.active { background: var(--accent-hover); }
+    .hamburger {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0.25rem;
+      color: var(--text);
+    }
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 56px;
+      left: 0;
+      right: 0;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 1rem 1.5rem;
+      z-index: 199;
+      flex-direction: column;
+      gap: 0.75rem;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      color: var(--text);
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 500;
+      padding: 0.5rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .mobile-menu a:last-child { border-bottom: none; }
+
+    /* ── Shared ── */
+    .container { max-width: 960px; margin: 0 auto; padding-inline: 1.5rem; }
+    .section { padding-block: 3.5rem; }
+    .section-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+    }
+    .section-title {
+      font-size: clamp(1.35rem, 3.5vw, 1.75rem);
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      margin-bottom: 0.75rem;
+      text-wrap: balance;
+    }
+    .section-subtitle {
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      max-width: 560px;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 600;
+      transition: background 0.2s, transform 0.15s;
+      cursor: pointer;
+      border: none;
+    }
+    .btn:active { transform: scale(0.97); }
+    .btn-primary { background: #25D366; color: #fff; }
+    .btn-primary:hover { background: #1da851; }
+    .btn-secondary { background: var(--accent); color: #fff; }
+    .btn-secondary:hover { background: var(--accent-hover); }
+    .btn-outline {
+      background: transparent;
+      color: var(--accent);
+      border: 1.5px solid var(--accent);
+    }
+    .btn-outline:hover { background: var(--accent-light); }
+    .btn-white {
+      background: rgba(255,255,255,0.15);
+      color: #fff;
+      border: 1px solid rgba(255,255,255,0.3);
+    }
+    .btn-white:hover { background: rgba(255,255,255,0.25); }
+
+    /* ── Hero ── */
+    .hero {
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 100%);
+      padding: 4rem 1.5rem 3.5rem;
+      text-align: center;
+      color: #fff;
+    }
+    .hero h1 {
+      font-size: clamp(1.75rem, 5vw, 2.75rem);
+      font-weight: 800;
+      letter-spacing: -1px;
+      line-height: 1.15;
+      margin-bottom: 1rem;
+      text-wrap: balance;
+    }
+    .hero p {
+      font-size: clamp(0.95rem, 2.5vw, 1.1rem);
+      color: rgba(255,255,255,0.82);
+      max-width: 540px;
+      margin: 0 auto 2rem;
+      line-height: 1.7;
+    }
+    .hero-buttons { display: flex; justify-content: center; gap: 0.75rem; flex-wrap: wrap; }
+
+    /* ── Pain points ── */
+    .pain-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+    .pain-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+    }
+    .pain-card .pain-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 0.75rem;
+      font-size: 1.25rem;
+    }
+    .pain-card h3 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      margin-bottom: 0.35rem;
+    }
+    .pain-card p {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    /* ── Services overview ── */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+    .service-item {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      text-align: center;
+      transition: box-shadow 0.2s;
+    }
+    .service-item:hover { box-shadow: var(--shadow-md); }
+    .service-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      background: var(--accent-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 0.75rem;
+    }
+    .service-item h3 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      margin-bottom: 0.3rem;
+    }
+    .service-item p {
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+      line-height: 1.55;
+    }
+
+    /* ── CV Carousel ── */
+    .carousel-wrapper {
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      display: flex;
+      gap: 1rem;
+      padding: 1.5rem 0 1rem;
+      scrollbar-width: thin;
+    }
+    .carousel-wrapper::-webkit-scrollbar { height: 6px; }
+    .carousel-wrapper::-webkit-scrollbar-track { background: var(--tag-bg); border-radius: 3px; }
+    .carousel-wrapper::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+    .cv-card {
+      flex: 0 0 190px;
+      scroll-snap-align: start;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      transition: box-shadow 0.2s;
+    }
+    .cv-card:hover { box-shadow: var(--shadow-md); }
+    .cv-card-header {
+      height: 36px;
+      display: flex;
+      align-items: center;
+      padding: 0 0.75rem;
+    }
+    .cv-card-header span {
+      display: block;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.3);
+      margin-right: 0.5rem;
+    }
+    .cv-card-header .cv-name-line {
+      height: 6px;
+      width: 55%;
+      background: rgba(255,255,255,0.5);
+      border-radius: 3px;
+    }
+    .cv-card-body { padding: 0.6rem 0.75rem 0.75rem; }
+    .cv-line {
+      height: 4px;
+      background: var(--border);
+      border-radius: 2px;
+      margin-bottom: 4px;
+    }
+    .cv-line-header {
+      height: 5px;
+      background: var(--text-secondary);
+      border-radius: 2px;
+      margin-bottom: 5px;
+      margin-top: 6px;
+      opacity: 0.4;
+    }
+    .w90 { width: 90%; } .w80 { width: 80%; } .w70 { width: 70%; }
+    .w60 { width: 60%; } .w50 { width: 50%; } .w40 { width: 40%; }
+    .w30 { width: 30%; }
+    .cv-card-label {
+      display: block;
+      padding: 0.5rem 0.75rem;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      border-top: 1px solid var(--border);
+    }
+    .cv-two-col { display: flex; gap: 6px; }
+    .cv-two-col .cv-col { flex: 1; min-width: 0; }
+    .cv-sidebar {
+      flex: 0 0 35%;
+      border-radius: 4px;
+      padding: 4px;
+    }
+
+    /* ── Before / After ── */
+    .ba-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem;
+      margin-top: 1.5rem;
+    }
+    .ba-col { min-width: 0; }
+    .ba-label {
+      display: inline-block;
+      padding: 0.25rem 0.75rem;
+      border-radius: 20px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 0.75rem;
+    }
+    .ba-label-before { background: var(--red-light); color: var(--red); }
+    .ba-label-after { background: var(--green-light); color: var(--green); }
+    .ba-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.25rem;
+      font-size: 0.82rem;
+      line-height: 1.65;
+    }
+    .ba-card h4 {
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--text-secondary);
+      margin-bottom: 0.4rem;
+    }
+    .ba-card p { color: var(--text-secondary); margin-bottom: 0.75rem; }
+    .ba-card p:last-child { margin-bottom: 0; }
+    .ba-card .ba-highlight {
+      color: var(--text);
+      font-weight: 500;
+    }
+    .ba-card ul {
+      list-style: none;
+      padding: 0;
+    }
+    .ba-card ul li {
+      padding: 0.2rem 0 0.2rem 1.2rem;
+      position: relative;
+      color: var(--text-secondary);
+    }
+    .ba-card ul li::before {
+      content: "\2022";
+      position: absolute;
+      left: 0;
+      color: var(--text-secondary);
+    }
+    .ba-before { border-left: 3px solid var(--red); }
+    .ba-after { border-left: 3px solid var(--green); }
+
+    /* ── LinkedIn section ── */
+    .linkedin-mock {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.25rem;
+      margin-bottom: 0.75rem;
+    }
+    .linkedin-mock .lk-top { display: flex; gap: 0.75rem; align-items: flex-start; margin-bottom: 0.75rem; }
+    .lk-avatar {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: var(--tag-bg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 1.1rem;
+      color: var(--text-secondary);
+    }
+    .lk-info { min-width: 0; }
+    .lk-name { font-size: 0.9rem; font-weight: 700; }
+    .lk-headline { font-size: 0.8rem; color: var(--text-secondary); line-height: 1.5; }
+    .lk-connections {
+      font-size: 0.72rem;
+      color: var(--accent);
+      font-weight: 600;
+      margin-top: 0.15rem;
+    }
+    .lk-section { margin-top: 0.75rem; padding-top: 0.75rem; border-top: 1px solid var(--border); }
+    .lk-section h5 {
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--text-secondary);
+      margin-bottom: 0.35rem;
+    }
+    .lk-section p { font-size: 0.82rem; color: var(--text-secondary); line-height: 1.6; }
+
+    .growth-card {
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 100%);
+      border-radius: var(--radius);
+      padding: 2rem;
+      color: #fff;
+      margin-top: 2rem;
+    }
+    .growth-card h3 {
+      font-size: 1.15rem;
+      font-weight: 800;
+      margin-bottom: 0.5rem;
+    }
+    .growth-card p {
+      color: rgba(255,255,255,0.8);
+      font-size: 0.88rem;
+      line-height: 1.65;
+      margin-bottom: 1rem;
+    }
+    .growth-features {
+      list-style: none;
+      padding: 0;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 0.5rem;
+      margin-bottom: 1.25rem;
+    }
+    .growth-features li {
+      padding: 0.3rem 0 0.3rem 1.5rem;
+      position: relative;
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.9);
+    }
+    .growth-features li::before {
+      content: "\2713";
+      position: absolute;
+      left: 0;
+      color: #2dd4bf;
+      font-weight: 700;
+    }
+    .growth-note {
+      background: rgba(255,255,255,0.08);
+      border-radius: 8px;
+      padding: 0.75rem 1rem;
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.7);
+      line-height: 1.6;
+      margin-bottom: 1.25rem;
+    }
+
+    /* ── Pricing ── */
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.25rem;
+      margin-top: 1.5rem;
+    }
+    .pricing-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.75rem;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+    }
+    .pricing-card.popular {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 1px var(--accent), var(--shadow-md);
+    }
+    .popular-badge {
+      position: absolute;
+      top: -11px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--accent);
+      color: #fff;
+      font-size: 0.68rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      padding: 0.2rem 0.75rem;
+      border-radius: 20px;
+      white-space: nowrap;
+    }
+    .pricing-card h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin-bottom: 0.25rem;
+    }
+    .pricing-card .pricing-desc {
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+      line-height: 1.55;
+      margin-bottom: 1rem;
+    }
+    .pricing-card .pricing-price {
+      margin-bottom: 1rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .pricing-price .price-amount {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--text);
+      letter-spacing: -1px;
+      line-height: 1.1;
+    }
+    .pricing-price .price-period {
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+    }
+    .pricing-price .price-anchor {
+      display: block;
+      font-size: 0.78rem;
+      color: var(--text-secondary);
+      margin-top: 0.25rem;
+    }
+    .pricing-price .price-anchor .price-struck {
+      text-decoration: line-through;
+      opacity: 0.7;
+    }
+    .pricing-price .price-anchor .price-save {
+      color: var(--green);
+      font-weight: 600;
+    }
+    .pricing-features {
+      list-style: none;
+      padding: 0;
+      margin-bottom: 1.5rem;
+      flex: 1;
+    }
+    .pricing-features li {
+      padding: 0.3rem 0 0.3rem 1.5rem;
+      position: relative;
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+      line-height: 1.55;
+    }
+    .pricing-features li::before {
+      content: "\2713";
+      position: absolute;
+      left: 0;
+      color: var(--green);
+      font-weight: 700;
+    }
+    .pricing-features li.excluded {
+      text-decoration: line-through;
+      opacity: 0.45;
+    }
+    .pricing-features li.excluded::before {
+      content: "\2717";
+      color: var(--text-secondary);
+      opacity: 0.5;
+    }
+    .pricing-group-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--accent);
+      margin-bottom: 0.35rem;
+      margin-top: 0.25rem;
+    }
+    .pricing-card .btn { width: 100%; justify-content: center; }
+    .pricing-question-link {
+      display: block;
+      text-align: center;
+      font-size: 0.78rem;
+      color: var(--text-secondary);
+      text-decoration: none;
+      margin-top: 0.5rem;
+      transition: color 0.2s;
+    }
+    .pricing-question-link:hover { color: var(--accent); }
+
+    .pricing-note {
+      background: var(--tag-bg);
+      border-radius: var(--radius);
+      padding: 1rem 1.25rem;
+      margin-top: 1.25rem;
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      text-align: center;
+    }
+
+    /* ── How it works ── */
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+    .step-item { text-align: center; }
+    .step-number {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--accent-light);
+      color: var(--accent);
+      font-weight: 800;
+      font-size: 1.1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 0.75rem;
+    }
+    .step-item h3 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      margin-bottom: 0.25rem;
+    }
+    .step-item p {
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+      line-height: 1.55;
+    }
+
+    /* ── About ── */
+    .about-section {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2rem;
+      display: flex;
+      gap: 1.5rem;
+      align-items: center;
+    }
+    .about-photo {
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      background: var(--tag-bg);
+      flex-shrink: 0;
+      overflow: hidden;
+    }
+    .about-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .about-text h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 0.25rem;
+    }
+    .about-text .about-role {
+      font-size: 0.8rem;
+      color: var(--accent);
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+    .about-text p {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      line-height: 1.65;
+    }
+
+    /* ── FAQ ── */
+    .faq-list { margin-top: 1.5rem; }
+    .faq-list details {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      margin-bottom: 0.5rem;
+      overflow: hidden;
+    }
+    .faq-list summary {
+      padding: 1rem 2.5rem 1rem 1.25rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      list-style: none;
+      position: relative;
+      user-select: none;
+    }
+    .faq-list summary::-webkit-details-marker { display: none; }
+    .faq-list summary::after {
+      content: "+";
+      position: absolute;
+      right: 1.25rem;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 1.1rem;
+      font-weight: 400;
+      color: var(--text-secondary);
+      transition: transform 0.2s;
+    }
+    .faq-list details[open] summary::after {
+      content: "\2212";
+    }
+    .faq-list .faq-answer {
+      padding: 0 1.25rem 1rem;
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      line-height: 1.65;
+    }
+
+    /* ── Final CTA ── */
+    .final-cta {
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 100%);
+      border-radius: var(--radius);
+      padding: 3rem 2rem;
+      text-align: center;
+      color: #fff;
+    }
+    .final-cta h2 {
+      font-size: clamp(1.25rem, 3vw, 1.5rem);
+      font-weight: 800;
+      margin-bottom: 0.5rem;
+    }
+    .final-cta p {
+      color: rgba(255,255,255,0.8);
+      margin-bottom: 1.5rem;
+      font-size: 0.92rem;
+      max-width: 440px;
+      margin-inline: auto;
+      line-height: 1.65;
+    }
+    .final-cta .hero-buttons { margin-bottom: 0; }
+
+    /* ── Footer ── */
+    footer {
+      text-align: center;
+      padding: 2rem 1.5rem;
+      color: var(--text-secondary);
+      font-size: 0.8rem;
+      border-top: 1px solid var(--border);
+      margin-top: 2rem;
+    }
+    footer a { color: var(--accent); text-decoration: none; }
+
+    /* ── Sticky WhatsApp ── */
+    .sticky-wa {
+      position: fixed;
+      bottom: 1.25rem;
+      right: 1.25rem;
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: #25D366;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+      z-index: 150;
+      transition: transform 0.2s;
+      text-decoration: none;
+    }
+    .sticky-wa:hover { transform: scale(1.08); }
+    .sticky-wa svg { width: 28px; height: 28px; fill: #fff; }
+
+    /* ── Responsive ── */
+    @media (max-width: 640px) {
+      .nav-links { display: none; }
+      .hamburger { display: block; }
+      .hero { padding: 2.5rem 1rem 2rem; }
+      .section { padding-block: 2.5rem; }
+      .container { padding-inline: 1rem; }
+      .ba-grid { grid-template-columns: 1fr; }
+      .pricing-grid { grid-template-columns: 1fr; }
+      .about-section { flex-direction: column; text-align: center; }
+      .growth-card { padding: 1.5rem; }
+      .final-cta { padding: 2rem 1.25rem; }
+      .sticky-wa { width: 50px; height: 50px; bottom: 1rem; right: 1rem; }
+      .sticky-wa svg { width: 24px; height: 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Nav -->
+  <nav>
+    <a href="/" class="nav-brand">
+      <svg width="22" height="22" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="100" height="100" rx="20" fill="var(--accent)"/><path d="M28 55 L43 70 L72 35" stroke="#fff" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      True<span>Remote</span>
+    </a>
+    <div class="nav-links">
+      <a href="/" class="nav-link">Jobs</a>
+      <a href="/verify" class="nav-link">How We Verify</a>
+      <a href="/services" class="nav-cta active">Get Job-Ready</a>
+    </div>
+    <button class="hamburger" onclick="document.getElementById('mobile-menu').classList.toggle('open')" aria-label="Toggle navigation menu">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+  </nav>
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="/">Jobs</a>
+    <a href="/verify">How We Verify</a>
+    <a href="/services">Get Job-Ready</a>
+  </div>
+
+  <!-- Hero -->
+  <section class="hero">
+    <h1>Get callbacks, not silence.</h1>
+    <p>Your CV, LinkedIn and cover letter are the first things a recruiter sees. We make sure they open doors, not close them.</p>
+    <div class="hero-buttons">
+      <a href="https://wa.me/905338225854" target="_blank" rel="noopener" class="btn btn-primary" onclick="trackClick('hero-whatsapp')">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.126.553 4.12 1.52 5.856L.057 23.64l5.93-1.557A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.82c-1.98 0-3.832-.544-5.42-1.49l-.388-.231-3.516.922.938-3.43-.253-.402A9.788 9.788 0 012.18 12c0-5.422 4.398-9.82 9.82-9.82 5.422 0 9.82 4.398 9.82 9.82 0 5.422-4.398 9.82-9.82 9.82z"/></svg>
+        Message us on WhatsApp
+      </a>
+      <a href="#pricing" class="btn btn-white">See pricing</a>
+    </div>
+  </section>
+
+  <!-- Pain Points -->
+  <div class="container">
+    <section class="section">
+      <p class="section-label">Sound familiar?</p>
+      <h2 class="section-title">Applying to jobs shouldn't feel like shouting into a void.</h2>
+      <div class="pain-grid">
+        <div class="pain-card">
+          <div class="pain-icon" style="background: var(--red-light); color: var(--red);">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 7v4a1 1 0 001 1h3l3 3V4L7 7H4a1 1 0 00-1 1z"/><line x1="17" y1="9" x2="23" y2="15"/><line x1="23" y1="9" x2="17" y2="15"/></svg>
+          </div>
+          <h3>No callbacks</h3>
+          <p>You've sent dozens of applications. Maybe hundreds. The silence is the worst part — you don't even know what's wrong.</p>
+        </div>
+        <div class="pain-card">
+          <div class="pain-icon" style="background: var(--accent-light); color: var(--accent);">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="3" width="20" height="18" rx="2"/><line x1="8" y1="7" x2="16" y2="7"/><line x1="8" y1="11" x2="16" y2="11"/><line x1="8" y1="15" x2="12" y2="15"/></svg>
+          </div>
+          <h3>Template CVs</h3>
+          <p>Free CV builders give you a template. Recruiters have seen it a thousand times. Your CV looks like everyone else's.</p>
+        </div>
+        <div class="pain-card">
+          <div class="pain-icon" style="background: var(--green-light); color: var(--green);">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+          </div>
+          <h3>Invisible on LinkedIn</h3>
+          <p>Your LinkedIn profile has 84 connections and no posts. Recruiters check — and an empty profile says you're not serious.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- What We Offer -->
+    <section class="section" style="padding-top: 0;">
+      <p class="section-label">What we do</p>
+      <h2 class="section-title">Everything you need to land a remote role.</h2>
+      <p class="section-subtitle">Each service is written by a real person who reviews applications for a living. No AI-generated filler, no generic advice.</p>
+      <div class="services-grid">
+        <div class="service-item">
+          <div class="service-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="16" y2="17"/></svg>
+          </div>
+          <h3>CV Writing</h3>
+          <p>A CV built to get past the screening and into the interview pile.</p>
+        </div>
+        <div class="service-item">
+          <div class="service-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+          </div>
+          <h3>Cover Letter</h3>
+          <p>Targeted to the role. Not a rewording of your CV with "Dear Hiring Manager."</p>
+        </div>
+        <div class="service-item">
+          <div class="service-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-4 0v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          </div>
+          <h3>LinkedIn</h3>
+          <p>Profile optimization so recruiters find you. Growth package available.</p>
+        </div>
+        <div class="service-item">
+          <div class="service-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4z"/></svg>
+          </div>
+          <h3>Personal Statement</h3>
+          <p>For applications that ask for one. Clear, structured, and honest.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CV Showcase -->
+    <section class="section" style="padding-top: 0;">
+      <p class="section-label">CV writing</p>
+      <h2 class="section-title">Your CV, tailored to your field.</h2>
+      <p class="section-subtitle">Every CV we write is structured for the industry you're applying in. Here's what that looks like.</p>
+      <div class="carousel-wrapper" role="region" aria-label="CV format examples" tabindex="0">
+        <!-- Finance -->
+        <div class="cv-card">
+          <div class="cv-card-header" style="background: #1a365d;">
+            <span></span>
+            <div class="cv-name-line"></div>
+          </div>
+          <div class="cv-card-body">
+            <div class="cv-line-header w40"></div>
+            <div class="cv-line w90"></div>
+            <div class="cv-line w80"></div>
+            <div class="cv-line w70"></div>
+            <div class="cv-line-header w50"></div>
+            <div class="cv-line w90"></div>
+            <div class="cv-line w60"></div>
+            <div class="cv-line-header w40"></div>
+            <div class="cv-line w80"></div>
+            <div class="cv-line w70"></div>
+            <div class="cv-line w50"></div>
+          </div>
+          <span class="cv-card-label">Finance</span>
+        </div>
+        <!-- Tech -->
+        <div class="cv-card">
+          <div class="cv-card-header" style="background: #0d9488;">
+            <span></span>
+            <div class="cv-name-line"></div>
+          </div>
+          <div class="cv-card-body">
+            <div class="cv-two-col">
+              <div class="cv-sidebar" style="background: #f0fdfa;">
+                <div class="cv-line w80" style="margin-top:2px"></div>
+                <div class="cv-line w60"></div>
+                <div class="cv-line w90"></div>
+                <div class="cv-line w50"></div>
+                <div class="cv-line w70"></div>
+              </div>
+              <div class="cv-col">
+                <div class="cv-line-header w60"></div>
+                <div class="cv-line w90"></div>
+                <div class="cv-line w80"></div>
+                <div class="cv-line-header w50"></div>
+                <div class="cv-line w90"></div>
+                <div class="cv-line w70"></div>
+              </div>
+            </div>
+          </div>
+          <span class="cv-card-label">Tech</span>
+        </div>
+        <!-- Healthcare -->
+        <div class="cv-card">
+          <div class="cv-card-header" style="background: #2563eb;">
+            <span></span>
+            <div class="cv-name-line"></div>
+          </div>
+          <div class="cv-card-body">
+            <div class="cv-line-header w50"></div>
+            <div class="cv-line w90"></div>
+            <div class="cv-line w80"></div>
+            <div class="cv-line w60"></div>
+            <div class="cv-line-header w40"></div>
+            <div class="cv-line w80"></div>
+            <div class="cv-line w90"></div>
+            <div class="cv-line-header w50"></div>
+            <div class="cv-line w70"></div>
+            <div class="cv-line w60"></div>
+          </div>
+          <span class="cv-card-label">Healthcare</span>
+        </div>
+        <!-- Creative -->
+        <div class="cv-card">
+          <div class="cv-card-header" style="background: #7c3aed;">
+            <span></span>
+            <div class="cv-name-line"></div>
+          </div>
+          <div class="cv-card-body">
+            <div class="cv-two-col">
+              <div class="cv-col">
+                <div class="cv-line-header w70"></div>
+                <div class="cv-line w90"></div>
+                <div class="cv-line w80"></div>
+                <div class="cv-line w60"></div>
+              </div>
+              <div class="cv-col">
+                <div class="cv-line-header w60"></div>
+                <div class="cv-line w80"></div>
+                <div class="cv-line w90"></div>
+                <div class="cv-line w70"></div>
+              </div>
+            </div>
+            <div class="cv-line-header w40" style="margin-top:4px"></div>
+            <div class="cv-line w90"></div>
+            <div class="cv-line w70"></div>
+          </div>
+          <span class="cv-card-label">Creative</span>
+        </div>
+        <!-- Operations -->
+        <div class="cv-card">
+          <div class="cv-card-header" style="background: #d97706;">
+            <span></span>
+            <div class="cv-name-line"></div>
+          </div>
+          <div class="cv-card-body">
+            <div class="cv-line-header w60"></div>
+            <div class="cv-line w80"></div>
+            <div class="cv-line w90"></div>
+            <div class="cv-line-header w50"></div>
+            <div class="cv-line w70"></div>
+            <div class="cv-line w90"></div>
+            <div class="cv-line w80"></div>
+            <div class="cv-line-header w40"></div>
+            <div class="cv-line w60"></div>
+            <div class="cv-line w80"></div>
+          </div>
+          <span class="cv-card-label">Operations</span>
+        </div>
+        <!-- Academic -->
+        <div class="cv-card">
+          <div class="cv-card-header" style="background: #059669;">
+            <span></span>
+            <div class="cv-name-line"></div>
+          </div>
+          <div class="cv-card-body">
+            <div class="cv-line-header w50"></div>
+            <div class="cv-line w90"></div>
+            <div class="cv-line w80"></div>
+            <div class="cv-line w70"></div>
+            <div class="cv-line w60"></div>
+            <div class="cv-line-header w40"></div>
+            <div class="cv-line w90"></div>
+            <div class="cv-line w80"></div>
+            <div class="cv-line-header w50"></div>
+            <div class="cv-line w70"></div>
+          </div>
+          <span class="cv-card-label">Academic</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Before / After: CV -->
+    <section class="section" style="padding-top: 0;">
+      <p class="section-label">The difference</p>
+      <h2 class="section-title">What a rewrite actually looks like.</h2>
+      <div class="ba-grid">
+        <div class="ba-col">
+          <div class="ba-label ba-label-before">Before</div>
+          <div class="ba-card ba-before">
+            <h4>Objective</h4>
+            <p>Seeking a position in marketing where I can utilise my skills and grow professionally.</p>
+            <h4>Experience</h4>
+            <p style="margin-bottom:0.3rem"><strong>Marketing Assistant, ABC Corp</strong></p>
+            <ul>
+              <li>Managed social media accounts</li>
+              <li>Created content for the blog</li>
+              <li>Helped with email campaigns</li>
+              <li>Assisted in team projects</li>
+            </ul>
+          </div>
+        </div>
+        <div class="ba-col">
+          <div class="ba-label ba-label-after">After</div>
+          <div class="ba-card ba-after">
+            <h4>Professional Summary</h4>
+            <p><span class="ba-highlight">Marketing specialist with 2 years of content strategy experience. Grew organic social engagement 340% and managed campaigns reaching 50,000+ monthly readers.</span></p>
+            <h4>Experience</h4>
+            <p style="margin-bottom:0.3rem"><strong>Marketing Specialist, ABC Corp</strong></p>
+            <ul>
+              <li><span class="ba-highlight">Increased social media engagement 340%</span> in 6 months through data-driven content strategy</li>
+              <li><span class="ba-highlight">Generated 12,000+ email subscribers</span> via targeted lead magnet campaigns</li>
+              <li>Produced 45+ blog posts averaging <span class="ba-highlight">3,200 monthly views each</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- LinkedIn Section -->
+    <section class="section" style="padding-top: 0;">
+      <p class="section-label">LinkedIn</p>
+      <h2 class="section-title">What LinkedIn optimization actually looks like.</h2>
+      <p class="section-subtitle" style="margin-bottom: 1.5rem;">Most people don't know what they need to change. Here's a side-by-side. Profile optimization is included in our Professional and Complete packages. The Growth Package below goes further — we actively build your network and post on your behalf for 30 days.</p>
+
+      <div class="ba-grid">
+        <div class="ba-col">
+          <div class="ba-label ba-label-before">Before</div>
+          <div class="linkedin-mock">
+            <div class="lk-top">
+              <div class="lk-avatar">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+              </div>
+              <div class="lk-info">
+                <div class="lk-name">Jane Doe</div>
+                <div class="lk-headline">Recent Graduate | Looking for Opportunities</div>
+                <div class="lk-connections" style="color: var(--text-secondary); font-weight: 400;">84 connections</div>
+              </div>
+            </div>
+            <div class="lk-section">
+              <h5>About</h5>
+              <p>I am a motivated individual looking for entry-level opportunities where I can learn and grow.</p>
+            </div>
+          </div>
+        </div>
+        <div class="ba-col">
+          <div class="ba-label ba-label-after">After</div>
+          <div class="linkedin-mock">
+            <div class="lk-top">
+              <div class="lk-avatar" style="background: var(--accent-light);">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+              </div>
+              <div class="lk-info">
+                <div class="lk-name">Jane Doe</div>
+                <div class="lk-headline" style="color: var(--text);">Marketing Specialist | Content Strategy &amp; SEO | Growing brands through data-driven storytelling</div>
+                <div class="lk-connections">500+ connections</div>
+              </div>
+            </div>
+            <div class="lk-section">
+              <h5>About</h5>
+              <p style="color: var(--text);">I help remote-first companies turn content into revenue. Over the past 2 years, I've built content strategies that drove 340% social engagement growth and produced campaigns reaching 50,000+ monthly readers. I specialise in SEO, email marketing and content that converts.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- LinkedIn Growth Package -->
+      <div class="growth-card">
+        <div style="display:flex;align-items:baseline;gap:0.75rem;flex-wrap:wrap;margin-bottom:0.5rem;">
+          <h3 style="margin-bottom:0;">30-Day LinkedIn Growth Package</h3>
+          <span style="font-size:1.5rem;font-weight:800;letter-spacing:-0.5px;">$199</span>
+        </div>
+        <p style="margin-bottom:0.5rem;">The packages above include profile optimization — the copy and keywords that make your profile recruiter-ready. This package goes further: we actively grow your presence over 30 days.</p>
+        <p style="font-size:0.78rem;color:rgba(255,255,255,0.6);margin-bottom:1.25rem;">Works for new accounts (full setup) or existing profiles that need fixing.</p>
+
+        <div style="font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:#2dd4bf;margin-bottom:0.5rem;">Profile Setup &amp; Optimization</div>
+        <ul class="growth-features" style="margin-bottom:1rem;">
+          <li>Full profile rewrite or setup from scratch</li>
+          <li>Keyword-optimised headline and about section</li>
+          <li>Experience section written and dates aligned</li>
+          <li>Skills, endorsements and recommendations guidance</li>
+          <li>Custom banner and profile picture guidance</li>
+        </ul>
+
+        <div style="font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:#2dd4bf;margin-bottom:0.5rem;">30-Day Active Growth</div>
+        <ul class="growth-features" style="margin-bottom:1rem;">
+          <li>Strategic connection building toward 500+ relevant professionals</li>
+          <li>12 original posts published on your behalf (3 per week)</li>
+          <li>Content strategy tailored to your target industry</li>
+          <li>Engagement activity to increase your visibility</li>
+        </ul>
+
+        <div style="font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:#2dd4bf;margin-bottom:0.5rem;">What You Get at the End</div>
+        <ul class="growth-features" style="margin-bottom:1.25rem;">
+          <li>A fully optimised, active LinkedIn profile</li>
+          <li>500+ quality connections in your industry</li>
+          <li>A visible posting history that shows recruiters you're serious</li>
+          <li>End-of-month progress report</li>
+        </ul>
+
+        <div class="growth-note">
+          Building a genuine professional network takes time. LinkedIn limits how quickly connections can grow, so this is a 30-day engagement that builds lasting professional presence — not a quick fix.
+        </div>
+        <a href="#" data-payhip="growth" data-fallback="https://wa.me/905338225854?text=Hi%2C%20I'm%20interested%20in%20the%2030-Day%20LinkedIn%20Growth%20Package%20(%24199)." target="_blank" rel="noopener" class="btn btn-primary" onclick="trackClick('growth-checkout')">
+          Get started — $199
+        </a>
+        <a href="https://wa.me/905338225854?text=Hi%2C%20I%20have%20a%20question%20about%20the%20LinkedIn%20Growth%20Package." target="_blank" rel="noopener" class="pricing-question-link" style="text-align:center;display:block;margin-top:0.75rem;" onclick="trackClick('growth-question')">Questions? Chat first</a>
+      </div>
+    </section>
+
+    <!-- Pricing -->
+    <section class="section" style="padding-top: 0;" id="pricing">
+      <p class="section-label">Pricing</p>
+      <h2 class="section-title">Pick what you need. Nothing you don't.</h2>
+      <p class="section-subtitle">Every tier gets the same quality of work. The difference is scope — how many documents you need.</p>
+      <div class="pricing-grid">
+
+        <!-- Essential -->
+        <div class="pricing-card">
+          <h3>Essential</h3>
+          <p class="pricing-desc">A professionally written CV tailored to your target roles.</p>
+          <div class="pricing-price">
+            <span class="price-amount">$79</span>
+          </div>
+          <ul class="pricing-features">
+            <li>Full CV/resume rewrite from scratch</li>
+            <li>Tailored to your industry and target roles</li>
+            <li>ATS-optimised formatting and keywords</li>
+            <li>Delivered in Word + PDF</li>
+            <li>2 revision rounds</li>
+            <li>Delivered in 5 working days</li>
+            <li class="excluded">Cover letter</li>
+            <li class="excluded">LinkedIn profile optimization</li>
+            <li class="excluded">Personal statement</li>
+          </ul>
+          <a href="#" data-payhip="essential" data-fallback="https://wa.me/905338225854?text=Hi%2C%20I'm%20interested%20in%20the%20Essential%20CV%20package%20(%2479)." target="_blank" rel="noopener" class="btn btn-outline" onclick="trackClick('pricing-essential')">Get started — $79</a>
+          <a href="https://wa.me/905338225854?text=Hi%2C%20I%20have%20a%20question%20about%20the%20Essential%20CV%20package." target="_blank" rel="noopener" class="pricing-question-link" onclick="trackClick('pricing-essential-question')">Questions? Chat first</a>
+        </div>
+
+        <!-- Professional -->
+        <div class="pricing-card popular">
+          <div class="popular-badge">Most Popular</div>
+          <h3>Professional</h3>
+          <p class="pricing-desc">CV, cover letter and LinkedIn — the full application package.</p>
+          <div class="pricing-price">
+            <span class="price-amount">$149</span>
+            <span class="price-anchor"><span class="price-struck">$227 if bought separately</span> &mdash; <span class="price-save">Save $78</span></span>
+          </div>
+          <div class="pricing-group-label">CV &amp; Cover Letter</div>
+          <ul class="pricing-features">
+            <li>Full CV/resume rewrite from scratch</li>
+            <li>Tailored to your industry and target roles</li>
+            <li>ATS-optimised formatting and keywords</li>
+            <li>Targeted cover letter for a specific role</li>
+            <li>Delivered in Word + PDF</li>
+          </ul>
+          <div class="pricing-group-label">LinkedIn Profile Optimization</div>
+          <ul class="pricing-features">
+            <li>Keyword-optimised headline rewrite</li>
+            <li>About/summary section written from scratch</li>
+            <li>Experience section aligned with your CV</li>
+            <li>Skills review and recommendations</li>
+            <li>Section-by-section copy delivered to you</li>
+          </ul>
+          <div class="pricing-group-label">Support</div>
+          <ul class="pricing-features" style="margin-bottom:1.5rem">
+            <li>3 revision rounds</li>
+            <li>Delivered in 5 working days</li>
+            <li class="excluded">Personal statement</li>
+            <li class="excluded">Interview preparation</li>
+          </ul>
+          <a href="#" data-payhip="professional" data-fallback="https://wa.me/905338225854?text=Hi%2C%20I'm%20interested%20in%20the%20Professional%20package%20(%24149)." target="_blank" rel="noopener" class="btn btn-secondary" onclick="trackClick('pricing-professional')">Get started — $149</a>
+          <a href="https://wa.me/905338225854?text=Hi%2C%20I%20have%20a%20question%20about%20the%20Professional%20package." target="_blank" rel="noopener" class="pricing-question-link" onclick="trackClick('pricing-professional-question')">Questions? Chat first</a>
+        </div>
+
+        <!-- Complete -->
+        <div class="pricing-card">
+          <h3>Complete</h3>
+          <p class="pricing-desc">Everything handled. CV, cover letter, LinkedIn, personal statement, and ongoing support.</p>
+          <div class="pricing-price">
+            <span class="price-amount">$199</span>
+            <span class="price-anchor"><span class="price-struck">$335 if bought separately</span> &mdash; <span class="price-save">Save $136</span></span>
+          </div>
+          <div class="pricing-group-label">CV &amp; Cover Letter</div>
+          <ul class="pricing-features">
+            <li>Full CV/resume rewrite from scratch</li>
+            <li>Tailored to your industry and target roles</li>
+            <li>ATS-optimised formatting and keywords</li>
+            <li>Targeted cover letter for a specific role</li>
+            <li>Delivered in Word + PDF</li>
+          </ul>
+          <div class="pricing-group-label">LinkedIn Profile Optimization</div>
+          <ul class="pricing-features">
+            <li>Keyword-optimised headline rewrite</li>
+            <li>About/summary section written from scratch</li>
+            <li>Experience section aligned with your CV</li>
+            <li>Skills review and recommendations</li>
+            <li>Section-by-section copy delivered to you</li>
+          </ul>
+          <div class="pricing-group-label">Extras</div>
+          <ul class="pricing-features" style="margin-bottom:1.5rem">
+            <li>Personal statement</li>
+            <li>Interview preparation guide</li>
+            <li>15-minute 1:1 consultation call</li>
+            <li>Unlimited revisions</li>
+            <li>30 days of revision support</li>
+            <li>Delivered in 7 working days</li>
+          </ul>
+          <a href="#" data-payhip="complete" data-fallback="https://wa.me/905338225854?text=Hi%2C%20I'm%20interested%20in%20the%20Complete%20package%20(%24199)." target="_blank" rel="noopener" class="btn btn-outline" onclick="trackClick('pricing-complete')">Get started — $199</a>
+          <a href="https://wa.me/905338225854?text=Hi%2C%20I%20have%20a%20question%20about%20the%20Complete%20package." target="_blank" rel="noopener" class="pricing-question-link" onclick="trackClick('pricing-complete-question')">Questions? Chat first</a>
+        </div>
+      </div>
+
+      <p class="pricing-note">All prices in USD. Not sure which one fits? Message us on WhatsApp — we'll recommend a package based on where you are in your job search.</p>
+    </section>
+
+    <!-- How It Works -->
+    <section class="section" style="padding-top: 0;">
+      <p class="section-label">How it works</p>
+      <h2 class="section-title">Three steps to a stronger application.</h2>
+      <div class="steps-grid">
+        <div class="step-item">
+          <div class="step-number">1</div>
+          <h3>Choose your package</h3>
+          <p>Pick the package that fits your needs and check out securely online. You'll get a confirmation email straight away.</p>
+        </div>
+        <div class="step-item">
+          <div class="step-number">2</div>
+          <h3>Send us your details</h3>
+          <p>After purchase, message us on WhatsApp with your current CV and the roles you're targeting. We'll ask a few questions to understand your goals.</p>
+        </div>
+        <div class="step-item">
+          <div class="step-number">3</div>
+          <h3>Review and apply</h3>
+          <p>Your documents are written from scratch and delivered within the agreed timeframe. Review, request revisions, and start applying with confidence.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section class="section" style="padding-top: 0;">
+      <div class="about-section">
+        <div class="about-photo">
+          <img src="/kt-photo.webp" alt="KT — Career Services" loading="lazy">
+        </div>
+        <div class="about-text">
+          <h3>Who's behind this?</h3>
+          <p class="about-role">Career Services, TrueRemote</p>
+          <p>I've reviewed hundreds of applications and know exactly what makes a recruiter stop scrolling. Every CV, cover letter and profile I write is built to get you noticed — because I've seen what gets ignored, and I won't let that happen to yours.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section" style="padding-top: 0;">
+      <p class="section-label">Questions</p>
+      <h2 class="section-title">Frequently asked questions</h2>
+      <div class="faq-list">
+        <details>
+          <summary>How long does it take to receive my documents?</summary>
+          <div class="faq-answer">Turnaround depends on the package. A single CV is typically ready within 3-5 working days. Larger packages may take 5-7 working days. We'll give you a clear timeline before you commit.</div>
+        </details>
+        <details>
+          <summary>What if I'm not happy with the result?</summary>
+          <div class="faq-answer">Every package includes revision rounds. If something doesn't feel right, tell us and we'll fix it. We're not done until you're confident in what we've written.</div>
+        </details>
+        <details>
+          <summary>Do you write CVs for my specific industry?</summary>
+          <div class="faq-answer">Yes. Every CV is tailored to the industry and roles you're targeting — whether that's tech, finance, healthcare, operations, or something else. We research what hiring managers in your field look for.</div>
+        </details>
+        <details>
+          <summary>What format do I receive the CV in?</summary>
+          <div class="faq-answer">You'll receive your CV in both PDF and an editable format (Word or Google Docs), so you can make future adjustments yourself.</div>
+        </details>
+        <details>
+          <summary>How does the LinkedIn Growth Package work?</summary>
+          <div class="faq-answer">The Professional and Complete packages include LinkedIn profile optimization — we rewrite your headline, about section, experience, and skills so recruiters find you. The Growth Package is a separate 30-day engagement that goes further: we set up or fix your full profile, actively build connections toward 500+ relevant professionals, and publish 12 original posts on your behalf (3 per week). It works whether you have no LinkedIn account at all or an existing profile that needs fixing. LinkedIn limits how fast connections can grow, so this is a steady, genuine build — not a quick hack.</div>
+        </details>
+        <details>
+          <summary>How do I pay?</summary>
+          <div class="faq-answer">Click "Get started" on any package and you'll be taken to our secure checkout page. You can pay with credit/debit card or PayPal. No subscriptions, no hidden fees — you pay once for the package you choose. After payment, message us on WhatsApp with your details and we'll get started right away.</div>
+        </details>
+        <details>
+          <summary>Is this only for remote job seekers?</summary>
+          <div class="faq-answer">Our job board focuses on remote roles, but the services work for any application. A strong CV and LinkedIn profile help regardless of whether the role is remote, hybrid, or on-site.</div>
+        </details>
+      </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="section" style="padding-top: 0; padding-bottom: 0;">
+      <div class="final-cta">
+        <h2>Ready to stop getting ignored?</h2>
+        <p>Tell us where you are in your job search and what you need help with. We'll reply within 24 hours.</p>
+        <div class="hero-buttons">
+          <a href="https://wa.me/905338225854" target="_blank" rel="noopener" class="btn btn-primary" onclick="trackClick('final-whatsapp')">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.126.553 4.12 1.52 5.856L.057 23.64l5.93-1.557A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.82c-1.98 0-3.832-.544-5.42-1.49l-.388-.231-3.516.922.938-3.43-.253-.402A9.788 9.788 0 012.18 12c0-5.422 4.398-9.82 9.82-9.82 5.422 0 9.82 4.398 9.82 9.82 0 5.422-4.398 9.82-9.82 9.82z"/></svg>
+            Message us on WhatsApp
+          </a>
+          <a href="mailto:trueremote@gmail.com" class="btn btn-white" onclick="trackClick('final-email')">Email us</a>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <footer>
+    <p>TrueRemote &mdash; Built for job seekers at every stage, looking for remote work.</p>
+    <p style="margin-top:0.25rem;">Questions? <a href="mailto:trueremote@gmail.com">trueremote@gmail.com</a></p>
+  </footer>
+
+  <!-- Sticky WhatsApp Button -->
+  <a href="https://wa.me/905338225854" target="_blank" rel="noopener" class="sticky-wa" aria-label="Message us on WhatsApp" onclick="trackClick('sticky-whatsapp')">
+    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.126.553 4.12 1.52 5.856L.057 23.64l5.93-1.557A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.82c-1.98 0-3.832-.544-5.42-1.49l-.388-.231-3.516.922.938-3.43-.253-.402A9.788 9.788 0 012.18 12c0-5.422 4.398-9.82 9.82-9.82 5.422 0 9.82 4.398 9.82 9.82 0 5.422-4.398 9.82-9.82 9.82z"/></svg>
+  </a>
+
+  <!-- GoatCounter -->
+  <script data-goatcounter="https://kayzglobal.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+
+  <script src="/site-config.js"></script>
+
+  <!-- Click tracking & Payhip checkout wiring -->
+  <script>
+    function trackClick(name) {
+      if (window.goatcounter && window.goatcounter.count) {
+        window.goatcounter.count({ path: 'services-click-' + name, title: 'Services: ' + name, event: true });
+      }
+    }
+
+    (function () {
+      var keys = (typeof SITE !== 'undefined' && SITE.payhip) ? SITE.payhip : {};
+      var buttons = document.querySelectorAll('[data-payhip]');
+      for (var i = 0; i < buttons.length; i++) {
+        var btn = buttons[i];
+        var key = keys[btn.getAttribute('data-payhip')];
+        if (key) {
+          btn.href = 'https://payhip.com/buy?link=' + key;
+        } else {
+          btn.href = btn.getAttribute('data-fallback') || '#';
+        }
+      }
+    })();
+  </script>
+
+</body>
+</html>
