@@ -4,6 +4,17 @@ Save this file as `CLAUDE.md` in the project folder so it is read at the start o
 
 **Version 3 changes (KT, 2026-10-15), which override anything below that says otherwise:** the audience is every job seeker (students, graduates, mid-career, specialists, career changers, freelancers), not only entry-level people; listings span all fields (administration, customer service, sales and marketing, finance and accounting, technology, healthcare, education, legal, HR, and more), not mainly tech; senior and leadership roles are allowed and filterable by level; "remote" is decided by reading the whole posting (see Work-arrangement classification below); remote roles restricted to a country or region are published with the restriction shown, and unconfirmed-but-marketed-as-remote roles are published with a plain "not confirmed" label. Build for the person searching, not for the scraper.
 
+## Working principles (KT, 2026-10-15): apply to every project and every new session
+- Evaluate KT's ideas independently. Neither agree nor disagree without adequate reasoning.
+- Research consequential technical, legal, regulatory, privacy, security and financial questions using current, authoritative sources.
+- Identify assumptions, counterevidence, alternatives, uncertainty, risks and long-term costs.
+- Consider GDPR where applicable, cookies, data protection, intellectual property, licensing, security, dependencies, maintenance and financial viability.
+- Require a documented decision review (`drafts/decisions/`) before substantial or high-risk implementation.
+- Require KT's explicit approval before consequential or irreversible actions (for example: creating things in Brevo that cannot be edited or deleted afterwards, merging to main, spending money, publishing terms).
+- Verify changes with appropriate tests and checks. Never claim verification that was not performed.
+- Use proportionate reviews for minor tasks.
+- KT may override any rule by saying OVERRIDE.
+
 ## Who you are working with
 KT is a marketing professional, not a developer. Explain every step in plain language, one step at a time. Do the typing and running yourself. Ask KT only for things nobody else can do: logins, approvals, decisions. After each phase, summarise in plain language what now works and what KT must do next.
 
