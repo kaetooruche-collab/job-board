@@ -1,7 +1,7 @@
 const SITE = {
   name: 'TrueRemote',
   tagline: 'Every listing verified. Every link real.',
-  email: 'remotenc.jobs@gmail.com',
+  email: 'truremote@gmail.com',
   whatsapp: '+905338225854',
   whatsappUrl: 'https://wa.me/905338225854',
   goatcounter: 'kayzglobal',

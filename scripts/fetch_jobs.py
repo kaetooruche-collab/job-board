@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Fetch 100+ verified, worldwide, entry-level remote job listings from
-multiple sources: WWR, Jobicy, Remote OK, Greenhouse, Lever, Ashby.
+multiple sources: Jobicy, Greenhouse, Lever, Ashby.
 Every link verified before inclusion."""
 
 import json
@@ -220,18 +220,10 @@ def is_search_url(url):
 def verify_link(url, timeout=12):
     try:
         headers = {}
-        if 'weworkremotely.com' in url:
-            headers['User-Agent'] = (
-                'Mozilla/5.0 (Windows NT 10.0; Win64; x64) '
-                'AppleWebKit/537.36 (KHTML, like Gecko) '
-                'Chrome/120.0.0.0 Safari/537.36'
-            )
         resp = S.head(url, timeout=timeout, allow_redirects=True, headers=headers)
         if resp.status_code == 405:
             resp = S.get(url, timeout=timeout, allow_redirects=True, stream=True, headers=headers)
             resp.close()
-        if resp.status_code == 403 and 'weworkremotely.com' in url:
-            return True
         return resp.status_code < 400
     except:
         return False
@@ -242,100 +234,6 @@ def strip_html(s):
     t = re.sub(r'<[^>]+>', ' ', s)
     t = re.sub(r'\s+', ' ', t).strip()
     return t[:300]
-
-
-# ── Source 1: We Work Remotely RSS ────────────────────────────────────
-WWR_CATEGORIES = [
-    'categories/remote-customer-support-jobs',
-    'categories/remote-sales-and-marketing-jobs',
-    'categories/remote-design-jobs',
-    'categories/remote-programming-jobs',
-    'categories/remote-product-jobs',
-    'categories/remote-copywriting-jobs',
-    'categories/remote-finance-and-legal-jobs',
-    'categories/remote-human-resources-jobs',
-    'categories/remote-all-other-remote-jobs',
-]
-
-def fetch_wwr():
-    jobs = []
-    seen_urls = set()
-    for cat in WWR_CATEGORIES:
-        try:
-            resp = S.get(f"https://weworkremotely.com/{cat}.rss", timeout=15)
-            if resp.status_code != 200:
-                continue
-            root = ET.fromstring(resp.content)
-            cat_name = cat.split('/')[-1]
-            count = 0
-            for item in root.findall('.//item'):
-                title_el = item.find('title')
-                link_el = item.find('link')
-                pubdate_el = item.find('pubDate')
-                desc_el = item.find('description')
-                if title_el is None or link_el is None:
-                    continue
-
-                raw_title = (title_el.text or "").strip()
-                url = (link_el.text or "").strip()
-                if not url or url in seen_urls:
-                    continue
-                seen_urls.add(url)
-
-                if ':' in raw_title:
-                    parts = raw_title.split(':', 1)
-                    company = parts[0].strip()
-                    title = parts[1].strip()
-                else:
-                    company = ""
-                    title = raw_title
-
-                if is_senior(title):
-                    continue
-
-                dt = None
-                if pubdate_el is not None and pubdate_el.text:
-                    try:
-                        dt = parsedate_to_datetime(pubdate_el.text)
-                        if dt.tzinfo is None:
-                            dt = dt.replace(tzinfo=timezone.utc)
-                        if dt < THIRTY_DAYS_AGO:
-                            continue
-                    except:
-                        pass
-
-                desc_html = ""
-                if desc_el is not None and desc_el.text:
-                    desc_html = desc_el.text
-                desc = strip_html(desc_html)
-
-                hq_match = re.search(r'Headquarters:</strong>\s*(.+?)(?:</p>|<br)', desc_html)
-                hq = hq_match.group(1).strip() if hq_match else ""
-                hq = re.sub(r'<[^>]+>', '', hq).strip()
-
-                loc_text = f"{hq} {title}"
-                if not is_location_ok(loc_text):
-                    continue
-
-                jobs.append({
-                    "title": title,
-                    "company": company or "Unknown",
-                    "url": url,
-                    "location": hq if hq and not LOCATION_RESTRICTED.search(hq) else "Remote",
-                    "salary": None,
-                    "posted": dt,
-                    "source": "We Work Remotely",
-                    "description": desc,
-                    "jobType": "Full-time",
-                    "is_entry": bool(ENTRY_RE.search(title)),
-                })
-                count += 1
-            if count:
-                print(f"  [wwr] {cat_name}: {count}", flush=True)
-            time.sleep(0.3)
-        except Exception as e:
-            print(f"  [wwr] {cat_name} error: {e}")
-    return jobs
 
 
 # ── Source 2: Jobicy ──────────────────────────────────────────────────
@@ -392,57 +290,6 @@ def fetch_jobicy():
             time.sleep(0.5)
         except Exception as e:
             print(f"  Jobicy ({tag}) error: {e}")
-    return jobs
-
-
-# ── Source 3: Remote OK ───────────────────────────────────────────────
-def fetch_remoteok():
-    jobs = []
-    try:
-        resp = S.get("https://remoteok.com/api", timeout=20,
-                      headers={"User-Agent": "JobBoard/1.0 (educational project)"})
-        if resp.status_code != 200:
-            return jobs
-        data = resp.json()
-        for j in data:
-            if "legal" in j:
-                continue
-            title = j.get("position", "")
-            if is_senior(title):
-                continue
-            loc = j.get("location", "")
-            if loc and not is_location_ok(loc):
-                continue
-            epoch = j.get("epoch", 0)
-            try:
-                dt = datetime.fromtimestamp(epoch, tz=timezone.utc) if epoch else None
-                if dt and dt < THIRTY_DAYS_AGO:
-                    continue
-            except:
-                dt = None
-
-            salary = None
-            smin = j.get("salary_min")
-            smax = j.get("salary_max")
-            if smin and smax and int(smin) > 0:
-                salary = f"${int(smin):,}–${int(smax):,}/yr"
-
-            apply_url = j.get("apply_url") or j.get("url") or ""
-
-            jobs.append({
-                "title": title,
-                "company": j.get("company", ""),
-                "url": apply_url,
-                "location": loc or "Remote",
-                "salary": salary,
-                "posted": dt,
-                "source": "Remote OK",
-                "description": strip_html(j.get("description", "")),
-                "jobType": "Full-time",
-                "is_entry": bool(ENTRY_RE.search(title)),
-            })
-    except Exception as e:
-        print(f"  RemoteOK error: {e}")
     return jobs
 
 
@@ -719,20 +566,10 @@ def main():
     all_jobs = []
     removed = []
 
-    print("=== Fetching from We Work Remotely ===")
-    wwr = fetch_wwr()
-    print(f"  WWR total: {len(wwr)} jobs")
-    all_jobs.extend(wwr)
-
     print("\n=== Fetching from Jobicy ===")
     jobicy = fetch_jobicy()
     print(f"  Jobicy: {len(jobicy)} jobs")
     all_jobs.extend(jobicy)
-
-    print("\n=== Fetching from Remote OK ===")
-    remoteok = fetch_remoteok()
-    print(f"  Remote OK: {len(remoteok)} jobs")
-    all_jobs.extend(remoteok)
 
     print("\n=== Fetching from Greenhouse ATS ===")
     gh = fetch_greenhouse()
@@ -800,13 +637,10 @@ def main():
             removed.append(f"company-cap | {j['title']} | {c} | {j['url']}")
     print(f"After company cap ({MAX_PER}/co): {len(capped)}")
 
-    wwr_jobs = [j for j in capped if j["source"] == "We Work Remotely"]
-    non_wwr = [j for j in capped if j["source"] != "We Work Remotely"]
+    candidates = capped[:250]
+    print(f"\nVerifying {len(candidates)} links...")
 
-    candidates = non_wwr[:250]
-    print(f"\nVerifying {len(candidates)} non-WWR links ({len(wwr_jobs)} WWR jobs trusted from RSS)...")
-
-    verified = list(wwr_jobs)
+    verified = []
     with ThreadPoolExecutor(max_workers=20) as ex:
         fmap = {ex.submit(verify_link, j["url"]): j for j in candidates}
         done = 0
@@ -821,9 +655,9 @@ def main():
             except:
                 removed.append(f"link-error | {j['title']} | {j['company']} | {j['url']}")
             if done % 50 == 0:
-                print(f"  Verified {done}/{len(candidates)}, {len(verified) - len(wwr_jobs)} passed", flush=True)
+                print(f"  Verified {done}/{len(candidates)}, {len(verified)} passed", flush=True)
 
-    print(f"\nVerified: {len(verified)} ({len(wwr_jobs)} WWR + {len(verified) - len(wwr_jobs)} others)")
+    print(f"\nVerified: {len(verified)}")
 
     verified.sort(key=lambda x: (
         -int(x.get("is_entry", False)),
