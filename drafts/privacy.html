@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Policy | Kaeto Career Services</title>
+  <meta name="description" content="How Kaeto Career Services and TrueRemote collect, use, store and delete personal information, and how to ask for your data.">
+  <meta name="robots" content="noindex">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%231a1a2e'/><path d='M28 55 L43 70 L72 35' stroke='%2360a5fa' stroke-width='10' stroke-linecap='round' stroke-linejoin='round' fill='none'/></svg>">
+  <link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/fonts/inter.css">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #f8f9fb;
+      --surface: #ffffff;
+      --text: #1a1a2e;
+      --text-secondary: #5f6368;
+      --accent: #2563eb;
+      --accent-hover: #1d4ed8;
+      --accent-light: #eff6ff;
+      --border: #e2e5e9;
+      --tag-bg: #f1f3f5;
+      --green: #0d9488;
+      --green-light: #f0fdfa;
+      --yellow-dark: #f59e0b;
+      --radius: 10px;
+      --shadow: 0 1px 3px rgba(0,0,0,0.06);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) {
+        --bg: #0c0c18;
+        --surface: #161625;
+        --text: #e8e8f0;
+        --text-secondary: #9ca3af;
+        --accent: #60a5fa;
+        --accent-hover: #93bbfd;
+        --accent-light: #1e293b;
+        --border: #262640;
+        --tag-bg: #1e1e36;
+        --green: #2dd4bf;
+        --green-light: #0d2d2a;
+        color-scheme: dark;
+      }
+    }
+    :root[data-theme="dark"] {
+      --bg: #0c0c18;
+      --surface: #161625;
+      --text: #e8e8f0;
+      --text-secondary: #9ca3af;
+      --accent: #60a5fa;
+      --accent-hover: #93bbfd;
+      --accent-light: #1e293b;
+      --border: #262640;
+      --tag-bg: #1e1e36;
+      --green: #2dd4bf;
+      --green-light: #0d2d2a;
+      color-scheme: dark;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    nav {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 0 1.5rem;
+      height: 56px;
+      position: sticky;
+      top: 0;
+      z-index: 200;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .nav-brand {
+      font-weight: 800;
+      font-size: 1.25rem;
+      color: var(--text);
+      text-decoration: none;
+      letter-spacing: -0.5px;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+    .nav-brand span { color: var(--accent); }
+    .nav-links { display: flex; align-items: center; gap: 1.25rem; }
+    .nav-link {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+    }
+    .nav-link:hover { color: var(--accent); }
+    .nav-link.active { color: var(--accent); font-weight: 600; }
+    .nav-cta {
+      background: var(--accent);
+      color: #fff;
+      padding: 0.45rem 1rem;
+      border-radius: 6px;
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 600;
+      transition: background 0.2s;
+    }
+    .nav-cta:hover { background: var(--accent-hover); }
+
+    .hamburger {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0.25rem;
+      color: var(--text);
+    }
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 56px;
+      left: 0;
+      right: 0;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 1rem 1.5rem;
+      z-index: 199;
+      flex-direction: column;
+      gap: 0.75rem;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      color: var(--text);
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 500;
+      padding: 0.5rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .mobile-menu a:last-child { border-bottom: none; }
+
+    .container {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 2.5rem 1.5rem;
+    }
+
+    h1 {
+      font-size: clamp(1.5rem, 4vw, 2rem);
+      font-weight: 800;
+      margin-bottom: 0.75rem;
+      letter-spacing: -0.5px;
+    }
+
+    .page-intro {
+      font-size: 1rem;
+      color: var(--text-secondary);
+      margin-bottom: 2.5rem;
+      line-height: 1.7;
+      max-width: 600px;
+    }
+
+    .trust-rules {
+      margin-bottom: 3rem;
+    }
+    .trust-rules h2 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin-bottom: 1.25rem;
+    }
+    .trust-rule {
+      display: flex;
+      gap: 1rem;
+      padding: 1rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .trust-rule:last-child { border-bottom: none; }
+    .trust-rule-number {
+      flex-shrink: 0;
+      width: 2rem;
+      height: 2rem;
+      background: var(--green-light);
+      color: var(--green);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.82rem;
+      font-weight: 700;
+    }
+    .trust-rule-text {
+      font-size: 0.92rem;
+      color: var(--text);
+      line-height: 1.6;
+      padding-top: 0.25rem;
+    }
+
+    .process-section {
+      margin-bottom: 3rem;
+    }
+    .process-section h2 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin-bottom: 1.25rem;
+    }
+    .process-step {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 0.75rem;
+    }
+    .process-step h3 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      margin-bottom: 0.35rem;
+    }
+    .process-step p {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    .listing-standard {
+      margin-bottom: 3rem;
+    }
+    .listing-standard h2 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin-bottom: 1.25rem;
+    }
+    .standard-list {
+      list-style: none;
+      padding: 0;
+    }
+    .standard-list li {
+      padding: 0.6rem 0 0.6rem 1.75rem;
+      position: relative;
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      border-bottom: 1px solid var(--border);
+    }
+    .standard-list li:last-child { border-bottom: none; }
+    .standard-list li::before {
+      content: "\2713";
+      position: absolute;
+      left: 0;
+      color: var(--green);
+      font-weight: 700;
+    }
+
+    .report-section {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.75rem;
+      text-align: center;
+    }
+    .report-section h2 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+    .report-section p {
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      margin-bottom: 1.25rem;
+    }
+    .report-links {
+      display: flex;
+      justify-content: center;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+    .report-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.6rem 1.15rem;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text);
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .report-link:hover { border-color: var(--accent); color: var(--accent); }
+
+    footer {
+      text-align: center;
+      padding: 2rem 1.5rem;
+      color: var(--text-secondary);
+      font-size: 0.8rem;
+      border-top: 1px solid var(--border);
+      margin-top: 2rem;
+    }
+    footer a { color: var(--accent); text-decoration: none; }
+
+    @media (max-width: 640px) {
+      .container { padding: 1.5rem 1rem; }
+      .nav-links { display: none; }
+      .hamburger { display: block; }
+      .process-step { padding: 1rem 1.15rem; }
+    }
+      mark { background: #fff3bf; color: #1a1a2e; padding: 0 0.25em; border-radius: 3px; }
+    .draft-banner { background: #fff3bf; color: #1a1a2e; border: 1px solid #f59e0b; border-radius: 8px; padding: 0.75rem 1rem; margin-bottom: 1.25rem; font-size: 0.85rem; }
+    .priv-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; margin: 0.75rem 0; }
+    .priv-table th, .priv-table td { text-align: left; padding: 0.55rem 0.6rem; border-top: 1px solid var(--border); vertical-align: top; }
+    .priv-wrap { overflow-x: auto; }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="/" class="nav-brand">
+      <svg width="22" height="22" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="100" height="100" rx="20" fill="var(--accent)"/><path d="M28 55 L43 70 L72 35" stroke="#fff" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      True<span>Remote</span>
+    </a>
+    <div class="nav-links">
+      <a href="/" class="nav-link">Jobs</a>
+      <a href="/verify" class="nav-link active">How We Verify</a>
+      <a href="/services" class="nav-cta">Get Job-Ready</a>
+    </div>
+    <button class="hamburger" onclick="document.getElementById('mobile-menu').classList.toggle('open')" aria-label="Toggle navigation menu">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+  </nav>
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="/">Jobs</a>
+    <a href="/verify">How We Verify</a>
+    <a href="/services">Get Job-Ready</a>
+  </div>
+
+  <div class="container">
+
+    <div class="draft-banner"><strong>DRAFT, not published.</strong> Yellow text marks facts only Kaeto can provide. Please have the finished policy checked by someone qualified in data protection law where you are based; this draft is plain-language and based on regulator guidance, not legal advice.</div>
+
+    <h1>Privacy Policy</h1>
+    <p class="page-intro">Last updated: <mark>[date]</mark>. This policy explains what personal information we collect, why, who sees it, how long we keep it, and how you can ask for it, correct it or have it deleted.</p>
+
+    <section class="process-section">
+      <h2>In short</h2>
+      <ul class="standard-list">
+        <li>We use your CV and personal information only to deliver the services you bought and to support you with them.</li>
+        <li>We do not sell your information and we do not use it for unrelated marketing.</li>
+        <li>Working files and personal information are deleted within 90 days after your service is completed. Provider backup copies disappear shortly afterwards.</li>
+        <li>You can ask for your information, a correction or a deletion at any time. We reply within one month, free of charge.</li>
+        <li>Please send your CV only through the private upload link we give you, not over WhatsApp.</li>
+      </ul>
+    </section>
+
+    <section class="process-section">
+      <h2>Who we are</h2>
+      <p><mark>[Legal or trading name]</mark>, trading as Kaeto Career Services, associated with the TrueRemote website. Address: <mark>[address, or the country you want shown]</mark>. Privacy contact: <a href="mailto:trueremote@gmail.com">trueremote@gmail.com</a> <mark>[confirm this is the address for privacy requests]</mark>. <mark>[EU or UK representative details, only if one is required]</mark></p>
+    </section>
+
+    <section class="process-section">
+      <h2>What we collect, why, and on what basis</h2>
+      <div class="priv-wrap"><table class="priv-table">
+        <thead><tr><th>Information</th><th>Why we use it</th><th>Basis</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Service information:</strong> your CV, LinkedIn details, career goals, name, email, WhatsApp number, and anything you tell us while we work together.</td><td>To deliver the package you bought and support you with it.</td><td>Contract with you <mark>[confirm]</mark></td></tr>
+          <tr><td><strong>Order and payment information:</strong> what you bought, when, and the details your payment provider shares with us. We do not receive your full card details.</td><td>To confirm your order and keep the records we must keep.</td><td>Contract; legal obligation <mark>[confirm]</mark></td></tr>
+          <tr><td><strong>Newsletter:</strong> your email address.</td><td>To send the job email you signed up for.</td><td>Your consent, which you can withdraw at any time using the unsubscribe link</td></tr>
+          <tr><td><strong>Website statistics:</strong> anonymous visit counts and clicks, for example which pages and apply buttons are used.</td><td>To see what is useful and improve the site.</td><td>Legitimate interests <mark>[confirm]</mark></td></tr>
+          <tr><td><strong>Messages and enquiries</strong> sent by email or WhatsApp.</td><td>To answer you.</td><td>Contract or legitimate interests <mark>[confirm]</mark></td></tr>
+        </tbody>
+      </table></div>
+      <p>You choose what goes in your CV. CVs sometimes contain sensitive details such as a photo, date of birth, health, religion or ethnicity. You do not need to send these to us. If your CV contains them, we use them only to deliver your service. <mark>[Confirm how you handle this]</mark></p>
+    </section>
+
+    <section class="process-section">
+      <h2>Who we share it with</h2>
+      <p>Only the people and providers needed to do the work. We do not sell your information. Providers act for us and we use their services as follows:</p>
+      <ul class="standard-list">
+        <li><strong>Payhip</strong> (checkout and orders), which works with <strong>Stripe</strong> and <strong>PayPal</strong> for payments.</li>
+        <li><strong>Proton</strong> (private file storage and upload links, Switzerland) <mark>[confirm after set-up]</mark>.</li>
+        <li><strong>Brevo</strong> (newsletter emails).</li>
+        <li><strong>Gmail / Google</strong> (our email) <mark>[confirm account type]</mark> and <strong>WhatsApp / Meta</strong> (messages with you).</li>
+        <li><strong>Vercel</strong> (hosts this website; it keeps server logs that include visitors' IP addresses) and <strong>GitHub</strong> (stores the website code; no client files are kept there).</li>
+        <li><strong>GoatCounter</strong> (website statistics): it sets no cookies and stores no IP address.</li>
+        <li><mark>[Any AI or writing tools used on client documents, or "We do not use AI tools on client documents."]</mark></li>
+      </ul>
+    </section>
+
+    <section class="process-section">
+      <h2>Sending information abroad</h2>
+      <p>Some of these providers are in the United States or other countries. Where information is sent outside your country, we rely on the legal safeguards the providers use, such as adequacy decisions, the EU-US Data Privacy Framework or standard contractual clauses. You can ask us for details of the safeguards for a provider.</p>
+    </section>
+
+    <section class="process-section">
+      <h2>How long we keep it</h2>
+      <div class="priv-wrap"><table class="priv-table">
+        <thead><tr><th>Information</th><th>How long</th></tr></thead>
+        <tbody>
+          <tr><td>Your CV, working files and personal information</td><td>Deleted within 90 days after your service is completed, unless the law requires us to keep something or you agree to a longer period for a purpose we state. You can ask for earlier deletion. Your service is completed when <mark>[definition: final files delivered and revision rounds done; for Executive, when the service ends]</mark>. Our storage providers may keep backup copies for a short time after deletion (about 30 days).</td></tr>
+          <tr><td>Final deliverables</td><td>You keep your copies. We do not keep ours beyond the period above.</td></tr>
+          <tr><td>Order and payment records</td><td>Kept as long as accounting and tax rules require <mark>[state the period for your country]</mark>. Payment providers keep their own records.</td></tr>
+          <tr><td>Newsletter email address</td><td>Until you unsubscribe.</td></tr>
+          <tr><td>Messages and emails</td><td><mark>[state period]</mark></td></tr>
+        </tbody>
+      </table></div>
+    </section>
+
+    <section class="process-section">
+      <h2>How we protect it</h2>
+      <ul class="standard-list">
+        <li>You upload your CV through a private link made for you, not through WhatsApp.</li>
+        <li>Files are stored in an encrypted account protected by two-step sign-in <mark>[confirm after set-up]</mark>.</li>
+        <li>Access is limited to what is needed to do the work.</li>
+        <li>We keep a record of when each client's files must be deleted and delete them on time.</li>
+      </ul>
+    </section>
+
+    <section class="process-section">
+      <h2>Your rights, and how to use them</h2>
+      <p>Depending on where you live, you can ask us to: tell you what we hold about you and give you a copy; correct it; delete it; limit how we use it; give it to you in a portable form; stop using it for a purpose you object to; and withdraw consent you gave (for example to the newsletter).</p>
+      <p>To make a request, email <a href="mailto:trueremote@gmail.com">trueremote@gmail.com</a> with the subject "Privacy request". We reply within one month and it is free. We may ask you to confirm it is you, using details we already hold such as your order email or order number. If your request is complex we may take up to two further months, and we will tell you within the first month. If we cannot do what you ask, we will explain why. <mark>[If you serve people in Turkey: add that requests under the Turkish data protection law are answered within 30 days.]</mark></p>
+    </section>
+
+    <section class="process-section">
+      <h2>Complaints</h2>
+      <p>If you are unhappy with how we handled your information, tell us first at the address above. We will acknowledge your complaint within 30 days and respond properly. You can also complain to your data protection regulator: <mark>[your national authority; the UK Information Commissioner's Office for people in the UK; the authority in your country for people in the EU]</mark>.</p>
+    </section>
+
+    <section class="process-section">
+      <h2>Newsletter</h2>
+      <p>We only email you if you signed up. Every email has an unsubscribe link. <mark>[State whether you use double confirmation (recommended).]</mark></p>
+    </section>
+
+    <section class="process-section">
+      <h2>Website statistics and cookies</h2>
+      <p>This site does not set cookies and does not store anything in your browser. It counts visits and clicks with GoatCounter, which does not store your IP address or build a profile of you. We host our fonts ourselves, so your browser does not contact font providers. Our hosting provider keeps ordinary server logs. Links to employers' job pages and to WhatsApp take you to other sites with their own privacy policies.</p>
+    </section>
+
+    <section class="process-section">
+      <h2>Children</h2>
+      <p>Our services are for adults. <mark>[State the minimum age you accept.]</mark></p>
+    </section>
+
+    <section class="process-section">
+      <h2>Changes</h2>
+      <p>If we change this policy we will update the date above and, for important changes, tell clients who are using the service. Our refund and cancellation terms are on the <a href="/services#terms">services page</a>.</p>
+    </section>
+
+  </div>
+
+  <footer>
+    <p>TrueRemote &mdash; Built for job seekers at every stage, looking for remote work.</p>
+    <p style="margin-top:0.25rem;">Questions? <a href="mailto:trueremote@gmail.com">trueremote@gmail.com</a></p>
+  </footer>
+
+  <script data-goatcounter="https://kayzglobal.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+
+</body>
+</html>

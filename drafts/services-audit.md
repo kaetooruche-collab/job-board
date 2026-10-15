@@ -1,4 +1,11 @@
-# Status update (after your answers)
+# Status update 3 (client data)
+
+- **Timing:** all timing counts from when onboarding is complete (applied). Revision rounds stay 2 / 3 / 3. "500+" means total connections (applied).
+- **Storage:** recommendation and set-up steps are in `drafts/client-data-handling.md`; log template in `drafts/client-data-log-template.csv`; privacy policy draft in `drafts/privacy.html` (yellow = facts only you can give).
+- **Intake:** the services page now says clients get a private upload link and should not send CVs over WhatsApp.
+- **Fonts:** now hosted on this site (previously loaded from Google, which sent visitors' IP addresses to Google).
+
+# Status update (after your earlier answers)
 
 **Rebuilt page:** `services.html` now follows your brief: three packages ($29, $49, $99) with exactly the deliverables and revision limits you listed, a side-by-side table, an Executive section explaining personal branding, connection building, content and the timeline, and a "What we do not promise" box.
 
