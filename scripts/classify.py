@@ -531,8 +531,10 @@ def _label_for(places_countries, regions, worldwide, tz, home_countries=()):
             parts.extend(explicit_countries)
         else:
             home = sorted(set(home_countries))
-            where = f" in {home[0]}" if len(home) == 1 else ""
-            parts.append(f"{len(explicit_countries)} locations{where}")
+            if len(home) == 1:
+                return f"{len(explicit_countries)} locations in {home[0]}"
+            parts.extend(explicit_countries[:3])
+            return ", ".join(parts) + f" +{len(explicit_countries) - 3} more"
     if parts:
         if len(parts) == 1 and not regions:
             return f"{parts[0]} only"

@@ -251,7 +251,11 @@ class Eligibility(unittest.TestCase):
     def test_many_states_summarised(self):
         r, _ = run("Support Agent", "Dallas, Texas",
                    "This is a remote position, open to candidates who reside in Arizona, Florida, Georgia, Texas, Ohio or Utah.")
-        self.assertTrue(r["eligibility"]["label"].startswith("6 locations in United States"))
+        self.assertEqual(r["eligibility"]["label"], "6 locations in United States")
+
+    def test_many_countries_named_not_counted(self):
+        r, _ = run("Support Agent", "Egypt; Kenya; Nigeria; Ghana; Morocco; Tunisia", "Fully remote.")
+        self.assertEqual(r["eligibility"]["label"], "Egypt, Kenya, Nigeria +3 more")
 
 
 class ExperienceAndCategories(unittest.TestCase):
