@@ -1,12 +1,14 @@
-# Verified remote job board: brief for Claude Code (version 2)
+# Verified remote job board: brief for Claude Code (version 3)
 
 Save this file as `CLAUDE.md` in the project folder so it is read at the start of every session. It replaces the earlier brief completely. If anything here conflicts with an older note, this file wins.
+
+**Version 3 changes (KT, 2026-10-15), which override anything below that says otherwise:** the audience is every job seeker (students, graduates, mid-career, specialists, career changers, freelancers), not only entry-level people; listings span all fields (administration, customer service, sales and marketing, finance and accounting, technology, healthcare, education, legal, HR, and more), not mainly tech; senior and leadership roles are allowed and filterable by level; "remote" is decided by reading the whole posting (see Work-arrangement classification below); remote roles restricted to a country or region are published with the restriction shown, and unconfirmed-but-marketed-as-remote roles are published with a plain "not confirmed" label. Build for the person searching, not for the scraper.
 
 ## Who you are working with
 KT is a marketing professional, not a developer. Explain every step in plain language, one step at a time. Do the typing and running yourself. Ask KT only for things nobody else can do: logins, approvals, decisions. After each phase, summarise in plain language what now works and what KT must do next.
 
 ## The product
-A free job board of verified, worldwide-eligible, entry-level remote jobs, for job seekers anywhere. It is NOT tied to any country or city, and nothing in the code, copy or URLs should name one.
+A free job board of verified remote jobs at every experience level and in every field, for job seekers anywhere. It is NOT tied to any country or city, and nothing in the code identifiers, site copy or URLs should name one. Country and region names appear only as data taken from listings (and in `data/geo_lexicon.json`), for example the eligibility label on a card.
 
 Revenue comes from KT's paid CV and LinkedIn services, sold by WhatsApp (+90 533 822 5854) and email. The board earns trust and traffic. Later revenue lines (a seeker plan, employer listings, partners) wait for gates; do not build them.
 
@@ -24,15 +26,18 @@ The old `jobs.json` was written by hand. Most links went to company homepages or
 ## Listing standard: a listing is published only if ALL hold
 1. The URL opens the specific posting, never a homepage, search page or category page.
 2. The posted date and time come from the source, using the original posting date rather than the last edit where the source gives both.
-3. The posting text states it is open to applicants worldwide.
+3. The posting reads as remote: fully remote, remote with stated location restrictions, or marketed as remote but unconfirmed (labelled as such). Hybrid, on-site and self-contradicting listings are not published. Where applicants may live is shown as the employer states it ("Worldwide", a country or region, or "Eligibility unclear"); nothing is assumed to be worldwide.
 4. Pay is shown only if the posting states it; otherwise show "Not stated". Never invent or estimate figures.
 5. The source is credited and linked.
 6. The link passed a check at the last run, and the page shows no closed-role wording ("no longer accepting", "expired", "position filled", "closed").
-7. It is not commission-only, charges no applicant fee, and has no senior title (head of, director, VP, chief, principal, staff, senior). Propose the exact word lists, and show KT a sample of what was removed and why.
+7. It is not commission-only and charges no applicant fee. Experience level is recorded and filterable; senior titles are NOT excluded. Show KT a sample of what was removed and why (`data/removed.log`, `data/review_queue.json`).
 
-A page that still loads does not prove a role is open, so age and apply-before dates matter. Drop anything posted more than 30 days ago or past its apply-before date.
+A page that still loads does not prove a role is open, so age matters. Drop anything posted more than 30 days ago, and anything past an apply-before date when the source gives one (the ATS feeds almost never do).
 
 Copy rules for the whole site, emails and messages: never write "no work permit needed", "guaranteed", "the only job board", or claim a role suits a degree or background unless the posting says so. Tell users to check each employer's eligibility.
+
+## Work-arrangement classification (the heart of the pipeline)
+`scripts/classify.py` reads the title, location, structured hints and the FULL description of every listing and returns: work arrangement (fully remote / remote with geographic restrictions / remote unclear / hybrid / on-site), office attendance, geographic eligibility (with the employer's own wording kept), experience level (from the experience the posting asks for, not just the title), multi-label category, employment type, quality flags, evidence quotes, confidence and unresolved questions. Rules: no single keyword decides; negations and company-level wording ("some roles may be remote") do not count as proof; contradictions go to `data/review_queue.json` instead of being silently resolved; hybrid and on-site are excluded from the main feed; remote-unclear is published only with a visible "not confirmed" label. Tests live in `tests/test_classify.py` and must pass before a change to the classifier ships. The Claude Code skill `.claude/skills/classify-job-listing/SKILL.md` describes how to review borderline listings.
 
 ## Trust rules to publish on the site ("How we verify" page) and in the channel
 1. We never charge a job seeker to apply or to see a listing's apply link.
