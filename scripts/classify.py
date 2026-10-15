@@ -196,6 +196,7 @@ STRONG_REMOTE = [
     (r"\bremote (?:position|role|job|opportunity|work)\b", 3.0),
     (r"\b(?:this|the) (?:position|role|job) is (?:fully |100% )?remote\b", 3.0),
     (r"\bremote,? (?:work|working) (?:environment|arrangement)\b", 3.0),
+    (r"\b(?:work )?location\s*:?\s*[-]?\s*(?:fully\s+)?remote\b", 3.0),
     (r"\bremote[- ]first\b", 2.0),
     (r"\bfully[- ]distributed\b|\b(?:globally |geographically )?distributed (?:team|company|workforce|organi[sz]ation)\b", 1.5),
 ]
@@ -293,7 +294,7 @@ def assess_work_arrangement(title, location, description, hint=None, remote_feed
     loc = location or ""
     if LOC_HYBRID.search(loc):
         office += 3.0; add("location field", loc, "hybrid")
-    elif LOC_ONSITE.search(loc):
+    elif LOC_ONSITE.search(loc) or (re.search(r"\boffice\b", loc, re.I) and not LOC_REMOTE.search(loc)):
         office += 3.0; add("location field", loc, "on_site")
     if LOC_REMOTE.search(loc):
         remote += 3.0; add("location field", loc, "remote")
@@ -314,6 +315,7 @@ def assess_work_arrangement(title, location, description, hint=None, remote_feed
     company_level_seen = False
     recurring_seen = False
     full_remote_explicit = False
+    role_remote = h == "remote" or bool(LOC_REMOTE.search(loc)) or bool(re.search(r"\b(remote|work from home|wfh|virtual|telecommut\w*|home[- ]based)\b", ttl, re.I))
     virtual_training = bool(VIRTUAL_TRAINING_RE.search(text))
 
     for s in sents:
@@ -355,6 +357,8 @@ def assess_work_arrangement(title, location, description, hint=None, remote_feed
                     add("description (company-level wording, not counted)", s, "unclear")
                 elif strong_hits < 2:
                     strong_hits += 1
+                    if wt >= 3.0 and not mixed:
+                        role_remote = True
                     remote += 0.5 if mixed else wt
                     add("description (mixed office and remote wording)" if mixed else "description", s, "remote (weak)" if mixed else "remote")
                     if not mixed and re.search(r"(fully|100%|completely|entirely|totally)[ -]remote|remote[- ]first|work from anywhere|location[- ]independent", s, re.I):
@@ -426,6 +430,10 @@ def assess_work_arrangement(title, location, description, hint=None, remote_feed
     elif o >= 3 and r < 2:
         arrangement = HYBRID if any(e["effect"] == "hybrid" for e in ev) else ON_SITE
         confidence = "high" if o >= 5 else "medium"
+    elif r >= 3 and o < 2 and not role_remote:
+        arrangement = REMOTE_UNCLEAR
+        confidence = "low"
+        unresolved.append("Remote is mentioned only in general terms about the company; the listing does not state this role is remote.")
     elif r >= 3 and o < 2:
         arrangement = FULLY_REMOTE
         confidence = "high" if (full_remote_explicit or r >= 5) and not flags else "medium"
@@ -433,7 +441,7 @@ def assess_work_arrangement(title, location, description, hint=None, remote_feed
             arrangement = REMOTE_UNCLEAR; confidence = "low"
     elif r >= 1 and o < 2:
         arrangement = REMOTE_UNCLEAR
-        confidence = "low" if r < 2 else "medium"
+        confidence = "low" if (r < 2 or not role_remote) else "medium"
     elif remote_feed and o < 2:
         arrangement = REMOTE_UNCLEAR
         confidence = "low"
@@ -478,6 +486,7 @@ def assess_work_arrangement(title, location, description, hint=None, remote_feed
 
 # ── Geographic eligibility ────────────────────────────────────────────
 
+WW_COMPANY_LEVEL_RE = re.compile(r"\b(?:many|some|most|certain|select|several|various|other)\s+(?:of our\s+)?(?:roles|positions|jobs|teams|opportunities)\b|see (?:the )?individual (?:job )?listings?|depending on (?:the )?(?:role|position|team)", re.I)
 WORLDWIDE_LOC = re.compile(r"\b(anywhere|worldwide|world[- ]wide|global(?:ly)?|all countries|any country|work from anywhere)\b", re.I)
 WORLDWIDE_DESC = re.compile(
     r"\b(?:anywhere in the world|from anywhere in the world|any (?:country|location)|all countries|worldwide|world[- ]wide|globally|work from anywhere|"
@@ -523,7 +532,7 @@ def _label_for(places_countries, regions, worldwide, tz):
     return "Eligibility unclear"
 
 
-def assess_eligibility(title, location, description, remote_evidence=False):
+def assess_eligibility(title, location, description, remote_evidence=False, remote_feed=False):
     g = geo()
     loc = location or ""
     text = clean_text(description)
@@ -548,7 +557,7 @@ def assess_eligibility(title, location, description, remote_evidence=False):
     for s in sents:
         if WORLDWIDE_DESC.search(s) and APPLICANT_CONTEXT.search(s):
             m = WORLDWIDE_DESC.search(s)
-            if not _negated(s, m) and not re.search(r"\b(?:customers?|users?|clients?|offices?|products?|brands?|companies|markets?|colleagues)\b[^.]{0,30}(?:worldwide|around the world|globally)|(?:worldwide|around the world|globally)\b[^.]{0,30}\b(?:customers?|users?|clients?)", s, re.I):
+            if not _negated(s, m) and not WW_COMPANY_LEVEL_RE.search(s) and not re.search(r"\b(?:customers?|users?|clients?|offices?|products?|brands?|companies|markets?|colleagues)\b[^.]{0,30}(?:worldwide|around the world|globally)|(?:worldwide|around the world|globally)\b[^.]{0,30}\b(?:customers?|users?|clients?)", s, re.I):
                 desc_ww.append(s)
         if any(rx.search(s) for rx in RESTRICTION_CUES):
             places = [p for p in g.find_places(s) if p["kind"] in ("country", "region", "state", "city")]
@@ -585,7 +594,13 @@ def assess_eligibility(title, location, description, remote_evidence=False):
 
     etype = "unclear"
     confidence = "low"
-    if worldwide_from and restricted_places:
+    if worldwide_from and restricted_places and remote_feed and loc_places:
+        etype = "region" if (regions and not explicit) else "countries"
+        confidence = "medium"
+        notes.append("The listing text mentions worldwide wording, but the job feed's location field limits applicants; the feed's field is shown.")
+        for src, t in restricted_from[:2]:
+            ev.append({"signal": src, "text": _snip(t), "effect": "restricted"})
+    elif worldwide_from and restricted_places:
         conflict = True
         etype = "unclear"
         notes.append("The location field and the description disagree about where applicants can be; check the employer's wording.")
@@ -809,7 +824,12 @@ def assess_quality(title, description):
 def classify_listing(title, location="", description="", hint=None, declared_type=None, remote_feed=False):
     work = assess_work_arrangement(title, location, description, hint=hint, remote_feed=remote_feed)
     elig = assess_eligibility(title, location, description,
-                              remote_evidence=work["arrangement"] in (FULLY_REMOTE, REMOTE_UNCLEAR))
+                              remote_evidence=work["arrangement"] in (FULLY_REMOTE, REMOTE_UNCLEAR),
+                              remote_feed=remote_feed)
+    if (work["arrangement"] == REMOTE_UNCLEAR and not remote_feed and elig["type"] in ("countries", "region")
+            and elig["evidence"] and all(e["signal"] in ("location field", "title") for e in elig["evidence"])):
+        elig["notes"].append(f"The location field lists {elig['statedLocation']}, but the listing does not confirm the role is remote there.")
+        elig.update({"type": "unclear", "label": "Eligibility unclear", "countries": [], "regions": [], "confidence": "low"})
     exp = assess_experience(title, description)
     primary, cats = assess_categories(title, description)
     quality = assess_quality(title, description)

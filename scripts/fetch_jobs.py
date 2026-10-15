@@ -466,7 +466,7 @@ def main():
     prev = load_previous()
     records = [to_record(j, prev.get(j["url"])) for j in keep]
 
-    OUTPUT_FILE.write_text(json.dumps(records, indent=1, ensure_ascii=False), encoding="utf-8")
+    OUTPUT_FILE.write_text("[\n" + ",\n".join(json.dumps(r, ensure_ascii=False) for r in records) + "\n]\n", encoding="utf-8")
     REVIEW_FILE.write_text(json.dumps(review[:REVIEW_LIMIT], indent=1, ensure_ascii=False), encoding="utf-8")
     metrics = build_metrics(records, len(raw), len(removed), dead, len(review))
     METRICS_FILE.write_text(json.dumps(metrics, indent=1), encoding="utf-8")

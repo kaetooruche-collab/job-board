@@ -199,6 +199,32 @@ class Eligibility(unittest.TestCase):
         r, d = run("Support Agent", "Remote", "Fully remote. Benefits vary depending on location.")
         self.assertEqual(d, "publish")
 
+    def test_company_level_worldwide_wording_does_not_override_location(self):
+        r, _ = run("Security Engineer", "Remote - US",
+                   "We are a fully remote company. While many roles may function from anywhere in the world, US based team members must be available in Eastern hours.", hint=None)
+        self.assertEqual(r["eligibility"]["label"], "United States only")
+        self.assertFalse(r["eligibility"]["conflict"])
+
+    def test_office_in_location_field_is_onsite_evidence(self):
+        r, d = run("Product Designer", "Paris office", "You can work remote if that is your profile, or from the office.")
+        self.assertNotEqual(d, "publish")
+
+    def test_location_line_in_description_is_role_level_remote(self):
+        r, d = run("Customer Success Manager", "USA", "Location: Remote-first (United States). You will manage accounts.")
+        self.assertEqual(d, "publish")
+        self.assertIn(r["workArrangement"], (FULLY_REMOTE, REMOTE_RESTRICTED))
+
+    def test_company_boilerplate_only_is_low_confidence(self):
+        r, d = run("Customer Success Associate", "Philippines",
+                   "We have an internationally distributed workforce of about 10,000 employees spanning many countries. Support our clients.")
+        self.assertEqual(r["confidence"], "low")
+        self.assertNotEqual(r["eligibility"]["label"], "Philippines only")
+
+    def test_feed_geography_is_trusted(self):
+        r, _ = run("Product Manager", "LATAM, Canada, USA",
+                   "Fully remote. We hire talent from anywhere in the world.", remote_feed=True)
+        self.assertIn("Canada", r["eligibility"]["countries"])
+
 
 class ExperienceAndCategories(unittest.TestCase):
     def test_assistant_with_years_not_entry(self):
