@@ -864,6 +864,9 @@
     .timeline-box h3 { font-size: 1rem; margin-bottom: 0.4rem; }
     .timeline-box p { font-size: 0.88rem; color: rgba(255,255,255,0.85); line-height: 1.65; margin-bottom: 0.5rem; }
     .timeline-box p:last-child { margin-bottom: 0; }
+    .timeline-list { list-style: none; padding: 0; margin: 0 0 0.6rem; display: grid; gap: 0.3rem; }
+    .timeline-list li { position: relative; padding-left: 1.3rem; font-size: 0.88rem; color: rgba(255,255,255,0.9); }
+    .timeline-list li::before { content: "\2713"; position: absolute; left: 0; color: #2dd4bf; font-weight: 700; }
     .illustrative { font-size: 0.78rem; color: var(--text-secondary); font-style: italic; margin-top: 0.9rem; }
     .promise-box { border: 1px solid var(--border); border-left: 4px solid var(--accent); background: var(--surface); border-radius: var(--radius); padding: 1.25rem 1.4rem; }
     .promise-box h2 { font-size: 1.05rem; margin-bottom: 0.5rem; }
@@ -948,7 +951,7 @@
             <li>ATS-optimised formatting and keywords</li>
             <li>Delivered in Word + PDF</li>
             <li><strong>Up to 2 revision rounds</strong></li>
-            <li>Delivered in 5 working days</li>
+            <li>Delivered in 5 working days after onboarding is complete</li>
             <li class="excluded">Cover letter</li>
             <li class="excluded">LinkedIn profile setup</li>
             <li class="excluded">Personal branding and LinkedIn growth</li>
@@ -967,7 +970,7 @@
             <li>Cover letter, targeted to a specific role</li>
             <li>LinkedIn profile setup: keyword-optimised headline, About section, experience aligned with your CV, skills review and recommendations</li>
             <li><strong>Up to 3 revision rounds</strong></li>
-            <li>Delivered in 5 working days</li>
+            <li>Delivered in 5 working days after onboarding is complete</li>
             <li class="excluded">Personal branding strategy</li>
             <li class="excluded">30-day LinkedIn growth service</li>
           </ul>
@@ -983,11 +986,11 @@
           <p class="card-progress">Everything in Professional, plus:</p>
           <ul class="pricing-features">
             <li>Personal branding strategy</li>
-            <li>Manual, targeted LinkedIn connection building, with a target of 500+ connections. It continues past day 30 until the target is reached</li>
+            <li>Manual, targeted LinkedIn connection building, with a target of 500+ total connections. It continues past day 30 until the target is reached</li>
             <li>12 curated LinkedIn posts over 30 days, written and published for you</li>
             <li>30-day LinkedIn growth service</li>
             <li><strong>Up to 3 revision rounds</strong> for your CV, cover letter and LinkedIn profile work</li>
-            <li>The 30 days start when your onboarding is complete</li>
+            <li>All timing starts when your onboarding is complete: CV within 48 hours, LinkedIn profile setup within 5 days, branding and connection building over a 30-day service window</li>
           </ul>
           <a href="#" data-payhip="executive" data-fallback="https://wa.me/905338225854?text=Hi%2C%20I'm%20interested%20in%20the%20Executive%20package%20(%2499)." target="_blank" rel="noopener" class="btn btn-secondary" onclick="trackClick('pricing-executive')">Get started &mdash; $99</a>
           <a href="https://wa.me/905338225854?text=Hi%2C%20I%20have%20a%20question%20about%20the%20Executive%20package." target="_blank" rel="noopener" class="pricing-question-link" onclick="trackClick('pricing-executive-question')">Questions? Chat first</a>
@@ -1006,10 +1009,10 @@
             <tr><th scope="row">LinkedIn profile setup</th><td class="no">&mdash;</td><td class="yes">&#10003;</td><td class="yes">&#10003;</td></tr>
             <tr><th scope="row">Revision rounds for CV, cover letter and LinkedIn profile work</th><td>Up to 2</td><td>Up to 3</td><td>Up to 3</td></tr>
             <tr><th scope="row">Personal branding strategy</th><td class="no">&mdash;</td><td class="no">&mdash;</td><td class="yes">&#10003;</td></tr>
-            <tr><th scope="row">Manual, targeted connection building (target of 500+)</th><td class="no">&mdash;</td><td class="no">&mdash;</td><td class="yes">&#10003;</td></tr>
+            <tr><th scope="row">Manual, targeted connection building (target of 500+ total)</th><td class="no">&mdash;</td><td class="no">&mdash;</td><td class="yes">&#10003;</td></tr>
             <tr><th scope="row">12 LinkedIn posts written and published over 30 days</th><td class="no">&mdash;</td><td class="no">&mdash;</td><td class="yes">&#10003;</td></tr>
             <tr><th scope="row">30-day LinkedIn growth service</th><td class="no">&mdash;</td><td class="no">&mdash;</td><td class="yes">&#10003;</td></tr>
-            <tr><th scope="row">Timing</th><td>5 working days</td><td>5 working days</td><td>30 days, from onboarding</td></tr>
+            <tr><th scope="row">Timing, counted from when onboarding is complete</th><td>5 working days</td><td>5 working days</td><td>CV in 48 hours, LinkedIn profile setup in 5 days, 30-day service</td></tr>
           </tbody>
         </table>
       </div>
@@ -1020,6 +1023,7 @@
       <div class="note-box">
         <strong>Executive: personal branding strategy and LinkedIn content.</strong> These are part of the ongoing service, not the document revision rounds. We first present the proposed branding strategy and content outlines for your review and approval. Work on the content and publishing goes ahead only after you approve the direction. Later changes to an approved strategy or content plan are assessed against the agreed scope of the service and do not use up your document revision rounds. You remain responsible for reviewing and approving the accuracy of your personal details, qualifications, employment history and other factual claims before anything is published.
       </div>
+      <p class="pricing-note">All timing is counted from when your onboarding is complete, that is, once you have sent your current CV and target roles and answered our questions.</p>
       <p class="pricing-note">Not sure which one fits? Message us on WhatsApp and we will recommend a package based on where you are in your job search.</p>
     </section>
 
@@ -1045,7 +1049,7 @@
         <div class="exec-card">
           <h3>Manual, targeted connection building</h3>
           <p>We choose the people to connect with based on your target industry, desired roles, existing experience and expertise, professional positioning and career objectives.</p>
-          <p><strong>Our target is 500+ connections.</strong> The 30 days are the initial service window, not a fixed end date. If you have not reached 500+ by day 30, connection building continues until you do, subject to the agreed scope and your continued cooperation.</p>
+          <p><strong>Our target is 500+ connections in total</strong>, counting the connections you already have. The 30 days are the initial service window, not a fixed end date. If you have not reached 500+ by day 30, connection building continues until you do, subject to the agreed scope and your continued cooperation.</p>
           <p>How long it takes depends on where you start: a profile beginning with 24 connections and one beginning with 134 will not take the same time. Growth stays manual and targeted, prioritising relevant professional connections over indiscriminate requests. We cannot promise how many people accept or how they respond.</p>
         </div>
         <div class="exec-card">
@@ -1056,10 +1060,15 @@
         </div>
       </div>
       <div class="timeline-box">
-        <h3>The 30-day timeline</h3>
-        <p>The Executive service runs for 30 days, starting when your onboarding is complete. Onboarding means you have sent us your current CV and the roles you are targeting, and answered our questions about your goals.</p>
-        <p>The 30 days cover the LinkedIn growth service, targeted connection building and the 12 posts. Your CV, cover letter and LinkedIn profile work, with up to 3 revision rounds, is part of the package.</p>
-        <p>The 30 days are the initial service window. Connection building continues beyond day 30 until the 500+ target is reached.</p>
+        <h3>The Executive timeline</h3>
+        <p>Everything below is counted from when your onboarding is complete. Onboarding means you have sent us your current CV and the roles you are targeting, and answered our questions about your goals.</p>
+        <ul class="timeline-list">
+          <li><strong>CV:</strong> delivered within 48 hours.</li>
+          <li><strong>LinkedIn profile setup:</strong> delivered within 5 days.</li>
+          <li><strong>Personal branding and connection building:</strong> delivered over the initial 30-day service period, together with the 12 posts.</li>
+        </ul>
+        <p>The 30 days are the initial window, not a fixed end date. If you have not reached 500+ total connections by day 30, connection building continues until you do.</p>
+        <p>Dates can move if we are waiting for your information, feedback or approvals. If a delivery date changes materially, we will tell you.</p>
       </div>
     </section>
 
@@ -1082,7 +1091,7 @@
         <div class="step-item">
           <div class="step-number">3</div>
           <h3>Review and apply</h3>
-          <p>Your documents are written for you and delivered within the timing shown for your package. Review them, request changes within your included revision rounds, and start applying.</p>
+          <p>Your documents are written for you and delivered within the timing shown for your package, counted from when onboarding is complete. Review them, request changes within your included revision rounds, and start applying.</p>
         </div>
       </div>
     </section>
@@ -1385,7 +1394,7 @@
             <li>Before work begins, you may request a full refund.</li>
             <li>Once work has started, any refund is assessed based on the work completed, the deliverables already provided and any applicable consumer protection laws.</li>
             <li>If Kaeto Career Services cannot deliver an agreed service, you will be offered an appropriate remedy, such as a revised delivery date, an alternative arrangement or, where applicable, a refund.</li>
-            <li>For Executive, connection building continues beyond the initial 30 days if the 500+ target has not been reached, subject to the agreed scope and your continued cooperation.</li>
+            <li>For Executive, connection building continues beyond the initial 30 days if the 500+ total connections target has not been reached, subject to the agreed scope and your continued cooperation.</li>
           </ul>
         </div>
         <div class="exec-card">
@@ -1408,7 +1417,7 @@
       <div class="faq-list">
         <details>
           <summary>How long does it take?</summary>
-          <div class="faq-answer">Essential and Professional are delivered in 5 working days. Executive is a 30-day service that starts when your onboarding is complete, that is, once you have sent your current CV and target roles and answered our questions.</div>
+          <div class="faq-answer">All timing is counted from when your onboarding is complete, that is, once you have sent your current CV and target roles and answered our questions. Essential and Professional are delivered in 5 working days. For Executive, your CV is delivered within 48 hours and your LinkedIn profile setup within 5 days; the branding and connection building run over an initial 30-day service period. Dates can move if we are waiting for your information, feedback or approvals.</div>
         </details>
         <details>
           <summary>How many revisions do I get?</summary>
@@ -1420,7 +1429,7 @@
         </details>
         <details>
           <summary>Will I get 500+ connections?</summary>
-          <div class="faq-answer">500+ is our target for the Executive package. The 30 days are the initial service window, not a fixed end date: if you have not reached 500+ by day 30, connection building continues until you do, subject to the agreed scope and your continued cooperation. How long it takes depends on your starting point: someone beginning with 24 connections and someone beginning with 134 will not take the same time. We choose relevant people deliberately, and we cannot promise how many accept or how they respond.</div>
+          <div class="faq-answer">500+ total connections, counting the ones you already have, is our target for the Executive package. The 30 days are the initial service window, not a fixed end date: if you have not reached 500+ by day 30, connection building continues until you do, subject to the agreed scope and your continued cooperation. How long it takes depends on your starting point: someone beginning with 24 connections and someone beginning with 134 will not take the same time. We choose relevant people deliberately, and we cannot promise how many accept or how they respond.</div>
         </details>
         <details>
           <summary>What is your refund and cancellation policy?</summary>
