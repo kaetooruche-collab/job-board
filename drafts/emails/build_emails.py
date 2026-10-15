@@ -109,7 +109,7 @@ T["TR-06 Privacy request received"] = ("We received your request about your info
 T["TR-07 Newsletter welcome"] = ("Welcome to True Remote job alerts", "You are on the list. Here is what to expect.",
  h("Welcome to True Remote") +
  p('Hi {{ contact.FIRSTNAME | default:"there" }},') +
- p("Thanks for signing up. True Remote lists remote jobs from employers' own career pages, so every listing links to the real posting, shows its source and posting date, and states where applicants may live as the employer says it.") +
+ p("Thanks for signing up. True Remote lists remote jobs and links each one to the original posting, with its source and posting date, and states where applicants may live as the employer says it.") +
  box("<strong>What to expect</strong>" + ul([
    "A weekly email with recent remote jobs across many fields and experience levels.",
    "Each job shows what the employer states about eligibility. Some jobs are marked \"not confirmed\" when the posting is unclear.",

@@ -1,6 +1,6 @@
 # Decision review: client emails and the "check spam / Promotions" reminder
 
-Status: PROPOSED, awaiting KT's approval. Nothing has been created in Brevo.
+Status: DECIDED by KT (2026-10-15): proceed with Brevo using the Gmail sender. KT tested Brevo and clients receive emails in their inbox. Improving deliverability (custom domain, DKIM/DMARC) is deferred, not rejected. Templates 20-26 created. Revisit when the domain is bought, or if clients report missing emails.
 
 ## Question
 (1) Where should the "check Promotions and Spam" reminder live? (2) Should the client emails (order, onboarding, delivery, completion) be sent from Brevo templates with sender "True Remote <trueremote.jobs@gmail.com>"?
