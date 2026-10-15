@@ -1,3 +1,23 @@
+# Status update (after your answers)
+
+**Rebuilt page:** `services.html` now follows your brief: three packages ($29, $49, $99) with exactly the deliverables and revision limits you listed, a side-by-side table, an Executive section explaining personal branding, connection building, content and the timeline, and a "What we do not promise" box.
+
+**Your answers, applied**
+- Connection method and posting method: not on the page.
+- 500+: "Our target is 500+ connections", with timing depending on the starting point (24 versus 134 connections). Not worded as a guarantee, and it does not say how many accept.
+- The 30 days start when onboarding is complete (the client has sent their current CV and target roles and answered our questions).
+
+**Still open (nothing published about these)**
+- What happens at day 30 if a client has not reached 500+ connections: the service stops, or continues until reached? (The page is silent on this.)
+- Refunds, cancellation and privacy: none on the page.
+- What counts as a revision round, and any time limit.
+- How posts and the branding strategy are approved during the 30 days.
+- Document delivery time inside Executive (the page states only the 30-day service).
+- Whether the old Complete extras (personal statement, interview prep, 15-minute call, unlimited revisions) are gone for good. They are not on the page.
+- Founder text: only "Hi, I'm Kaeto." and the role line were added. Please confirm the name and that the "hundreds of applications" statement is true.
+
+---
+
 # Kaeto Career Services: landing page audit and decisions needed
 
 Reviewed on 2026-10-15. Pages inspected: the rebuilt services page (`drafts/services-rebuild.html`, the one you saw on the preview link) and the older page that is live on the main site (381 lines, no prices).

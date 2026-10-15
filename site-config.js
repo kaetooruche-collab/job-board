@@ -9,7 +9,6 @@ const SITE = {
   payhip: {
     essential: '',
     professional: '',
-    complete: '',
-    growth: ''
+    executive: ''
   }
 };
