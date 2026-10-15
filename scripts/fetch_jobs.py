@@ -189,25 +189,37 @@ def fetch_ashby_board(board):
 JOBICY_INDUSTRIES = ["", "supporting", "admin-support", "accounting-finance", "marketing", "copywriting",
                      "business", "hr", "data-science", "design-multimedia", "management"]
 
+# Search terms that surface roles people can start without years of experience.
+# Edit this list to change what the six-hourly refresh looks for.
+JOBICY_ENTRY_TERMS = ["junior", "entry-level", "internship", "graduate", "virtual assistant", "data entry",
+                      "customer service", "customer support", "chat support", "executive assistant",
+                      "bookkeeper", "tutor", "transcription", "social media", "content moderator"]
+
+
+def _jobicy_record(j):
+    geo = j.get("jobGeo") or ""
+    smin, smax = j.get("salaryMin"), j.get("salaryMax")
+    desc = j.get("jobDescription", "")
+    level = (j.get("jobLevel") or "").lower()
+    if "entry" in level or "junior" in level:
+        desc += "\n<p>Experience level (from the job feed): entry-level.</p>"
+    return {
+        "title": j.get("jobTitle", ""), "company": j.get("companyName", ""), "url": j.get("url", ""),
+        "location": geo or "Anywhere", "description": desc, "hint": None,
+        "posted": parse_dt((j.get("pubDate") or "").replace(" ", "T")),
+        "source": "Jobicy", "employment": ", ".join(j.get("jobType") or []) or None,
+        "salary": _salary_text(j.get("salaryCurrency"), j.get("salaryPeriod"), smin, smax),
+        "remote_feed": True,
+    }
+
 
 def fetch_jobicy():
     out = []
-    for ind in JOBICY_INDUSTRIES:
-        params = {"count": 50}
-        if ind:
-            params["industry"] = ind
-        data = get_json("https://jobicy.com/api/v2/remote-jobs", params=params, timeout=30)
-        for j in (data or {}).get("jobs", []):
-            geo = j.get("jobGeo") or ""
-            smin, smax = j.get("salaryMin"), j.get("salaryMax")
-            out.append({
-                "title": j.get("jobTitle", ""), "company": j.get("companyName", ""), "url": j.get("url", ""),
-                "location": geo or "Anywhere", "description": j.get("jobDescription", ""), "hint": None,
-                "posted": parse_dt((j.get("pubDate") or "").replace(" ", "T")),
-                "source": "Jobicy", "employment": ", ".join(j.get("jobType") or []) or None,
-                "salary": _salary_text(j.get("salaryCurrency"), j.get("salaryPeriod"), smin, smax),
-                "remote_feed": True,
-            })
+    queries = [{"industry": ind} if ind else {} for ind in JOBICY_INDUSTRIES]
+    queries += [{"tag": t} for t in JOBICY_ENTRY_TERMS]
+    for q in queries:
+        data = get_json("https://jobicy.com/api/v2/remote-jobs", params={"count": 50, **q}, timeout=30)
+        out.extend(_jobicy_record(j) for j in (data or {}).get("jobs", []))
         time.sleep(0.6)
     return out
 

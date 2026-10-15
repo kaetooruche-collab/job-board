@@ -12,7 +12,7 @@ A free job board of verified remote jobs at every experience level and in every 
 
 Revenue comes from KT's paid CV and LinkedIn services, sold by WhatsApp (+90 533 822 5854) and email. The board earns trust and traffic. Later revenue lines (a seeker plan, employer listings, partners) wait for gates; do not build them.
 
-**Name.** The final name is not chosen yet. Use the placeholder `PROJECT_NAME` in code and copy, kept in ONE config file so a rename is a one-line change. The current contact email (remotenc.jobs@gmail.com) and the old site name will change at the rename; keep them in the same config.
+**Name.** The final name is not chosen yet. Use the placeholder `PROJECT_NAME` in code and copy, kept in ONE config file so a rename is a one-line change. The current contact email (trueremote@gmail.com) and the site name will change at the rename; keep them in the same config.
 
 Already in place and to be kept:
 - Static site on Vercel. A copy of the previous site is in the folder KT downloaded (`remotenc-oct5`); ask KT for its location. Keep the visual style: navy hero, job cards, category filters, search. Remove the country-specific hero copy.
@@ -82,7 +82,7 @@ Each run also writes (a) a ready-to-post WhatsApp message of three to five new l
 Do not start without KT's go-ahead.
 
 ## Not part of this build
-Payments. Services are paid for by hand (bank transfer or the client's local method), so do not add Stripe, PayPal or any checkout. No paywall on listings. No seeker subscription yet.
+Payments are handled by KT's Payhip hosted checkout (decided by KT after this brief was written): the site only links to Payhip product pages via keys in `site-config.js` and never handles card data; until a product key is filled in, the button opens a WhatsApp message instead. Do not add any other payment processor or checkout. No paywall on listings. No seeker subscription yet.
 
 ## Acceptance tests (show KT the evidence for each)
 - 100% of published listings pass the link check at deploy time, and each links to the employer's or source's specific posting.
