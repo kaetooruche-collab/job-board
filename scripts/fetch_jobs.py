@@ -40,6 +40,8 @@ BOARDS_FILE = REPO_ROOT / "data" / "boards.json"
 MAX_AGE_DAYS = 30
 MAX_PER_COMPANY = 15
 MAX_LISTINGS = 1200
+LOG_SAMPLE = 40
+REVIEW_LIMIT = 150
 
 S = requests.Session()
 S.headers.update({"User-Agent": "JobBoard/1.0 (remote job board; contact via site)"})
@@ -290,13 +292,19 @@ def process(raw, removed, review):
                                  remote_feed=j.get("remote_feed", False))
         decision, why = C.feed_decision(res)
         if decision == "exclude":
-            drops[f"excluded: {why}"] += 1; removed.append(f"{why} | {tag}"); continue
+            drops[f"excluded: {why}"] += 1
+            if why.startswith(("hybrid", "on-site")):
+                if drops[f"excluded: {why}"] <= LOG_SAMPLE:
+                    removed.append(f"{why} (sample) | {tag}")
+            else:
+                removed.append(f"{why} | {tag}")
+            continue
         if decision == "review":
             drops["sent-to-review"] += 1
             removed.append(f"review: {why} | {tag}")
             review.append({
                 "title": title, "company": j["company"], "url": url, "location": j.get("location"),
-                "reason": why, "scores": res["scores"], "evidence": res["evidence"][:6],
+                "reason": why, "scores": res["scores"], "evidence": res["evidence"][:4],
                 "unresolved": res["unresolvedQuestions"], "source": j["source"],
             })
             continue
@@ -327,6 +335,9 @@ def dedupe(items, removed):
     return out
 
 
+capped_out = [0]
+
+
 def cap_per_company(items, removed):
     items.sort(key=lambda x: x["posted"], reverse=True)
     counts, out = Counter(), []
@@ -336,7 +347,7 @@ def cap_per_company(items, removed):
             counts[c] += 1
             out.append(j)
         else:
-            removed.append(f"company-cap | {j['title']} | {j['company']} | {j['url']}")
+            capped_out[0] += 1
     return out
 
 
@@ -388,7 +399,7 @@ def to_record(j, first_seen):
         "unresolvedQuestions": r["unresolvedQuestions"],
         "evidence": [{"signal": e["signal"], "text": e["text"], "effect": e["effect"]} for e in r["evidence"][:3]],
         "eligibility": {
-            "type": el["type"], "label": el["label"], "countries": el["countries"], "regions": el["regions"],
+            "type": el["type"], "label": el["label"], "countries": [] if el["type"] == "region" else el["countries"], "regions": el["regions"],
             "authorizationRequired": el["authorizationRequired"], "contractorNote": el["contractorNote"],
             "confidence": el["confidence"], "notes": el["notes"][:2],
         },
@@ -400,7 +411,7 @@ def to_record(j, first_seen):
         "firstSeenAt": first_seen or NOW.isoformat(),
         "lastVerifiedAt": NOW.isoformat(),
         "flags": r["quality"]["flags"] + r["flags"],
-        "description": desc[:420],
+        "description": desc[:300],
     }
 
 
@@ -456,11 +467,14 @@ def main():
     records = [to_record(j, prev.get(j["url"])) for j in keep]
 
     OUTPUT_FILE.write_text(json.dumps(records, indent=1, ensure_ascii=False), encoding="utf-8")
-    REVIEW_FILE.write_text(json.dumps(review[:300], indent=1, ensure_ascii=False), encoding="utf-8")
+    REVIEW_FILE.write_text(json.dumps(review[:REVIEW_LIMIT], indent=1, ensure_ascii=False), encoding="utf-8")
     metrics = build_metrics(records, len(raw), len(removed), dead, len(review))
     METRICS_FILE.write_text(json.dumps(metrics, indent=1), encoding="utf-8")
     REMOVED_LOG.parent.mkdir(parents=True, exist_ok=True)
-    REMOVED_LOG.write_text(f"# Removed listings, {NOW.isoformat()}\n" + "\n".join(removed) + "\n", encoding="utf-8")
+    header = [f"# Removed listings, {NOW.isoformat()}",
+              f"# Routine exclusions are counted, not listed: hybrid/on-site/no remote evidence and company-cap ({capped_out[0]} over the per-company cap).",
+              f"# Up to {LOG_SAMPLE} sample lines are kept for each hybrid/on-site reason so the reasoning can be checked."]
+    REMOVED_LOG.write_text("\n".join(header + removed) + "\n", encoding="utf-8")
 
     print(f"\nPublished {len(records)} listings, {len(review)} sent to review, {len(removed)} removal entries.")
     for k in ("byArrangement", "byEligibilityType", "byLevel", "byCategory"):

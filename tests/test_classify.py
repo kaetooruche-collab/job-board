@@ -104,6 +104,24 @@ class WorkArrangement(unittest.TestCase):
         r, d = run("Analyst", "Remote", "This role is not remote. Candidates work on-site five days a week.")
         self.assertNotEqual(d, "publish")
 
+    def test_work_from_home_some_days_is_hybrid(self):
+        r, d = run("Integration Engineer", "Vancouver, BC",
+                   "This role is based in our office with an office-centric hybrid schedule. The standard in-office days are Monday, Tuesday and Thursday. Most of us work from home on Wednesdays.")
+        self.assertEqual(r["workArrangement"], HYBRID)
+        self.assertEqual(d, "exclude")
+        self.assertFalse(r["conflict"])
+
+    def test_balanced_policy_sentence_is_not_remote_proof(self):
+        r, d = run("Account Executive", "London, England",
+                   "Our team has a hybrid working policy. We believe working in person helps us stay connected while still providing flexibility to work remotely.")
+        self.assertEqual(d, "exclude")
+
+    def test_remote_first_but_not_remote_only_company(self):
+        r, d = run("Market Operations Specialist", "Remote - USA",
+                   "We are a remote-first, but not remote-only company. Expect to get together quarterly for in-person working sessions.")
+        self.assertEqual(d, "publish")
+        self.assertEqual(r["officeAttendance"], "occasional")
+
 
 class Eligibility(unittest.TestCase):
     def test_worldwide(self):

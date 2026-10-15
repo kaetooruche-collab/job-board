@@ -1136,7 +1136,14 @@
       var el = job.eligibility || {};
       if (country === '__worldwide') return el.type === 'worldwide';
       if (el.type === 'worldwide') return true;
-      if (el.type === 'countries' || el.type === 'region') return (el.countries || []).indexOf(country) !== -1;
+      if (el.type === 'countries') return (el.countries || []).indexOf(country) !== -1;
+      if (el.type === 'region') {
+        if ((el.countries || []).indexOf(country) !== -1) return true;
+        return (el.regions || []).some(function(r) {
+          var reg = geoLexicon && geoLexicon.regions && geoLexicon.regions[r];
+          return reg ? reg.members.indexOf(country) !== -1 : true;
+        });
+      }
       return true;
     }
 

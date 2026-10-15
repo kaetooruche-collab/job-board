@@ -220,6 +220,7 @@ HYBRID_PATTERNS = [
     (re.compile(r"\b(?:office|on-?site|in person)\b[^.]{0,40}\b(?:every|each)\s+(?:monday|tuesday|wednesday|thursday|friday|week)\b", re.I), 3.0, "recurring office day"),
     (re.compile(r"\bmust (?:attend|come|be present|report|be (?:in|at|on))[^.]{0,40}\b(?:office|on-?site|in person|headquarters|hq)\b", re.I), 2.5, "must attend office"),
     (re.compile(r"\bflexible hybrid\b|\bhybrid (?:work|schedule|model|arrangement)\b", re.I), 3.0, "hybrid wording"),
+    (re.compile(r"\bwork(?:ing)? from home\s+(?:on\s+)?(?:\d|one|two|three|four|(?:mon|tues|wednes|thurs|fri)days?)\b|\b(?:\d|one|two|three|four)\s*days?\s*(?:a|per|each)\s*week\s*(?:from home|remote(?:ly)?|working remotely)\b", re.I), 3.0, "partial home working"),
 ]
 ONSITE_PATTERNS = [
     (re.compile(r"\bon[- ]?site\b", re.I), 2.0, "on-site wording"),
@@ -230,7 +231,7 @@ ONSITE_PATTERNS = [
     (re.compile(r"\bcommut\w+", re.I), 1.0, "commute mentioned"),
     (re.compile(r"\bphysical presence\b|\bat our office\b", re.I), 2.0, "physical presence"),
 ]
-NOT_REMOTE_RE = re.compile(r"\b(?:not|isn't|no)\s+(?:a\s+|an\s+)?(?:fully\s+)?remote\b|\bremote (?:work )?(?:is )?not (?:available|possible|permitted|offered|an option)\b|\bno remote\b|\bnot eligible for remote\b", re.I)
+NOT_REMOTE_RE = re.compile(r"\b(?:not|isn't|no)\s+(?:a\s+|an\s+)?(?:fully\s+)?remote\b(?![- ]only|[- ]first)|\bremote (?:work )?(?:is )?not (?:available|possible|permitted|offered|an option)\b|\bno remote\b|\bnot eligible for remote\b", re.I)
 OCCASIONAL_RE = re.compile(
     r"\boccasional(?:ly)?\b|\b(?:quarterly|annual(?:ly)?|bi-?annual(?:ly)?|twice a year|once a year|a few times (?:a|per) year|periodic(?:ally)?|from time to time|infrequent(?:ly)?)\b"
     r"|\b(?:company|team)[- ](?:retreat|offsite|off-site|meetup|summit|get-together|gathering)s?\b|\b(?:retreat|offsite|off-site|meetup)s?\b|\bas needed\b|\bwhen needed\b|\bad[- ]?hoc\b|\bon occasion\b|\brarely\b|\b(?:team )?gatherings?\b|\bmay be (?:asked|required|invited|expected) to (?:report|attend|travel|come|meet)", re.I)
@@ -243,6 +244,7 @@ REMOTE_AFTER_RE = re.compile(r"\bremote\s+(?:after|following|upon|once)\b[^.]{0,
 VIRTUAL_TRAINING_RE = re.compile(r"\b(?:virtual|online|remote)\s+(?:training|onboarding)\b", re.I)
 
 
+MIXED_RE = re.compile(r"\b(?:office|in[- ]person|on-?site|in-?office|hybrid)\b", re.I)
 ARR_CTX_RE = re.compile(r"\b(?:office|on-?site|remote(?:ly)?|days?|week|working|work (?:from|arrangement|model|schedule|policy)|schedule|commut\w*|in[- ]person|location|attend|presence)\b", re.I)
 TECH_HYBRID_RE = re.compile(r"^hybrid[- ]?(?:cloud|multi-?cloud|analy\w+|go-to-market|gtm|search|deploy\w*|infra\w*|app\w*|vehicle|encrypt\w*|integration|sales|motion|approach|architecture|solutions?|environments?|talent|delivery|experiences?|formats?|engineering|events?|models? (?:of|for) (?:delivery|talent|consulting))", re.I)
 COMPANY_HYBRID_RE = re.compile(
@@ -318,6 +320,30 @@ def assess_work_arrangement(title, location, description, hint=None, remote_feed
         company_level = bool(COMPANY_LEVEL_RE.search(s)) and bool(BARE_REMOTE_RE.search(s))
         if NOT_REMOTE_RE.search(s):
             office += 3.0; add("description", s, "on_site"); continue
+        occasional_here = bool(OCCASIONAL_RE.search(s)) and bool(OFFICE_WORD_RE.search(s))
+        company_hybrid = bool(COMPANY_HYBRID_RE.search(s))
+        hy_hit = False
+        for rx, w, label in HYBRID_PATTERNS:
+            m = rx.search(s)
+            if not m or _negated(s, m):
+                continue
+            if label in ("hybrid wording", "partially remote"):
+                if TECH_HYBRID_RE.search(s[m.start(): m.start() + 40]) or re.search(r"(?:cloud|multi|self-?hosted|and)\s*$", s[max(0, m.start() - 14): m.start()], re.I):
+                    continue
+                if not ARR_CTX_RE.search(s):
+                    continue
+            if occasional_here and label == "must attend office":
+                break
+            if company_hybrid:
+                office += 0.8; add("description (company-level wording)", s, "unclear")
+                unresolved.append("The listing mentions hybrid arrangements in general terms; confirm what applies to this role.")
+            else:
+                office += w; add("description", s, "hybrid"); recurring_seen = True
+            hy_hit = True
+            break
+        if hy_hit:
+            continue
+        mixed = bool(MIXED_RE.search(s))
         # remote evidence
         matched_strong = False
         for rx, wt in STRONG_REMOTE_RE:
@@ -329,9 +355,9 @@ def assess_work_arrangement(title, location, description, hint=None, remote_feed
                     add("description (company-level wording, not counted)", s, "unclear")
                 elif strong_hits < 2:
                     strong_hits += 1
-                    remote += wt
-                    add("description", s, "remote")
-                    if re.search(r"(fully|100%|completely|entirely|totally)[ -]remote|remote[- ]first|work from anywhere|location[- ]independent", s, re.I):
+                    remote += 0.5 if mixed else wt
+                    add("description (mixed office and remote wording)" if mixed else "description", s, "remote (weak)" if mixed else "remote")
+                    if not mixed and re.search(r"(fully|100%|completely|entirely|totally)[ -]remote|remote[- ]first|work from anywhere|location[- ]independent", s, re.I):
                         full_remote_explicit = True
                 break
         if not matched_strong:
@@ -348,30 +374,7 @@ def assess_work_arrangement(title, location, description, hint=None, remote_feed
                     if bare_hits == 1:
                         add("description", s, "remote (weak)")
 
-        # office evidence (hybrid first, then on-site)
-        occasional_here = bool(OCCASIONAL_RE.search(s)) and bool(OFFICE_WORD_RE.search(s))
-        hy_hit = False
-        company_hybrid = bool(COMPANY_HYBRID_RE.search(s))
-        for rx, w, label in HYBRID_PATTERNS:
-            m = rx.search(s)
-            if not m or _negated(s, m):
-                continue
-            if label in ("hybrid wording", "partially remote"):
-                if TECH_HYBRID_RE.search(s[m.start(): m.start() + 40]) or re.search(r"(?:cloud|multi|self-?hosted|and)\s*$", s[max(0, m.start() - 14): m.start()], re.I):
-                    continue
-                if not ARR_CTX_RE.search(s):
-                    continue
-            if occasional_here and label == "must attend office":
-                break
-            if company_hybrid:
-                office += 0.8; add("description (company-level wording)", s, "unclear")
-                unresolved.append("The listing mentions hybrid arrangements in general terms; confirm what applies to this role.")
-                hy_hit = True
-                break
-            office += w; add("description", s, "hybrid"); recurring_seen = True; hy_hit = True
-            break
-        if hy_hit:
-            continue
+        # office evidence (on-site wording, attendance)
         if NO_OFFICE_RE.search(s) and not occasional_here:
             remote += 1.0; add("description (explicitly no office)", s, "remote"); attendance = "explicitly_none"
             continue
@@ -412,7 +415,10 @@ def assess_work_arrangement(title, location, description, hint=None, remote_feed
     confidence = "medium"
     r, o = remote, office
 
-    if r >= 2 and o >= 2:
+    if r >= 2 and o >= 2 and o >= 2 * r and o - r >= 3:
+        arrangement = HYBRID if any(e["effect"] == "hybrid" for e in ev) else ON_SITE
+        confidence = "medium"
+    elif r >= 2 and o >= 2:
         conflict = True
         arrangement = HYBRID if o >= r else REMOTE_UNCLEAR
         confidence = "low"
