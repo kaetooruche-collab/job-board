@@ -7,14 +7,18 @@
 - 500+: "Our target is 500+ connections", with timing depending on the starting point (24 versus 134 connections). Not worded as a guarantee, and it does not say how many accept.
 - The 30 days start when onboarding is complete (the client has sent their current CV and target roles and answered our questions).
 
-**Still open (nothing published about these)**
-- What happens at day 30 if a client has not reached 500+ connections: the service stops, or continues until reached? (The page is silent on this.)
-- Refunds, cancellation and privacy: none on the page.
-- What counts as a revision round, and any time limit.
-- How posts and the branding strategy are approved during the 30 days.
-- Document delivery time inside Executive (the page states only the 30-day service).
-- Whether the old Complete extras (personal statement, interview prep, 15-minute call, unlimited revisions) are gone for good. They are not on the page.
-- Founder text: only "Hi, I'm Kaeto." and the role line were added. Please confirm the name and that the "hundreds of applications" statement is true.
+**Applied from your latest answers (preview only, not live)**
+- Connection building continues past day 30 until 500+ is reached; the 30 days are the initial window.
+- Refund and cancellation terms, and the CV and personal-information terms (90-day deletion), published as you wrote them.
+- Revision rounds defined (one consolidated response per round; extra revisions possible at extra cost); branding strategy and content approved first, with factual accuracy the client's responsibility.
+- "Hi, I'm Kaeto." and "I've reviewed hundreds of applications" kept (you confirmed item 5).
+
+**Still open (held until you answer)**
+1. Revision rounds: your note says "each service includes two revision rounds", but your brief says Essential 2, Professional 3, Executive 3. The page keeps 2 / 3 / 3 for now.
+2. Executive timeline: your note says the 30 days begin on the date of purchase, with a CV in 48 hours and LinkedIn setup in 5 days. Earlier you said the 30 days start when onboarding is completed. The page keeps "from onboarding" for now.
+3. Does "500+" mean total connections or 500 new ones? The page says "500+ connections" without saying.
+4. A separate Privacy Policy page needs facts only you have (where files are stored, which tools you use, how people ask for their data). Not drafted.
+5. Wording I changed: "assessed against the agreed scope and revision allowance" became "assessed against the agreed scope of the service and do not use up your document revision rounds".
 
 ---
 
