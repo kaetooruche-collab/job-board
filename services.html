@@ -957,7 +957,7 @@
             <li class="excluded">LinkedIn profile setup</li>
             <li class="excluded">Personal branding and LinkedIn growth</li>
           </ul>
-          <a href="#" data-payhip="essential" data-fallback="https://wa.me/905338225854?text=Hi%2C%20I'm%20interested%20in%20the%20Essential%20package%20(%2429)." target="_blank" rel="noopener" class="btn btn-outline" onclick="trackClick('pricing-essential')">Get started &mdash; $29</a>
+          <a href="https://wa.me/905338225854?text=Hi%2C%20I'm%20interested%20in%20the%20Essential%20package%20(%2429)." target="_blank" rel="noopener" class="btn btn-outline" onclick="trackClick('pricing-essential')">Get started &mdash; $29</a>
           <a href="https://wa.me/905338225854?text=Hi%2C%20I%20have%20a%20question%20about%20the%20Essential%20package." target="_blank" rel="noopener" class="pricing-question-link" onclick="trackClick('pricing-essential-question')">Questions? Chat first</a>
         </div>
 
@@ -975,7 +975,7 @@
             <li class="excluded">Personal branding strategy</li>
             <li class="excluded">30-day LinkedIn growth service</li>
           </ul>
-          <a href="#" data-payhip="professional" data-fallback="https://wa.me/905338225854?text=Hi%2C%20I'm%20interested%20in%20the%20Professional%20package%20(%2449)." target="_blank" rel="noopener" class="btn btn-outline" onclick="trackClick('pricing-professional')">Get started &mdash; $49</a>
+          <a href="https://wa.me/905338225854?text=Hi%2C%20I'm%20interested%20in%20the%20Professional%20package%20(%2449)." target="_blank" rel="noopener" class="btn btn-outline" onclick="trackClick('pricing-professional')">Get started &mdash; $49</a>
           <a href="https://wa.me/905338225854?text=Hi%2C%20I%20have%20a%20question%20about%20the%20Professional%20package." target="_blank" rel="noopener" class="pricing-question-link" onclick="trackClick('pricing-professional-question')">Questions? Chat first</a>
         </div>
 
@@ -993,7 +993,7 @@
             <li><strong>Up to 3 revision rounds</strong> for your CV, cover letter and LinkedIn profile work</li>
             <li>All timing starts when your onboarding is complete: CV and cover letter within 48 hours (2 working days), LinkedIn profile setup within 5 working days, branding and connection building over a 30-day service window</li>
           </ul>
-          <a href="#" data-payhip="executive" data-fallback="https://wa.me/905338225854?text=Hi%2C%20I'm%20interested%20in%20the%20Executive%20package%20(%2499)." target="_blank" rel="noopener" class="btn btn-secondary" onclick="trackClick('pricing-executive')">Get started &mdash; $99</a>
+          <a href="https://wa.me/905338225854?text=Hi%2C%20I'm%20interested%20in%20the%20Executive%20package%20(%2499)." target="_blank" rel="noopener" class="btn btn-secondary" onclick="trackClick('pricing-executive')">Get started &mdash; $99</a>
           <a href="https://wa.me/905338225854?text=Hi%2C%20I%20have%20a%20question%20about%20the%20Executive%20package." target="_blank" rel="noopener" class="pricing-question-link" onclick="trackClick('pricing-executive-question')">Questions? Chat first</a>
         </div>
       </div>
@@ -1081,13 +1081,12 @@
         <div class="step-item">
           <div class="step-number">1</div>
           <h3>Choose your package</h3>
-          <p data-when="checkout" hidden>Pick the package that fits your needs and pay securely through our checkout.</p>
-          <p data-when="whatsapp">Pick the package that fits your needs and message us on WhatsApp to get started.</p>
+          <p>Pick the package that fits your needs and message us on WhatsApp. We confirm your choice and send you our payment details directly. There is no online checkout on this website.</p>
         </div>
         <div class="step-item">
           <div class="step-number">2</div>
           <h3>Send us your details</h3>
-          <p>After you choose a package, we email you with simple instructions. Reply to that email with your current CV and any other documents. Please do not send documents over WhatsApp; WhatsApp is for chatting and questions only. If you do not see our email within a few minutes, please check your Promotions and Spam folders and move it to your main inbox. Tell us the roles you are targeting and answer a few questions about your goals. Onboarding is complete once we have all of this, and all timing starts then.</p>
+          <p>Once we confirm your payment, we email you with simple instructions. Reply to that email with your current CV and any other documents. Please do not send documents over WhatsApp; WhatsApp is for chatting and questions only. If you do not see our email within a few minutes, please check your Promotions and Spam folders and move it to your main inbox. Tell us the roles you are targeting and answer a few questions about your goals. Onboarding is complete once we have all of this, and all timing starts then.</p>
         </div>
         <div class="step-item">
           <div class="step-number">3</div>
@@ -1455,7 +1454,7 @@
         </details>
         <details>
           <summary>How do I pay?</summary>
-          <div class="faq-answer"><span data-when="checkout" hidden>Click &ldquo;Get started&rdquo; on your package to pay through our secure checkout partner, Payhip. You pay once for the package you choose.</span><span data-when="whatsapp">Click &ldquo;Get started&rdquo; on your package to message us on WhatsApp and we will take you through payment. You pay once for the package you choose.</span></div>
+          <div class="faq-answer">Message us on WhatsApp to confirm your package. We then send you our payment details directly, and you pay once for the package you choose by bank transfer in one of several currencies (for example USD, EUR, GBP or TL) or by cryptocurrency. We only share payment details with you directly, from the WhatsApp number shown on this page. Please do not pay to details you received from anyone else. If something looks unusual, message us first.</div>
         </details>
         <details>
           <summary>Is this only for remote job seekers?</summary>
@@ -1495,7 +1494,7 @@
 
   <script src="/site-config.js"></script>
 
-  <!-- Click tracking & Payhip checkout wiring -->
+  <!-- Click tracking -->
   <script>
     function trackClick(name) {
       if (window.goatcounter && window.goatcounter.count) {
@@ -1503,23 +1502,6 @@
       }
     }
 
-    (function () {
-      var keys = (typeof SITE !== 'undefined' && SITE.payhip) ? SITE.payhip : {};
-      var hasCheckout = Object.keys(keys).some(function (k) { return keys[k]; });
-      document.querySelectorAll('[data-when]').forEach(function (el) {
-        el.hidden = (el.getAttribute('data-when') === 'checkout') !== hasCheckout;
-      });
-      var buttons = document.querySelectorAll('[data-payhip]');
-      for (var i = 0; i < buttons.length; i++) {
-        var btn = buttons[i];
-        var key = keys[btn.getAttribute('data-payhip')];
-        if (key) {
-          btn.href = 'https://payhip.com/buy?link=' + key;
-        } else {
-          btn.href = btn.getAttribute('data-fallback') || '#';
-        }
-      }
-    })();
   </script>
 
 </body>

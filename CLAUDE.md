@@ -93,7 +93,7 @@ Each run also writes (a) a ready-to-post WhatsApp message of three to five new l
 Do not start without KT's go-ahead.
 
 ## Not part of this build
-Payments are handled by KT's Payhip hosted checkout (decided by KT after this brief was written): the site only links to Payhip product pages via keys in `site-config.js` and never handles card data; until a product key is filled in, the button opens a WhatsApp message instead. Do not add any other payment processor or checkout. No paywall on listings. No seeker subscription yet.
+Payments (decided by KT, 2026-10-15, replacing the earlier Payhip decision): there is NO payment of any kind on the website. Buttons open WhatsApp with a pre-filled message; KT then gives the client bank-transfer details (USD, EUR, GBP, TL) or crypto details in the chat; documents are sent only by email. Do not add any payment processor or checkout. No paywall on listings. No seeker subscription yet. WhatsApp message wording lives in `drafts/whatsapp-messages.md`; the payment decision review is `drafts/decisions/2026-10-15-payments.md`.
 
 ## Acceptance tests (show KT the evidence for each)
 - 100% of published listings pass the link check at deploy time, and each links to the employer's or source's specific posting.
