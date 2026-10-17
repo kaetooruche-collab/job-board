@@ -222,6 +222,8 @@ COMPANY_LEVEL_RE = re.compile(
     r"|\bremote work,\s|\bremote work (?:stipend|budget|setup|allowance|equipment)|\bwork from home (?:stipend|budget|allowance|setup|equipment)", re.I)
 
 HYBRID_PATTERNS = [
+    (re.compile(r"#\s*LI\s*[-_]?\s*hybrid\b", re.I), 4.0, "#LI-Hybrid tag"),
+    (re.compile(r"\b(?:required|expected|need(?:ed)?|must)\b[^.]{0,30}\bwork(?:ing)? (?:from|at|in) (?:a |an |our |the |one of our )?(?:[\w-]+\s){0,3}?(?:office|hq|headquarters)\b[^.]{0,40}\b(?:\d|one|two|three|four|five)\s*days?\s*(?:a|per|each|every)\s*(?:week|month)", re.I), 3.5, "set office days"),
     (re.compile(r"\(\s*hybrid\s*\)", re.I), 4.0, "(Hybrid) given as the location"),
     (re.compile(r"\bhybrid\b", re.I), 3.0, "hybrid wording"),
     (re.compile(r"\b(?:partially|partly) remote\b", re.I), 3.0, "partially remote"),
@@ -602,7 +604,8 @@ def assess_eligibility(title, location, description, remote_evidence=False, remo
     title_places = []
     m = re.search(r"[-,(]\s*([A-Za-z .&/]+?)\s*\)?\s*$", title or "")
     if m:
-        title_places = [p for p in g.find_places(m.group(1)) if p["kind"] in ("country", "region")]
+        title_kinds = ("country", "region") if loc_places else ("country", "region", "state")
+        title_places = [p for p in g.find_places(m.group(1)) if p["kind"] in title_kinds]
 
     desc_ww, desc_places, tz_hit = [], [], None
     excluded_places = []
@@ -668,6 +671,8 @@ def assess_eligibility(title, location, description, remote_evidence=False, remo
         if p["kind"] in ("state", "city"):
             label_name = re.sub(r"\s+", " ", p["raw"]).strip()
             label_name = label_name.upper() if len(label_name) <= 3 else label_name.title()
+            if p["kind"] == "city" and any(q["kind"] == "country" and q["name"] != p["name"] for q in restricted_places):
+                label_name += f" ({p['name']})"
         elif p["kind"] == "country":
             label_name = p["name"]
         else:
