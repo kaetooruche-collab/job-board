@@ -337,6 +337,23 @@ class Quality(unittest.TestCase):
         notes = r["eligibility"]["notes"]
         self.assertFalse(any("cannot hire in" in n for n in notes), notes)
 
+    def test_pronoun_us_is_not_a_country(self):
+        import classify as _c
+        g = _c.geo()
+        self.assertEqual(g.find_places("please contact us or join us"), [])
+        self.assertTrue(g.find_places("US only"))
+
+    def test_ordinary_negation_is_not_an_exclusion(self):
+        desc = "Fully remote. After you apply, you will hear back from us even if we don't see an immediate fit."
+        r = classify_listing("Support Agent", "Remote", desc, remote_feed=True)
+        self.assertFalse(any("cannot hire in" in n for n in r["eligibility"]["notes"]), r["eligibility"]["notes"])
+
+    def test_restriction_with_state_exclusion(self):
+        desc = "100% remote work environment: flexible hours (must be based in United States, currently not hiring in Hawaii)."
+        r = classify_listing("Therapist", "Remote", desc, remote_feed=True)
+        self.assertEqual(r["eligibility"]["label"], "United States only")
+        self.assertFalse(any("cannot hire in: United States" in n for n in r["eligibility"]["notes"]), r["eligibility"]["notes"])
+
     def test_real_hiring_exclusion_still_reported(self):
         desc = "This role is fully remote. We are unable to hire in Cuba, Iran and Syria due to sanctions."
         r = classify_listing("Support Agent", "Worldwide", desc, remote_feed=True)

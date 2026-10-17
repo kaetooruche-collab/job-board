@@ -1,6 +1,6 @@
 # WhatsApp message library (True Remote · Kaeto Career Services)
 
-Purpose: every stage of an order is handled on WhatsApp, with documents only by email. Each message is short, plain and polite, and says what happens next. Use the **WhatsApp Business app** (free) so these can be saved as quick replies (type "/" and a shortcut) and as the greeting and away messages. Check the feature names in your app, as they can change.
+Purpose: every stage of an order is handled on WhatsApp, with documents only by email. Each message is short, plain and polite, and says what happens next. Use the **WhatsApp Business app** (already linked to +90 533 822 5854) so these can be saved as quick replies (type "/" and a shortcut) and as the greeting and away messages. Check the feature names in your app, as they can change.
 
 Conventions: `[Square brackets]` = fill in. `*bold*` is WhatsApp bold. Prices, timings and terms below match the services page; do not change them in a chat without updating the page first.
 
@@ -54,10 +54,10 @@ Shortcut `/bank`
 
 ## 6. Payment details: cryptocurrency
 Shortcut `/crypto`
-> Thank you, [First name]. Here are the details for paying with cryptocurrency. I accept Bitcoin (BTC) and USDT.
+> Thank you, [First name]. Here are the details for paying with cryptocurrency. I accept Bitcoin (BTC) on the Bitcoin network and USDT on the Tron (TRC-20) network.
 >
 > *Amount:* [amount] [BTC or USDT]. This is calculated at the exchange rate at the time you pay; I will confirm the exact amount in this chat before you send.
-> *Network:* [Bitcoin network for BTC / the USDT network you use, for example TRC-20 or ERC-20]
+> *Network:* [Bitcoin network for BTC / Tron (TRC-20) for USDT]
 > *Wallet address:* [address]
 >
 > Any network or exchange fees charged to you are yours, so please make sure the full amount arrives.
@@ -72,6 +72,8 @@ Shortcut `/received`
 > If you do not see the email within a few minutes, please check your Promotions and Spam folders and move it to your main inbox.
 >
 > Your delivery time starts when onboarding is complete.
+>
+> By sending me your documents, you ask me to start work straight away.
 
 ## 8. Payment not yet received (gentle follow-up, after 24 hours)
 Shortcut `/awaiting`
@@ -143,8 +145,8 @@ Decided by KT:
 3. **Crypto:** Bitcoin (BTC) and USDT.
 
 Still open:
-- **USDT network(s)** you accept (for example TRC-20 or ERC-20). Offering one network reduces the risk that a client sends on the wrong one.
+- ~~USDT network~~ decided 17 Oct: Tron (TRC-20) for USDT, Bitcoin network for BTC (wallet addresses are kept out of the repository; paste them into the `/crypto` quick reply).
 - **How long a quoted BTC amount stays valid.** Suggestion: 30 minutes, because Bitcoin's price moves.
 - **Account details:** the account holder name must match the name clients see, and details should be sent from this number only (and optionally also by email, so clients can cross-check).
 - **Receipts:** a short receipt or invoice by email once payment is confirmed.
-- **Refunds:** see `drafts/decisions/2026-10-17-refunds-and-500-offer.md`.
+- **Refunds:** wording approved by KT on 17 Oct and published on the services page. The cooling-off line is in message 7.
