@@ -19,12 +19,12 @@ Owner: C = Claude, K = KT. Status is what was verified, not what was hoped.
 - [ ] Brevo: switch the sign-up/welcome automation to template 33 (the old welcome id 12 and campaigns 17/18 contain claims we do not make).
 - [ ] Brevo: delete the old templates 20-26 (replaced by 27-33).
 - [ ] Brevo: test sign-up on the live site with your own email; confirm it lands in list #11.
-- [ ] WhatsApp Business app: profile, greeting, away message, quick replies from `drafts/whatsapp-messages.md`.
+- [ ] WhatsApp Business is already linked to +90 533 822 5854. Remaining: greeting, away message and quick replies from `drafts/whatsapp-messages.md`.
 - [ ] Payment accounts ready: a bank account per currency you will offer, a BTC wallet and a USDT wallet (choose the USDT network).
 - [ ] Post `data/whatsapp_post.txt` from the latest run in your channel.
 
 ## C. Decisions waiting for KT (nothing below is published)
-- [ ] Refund wording: `drafts/decisions/2026-10-17-refunds-and-500-offer.md`
+- [x] Refund wording: approved by KT and published (services page FAQ and terms).
 - [ ] Executive offer for clients already at 500+ connections (recommendation: 100 new relevant connections).
 - [ ] Whether to cap the open-ended "until 500+" promise.
-- [ ] USDT network, BTC quote validity time.
+- [ ] BTC quote validity time (suggestion: 30 minutes). USDT network decided: Tron (TRC-20).
