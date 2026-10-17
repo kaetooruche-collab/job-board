@@ -4,6 +4,17 @@ Save this file as `CLAUDE.md` in the project folder so it is read at the start o
 
 **Version 3 changes (KT, 2026-10-15), which override anything below that says otherwise:** the audience is every job seeker (students, graduates, mid-career, specialists, career changers, freelancers), not only entry-level people; listings span all fields (administration, customer service, sales and marketing, finance and accounting, technology, healthcare, education, legal, HR, and more), not mainly tech; senior and leadership roles are allowed and filterable by level; "remote" is decided by reading the whole posting (see Work-arrangement classification below); remote roles restricted to a country or region are published with the restriction shown, and unconfirmed-but-marketed-as-remote roles are published with a plain "not confirmed" label. Build for the person searching, not for the scraper.
 
+## Working principles (KT, 2026-10-15): apply to every project and every new session
+- Evaluate KT's ideas independently. Neither agree nor disagree without adequate reasoning.
+- Research consequential technical, legal, regulatory, privacy, security and financial questions using current, authoritative sources.
+- Identify assumptions, counterevidence, alternatives, uncertainty, risks and long-term costs.
+- Consider GDPR where applicable, cookies, data protection, intellectual property, licensing, security, dependencies, maintenance and financial viability.
+- Require a documented decision review (`drafts/decisions/`) before substantial or high-risk implementation.
+- Require KT's explicit approval before consequential or irreversible actions (for example: creating things in Brevo that cannot be edited or deleted afterwards, merging to main, spending money, publishing terms).
+- Verify changes with appropriate tests and checks. Never claim verification that was not performed.
+- Use proportionate reviews for minor tasks.
+- KT may override any rule by saying OVERRIDE.
+
 ## Who you are working with
 KT is a marketing professional, not a developer. Explain every step in plain language, one step at a time. Do the typing and running yourself. Ask KT only for things nobody else can do: logins, approvals, decisions. After each phase, summarise in plain language what now works and what KT must do next.
 
@@ -66,7 +77,7 @@ Copy rules for the whole site, emails and messages: never write "no work permit 
 - A script (Node or Python; keep it simple) runs on GitHub Actions every 6 hours plus a manual trigger: fetch, normalise, filter, check links, write the data file and `data/removed.log` (dropped listings with the reason), commit only when something changed. Poll gently: Greenhouse publishes no hard limits but advises every few hours.
 - Record fields: id, title, company, category, jobType, regionAsStated, salaryText (null if not stated), postedAt, applyBefore (null if none), sourceName, sourceUrl, firstSeenAt, lastVerifiedAt, flags.
 - Pages: home (filters by category, job type and posted-within; search; a "last updated" stamp); one page per job (title, company, source link, posted date and time shown relative, e.g. "2 days ago", AND absolute, in the visitor's own time zone, plus last-checked time and an Apply button to the posting); "How we verify"; "Report a listing" (email or WhatsApp link); services page; subscribe form.
-- Services page: describe the CV and LinkedIn services and link to WhatsApp. Prices are placeholders: do NOT publish prices until KT confirms them.
+- Services page: describe the CV and LinkedIn services and link to WhatsApp. KT confirmed three packages: Essential $29, Professional $49, Executive $99 (Executive = Professional + personal branding + 30-day LinkedIn growth service; 12 posts over 30 days; target of 500+ connections, timing depends on the client's starting point; the 30 days start when onboarding is complete). Do not change prices, package names, revision limits (2, 3 and 3), the 12-post commitment, the 30-day period or the 500+ target without KT's explicit approval, and do not publish refund, approval or other service terms KT has not decided. See `drafts/services-audit.md`.
 - Search: JobPosting structured data on each job page, with `datePosted` = the original posting date, expired jobs removed, markup matching the visible page. Because we do not own these listings, check Google's CURRENT job-posting rules before adding markup, and tell KT what you find.
 - Measurement: GoatCounter events on every apply click, with source and listing id (check GoatCounter's current event documentation), and tagged links for channel posts.
 - Two sections, clearly labelled: "Open listings" (from the pipeline) and "Platforms you can sign up to" (a hand-kept `platforms.json`). Each platform entry is verified by opening its signup page, shows no pay claim unless that page states it, and shows no posted date.
@@ -82,7 +93,7 @@ Each run also writes (a) a ready-to-post WhatsApp message of three to five new l
 Do not start without KT's go-ahead.
 
 ## Not part of this build
-Payments are handled by KT's Payhip hosted checkout (decided by KT after this brief was written): the site only links to Payhip product pages via keys in `site-config.js` and never handles card data; until a product key is filled in, the button opens a WhatsApp message instead. Do not add any other payment processor or checkout. No paywall on listings. No seeker subscription yet.
+Payments (decided by KT, 2026-10-15, replacing the earlier Payhip decision): there is NO payment of any kind on the website. Buttons open WhatsApp with a pre-filled message; KT then gives the client bank-transfer details (USD, EUR, GBP, TL) or crypto details in the chat; documents are sent only by email. Do not add any payment processor or checkout. No paywall on listings. No seeker subscription yet. WhatsApp message wording lives in `drafts/whatsapp-messages.md`; the payment decision review is `drafts/decisions/2026-10-15-payments.md`.
 
 ## Acceptance tests (show KT the evidence for each)
 - 100% of published listings pass the link check at deploy time, and each links to the employer's or source's specific posting.
