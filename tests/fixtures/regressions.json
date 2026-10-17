@@ -1,164 +1,194 @@
 [
-  {
-    "name": "pronoun 'us' is not the United States (Zapier text, 17 Oct 2026)",
-    "title": "Account Executive",
-    "location": "Remote",
-    "remote_feed": true,
-    "description": "Fully remote. After you apply, you are going to hear back from us-even if we don't see an immediate fit with our team. Check out this resource for a list of countries where we currently cannot have Zapiens permanently working.",
-    "expect": {
-      "note_absent": [
-        "cannot hire in"
-      ],
-      "countries_exclude": [
-        "United States"
-      ]
-    }
-  },
-  {
-    "name": "restriction plus a state exclusion (Rula text, 17 Oct 2026)",
-    "title": "Therapist",
-    "location": "Remote",
-    "remote_feed": true,
-    "description": "100% remote work environment: Working hours to support a healthy work-life balance, ensuring you can meet both professional and personal commitments (must be based in United States, currently not hiring in Hawaii)",
-    "expect": {
-      "label": "United States only",
-      "note_absent": [
-        "cannot hire in: United States"
-      ]
-    }
-  },
-  {
-    "name": "equal-opportunity text is not a hiring ban (Zapier text, 17 Oct 2026)",
-    "title": "Legal Counsel",
-    "location": "Remote - United States of America",
-    "remote_feed": true,
-    "description": "Fully remote. Zapier does not discriminate based on someone's identity in any aspect of hiring or employment as required by law and in line with our commitment to Diversity, Inclusion, Belonging and Equity.",
-    "expect": {
-      "note_absent": [
-        "cannot hire in"
-      ]
-    }
-  },
-  {
-    "name": "lead / architect title outranks a 2+ years skill requirement (GoFasti, 17 Oct 2026)",
-    "title": "Lead Developer / Architect Web3",
-    "location": "Worldwide",
-    "remote_feed": true,
-    "description": "We need an English-proficient PART-TIME Lead Developer / Architect Web3. Requirements: 2+ years of experience with Solidity.",
-    "expect": {
-      "level": "senior"
-    }
-  },
-  {
-    "name": "'Lead Generation' is not a lead title",
-    "title": "Lead Generation Specialist",
-    "location": "Remote",
-    "remote_feed": true,
-    "description": "Fully remote. 1+ years of experience in outbound sales.",
-    "expect": {
-      "level": "junior"
-    }
-  },
-  {
-    "name": "a real hiring ban is still reported (sanctions list)",
-    "title": "Support Agent",
-    "location": "Worldwide",
-    "remote_feed": true,
-    "description": "Fully remote. We are unable to hire in the following countries: Belarus, Cuba, Iran, North Korea, Syria, Russia.",
-    "expect": {
-      "note_present": [
-        "cannot hire in"
-      ]
-    }
-  },
-  {
-    "name": "legal boilerplate naming cities is not an applicant location (OpenAI, 17 Oct 2026)",
-    "title": "AI Support Engineer - Toronto (Weekend Shift)",
-    "location": "Ontario - Remote",
-    "remote_feed": true,
-    "description": "Fully remote. Background checks for applicants will be administered in accordance with applicable law, and qualified applicants with arrest and conviction records will be considered under the San Francisco Fair Chance Ordinance and the Los Angeles Fair Chance Initiative for Hiring.",
-    "expect": {
-      "label": "Ontario only"
-    }
-  },
-  {
-    "name": "work-authorisation sentence is not a hiring ban (Udacity, 17 Oct 2026)",
-    "title": "Community Moderator (External Contractor) - USA/Canada",
-    "location": "Remote",
-    "remote_feed": true,
-    "description": "Fully remote. Residing in USA/Canada. Applicants for employment in the US must have work authorization that does not now or in the future require sponsorship of a visa for employment authorization in the United States.",
-    "expect": {
-      "label": "United States, Canada",
-      "note_absent": [
-        "cannot hire in"
-      ]
-    }
-  },
-  {
-    "name": "'this role is a hybrid role' contradicts a remote location field and must not be published (Gainsight, 17 Oct 2026)",
-    "title": "Chief of Staff, CEO",
-    "location": "USA - CA - Remote",
-    "remote_feed": true,
-    "hint": "remote",
-    "description": "Fully remote location. This role is a hybrid role based in the USA. You will travel to be onsite with the CEO as needed.",
-    "expect": {
-      "not_published": true
-    }
-  },
-  {
-    "name": "pay tables list states but those are pay zones, and an exclusion list gives the real rule (Twilio, 17 Oct 2026)",
-    "title": "Sales Operations Planning Analyst",
-    "location": "Remote - US",
-    "remote_feed": false,
-    "description": "Location This role will be remote, but is not eligible to be hired in CA, CT, NJ, NY, PA, WA. *Please note the salary range information provided applies only to candidates residing in California, Colorado, Hawaii, Illinois, Maryland, Massachusetts, Minnesota, New Jersey, New York, Vermont, Washington D.C., and Washington State due to local requirements. Based in Colorado, Hawaii, Illinois, Maryland, Massachusetts, Minnesota, Vermont or Washington D.C. Based in New York, New Jersey, Washington State, or California (outside of the San Francisco Bay area): $136,000 Based in the San Francisco Bay area, California: $151,120",
-    "expect": {
-      "label": "United States only",
-      "note_present": [
-        "cannot hire in: California, Connecticut, New Jersey, New York, Pennsylvania, Washington"
-      ]
-    }
-  },
-  {
-    "name": "company office list is not where applicants live (DeepL, 17 Oct 2026)",
-    "title": "Enterprise Account Executive | in Österreich",
-    "location": "Vienna",
-    "remote_feed": true,
-    "description": "We are looking for an exceptional sales professional based in Austria to establish and grow DeepL's presence in the Austrian market. Our global presence is growing, we've doubled in size nearly every year, with our employees based in the UK, Germany, the Netherlands, Poland, the US, and Japan, and we continue to expand our network. Remote work, flexible hours: we offer a remote work schedule for Austria.",
-    "expect": {
-      "label": "Austria only"
-    }
-  },
-  {
-    "name": "office cities beside 'Remote in the US' are options, not the only places (Stripe, 17 Oct 2026)",
-    "title": "SaaS Platform and AI Partner Marketing Lead",
-    "location": "San Francisco, New York, Seattle, Chicago, Atlanta, Remote in the US",
-    "remote_feed": false,
-    "description": "This role is available either in an office or a remote location. We encourage you to apply for roles that match the location where you currently live or plan to live.",
-    "expect": {
-      "label": "United States only"
-    }
-  },
-  {
-    "name": "'unable to accept applicants from outside the US' means US only (Archive, 17 Oct 2026)",
-    "title": "Head of Product",
-    "location": "USA",
-    "remote_feed": true,
-    "description": "Fully remote role. Please note that we are unable to accept applications from candidates outside of the US at this time.",
-    "expect": {
-      "label": "United States only",
-      "note_absent": [
-        "cannot hire in: United States"
-      ]
-    }
-  },
-  {
-    "name": "'London (Hybrid)' in the headline beats work-from-home perks (Monzo Lead Brand Designer, 17 Oct 2026)",
-    "title": "Lead Brand Designer",
-    "location": "London",
-    "remote_feed": false,
-    "description": "We're not about selling products. 📍London (Hybrid) | 💰£75,000 - £95,000 + Incentive Awards. What's in it for you: 🏡We will set you up to work from home. All employees are given Macbooks and for fully remote workers we will provide extra support for your work-from-home setup. #LI-Remote",
-    "expect": {
-      "not_published": true
-    }
+ {
+  "name": "pronoun 'us' is not the United States (Zapier text, 17 Oct 2026)",
+  "title": "Account Executive",
+  "location": "Remote",
+  "remote_feed": true,
+  "description": "Fully remote. After you apply, you are going to hear back from us-even if we don't see an immediate fit with our team. Check out this resource for a list of countries where we currently cannot have Zapiens permanently working.",
+  "expect": {
+   "note_absent": [
+    "cannot hire in"
+   ],
+   "countries_exclude": [
+    "United States"
+   ]
   }
+ },
+ {
+  "name": "restriction plus a state exclusion (Rula text, 17 Oct 2026)",
+  "title": "Therapist",
+  "location": "Remote",
+  "remote_feed": true,
+  "description": "100% remote work environment: Working hours to support a healthy work-life balance, ensuring you can meet both professional and personal commitments (must be based in United States, currently not hiring in Hawaii)",
+  "expect": {
+   "label": "United States only",
+   "note_absent": [
+    "cannot hire in: United States"
+   ]
+  }
+ },
+ {
+  "name": "equal-opportunity text is not a hiring ban (Zapier text, 17 Oct 2026)",
+  "title": "Legal Counsel",
+  "location": "Remote - United States of America",
+  "remote_feed": true,
+  "description": "Fully remote. Zapier does not discriminate based on someone's identity in any aspect of hiring or employment as required by law and in line with our commitment to Diversity, Inclusion, Belonging and Equity.",
+  "expect": {
+   "note_absent": [
+    "cannot hire in"
+   ]
+  }
+ },
+ {
+  "name": "lead / architect title outranks a 2+ years skill requirement (GoFasti, 17 Oct 2026)",
+  "title": "Lead Developer / Architect Web3",
+  "location": "Worldwide",
+  "remote_feed": true,
+  "description": "We need an English-proficient PART-TIME Lead Developer / Architect Web3. Requirements: 2+ years of experience with Solidity.",
+  "expect": {
+   "level": "senior"
+  }
+ },
+ {
+  "name": "'Lead Generation' is not a lead title",
+  "title": "Lead Generation Specialist",
+  "location": "Remote",
+  "remote_feed": true,
+  "description": "Fully remote. 1+ years of experience in outbound sales.",
+  "expect": {
+   "level": "junior"
+  }
+ },
+ {
+  "name": "a real hiring ban is still reported (sanctions list)",
+  "title": "Support Agent",
+  "location": "Worldwide",
+  "remote_feed": true,
+  "description": "Fully remote. We are unable to hire in the following countries: Belarus, Cuba, Iran, North Korea, Syria, Russia.",
+  "expect": {
+   "note_present": [
+    "cannot hire in"
+   ]
+  }
+ },
+ {
+  "name": "legal boilerplate naming cities is not an applicant location (OpenAI, 17 Oct 2026)",
+  "title": "AI Support Engineer - Toronto (Weekend Shift)",
+  "location": "Ontario - Remote",
+  "remote_feed": true,
+  "description": "Fully remote. Background checks for applicants will be administered in accordance with applicable law, and qualified applicants with arrest and conviction records will be considered under the San Francisco Fair Chance Ordinance and the Los Angeles Fair Chance Initiative for Hiring.",
+  "expect": {
+   "label": "Ontario only"
+  }
+ },
+ {
+  "name": "work-authorisation sentence is not a hiring ban (Udacity, 17 Oct 2026)",
+  "title": "Community Moderator (External Contractor) - USA/Canada",
+  "location": "Remote",
+  "remote_feed": true,
+  "description": "Fully remote. Residing in USA/Canada. Applicants for employment in the US must have work authorization that does not now or in the future require sponsorship of a visa for employment authorization in the United States.",
+  "expect": {
+   "label": "United States, Canada",
+   "note_absent": [
+    "cannot hire in"
+   ]
+  }
+ },
+ {
+  "name": "'this role is a hybrid role' contradicts a remote location field and must not be published (Gainsight, 17 Oct 2026)",
+  "title": "Chief of Staff, CEO",
+  "location": "USA - CA - Remote",
+  "remote_feed": true,
+  "hint": "remote",
+  "description": "Fully remote location. This role is a hybrid role based in the USA. You will travel to be onsite with the CEO as needed.",
+  "expect": {
+   "not_published": true
+  }
+ },
+ {
+  "name": "pay tables list states but those are pay zones, and an exclusion list gives the real rule (Twilio, 17 Oct 2026)",
+  "title": "Sales Operations Planning Analyst",
+  "location": "Remote - US",
+  "remote_feed": false,
+  "description": "Location This role will be remote, but is not eligible to be hired in CA, CT, NJ, NY, PA, WA. *Please note the salary range information provided applies only to candidates residing in California, Colorado, Hawaii, Illinois, Maryland, Massachusetts, Minnesota, New Jersey, New York, Vermont, Washington D.C., and Washington State due to local requirements. Based in Colorado, Hawaii, Illinois, Maryland, Massachusetts, Minnesota, Vermont or Washington D.C. Based in New York, New Jersey, Washington State, or California (outside of the San Francisco Bay area): $136,000 Based in the San Francisco Bay area, California: $151,120",
+  "expect": {
+   "label": "United States only",
+   "note_present": [
+    "cannot hire in: California, Connecticut, New Jersey, New York, Pennsylvania, Washington"
+   ]
+  }
+ },
+ {
+  "name": "company office list is not where applicants live (DeepL, 17 Oct 2026)",
+  "title": "Enterprise Account Executive | in Österreich",
+  "location": "Vienna",
+  "remote_feed": true,
+  "description": "We are looking for an exceptional sales professional based in Austria to establish and grow DeepL's presence in the Austrian market. Our global presence is growing, we've doubled in size nearly every year, with our employees based in the UK, Germany, the Netherlands, Poland, the US, and Japan, and we continue to expand our network. Remote work, flexible hours: we offer a remote work schedule for Austria.",
+  "expect": {
+   "label": "Austria only"
+  }
+ },
+ {
+  "name": "office cities beside 'Remote in the US' are options, not the only places (Stripe, 17 Oct 2026)",
+  "title": "SaaS Platform and AI Partner Marketing Lead",
+  "location": "San Francisco, New York, Seattle, Chicago, Atlanta, Remote in the US",
+  "remote_feed": false,
+  "description": "This role is available either in an office or a remote location. We encourage you to apply for roles that match the location where you currently live or plan to live.",
+  "expect": {
+   "label": "United States only"
+  }
+ },
+ {
+  "name": "'unable to accept applicants from outside the US' means US only (Archive, 17 Oct 2026)",
+  "title": "Head of Product",
+  "location": "USA",
+  "remote_feed": true,
+  "description": "Fully remote role. Please note that we are unable to accept applications from candidates outside of the US at this time.",
+  "expect": {
+   "label": "United States only",
+   "note_absent": [
+    "cannot hire in: United States"
+   ]
+  }
+ },
+ {
+  "name": "'London (Hybrid)' in the headline beats work-from-home perks (Monzo Lead Brand Designer, 17 Oct 2026)",
+  "title": "Lead Brand Designer",
+  "location": "London",
+  "remote_feed": false,
+  "description": "We're not about selling products. 📍London (Hybrid) | 💰£75,000 - £95,000 + Incentive Awards. What's in it for you: 🏡We will set you up to work from home. All employees are given Macbooks and for fully remote workers we will provide extra support for your work-from-home setup. #LI-Remote",
+  "expect": {
+   "not_published": true
+  }
+ },
+ {
+  "name": "SurveyMonkey: 'required to work from an office up to 1 day per week' and '#LI - Hybrid' is hybrid (17 Oct 2026)",
+  "title": "Machine Learning Engineer - Multiple Positions",
+  "location": "Italy - Remote; Ottawa",
+  "remote_feed": true,
+  "description": "SurveyMonkey believes in-person collaboration is valuable for building relationships, fostering community, and enhancing our speed and execution in problem-solving and decision-making. As such, you will be required to work from a SurveyMonkey office for up to 1 day per week.    #LI - Hybrid   Why SurveyMonkey? We are glad you asked.",
+  "expect": {
+   "not_published": true
+  }
+ },
+ {
+  "name": "Cloudflare: location 'Distributed' with a US state in the title is restricted to that state (17 Oct 2026)",
+  "title": "Senior Majors Account Executive - Minnesota",
+  "location": "Distributed",
+  "remote_feed": false,
+  "description": "Compensation may be adjusted depending on work location. For Minnesota based hires: Estimated annual salary of $294,000 - $380,000.",
+  "expect": {
+   "label": "Minnesota only"
+  }
+ },
+ {
+  "name": "A city beside a different country shows its country (Italy; Ottawa, 17 Oct 2026)",
+  "title": "Engineer",
+  "location": "Italy - Remote; Ottawa",
+  "remote_feed": true,
+  "description": "This is a remote role.",
+  "expect": {
+   "label": "Italy, Ottawa (Canada)"
+  }
+ }
 ]

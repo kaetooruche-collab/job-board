@@ -37,6 +37,8 @@ NOT_REMOTE_RE = [
     re.compile(r"\b(?:this|the)\s+(?:role|position|job|opportunity)\s+(?:is|will be)\s+(?:an?\s+)?(?:on-?site|in-?office|in-?person|hybrid)\b", re.I),
     re.compile(r"\bnot\s+(?:a\s+)?(?:fully\s+)?remote\s+(?:role|position|job|opportunity)\b", re.I),
     re.compile(r"\b(?:one|two|three|four|five|[1-5])\s+days?\s+(?:per|a|each|every)\s+week\s+(?:in|at)\s+(?:the|our)\s+(?:office|hq|headquarters)\b", re.I),
+    re.compile(r"#\s*LI\s*[-_]?\s*hybrid\b", re.I),
+    re.compile(r"\b(?:required|expected|must)\b[^.]{0,30}\bwork(?:ing)? (?:from|at|in) (?:a |an |our |the )?(?:[\w-]+\s){0,3}?(?:office|hq|headquarters)\b[^.]{0,40}\b(?:\d|one|two|three|four|five)\s*days?\s*(?:a|per|each|every)\s*(?:week|month)", re.I),
     re.compile(r"\bmust\s+(?:be\s+able\s+to\s+)?(?:work|be)\s+(?:on-?site|in\s+the\s+office)\b", re.I),
 ]
 PAY_RANGE_RE = re.compile(r"(?:[$\u20ac\u00a3]\s?\d{2,3}(?:,\d{3})+(?:\.\d+)?|\b\d{2,3}(?:,\d{3})+\s*(?:USD|EUR|GBP))\s*(?:-|\u2013|\u2014|to)\s*(?:[$\u20ac\u00a3]\s?)?\d{2,3}(?:,\d{3})+", re.I)
