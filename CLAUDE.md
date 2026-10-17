@@ -23,7 +23,7 @@ A free job board of verified remote jobs at every experience level and in every 
 
 Revenue comes from KT's paid CV and LinkedIn services, sold by WhatsApp (+90 533 822 5854) and email. The board earns trust and traffic. Later revenue lines (a seeker plan, employer listings, partners) wait for gates; do not build them.
 
-**Name.** The final name is not chosen yet. Use the placeholder `PROJECT_NAME` in code and copy, kept in ONE config file so a rename is a one-line change. The current contact email (trueremote@gmail.com) and the site name will change at the rename; keep them in the same config.
+**Name.** The final name is not chosen yet. Use the placeholder `PROJECT_NAME` in code and copy, kept in ONE config file so a rename is a one-line change. The current contact email (trueremote.jobs@gmail.com, the single address for the website and for clients) and the site name will change at the rename; keep them in the same config.
 
 Already in place and to be kept:
 - Static site on Vercel. A copy of the previous site is in the folder KT downloaded (`remotenc-oct5`); ask KT for its location. Keep the visual style: navy hero, job cards, category filters, search. Remove the country-specific hero copy.
@@ -113,7 +113,7 @@ Payments (decided by KT, 2026-10-15, replacing the earlier Payhip decision): the
 - Use the Remotive API.
 - Put API keys or secrets in client code or commit them to the repo.
 - Publish any listing, pay figure or claim you could not verify.
-- Add anything that names a country or city.
+- Add anything that names a country or city. (One exception approved by KT on 2026-10-17: the legal notice on the privacy page states where the operator is based.)
 
 ## Open unknowns: resolve by checking, do not assume
 - Which fields each ATS endpoint and the WWR feed carry for original posting time and for region.

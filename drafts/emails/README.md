@@ -15,18 +15,8 @@ Created 2026-10-15 via the Brevo connection. Sender: True Remote <trueremote.job
 Notes
 - Templates 20-25 use transactional parameters (`{{ params.X }}`); send them through Brevo's transactional email API or an automation that supplies those values. In the Brevo editor, "Send a test" shows blanks for parameters.
 - Template 26 uses `{{ contact.FIRSTNAME }}` and `{{ unsubscribe }}`: attach it to the list sign-up automation.
-- Not wired up yet: Payhip purchase -> TR-01 (needs an automation, for example n8n); until then send from the Brevo template or paste into Gmail.
+- Not wired up yet: sending TR-01 after payment is confirmed. Until then, send it from Brevo or paste it into Gmail.
 - The "Browse open jobs" link in TR-07 uses the current site address; update it when the domain changes.
 - Footer shows the registered business address from the Brevo account; edit if you want a different one.
 
-## Payhip receipt message (set in Payhip: Settings > Advanced Settings > Email Receipt; same for all products)
-Subject: `Your True Remote order: next steps`
-
-Message:
-```
-Thank you for your order. Next step: we will email you from "True Remote" (trueremote.jobs@gmail.com) with simple instructions. Your delivery time starts when onboarding is complete.
-
-If you do not see our email within a few minutes, please check your Promotions and Spam folders and move it to your main inbox. Still nothing? Message us on WhatsApp: +90 533 822 5854.
-
-Please send documents by email, not WhatsApp.
-```
+(Payhip was dropped on 2026-10-15: payment is arranged on WhatsApp, so there is no Payhip receipt message to set.)

@@ -40,26 +40,27 @@ Inclusions to paste:
 Shortcut `/bank`
 > Thank you, [First name]. Here are the payment details for your *[Package]* package.
 >
-> *Amount:* [amount and currency]
+> *Amount:* [amount and currency]. For a currency other than USD, this is calculated at the exchange rate at the time you pay; I will confirm the exact amount in this chat before you send.
 > *Account name:* [account holder name]
 > *Bank:* [bank name]
 > *IBAN / account number:* [number]
 > *SWIFT / BIC:* [code]
 > *Payment reference:* [reference, for example TR-1042]
 >
-> Please include the reference with your transfer. [Bank charges: decide, see end.]
+> Please include the reference with your transfer. Any bank or conversion fees charged to you are yours, so please make sure the full amount reaches us.
 > Once you have paid, please send a screenshot or receipt of the transfer here and I will confirm when it has arrived.
 >
 > For your safety: payment details are only ever sent from this number. Please do not pay to details from anyone else.
 
 ## 6. Payment details: cryptocurrency
 Shortcut `/crypto`
-> Thank you, [First name]. Here are the details for paying with cryptocurrency.
+> Thank you, [First name]. Here are the details for paying with cryptocurrency. I accept Bitcoin (BTC) and USDT.
 >
-> *Amount:* [amount] [asset]
-> *Network:* [network]
+> *Amount:* [amount] [BTC or USDT]. This is calculated at the exchange rate at the time you pay; I will confirm the exact amount in this chat before you send.
+> *Network:* [Bitcoin network for BTC / the USDT network you use, for example TRC-20 or ERC-20]
 > *Wallet address:* [address]
 >
+> Any network or exchange fees charged to you are yours, so please make sure the full amount arrives.
 > Please send exactly this asset on exactly this network. A transfer on a different network can be lost permanently and cannot be recovered or refunded by us. Copy the address rather than typing it, and consider sending a small test amount first.
 > After sending, please share the transaction ID or a screenshot here.
 
@@ -135,10 +136,15 @@ Shortcut `/privacy`
 > Thank you, [First name]. I have received your request about your personal information. I will respond within one month, free of charge. I may ask you to confirm it is you, but I will only ask for what is necessary.
 
 ---
-## Decisions KT still has to make (messages 5 to 7 depend on them)
-1. **Who pays transfer fees.** A $29 order can lose a large part to bank charges. Suggested wording: "Please make sure the full amount arrives; bank charges on your side are yours." Not on the website yet.
-2. **Exchange rate for EUR, GBP and TL.** Suggested: quote the equivalent on the day, valid for [48 hours].
-3. **Which crypto assets and networks** you accept, and how refunds in crypto work (suggest refunds in the same asset at the amount paid, minus network fees).
-4. **Account details:** the account holder name must match the name clients see. Mismatched names are a common scam signal. Also decide whether details are sent only on WhatsApp or also by email (sending by both lets clients cross-check).
-5. **Receipts:** a short receipt or invoice by email once payment is confirmed.
-6. **Refund method:** refunds go back by the method used for payment.
+## Decisions (updated 17 October 2026)
+Decided by KT:
+1. **Fees:** the client pays all bank, network and conversion fees. This is now on the services page FAQ and in messages 5 and 6.
+2. **Exchange rate:** the rate on the day and time of payment. Messages 5 and 6 say the exact amount is confirmed in the chat before sending.
+3. **Crypto:** Bitcoin (BTC) and USDT.
+
+Still open:
+- **USDT network(s)** you accept (for example TRC-20 or ERC-20). Offering one network reduces the risk that a client sends on the wrong one.
+- **How long a quoted BTC amount stays valid.** Suggestion: 30 minutes, because Bitcoin's price moves.
+- **Account details:** the account holder name must match the name clients see, and details should be sent from this number only (and optionally also by email, so clients can cross-check).
+- **Receipts:** a short receipt or invoice by email once payment is confirmed.
+- **Refunds:** see `drafts/decisions/2026-10-17-refunds-and-500-offer.md`.
