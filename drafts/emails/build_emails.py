@@ -3,7 +3,8 @@ import os, html
 OUT = os.path.dirname(os.path.abspath(__file__))
 WA = "https://wa.me/905338225854"
 MAIL = "trueremote.jobs@gmail.com"
-ADDR = "KAYZ Global Ltd · Şehit Mehmet Mustafa Sokak, No: 171, Girne – Merkez, 9930, North Cyprus"
+ADDR = "KAYZ Global Ltd · Kyrenia, Northern Cyprus"
+ADDR_NEWSLETTER = "KAYZ Global Ltd · Yenice Sokak, 99300 Kyrenia, Northern Cyprus"
 
 def wrap(preheader, title, body, newsletter=False):
     unsub = ('<p style="margin:10px 0 0;">You are receiving this because you signed up for job alerts. '
@@ -34,7 +35,7 @@ def wrap(preheader, title, body, newsletter=False):
 <p style="margin:0;"><strong style="color:#ffffff;">Kaeto Career Services · True Remote</strong></p>
 <p style="margin:6px 0 0;">WhatsApp (chat only): <a href="{WA}" style="color:#9db4d6;">+90 533 822 5854</a><br>
 Email (documents and questions): <a href="mailto:{MAIL}" style="color:#9db4d6;">{MAIL}</a></p>
-<p style="margin:6px 0 0;">{ADDR}</p>{unsub}</td></tr>
+<p style="margin:6px 0 0;">{ADDR_NEWSLETTER if newsletter else ADDR}</p>{unsub}</td></tr>
 </table></td></tr></table></body></html>"""
 
 def p(t): return f'<p style="margin:0 0 14px;">{t}</p>'

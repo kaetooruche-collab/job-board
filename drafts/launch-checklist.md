@@ -12,11 +12,11 @@ Owner: C = Claude, K = KT. Status is what was verified, not what was hoped.
 
 ## B. Things only KT can do
 - [ ] WhatsApp Business app: profile, greeting, away message, quick replies from `drafts/whatsapp-messages.md` (about 20 minutes).
-- [ ] Brevo: switch the sign-up/welcome automation to template 26 (old welcome id 12 and campaigns 17/18 contain claims we do not make).
+- [ ] Brevo: switch the sign-up/welcome automation to template 33 (old welcome id 12 and campaigns 17/18 contain claims we do not make).
 - [ ] Brevo: test sign-up on the live site with your own email; confirm it lands in list #11.
 - [ ] GoatCounter: open the live site, then check the dashboard shows the visit.
 - [ ] Payment details ready for at least one currency (and the decisions in `drafts/whatsapp-messages.md`, last section).
-- [ ] Delete the old Brevo templates 20-26 after the corrected set is created.
+- [ ] Delete the old Brevo templates 20-26 (the corrected set is 27-33). In the welcome automation use 33.
 
 ## C. Answers needed for the privacy page and templates
 1. Entity shown: KAYZ Global Ltd (default). Right?
