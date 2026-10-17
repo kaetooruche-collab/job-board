@@ -8,6 +8,11 @@ on:
 permissions:
   contents: write
 
+# one refresh at a time: a second run waits instead of colliding on the push
+concurrency:
+  group: refresh-jobs
+  cancel-in-progress: false
+
 jobs:
   fetch:
     runs-on: ubuntu-latest
@@ -47,5 +52,10 @@ jobs:
             echo "No changes to commit"
           else
             git commit -m "chore: refresh job listings $(date -u +%Y-%m-%dT%H:%M:%SZ)"
-            git push
+            # main can move while the run is going (for example when code is merged): update, then push, up to 3 times
+            for i in 1 2 3; do
+              git pull --rebase -X theirs origin main && git push && break
+              sleep 5
+            done
+            git status -sb | head -1
           fi
