@@ -671,7 +671,7 @@ def assess_eligibility(title, location, description, remote_evidence=False, remo
         if p["kind"] in ("state", "city"):
             label_name = re.sub(r"\s+", " ", p["raw"]).strip()
             label_name = label_name.upper() if len(label_name) <= 3 else label_name.title()
-            if p["kind"] == "city" and any(q["kind"] == "country" and q["name"] != p["name"] for q in restricted_places):
+            if p["kind"] == "city" and any(q["kind"] == "country" for q in restricted_places) and not any(q["kind"] == "country" and q["name"] == p["name"] for q in restricted_places):
                 label_name += f" ({p['name']})"
         elif p["kind"] == "country":
             label_name = p["name"]
