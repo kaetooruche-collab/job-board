@@ -30,12 +30,17 @@ import requests
 SCRIPT_DIR = Path(__file__).resolve().parent
 sys.path.insert(0, str(SCRIPT_DIR))
 
-import classify as C  # noqa: E402
+import classify as C
+import qa_checks as Q  # noqa: E402
+from pay_text import pay_from_text  # noqa: E402
 REPO_ROOT = SCRIPT_DIR.parent
 OUTPUT_FILE = REPO_ROOT / "jobs.json"
 REMOVED_LOG = REPO_ROOT / "data" / "removed.log"
 REVIEW_FILE = REPO_ROOT / "data" / "review_queue.json"
 METRICS_FILE = REPO_ROOT / "data" / "metrics.json"
+QA_REPORT_FILE = REPO_ROOT / "data" / "qa_report.md"
+QA_HISTORY_FILE = REPO_ROOT / "data" / "qa_history.json"
+QA_HISTORY_KEEP = 28
 BOARDS_FILE = REPO_ROOT / "data" / "boards.json"
 
 MAX_AGE_DAYS = 30
@@ -121,8 +126,49 @@ def fetch_greenhouse_board(board):
             "location": (j.get("location") or {}).get("name", ""),
             "description": j.get("content", ""), "hint": None, "posted": posted,
             "source": "Greenhouse", "employment": None, "salary": None, "remote_feed": False,
+            "gh": (board["slug"], j.get("id")),
         })
     return out
+
+
+def gh_salary(ranges):
+    """Greenhouse publishes pay as structured ranges only on the single-job endpoint (pay_transparency=true)."""
+    ok = [r for r in ranges or [] if r.get("min_cents") or r.get("max_cents")]
+    if not ok:
+        return None
+    cur = ok[0].get("currency_type") or ""
+    lo = min((r.get("min_cents") or r.get("max_cents")) for r in ok) / 100
+    hi = max((r.get("max_cents") or r.get("min_cents")) for r in ok) / 100
+    per = "/hr" if hi < 1000 else ""
+    text = _salary_text(cur, None, lo, hi if hi != lo else None)
+    if len(ok) > 1 and lo != hi:
+        text += " (varies by location)"
+    return (text + per) if per and "/hr" not in text else text
+
+
+def enrich_greenhouse_pay(items):
+    """Fetch stated pay for Greenhouse listings that passed the gates. Pay is only ever copied from the posting."""
+    todo = [j for j in items if j.get("source") == "Greenhouse" and not j.get("salary") and j.get("gh")]
+    def one(j):
+        slug, jid = j["gh"]
+        try:
+            d = get_json(f"https://boards-api.greenhouse.io/v1/boards/{slug}/jobs/{jid}", params={"pay_transparency": "true"}, timeout=30)
+            return j, gh_salary((d or {}).get("pay_input_ranges"))
+        except Exception:  # noqa: BLE001 - pay is optional; a failed lookup just means "not stated"
+            return j, None
+    found = 0
+    with ThreadPoolExecutor(max_workers=8) as ex:
+        for j, sal in ex.map(one, todo):
+            if sal:
+                j["salary"] = sal; found += 1
+    print(f"  Greenhouse pay found for {found} of {len(todo)} listings")
+    from_text = 0
+    for j in items:
+        if not j.get("salary"):
+            sal = pay_from_text(j.get("description", ""))
+            if sal:
+                j["salary"] = sal; from_text += 1
+    print(f"  Pay copied from posting text for {from_text} more listings")
 
 
 def _salary_text(currency, interval, lo, hi):
@@ -468,6 +514,9 @@ def main():
     keep = cap_per_company(keep, removed)
     print(f"  After per-company cap: {len(keep)}")
 
+    print("=== Pay from Greenhouse ===")
+    enrich_greenhouse_pay(keep)
+
     print("=== Verify links ===")
     before = len(keep)
     keep = check_links(keep, removed)
@@ -477,7 +526,34 @@ def main():
     keep.sort(key=lambda x: x["posted"], reverse=True)
     keep = keep[:MAX_LISTINGS]
     prev = load_previous()
-    records = [to_record(j, prev.get(j["url"])) for j in keep]
+    records, held, warnings, held_review = [], [], {}, []
+    for j in keep:
+        rec = to_record(j, prev.get(j["url"]))
+        found = Q.check_listing(rec, j, NOW)
+        blocks = [i for i in found if i["severity"] == Q.BLOCK]
+        for i in found:
+            if i["severity"] == Q.WARN:
+                warnings.setdefault(i["rule"], []).append({"title": rec["title"], "company": rec["company"], "detail": i["detail"]})
+        if blocks:
+            b = blocks[0]
+            held.append({"rule": b["rule"], "title": rec["title"], "company": rec["company"], "detail": b["detail"]})
+            removed.append(f"qa-block:{b['rule']} | {rec['title']} | {rec['company']} | {rec['sourceUrl']} | {b['detail'][:140]}")
+            held_review.append({"title": rec["title"], "company": rec["company"], "url": rec["sourceUrl"], "location": rec["regionAsStated"],
+                                "reason": "quality check: " + b["rule"], "detail": b["detail"], "source": rec["sourceName"]})
+            continue
+        records.append(rec)
+    review[0:0] = held_review
+    summary = Q.summarise(records)
+    history = json.loads(QA_HISTORY_FILE.read_text(encoding="utf-8")) if QA_HISTORY_FILE.exists() else []
+    d_abort, d_warn = Q.drift(summary, history[-1]["summary"] if history else None)
+    qa_text = Q.report(NOW, len(records), held, warnings, summary, d_warn, d_abort, Q.duplicates(records))
+    QA_REPORT_FILE.write_text(qa_text, encoding="utf-8")
+    print(qa_text.split("## Shape")[0])
+    if d_abort and not os.environ.get("QA_FORCE"):
+        print("QUALITY CHECK STOPPED THE RUN: previous data kept. Set QA_FORCE=1 to override.")
+        sys.exit(2)
+    history.append({"at": NOW.isoformat(), "summary": summary, "held": len(held), "warnings": sum(len(v) for v in warnings.values())})
+    QA_HISTORY_FILE.write_text(json.dumps(history[-QA_HISTORY_KEEP:], indent=1), encoding="utf-8")
 
     OUTPUT_FILE.write_text("[\n" + ",\n".join(json.dumps(r, ensure_ascii=False) for r in records) + "\n]\n", encoding="utf-8")
     REVIEW_FILE.write_text(json.dumps(review[:REVIEW_LIMIT], indent=1, ensure_ascii=False), encoding="utf-8")

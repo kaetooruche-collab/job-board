@@ -84,3 +84,64 @@ KT to choose what replaces "[on agreed terms]":
 - B: "at no extra cost for up to 30 more days" (friendlier; costs about 7 more hours), or
 - C: delete the sentence (no continuation after day 30).
 The privacy policy's definition of "completed" for Executive and the Brevo templates mention the 500+ target; if this changes, update: privacy policy, services page, WhatsApp message 16, TR-04 (Brevo template cannot be edited by Claude; use a new version).
+
+---
+## Update 17 Oct 2026 (evening): what two videos taught, applied to the Executive package
+
+Read as transcripts (Claude cannot watch video): 
+- "6-Step System To Productize Your Agency" (Nick Saraev, 33 min, March 2024): https://www.youtube.com/watch?v=DvwR8Y8F5W0
+- "How to Price & Package Your Services for Profit (Without Underselling Yourself)" (Lauren Erickson, 16 min, April 2025): https://www.youtube.com/watch?v=2I2MYf881C0
+Caveats: both creators sell courses or communities, their income claims are unverified, and the second video has few views. Treat them as frameworks to test, not as evidence. Where they agree with market data collected earlier (competitor prices and refund policies), that agreement is what gives them weight.
+
+### What was useful
+1. **Fix the scope so every client gets the same experience.** The first video's core point: projects go wrong when deliverables are loose ("scope creep"), costs vary client to client, and the work takes longer than planned. Productising means exact deliverables, a fixed process and no custom extras. "Continues until you reach 500+" is the opposite: the cost varies by client.
+2. **Price from cost, then check the market.** Estimate the time of each task, add a buffer of 10-20% for uncertainty, then divide by (1 - the share you want left over) to get a floor price. Tiers are the same cost model scaled up or down.
+3. **Bake boundaries into the offer:** number of revisions, calls and timelines (the second video). Already done for revisions and timelines.
+4. **Track real time for two clients** (the second video suggests a free time tracker, for example Clockify), including communication and revisions, before changing the price. Replace the estimates below with the measured hours.
+5. Not applied: "charge 10-20% of the value you create". A job offer's value to a client cannot be measured honestly, and promising outcomes breaks the site's rules.
+
+### The numbers (hours are my estimates, NOT measured)
+Formula: minimum price = hours x your hourly value x 1.15 (buffer) / 0.90 (10% for payment and exchange-rate fees and tools).
+
+| Hours | at $5/h | at $8/h | at $12/h |
+|---|---|---|---|
+| 12 | $77 | $123 | $184 |
+| 16 | $102 | $164 | $245 |
+| 20 | $128 | $204 | $307 |
+| 25 | $160 | $256 | $383 |
+| 30 | $192 | $307 | $460 |
+| 54 | $345 | $552 | $828 |
+
+At $99 the same formula supports about 15 hours at $5 an hour, 10 hours at $8, or 6.5 hours at $12. The package as written is about 30 hours (about 54 for a client who starts near 24 connections).
+
+### What this means
+- Cost-plus gives a floor. The market gives a ceiling: ProResume's Executive tier is GBP 149 for a CV alone. A job seeker will not pay $300+, so the lever is scope, not just price.
+- A workable shape is roughly 20 hours at $149-$199: templated posts (12 posts batch-written in one session), connection building capped by a fixed weekly volume, one strategy document format, three revision rounds as now.
+- Alternatively keep $99 only for a leaner package of about 12-15 hours (documents, branding strategy and a smaller post set), and sell connection building separately.
+- Decision for KT after timing the first two clients: price, scope cap, or add-on. Nothing about the price or the 500+/30-day promise is changed on the site yet.
+
+---
+## Update 17 Oct 2026 (night): the "flying car" anchor idea (a short video KT pasted)
+
+The pasted video says: a Tesla "flying car" nobody can buy (invite only, no price) exists to sell the car that drives. Claims: it earns attention, "moves the anchor" so the $50,000 car feels reasonable, and small brands can do the same with one extreme option almost nobody buys (a $200 cake, an application-only coaching programme). I did not verify the Tesla details; they are the video's claims.
+
+### What the evidence says
+- The "decoy effect" (adding a clearly worse option so the target looks better) is real in lab studies with simple numeric choices (Huber, Payne and Puto 1982), but two large replication efforts in 2014 (Frederick, Lee and Baskin, Journal of Marketing Research, 100+ attempts) found it largely disappears with realistic descriptions and images, sometimes reversing. The original authors replied that it holds under certain conditions (the dominance must be noticed; it works when buyers are undecided between the target and competitor). https://business.columbia.edu/sites/default/files-efs/pubfiles/6131/Limits%20of%20Attraction.pdf and https://people.duke.edu/~jch8/bio/Papers/HuberPaynePutoJMR%202014.pdf
+- Anchoring (a high reference price near the target price) has replicated better (secondary source: https://atticusli.com/replication-crisis/decoy-effect-asymmetric-dominance/).
+- The flying-car example is not a decoy in that scientific sense. It is attention plus anchoring plus halo. Treat it as a hypothesis to test, not a proven lever.
+
+### Fit and risk for this business
+- Real value: a premium tier is a place to put work that is currently an unpriced promise. The open-ended "keep building connections until 500+" can become a paid, bounded, higher tier instead of an unlimited obligation inside a $99 package.
+- Trust risk: the readers are stressed job seekers. A top tier must be real, deliverable and honestly limited. A fake price or invented scarcity ("only 3 spots" when there is no limit) would breach the site's own trust standard and may break consumer-protection rules on misleading claims.
+- Evidence from earlier in this review: cost-plus pricing (above) says the full Executive scope needs about $190-$460 at $5-$12 an hour; the market ceiling for a CV alone is about GBP 149.
+
+### A ladder that fits both (for KT to approve; nothing is changed on the site)
+| Tier | Price idea | Scope | Why |
+|---|---|---|---|
+| Essential | $29 | unchanged | entry |
+| Professional | $49 | unchanged | unchanged |
+| Executive | $149-$199 | bounded 30-day scope, flexible wording on connections | viable margin at about 20 hours |
+| Concierge (application only) | from $499 | 90 days, connection building to the 500+ aim, interview preparation, a weekly check-in; capacity honestly limited | pays for the heavy work (about 54 hours at $8 an hour is about $550), absorbs clients who need long connection building |
+
+### Cheap, honest test
+Add one line below the packages ("Concierge: application only, by WhatsApp") and count GoatCounter clicks and WhatsApp enquiries for four weeks. Traffic is too low for a proper split test, so judge by conversations. Only publish the price and limit KT is willing to deliver.

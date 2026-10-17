@@ -14,6 +14,12 @@ Owner: C = Claude, K = KT. Status is what was verified, not what was hoped.
 - [x] Brevo v2 templates created in the KAYZ Global account after checking the connected account (ids 27-33).
 - [ ] GoatCounter counting: script is on every live page; counting not verifiable from here.
 
+## A2. Quality system (added 17 Oct, night)
+- [x] Independent per-listing checks (`scripts/qa_checks.py`) run in every refresh; failing listings are held back and logged; sudden drops stop the run and keep the previous data.
+- [x] Live-site monitor (`scripts/site_monitor.py`, every 3 hours): passed on the live site; proven to fail on a deliberately broken copy.
+- [x] First random spot-check of 10 listings against their real postings: only about 2 of 10 fully matched (pay shown as "not stated" when the posting states pay in 6 of 10; wrong "who can apply" label in 2; one borderline level). Fixed and re-tested; a re-check after the fixes is pending.
+- [ ] Weekly independent audit by a scheduled Claude task: drafted in `drafts/weekly-audit-prompt.md`, needs KT's approval to schedule.
+
 ## B. Things only KT can do
 - [ ] GoatCounter: open the live site, then confirm the dashboard shows the visit.
 - [ ] Brevo: switch the sign-up/welcome automation to template 33 (the old welcome id 12 and campaigns 17/18 contain claims we do not make).

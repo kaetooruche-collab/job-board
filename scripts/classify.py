@@ -255,7 +255,7 @@ VIRTUAL_TRAINING_RE = re.compile(r"\b(?:virtual|online|remote)\s+(?:training|onb
 
 
 MIXED_RE = re.compile(r"\b(?:office|in[- ]person|on-?site|in-?office|hybrid)\b", re.I)
-ARR_CTX_RE = re.compile(r"\b(?:office|on-?site|remote(?:ly)?|days?|week|working|work (?:from|arrangement|model|schedule|policy)|schedule|commut\w*|in[- ]person|location|attend|presence)\b", re.I)
+ARR_CTX_RE = re.compile(r"\b(?:this|the)\s+(?:role|position|job|opportunity)\s+(?:is|will be)\s+(?:an?\s+)?hybrid\b|\bhybrid\s+(?:role|position|job|opportunity|employee|worker)s?\b|\b(?:office|on-?site|remote(?:ly)?|days?|week|working|work (?:from|arrangement|model|schedule|policy)|schedule|commut\w*|in[- ]person|location|attend|presence)\b", re.I)
 TECH_HYBRID_RE = re.compile(r"^hybrid[- ]?(?:cloud|multi-?cloud|analy\w+|go-to-market|gtm|search|deploy\w*|infra\w*|app\w*|vehicle|encrypt\w*|integration|sales|motion|approach|architecture|solutions?|environments?|talent|delivery|experiences?|formats?|engineering|events?|models? (?:of|for) (?:delivery|talent|consulting))", re.I)
 COMPANY_HYBRID_RE = re.compile(
     r"\b(?:is|are) a (?:hybrid|remote|distributed) (?:organi[sz]ation|company|team|workplace)\b"
@@ -503,11 +503,18 @@ WORLDWIDE_DESC = re.compile(
 APPLICANT_CONTEXT = re.compile(r"\b(candidates?|applicants?|hir(?:e|ing)|apply|work from|located|based|open to|eligible|team members?|you can|join us|talent|employees?|contractors?)\b", re.I)
 EXCLUSION_RE = re.compile(
     r"\b(?:exclud\w+|except(?: for)?|sanction\w*|embargo\w*|not (?:available|eligible|permitted|open|hiring|accepting))\b"
-    r"|\b(?:unable|cannot|can't|can not|not able|do not|don't|does not|not currently)\b[^.;]{0,60}?\b(?:hire|hiring|employ\w*|engage|onboard\w*|accept\w*|consider\w*|sponsor\w*|work\w*|permanently)\b",
+    r"|\b(?:unable|cannot|can't|can not|not able|do not|don't|does not|not currently)\b[^.;]{0,60}?\b(?:hire|hiring|employ\w*|engage|onboard\w*|accept\w*|consider\w*|work\w*|permanently)\b",
     re.I)
 # Equal-opportunity and similar boilerplate says "does not discriminate ... in hiring" and
 # often names a country; that is not a place the employer refuses to hire.
-NON_RESTRICTION_RE = re.compile(r"\b(?:discriminat\w*|equal[- ]opportunity|equal employment|affirmative action|harass\w*|retaliat\w*|reasonable accommodations?|protected (?:class|characteristic|status)|background checks?|drug (?:test|screen)\w*)\b", re.I)
+NON_RESTRICTION_RE = re.compile(r"\b(?:discriminat\w*|equal[- ]opportunity|equal employment|affirmative action|harass\w*|retaliat\w*|reasonable accommodations?|protected (?:class|characteristic|status)|background checks?|drug (?:test|screen)\w*|arrest|convictions?|criminal (?:history|records?)|fair chance|ordinance|pay transparency|salary history)\b", re.I)
+# Pay tables list US states and cities ("Based in New York, New Jersey: $136,000"); those are pay zones, not where applicants may live.
+PAY_SENT_RE = re.compile(r"\b(?:salary|pay\s+(?:range|band|scale|transparency|information|zone)s?|compensation|base\s+pay|estimated\s+pay|on-target earnings)\b|\bOTE\b|[$\u20ac\u00a3]\s?\d|\b\d{2,3},\d{3}\b", re.I)
+PAY_TIER_LINE_RE = re.compile(r"\W*(?:based|residing|located|living)\s+in\b", re.I)
+# Company-level descriptions of where its people are ("our employees based in the UK, Germany ...") say nothing about this job.
+PRESENCE_RE = re.compile(r"\b(?:our|its|the)\s+(?:employees|team members|people|colleagues|staff|teams?|offices?)\b[^.]{0,60}\b(?:based|located|spread|across)\b|\b(?:offices?|employees|team members)\s+(?:are\s+)?(?:based\s+)?(?:in|across)\b|\bheadquartered\b|\bour global presence\b|\bwith (?:offices|employees|teams) in\b", re.I)
+# a work-authorisation sentence is a visa requirement, not a list of places the employer will not hire in
+AUTH_SENTENCE_RE = re.compile(r"\b(?:work authori[sz]ation|authori[sz]ed to work|right to work|employment authori[sz]ation|(?:visa )?sponsorship)\b", re.I)
 RESTRICTION_CUES = [
     re.compile(r"^\W{0,3}(?:work |job )?location\s*:", re.I),
     re.compile(r"\b(?:candidates|applicants|residents|those)\s+who\s+(?:reside|live|are (?:located|based|resident))\s+in\b", re.I),
@@ -554,6 +561,19 @@ def _label_for(places_countries, regions, worldwide, tz, home_countries=()):
     return "Eligibility unclear"
 
 
+def _us_states_listed(g, text):
+    """US states named in an exclusion tail, in full ("CA, CT, NJ" or "Hawaii")."""
+    names = [p["raw"].title() for p in g.find_places(text) if p["kind"] == "state" and p["name"] == "United States"]
+    codes = [c for c in re.findall(r"\b([A-Z]{2})\b(?=\s*(?:,|and\b|or\b|&|\.|$))", text) if c in g.us_abbr]
+    if len(codes) >= 2:
+        names += [g.abbr_to_state[c] for c in codes]
+    out = []
+    for n in names:
+        if n not in out:
+            out.append(n)
+    return out
+
+
 def assess_eligibility(title, location, description, remote_evidence=False, remote_feed=False, remote_hint=False):
     g = geo()
     loc = location or ""
@@ -565,6 +585,12 @@ def assess_eligibility(title, location, description, remote_evidence=False, remo
 
     loc_ww = bool(WORLDWIDE_LOC.search(loc)) and not re.search(r"\b(?:global|anywhere)\b[^,;]*\b(?:in|within|across)\s+(?:the\s+)?[A-Z]", loc)
     loc_places = g.find_places(loc, allow_state_abbr=True)
+    remote_countries = set()
+    for seg in re.split(r"[;|]|,(?=\s*remote)", loc, flags=re.I):
+        if re.search(r"\bremote\b", seg, re.I):
+            remote_countries.update(p["name"] for p in g.find_places(seg) if p["kind"] == "country")
+    if remote_countries:  # the cities beside "Remote in <country>" are office options, not the only eligible places
+        loc_places = [p for p in loc_places if not (p["kind"] in ("city", "state") and p["name"] in remote_countries)]
     loc_has_remote = bool(LOC_REMOTE.search(loc))
     if not loc_has_remote and remote_evidence and loc_places and all(p["kind"] in ("country", "region") for p in loc_places):
         loc_has_remote = True
@@ -579,20 +605,25 @@ def assess_eligibility(title, location, description, remote_evidence=False, remo
 
     desc_ww, desc_places, tz_hit = [], [], None
     excluded_places = []
+    has_pay_ctx = bool(re.search(r"\b(?:salary|pay)\s+(?:range|information)|estimated pay|pay ranges?|compensation (?:range|band)|base (?:salary|pay)", text, re.I))
     for s in sents:
         if WORLDWIDE_DESC.search(s) and APPLICANT_CONTEXT.search(s):
             m = WORLDWIDE_DESC.search(s)
             if not _negated(s, m) and not WW_COMPANY_LEVEL_RE.search(s) and not re.search(r"\b(?:customers?|users?|clients?|offices?|products?|brands?|companies|markets?|colleagues)\b[^.]{0,30}(?:worldwide|around the world|globally)|(?:worldwide|around the world|globally)\b[^.]{0,30}\b(?:customers?|users?|clients?)", s, re.I):
                 desc_ww.append(s)
+        if PAY_SENT_RE.search(s) or PRESENCE_RE.search(s) or (has_pay_ctx and PAY_TIER_LINE_RE.match(s) and len(g.find_places(s)) >= 3):
+            continue
         m_ex = EXCLUSION_RE.search(s)
-        if m_ex and not NON_RESTRICTION_RE.search(s) and re.search(r"\b(?:hire|hiring|employ|apply|applicants?|candidates?|work|available|eligible|sanction\w*|embargo\w*|countries)\b", s, re.I):
-            gone = [p["name"] for p in g.find_places(s[m_ex.start():]) if p["kind"] in ("country", "region")]
+        if m_ex and not NON_RESTRICTION_RE.search(s) and not AUTH_SENTENCE_RE.search(s) and re.search(r"\b(?:hire|hiring|employ|apply|applicants?|candidates?|work|available|eligible|sanction\w*|embargo\w*|countries)\b", s, re.I):
+            tail = s[m_ex.start():]
+            gone = [p["name"] for p in g.find_places(tail) if p["kind"] in ("country", "region")]
+            gone += _us_states_listed(g, tail)
             if gone and len(excluded_places) < 12:
                 excluded_places.extend(x for x in gone if x not in excluded_places)
             s = s[:m_ex.start()]  # what comes before the cue (for example "must be based in X") is still read as a restriction
             if not s.strip():
                 continue
-        if any(rx.search(s) for rx in RESTRICTION_CUES):
+        if any(rx.search(s) for rx in RESTRICTION_CUES) and not NON_RESTRICTION_RE.search(s):
             places = [p for p in g.find_places(s) if p["kind"] in ("country", "region", "state", "city")]
             if places:
                 desc_places.append((s, places))
@@ -704,7 +735,7 @@ def assess_eligibility(title, location, description, remote_evidence=False, remo
 # ── Experience level ──────────────────────────────────────────────────
 
 LEADERSHIP_TITLE = re.compile(r"\b(head of|director|vp\b|vice president|chief|c[teo]o\b|president|general manager|managing)\b", re.I)
-MANAGER_TITLE = re.compile(r"\b(manager|lead|supervisor|team lead)\b", re.I)
+MANAGER_TITLE = re.compile(r"\b(manager|lead(?!\s+(?:gen\w*|nurtur\w*|qualif\w*|research\w*|sourc\w*|scor\w*|captur\w*))|supervisor|team lead)\b", re.I)
 PEOPLE_MGMT = re.compile(r"\b(direct reports?|manage (?:a )?team|lead (?:a )?team|people manager|line manage\w*|managing (?:a )?team|supervis\w+ (?:a )?team|manage and mentor|build and lead)\b", re.I)
 SENIOR_TITLE = re.compile(r"\b(senior|sr\.?|staff|principal|distinguished|expert|architect|fellow)\b", re.I)
 JUNIOR_TITLE = re.compile(r"\b(junior|jr\.?|associate)\b", re.I)
