@@ -222,6 +222,7 @@ COMPANY_LEVEL_RE = re.compile(
     r"|\bremote work,\s|\bremote work (?:stipend|budget|setup|allowance|equipment)|\bwork from home (?:stipend|budget|allowance|setup|equipment)", re.I)
 
 HYBRID_PATTERNS = [
+    (re.compile(r"\(\s*hybrid\s*\)", re.I), 4.0, "(Hybrid) given as the location"),
     (re.compile(r"\bhybrid\b", re.I), 3.0, "hybrid wording"),
     (re.compile(r"\b(?:partially|partly) remote\b", re.I), 3.0, "partially remote"),
     (re.compile(r"\b(?:\d|one|two|three|four|1-2|2-3|3-4)\s*(?:days?)\s*(?:a|per|each|/)\s*week\s*(?:in|at|on)[- ]?(?:the\s*)?(?:office|site)", re.I), 3.0, "set office days"),
@@ -255,7 +256,7 @@ VIRTUAL_TRAINING_RE = re.compile(r"\b(?:virtual|online|remote)\s+(?:training|onb
 
 
 MIXED_RE = re.compile(r"\b(?:office|in[- ]person|on-?site|in-?office|hybrid)\b", re.I)
-ARR_CTX_RE = re.compile(r"\b(?:this|the)\s+(?:role|position|job|opportunity)\s+(?:is|will be)\s+(?:an?\s+)?hybrid\b|\bhybrid\s+(?:role|position|job|opportunity|employee|worker)s?\b|\b(?:office|on-?site|remote(?:ly)?|days?|week|working|work (?:from|arrangement|model|schedule|policy)|schedule|commut\w*|in[- ]person|location|attend|presence)\b", re.I)
+ARR_CTX_RE = re.compile(r"\(\s*hybrid\s*\)|\b(?:this|the)\s+(?:role|position|job|opportunity)\s+(?:is|will be)\s+(?:an?\s+)?hybrid\b|\bhybrid\s+(?:role|position|job|opportunity|employee|worker)s?\b|\b(?:office|on-?site|remote(?:ly)?|days?|week|working|work (?:from|arrangement|model|schedule|policy)|schedule|commut\w*|in[- ]person|location|attend|presence)\b", re.I)
 TECH_HYBRID_RE = re.compile(r"^hybrid[- ]?(?:cloud|multi-?cloud|analy\w+|go-to-market|gtm|search|deploy\w*|infra\w*|app\w*|vehicle|encrypt\w*|integration|sales|motion|approach|architecture|solutions?|environments?|talent|delivery|experiences?|formats?|engineering|events?|models? (?:of|for) (?:delivery|talent|consulting))", re.I)
 COMPANY_HYBRID_RE = re.compile(
     r"\b(?:is|are) a (?:hybrid|remote|distributed) (?:organi[sz]ation|company|team|workplace)\b"

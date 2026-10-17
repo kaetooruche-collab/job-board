@@ -7,7 +7,7 @@ import re
 import classify as C
 
 RANGE_RE = re.compile(r"((?:[$€£]|USD|EUR|GBP|CAD|AUD)\s?\d{2,3}(?:,\d{3})+(?:\.\d+)?)\s*(?:-|–|—|to)\s*((?:[$€£]|USD|EUR|GBP|CAD|AUD)?\s?\d{2,3}(?:,\d{3})+(?:\.\d+)?)", re.I)
-PAY_WORDS_RE = re.compile(r"\b(?:salary|base pay|base salary|pay range|pay ranges|compensation|starting (?:salary|pay)|on-target earnings|OTE|total target|annual (?:base|pay|salary))\b", re.I)
+PAY_WORDS_RE = re.compile(r"\U0001F4B0|\b(?:salary|base pay|base salary|pay range|pay ranges|compensation|starting (?:salary|pay)|on-target earnings|OTE|total target|annual (?:base|pay|salary))\b", re.I)
 NOT_PAY_RE = re.compile(r"\b(?:revenue|funding|raised|valuation|budget|ARR|stipend|bonus of up to|signing bonus|relocation|contract value|deal size|quota)\b", re.I)
 
 

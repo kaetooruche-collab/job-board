@@ -48,6 +48,10 @@ class ListingChecks(unittest.TestCase):
         raw = {"description": "This role is hybrid, three days per week in the office.", "result": {}}
         self.assertIn("says-not-remote-but-published-as-remote", rules(Q.check_listing(rec(), raw, NOW), Q.BLOCK))
 
+    def test_hybrid_in_the_location_line(self):
+        raw = {"description": "\U0001F4CDLondon (Hybrid) | \U0001F4B0\u00a375,000 - \u00a395,000", "result": {}}
+        self.assertIn("says-not-remote-but-published-as-remote", rules(Q.check_listing(rec(), raw, NOW), Q.BLOCK))
+
     def test_remote_friendly_wording_is_not_flagged(self):
         raw = {"description": "We are a remote-first company with an optional office in Austin for team meetups.", "result": {}}
         self.assertNotIn("says-not-remote-but-published-as-remote", rules(Q.check_listing(rec(), raw, NOW)))

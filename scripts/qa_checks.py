@@ -33,6 +33,7 @@ EARLY_TITLE_RE = re.compile(r"\b(junior|jr\.?|associate|intern(?:ship)?|trainee|
 
 # Plain statements that the role is NOT remote. The classifier weighs context; this is a blunt second opinion.
 NOT_REMOTE_RE = [
+    re.compile(r"\(\s*(?:hybrid|on-?site|in-?office)\s*\)|(?:\U0001F4CD|\blocation\s*:)\s*[^|\n.]{0,40}\bhybrid\b", re.I),
     re.compile(r"\b(?:this|the)\s+(?:role|position|job|opportunity)\s+(?:is|will be)\s+(?:an?\s+)?(?:on-?site|in-?office|in-?person|hybrid)\b", re.I),
     re.compile(r"\bnot\s+(?:a\s+)?(?:fully\s+)?remote\s+(?:role|position|job|opportunity)\b", re.I),
     re.compile(r"\b(?:one|two|three|four|five|[1-5])\s+days?\s+(?:per|a|each|every)\s+week\s+(?:in|at)\s+(?:the|our)\s+(?:office|hq|headquarters)\b", re.I),
