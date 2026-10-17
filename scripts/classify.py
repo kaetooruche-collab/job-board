@@ -499,6 +499,9 @@ WORLDWIDE_DESC = re.compile(
     r"from anywhere|any time ?zone|all time ?zones|no location restrictions?|location[- ]independent|open to (?:candidates|applicants|talent) (?:from )?(?:anywhere|all|any|around the world|across the world))\b", re.I)
 APPLICANT_CONTEXT = re.compile(r"\b(candidates?|applicants?|hir(?:e|ing)|apply|work from|located|based|open to|eligible|team members?|you can|join us|talent|employees?|contractors?)\b", re.I)
 EXCLUSION_RE = re.compile(r"\b(?:unable|cannot|can't|can not|not able|do not|don't|does not|not currently|exclud\w+|except(?: for)?|sanction\w*|embargo\w*|not (?:available|eligible|permitted|open|hiring|accepting))\b", re.I)
+# Equal-opportunity and similar boilerplate says "does not discriminate ... in hiring" and
+# often names a country; that is not a place the employer refuses to hire.
+NON_RESTRICTION_RE = re.compile(r"\b(?:discriminat\w*|equal[- ]opportunity|equal employment|affirmative action|harass\w*|retaliat\w*|reasonable accommodations?|protected (?:class|characteristic|status)|background checks?|drug (?:test|screen)\w*)\b", re.I)
 RESTRICTION_CUES = [
     re.compile(r"^\W{0,3}(?:work |job )?location\s*:", re.I),
     re.compile(r"\b(?:candidates|applicants|residents|those)\s+who\s+(?:reside|live|are (?:located|based|resident))\s+in\b", re.I),
@@ -575,7 +578,7 @@ def assess_eligibility(title, location, description, remote_evidence=False, remo
             m = WORLDWIDE_DESC.search(s)
             if not _negated(s, m) and not WW_COMPANY_LEVEL_RE.search(s) and not re.search(r"\b(?:customers?|users?|clients?|offices?|products?|brands?|companies|markets?|colleagues)\b[^.]{0,30}(?:worldwide|around the world|globally)|(?:worldwide|around the world|globally)\b[^.]{0,30}\b(?:customers?|users?|clients?)", s, re.I):
                 desc_ww.append(s)
-        if EXCLUSION_RE.search(s) and re.search(r"\b(?:hire|hiring|employ|apply|applicants?|candidates?|work|available|eligible|sanction\w*|embargo\w*|countries)\b", s, re.I):
+        if EXCLUSION_RE.search(s) and not NON_RESTRICTION_RE.search(s) and re.search(r"\b(?:hire|hiring|employ|apply|applicants?|candidates?|work|available|eligible|sanction\w*|embargo\w*|countries)\b", s, re.I):
             gone = [p["name"] for p in g.find_places(s) if p["kind"] in ("country", "region")]
             if gone and len(excluded_places) < 12:
                 excluded_places.extend(x for x in gone if x not in excluded_places)
