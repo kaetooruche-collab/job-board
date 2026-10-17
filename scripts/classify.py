@@ -745,6 +745,16 @@ def assess_experience(title, description):
         level, basis = "junior", "title"
     elif MANAGER_TITLE.search(t):
         level, basis = "mid", "title (individual-contributor manager)"
+    # A title that says senior/lead/manager outranks a low years figure, which is often about one skill
+    # ("2+ years of React") rather than the whole role. Titles that say junior/associate/entry/intern keep their level.
+    if level in ("entry", "junior") and basis and "years" in basis or (level == "entry" and basis == "description"):
+        if not (INTERN_TITLE.search(t) or ENTRY_TITLE.search(t) or JUNIOR_TITLE.search(t)):
+            if SENIOR_TITLE.search(t):
+                level, basis = "senior", "title (description asks for little experience)"
+                notes.append("Title says senior; the years figure in the description was not used for the level.")
+            elif MANAGER_TITLE.search(t):
+                level, basis = "mid", "title (individual-contributor manager or lead)"
+                notes.append("Title says manager or lead; the years figure in the description was not used for the level.")
     if years is not None and level in ("entry", "junior") and ENTRY_TITLE.search(t) is None and JUNIOR_TITLE.search(t) and years >= 3:
         level = "mid"; basis = f"{years}+ years stated"; notes.append("Title says junior or associate but the description asks for more experience.")
     if years is not None and SENIOR_TITLE.search(t) and level in ("junior", "entry"):
