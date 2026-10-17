@@ -8,7 +8,7 @@ import classify as C
 
 RANGE_RE = re.compile(r"((?:[$€£]|USD|EUR|GBP|CAD|AUD)\s?\d{2,3}(?:,\d{3})+(?:\.\d+)?)\s*(?:-|–|—|to)\s*((?:[$€£]|USD|EUR|GBP|CAD|AUD)?\s?\d{2,3}(?:,\d{3})+(?:\.\d+)?)", re.I)
 PAY_WORDS_RE = re.compile(r"\b(?:salary|base pay|base salary|pay range|pay ranges|compensation|starting (?:salary|pay)|on-target earnings|OTE|total target|annual (?:base|pay|salary))\b", re.I)
-NOT_PAY_RE = re.compile(r"\b(?:revenue|funding|raised|valuation|budget|ARR|stipend|bonus of up to|signing|relocation|401\s?\(?k|equity|stock|customers?|contract value|deal size|quota)\b", re.I)
+NOT_PAY_RE = re.compile(r"\b(?:revenue|funding|raised|valuation|budget|ARR|stipend|bonus of up to|signing bonus|relocation|contract value|deal size|quota)\b", re.I)
 
 
 def _num(s):
@@ -20,7 +20,8 @@ def pay_from_text(description):
     found = []
     for m in RANGE_RE.finditer(text):
         ctx = text[max(0, m.start() - 160): m.end() + 80]
-        if not PAY_WORDS_RE.search(ctx) or NOT_PAY_RE.search(ctx):
+        near = text[max(0, m.start() - 50): m.end() + 30]  # words about something else must be right next to the number
+        if not PAY_WORDS_RE.search(ctx) or NOT_PAY_RE.search(near):
             continue
         lo, hi = m.group(1).strip(), m.group(2).strip()
         if _num(lo) <= _num(hi) <= 5 * _num(lo):  # reject nonsense spans

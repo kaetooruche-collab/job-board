@@ -177,8 +177,8 @@ def drift(current, previous):
 
 
 def duplicates(records):
-    """Same company, title AND eligibility label more than once: probably a repost, not a different region."""
-    c = Counter((r["company"].strip().lower(), r["title"].strip().lower(), r["eligibility"]["label"]) for r in records)
+    """Same company, title AND stated location more than once: a true repeat."""
+    c = Counter((r["company"].strip().lower(), r["title"].strip().lower(), r["regionAsStated"].strip().lower()) for r in records)
     return [f"{k[1]} at {k[0]} ({k[2]}) appears {v} times" for k, v in c.items() if v > 1]
 
 

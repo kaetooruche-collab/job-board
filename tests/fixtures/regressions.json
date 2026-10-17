@@ -137,5 +137,18 @@
     "expect": {
       "label": "United States only"
     }
+  },
+  {
+    "name": "'unable to accept applicants from outside the US' means US only (Archive, 17 Oct 2026)",
+    "title": "Head of Product",
+    "location": "USA",
+    "remote_feed": true,
+    "description": "Fully remote role. Please note that we are unable to accept applications from candidates outside of the US at this time.",
+    "expect": {
+      "label": "United States only",
+      "note_absent": [
+        "cannot hire in: United States"
+      ]
+    }
   }
 ]

@@ -616,7 +616,18 @@ def assess_eligibility(title, location, description, remote_evidence=False, remo
         m_ex = EXCLUSION_RE.search(s)
         if m_ex and not NON_RESTRICTION_RE.search(s) and not AUTH_SENTENCE_RE.search(s) and re.search(r"\b(?:hire|hiring|employ|apply|applicants?|candidates?|work|available|eligible|sanction\w*|embargo\w*|countries)\b", s, re.I):
             tail = s[m_ex.start():]
-            gone = [p["name"] for p in g.find_places(tail) if p["kind"] in ("country", "region")]
+            gone, kept = [], []
+            for p in g.find_places(tail):
+                if p["kind"] not in ("country", "region"):
+                    continue
+                before = tail[:tail.lower().find(p["raw"].lower())]
+                # "unable to accept applicants from outside the US" means the US IS where applicants must be
+                if re.search(r"\b(?:outside|other than|apart from|aside from|not (?:located|based|residing) in)\s+(?:of\s+)?(?:the\s+)?$", before, re.I):
+                    kept.append(p)
+                else:
+                    gone.append(p["name"])
+            for p in kept:
+                desc_places.append((s, [p]))
             gone += _us_states_listed(g, tail)
             if gone and len(excluded_places) < 12:
                 excluded_places.extend(x for x in gone if x not in excluded_places)
