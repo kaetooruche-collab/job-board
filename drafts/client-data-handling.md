@@ -42,3 +42,11 @@ Send template TR-05 on completion and set the delete-by date.
 - Whether any AI tool is used on client documents (if yes, it must be disclosed).
 - Gmail account type (personal or Workspace) and invoice retention period.
 - Minimum age for clients; double confirmation for the newsletter.
+
+## 8. AI writing tools (disclosed in the privacy policy and on the services page)
+KT uses AI tools only to help improve the wording of documents. Because client text may contain personal data, follow these rules:
+- Turn off any setting that lets the provider train its models on your content (look for "improve the model for everyone" or similar in the tool's data controls) and check the provider's current terms.
+- Where possible, paste only the text that needs rewording, without the client's name, email, phone number, address or other direct identifiers, and add them back afterwards.
+- Never paste passport/ID numbers, bank details or passwords (clients are told not to send them).
+- Delete the conversations that contain client text from the AI tool when the order is completed (part of the 90-day deletion routine).
+- If the tool changes its terms or you switch tools, update the privacy policy.
