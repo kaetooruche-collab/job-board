@@ -16,6 +16,14 @@ Save this file as `CLAUDE.md` in the project folder so it is read at the start o
 - Before ANY action in Brevo (create, change, send), first call `accounts_get_account` and check that `companyName` is "KAYZ Global Ltd" (account email kaetooruche@gmail.com). If it is not, do not create or change anything and tell KT. (Rule from KT, 2026-10-17.)
 - KT may override any rule by saying OVERRIDE.
 
+## Quality system for the job feed (KT asked for this on 2026-10-17: "we keep finding something new")
+Never tell KT the job board is "good to go" from the classifier alone. The layers are:
+1. `tests/` : unit tests, plus `tests/fixtures/regressions.json` (real postings that once broke the classifier).
+2. `scripts/qa_checks.py` runs inside every refresh and does not reuse the classifier's reasoning. BLOCK rules hold a listing back (logged in `data/removed.log` and `data/review_queue.json`); WARN rules and drift are in `data/qa_report.md` and `data/qa_history.json`. A sudden drop in listings stops the run and keeps the previous data.
+3. `scripts/site_monitor.py` (`.github/workflows/site-monitor.yml`, every 3 hours) checks the LIVE site: pages load, data is fresh, tracking present, forbidden wording absent, prices/email/WhatsApp are the approved ones, sample of apply links open.
+4. `scripts/spot_check.py` + `drafts/weekly-audit-prompt.md`: random listings opened and compared with their real postings. This is the only layer that tests truth. Report the real numbers (for example "14 of 15 correct"), never "looks fine".
+Rule: every bug found gets (a) the real text added to `tests/fixtures/regressions.json`, (b) the fix, (c) if it is a class of bug, a rule in `qa_checks.py` with tests, (d) an old-versus-new comparison on real postings before it ships. Before saying the board is ready, read `data/qa_report.md` and report the numbers.
+
 ## Who you are working with
 KT is a marketing professional, not a developer. Explain every step in plain language, one step at a time. Do the typing and running yourself. Ask KT only for things nobody else can do: logins, approvals, decisions. After each phase, summarise in plain language what now works and what KT must do next.
 
