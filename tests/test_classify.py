@@ -311,6 +311,18 @@ class ExperienceAndCategories(unittest.TestCase):
 
 
 class Quality(unittest.TestCase):
+    def test_equal_opportunity_boilerplate_is_not_an_exclusion(self):
+        desc = ("We are hiring a Legal Counsel to work remotely. Acme does not discriminate based on identity "
+                "in any aspect of hiring or employment in the United States. Acme is an equal opportunity employer.")
+        r = classify_listing("Legal Counsel", "Remote - United States of America", desc, remote_feed=True)
+        notes = r["eligibility"]["notes"]
+        self.assertFalse(any("cannot hire in" in n for n in notes), notes)
+
+    def test_real_hiring_exclusion_still_reported(self):
+        desc = "This role is fully remote. We are unable to hire in Cuba, Iran and Syria due to sanctions."
+        r = classify_listing("Support Agent", "Worldwide", desc, remote_feed=True)
+        self.assertTrue(any("cannot hire in" in n for n in r["eligibility"]["notes"]))
+
     def test_commission_only_excluded(self):
         r, d = run("Sales Agent", "Remote", "Fully remote. This is a commission-only role.")
         self.assertEqual(d, "exclude")

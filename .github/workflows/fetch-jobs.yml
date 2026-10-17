@@ -31,11 +31,14 @@ jobs:
       - name: Fetch and verify listings
         run: python -I scripts/fetch_jobs.py
 
+      - name: Write the ready-to-post WhatsApp message
+        run: python -I scripts/make_outputs.py
+
       - name: Commit if changed
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add jobs.json data/removed.log data/review_queue.json data/metrics.json
+          git add jobs.json data/removed.log data/review_queue.json data/metrics.json data/whatsapp_post.txt
           if git diff --cached --quiet; then
             echo "No changes to commit"
           else
