@@ -266,6 +266,25 @@ class Eligibility(unittest.TestCase):
 
 
 class ExperienceAndCategories(unittest.TestCase):
+    def test_senior_title_outranks_low_years(self):
+        r, _ = run("Senior Marketing Operations Specialist", "Remote", "Fully remote. 2+ years of experience with HubSpot.")
+        self.assertEqual(r["experience"]["level"] if "experience" in r else r["level"], "senior")
+
+    def test_architect_title_with_low_years_is_not_junior(self):
+        r, _ = run("Lead Developer / Architect", "Remote", "Fully remote. 2+ years of experience with Solidity.")
+        lvl = r["experience"]["level"] if "experience" in r else r["level"]
+        self.assertEqual(lvl, "senior")
+
+    def test_manager_title_with_low_years_is_mid(self):
+        r, _ = run("Engineering Manager", "Remote", "Fully remote. 2 years of experience in software.")
+        lvl = r["experience"]["level"] if "experience" in r else r["level"]
+        self.assertEqual(lvl, "mid")
+
+    def test_junior_and_associate_titles_keep_their_level(self):
+        r, _ = run("Associate Product Manager", "Remote", "Fully remote. 1 year of experience.")
+        lvl = r["experience"]["level"] if "experience" in r else r["level"]
+        self.assertEqual(lvl, "junior")
+
     def test_assistant_with_years_not_entry(self):
         r, _ = run("Executive Assistant", "Remote", "Fully remote. 8+ years of experience supporting executives required.")
         self.assertEqual(r["experience"]["level"], "senior")
