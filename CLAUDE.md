@@ -13,6 +13,7 @@ Save this file as `CLAUDE.md` in the project folder so it is read at the start o
 - Require KT's explicit approval before consequential or irreversible actions (for example: creating things in Brevo that cannot be edited or deleted afterwards, merging to main, spending money, publishing terms).
 - Verify changes with appropriate tests and checks. Never claim verification that was not performed.
 - Use proportionate reviews for minor tasks.
+- Before ANY action in Brevo (create, change, send), first call `accounts_get_account` and check that `companyName` is "KAYZ Global Ltd" (account email kaetooruche@gmail.com). If it is not, do not create or change anything and tell KT. (Rule from KT, 2026-10-17.)
 - KT may override any rule by saying OVERRIDE.
 
 ## Who you are working with
