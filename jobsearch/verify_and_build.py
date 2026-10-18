@@ -47,20 +47,34 @@ def check(r):
             out["note"] = "site blocks automatic checks; agent verified it by opening the page"
         elif resp.status_code == 404 or resp.status_code == 410:
             out["note"] = "link dead"
-        elif resp.status_code == 200 and CLOSED.search(resp.text[:200000]):
-            out["note"] = "page shows closed-role wording"
+        elif resp.status_code == 200:
+            text = resp.text[:300000]
+            for m in CLOSED.finditer(text):
+                before = text[max(0, m.start() - 4000): m.start()].lower()
+                if "job-expired-view" in before or "ph-page-state=\"expired\"" in before or "expired job page state" in before:
+                    continue  # hidden template block that every Phenom careers page ships with
+                out["note"] = "page shows closed-role wording"
+                break
     except requests.RequestException as e:
         out["note"] = "could not load (" + type(e).__name__ + ")"
     return out
 
 def main():
     recs = load()
-    seen, uniq = set(), []
+    def ckey(r):
+        t = re.sub(r"\(.*?\)", "", r.get("title", "")).lower()
+        t = re.sub(r"[^a-z0-9]+", " ", t).strip()
+        co = re.sub(r"[^a-z0-9 ]", "", r.get("company", "").lower()).split()
+        loc = re.sub(r"[^a-z0-9 ]", " ", (r.get("location") or "").lower()).split()
+        return (co[0] if co else "", t, " ".join(loc[:2]))
+    rank = {"A": 0, "B": 1, "C": 2}
+    recs.sort(key=lambda r: rank.get(r.get("fit"), 3))
+    seen, seen_c, uniq = set(), set(), []
     for r in recs:
         k = norm(r.get("url")) or (r.get("company", "") + r.get("title", "")).lower()
-        if k in seen:
+        if k in seen or ckey(r) in seen_c:
             continue
-        seen.add(k); uniq.append(r)
+        seen.add(k); seen_c.add(ckey(r)); uniq.append(r)
     with ThreadPoolExecutor(6) as ex:
         results = list(ex.map(check, uniq))
     keep, dropped = [], []
