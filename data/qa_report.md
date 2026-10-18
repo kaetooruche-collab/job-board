@@ -1,8 +1,8 @@
-# Quality report, 2026-10-18T04:24+00:00
+# Quality report, 2026-10-18T10:58+00:00
 
-- Published: **1028**
+- Published: **1010**
 - Held back by a quality rule (not published): **0**
-- Warnings (published, but look): **16**
+- Warnings (published, but look): **18**
 
 ## Warnings
 
@@ -13,14 +13,18 @@
 - Platform Engineer at Resend: $150,000 - $180,000
 - Software Engineer, Trust & Safety  at Resend: $150,000 - $175,000
 
+### eligibility-label-partly-unsupported (2)
+- Enterprise Account Executive, Growth | Remote | Sweden at Grafana Labs: not found in evidence: ['Denmark', 'Finland', 'Iceland', 'Norway']
+- Enterprise Account Executive, Acquisition | Remote | Sweden at Grafana Labs: not found in evidence: ['Denmark', 'Finland', 'Iceland', 'Norway']
+
 ## Shape of the feed
 
 ```
-count: 1028
-bySource: {'Ashby': 311, 'Jobicy': 43, 'Greenhouse': 537, 'Lever': 137}
+count: 1010
+bySource: {'Jobicy': 36, 'Ashby': 307, 'Greenhouse': 528, 'Lever': 139}
 pctEligibilityUnclear: 25.0
-pctRemoteUnclear: 10.8
-pctWorldwide: 1.7
-pctEarlyCareer: 11.1
+pctRemoteUnclear: 11.3
+pctWorldwide: 1.2
+pctEarlyCareer: 10.5
 pctSeniorPlus: 42.2
 ```
