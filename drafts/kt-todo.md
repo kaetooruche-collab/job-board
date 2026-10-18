@@ -14,6 +14,13 @@ Legend: [ ] open, [x] done. "Only KT" means nobody else can do it (logins, accou
 - [ ] **Test the newsletter signup with your own email** on the live site and confirm it lands in Brevo list #11. Only KT.
 - [ ] **GoatCounter:** log in, open the dashboard, confirm it shows your visit and the click events (names in section 4). Only KT (needs the login).
 
+## 1b. Your pharmacy job search (started 18 Oct 2026; `jobsearch/README.md`)
+- [ ] **Send Claude your master CV** (paste it, or put the file in `jobsearch/private/`). Nothing can be tailored without it. Only KT.
+- [ ] **Answer the eligibility questions:** where you live and may work (citizenship, visa/work-permit facts), whether you would relocate, languages, any registration/licence steps in progress, pay floor, contract/part-time OK? Only KT. This decides which of the listed jobs are really open to you.
+- [ ] **Pick the 5 to 10 jobs to apply to first** from `jobsearch/pharmacy-jobs.xlsx` (amber "Days old" rows close soonest). Claude then builds the tailored CV and cover letter for each.
+- [ ] **Search LinkedIn by hand** for the same role families and paste any links you like (Claude cannot automate LinkedIn).
+- [ ] **Approve a weekly refresh** (a recurring Claude task that adds new jobs and removes expired ones), yes or no.
+
 ## 2. Routines once orders start
 - [ ] **Free CV check promise:** one per person, about 10 a week; the client emails the CV (never WhatsApp); reply with the three things to fix first; delete the CV within 30 days if they do not order. Log each one with a delete-by date (`drafts/client-data-handling.md`, `drafts/client-data-log-template.csv`). Only KT.
 - [ ] **Delete client files within 90 days** after each service is completed (privacy policy promise).
