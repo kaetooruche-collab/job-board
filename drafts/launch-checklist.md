@@ -31,6 +31,13 @@ Owner: C = Claude, K = KT. Status is what was verified, not what was hoped.
 
 ## C. Decisions waiting for KT (nothing below is published)
 - [x] Refund wording: approved by KT and published (services page FAQ and terms).
-- [ ] Executive offer for clients already at 500+ connections (recommendation: 100 new relevant connections).
-- [ ] Whether to cap the open-ended "until 500+" promise.
+- [x] Executive offer for clients already at 500+ connections: 100 new relevant connections (approved 18 Oct, on the page).
+- [x] Open-ended "until 500+" promise: removed; day-30 continuation is the paid LinkedIn Growth plan, $99 a month (approved 18 Oct).
 - [ ] BTC quote validity time (suggestion: 30 minutes). USDT network decided: Tron (TRC-20).
+
+## D. After the 18 Oct pricing change (KT)
+- [ ] Add WhatsApp Business quick replies 20-24 from `drafts/whatsapp-messages.md` (free check, add-ons, LinkedIn Growth).
+- [ ] Be ready to answer the free CV check: one per person, about 10 a week, delete the CV within 30 days if no order.
+- [ ] Time your first two orders (hours per package) and note buyer countries; review Essential/Professional prices after about 20 orders.
+- [ ] Ask each client for a one-sentence testimonial and permission to publish it.
+- [ ] GoatCounter events to watch: `services-click-hero-free-check`, `services-click-mid-free-check`, `services-click-sticky-free-check`, `services-click-pricing-*`, `services-click-addons`, `services-click-growth`, `cv-click-job-cv-button`, `cv-click-home-free-check`.
