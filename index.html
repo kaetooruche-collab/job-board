@@ -462,6 +462,12 @@
       padding: 0.45rem 0.95rem; border-radius: 8px; text-decoration: none;
     }
     .apply-btn:hover { background: var(--accent-hover); }
+    .cv-btn {
+      display: inline-block; background: transparent; color: var(--accent); font-weight: 700; font-size: 0.82rem;
+      padding: 0.4rem 0.9rem; border-radius: 8px; text-decoration: none; border: 1.5px solid var(--accent);
+    }
+    .cv-btn:hover { background: var(--accent-light); }
+    .cv-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
     .apply-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
     .job-why { font-size: 0.78rem; color: var(--text-secondary); }
     .job-why summary { cursor: pointer; font-weight: 600; color: var(--accent); }
@@ -916,7 +922,7 @@
     <!-- SERVICES -->
     <section class="services" id="services">
       <h2>Need help with your application?</h2>
-      <p>Kaeto Career Services writes CVs, cover letters and LinkedIn profiles. Three packages, from $29.</p>
+      <p>Kaeto Career Services writes CVs, cover letters and LinkedIn profiles. Three packages, from $29, and a free quick CV check to start.</p>
       <div class="service-grid">
         <div class="service-item">
           <h3>Essential &middot; $29</h3>
@@ -927,15 +933,15 @@
           <p>CV, cover letter and LinkedIn profile setup, with up to 3 revision rounds.</p>
         </div>
         <div class="service-item">
-          <h3>Executive &middot; $99</h3>
-          <p>Everything in Professional, plus personal branding and a 30-day LinkedIn growth service.</p>
+          <h3>Executive &middot; $149</h3>
+          <p>Everything in Professional, plus personal branding, 12 LinkedIn posts and 30 days of connection building.</p>
         </div>
       </div>
       <div class="service-cta">
         <p>See exactly what each package includes, or ask us a question first.</p>
         <div class="service-cta-buttons">
           <a href="/services" class="cta-email-btn">See the packages</a>
-          <a href="https://wa.me/905338225854" target="_blank" rel="noopener" class="cta-whatsapp">Message us on WhatsApp</a>
+          <a href="https://wa.me/905338225854?text=Hello%2C%20I%20would%20like%20a%20free%20quick%20CV%20check.%20Please%20tell%20me%20how%20to%20send%20my%20CV." target="_blank" rel="noopener" class="cta-whatsapp" onclick="trackCv('home-free-check','')">Get a free CV check</a>
         </div>
       </div>
     </section>
@@ -1137,6 +1143,8 @@
         if (more) { state.shown += PAGE_SIZE; renderJobs(); return; }
         var link = e.target.closest('[data-apply]');
         if (link) trackApply(link.getAttribute('data-id'), link.getAttribute('data-source'));
+        var cv = e.target.closest('[data-cv]');
+        if (cv) trackCv('job-cv-button', cv.getAttribute('data-id'));
       });
     }
 
@@ -1241,6 +1249,7 @@
           + (job.jobType ? '<span class="job-tag">' + esc(job.jobType) + '</span>' : '')
           + '<span class="job-source">Source: ' + esc(job.sourceName || '') + '</span></div>'
           + '<div class="job-actions"><a class="apply-btn" href="' + esc(url) + '" target="_blank" rel="noopener noreferrer" data-apply="1" data-id="' + esc(job.id) + '" data-source="' + esc(job.sourceName) + '">Apply on employer site</a>'
+          + '<a class="cv-btn" href="' + esc(cvLink(job)) + '" target="_blank" rel="noopener" data-cv="1" data-id="' + esc(job.id) + '" title="Opens WhatsApp with a message to Kaeto Career Services, our paid CV and LinkedIn service">Get a CV for this role</a>'
           + whyBlock(job) + '</div>'
           + '</article>';
       }).join('');
@@ -1248,6 +1257,17 @@
         html += '<button type="button" class="show-more">Show ' + Math.min(PAGE_SIZE, filtered.length - state.shown) + ' more</button>';
       }
       list.innerHTML = html;
+    }
+
+    function cvLink(job) {
+      var msg = 'Hello, I would like a CV for this role: ' + (job.title || 'a role') + ' at ' + (job.company || 'a company') + '. Could you tell me which package to choose?';
+      return 'https://wa.me/905338225854?text=' + encodeURIComponent(msg);
+    }
+
+    function trackCv(name, jobId) {
+      if (window.goatcounter && window.goatcounter.count) {
+        window.goatcounter.count({ path: 'cv-click-' + name, title: jobId || name, event: true });
+      }
     }
 
     function trackApply(jobId, source) {

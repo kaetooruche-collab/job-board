@@ -13,11 +13,11 @@ Business name: True Remote · Kaeto Career Services. Category: Professional serv
 ## 1. Pre-filled message (already on the website buttons)
 > Hello, I would like to order the *Essential* package ($29). Could you please confirm the next steps?
 
-(The same wording is used for Professional ($49) and Executive ($99).)
+(The same wording is used for Professional ($49) and Executive ($149). The "Get a free CV check" and job-page "Get a CV for this role" buttons open messages of their own: see messages 20 and 21.)
 
 ## 2. Greeting (automatic, first message from a new contact)
 > Hello, and welcome to True Remote by Kaeto Career Services. Thank you for your message.
-> To help us reply properly, please tell us which package you are interested in (Essential $29, Professional $49 or Executive $99) and the kind of roles you are applying for. We will reply as soon as we can.
+> To help us reply properly, please tell us which package you are interested in (Essential $29, Professional $49 or Executive $149) and the kind of roles you are applying for. We will reply as soon as we can.
 
 ## 3. Away message (automatic, outside your hours)
 > Thank you for your message. We are currently away and will reply when we are back. You can see the packages and what they include at [services page link].
@@ -34,7 +34,7 @@ Shortcut `/package`
 Inclusions to paste:
 - Essential: CV creation or improvement, tailored to your industry and target roles; ATS-optimised; Word and PDF; up to 2 revision rounds. Timing: 5 working days.
 - Professional: everything in Essential, plus a targeted cover letter and LinkedIn profile setup; up to 3 revision rounds. Timing: 5 working days.
-- Executive: everything in Professional, plus a personal branding strategy, manual targeted LinkedIn connection building (target 500+ total connections, continuing past day 30 until reached), 12 LinkedIn posts written and published over 30 days, and the 30-day LinkedIn growth service. Timing: CV and cover letter within 2 working days; LinkedIn profile setup within 5 working days; the 30-day service period starts when onboarding is complete.
+- Executive: everything in Professional, plus a personal branding strategy, 12 LinkedIn posts written and published over 30 days, and targeted connection building by hand each week of the 30-day service, within LinkedIn's limits, aiming to move you towards 500+ total connections (or 100 new relevant connections if you already have 500+). Timing: CV and cover letter within 2 working days; LinkedIn profile setup within 5 working days; the 30-day service period starts when onboarding is complete.
 
 ## 5. Payment details: bank transfer
 Shortcut `/bank`
@@ -114,12 +114,12 @@ Shortcut `/revision`
 Shortcut `/branding`
 > Hello [First name], your personal branding strategy has been emailed to you for review. Please check that every claim about your experience and qualifications is accurate, as you are responsible for what is published in your name. I will not publish posts or send connection requests until you approve it in writing by email.
 
-## 16. Executive: progress update (day 30 and after)
+## 16. Executive: progress update (day 30)
 Shortcut `/progress`
 > Hello [First name], here is your update. Your 30-day service period [ends / ended] on [date].
-> *Connections:* [number] of 500+ total.
+> *Connections:* [number] now, up from [starting number]. Our aim was to move you towards 500+ total [or: 100 new relevant connections].
 > *Posts published:* [number] of 12.
-> [If the target is not yet reached:] Connection building continues until we reach 500+ total connections. I will update you again on [date].
+> [If you want to keep going:] LinkedIn Growth continues the same work for $99 a month: 12 posts and weekly targeted connection requests, month to month. You pay each month here on WhatsApp, nothing is charged automatically, and you can stop any time before the next month starts. Would you like me to continue?
 
 ## 17. Order complete and information deletion
 Shortcut `/complete`
@@ -138,6 +138,30 @@ Shortcut `/privacy`
 > Thank you, [First name]. I have received your request about your personal information. I will respond within one month, free of charge. I may ask you to confirm it is you, but I will only ask for what is necessary.
 
 ---
+## 20. Free quick CV check: first reply
+Shortcut `/check`
+(Opens from the "Get a free CV check" buttons. The button text is: "Hello, I would like a free quick CV check. Please tell me how to send my CV.")
+> Hello [First name], thank you for asking. Please email your CV to trueremote.jobs@gmail.com (please do not send it here on WhatsApp), and tell me the roles you are applying for. I will reply with the three things I would fix first.
+> It is one free check per person. Your CV is used only for the check, and I delete it within 30 days if you do not order a package.
+
+## 21. Free CV check: result and next step
+Shortcut `/checked`
+> Hello [First name], I have emailed you the three things I would fix first. If you would like me to do the full job, the *[Essential $29 / Professional $49]* package fits what you described. I can also add a cover letter or LinkedIn setup to Essential. Would you like me to go ahead?
+
+## 22. Job-page button: first reply
+Shortcut `/role`
+(Opens from "Get a CV for this role" on a job card. The button text is: "Hello, I would like a CV for this role: [title] at [company]. Could you tell me which package to choose?")
+> Hello [First name], thank you for asking. Where are you in your search? If you already have a CV, the quickest start is the free CV check: email it to trueremote.jobs@gmail.com and I will tell you the three things I would fix first. If you would like a full package, *Essential ($29)* is the CV, *Professional ($49)* adds a cover letter and LinkedIn profile setup. Please check the employer's eligibility rules for your location before you apply.
+
+## 23. Add-ons menu
+Shortcut `/addons`
+> Here is what I can add to an order (USD): cover letter for an Essential order $15; LinkedIn profile setup for an Essential order $25; extra revision round $10; second CV for another target role $15; 48-hour priority delivery $15; interview preparation sheet $29 (likely questions and answer outlines for one target role, built from your CV). Which would you like? I will confirm the total before you pay.
+
+## 24. LinkedIn Growth (monthly) offer and monthly reminder
+Shortcut `/growth`
+> LinkedIn Growth is $99 a month: 12 curated posts written and published for you, plus targeted connection requests sent by hand each week, within LinkedIn's limits. It is month to month. You pay each month here on WhatsApp, nothing is charged automatically, and you can stop any time before the next month starts. Shall I start it from [date]?
+Monthly reminder: > Hello [First name], your LinkedIn Growth month ends on [date]. Would you like to continue for another month ($99), or stop here?
+
 ## Decisions (updated 17 October 2026)
 Decided by KT:
 1. **Fees:** the client pays all bank, network and conversion fees. This is now on the services page FAQ and in messages 5 and 6.
@@ -150,3 +174,7 @@ Still open:
 - **Account details:** the account holder name must match the name clients see, and details should be sent from this number only (and optionally also by email, so clients can cross-check).
 - **Receipts:** a short receipt or invoice by email once payment is confirmed.
 - **Refunds:** wording approved by KT on 17 Oct and published on the services page. The cooling-off line is in message 7.
+
+
+## Update 18 October 2026
+KT approved the pricing review: Executive is $149 with a 30-day service (12 posts, weekly targeted connection building, no open-ended promise); LinkedIn Growth $99 a month; add-ons; free quick CV check; "Get a CV for this role" button. Messages 1, 2, 4 and 16 were updated and messages 20-24 added. Set up quick replies for 20-24 as well.

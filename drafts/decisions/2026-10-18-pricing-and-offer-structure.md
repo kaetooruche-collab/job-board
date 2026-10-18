@@ -1,6 +1,6 @@
 # Decision review: services, pricing and offer structure
 
-Status: PROPOSED (18 Oct 2026). Nothing here is published. Prices, package names, revision limits, the 12-post commitment, the 30-day period and the 500+ target change only with KT's explicit approval (CLAUDE.md).
+Status: APPROVED by KT on 18 Oct 2026 (all five decisions as recommended); implemented on the services page, home page, privacy page and WhatsApp drafts. Prices, package names, revision limits, the 12-post commitment, the 30-day period and the 500+ target change only with KT's explicit approval (CLAUDE.md).
 
 ## 0. The answer in five lines
 1. Price is not the biggest lever. Orders per month are (traffic x enquiry rate x close rate): the same business can sell 1 or 45 orders a month on the same prices (table in section 5). Fix the path to a WhatsApp enquiry first, price second.

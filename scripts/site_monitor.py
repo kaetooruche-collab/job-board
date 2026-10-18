@@ -16,8 +16,8 @@ SITE = os.environ.get("SITE_URL", "https://northcyprusremotejobboard.vercel.app"
 PAGES = ["/", "/services", "/verify", "/privacy"]
 APPROVED_EMAIL = "trueremote.jobs@gmail.com"
 WHATSAPP_NUMBER = "905338225854"
-FORBIDDEN = ["no work permit needed", "the only job board", "premium pay", "payhip", "guaranteed job", "guaranteed interview"]
-PRICES = ["$29", "$49", "$99"]
+FORBIDDEN = ["no work permit needed", "the only job board", "premium pay", "payhip", "guaranteed job", "guaranteed interview", "continues until you do", "until the target is reached", "until you reach 500"]
+PRICES = ["$29", "$49", "$149", "$99"]
 UA = {"User-Agent": "Mozilla/5.0 (compatible; site-monitor)"}
 SAMPLE = 12
 
