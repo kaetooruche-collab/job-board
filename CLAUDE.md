@@ -27,8 +27,8 @@ Rule: every bug found gets (a) the real text added to `tests/fixtures/regression
 ## KT's to-do list
 The single master list of what KT must do or decide is `drafts/kt-todo.md`. When KT asks "what do I need to get done?" (or similar), read that file and show the open items, most urgent first, in plain language. Update it whenever something is done, added or decided, and commit the change. `drafts/launch-checklist.md` is history only.
 
-## KT's personal pharmacy job search
-Separate from the public job board. Everything is in `jobsearch/` (start with `jobsearch/README.md`; excluded from the website by `.vercelignore`). It does not use the job board classifier. Rules: only jobs posted within 7 days, each posting read in full, contacts only if the employer published them, never invent anything on a CV or letter, never scrape LinkedIn/Indeed/Glassdoor, nothing is emailed without KT's approval. Open items for KT are in `drafts/kt-todo.md` section 1b.
+## Scope of this chat and repository work
+This project covers the public job board and the Kaeto Career Services page (and their pipeline, emails, pricing and monitoring). KT's personal pharmacy job search is a separate project that lives in `jobsearch/` and is handled in its own chat (`jobsearch/CLAUDE.md`, `jobsearch/HANDOFF.md`). Do not work on it from the job-board chat unless KT asks; do not mix its items into `drafts/kt-todo.md`.
 
 ## Who you are working with
 KT is a marketing professional, not a developer. Explain every step in plain language, one step at a time. Do the typing and running yourself. Ask KT only for things nobody else can do: logins, approvals, decisions. After each phase, summarise in plain language what now works and what KT must do next.

@@ -14,12 +14,8 @@ Legend: [ ] open, [x] done. "Only KT" means nobody else can do it (logins, accou
 - [ ] **Test the newsletter signup with your own email** on the live site and confirm it lands in Brevo list #11. Only KT.
 - [ ] **GoatCounter:** log in, open the dashboard, confirm it shows your visit and the click events (names in section 4). Only KT (needs the login).
 
-## 1b. Your pharmacy job search (started 18 Oct 2026; `jobsearch/README.md`)
-- [ ] **Send Claude your master CV** (paste it, or put the file in `jobsearch/private/`). Nothing can be tailored without it. Only KT.
-- [ ] **Answer the eligibility questions:** where you live and may work (citizenship, visa/work-permit facts), whether you would relocate, languages, any registration/licence steps in progress, pay floor, contract/part-time OK? Only KT. This decides which of the listed jobs are really open to you.
-- [ ] **Pick the 5 to 10 jobs to apply to first** from `jobsearch/pharmacy-jobs.xlsx` (amber "Days old" rows close soonest). Claude then builds the tailored CV and cover letter for each.
-- [ ] **Search LinkedIn by hand** for the same role families and paste any links you like (Claude cannot automate LinkedIn).
-- [ ] **Approve a weekly refresh** (a recurring Claude task that adds new jobs and removes expired ones), yes or no.
+## 1b. Pharmacy job search
+Moved to its own chat and its own list: `jobsearch/TODO.md`. Not tracked here.
 
 ## 2. Routines once orders start
 - [ ] **Free CV check promise:** one per person, about 10 a week; the client emails the CV (never WhatsApp); reply with the three things to fix first; delete the CV within 30 days if they do not order. Log each one with a delete-by date (`drafts/client-data-handling.md`, `drafts/client-data-log-template.csv`). Only KT.
@@ -49,7 +45,6 @@ Legend: [ ] open, [x] done. "Only KT" means nobody else can do it (logins, accou
 - [ ] Brevo template versions that mention the Executive offer (if any are used) need new versions, since templates cannot be edited.
 - [ ] Add the first real testimonials to the services page when you have them.
 - [ ] **Check Jobicy dates on the public job board.** Two research agents found Jobicy shows old postings as new (Elation 2 Jul, Maven Sept, PointClickCare 9 Jul, H1 31 Jul, Bayesian Nov 2025, all shown as 14-18 Oct). Compare every Jobicy listing with the employer's own date, report the real number, and fix the pipeline (use the employer's date or drop Jobicy listings that cannot be dated). This affects the board's 30-day rule.
-- [ ] Pharmacy list: chase leads not yet verified (Viatris Associate Regulatory Affairs Executive, Lisbon; ICON Graduate PV Associate Mexico City, posted 10 Oct, one day outside the window) and run the weekly refresh once KT approves.
 - [ ] Keep this file updated.
 
 ## 6. Done (for reference)
