@@ -24,6 +24,9 @@ Never tell KT the job board is "good to go" from the classifier alone. The layer
 4. `scripts/spot_check.py` + `drafts/weekly-audit-prompt.md`: random listings opened and compared with their real postings. This is the only layer that tests truth. Report the real numbers (for example "14 of 15 correct"), never "looks fine".
 Rule: every bug found gets (a) the real text added to `tests/fixtures/regressions.json`, (b) the fix, (c) if it is a class of bug, a rule in `qa_checks.py` with tests, (d) an old-versus-new comparison on real postings before it ships. Before saying the board is ready, read `data/qa_report.md` and report the numbers.
 
+## KT's to-do list
+The single master list of what KT must do or decide is `drafts/kt-todo.md`. When KT asks "what do I need to get done?" (or similar), read that file and show the open items, most urgent first, in plain language. Update it whenever something is done, added or decided, and commit the change. `drafts/launch-checklist.md` is history only.
+
 ## Who you are working with
 KT is a marketing professional, not a developer. Explain every step in plain language, one step at a time. Do the typing and running yourself. Ask KT only for things nobody else can do: logins, approvals, decisions. After each phase, summarise in plain language what now works and what KT must do next.
 
