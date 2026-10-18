@@ -45,3 +45,7 @@ A JSON file at the path given in your task: a list of job records (schema below)
  "verified_open": true
 }
 Return a short summary at the end: how many records, how many A/B/C, which searches you used, and anything you could not verify.
+
+
+## Rating standard v2 (added 18 Oct 2026 after an independent audit)
+Rate on experience, skills and level only; residency and work authorisation are recorded separately (KT's own eligibility is not yet known). C = any of: required experience of 3+ years; a required minimum of 2+ years in the specific field for a Level II/III, Senior or Scientist role; two or more clear gaps (for example required experience AND a required language); a required licence; PhD/MD. B = one clear gap, such as a language, or 1 to 2 years asked, or experience only 'preferred'. A = meets the stated minimum. Record the posting's own wording for work mode and note when the description and the employer's remote flag disagree.

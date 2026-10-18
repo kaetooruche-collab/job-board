@@ -48,6 +48,8 @@ Legend: [ ] open, [x] done. "Only KT" means nobody else can do it (logins, accou
 - [ ] Google job-posting structured data: check Google's current rules for listings we do not own, then tell KT.
 - [ ] Brevo template versions that mention the Executive offer (if any are used) need new versions, since templates cannot be edited.
 - [ ] Add the first real testimonials to the services page when you have them.
+- [ ] **Check Jobicy dates on the public job board.** Two research agents found Jobicy shows old postings as new (Elation 2 Jul, Maven Sept, PointClickCare 9 Jul, H1 31 Jul, Bayesian Nov 2025, all shown as 14-18 Oct). Compare every Jobicy listing with the employer's own date, report the real number, and fix the pipeline (use the employer's date or drop Jobicy listings that cannot be dated). This affects the board's 30-day rule.
+- [ ] Pharmacy list: chase leads not yet verified (Viatris Associate Regulatory Affairs Executive, Lisbon; ICON Graduate PV Associate Mexico City, posted 10 Oct, one day outside the window) and run the weekly refresh once KT approves.
 - [ ] Keep this file updated.
 
 ## 6. Done (for reference)

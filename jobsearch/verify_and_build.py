@@ -61,6 +61,21 @@ def check(r):
 
 def main():
     recs = load()
+    try:
+        fixes = json.loads((HERE / "corrections.json").read_text(encoding="utf-8"))
+    except FileNotFoundError:
+        fixes = {}
+    for r in recs:
+        f = fixes.get(r.get("id"))
+        if not f:
+            continue
+        for k, v in f.items():
+            if k == "fit_reason_append":
+                r["fit_reason"] = (r.get("fit_reason") or "") + " " + v
+            elif k == "eligibility_append":
+                r["eligibility_stated"] = (r.get("eligibility_stated") or "") + " | " + v
+            else:
+                r[k] = v
     def ckey(r):
         t = re.sub(r"\(.*?\)", "", r.get("title", "")).lower()
         t = re.sub(r"[^a-z0-9]+", " ", t).strip()
