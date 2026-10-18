@@ -50,3 +50,10 @@ KT uses AI tools only to help improve the wording of documents. Because client t
 - Never paste passport/ID numbers, bank details or passwords (clients are told not to send them).
 - Delete the conversations that contain client text from the AI tool when the order is completed (part of the 90-day deletion routine).
 - If the tool changes its terms or you switch tools, update the privacy policy.
+
+
+## Free quick CV check (added 18 Oct 2026)
+- The client messages on WhatsApp (message 20), then emails the CV. Reply by email with the three things to fix first (message 21 tells them it is sent).
+- One free check per person; about 10 a week. If you are full, say so (the page promises this).
+- Log each one in the client data log with the date received and the delete-by date (30 days after receipt). If the person orders a package, the CV becomes part of the order and follows the 90-day rule after the service is completed.
+- If they do not order, delete the CV, your reply and any copies within 30 days. This is promised on the services page and the privacy policy.
