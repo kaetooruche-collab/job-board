@@ -29,3 +29,16 @@ Pilot: create one Whop product (Essential, $29), complete KYC, make a small test
 5. Tax mode: "You handle tax", "Whop calculates; you remit" or "Whop collects and remits"? (KT should confirm with an accountant which applies.)
 6. Is the account owner KT personally or KAYZ Global Ltd, and does the bank account name match?
 Send screenshots or the answers and Claude will turn them into a go/no-go.
+
+## Update 19 Oct 2026: what KT's screenshot of Whop Settings > Tax shows
+Only this one page was seen (scrolled partway). Read from the image:
+- **Business address on the account:** a full street address in Kyrenia, TRNC, Cyprus (apartment, block and door number, street, postcode 99300), shown with a flag icon.
+- **Tax registrations:** none added. Whop's own text says: to collect tax in the UK add a UK VAT registration; for EU sales add a VAT registration for the buyer's country or an EU OSS registration. So no UK or EU tax is being collected.
+- **"States you collect tax in":** "Collecting in all US states", with every state listed. So US sales tax collection is switched on by default.
+- **Not visible (above the fold, and other pages):** which tax mode is selected (the optional Whop tax features cost 2% when tax is collected), the product tax category, KYC/verification status, payout method and fee, risk/holds, checkout settings, legal settings.
+
+What it means (not tax advice; an accountant should confirm):
+1. US sales tax is on by default. Whether CV/LinkedIn writing is taxable differs by US state, and with tax collection on, Whop adds tax at checkout and may charge its 2% tax fee. Check the product's tax category and consider switching collection off if an accountant agrees it does not apply.
+2. No UK VAT or EU OSS registration means Whop will not collect VAT for UK/EU buyers. Whether VAT applies to a human-delivered CV service from a non-EU seller needs an accountant's answer; do not assume either way.
+3. The street address on the account may appear on buyer receipts or checkout. If it is a home address, check Settings > Legal and Checkout, and consider using town-only or the company's registered address if Whop allows it.
+4. Still needed before any button goes on the site: Settings > Verifications, Payments, Risk, Legal and Checkout screenshots, plus Dashboard > Balances (payout method and fee).
