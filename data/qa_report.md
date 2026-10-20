@@ -1,8 +1,8 @@
-# Quality report, 2026-10-20T11:29+00:00
+# Quality report, 2026-10-20T16:57+00:00
 
-- Published: **944**
+- Published: **1013**
 - Held back by a quality rule (not published): **1**
-- Warnings (published, but look): **16**
+- Warnings (published, but look): **17**
 
 ## Held back
 
@@ -11,21 +11,21 @@
 
 ## Warnings
 
-### pay-in-posting-but-card-says-not-stated (16)
+### pay-in-posting-but-card-says-not-stated (17)
+- Staff Data Engineer at Webflow: $212,500 - $255,000
 - Director, Enterprise Sales at Affirm: $370,000 - $490,000
 - Senior Software Engineer, Backend (Comms Core) at Affirm: $32,000-$48,000
 - Senior Director, Revenue Marketing Services at Affirm: $327,750 - $408,250
 - Software Engineer II, Backend (Card) at Affirm: $24,000 - $36,000
-- Platform Engineer at Resend: $150,000 - $180,000
 
 ## Shape of the feed
 
 ```
-count: 944
-bySource: {'Greenhouse': 454, 'Ashby': 306, 'Lever': 142, 'Jobicy': 42}
-pctEligibilityUnclear: 25.0
-pctRemoteUnclear: 11.2
-pctWorldwide: 1.4
-pctEarlyCareer: 11.9
-pctSeniorPlus: 41.9
+count: 1013
+bySource: {'Greenhouse': 529, 'Lever': 142, 'Ashby': 308, 'Jobicy': 34}
+pctEligibilityUnclear: 24.9
+pctRemoteUnclear: 11.7
+pctWorldwide: 1.3
+pctEarlyCareer: 11.5
+pctSeniorPlus: 42.3
 ```
