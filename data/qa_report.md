@@ -1,8 +1,8 @@
-# Quality report, 2026-10-21T11:42+00:00
+# Quality report, 2026-10-21T17:07+00:00
 
-- Published: **1026**
+- Published: **1057**
 - Held back by a quality rule (not published): **1**
-- Warnings (published, but look): **17**
+- Warnings (published, but look): **16**
 
 ## Held back
 
@@ -11,7 +11,7 @@
 
 ## Warnings
 
-### pay-in-posting-but-card-says-not-stated (17)
+### pay-in-posting-but-card-says-not-stated (16)
 - Lead Platform Engineer, Identity & Access at Webflow: $232,000 - 290,000
 - Staff Data Engineer at Webflow: $212,500 - $255,000
 - Director, Enterprise Sales at Affirm: $370,000 - $490,000
@@ -21,11 +21,11 @@
 ## Shape of the feed
 
 ```
-count: 1026
-bySource: {'Ashby': 312, 'Greenhouse': 534, 'Jobicy': 39, 'Lever': 141}
-pctEligibilityUnclear: 25.4
-pctRemoteUnclear: 11.9
-pctWorldwide: 1.1
-pctEarlyCareer: 11.1
-pctSeniorPlus: 42.3
+count: 1057
+bySource: {'Lever': 144, 'Greenhouse': 534, 'Ashby': 316, 'Jobicy': 63}
+pctEligibilityUnclear: 25.5
+pctRemoteUnclear: 13.4
+pctWorldwide: 1.2
+pctEarlyCareer: 10.9
+pctSeniorPlus: 42.4
 ```
