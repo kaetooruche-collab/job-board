@@ -1,8 +1,8 @@
-# Quality report, 2026-10-22T17:06+00:00
+# Quality report, 2026-10-22T21:31+00:00
 
-- Published: **1042**
+- Published: **1026**
 - Held back by a quality rule (not published): **1**
-- Warnings (published, but look): **13**
+- Warnings (published, but look): **12**
 
 ## Held back
 
@@ -11,21 +11,21 @@
 
 ## Warnings
 
-### pay-in-posting-but-card-says-not-stated (13)
+### pay-in-posting-but-card-says-not-stated (12)
 - Lead Platform Engineer, Identity & Access at Webflow: $232,000 - 290,000
 - Staff Data Engineer at Webflow: $212,500 - $255,000
 - Director, Enterprise Sales at Affirm: $370,000 - $490,000
-- Senior Software Engineer, Backend (Comms Core) at Affirm: $32,000-$48,000
+- Platform Engineer at Resend: $150,000 - $180,000
 - Platform Engineer at Resend: $150,000 - $180,000
 
 ## Shape of the feed
 
 ```
-count: 1042
-bySource: {'Greenhouse': 527, 'Ashby': 327, 'Lever': 145, 'Jobicy': 43}
-pctEligibilityUnclear: 25.2
-pctRemoteUnclear: 11.6
-pctWorldwide: 1.2
-pctEarlyCareer: 11.1
-pctSeniorPlus: 42.2
+count: 1026
+bySource: {'Greenhouse': 522, 'Lever': 144, 'Ashby': 326, 'Jobicy': 34}
+pctEligibilityUnclear: 25.8
+pctRemoteUnclear: 10.5
+pctWorldwide: 1.1
+pctEarlyCareer: 10.2
+pctSeniorPlus: 43.2
 ```
