@@ -1,6 +1,14 @@
-# Verified remote job board: brief for Claude Code (version 3)
+# Verified remote job board: brief for Claude Code (version 4)
 
 Save this file as `CLAUDE.md` in the project folder so it is read at the start of every session. It replaces the earlier brief completely. If anything here conflicts with an older note, this file wins.
+
+**Version 4 changes (KT, 2026-10-24), which override anything below that says otherwise:**
+- **One brand: "Yireh Careers"** for the job board AND the career services (replaces the placeholder "TrueRemote"/`PROJECT_NAME` and "Kaeto Career Services"). The public address is `https://yirehcareers.vercel.app` until KT buys a domain; the old `northcyprusremotejobboard.vercel.app` redirects to it (temporary 307 in `vercel.json`). The name is applied by hand across `index.html`, `services.html`, `verify.html`, `privacy.html`, `thanks.html`, `kit.html`, `site-config.js`, `scripts/make_outputs.py`, `scripts/site_monitor.py`, `og-image.png` and the drafts; `tests/test_brand.py` fails if a retired name returns. Decision evidence: `drafts/decisions/2026-10-24-brand-name-and-founder-visibility.md`; naming checklist: `drafts/brand-name-checklist.md`. Trademark, language and handle checks for "Yireh" are NOT done; KT chose to launch first.
+- **No personal name, face or photo on the brand or the public pages** (KT's rule). The "Who's behind this?" block was replaced by "How we work". Do not re-add a founder section, photo, first name or role line. WhatsApp and email replies are signed as the team.
+- **KAYZ Global Ltd is not a registered company** (KT, 2026-10-24). Do not call it a company, "Ltd", or the operator on any page or email. The privacy page says Yireh Careers is run by an individual business owner in Kyrenia and is not a registered company (KT may change it after registering a company). The Brevo account label "KAYZ Global Ltd" in the Brevo rule below is only a label. Whop opens as an individual until a company exists.
+- **Jobicy is excluded** (`USE_JOBICY = False` in `scripts/fetch_jobs.py`, BLOCK rule `source-date-not-original` in `scripts/qa_checks.py`): its dates are not the employer's original posting dates (evidence: `tests/fixtures/jobicy_dates.json`, LaunchDarkly 23 Oct vs 8 Oct on the employer's board). Only turn it back on if a source of truth for the date is found.
+- **Card checkout is built but OFF** (`SITE.checkout.mode = 'off'` in `site-config.js`); the site orders by WhatsApp. It goes live only with real `https://whop.com/checkout/ch_...` URLs and mode `live`, after `drafts/whop-go-live-checklist.md`. KT has no bank account linked yet; do not block launch on it.
+- **Post kit:** `/kit` (unlisted, noindex, no analytics) builds ready-to-copy posts for WhatsApp, Facebook, TikTok and Snapchat from the live feed, with `utm_source`-tagged links. KT posts by hand.
 
 **Version 3 changes (KT, 2026-10-15), which override anything below that says otherwise:** the audience is every job seeker (students, graduates, mid-career, specialists, career changers, freelancers), not only entry-level people; listings span all fields (administration, customer service, sales and marketing, finance and accounting, technology, healthcare, education, legal, HR, and more), not mainly tech; senior and leadership roles are allowed and filterable by level; "remote" is decided by reading the whole posting (see Work-arrangement classification below); remote roles restricted to a country or region are published with the restriction shown, and unconfirmed-but-marketed-as-remote roles are published with a plain "not confirmed" label. Build for the person searching, not for the scraper.
 
@@ -24,6 +32,12 @@ Never tell KT the job board is "good to go" from the classifier alone. The layer
 4. `scripts/spot_check.py` + `drafts/weekly-audit-prompt.md`: random listings opened and compared with their real postings. This is the only layer that tests truth. Report the real numbers (for example "14 of 15 correct"), never "looks fine".
 Rule: every bug found gets (a) the real text added to `tests/fixtures/regressions.json`, (b) the fix, (c) if it is a class of bug, a rule in `qa_checks.py` with tests, (d) an old-versus-new comparison on real postings before it ships. Before saying the board is ready, read `data/qa_report.md` and report the numbers.
 
+## KT's to-do list
+The single master list of what KT must do or decide is `drafts/kt-todo.md`. When KT asks "what do I need to get done?" (or similar), read that file and show the open items, most urgent first, in plain language. Update it whenever something is done, added or decided, and commit the change. `drafts/launch-checklist.md` is history only.
+
+## Scope of this chat and repository work
+This project covers the public job board and the career services page (and their pipeline, emails, pricing and monitoring). KT's personal pharmacy job search is a separate project that lives in `jobsearch/` and is handled in its own chat (`jobsearch/CLAUDE.md`, `jobsearch/HANDOFF.md`). Do not work on it from the job-board chat unless KT asks; do not mix its items into `drafts/kt-todo.md`.
+
 ## Who you are working with
 KT is a marketing professional, not a developer. Explain every step in plain language, one step at a time. Do the typing and running yourself. Ask KT only for things nobody else can do: logins, approvals, decisions. After each phase, summarise in plain language what now works and what KT must do next.
 
@@ -32,10 +46,10 @@ A free job board of verified remote jobs at every experience level and in every 
 
 Revenue comes from KT's paid CV and LinkedIn services, sold by WhatsApp (+90 533 822 5854) and email. The board earns trust and traffic. Later revenue lines (a seeker plan, employer listings, partners) wait for gates; do not build them.
 
-**Name.** The final name is not chosen yet. Use the placeholder `PROJECT_NAME` in code and copy, kept in ONE config file so a rename is a one-line change. The current contact email (trueremote.jobs@gmail.com, the single address for the website and for clients) and the site name will change at the rename; keep them in the same config.
+**Name.** Yireh Careers (decided by KT on 2026-10-24; see Version 4 changes). The contact email is still trueremote.jobs@gmail.com (the single address for the website and for clients) until KT creates a new one; keep it in `site-config.js`.
 
 Already in place and to be kept:
-- Static site on Vercel. A copy of the previous site is in the folder KT downloaded (`remotenc-oct5`); ask KT for its location. Keep the visual style: navy hero, job cards, category filters, search. Remove the country-specific hero copy.
+- Static site on Vercel (project `north_cyprus_remote_job_board`, public address yirehcareers.vercel.app). A copy of the previous site is in the folder KT downloaded (`remotenc-oct5`); ask KT for its location. Keep the visual style: navy hero, job cards, category filters, search. Remove the country-specific hero copy.
 - Email signup posts to a Brevo embedded-form URL. Reuse the exact `action` URL and hidden fields from the old `index.html`. Never put an API key in client code.
 - GoatCounter analytics for `kayzglobal.goatcounter.com`.
 - A holding page is live on the old project while this is built.
@@ -102,7 +116,7 @@ Each run also writes (a) a ready-to-post WhatsApp message of three to five new l
 Do not start without KT's go-ahead.
 
 ## Not part of this build
-Payments (decided by KT, 2026-10-15, replacing the earlier Payhip decision): there is NO payment of any kind on the website. Buttons open WhatsApp with a pre-filled message; KT then gives the client bank-transfer details (USD, EUR, GBP, TL) or crypto details in the chat; documents are sent only by email. Do not add any payment processor or checkout. No paywall on listings. No seeker subscription yet. WhatsApp message wording lives in `drafts/whatsapp-messages.md`; the payment decision review is `drafts/decisions/2026-10-15-payments.md`.
+Payments: KT decided on 2026-10-15 that there is no payment processor on the website (reason: KT had no Whop account at the time). On 2026-10-23 KT chose to add Whop hosted checkout, sandbox first. Current rules: (1) only Essential and Professional get a "Pay by card" button, linking to a Whop-hosted checkout link (no payment form, API key or webhook on this site; client code holds only public checkout URLs in `site-config.js`); (2) the buttons show only when `SITE.checkout.mode` is `live` with `https://whop.com/checkout/...` URLs; `sandbox` mode shows them only on a page opened with `?pay=test` and with a TEST banner, and must never be live (tests and `scripts/site_monitor.py` fail on it); (3) Executive, add-ons, LinkedIn Growth, bank transfer and crypto stay on WhatsApp (KT sends the details in the chat); (4) documents are sent only by email; (5) `thanks.html` is information only, noindex, and never claims a payment was verified; (6) do not add any other payment processor, a paywall on listings or a seeker subscription; (7) going live (production URLs, mode `live`, merge to main) needs KT's explicit approval after the checklist in `drafts/whop-go-live-checklist.md`. WhatsApp message wording lives in `drafts/whatsapp-messages.md`; decision reviews: `drafts/decisions/2026-10-15-payments.md`, `2026-10-19-whop-payments.md`, `2026-10-23-whop-checkout-integration-plan.md`.
 
 ## Acceptance tests (show KT the evidence for each)
 - 100% of published listings pass the link check at deploy time, and each links to the employer's or source's specific posting.

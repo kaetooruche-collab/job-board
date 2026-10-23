@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Post kit — Yireh Careers</title>
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="referrer" content="no-referrer">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%231a1a2e'/><path d='M28 55 L43 70 L72 35' stroke='%2360a5fa' stroke-width='10' stroke-linecap='round' stroke-linejoin='round' fill='none'/></svg>">
+  <link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/fonts/inter.css">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bg: #f8f9fb; --surface: #ffffff; --text: #1a1a2e; --text-secondary: #5f6368; --accent: #2563eb;
+      --accent-hover: #1d4ed8; --accent-light: #eff6ff; --border: #e2e5e9; --tag-bg: #f1f3f5;
+      --green: #0d9488; --warn-bg: #fef3c7; --warn-text: #78350f; --radius: 10px;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) {
+        --bg: #0c0c18; --surface: #161625; --text: #e8e8f0; --text-secondary: #9ca3af; --accent: #60a5fa;
+        --accent-hover: #93bbfd; --accent-light: #1e293b; --border: #262640; --tag-bg: #1e1e36;
+        --green: #2dd4bf; --warn-bg: #3a2e12; --warn-text: #f5d58a; color-scheme: dark;
+      }
+    }
+    body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; background: var(--bg); color: var(--text); line-height: 1.55; -webkit-font-smoothing: antialiased; }
+    .wrap { max-width: 860px; margin: 0 auto; padding: 1.5rem 1rem 4rem; }
+    h1 { font-size: clamp(1.4rem, 4vw, 1.9rem); font-weight: 800; letter-spacing: -0.5px; margin-bottom: 0.4rem; }
+    .lead { color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 1.25rem; max-width: 62ch; }
+    .status { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.25rem; }
+    .chip { background: var(--tag-bg); border: 1px solid var(--border); border-radius: 999px; padding: 0.3rem 0.8rem; font-size: 0.8rem; font-weight: 600; }
+    .controls { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; display: grid; gap: 0.9rem; margin-bottom: 1.5rem; }
+    .controls .row { display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; }
+    label { font-size: 0.85rem; font-weight: 600; display: flex; gap: 0.45rem; align-items: center; }
+    select, button { font: inherit; }
+    select { background: var(--surface); color: var(--text); border: 1px solid var(--border); border-radius: 6px; padding: 0.35rem 0.5rem; }
+    .btn { background: var(--accent); color: #fff; border: none; border-radius: 8px; padding: 0.55rem 1rem; font-weight: 700; font-size: 0.85rem; cursor: pointer; }
+    .btn:hover { background: var(--accent-hover); }
+    .btn.secondary { background: transparent; color: var(--accent); border: 1px solid var(--accent); }
+    .btn:focus-visible, select:focus-visible, input:focus-visible, textarea:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+    .card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.1rem; margin-bottom: 1.1rem; }
+    .card h2 { font-size: 1.05rem; font-weight: 800; margin-bottom: 0.2rem; }
+    .card .note { color: var(--text-secondary); font-size: 0.82rem; margin-bottom: 0.7rem; }
+    textarea { width: 100%; min-height: 12rem; resize: vertical; background: var(--bg); color: var(--text); border: 1px solid var(--border); border-radius: 8px; padding: 0.7rem; font: 0.85rem/1.5 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+    .actions { display: flex; gap: 0.5rem; flex-wrap: wrap; align-items: center; margin-top: 0.6rem; }
+    .linkline { font-size: 0.78rem; color: var(--text-secondary); word-break: break-all; margin-top: 0.4rem; }
+    .copied { color: var(--green); font-weight: 700; font-size: 0.82rem; }
+    .rules { background: var(--warn-bg); color: var(--warn-text); border-radius: var(--radius); padding: 0.9rem 1rem; font-size: 0.85rem; margin-top: 1.5rem; }
+    .rules ul { padding-left: 1.1rem; margin-top: 0.4rem; }
+    .section-title { font-size: 0.75rem; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin: 1.6rem 0 0.7rem; }
+    #empty { display: none; background: var(--warn-bg); color: var(--warn-text); padding: 0.8rem 1rem; border-radius: var(--radius); margin-bottom: 1rem; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>Post kit</h1>
+    <p class="lead">Ready-to-copy posts built from the live job feed. Copy, paste, post. Every link is tagged, so GoatCounter shows which platform sent each visitor. This page is unlisted and not indexed.</p>
+    <div class="status" id="status"></div>
+
+    <div class="controls">
+      <div class="row">
+        <label>Jobs per post
+          <select id="count"><option>3</option><option selected>4</option><option>5</option></select>
+        </label>
+        <label>Category
+          <select id="category"><option value="">All</option></select>
+        </label>
+        <label><input type="checkbox" id="early" checked> Put one early-career role first</label>
+        <label><input type="checkbox" id="clear" checked> Prefer roles with clear eligibility</label>
+        <label><input type="checkbox" id="direct"> Add each employer's direct link (WhatsApp)</label>
+      </div>
+      <div class="row">
+        <button class="btn" id="reroll" type="button">Pick different jobs</button>
+        <span class="note" style="font-size:0.8rem;color:var(--text-secondary)">Only roles that read as remote, posted in the last 72 hours, one per company.</span>
+      </div>
+    </div>
+    <div id="empty">Not enough fresh listings for a post right now. Try another category, or come back after the next refresh (every 6 hours).</div>
+
+    <p class="section-title">Job posts</p>
+    <div id="jobposts"></div>
+
+    <p class="section-title">Career services posts (free quick CV check)</p>
+    <div id="cvposts"></div>
+
+    <div class="rules">
+      <strong>Posting rules that keep the accounts safe and the posts trusted</strong>
+      <ul>
+        <li>Read each group's rules first. Many groups ban links; ask the admin or post as text with the link in a comment.</li>
+        <li>One post per group per day. Posting the same text into many groups at once gets accounts flagged as spam.</li>
+        <li>Never add "guaranteed", "no work permit needed" or claims about who a job suits. The posts already tell people to check each employer's eligibility rules.</li>
+        <li>Reply to every comment and message. Correct anything wrong in public the same day (trust rule 6).</li>
+        <li>Check the link opens before you post it (the page shows the live address).</li>
+      </ul>
+    </div>
+  </div>
+
+<script>
+(function () {
+  var BASE = location.origin + '/';
+  var LEVEL = { internship: 'Internship', entry: 'Entry level', junior: 'Junior', mid: 'Mid level', senior: 'Senior', leadership: 'Leadership', unspecified: 'Level not stated' };
+  var rows = [], offset = 0, now = new Date();
+
+  function tag(platform, kind, path) {
+    return BASE.replace(/\/$/, '') + (path || '/') + '?utm_source=' + platform + '&utm_medium=social&utm_campaign=' + kind;
+  }
+  function rel(iso) {
+    var h = Math.max(0, (now - new Date(iso)) / 36e5);
+    if (h < 1) return 'less than an hour ago';
+    if (h < 24) return Math.round(h) + 'h ago';
+    return Math.round(h / 24) + ' day' + (Math.round(h / 24) === 1 ? '' : 's') + ' ago';
+  }
+  function elig(r) { return (r.eligibility && r.eligibility.label) || 'Eligibility unclear'; }
+  function pay(r) { return r.salaryText ? 'Pay: ' + r.salaryText : 'Pay: not stated'; }
+  function lvl(r) { return LEVEL[r.level] || 'Level not stated'; }
+
+  function pool() {
+    var cat = document.getElementById('category').value;
+    return rows.filter(function (r) {
+      if (r.workArrangement !== 'fully_remote' && r.workArrangement !== 'remote_geo_restricted') return false;
+      var age = (now - new Date(r.postedAt)) / 36e5;
+      if (!(age >= 0 && age <= 72)) return false;
+      return !cat || r.category === cat;
+    }).sort(function (a, b) { return a.postedAt < b.postedAt ? 1 : -1; });
+  }
+  function choose() {
+    var n = parseInt(document.getElementById('count').value, 10), fresh = pool();
+    if (fresh.length === 0) return [];
+    var rotated = fresh.slice(offset % fresh.length).concat(fresh.slice(0, offset % fresh.length));
+    var order = rotated;
+    if (document.getElementById('clear').checked) {
+      var isClear = function (r) { return elig(r) !== 'Eligibility unclear'; };
+      order = rotated.filter(isClear).concat(rotated.filter(function (r) { return !isClear(r); }));
+      rotated = order;
+    }
+    if (document.getElementById('early').checked) {
+      var early = rotated.filter(function (r) { return ['internship', 'entry', 'junior'].indexOf(r.level) >= 0; });
+      order = early.slice(0, 1).concat(rotated);
+    }
+    var out = [], companies = {}, cats = {};
+    order.forEach(function (r) {
+      if (out.length >= n) return;
+      var c = r.company.trim().toLowerCase();
+      if (companies[c] || (cats[r.category] || 0) >= 2 || out.indexOf(r) >= 0) return;
+      out.push(r); companies[c] = 1; cats[r.category] = (cats[r.category] || 0) + 1;
+    });
+    return out.sort(function (a, b) { return a.postedAt < b.postedAt ? 1 : -1; });
+  }
+  function oldestHours(items) {
+    return Math.max.apply(null, items.map(function (r) { return (now - new Date(r.postedAt)) / 36e5; }));
+  }
+  function span(items) {
+    var h = oldestHours(items);
+    return h <= 24 ? 'in the last 24 hours' : 'in the last ' + Math.ceil(h / 24) + ' days';
+  }
+
+  function whatsapp(items) {
+    var direct = document.getElementById('direct').checked;
+    var L = ['*New verified remote jobs* (' + now.toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' }) + ')', ''];
+    items.forEach(function (r, i) {
+      L.push((i + 1) + '. *' + r.title + '* at ' + r.company);
+      L.push('   Who can apply: ' + elig(r));
+      L.push('   ' + lvl(r) + ' · ' + (r.jobType || 'Type not stated') + ' · ' + pay(r));
+      L.push('   Posted ' + rel(r.postedAt) + ' · Source: ' + r.sourceName);
+      if (direct) L.push('   ' + r.sourceUrl);
+      L.push('');
+    });
+    L.push('All the jobs, with filters, and a direct link to each employer\'s own posting: ' + tag('whatsapp', 'jobs'));
+    L.push('');
+    L.push('Please check each employer\'s eligibility rules before you apply. We never charge you to apply or to see a listing\'s apply link.');
+    return L.join('\n');
+  }
+  function facebook(items) {
+    var L = ['Looking for remote work? ' + items.length + ' verified remote roles posted ' + span(items) + ':', ''];
+    items.forEach(function (r) { L.push('• ' + r.title + ' at ' + r.company + ' (' + elig(r) + ')'); });
+    L.push('');
+    L.push('Every job links straight to the employer\'s own posting, shows who can apply and when it was posted, and is refreshed every 6 hours.');
+    L.push('See them all and filter by field: ' + tag('facebook', 'jobs'));
+    L.push('');
+    L.push('Please check each employer\'s eligibility rules before you apply. We never charge you to apply or to see a listing\'s apply link.');
+    L.push('');
+    L.push('#RemoteJobs #WorkFromHome #JobSearch #Hiring #RemoteWork');
+    return L.join('\n');
+  }
+  function tiktok(items) {
+    var L = ['VIDEO SCRIPT (about 20-25 seconds, vertical, screen recording of the board or your phone)', '',
+      'HOOK (first 2 seconds, say it and put it on screen): "' + items.length + ' verified remote jobs you can apply to today."', ''];
+    items.forEach(function (r, i) {
+      L.push('JOB ' + (i + 1) + ' (on screen: "' + r.title + ' · ' + r.company + '")');
+      L.push('Say: "' + r.title + ' at ' + r.company + '. Who can apply: ' + elig(r) + '."');
+    });
+    L.push('');
+    L.push('CLOSE: "Every link goes to the employer\'s own posting. Check each employer\'s eligibility before you apply. Link in my bio."');
+    L.push('');
+    L.push('CAPTION: ' + items.length + ' verified remote jobs, updated every 6 hours. Link in bio. #remotejobs #remotework #jobsearch #hiring #workfromhome');
+    L.push('');
+    L.push('BIO LINK (TikTok does not make caption links clickable; put this in your profile bio): ' + tag('tiktok', 'jobs'));
+    return L.join('\n');
+  }
+  function snapchat(items) {
+    var L = ['STORY / SPOTLIGHT (on-screen text, one job per snap):', ''];
+    items.forEach(function (r, i) { L.push('Snap ' + (i + 1) + ': ' + r.title + ' · ' + r.company + ' · ' + elig(r)); });
+    L.push('Last snap: "Verified remote jobs, updated every 6 hours. Link in my profile."');
+    L.push('');
+    L.push('CAPTION: ' + items.length + ' verified remote jobs. Check each employer\'s eligibility before you apply.');
+    L.push('');
+    L.push('LINK: ' + tag('snapchat', 'jobs'));
+    L.push('(Snapchat usually does not allow clickable links in normal Stories. Put the link in your profile where your account allows it, or send it in a chat or group message.)');
+    return L.join('\n');
+  }
+
+  var CV = {
+    whatsapp: function () { return ['*Applying and not hearing back?*', '', 'Send us your CV for a free quick check and we will tell you the three things we would fix first. One free check per person. Please email your CV, not WhatsApp.', '', 'Details and packages from $29: ' + tag('whatsapp', 'cvcheck', '/services'), '', 'We do not promise interviews or job offers.'].join('\n'); },
+    facebook: function () { return ['Applying for remote jobs and not hearing back?', '', 'Yireh Careers writes CVs, cover letters and LinkedIn profiles. Start with a free quick CV check: send your CV and we tell you the three things we would fix first.', '', 'Packages from $29: ' + tag('facebook', 'cvcheck', '/services'), '', 'We do not promise interviews or job offers.', '', '#CV #Resume #LinkedIn #JobSearch #RemoteJobs'].join('\n'); },
+    tiktok: function () { return ['VIDEO SCRIPT (15-20 seconds):', 'HOOK: "Your CV might be the reason you are not hearing back."', 'BODY: "Send me your CV and I will tell you the first three things to fix. It is free, one per person."', 'CLOSE: "Link in my bio. We do not promise interviews or offers."', '', 'CAPTION: Free quick CV check. Link in bio. #cv #resume #linkedin #jobsearch #careertok', '', 'BIO LINK: ' + tag('tiktok', 'cvcheck', '/services')].join('\n'); },
+    snapchat: function () { return ['STORY (two snaps):', 'Snap 1: "Not hearing back on job applications? Get a free quick CV check."', 'Snap 2: "Details in my profile link. We do not promise interviews or offers."', '', 'LINK: ' + tag('snapchat', 'cvcheck', '/services')].join('\n'); }
+  };
+  var NOTES = {
+    whatsapp: 'WhatsApp groups and status. Check the group allows links and promotions first.',
+    facebook: 'Facebook pages and groups. If a group bans links, post the text and put the link in the first comment.',
+    tiktok: 'TikTok video. Record a short vertical video of the board or the roles; links go in your bio.',
+    snapchat: 'Snapchat Story or Spotlight.'
+  };
+  var NAMES = { whatsapp: 'WhatsApp', facebook: 'Facebook', tiktok: 'TikTok', snapchat: 'Snapchat' };
+
+  function card(host, title, note, text, linkText) {
+    var d = document.createElement('div'); d.className = 'card';
+    var h = document.createElement('h2'); h.textContent = title; d.appendChild(h);
+    var p = document.createElement('p'); p.className = 'note'; p.textContent = note; d.appendChild(p);
+    var ta = document.createElement('textarea'); ta.readOnly = true; ta.value = text; ta.setAttribute('aria-label', title); d.appendChild(ta);
+    var a = document.createElement('div'); a.className = 'actions';
+    var b = document.createElement('button'); b.className = 'btn'; b.type = 'button'; b.textContent = 'Copy post';
+    var m = document.createElement('span'); m.className = 'copied'; m.setAttribute('role', 'status');
+    function done(msg) { m.textContent = msg; setTimeout(function () { m.textContent = ''; }, 2500); }
+    b.addEventListener('click', function () {
+      function fallback() { ta.focus(); ta.select(); try { document.execCommand('copy'); done('Copied'); } catch (e) { done('Press and hold to copy'); } }
+      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(ta.value).then(function () { done('Copied'); }, fallback); else fallback();
+    });
+    a.appendChild(b);
+    if (linkText) {
+      var b2 = document.createElement('button'); b2.className = 'btn secondary'; b2.type = 'button'; b2.textContent = 'Copy link only';
+      b2.addEventListener('click', function () {
+        function fb() { done('Select the link below'); }
+        if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(linkText).then(function () { done('Link copied'); }, fb); else fb();
+      });
+      a.appendChild(b2);
+    }
+    a.appendChild(m); d.appendChild(a);
+    if (linkText) { var l = document.createElement('div'); l.className = 'linkline'; l.textContent = 'Tagged link: ' + linkText; d.appendChild(l); }
+    host.appendChild(d);
+  }
+
+  function render() {
+    var items = choose(), jp = document.getElementById('jobposts'), cp = document.getElementById('cvposts');
+    jp.innerHTML = ''; cp.innerHTML = '';
+    document.getElementById('empty').style.display = items.length < 3 ? 'block' : 'none';
+    if (items.length >= 3) {
+      card(jp, 'WhatsApp', NOTES.whatsapp, whatsapp(items), tag('whatsapp', 'jobs'));
+      card(jp, 'Facebook', NOTES.facebook, facebook(items), tag('facebook', 'jobs'));
+      card(jp, 'TikTok', NOTES.tiktok, tiktok(items), tag('tiktok', 'jobs'));
+      card(jp, 'Snapchat', NOTES.snapchat, snapchat(items), tag('snapchat', 'jobs'));
+    }
+    ['whatsapp', 'facebook', 'tiktok', 'snapchat'].forEach(function (p) {
+      card(cp, NAMES[p] + ': free quick CV check', NOTES[p], CV[p](), tag(p, 'cvcheck', '/services'));
+    });
+  }
+
+  function init(data) {
+    rows = data;
+    var cats = {}; rows.forEach(function (r) { if (r.category) cats[r.category] = 1; });
+    var sel = document.getElementById('category');
+    Object.keys(cats).sort().forEach(function (c) { var o = document.createElement('option'); o.value = c; o.textContent = c; sel.appendChild(o); });
+    var newest = rows.reduce(function (m, r) { return r.postedAt > m ? r.postedAt : m; }, '');
+    var lastCheck = rows.reduce(function (m, r) { return (r.lastVerifiedAt || '') > m ? r.lastVerifiedAt : m; }, '');
+    var st = document.getElementById('status');
+    [rows.length + ' jobs live', 'Newest posted ' + rel(newest), 'Last checked ' + rel(lastCheck), 'Site: ' + BASE].forEach(function (t) {
+      var s = document.createElement('span'); s.className = 'chip'; s.textContent = t; st.appendChild(s);
+    });
+    ['count', 'category', 'early', 'clear', 'direct'].forEach(function (id) { document.getElementById(id).addEventListener('change', function () { offset = 0; render(); }); });
+    document.getElementById('reroll').addEventListener('click', function () { offset += parseInt(document.getElementById('count').value, 10) + 3; render(); });
+    render();
+  }
+
+  fetch('/jobs.json', { cache: 'no-store' }).then(function (r) { return r.json(); }).then(init).catch(function () {
+    var e = document.getElementById('empty'); e.style.display = 'block'; e.textContent = 'Could not load the job feed. Refresh the page.';
+  });
+})();
+</script>
+</body>
+</html>

@@ -22,6 +22,22 @@ def rules(issues, severity=None):
     return {i["rule"] for i in issues if severity is None or i["severity"] == severity}
 
 
+class JobicyDates(unittest.TestCase):
+    def test_jobicy_listings_are_blocked_because_their_date_is_not_original(self):
+        r = rec(sourceName="Jobicy", sourceUrl="https://jobicy.com/jobs/156488-director-people-operations", postedAt="2026-10-16T06:19:36+00:00")
+        self.assertIn("source-date-not-original", rules(Q.check_listing(r, None, NOW), Q.BLOCK))
+
+    def test_employer_board_sources_are_not_blocked_by_that_rule(self):
+        for src in ("Greenhouse", "Lever", "Ashby"):
+            self.assertNotIn("source-date-not-original", rules(Q.check_listing(rec(sourceName=src), None, NOW)), src)
+
+    def test_the_real_evidence_is_in_the_fixture(self):
+        import json
+        fx = json.loads((Path(__file__).resolve().parent / "fixtures" / "jobicy_dates.json").read_text())
+        self.assertGreater(fx["pair"]["jobicy"]["postedAt"], fx["pair"]["employer_greenhouse"]["postedAt"])
+        self.assertEqual(fx["batches"]["2026-10-23T07:09"], 20)
+
+
 class ListingChecks(unittest.TestCase):
     def test_clean_record_passes(self):
         self.assertEqual(Q.check_listing(rec(), {"description": "Fully remote role.", "result": {}}, NOW), [])

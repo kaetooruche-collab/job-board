@@ -1,5 +1,7 @@
 # Launch checklist (17 October 2026)
 
+> Superseded by `drafts/kt-todo.md` (the single master list). Kept as history.
+
 Owner: C = Claude, K = KT. Status is what was verified, not what was hoped.
 
 ## A. Site and pipeline (Claude)

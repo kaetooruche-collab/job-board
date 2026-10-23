@@ -3,13 +3,13 @@ import os, html
 OUT = os.path.dirname(os.path.abspath(__file__))
 WA = "https://wa.me/905338225854"
 MAIL = "trueremote.jobs@gmail.com"
-ADDR = "KAYZ Global Ltd · Kyrenia, Northern Cyprus"
-ADDR_NEWSLETTER = "KAYZ Global Ltd · Yenice Sokak, 99300 Kyrenia, Northern Cyprus"
+ADDR = "Yireh Careers · Kyrenia, Northern Cyprus"
+ADDR_NEWSLETTER = "Yireh Careers · Yenice Sokak, 99300 Kyrenia, Northern Cyprus"  # postal address in marketing email footers is legally required in many places; KT to confirm which address to use
 
 def wrap(preheader, title, body, newsletter=False):
     unsub = ('<p style="margin:10px 0 0;">You are receiving this because you signed up for job alerts. '
              '<a href="{{ unsubscribe }}" style="color:#9db4d6;">Unsubscribe</a></p>') if newsletter else \
-            '<p style="margin:10px 0 0;">You are receiving this message because you contacted or bought from Kaeto Career Services.</p>'
+            '<p style="margin:10px 0 0;">You are receiving this message because you contacted or bought from Yireh Careers.</p>'
     return f"""<!DOCTYPE html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="color-scheme" content="light dark"><meta name="supported-color-schemes" content="light dark">
@@ -26,13 +26,13 @@ def wrap(preheader, title, body, newsletter=False):
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" class="bg" style="background:#eef2f8;"><tr><td align="center" style="padding:24px 12px;">
 <table role="presentation" class="wrap" width="600" cellpadding="0" cellspacing="0" style="width:600px;max-width:100%;">
 <tr><td style="background:#0f2a4d;background-image:linear-gradient(135deg,#0f2a4d,#1d4f91);padding:26px 28px;border-radius:12px 12px 0 0;">
-<div style="font:700 22px Arial,Helvetica,sans-serif;color:#ffffff;letter-spacing:.2px;">True Remote</div>
-<div style="font:13px Arial,Helvetica,sans-serif;color:#b9cdea;margin-top:4px;">Kaeto Career Services · CVs, cover letters and LinkedIn profiles</div></td></tr>
+<div style="font:700 22px Arial,Helvetica,sans-serif;color:#ffffff;letter-spacing:.2px;">Yireh Careers</div>
+<div style="font:13px Arial,Helvetica,sans-serif;color:#b9cdea;margin-top:4px;">CVs, cover letters and LinkedIn profiles</div></td></tr>
 <tr><td class="card pad" style="background:#ffffff;padding:30px 28px;font:16px/1.6 Arial,Helvetica,sans-serif;color:#1b2536;">
 <div class="tx">{body}
-<p style="margin:26px 0 0;">Kind regards,<br><strong>Kaeto</strong><br><span class="mu" style="color:#55627a;">Kaeto Career Services · True Remote</span></p></div></td></tr>
+<p style="margin:26px 0 0;">Kind regards,<br><strong>The Yireh Careers team</strong></p></div></td></tr>
 <tr><td style="background:#0f2a4d;padding:22px 28px;border-radius:0 0 12px 12px;font:12.5px/1.6 Arial,Helvetica,sans-serif;color:#b9cdea;">
-<p style="margin:0;"><strong style="color:#ffffff;">Kaeto Career Services · True Remote</strong></p>
+<p style="margin:0;"><strong style="color:#ffffff;">Yireh Careers</strong></p>
 <p style="margin:6px 0 0;">WhatsApp (chat only): <a href="{WA}" style="color:#9db4d6;">+90 533 822 5854</a><br>
 Email (documents and questions): <a href="mailto:{MAIL}" style="color:#9db4d6;">{MAIL}</a></p>
 <p style="margin:6px 0 0;">{ADDR_NEWSLETTER if newsletter else ADDR}</p>{unsub}</td></tr>
@@ -107,10 +107,10 @@ T["TR-06 Privacy request received"] = ("We received your request about your info
  p("To protect your information, we may need to confirm that the request comes from you. If so, we will ask for the minimum needed, and never a copy of your passport or ID unless there is no other way.") +
  p("If you have more details to add, reply to this email.") + SPAM)
 
-T["TR-07 Newsletter welcome"] = ("Welcome to True Remote job alerts", "You are on the list. Here is what to expect.",
- h("Welcome to True Remote") +
+T["TR-07 Newsletter welcome"] = ("Welcome to Yireh Careers job alerts", "You are on the list. Here is what to expect.",
+ h("Welcome to Yireh Careers") +
  p('Hi {{ contact.FIRSTNAME | default:"there" }},') +
- p("Thanks for signing up. True Remote lists remote jobs and links each one to the original posting, with its source and posting date, and states where applicants may live as the employer says it.") +
+ p("Thanks for signing up. Yireh Careers lists remote jobs and links each one to the original posting, with its source and posting date, and states where applicants may live as the employer says it.") +
  box("<strong>What to expect</strong>" + ul([
    "A weekly email with recent remote jobs across many fields and experience levels.",
    "Each job shows what the employer states about eligibility. Some jobs are marked \"not confirmed\" when the posting is unclear.",

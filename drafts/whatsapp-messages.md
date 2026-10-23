@@ -1,4 +1,4 @@
-# WhatsApp message library (True Remote · Kaeto Career Services)
+# WhatsApp message library (Yireh Careers)
 
 Purpose: every stage of an order is handled on WhatsApp, with documents only by email. Each message is short, plain and polite, and says what happens next. Use the **WhatsApp Business app** (already linked to +90 533 822 5854) so these can be saved as quick replies (type "/" and a shortcut) and as the greeting and away messages. Check the feature names in your app, as they can change.
 
@@ -8,7 +8,7 @@ Decisions KT still has to make before messages 5 to 7 are final (see the end).
 
 ---
 ## 0. Profile (set once)
-Business name: True Remote · Kaeto Career Services. Category: Professional services. Description: "CVs, cover letters and LinkedIn profiles, written for you." Email: trueremote.jobs@gmail.com. Website: the services page.
+Business name: Yireh Careers. Category: Professional services. Description: "CVs, cover letters and LinkedIn profiles, written for you." Email: trueremote.jobs@gmail.com. Website: the services page.
 
 ## 1. Pre-filled message (already on the website buttons)
 > Hello, I would like to order the *Essential* package ($29). Could you please confirm the next steps?
@@ -16,7 +16,7 @@ Business name: True Remote · Kaeto Career Services. Category: Professional serv
 (The same wording is used for Professional ($49) and Executive ($149). The "Get a free CV check" and job-page "Get a CV for this role" buttons open messages of their own: see messages 20 and 21.)
 
 ## 2. Greeting (automatic, first message from a new contact)
-> Hello, and welcome to True Remote by Kaeto Career Services. Thank you for your message.
+> Hello, and welcome to Yireh Careers. Thank you for your message.
 > To help us reply properly, please tell us which package you are interested in (Essential $29, Professional $49 or Executive $149) and the kind of roles you are applying for. We will reply as soon as we can.
 
 ## 3. Away message (automatic, outside your hours)
@@ -81,7 +81,7 @@ Shortcut `/awaiting`
 
 ## 9. Email not received
 Shortcut `/spam`
-> Thank you for letting me know. Please check your Promotions and Spam folders, and search your mail for "True Remote". If it is there, please move it to your main inbox. If not, tell me the email address you would like me to use and I will resend it.
+> Thank you for letting me know. Please check your Promotions and Spam folders, and search your mail for "Yireh Careers". If it is there, please move it to your main inbox. If not, tell me the email address you would like me to use and I will resend it.
 
 ## 10. Documents sent on WhatsApp by mistake
 Shortcut `/docs`
@@ -178,3 +178,18 @@ Still open:
 
 ## Update 18 October 2026
 KT approved the pricing review: Executive is $149 with a 30-day service (12 posts, weekly targeted connection building, no open-ended promise); LinkedIn Growth $99 a month; add-ons; free quick CV check; "Get a CV for this role" button. Messages 1, 2, 4 and 16 were updated and messages 20-24 added. Set up quick replies for 20-24 as well.
+
+
+## Update 23 October 2026: card payment option (Essential and Professional only)
+Not live until KT approves the go-live checklist (`drafts/whop-go-live-checklist.md`). Replace [LIVE LINK] with the live Whop checkout link from `site-config.js` for that package.
+
+### 25. Card payment link (send only if the customer chooses card, Essential or Professional)
+> Here is the secure card payment link for your *[Package]* package ([price]): [LIVE LINK]
+>
+> You will be asked three short questions first (your target role, whether you already have a CV, and an optional WhatsApp number). Whop, our payment provider, handles your card details; we never see them. Afterwards, please email your current CV and target roles to trueremote.jobs@gmail.com (not on WhatsApp). Your timing starts once onboarding is complete.
+>
+> For your safety: the only card link we use is the one on our website and the one sent from this number.
+
+
+## Update 24 Oct 2026: brand is now Yireh Careers
+Replaces "True Remote" and "Kaeto Career Services" everywhere in this library. Messages that say "I" are fine in a 1:1 chat. The email address is still trueremote.jobs@gmail.com until KT creates a new one: set the Gmail "send mail as" display name to "Yireh Careers" so customers see the new name. The WhatsApp Business display name change may need approval from WhatsApp.

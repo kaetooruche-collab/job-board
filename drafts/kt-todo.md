@@ -1,0 +1,80 @@
+# KT's to-do list (the single master list)
+
+Last updated: 18 October 2026. Claude: when KT asks "what do I need to get done?", show the OPEN items below, most urgent first, in plain language. Update this file every time something is done, added or decided. `drafts/launch-checklist.md` is the older history; this file wins.
+
+Legend: [ ] open, [x] done. "Only KT" means nobody else can do it (logins, accounts, money, approvals).
+
+## 0. LAUNCH (24 Oct 2026): what KT does to start bringing people in
+Claude built: the Yireh Careers rebrand, the free address https://yirehcareers.vercel.app, link previews, and the post kit at https://yirehcareers.vercel.app/kit (unlisted; bookmark it on your phone).
+- [ ] **Open the live site on your phone** (home, services, privacy). Tap the WhatsApp buttons once to see the message arrives. Tell Claude anything that looks wrong.
+- [ ] **Paste the site link into WhatsApp to yourself** and check the preview shows the Yireh Careers picture and title (WhatsApp caches previews; if it looks old, add `?v=2` to the link).
+- [ ] **Post using the kit**: open `/kit`, tap "Copy post", paste into WhatsApp groups and status, Facebook, TikTok and Snapchat. One post per group per day; read each group's rules; links go in the bio on TikTok and Snapchat. Post at least once a day for a week, then look at GoatCounter (which platform sends visitors: the links are tagged `utm_source`).
+- [ ] **Set the Gmail "send mail as" display name to Yireh Careers** (the address is still trueremote.jobs@gmail.com) so customers recognise the emails; same for the WhatsApp Business name (WhatsApp may need to approve it).
+- [ ] **GoatCounter**: after your first visit to the new address, check the dashboard shows it. If not, add the new address to the allowed domains in GoatCounter settings.
+- [ ] **Facebook page, TikTok and Snapchat accounts named Yireh Careers**, with the bio link https://yirehcareers.vercel.app (tagged links are in the kit). Handles for the name have not been checked.
+- [ ] **When you can afford a domain**: tell Claude; the address is changed in one pass (a domain, the share tags, the redirect and the monitor).
+- [ ] **Later, not blocking launch**: register a company (accountant), then the trademark and Whop live setup; the privacy page wording is updated when the company exists.
+
+## 1. Before the first customer messages you (do these first)
+- [ ] **Test the live page on your phone.** Open https://northcyprusremotejobboard.vercel.app/services and tap Get started on each package, the free CV check button and Ask about add-ons. Confirm WhatsApp opens with the right message. Also try on an iPhone/Safari if you can (not tested by Claude). Only KT.
+- [ ] **Payment accounts ready.** A bank account for each currency you will offer (USD, EUR, GBP, TL), a Bitcoin wallet and a USDT wallet on the Tron (TRC-20) network. Send yourself a small test payment to each. Only KT. (Payment details are never stored in the repo.)
+- [ ] **WhatsApp Business setup** on +90 533 822 5854: business profile, greeting message, away message, and quick replies from `drafts/whatsapp-messages.md` (messages 1-24: confirm package, bank details, crypto details, payment received, onboarding, delivery, revision, free CV check 20-21, job-page 22, add-ons 23, LinkedIn Growth 24). Only KT.
+- [ ] **Whop: the account you showed is a connected account of 'Chatwait' (23 Oct).** Tell Claude what Chatwait is and whether you own it. If not, create your own stand-alone Whop business (the + next to the account switcher), named Kaeto Career Services or KAYZ Global Ltd, and use that one. Only KT.
+- [ ] **URGENT: KAYZ Global Ltd is not registered (KT told Claude on 24 Oct), but the LIVE privacy page says it is the operator ("KAYZ Global Ltd, trading as Kaeto Career Services... Kyrenia").** Decide: (a) correct the privacy page now to what is true (Claude prepares the wording; merging a fix to the live site needs your yes), and (b) register a company (see the list of consequences in `drafts/decisions/2026-10-24-brand-name-and-founder-visibility.md`, last section; ask an accountant where to register). Until a company exists, Whop opens as an individual account. Also: do not put a street address in email footers unless you want it public. Only KT.
+- [ ] **DECIDE the brand name for BOTH the job board and the career services, and whether a founder face and name appear (23-24 Oct).** KT's direction: one polished name that is not KT's, no founder photo or name. Claude screened 100+ names (domains, US trademarks, web) and recommends **Farhaven** (runner-up Farreach); full evidence, the founder pros and cons, and what is NOT yet checked are in `drafts/decisions/2026-10-24-brand-name-and-founder-visibility.md`; the founder's naming checklist is `drafts/brand-name-checklist.md`. KT must: (a) accept or reject the name, (b) approve removing the "Who's behind this?" photo, first name and role line, (c) approve buying the domains (about $45 first year; Claude buys nothing without a yes), (d) get the EUIPO, UK IPO, WIPO and home-registry searches done (or hire an attorney), (e) check social handles, (f) do the native-speaker language check. Decide this BEFORE creating the production Whop business. Only KT.
+- [ ] **Whop sandbox phone retest (23 Oct).** The restored questions work (Claude's retest saved all three answers, including the WhatsApp number). Your earlier phone answers were lost in Claude's accidental wipe. Please redo one phone purchase answering all three questions and check Customers, the customer, Custom fields. Also try the 3-D Secure test card 5385 3083 6013 5181 (the password, if asked: Checkout1!). Only KT.
+- [ ] **Whop go-live (nothing is live yet): follow `drafts/whop-go-live-checklist.md`.** Needs your own production business, identity verification, payout method, tax decision with an accountant, then your approval to merge. Also review the new Whop paragraph on the privacy page and decide on withdrawal-right wording with a professional. Only KT.
+- [ ] **When the Whop work is finished, delete the sandbox API key** in Whop (Developer page) and in the environment secrets. Only KT.
+- [ ] **Chatwait (you thought you connected it to the site; Claude checked Vercel on 23 Oct).** Result: the job-board Vercel project has no environment variables, no integrations and no custom domain (only northcyprusremotejobboard.vercel.app). The only other project on the team is `presence-app` (a separate app with a Neon database; nothing about Whop or Chatwait). So Chatwait is not connected through Vercel. Still unchecked, only you can: Whop (Developer, Connected accounts), GoatCounter, Brevo and WhatsApp settings. Tell Claude what Chatwait is if you want it looked at further. KT.
+- [ ] **Whop card option (research done 19 Oct; Tax page screenshot received, see the update at the end of the decision doc; still needed: Verifications, Payments, Risk, Legal, Checkout and Balances screenshots; confirm the tax setting and the address shown to buyers; `drafts/decisions/2026-10-19-whop-payments.md`).** Check the 6 items in its checklist in your Whop account (KYC, payout method and fee, any holds, business classification, tax mode, account owner) and send Claude the answers or screenshots; then decide whether to pilot Whop as a card link sent in WhatsApp (not on the site). Only KT (needs your login; the Chrome extension was not connected to the cloud session).
+- [ ] **Decide the BTC quote validity** (suggestion: 30 minutes) and put it in message 6. Only KT.
+- [ ] **Brevo: switch the signup welcome automation to template 33** (the old welcome template 12 and campaigns 17/18 contain claims we do not make). Only KT. Claude can check the account is KAYZ Global before any Brevo action.
+- [ ] **Brevo: delete old templates 20-26** (replaced by 27-33). Only KT (Claude cannot delete templates).
+- [ ] **Test the newsletter signup with your own email** on the live site and confirm it lands in Brevo list #11. Only KT.
+- [ ] **GoatCounter:** log in, open the dashboard, confirm it shows your visit and the click events (names in section 4). Only KT (needs the login).
+
+## 1b. Pharmacy job search
+Moved to its own chat and its own list: `jobsearch/TODO.md`. Not tracked here.
+
+## 2. Routines once orders start
+- [ ] **Free CV check promise:** one per person, about 10 a week; the client emails the CV (never WhatsApp); reply with the three things to fix first; delete the CV within 30 days if they do not order. Log each one with a delete-by date (`drafts/client-data-handling.md`, `drafts/client-data-log-template.csv`). Only KT.
+- [ ] **Delete client files within 90 days** after each service is completed (privacy policy promise).
+- [ ] **Time your first two orders** (real hours per package, including messages and revisions). The $149 Executive price assumes about 18 hours; Essential about 3.5 h, Professional about 7 h. Tell Claude the real numbers and the price will be reviewed.
+- [ ] **Note buyer countries** (GoatCounter Locations plus who messages you). The price levels were set without this.
+- [ ] **Ask every client for a one-sentence testimonial** and permission to publish it. Real quotes only; Claude will add them to the page.
+- [ ] **Review Essential $29 and Professional $49 after about 20 orders** (agreed plan).
+- [ ] **Post the WhatsApp job message** from `data/whatsapp_post.txt` (refreshed every 6 hours) in your channel/groups, as often as you like. Only KT posts.
+- [ ] **Weekly newsletter:** the ready-to-paste Brevo email from the pipeline, if you decide to send one weekly. Only KT sends.
+
+## 3. Decisions waiting for KT
+- [ ] **Approve the weekly independent audit** (a scheduled Claude task that opens random listings and compares them with the real postings; `drafts/weekly-audit-prompt.md`). Yes or no.
+- [ ] **Newsletter consent:** the signup is one step (single opt-in). Brevo recommends double opt-in for GDPR. You chose one step; confirm it stays, or switch.
+- [ ] **Legal check (recommended, not required):** have a qualified adviser read the privacy policy, the refund/cooling-off wording and the free-check terms for the countries you sell to. Claude's reading is not legal advice.
+- [ ] **Name and domain:** the placeholder is TrueRemote; the web address still contains a place name (northcyprusremotejobboard.vercel.app), which breaks the "no place names" rule. Decide the name, buy the domain, then Claude switches everything in one change (site name and email live in `site-config.js`). When the domain changes, the old link in WhatsApp groups needs a redirect.
+- [ ] **Old Vercel project / old link:** decide whether the old link is redirected to the new site or retired (it is in old WhatsApp posts).
+- [ ] **Concierge tier** (application-only, from $499): not built; only if clients ask for a longer programme.
+- [ ] **Raise Executive to $199 or add a "two payments" option** only if buyers hesitate or pay without hesitation (see `drafts/decisions/2026-10-18-pricing-and-offer-structure.md`).
+
+## 4. GoatCounter events to watch (after about 2 weeks of traffic)
+`services-click-hero-free-check`, `services-click-mid-free-check`, `services-click-sticky-free-check`, `services-click-final-free-check`, `services-click-pricing-essential`, `-professional`, `-executive`, `services-click-addons`, `services-click-growth`, `cv-click-job-cv-button`, `cv-click-home-free-check`, `apply-click`. Visitors x enquiry rate x close rate is the lever; these show the middle number.
+
+## 5. Claude's open items (so you can see what is not on you)
+- [ ] Re-run the random spot-check on a fresh sample of listings (last result: 8 of 12 right first time, 2 wrong and fixed, 2 understated) and report the real number.
+- [ ] Google job-posting structured data: check Google's current rules for listings we do not own, then tell KT.
+- [ ] Brevo template versions that mention the Executive offer (if any are used) need new versions, since templates cannot be edited.
+- [ ] Add the first real testimonials to the services page when you have them.
+- [ ] **Check Jobicy dates on the public job board.** Two research agents found Jobicy shows old postings as new (Elation 2 Jul, Maven Sept, PointClickCare 9 Jul, H1 31 Jul, Bayesian Nov 2025, all shown as 14-18 Oct). Compare every Jobicy listing with the employer's own date, report the real number, and fix the pipeline (use the employer's date or drop Jobicy listings that cannot be dated). This affects the board's 30-day rule.
+- [ ] Keep this file updated.
+
+## 6. Done (for reference)
+- [x] Job board live: 1,030 listings, quality checks every 6 hours, live-site monitor every 3 hours (passing).
+- [x] Services page rebuilt and live (18 Oct): Essential $29, Professional $49 (Recommended), Executive $149, LinkedIn Growth $99/month, add-ons, free CV check, "Get a CV for this role" button on job cards.
+- [x] Privacy policy live, updated 18 Oct (free check, Executive completion, LinkedIn Growth).
+- [x] Refund wording approved and published; no on-site payment; WhatsApp-arranged bank/crypto payments.
+- [x] Sender trueremote.jobs@gmail.com verified in Brevo; templates 27-33 created.
+- [x] Pricing and offer review approved (all five decisions as recommended).
+
+
+## Reminder: delete the API keys when the Whop work is finished (KT asked Claude to remind, 23 Oct)
+- [ ] Sandbox key: delete in Whop sandbox (Developer page) AND remove the environment secret in Claude's environment settings (job-board-research, Network secrets).
+- [ ] Live key (if you give one): give the least access (products, plans, checkout links, read payments; no payouts or withdrawals), host `api.whop.com` only, create the products BEFORE any real money is in the account, and delete it in Whop and in the environment settings straight after. Claude will remind you at the end of every session until both are gone.

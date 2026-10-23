@@ -3,8 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kaeto Career Services | TrueRemote</title>
-  <meta name="description" content="Kaeto Career Services: CV writing, cover letters and LinkedIn profile setup from $29, a free quick CV check, and an Executive package with personal branding, 12 LinkedIn posts and 30 days of connection building.">
+  <title>Career Services | Yireh Careers</title>
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Yireh Careers">
+  <meta property="og:title" content="Career Services | Yireh Careers">
+  <meta property="og:description" content="Professional CVs, cover letters and LinkedIn profiles, written for you. From $29, plus a free quick CV check.">
+  <meta property="og:url" content="https://yirehcareers.vercel.app/services">
+  <meta property="og:image" content="https://yirehcareers.vercel.app/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Career Services | Yireh Careers">
+  <meta name="twitter:description" content="Professional CVs, cover letters and LinkedIn profiles, written for you. From $29, plus a free quick CV check.">
+  <meta name="twitter:image" content="https://yirehcareers.vercel.app/og-image.png">
+  <meta name="description" content="Yireh Careers: CV writing, cover letters and LinkedIn profile setup from $29, a free quick CV check, and an Executive package with personal branding, 12 LinkedIn posts and 30 days of connection building.">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%231a1a2e'/><path d='M28 55 L43 70 L72 35' stroke='%2360a5fa' stroke-width='10' stroke-linecap='round' stroke-linejoin='round' fill='none'/></svg>">
   <link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="/fonts/inter.css">
@@ -650,6 +662,7 @@
       margin-top: 0.25rem;
     }
     .pricing-card .btn { width: 100%; justify-content: center; }
+    .test-banner { position: sticky; top: 56px; z-index: 150; background: #fef3c7; color: #78350f; border-bottom: 2px solid #f59e0b; padding: 0.55rem 1rem; font-weight: 700; font-size: 0.85rem; text-align: center; }
     .pricing-question-link {
       display: block;
       text-align: center;
@@ -713,19 +726,6 @@
       display: flex;
       gap: 1.5rem;
       align-items: center;
-    }
-    .about-photo {
-      width: 110px;
-      height: 110px;
-      border-radius: 50%;
-      background: var(--tag-bg);
-      flex-shrink: 0;
-      overflow: hidden;
-    }
-    .about-photo img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
     }
     .about-text h3 {
       font-size: 1rem;
@@ -957,7 +957,7 @@
   <nav>
     <a href="/" class="nav-brand">
       <svg width="22" height="22" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="100" height="100" rx="20" fill="var(--accent)"/><path d="M28 55 L43 70 L72 35" stroke="#fff" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      True<span>Remote</span>
+      Yireh <span>Careers</span>
     </a>
     <div class="nav-links">
       <a href="/" class="nav-link">Jobs</a>
@@ -968,6 +968,7 @@
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
     </button>
   </nav>
+  <div class="test-banner" id="test-banner" hidden>TEST MODE: the card buttons open a sandbox checkout. No real money moves.</div>
   <div class="mobile-menu" id="mobile-menu">
     <a href="/">Jobs</a>
     <a href="/verify">How We Verify</a>
@@ -976,7 +977,7 @@
 
   <!-- Hero -->
   <section class="hero">
-    <p class="brand-label">Kaeto Career Services</p>
+    <p class="brand-label">Yireh Careers &middot; Career services</p>
     <h1>Professional CVs, cover letters and LinkedIn profiles, written for you.</h1>
     <p>Three clear packages, from $29. Not sure where to start? Send us your CV for a free quick check.</p>
     <div class="hero-buttons">
@@ -1003,7 +1004,7 @@
     <section class="section" id="pricing">
       <p class="section-label">Packages</p>
       <h2 class="section-title">Choose the package that fits where you are.</h2>
-      <p class="section-subtitle">Each package builds on the one before. All prices are in USD. Not sure which? Start with the free CV check and we will suggest one.</p>
+      <p class="section-subtitle">Each package builds on the one before. Prices are listed in USD.<span data-card-copy hidden> At card checkout you may see the amount in your own currency.</span> Not sure which? Start with the free CV check and we will suggest one.</p>
       <div class="pricing-grid">
         <div class="pricing-card">
           <h3>Essential</h3>
@@ -1018,7 +1019,8 @@
             <li>Delivered in 5 working days after onboarding is complete</li>
             <li>Need a cover letter or LinkedIn setup too? <a href="#addons">Add them from $15</a></li>
           </ul>
-          <a href="https://wa.me/905338225854?text=Hello%2C%20I%20would%20like%20to%20order%20the%20Essential%20package%20%28%2429%29.%20Could%20you%20please%20confirm%20the%20next%20steps%3F" target="_blank" rel="noopener" class="btn btn-outline" onclick="trackClick('pricing-essential')">Get started &mdash; $29</a>
+          <a href="#" hidden data-pay="essential" rel="noopener" class="btn btn-outline">Pay by card &mdash; $29</a>
+          <a href="https://wa.me/905338225854?text=Hello%2C%20I%20would%20like%20to%20order%20the%20Essential%20package%20%28%2429%29.%20Could%20you%20please%20confirm%20the%20next%20steps%3F" target="_blank" rel="noopener" class="btn btn-outline" data-wa-order="essential" onclick="trackClick('pricing-essential')">Get started &mdash; $29</a>
           <a href="https://wa.me/905338225854?text=Hi%2C%20I%20have%20a%20question%20about%20the%20Essential%20package." target="_blank" rel="noopener" class="pricing-question-link" onclick="trackClick('pricing-essential-question')">Questions? Chat first</a>
         </div>
 
@@ -1034,7 +1036,8 @@
             <li><strong>Up to 3 revision rounds</strong></li>
             <li>Delivered in 5 working days after onboarding is complete</li>
           </ul>
-          <a href="https://wa.me/905338225854?text=Hello%2C%20I%20would%20like%20to%20order%20the%20Professional%20package%20%28%2449%29.%20Could%20you%20please%20confirm%20the%20next%20steps%3F" target="_blank" rel="noopener" class="btn btn-secondary" onclick="trackClick('pricing-professional')">Get started &mdash; $49</a>
+          <a href="#" hidden data-pay="professional" rel="noopener" class="btn btn-secondary">Pay by card &mdash; $49</a>
+          <a href="https://wa.me/905338225854?text=Hello%2C%20I%20would%20like%20to%20order%20the%20Professional%20package%20%28%2449%29.%20Could%20you%20please%20confirm%20the%20next%20steps%3F" target="_blank" rel="noopener" class="btn btn-secondary" data-wa-order="professional" onclick="trackClick('pricing-professional')">Get started &mdash; $49</a>
           <a href="https://wa.me/905338225854?text=Hi%2C%20I%20have%20a%20question%20about%20the%20Professional%20package." target="_blank" rel="noopener" class="pricing-question-link" onclick="trackClick('pricing-professional-question')">Questions? Chat first</a>
         </div>
 
@@ -1086,7 +1089,7 @@
           <p class="pricing-note">All timing is counted from when your onboarding is complete, that is, once you have sent your current CV and target roles and answered our questions.</p>
         </div>
       </details>
-      <p class="pricing-note">There is no online checkout. You message us on WhatsApp, we agree the details, and we send payment instructions there.</p>
+      <p class="pricing-note"><span data-wa-only>To order, message us on WhatsApp. We agree the details and send payment instructions there (bank transfer or crypto).</span><span data-card-copy hidden>Essential and Professional can be paid by card on a secure checkout page hosted by Whop, our payment provider; we never see your card details. For bank transfer or crypto, or for Executive, add-ons and the monthly LinkedIn plan, message us on WhatsApp and we send payment details there.</span></p>
     </section>
 
     <!-- Add-ons and monthly plan -->
@@ -1373,17 +1376,14 @@
       </div>
     </section>
 
-    <!-- About -->
+    <!-- How we work -->
     <section class="section" style="padding-top: 0;">
       <div class="about-section">
-        <div class="about-photo">
-          <img src="/kt-photo.webp" alt="Kaeto, founder of Kaeto Career Services" loading="lazy">
-        </div>
         <div class="about-text">
-          <h3>Who&rsquo;s behind this?</h3>
-          <p class="about-role">Founder, Kaeto Career Services</p>
-          <p>Hi, I&rsquo;m Kaeto. I&rsquo;ve reviewed hundreds of applications and know exactly what makes a recruiter stop scrolling. Every CV, cover letter and profile I write is built to get you noticed &mdash; because I&rsquo;ve seen what gets ignored, and I won&rsquo;t let that happen to yours.</p>
-          <a href="https://wa.me/905338225854?text=Hello%20Kaeto%2C%20I%20have%20a%20question%20before%20I%20choose%20a%20package." target="_blank" rel="noopener" class="btn btn-outline" onclick="trackClick('about-whatsapp')">Message Kaeto on WhatsApp</a>
+          <h3>How we work</h3>
+          <p>Yireh Careers is a small, focused service. You talk to a real person on WhatsApp, we work from your own CV and the roles you are aiming for, and we are clear about timing, revisions and refunds before you pay. We do not promise interviews or job offers.</p>
+          <p>The same team runs the job board: <a href="/verify">see how we verify every listing</a>.</p>
+          <a href="https://wa.me/905338225854?text=Hello%2C%20I%20have%20a%20question%20before%20I%20choose%20a%20package." target="_blank" rel="noopener" class="btn btn-outline" onclick="trackClick('about-whatsapp')">Message us on WhatsApp</a>
         </div>
       </div>
     </section>
@@ -1396,7 +1396,7 @@
         <div class="step-item">
           <div class="step-number">1</div>
           <h3>Choose and chat</h3>
-          <p>Pick a package and message us on WhatsApp. We confirm your choice and send our payment details there. There is no online checkout on this website.</p>
+          <p><span data-wa-only>Pick a package and message us on WhatsApp. We confirm your choice and send our payment details there.</span><span data-card-copy hidden>Pick a package. Pay by card on the secure checkout page (Essential and Professional), or message us on WhatsApp to arrange bank transfer or crypto, add-ons or Executive. If you would like to talk first, message us before paying.</span></p>
         </div>
         <div class="step-item">
           <div class="step-number">2</div>
@@ -1474,7 +1474,7 @@
                 <li>You may ask to cancel at any time. Cancelling does not automatically entitle you to a refund for services already delivered or work already completed.</li>
                 <li>Before work begins, that is, before your onboarding is complete, you may request a full refund.</li>
                 <li>Once work has started, we do not refund for a change of mind. If we fail to deliver what was agreed, or the final documents do not match what was agreed after your included revisions, we will put it right, and if we cannot, we will refund the part not delivered. Nothing here limits any rights you have under the law where you live.</li>
-                <li>If Kaeto Career Services cannot deliver an agreed service, you will be offered an appropriate remedy, such as a revised delivery date, an alternative arrangement or, where applicable, a refund.</li>
+                <li>If Yireh Careers cannot deliver an agreed service, you will be offered an appropriate remedy, such as a revised delivery date, an alternative arrangement or, where applicable, a refund.</li>
                 <li>Executive covers the 30-day service. At day 30 we tell you where you stand on connections; carrying on is optional and is the separate LinkedIn Growth plan.</li>
                 <li>LinkedIn Growth is month to month. You can stop any time before the next month starts, and nothing is charged automatically.</li>
               </ul>
@@ -1551,7 +1551,7 @@
         </details>
         <details>
           <summary>How do I pay?</summary>
-          <div class="faq-answer">Message us on WhatsApp to confirm your package and any add-ons. We then send you our payment details directly, and you pay for what you chose by bank transfer in USD, EUR, GBP or TL, or by cryptocurrency (Bitcoin or USDT). Prices are in USD. For other currencies and for cryptocurrency, the amount is calculated at the exchange rate at the time you pay, and we confirm the exact amount before you send. Any bank, network or conversion fees charged to you are yours, so please make sure the full amount reaches us. We only share payment details with you directly, from the WhatsApp number shown on this page. Please do not pay to details you received from anyone else. If something looks unusual, message us first.</div>
+          <div class="faq-answer"><span data-card-copy hidden><strong>Essential and Professional:</strong> you can pay by card on a secure checkout page hosted by Whop, our payment provider. Whop handles your card details; we never see or store them. At card checkout the price may be shown in your local currency (you can switch back to USD); the amount shown there is the total you pay, converted at that day's rate and including a small currency-conversion fee. You answer three short questions first (your target role, whether you already have a CV, and an optional WhatsApp number). <strong>Other ways, and everything else:</strong> message us</span><span data-wa-only>Message us</span> on WhatsApp to confirm your package and any add-ons. We then send you our payment details directly, and you pay for what you chose by bank transfer in USD, EUR, GBP or TL, or by cryptocurrency (Bitcoin or USDT). Prices are in USD. For other currencies and for cryptocurrency, the amount is calculated at the exchange rate at the time you pay, and we confirm the exact amount before you send. Any bank, network or conversion fees charged to you are yours, so please make sure the full amount reaches us. We only share payment details with you directly, from the WhatsApp number shown on this page, and the only card checkout we use is the one linked from the buttons on this page. Please do not pay to details you received from anyone else. If something looks unusual, message us first.</div>
         </details>
         <details>
           <summary>Is this only for remote job seekers?</summary>
@@ -1579,7 +1579,7 @@
 
 
   <footer>
-    <p>Kaeto Career Services &middot; part of TrueRemote &middot; <a href="#terms" onclick="openDetails('terms')">Refunds and your information</a></p>
+    <p>Yireh Careers &middot; Career services &middot; <a href="#terms" onclick="openDetails('terms')">Refunds and your information</a></p>
     <p style="margin-top:0.25rem;">Questions? <a href="mailto:trueremote.jobs@gmail.com">trueremote.jobs@gmail.com</a> &middot; <a href="/privacy">Privacy</a></p>
   </footer>
 
@@ -1601,6 +1601,33 @@
         window.goatcounter.count({ path: 'services-click-' + name, title: 'Services: ' + name, event: true });
       }
     }
+    // Card-payment buttons: shown only when the checkout config is valid (see site-config.js).
+    (function () {
+      var cfg = (typeof SITE !== 'undefined' && SITE.checkout) || {};
+      var test = /[?&]pay=test(&|$)/.test(location.search);
+      var host = cfg.mode === 'live' ? 'whop.com' : (cfg.mode === 'sandbox' && test ? 'sandbox.whop.com' : null);
+      if (!host) return;
+      function valid(u) {
+        try { var x = new URL(u); return x.protocol === 'https:' && x.hostname === host && /^\/checkout\/(plan|ch)_[A-Za-z0-9]+\/?$/.test(x.pathname); }
+        catch (e) { return false; }
+      }
+      var shown = false;
+      ['essential', 'professional'].forEach(function (plan) {
+        var btn = document.querySelector('[data-pay="' + plan + '"]');
+        if (!btn || !valid(cfg[plan])) return;
+        btn.href = cfg[plan];
+        btn.hidden = false;
+        btn.addEventListener('click', function () { trackClick('pay-' + plan); });
+        var wa = document.querySelector('[data-wa-order="' + plan + '"]');
+        if (wa) { wa.className = 'pricing-question-link'; wa.textContent = 'Prefer bank transfer or crypto? Order on WhatsApp'; }
+        shown = true;
+      });
+      if (shown && cfg.mode === 'sandbox') document.getElementById('test-banner').hidden = false;
+      if (shown) {
+        document.querySelectorAll('[data-card-copy]').forEach(function (e) { e.hidden = false; });
+        document.querySelectorAll('[data-wa-only]').forEach(function (e) { e.hidden = true; });
+      }
+    })();
     function openDetails(id) {
       var el = document.getElementById(id);
       if (el && el.tagName === 'DETAILS') el.open = true;
