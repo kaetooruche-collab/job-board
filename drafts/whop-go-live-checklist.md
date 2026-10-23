@@ -2,7 +2,13 @@
 
 Status 23 Oct 2026: sandbox only. The code is on branch `claude/optimistic-hopper-nv0qun` (not merged to main). Nothing below is done until ticked, and the live site shows no card buttons until `site-config.js` has mode `live`.
 
+## A0. Before anything is created in the production Whop
+- [ ] Decide the services name (see `drafts/decisions/2026-10-23-services-brand-name.md`). It becomes the Whop business name, the receipt sender and the card statement descriptor, so decide before creating the business.
+- [ ] Phone retest in the sandbox: redo one phone purchase with all three questions answered and check the customer profile (KT's first phone answers were lost in Claude's 13:13 UTC wipe), and test the 3-D Secure card (5385 3083 6013 5181, password Checkout1!). Turkish cards usually require 3-D Secure; Claude's headless browser could not complete it (the challenge window opened but never loaded).
+
 ## A. KT, in Whop (production business, not the sandbox)
+- [ ] Refunds: Whop docs say a refund needs enough balance in the account. Check how and when new payments become available (Balances, any hold) so a refund before onboarding can always be paid. In Resolution Center, review the auto-refund (Auto respond) thresholds and keep them OFF or deliberately set, so they match the approved refund policy.
+- [ ] Legal settings: set the terms and privacy links shown at checkout to our pages (the checkout says "you agree to ... terms and conditions"), once KT has approved the terms wording.
 - [ ] Create your own stand-alone Whop business (not a connected account of anyone else). Name: Kaeto Career Services.
 - [ ] Complete identity verification (Verifications) and add the payout method; note the payout fee shown at Withdraw (Balances).
 - [ ] Check Risk or holds settings; note any reserve or hold period.
