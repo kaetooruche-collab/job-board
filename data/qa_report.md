@@ -1,8 +1,8 @@
-# Quality report, 2026-10-22T21:31+00:00
+# Quality report, 2026-10-23T04:42+00:00
 
-- Published: **1026**
+- Published: **1002**
 - Held back by a quality rule (not published): **1**
-- Warnings (published, but look): **12**
+- Warnings (published, but look): **11**
 
 ## Held back
 
@@ -11,21 +11,21 @@
 
 ## Warnings
 
-### pay-in-posting-but-card-says-not-stated (12)
+### pay-in-posting-but-card-says-not-stated (11)
+- Financial Analyst, GTM at Webflow: $112,000 - $135,000
 - Lead Platform Engineer, Identity & Access at Webflow: $232,000 - 290,000
 - Staff Data Engineer at Webflow: $212,500 - $255,000
-- Director, Enterprise Sales at Affirm: $370,000 - $490,000
 - Platform Engineer at Resend: $150,000 - $180,000
 - Platform Engineer at Resend: $150,000 - $180,000
 
 ## Shape of the feed
 
 ```
-count: 1026
-bySource: {'Greenhouse': 522, 'Lever': 144, 'Ashby': 326, 'Jobicy': 34}
-pctEligibilityUnclear: 25.8
-pctRemoteUnclear: 10.5
+count: 1002
+bySource: {'Greenhouse': 496, 'Ashby': 328, 'Lever': 146, 'Jobicy': 32}
+pctEligibilityUnclear: 25.2
+pctRemoteUnclear: 9.9
 pctWorldwide: 1.1
 pctEarlyCareer: 10.2
-pctSeniorPlus: 43.2
+pctSeniorPlus: 42.8
 ```
