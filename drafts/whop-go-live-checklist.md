@@ -9,6 +9,7 @@ Status 23 Oct 2026: sandbox only. The code is on branch `claude/optimistic-hoppe
 - [ ] Settings: Legal (the business name and address buyers see on receipts), Checkout branding, notification emails, invoice prefix.
 - [ ] Tax: decide with an accountant what applies to CV services (US sales-tax collection is currently on for the old account; no UK VAT or EU OSS registration). Set the tax mode to match.
 - [ ] Create the two products (copy from the sandbox: names, descriptions, $29 and $49, one-time, no compare-at price) and the same plan settings: card only, the three checkout questions, button label "Purchase".
+- [ ] Turn on the email notification for each new sale (Settings, Notifications) so you hear about an order straight away, and check that the notification tells you to open the customer profile for the three answers (they are under Customers, the customer, Custom fields, not on the payment page).
 - [ ] Send Claude the live plan IDs or give a live key through the environment secret (restricted to products, plans and checkout links).
 
 ## B. Claude, after A
