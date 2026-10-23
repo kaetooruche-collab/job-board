@@ -81,3 +81,28 @@ Honest limits of this pick: the name is chosen on clearance and story, not teste
 
 ## What changes when the name is approved (not done)
 Site name and titles in `site-config.js`, `index.html`, `services.html`, `privacy.html`, `thanks.html`, `verify.html`, the monitor's expectations, the WhatsApp business name and messages, Brevo templates (new versions; existing ones cannot be edited), the 6 email drafts, Whop business name and statement descriptor, the privacy-page entity line ("KAYZ Global Ltd, trading as ..."), `CLAUDE.md`. The `PROJECT_NAME` placeholder in CLAUDE.md is meant for exactly this. Remove the founder block and photo at the same time.
+
+
+## Update 24 Oct 2026 (later): KT rejects Farhaven, proposes "Yireh Careers"; KAYZ Global Ltd is not registered
+
+### Yireh (screened like the others)
+- Meaning: from the Hebrew biblical name "Yahweh Yireh" ("the Lord will provide", Genesis 22:14); the usual spelling is "Jireh".
+- Domains: `yireh.com` held since 1998 by a Costa Rican canned-food trading company; `.co`, `.io`, `.app`, `.net`, `.org` also taken. Free at $11.25 first and later year: `yirehcareers.com`, `yirehjobs.com`, `yirehwork.com`, `yirehcv.com`, `yirehhq.com`, `getyireh.com`, `yireh.work`, `yirehremote.com`, `yirehroles.com`. Also free: `yireh.careers` $29.99 (renews $66.32), `yireh.jobs` $159, `.me` $13.99, `.page` $11.99, `.team` $7.99 (renews $34.80).
+- Spelling variant `jireh.com`: held since 1995 by an ultrasonic inspection equipment company; `jirehcareers.com`, `jirehjobs.com`, `jireh.work` free.
+- US trademarks (live): YIREH 1 exact mark (not job or career related); JIREH 12 exact marks, none in job, career or online-platform goods; "YIREH CAREERS" and "JIREH CAREERS" none.
+- Web: no job board or career service called Yireh. Small unrelated users: a finance firm "Yireh & Brokers" (Mexico), the Costa Rican food company, many "Jireh" ministries, foundations and businesses.
+- Risks to weigh (KT decides): (1) it is a religious name; for many readers it signals a particular faith, which can attract some and put off others in a multi-faith and secular audience; (2) "will provide" can be read as a promise of provision, in tension with our no-guarantee copy rules; (3) pronunciation and spelling are uncertain (yee-REH? YEER-eh? "Jireh"), so misspellings will go to jireh.com's owner; (4) search results for "Yireh/Jireh" are dominated by faith content; (5) all main `.com`, `.co`, `.io`, `.app` for the exact name are held.
+- Strengths: short, distinctive, no job-brand collision found, no obvious trademark conflict in the US, cheap domain variants, a story of provision and hope, and not a personal name.
+- Not done: EUIPO, UK IPO, WIPO and home-registry searches, social handles, language checks, five-second test (see the checklist).
+
+### KAYZ Global Ltd is not registered anywhere (KT, 24 Oct)
+There is currently no legal entity. Consequences, none yet fixed:
+1. The LIVE privacy page (`privacy.html`, "Who we are") says "KAYZ Global Ltd, trading as Kaeto Career Services... based in Kyrenia, Northern Cyprus". Describing a company that does not exist as the operator can be a legal problem in many places (using "Ltd" for an unincorporated business; wrong controller identity under data-protection rules). Needs a decision and a correction.
+2. The six email drafts (`drafts/emails/`, built by `build_emails.py`) have the footer "KAYZ Global Ltd" plus, in the newsletter version, a street address. Not sent yet. The street address should not go in a footer unless KT wants it public.
+3. `CLAUDE.md` requires the Brevo account `companyName` to be "KAYZ Global Ltd" before any Brevo action; that is a label on the Brevo account, not proof of registration.
+4. Whop: until a company exists, the Whop business must be opened as an individual (identity verification is in KT's name; payouts to KT's bank). Tax questions (accountant) apply to the individual.
+5. Trademark and domain ownership: the owner should be the company, not KT personally; registering the name or buying the domains before the company exists puts them in KT's name (can be assigned later, with paperwork).
+6. Consumer-law identification: sellers are generally required to identify themselves (name, address, contact). KT does not want his personal name on the brand; a company is the usual way to put a business name and a registered address on the site instead.
+7. A registered company shields the business, but in most registries the directors' names are public (a registered agent or virtual office usually hides the street address, not the name). Accountant or lawyer to advise where and how; Claude cannot give legal advice.
+
+Next steps (KT): choose where to register with an accountant (where KT is resident and taxed, what the bank and Whop support, cost, public records), register the company, then use its exact name in the privacy page, emails, Whop, Brevo, domains and the trademark. Until then, the privacy page wording should be corrected to what is true.
