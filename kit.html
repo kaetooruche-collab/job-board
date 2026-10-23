@@ -59,22 +59,32 @@
 
     <div class="controls">
       <div class="row">
+        <label>Roles to show
+          <select id="audience">
+            <option value="early" selected>Entry-level and junior</option>
+            <option value="all">All levels</option>
+            <option value="experienced">Mid-level, senior and leadership</option>
+          </select>
+        </label>
+        <label>Group's country
+          <select id="country"><option value="">Any (show as stated)</option></select>
+        </label>
         <label>Jobs per post
           <select id="count"><option>3</option><option selected>4</option><option>5</option></select>
         </label>
         <label>Category
           <select id="category"><option value="">All</option></select>
         </label>
-        <label><input type="checkbox" id="early" checked> Put one early-career role first</label>
+        <label><input type="checkbox" id="early" checked> With "All levels": put one entry-level role first</label>
         <label><input type="checkbox" id="clear" checked> Prefer roles with clear eligibility</label>
         <label><input type="checkbox" id="direct"> Add each employer's direct link (WhatsApp)</label>
       </div>
       <div class="row">
         <button class="btn" id="reroll" type="button">Pick different jobs</button>
-        <span class="note" style="font-size:0.8rem;color:var(--text-secondary)">Only roles that read as remote, posted in the last 72 hours, one per company.</span>
+        <span class="note" id="poolnote" style="font-size:0.8rem;color:var(--text-secondary)"></span>
       </div>
     </div>
-    <div id="empty">Not enough fresh listings for a post right now. Try another category, or come back after the next refresh (every 6 hours).</div>
+    <div id="empty">Not enough matching roles for a post right now. Try All levels, another category or country, or come back after the next refresh (every 6 hours).</div>
 
     <p class="section-title">Job posts</p>
     <div id="jobposts"></div>
@@ -100,8 +110,24 @@
   var LEVEL = { internship: 'Internship', entry: 'Entry level', junior: 'Junior', mid: 'Mid level', senior: 'Senior', leadership: 'Leadership', unspecified: 'Level not stated' };
   var rows = [], offset = 0, now = new Date();
 
+  var EARLY = ['internship', 'entry', 'junior'], lexicon = null;
+  function audience() { return document.getElementById('audience').value; }
   function tag(platform, kind, path) {
-    return BASE.replace(/\/$/, '') + (path || '/') + '?utm_source=' + platform + '&utm_medium=social&utm_campaign=' + kind;
+    var lv = (!path || path === '/') && audience() === 'early' ? '&level=early' : '';
+    return BASE.replace(/\/$/, '') + (path || '/') + '?utm_source=' + platform + '&utm_medium=social&utm_campaign=' + kind + lv;
+  }
+  function matchesCountry(r, country) {
+    if (!country) return true;
+    var el = r.eligibility || {};
+    if (el.type === 'worldwide') return true;
+    if (el.type === 'countries') return (el.countries || []).indexOf(country) !== -1;
+    if (el.type === 'region') {
+      return (el.regions || []).some(function (g) {
+        var reg = lexicon && lexicon.regions && lexicon.regions[g];
+        return reg ? reg.members.indexOf(country) !== -1 : false;
+      });
+    }
+    return false;
   }
   function rel(iso) {
     var h = Math.max(0, (now - new Date(iso)) / 36e5);
@@ -113,12 +139,17 @@
   function pay(r) { return r.salaryText ? 'Pay: ' + r.salaryText : 'Pay: not stated'; }
   function lvl(r) { return LEVEL[r.level] || 'Level not stated'; }
 
+  function windowHours() { return audience() === 'early' ? 168 : 72; }
   function pool() {
-    var cat = document.getElementById('category').value;
+    var cat = document.getElementById('category').value, aud = audience(), country = document.getElementById('country').value;
     return rows.filter(function (r) {
       if (r.workArrangement !== 'fully_remote' && r.workArrangement !== 'remote_geo_restricted') return false;
       var age = (now - new Date(r.postedAt)) / 36e5;
-      if (!(age >= 0 && age <= 72)) return false;
+      if (!(age >= 0 && age <= windowHours())) return false;
+      var early = EARLY.indexOf(r.level) >= 0;
+      if (aud === 'early' && !early) return false;
+      if (aud === 'experienced' && (early || r.level === 'unspecified')) return false;
+      if (!matchesCountry(r, country)) return false;
       return !cat || r.category === cat;
     }).sort(function (a, b) { return a.postedAt < b.postedAt ? 1 : -1; });
   }
@@ -132,8 +163,8 @@
       order = rotated.filter(isClear).concat(rotated.filter(function (r) { return !isClear(r); }));
       rotated = order;
     }
-    if (document.getElementById('early').checked) {
-      var early = rotated.filter(function (r) { return ['internship', 'entry', 'junior'].indexOf(r.level) >= 0; });
+    if (audience() === 'all' && document.getElementById('early').checked) {
+      var early = rotated.filter(function (r) { return EARLY.indexOf(r.level) >= 0; });
       order = early.slice(0, 1).concat(rotated);
     }
     var out = [], companies = {}, cats = {};
@@ -155,7 +186,7 @@
 
   function whatsapp(items) {
     var direct = document.getElementById('direct').checked;
-    var L = ['*New verified remote jobs* (' + now.toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' }) + ')', ''];
+    var L = ['*' + (audience() === 'early' ? 'New remote entry-level and junior jobs' : 'New verified remote jobs') + '* (' + now.toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' }) + ')', ''];
     items.forEach(function (r, i) {
       L.push((i + 1) + '. *' + r.title + '* at ' + r.company);
       L.push('   Who can apply: ' + elig(r));
@@ -170,7 +201,7 @@
     return L.join('\n');
   }
   function facebook(items) {
-    var L = ['Looking for remote work? ' + items.length + ' verified remote roles posted ' + span(items) + ':', ''];
+    var L = [(audience() === 'early' ? 'Starting out? ' + items.length + ' verified entry-level and junior remote roles posted ' + span(items) + ':' : 'Looking for remote work? ' + items.length + ' verified remote roles posted ' + span(items) + ':'), ''];
     items.forEach(function (r) { L.push('• ' + r.title + ' at ' + r.company + ' (' + elig(r) + ')'); });
     L.push('');
     L.push('Every job links straight to the employer\'s own posting, shows who can apply and when it was posted, and is refreshed every 6 hours.');
@@ -183,7 +214,7 @@
   }
   function tiktok(items) {
     var L = ['VIDEO SCRIPT (about 20-25 seconds, vertical, screen recording of the board or your phone)', '',
-      'HOOK (first 2 seconds, say it and put it on screen): "' + items.length + ' verified remote jobs you can apply to today."', ''];
+      'HOOK (first 2 seconds, say it and put it on screen): "' + items.length + (audience() === 'early' ? ' verified entry-level remote jobs, posted this week."' : ' verified remote jobs you can apply to today."'), ''];
     items.forEach(function (r, i) {
       L.push('JOB ' + (i + 1) + ' (on screen: "' + r.title + ' · ' + r.company + '")');
       L.push('Say: "' + r.title + ' at ' + r.company + '. Who can apply: ' + elig(r) + '."');
@@ -253,6 +284,7 @@
     var items = choose(), jp = document.getElementById('jobposts'), cp = document.getElementById('cvposts');
     jp.innerHTML = ''; cp.innerHTML = '';
     document.getElementById('empty').style.display = items.length < 3 ? 'block' : 'none';
+    document.getElementById('poolnote').textContent = pool().length + ' matching remote roles posted in the last ' + (windowHours() === 168 ? '7 days' : '72 hours') + ' (one per company in each post).';
     if (items.length >= 3) {
       card(jp, 'WhatsApp', NOTES.whatsapp, whatsapp(items), tag('whatsapp', 'jobs'));
       card(jp, 'Facebook', NOTES.facebook, facebook(items), tag('facebook', 'jobs'));
@@ -272,12 +304,21 @@
     var newest = rows.reduce(function (m, r) { return r.postedAt > m ? r.postedAt : m; }, '');
     var lastCheck = rows.reduce(function (m, r) { return (r.lastVerifiedAt || '') > m ? r.lastVerifiedAt : m; }, '');
     var st = document.getElementById('status');
-    [rows.length + ' jobs live', 'Newest posted ' + rel(newest), 'Last checked ' + rel(lastCheck), 'Site: ' + BASE].forEach(function (t) {
+    var earlyRows = rows.filter(function (r) { return EARLY.indexOf(r.level) >= 0; });
+    var e72 = earlyRows.filter(function (r) { return (now - new Date(r.postedAt)) / 36e5 <= 72; }).length;
+    var e7 = earlyRows.filter(function (r) { return (now - new Date(r.postedAt)) / 36e5 <= 168; }).length;
+    [rows.length + ' jobs live', 'Entry-level and junior: ' + earlyRows.length + ' live, ' + e7 + ' new in 7 days, ' + e72 + ' in 72h', 'Newest posted ' + rel(newest), 'Last checked ' + rel(lastCheck), 'Site: ' + BASE].forEach(function (t) {
       var s = document.createElement('span'); s.className = 'chip'; s.textContent = t; st.appendChild(s);
     });
-    ['count', 'category', 'early', 'clear', 'direct'].forEach(function (id) { document.getElementById(id).addEventListener('change', function () { offset = 0; render(); }); });
+    ['count', 'category', 'audience', 'country', 'early', 'clear', 'direct'].forEach(function (id) { document.getElementById(id).addEventListener('change', function () { offset = 0; render(); }); });
     document.getElementById('reroll').addEventListener('click', function () { offset += parseInt(document.getElementById('count').value, 10) + 3; render(); });
     render();
+    fetch('/data/geo_lexicon.json').then(function (r) { return r.json(); }).then(function (g) {
+      lexicon = g;
+      var c = document.getElementById('country');
+      g.countries.map(function (x) { return x.name; }).sort().forEach(function (n) { var o = document.createElement('option'); o.value = n; o.textContent = n; c.appendChild(o); });
+      render();
+    }).catch(function () {});
   }
 
   fetch('/jobs.json', { cache: 'no-store' }).then(function (r) { return r.json(); }).then(init).catch(function () {

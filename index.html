@@ -316,6 +316,15 @@
       color: #fff;
       border-color: var(--accent);
     }
+    .level-row { display: flex; flex-wrap: wrap; gap: 0.4rem; align-items: center; margin-top: 0.75rem; }
+    .level-row .lvl-label { font-size: 0.78rem; font-weight: 700; color: var(--text-secondary); margin-right: 0.2rem; }
+    .lvl-btn {
+      padding: 0.35rem 0.8rem; border-radius: 20px; border: 1px solid var(--border); background: transparent;
+      color: var(--text-secondary); font-size: 0.78rem; font-weight: 500; cursor: pointer; transition: all 0.15s; font-family: inherit;
+    }
+    .lvl-btn:hover { border-color: var(--accent); color: var(--accent); }
+    .lvl-btn.active { background: var(--accent); color: #fff; border-color: var(--accent); }
+    .lvl-btn:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
 
     /* JOB COUNT + UPDATED */
     .job-meta {
@@ -493,6 +502,8 @@
     @media (max-width: 720px) {
       .filters { flex-wrap: nowrap; overflow-x: auto; padding-bottom: 0.5rem; scroll-snap-type: x proximity; -webkit-overflow-scrolling: touch; }
       .filter-btn { flex: 0 0 auto; white-space: nowrap; scroll-snap-align: start; }
+      .level-row { flex-wrap: nowrap; overflow-x: auto; padding-bottom: 0.25rem; -webkit-overflow-scrolling: touch; }
+      .lvl-btn, .level-row .lvl-label { flex: 0 0 auto; white-space: nowrap; }
     }
     @media (max-width: 480px) {
       .job-card-header { flex-direction: column; gap: 0.4rem; }
@@ -854,6 +865,13 @@
       <div class="search-bar">
         <input type="text" id="search-input" placeholder="Search by title, company or keyword..." aria-label="Search jobs">
       </div>
+      <div class="level-row" id="level-row" role="group" aria-label="Experience level">
+        <span class="lvl-label">Experience:</span>
+        <button type="button" class="lvl-btn active" data-lvl="" aria-pressed="true">All levels</button>
+        <button type="button" class="lvl-btn" data-lvl="early" aria-pressed="false">Early career</button>
+        <button type="button" class="lvl-btn" data-lvl="mid" aria-pressed="false">Mid-level</button>
+        <button type="button" class="lvl-btn" data-lvl="senior_plus" aria-pressed="false">Senior &amp; leadership</button>
+      </div>
       <div class="filters" id="filter-container" role="group" aria-label="Job field">
         <button class="filter-btn active" data-category="all">All fields</button>
       </div>
@@ -863,6 +881,8 @@
           <label class="filter-field"><span>Experience</span>
             <select id="f-level">
               <option value="">Any level</option>
+              <option value="early">Early career (internship, entry-level, junior)</option>
+              <option value="senior_plus">Senior and leadership</option>
               <option value="internship">Internship or student</option>
               <option value="entry">Entry-level</option>
               <option value="junior">Junior</option>
@@ -1059,6 +1079,9 @@
       buildCategoryFilters();
       await buildCountryFilter();
       bindControls();
+      buildLevelCounts();
+      var urlLevel = new URLSearchParams(location.search).get('level');
+      if (['early', 'mid', 'senior_plus', 'internship', 'entry', 'junior', 'senior', 'leadership'].indexOf(urlLevel) !== -1) { state.level = urlLevel; syncLevelUI(); }
       renderJobs();
       updateLastUpdated();
     }
@@ -1135,6 +1158,14 @@
           resetAndRender();
         });
       });
+      document.querySelectorAll('.lvl-btn').forEach(function(b) {
+        b.addEventListener('click', function() {
+          state.level = b.dataset.lvl; syncLevelUI();
+          trackEvent('filter-level', state.level || 'any');
+          resetAndRender();
+        });
+      });
+      document.getElementById('f-level').addEventListener('change', syncLevelUI);
       document.getElementById('f-confirmed').addEventListener('change', function(e) { state.confirmed = e.target.checked; resetAndRender(); });
       document.getElementById('f-stated').addEventListener('change', function(e) { state.stated = e.target.checked; resetAndRender(); });
       document.getElementById('f-reset').addEventListener('click', function() {
@@ -1143,6 +1174,7 @@
         ['f-level', 'f-country', 'f-type', 'f-posted'].forEach(function(id) { document.getElementById(id).value = ''; });
         document.getElementById('f-confirmed').checked = false;
         document.getElementById('f-stated').checked = false;
+        syncLevelUI();
         document.querySelectorAll('.filter-btn').forEach(function(b) {
           var on = b.dataset.category === 'all';
           b.classList.toggle('active', on);
@@ -1177,11 +1209,37 @@
       return true;
     }
 
+    function levelMatch(j) {
+      var l = state.level;
+      if (!l) return true;
+      if (l === 'early') return ['internship', 'entry', 'junior'].indexOf(j.level) !== -1;
+      if (l === 'senior_plus') return j.level === 'senior' || j.level === 'leadership';
+      return j.level === l;
+    }
+    function syncLevelUI() {
+      var sel = document.getElementById('f-level'); if (sel) sel.value = state.level;
+      document.querySelectorAll('.lvl-btn').forEach(function(b) {
+        var on = b.dataset.lvl === state.level;
+        b.classList.toggle('active', on);
+        b.setAttribute('aria-pressed', on ? 'true' : 'false');
+      });
+    }
+    function buildLevelCounts() {
+      var counts = { '': allJobs.length, early: 0, mid: 0, senior_plus: 0 };
+      allJobs.forEach(function(j) {
+        if (['internship', 'entry', 'junior'].indexOf(j.level) !== -1) counts.early++;
+        else if (j.level === 'mid') counts.mid++;
+        else if (j.level === 'senior' || j.level === 'leadership') counts.senior_plus++;
+      });
+      var names = { '': 'All levels', early: 'Early career', mid: 'Mid-level', senior_plus: 'Senior & leadership' };
+      document.querySelectorAll('.lvl-btn').forEach(function(b) { b.textContent = names[b.dataset.lvl] + ' (' + counts[b.dataset.lvl] + ')'; });
+    }
+
     function applyFilters() {
       var cutoff = state.posted ? Date.now() - Number(state.posted) * 86400000 : 0;
       return allJobs.filter(function(j) {
         if (state.category !== 'all' && (j.categories || [j.category]).indexOf(state.category) === -1) return false;
-        if (state.level && j.level !== state.level) return false;
+        if (!levelMatch(j)) return false;
         if (state.type && (j.jobType || '').indexOf(state.type) === -1) return false;
         if (cutoff && new Date(j.postedAt).getTime() < cutoff) return false;
         if (state.confirmed && !(j.workArrangement !== 'remote_unclear' && j.classificationConfidence !== 'low')) return false;
