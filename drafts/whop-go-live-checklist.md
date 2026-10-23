@@ -8,6 +8,7 @@ Status 23 Oct 2026: sandbox only. The code is on branch `claude/optimistic-hoppe
 - [ ] Check Risk or holds settings; note any reserve or hold period.
 - [ ] Settings: Legal (the business name and address buyers see on receipts), Checkout branding, notification emails, invoice prefix.
 - [ ] Tax: decide with an accountant what applies to CV services (US sales-tax collection is currently on for the old account; no UK VAT or EU OSS registration). Set the tax mode to match.
+- [ ] Turn OFF adaptive pricing (local-currency display) on both plans, or decide to keep it. On 23 Oct a buyer in Türkiye saw TRY 2,485.38 instead of $49 because it was on; the site says all prices are in USD. Keeping it on needs a decision on the site wording and on the extra currency-conversion fee.
 - [ ] Create the two products (copy from the sandbox: names, descriptions, $29 and $49, one-time, no compare-at price) and the same plan settings: card only, the three checkout questions, button label "Purchase".
 - [ ] Turn on the email notification for each new sale (Settings, Notifications) so you hear about an order straight away, and check that the notification tells you to open the customer profile for the three answers (they are under Customers, the customer, Custom fields, not on the payment page).
 - [ ] Send Claude the live plan IDs or give a live key through the environment secret (restricted to products, plans and checkout links).

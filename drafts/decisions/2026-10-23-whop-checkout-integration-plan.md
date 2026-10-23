@@ -111,3 +111,8 @@ Not verified
 - The sandbox product page (not linked from our site) still shows a "$36.25 Save 20%" strike-through that is not in any API field, promo code or plan field; checkout pages show only $29.00. It looks like a Whop product-page display; KT to check the product pricing settings.
 - The preview deployment is behind Vercel login, so the redirect target could not be opened by the test browser; the public production domain is not protected (checked only through the earlier live-site monitor).
 - GoatCounter: `/thanks` page views are a rough proxy for completed payments only; the page cannot prove a payment. GoatCounter may keep the query string (it contains a payment ID); to be checked in the GoatCounter settings before going live.
+
+## 10. Phone test by KT (23 Oct 2026, iPhone, Türkiye)
+- Pay buttons, secondary WhatsApp links and Executive (WhatsApp) looked right on the phone in dark mode. The TEST banner was too low on the page; it is now pinned under the top bar.
+- Found: checkout showed **TRY 2,485.38** for the $49 package (about 50.7 TRY per USD) because adaptive pricing was on, which contradicts "All prices are in USD" on the site. Claude turned adaptive pricing off on both sandbox plans (reversible). Not re-verified from Türkiye: Claude's own browser is outside Türkiye and always showed USD; KT to reopen the checkout on the phone. Keeping local-currency display is a business decision (it may help conversion in some countries but adds FX fees and a price that differs from the site); default recommendation: off, matching the approved USD prices.
+- Checkout defaulted the billing country to Türkiye, the question fields and the "Purchase" button showed as set up.
