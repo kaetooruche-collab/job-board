@@ -86,3 +86,28 @@ Environment: `https://sandbox.whop.com/northcyprusremotejobboard/essential-cv-pa
 - Receipt email contents and the business name/address buyers see: the receipt goes to the buyer's inbox; only a real test purchase with an inbox KT controls can show it.
 - Payout, refund and dispute flow: sandbox has no payouts.
 - Webhook tests: not applicable (hosted links, no backend).
+
+## 9. Build and second round of tests (23 Oct 2026; sandbox key supplied by KT as an environment secret)
+Built on `claude/optimistic-hopper-nv0qun` (not merged). Files: `site-config.js` (checkout config), `services.html` (pay buttons, copy), `thanks.html` (new, noindex), `vercel.json` (noindex header for /thanks), `privacy.html` (Whop paragraph; needs KT review), `scripts/site_monitor.py` (checkout rule, /thanks checks), `tests/test_checkout_config.py` (11 new tests; 103 tests pass), `CLAUDE.md`, `drafts/whatsapp-messages.md` (message 25), `drafts/whop-go-live-checklist.md`. No new dependencies. No secrets in the repo.
+
+Done through the sandbox API (key scoped to "Kaeto Career Services (test)", read and create only): set the three checkout questions and card-only payment on both plans; changed the button label from "Join" to "Purchase" on both products; created two checkout links with a redirect to the thanks page.
+
+Verified by running it
+| Test | Result |
+|---|---|
+| Checkout shows the 3 questions and card only | Yes (no Apple Pay, ACH, crypto or WeChat Pay). |
+| Button label | "Purchase". |
+| Full purchase, Essential and Professional (test card 4242) | Payment status `paid` and `succeeded` in the API: $29.00 and $49.00; our order tag (`package: essential` or `professional`) and billing address recorded. |
+| Redirect after payment | The buyer is sent to our `/thanks` page with `receipt_id`, `payment_id`, `checkout_status=success` in the URL. |
+| Pay buttons on the site | Hidden by default; visible with `?pay=test` plus a TEST banner; WhatsApp demoted to a link; the Professional button opens the sandbox checkout. |
+| Mobile (390px) and thanks page | No horizontal scroll; thanks page renders and has `noindex`. |
+| Tests | 103 pass, including monitor rule tests with fake responses. |
+
+Observed, not explained: in one of three full runs the checkout stayed on a "Your payment is on its way... Check again" screen although the payment was already `paid` in the API; the other two redirected within 5 seconds. A live buyer who sees this screen can still close it; the receipt email arrives either way. To be watched in the live test.
+
+Not verified
+- The three answers (target role, has CV, WhatsApp) are not in the payment, membership or member API objects; KT must open one sandbox payment in the Whop dashboard and see whether the answers show. If they do not, the questions have no use and the button should send the buyer to the thanks page asking for those details by email (already asked there for the CV and roles).
+- Receipt email content, buyer-visible business name and address, 3-D Secure, Apple Pay, refunds, disputes and payouts: need KT or live conditions.
+- The sandbox product page (not linked from our site) still shows a "$36.25 Save 20%" strike-through that is not in any API field, promo code or plan field; checkout pages show only $29.00. It looks like a Whop product-page display; KT to check the product pricing settings.
+- The preview deployment is behind Vercel login, so the redirect target could not be opened by the test browser; the public production domain is not protected (checked only through the earlier live-site monitor).
+- GoatCounter: `/thanks` page views are a rough proxy for completed payments only; the page cannot prove a payment. GoatCounter may keep the query string (it contains a payment ID); to be checked in the GoatCounter settings before going live.

@@ -24,7 +24,7 @@ SAMPLE = 12
 fails, warns = [], []
 
 
-LIVE_CHECKOUT = re.compile(r"^https://whop\.com/checkout/plan_[A-Za-z0-9]+/?$")
+LIVE_CHECKOUT = re.compile(r"^https://whop\.com/checkout/(plan|ch)_[A-Za-z0-9]+/?$")
 
 
 def check_checkout(services_html):

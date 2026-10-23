@@ -15,7 +15,7 @@ import site_monitor  # noqa: E402
 CONFIG = (ROOT / "site-config.js").read_text()
 SERVICES = (ROOT / "services.html").read_text()
 THANKS = (ROOT / "thanks.html").read_text()
-PLAN_PATH = r"/checkout/plan_[A-Za-z0-9]+/?$"
+PLAN_PATH = r"/checkout/(plan|ch)_[A-Za-z0-9]+/?$"
 
 
 def config_values():

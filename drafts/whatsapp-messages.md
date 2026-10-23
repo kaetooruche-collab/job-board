@@ -178,3 +178,14 @@ Still open:
 
 ## Update 18 October 2026
 KT approved the pricing review: Executive is $149 with a 30-day service (12 posts, weekly targeted connection building, no open-ended promise); LinkedIn Growth $99 a month; add-ons; free quick CV check; "Get a CV for this role" button. Messages 1, 2, 4 and 16 were updated and messages 20-24 added. Set up quick replies for 20-24 as well.
+
+
+## Update 23 October 2026: card payment option (Essential and Professional only)
+Not live until KT approves the go-live checklist (`drafts/whop-go-live-checklist.md`). Replace [LIVE LINK] with the live Whop checkout link from `site-config.js` for that package.
+
+### 25. Card payment link (send only if the customer chooses card, Essential or Professional)
+> Here is the secure card payment link for your *[Package]* package ([price]): [LIVE LINK]
+>
+> You will be asked three short questions first (your target role, whether you already have a CV, and an optional WhatsApp number). Whop, our payment provider, handles your card details; we never see them. Afterwards, please email your current CV and target roles to trueremote.jobs@gmail.com (not on WhatsApp). Your timing starts once onboarding is complete.
+>
+> For your safety: the only card link we use is the one on our website and the one sent from this number.

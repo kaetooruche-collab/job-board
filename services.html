@@ -1612,7 +1612,7 @@
       var host = cfg.mode === 'live' ? 'whop.com' : (cfg.mode === 'sandbox' && test ? 'sandbox.whop.com' : null);
       if (!host) return;
       function valid(u) {
-        try { var x = new URL(u); return x.protocol === 'https:' && x.hostname === host && /^\/checkout\/plan_[A-Za-z0-9]+\/?$/.test(x.pathname); }
+        try { var x = new URL(u); return x.protocol === 'https:' && x.hostname === host && /^\/checkout\/(plan|ch)_[A-Za-z0-9]+\/?$/.test(x.pathname); }
         catch (e) { return false; }
       }
       var shown = false;
