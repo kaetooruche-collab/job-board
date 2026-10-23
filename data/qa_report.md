@@ -1,17 +1,21 @@
-# Quality report, 2026-10-23T04:42+00:00
+# Quality report, 2026-10-23T11:32+00:00
 
-- Published: **1002**
-- Held back by a quality rule (not published): **1**
-- Warnings (published, but look): **11**
+- Published: **1056**
+- Held back by a quality rule (not published): **3**
+- Warnings (published, but look): **12**
 
 ## Held back
+
+### says-not-remote-but-published-as-remote (2)
+- Lead Product Manager, Growth at Monzo: e want to solve problems and change lives through Monzo ❤️  📍London/Hybrid | 💰 Salary range £120,000 - £140,000 + equity + Incentive A
+- Senior Product Manager, Web Growth at Monzo: e want to solve problems and change lives through Monzo ❤️  📍London/Hybrid | 💰 Salary range £100,000 - £125,000 + Incentive Awards tie
 
 ### eligibility-label-unsupported (1)
 - Technical Program Associate or Manager  at GiveDirectly: label=['Cameroon', 'Canada', 'Colombia', 'Germany', 'Ghana', 'Kenya', 'Malawi', 'Mozambique', 'Netherlands', 'Nigeria', 'Poland', 'Portugal', 'Rwanda', 'South Africa', 'Spain', 'Turkey', 'Uganda', 'United Kingdom', 'United States'] but nothing in the location or evidence names them
 
 ## Warnings
 
-### pay-in-posting-but-card-says-not-stated (11)
+### pay-in-posting-but-card-says-not-stated (12)
 - Financial Analyst, GTM at Webflow: $112,000 - $135,000
 - Lead Platform Engineer, Identity & Access at Webflow: $232,000 - 290,000
 - Staff Data Engineer at Webflow: $212,500 - $255,000
@@ -21,11 +25,11 @@
 ## Shape of the feed
 
 ```
-count: 1002
-bySource: {'Greenhouse': 496, 'Ashby': 328, 'Lever': 146, 'Jobicy': 32}
-pctEligibilityUnclear: 25.2
-pctRemoteUnclear: 9.9
-pctWorldwide: 1.1
-pctEarlyCareer: 10.2
-pctSeniorPlus: 42.8
+count: 1056
+bySource: {'Greenhouse': 538, 'Jobicy': 41, 'Ashby': 332, 'Lever': 145}
+pctEligibilityUnclear: 25.5
+pctRemoteUnclear: 11.8
+pctWorldwide: 1.0
+pctEarlyCareer: 9.8
+pctSeniorPlus: 43.3
 ```
