@@ -23,6 +23,8 @@ from urllib.parse import urlparse
 import classify as C
 
 BLOCK, WARN = "block", "warn"
+# Sources whose posted date is not the employer's original posting date (evidence: tests/fixtures/jobicy_dates.json).
+UNRELIABLE_DATE_SOURCES = {"Jobicy"}
 EARLY_LEVELS = {"internship", "entry", "junior"}
 MAX_AGE_DAYS = 30
 
@@ -64,6 +66,8 @@ def check_listing(rec, raw=None, now=None):
     level = rec.get("level")
 
     # ---- data integrity -------------------------------------------------
+    if rec.get("sourceName") in UNRELIABLE_DATE_SOURCES:
+        issues.append(_issue("source-date-not-original", BLOCK, f"{rec.get('sourceName')} dates are not the employer's original posting dates: {rec.get('postedAt')}"))
     if not title.strip() or not company.strip():
         issues.append(_issue("missing-title-or-company", BLOCK, f"title={title!r} company={company!r}"))
     if HTML_JUNK_RE.search(title) or HTML_JUNK_RE.search(company):

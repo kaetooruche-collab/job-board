@@ -3,7 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TrueRemote — Verified Remote Jobs</title>
+  <title>Yireh Careers — Verified Remote Jobs</title>
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Yireh Careers">
+  <meta property="og:title" content="Yireh Careers — Verified Remote Jobs">
+  <meta property="og:description" content="Verified remote jobs, updated every 6 hours. Every listing links to the employer's own posting, with the original posting date, source and who can apply.">
+  <meta property="og:url" content="https://yirehcareers.vercel.app/">
+  <meta property="og:image" content="https://yirehcareers.vercel.app/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Yireh Careers — Verified Remote Jobs">
+  <meta name="twitter:description" content="Verified remote jobs, updated every 6 hours. Every listing links to the employer's own posting, with the original posting date, source and who can apply.">
+  <meta name="twitter:image" content="https://yirehcareers.vercel.app/og-image.png">
   <meta name="description" content="Free job board of verified remote jobs for students, graduates and experienced professionals across every field. Every listing links to the real posting, shows who can apply, and says plainly what we could not confirm.">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%231a1a2e'/><path d='M28 55 L43 70 L72 35' stroke='%2360a5fa' stroke-width='10' stroke-linecap='round' stroke-linejoin='round' fill='none'/></svg>">
   <link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
@@ -790,7 +802,7 @@
   <nav>
     <a href="/" class="nav-brand">
       <svg width="22" height="22" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="100" height="100" rx="20" fill="var(--accent)"/><path d="M28 55 L43 70 L72 35" stroke="#fff" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      True<span>Remote</span>
+      Yireh <span>Careers</span>
     </a>
     <div class="nav-links">
       <a href="#platforms" class="nav-link">Platforms</a>
@@ -834,7 +846,7 @@
 
     <!-- DISCLAIMER -->
     <div class="disclaimer">
-      <strong>How these listings work:</strong> Every job links directly to the employer's posting, with the original posting date and source. Remote does not always mean worldwide: each card says who can apply, and says "unclear" when the employer does not. Pay is shown only when the employer states it. Always check the employer's eligibility rules for your location before applying. The &ldquo;Get a CV for this role&rdquo; button opens WhatsApp with Kaeto Career Services, our own paid CV and LinkedIn service. It is not part of the employer&rsquo;s application, and you never need it to apply.
+      <strong>How these listings work:</strong> Every job links directly to the employer's posting, with the original posting date and source. Remote does not always mean worldwide: each card says who can apply, and says "unclear" when the employer does not. Pay is shown only when the employer states it. Always check the employer's eligibility rules for your location before applying. The &ldquo;Get a CV for this role&rdquo; button opens WhatsApp with Yireh Careers, our own paid CV and LinkedIn service. It is not part of the employer&rsquo;s application, and you never need it to apply.
     </div>
 
     <!-- TOOLBAR: SEARCH + FILTERS -->
@@ -915,14 +927,14 @@
         <button type="submit">Subscribe Free</button>
       </form>
       <p id="signup-msg" style="margin-top:0.75rem; font-size:0.85rem; display:none;"></p>
-      <p class="cta-social-proof">Join job seekers worldwide who trust TrueRemote for verified opportunities.</p>
+      <p class="cta-social-proof">Join job seekers worldwide who trust Yireh Careers for verified opportunities.</p>
       <p style="margin-top:0.5rem; font-size:0.8rem; opacity:0.85;">By subscribing you agree to receive our weekly job email. You can unsubscribe at any time. <a href="/privacy" style="color:inherit; text-decoration:underline;">Privacy policy</a></p>
     </section>
 
     <!-- SERVICES -->
     <section class="services" id="services">
       <h2>Need help with your application?</h2>
-      <p>Kaeto Career Services writes CVs, cover letters and LinkedIn profiles. Three packages, from $29, and a free quick CV check to start.</p>
+      <p>Yireh Careers writes CVs, cover letters and LinkedIn profiles. Three packages, from $29, and a free quick CV check to start.</p>
       <div class="service-grid">
         <div class="service-item">
           <h3>Essential &middot; $29</h3>
@@ -969,7 +981,7 @@
 
   <!-- FOOTER -->
   <footer>
-    <p>TrueRemote &mdash; Built for job seekers at every stage, looking for remote work.</p>
+    <p>Yireh Careers &mdash; Built for job seekers at every stage, looking for remote work.</p>
     <p style="margin-top:0.25rem;">Questions? <a href="mailto:trueremote.jobs@gmail.com">trueremote.jobs@gmail.com</a> &middot; <a href="/privacy">Privacy</a></p>
   </footer>
 
@@ -1249,7 +1261,7 @@
           + (job.jobType ? '<span class="job-tag">' + esc(job.jobType) + '</span>' : '')
           + '<span class="job-source">Source: ' + esc(job.sourceName || '') + '</span></div>'
           + '<div class="job-actions"><a class="apply-btn" href="' + esc(url) + '" target="_blank" rel="noopener noreferrer" data-apply="1" data-id="' + esc(job.id) + '" data-source="' + esc(job.sourceName) + '">Apply on employer site</a>'
-          + '<a class="cv-btn" href="' + esc(cvLink(job)) + '" target="_blank" rel="noopener" data-cv="1" data-id="' + esc(job.id) + '" title="Opens WhatsApp with a message to Kaeto Career Services, our paid CV and LinkedIn service">Get a CV for this role</a>'
+          + '<a class="cv-btn" href="' + esc(cvLink(job)) + '" target="_blank" rel="noopener" data-cv="1" data-id="' + esc(job.id) + '" title="Opens WhatsApp with a message to Yireh Careers, our paid CV and LinkedIn service">Get a CV for this role</a>'
           + whyBlock(job) + '</div>'
           + '</article>';
       }).join('');

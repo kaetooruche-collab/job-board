@@ -1,5 +1,5 @@
 const SITE = {
-  name: 'TrueRemote',
+  name: 'Yireh Careers',
   tagline: 'Every listing verified. Every link real.',
   email: 'trueremote.jobs@gmail.com',
   whatsapp: '+905338225854',
@@ -10,7 +10,7 @@ const SITE = {
   // mode 'sandbox' : buttons only on a page opened with ?pay=test, with a visible TEST banner. Never use for the public site.
   // mode 'live'    : buttons for everyone; URLs must be https://whop.com/checkout/ch_... (a checkout link with the thanks-page redirect; checked by tests and the site monitor).
   checkout: {
-    mode: 'sandbox',
+    mode: 'off',
     essential: 'https://sandbox.whop.com/checkout/ch_gYh54Svza5zULln',
     professional: 'https://sandbox.whop.com/checkout/ch_ZVTk4UHL8ih0xEn'
   },

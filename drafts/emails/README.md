@@ -24,3 +24,7 @@ Notes
 - Footer shows the registered business address from the Brevo account; edit if you want a different one.
 
 (Payhip was dropped on 2026-10-15: payment is arranged on WhatsApp, so there is no Payhip receipt message to set.)
+
+
+## Update 24 Oct 2026: new brand (Yireh Careers)
+`build_emails.py` and the generated `tr-*.html` now use "Yireh Careers" and sign off as "The Yireh Careers team"; the footer no longer says "KAYZ Global Ltd" (no company is registered). The templates that exist in Brevo (v2, ids 27-33, and the first set 20-26) still carry the old names and cannot be edited: create a v3 set from these files, after KT approves, and only after checking the account (see CLAUDE.md). The newsletter footer keeps the street line because marketing email normally needs a postal address; KT to confirm which address to publish.

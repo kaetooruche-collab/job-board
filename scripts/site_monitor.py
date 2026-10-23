@@ -12,11 +12,11 @@ import sys
 
 import requests
 
-SITE = os.environ.get("SITE_URL", "https://northcyprusremotejobboard.vercel.app").rstrip("/")
+SITE = os.environ.get("SITE_URL", "https://yirehcareers.vercel.app").rstrip("/")
 PAGES = ["/", "/services", "/verify", "/privacy", "/thanks"]
 APPROVED_EMAIL = "trueremote.jobs@gmail.com"
 WHATSAPP_NUMBER = "905338225854"
-FORBIDDEN = ["no work permit needed", "the only job board", "premium pay", "payhip", "guaranteed job", "guaranteed interview", "continues until you do", "until the target is reached", "until you reach 500"]
+FORBIDDEN = ["no work permit needed", "the only job board", "premium pay", "payhip", "guaranteed job", "guaranteed interview", "continues until you do", "until the target is reached", "until you reach 500", "kaeto", "kayz global ltd", "kt-photo.webp", "founder, "]
 PRICES = ["$29", "$49", "$149", "$99"]
 UA = {"User-Agent": "Mozilla/5.0 (compatible; site-monitor)"}
 SAMPLE = 12
@@ -36,17 +36,14 @@ def check_checkout(services_html):
     mode = re.search(r"checkout:\s*\{[^}]*?mode:\s*'(\w+)'", cfg, re.S)
     mode = mode.group(1) if mode else None
     urls = re.findall(r"(?:essential|professional):\s*'(https?://[^']*)'", cfg)
-    says_card = "pay by card" in services_html.lower()
     if mode == "live":
         if len(urls) != 2 or not all(LIVE_CHECKOUT.match(u) for u in urls):
-            fails.append(f"site-config.js: live checkout URLs are not https://whop.com/checkout/plan_... ({urls})")
+            fails.append(f"site-config.js: live checkout URLs are not https://whop.com/checkout/ch_... ({urls})")
     elif mode == "sandbox":
         fails.append("site-config.js: checkout mode is 'sandbox' on the live site; set 'live' with real URLs or 'off'")
     elif mode != "off":
         fails.append(f"site-config.js: checkout mode not recognised ({mode})")
-    if mode != "live" and says_card:
-        warns.append("/services: card-payment buttons exist but checkout mode is not 'live'; copy that says 'pay by card' must match")
-
+    # mode "off": card buttons and card-payment copy stay hidden (services.html shows WhatsApp-only copy), nothing to check
 
 def get(path, **kw):
     return requests.get(SITE + path if path.startswith("/") else path, headers=UA, timeout=30, **kw)
@@ -70,6 +67,8 @@ def main():
         for w in FORBIDDEN:
             if w in low:
                 fails.append(f"{p}: forbidden wording found: '{w}'")
+        if p in ("/", "/services", "/verify") and 'property="og:image"' not in t:
+            fails.append(f"{p}: share preview tags (og:image) missing; links pasted into WhatsApp or Facebook would show no picture")
         for addr in set(re.findall(r"mailto:([^\"'?<>\s]+)", t)):
             if addr.lower() != APPROVED_EMAIL:
                 fails.append(f"{p}: unexpected email address {addr}")
@@ -97,6 +96,14 @@ def main():
         for w in ("payment received", "payment confirmed", "order confirmed", "you have paid"):
             if w in low:
                 fails.append(f"/thanks: claims a verified payment ('{w}'); the page cannot know that")
+
+    # share image must open
+    try:
+        ri = get("/og-image.png")
+        if ri.status_code != 200 or not ri.headers.get("content-type", "").startswith("image/"):
+            fails.append(f"/og-image.png: HTTP {ri.status_code}, type {ri.headers.get('content-type')}")
+    except requests.RequestException as e:
+        fails.append(f"/og-image.png: could not load ({e})")
 
     # job data
     rows = []

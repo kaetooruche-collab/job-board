@@ -10,7 +10,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-SITE_URL = "https://northcyprusremotejobboard.vercel.app/"
+SITE_URL = "https://yirehcareers.vercel.app/"
 MAX_ITEMS = 5
 MIN_ITEMS = 3
 MAX_AGE_HOURS = 72

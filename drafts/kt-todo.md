@@ -4,6 +4,17 @@ Last updated: 18 October 2026. Claude: when KT asks "what do I need to get done?
 
 Legend: [ ] open, [x] done. "Only KT" means nobody else can do it (logins, accounts, money, approvals).
 
+## 0. LAUNCH (24 Oct 2026): what KT does to start bringing people in
+Claude built: the Yireh Careers rebrand, the free address https://yirehcareers.vercel.app, link previews, and the post kit at https://yirehcareers.vercel.app/kit (unlisted; bookmark it on your phone).
+- [ ] **Open the live site on your phone** (home, services, privacy). Tap the WhatsApp buttons once to see the message arrives. Tell Claude anything that looks wrong.
+- [ ] **Paste the site link into WhatsApp to yourself** and check the preview shows the Yireh Careers picture and title (WhatsApp caches previews; if it looks old, add `?v=2` to the link).
+- [ ] **Post using the kit**: open `/kit`, tap "Copy post", paste into WhatsApp groups and status, Facebook, TikTok and Snapchat. One post per group per day; read each group's rules; links go in the bio on TikTok and Snapchat. Post at least once a day for a week, then look at GoatCounter (which platform sends visitors: the links are tagged `utm_source`).
+- [ ] **Set the Gmail "send mail as" display name to Yireh Careers** (the address is still trueremote.jobs@gmail.com) so customers recognise the emails; same for the WhatsApp Business name (WhatsApp may need to approve it).
+- [ ] **GoatCounter**: after your first visit to the new address, check the dashboard shows it. If not, add the new address to the allowed domains in GoatCounter settings.
+- [ ] **Facebook page, TikTok and Snapchat accounts named Yireh Careers**, with the bio link https://yirehcareers.vercel.app (tagged links are in the kit). Handles for the name have not been checked.
+- [ ] **When you can afford a domain**: tell Claude; the address is changed in one pass (a domain, the share tags, the redirect and the monitor).
+- [ ] **Later, not blocking launch**: register a company (accountant), then the trademark and Whop live setup; the privacy page wording is updated when the company exists.
+
 ## 1. Before the first customer messages you (do these first)
 - [ ] **Test the live page on your phone.** Open https://northcyprusremotejobboard.vercel.app/services and tap Get started on each package, the free CV check button and Ask about add-ons. Confirm WhatsApp opens with the right message. Also try on an iPhone/Safari if you can (not tested by Claude). Only KT.
 - [ ] **Payment accounts ready.** A bank account for each currency you will offer (USD, EUR, GBP, TL), a Bitcoin wallet and a USDT wallet on the Tron (TRC-20) network. Send yourself a small test payment to each. Only KT. (Payment details are never stored in the repo.)

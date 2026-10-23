@@ -41,6 +41,7 @@ class CheckoutFiles(unittest.TestCase):
         mode, urls = config_values()
         self.assertIn(mode, {"off", "sandbox", "live"})
         self.assertEqual(set(urls), {"essential", "professional"})
+        self.assertNotEqual(mode, "sandbox", "sandbox mode must never be on the public site")
         host = {"live": "whop.com", "sandbox": "sandbox.whop.com"}.get(mode)
         for plan, url in urls.items():
             if host:
@@ -65,6 +66,15 @@ class CheckoutFiles(unittest.TestCase):
         self.assertNotIn("no online checkout", SERVICES.lower())
         for price in ("$29", "$49", "$149", "$99"):
             self.assertIn(price, SERVICES)
+
+    def test_card_payment_copy_is_hidden_unless_the_buttons_are_live(self):
+        # whatever says "pay by card" in sentences must sit inside data-card-copy (hidden by default), with a WhatsApp-only twin
+        self.assertIn("data-wa-only", SERVICES)
+        for m in re.finditer(r"<[^>]*data-card-copy[^>]*>", SERVICES):
+            self.assertIn("hidden", m.group(0))
+        for phrase in ("can be paid by card on a secure checkout page", "Pay by card on the secure checkout page"):
+            i = SERVICES.index(phrase)
+            self.assertIn("data-card-copy", SERVICES[max(0, i - 200):i])
 
     def test_copy_does_not_promise_usd_only_card_checkout(self):
         # Whop adaptive pricing shows buyers their local currency at card checkout (KT decision, 23 Oct).
@@ -98,10 +108,9 @@ class MonitorCheckoutRule(unittest.TestCase):
             fails, _ = run_check(cfg("live", bad, "https://whop.com/checkout/plan_BBB"))
             self.assertTrue(fails, bad)
 
-    def test_off_mode_warns_if_copy_says_pay_by_card(self):
+    def test_off_mode_is_accepted_with_no_warnings(self):
         fails, warns = run_check(cfg("off", "", ""))
-        self.assertEqual(fails, [])
-        self.assertTrue(warns)
+        self.assertEqual((fails, warns), ([], []))
 
 
 if __name__ == "__main__":

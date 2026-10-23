@@ -270,6 +270,14 @@ def fetch_jobicy():
     return out
 
 
+# Jobicy is OFF (23 Oct 2026). Its pubDate is not the employer's original posting date: all 41 listings in one
+# run carried today's date in four batches (20 in a single minute), and the one listing we could check against
+# the employer's own Greenhouse board said 23 Oct while the employer said 8 Oct (LaunchDarkly, "Director, People
+# Operations"). Our listing standard needs the original posting date. Turn back on only if a source of
+# truth for the date is found. Evidence: tests/fixtures/jobicy_dates.json. Backstop: qa_checks "source-date-not-original".
+USE_JOBICY = False
+
+
 def fetch_all(boards):
     raw, counts = [], Counter()
     jobs = [("greenhouse", b, fetch_greenhouse_board) for b in boards.get("greenhouse", [])]
@@ -287,9 +295,12 @@ def fetch_all(boards):
             counts[kind] += len(res)
             raw.extend(res)
     print(f"  ATS boards: {dict(counts)}")
-    jobicy = fetch_jobicy()
-    print(f"  Jobicy: {len(jobicy)}")
-    raw.extend(jobicy)
+    if USE_JOBICY:
+        jobicy = fetch_jobicy()
+        print(f"  Jobicy: {len(jobicy)}")
+        raw.extend(jobicy)
+    else:
+        print("  Jobicy: skipped (its dates are not the employer's original posting dates)")
     return raw
 
 

@@ -9,7 +9,7 @@ Status 23 Oct 2026: sandbox only. The code is on branch `claude/optimistic-hoppe
 ## A. KT, in Whop (production business, not the sandbox)
 - [ ] Refunds: Whop docs say a refund needs enough balance in the account. Check how and when new payments become available (Balances, any hold) so a refund before onboarding can always be paid. In Resolution Center, review the auto-refund (Auto respond) thresholds and keep them OFF or deliberately set, so they match the approved refund policy.
 - [ ] Legal settings: set the terms and privacy links shown at checkout to our pages (the checkout says "you agree to ... terms and conditions"), once KT has approved the terms wording.
-- [ ] Create your own stand-alone Whop business (not a connected account of anyone else). Name: Kaeto Career Services.
+- [ ] Create your own stand-alone Whop business (not a connected account of anyone else). Name: Yireh Careers (decided 24 Oct). The business is an individual account until a company is registered.
 - [ ] Complete identity verification (Verifications) and add the payout method; note the payout fee shown at Withdraw (Balances).
 - [ ] Check Risk or holds settings; note any reserve or hold period.
 - [ ] Settings: Legal (the business name and address buyers see on receipts), Checkout branding, notification emails, invoice prefix.
