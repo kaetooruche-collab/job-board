@@ -1,6 +1,6 @@
 # KT's to-do list (the single master list)
 
-Last updated: 18 October 2026. Claude: when KT asks "what do I need to get done?", show the OPEN items below, most urgent first, in plain language. Update this file every time something is done, added or decided. `drafts/launch-checklist.md` is the older history; this file wins.
+Last updated: 24 October 2026. Claude: when KT asks "what do I need to get done?", show the OPEN items below, most urgent first, in plain language. Update this file every time something is done, added or decided. `drafts/launch-checklist.md` is the older history; this file wins.
 
 Legend: [ ] open, [x] done. "Only KT" means nobody else can do it (logins, accounts, money, approvals).
 
@@ -14,6 +14,13 @@ Claude built: the Yireh Careers rebrand, the free address https://yirehcareers.v
 - [ ] **Facebook page, TikTok and Snapchat accounts named Yireh Careers**, with the bio link https://yirehcareers.vercel.app (tagged links are in the kit). Handles for the name have not been checked.
 - [ ] **When you can afford a domain**: tell Claude; the address is changed in one pass (a domain, the share tags, the redirect and the monitor).
 - [ ] **Later, not blocking launch**: register a company (accountant), then the trademark and Whop live setup; the privacy page wording is updated when the company exists.
+
+## 0b. Strategy validation (24 Oct 2026; see `drafts/decisions/2026-10-24-board-strategy-icp-inventory-seniority.md`)
+- [ ] **List the groups and pages you will post in**: roughly how many members, which countries, and whether they are mostly students, graduates or working professionals. This decides whether we need jobs open to non-US readers. Only KT.
+- [ ] **Log every free CV check request** (date, career stage, country, ordered yes/no). Claude can set up the sheet; you fill it in. Only KT.
+- [ ] **After 7 days, read GoatCounter** (countries, referrers, apply clicks, CV-button clicks) and tell Claude, or send a screenshot. Only KT (login).
+- [ ] **Have 10 short conversations** with job seekers (5 mid-career, 5 graduate or international): "what did you last pay for CV help?" Only KT.
+- [ ] **Decide later, with data:** home page default (all levels or early career), whether to source new employers (a company list for your approval), executive offer vs the no-founder-name rule.
 
 ## 1. Before the first customer messages you (do these first)
 - [ ] **Test the live page on your phone.** Open https://northcyprusremotejobboard.vercel.app/services and tap Get started on each package, the free CV check button and Ask about add-ons. Confirm WhatsApp opens with the right message. Also try on an iPhone/Safari if you can (not tested by Claude). Only KT.
