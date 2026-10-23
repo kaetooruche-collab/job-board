@@ -16,6 +16,9 @@ Status 23 Oct 2026: sandbox only. The code is on branch `claude/optimistic-hoppe
 - [ ] Plan to send each card buyer a short welcome email from trueremote.jobs@gmail.com the same day (what we need from them, timing starts when onboarding is complete); the Whop receipt does not do this. Claude can draft the wording.
 - [ ] Send Claude the live plan IDs or give a live key through the environment secret (restricted to products, plans and checkout links).
 
+## A2. Rule for every change to a Whop plan or product (learned on 23 Oct)
+Updating a plan can silently remove other settings (a description change removed the three checkout questions). After ANY edit: send the complete configuration in one request, re-read the plan, and check: price, 3 questions with the right required flags, card only, adaptive pricing as decided, description. Then load the checkout in a browser and confirm the questions show.
+
 ## B. Claude, after A
 - [ ] Create two live checkout configurations (plan plus redirect to `https://northcyprusremotejobboard.vercel.app/thanks`; use the final domain if it has changed).
 - [ ] Put the live URLs in `site-config.js`, set mode `live`, run tests and the monitor rule, push a preview and test.
@@ -26,6 +29,7 @@ Status 23 Oct 2026: sandbox only. The code is on branch `claude/optimistic-hoppe
 - [ ] KT approves the merge to main.
 
 ## D. After merge, with real money (KT does the purchase)
+- [ ] After the live plans are created and before announcing anything, buy once and open Customers, the customer, Custom fields: all three answers must show.
 - [ ] Buy Essential yourself with a real card (refund it afterwards). Check: the receipt email and what it shows (business name, address), the payment appears in Whop with the three answers, the redirect to `/thanks` works, money arrives (Balances) and a withdrawal reaches your bank.
 - [ ] Check the first live monitor run is green and GoatCounter records `pay-essential` and `pay-professional` events.
 - [ ] Remove the sandbox API key in Whop (Developer page) and from the environment secrets.

@@ -128,3 +128,18 @@ Findings
 2. "Need help? contact our support team" points to Whop's support, not ours. KT to look for a support-email setting in Whop (Settings) and set it to trueremote.jobs@gmail.com; not yet checked whether the setting exists.
 3. The receipt shows the lira amount only, no USD figure. For refunds and bookkeeping KT will see the USD value in the Whop dashboard.
 4. Not yet received from KT: where the buyer landed after paying, the Whop fee breakdown for this non-US payment (needed to test Whop's claim that adaptive pricing lowers fees), and whether the optional WhatsApp number appears under Custom fields.
+
+## 12. KT's dashboard screenshots and an incident caused by Claude (23 Oct 2026, afternoon)
+Fee result (KT's iPhone payment from Türkiye, $49 plan, adaptive pricing on)
+- Buyer paid TRY 2,485.38 (presentment); recorded as USD 49.00 (about 50.7 TRY per USD).
+- Fees: card processing $1.62, cross-border transaction $0.74, orchestration $0.39, Radar $0.07, net $46.18. IDENTICAL to the US test buyer's fees. So in the sandbox the cross-border fee was still charged and adaptive pricing did NOT lower fees, contrary to Whop's documentation. Possible reasons (not verified): the sandbox may not model domestic routing; the seller account's own country may matter; docs may be out of date. Effect on the decision: none against (fees were not higher), but "lower fees" must not be counted on. The case for keeping adaptive pricing rests on buyer familiarity and acceptance, to be judged on real data. The first live purchase from outside the US is the real fee test.
+- The buyer's lira price: implied rate 50.72 TRY per USD; whether that includes a conversion margin is unknown.
+
+Redirect
+- KT landed on a Vercel login page: the redirect target is the protected preview deployment. Expected for previews; the production domain is public. Still unverified end to end until the first live purchase.
+
+Incident: Claude wiped the checkout questions
+- At 13:13 UTC Claude updated both plans' description (PATCH) to add the next-steps text. That update silently removed all three custom fields (target role, has CV, WhatsApp) from both plans, although the request did not mention them; card-only and prices were kept. Claude did not re-read the plans afterwards and found out only when asked for the payment record. KT's 4:10 PM purchase happened just before the wipe, and the customer profile no longer showed a Custom fields section (the profile only shows fields the plan currently has). KT's answers from that purchase may be lost or orphaned.
+- Fix: both plans re-patched with description + questions + card-only + adaptive pricing in one request; verified by re-reading the plans through the API (3 fields each, card only, $29 and $49, description set, adaptive on) and by loading both checkout pages in a browser (all 3 questions shown). Field IDs are new (old ones could not be reused).
+- Retest: purchase pay_O2EzrXv8By680A (Essential, buyer-retest@example.com, role "RETEST data analyst", CV "no", WhatsApp "+90 000 000 0000"). KT to confirm in Customers that all three answers show.
+- Rule from now on: after ANY edit to a Whop plan or product, re-read it and check the full list (3 questions, card only, price, description, adaptive pricing) before saying it is done, and send the complete configuration in one request. Added to the go-live checklist.
