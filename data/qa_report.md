@@ -1,8 +1,8 @@
-# Quality report, 2026-10-23T17:01+00:00
+# Quality report, 2026-10-23T17:16+00:00
 
-- Published: **1013**
+- Published: **1020**
 - Held back by a quality rule (not published): **3**
-- Warnings (published, but look): **11**
+- Warnings (published, but look): **12**
 
 ## Held back
 
@@ -15,21 +15,24 @@
 
 ## Warnings
 
-### pay-in-posting-but-card-says-not-stated (11)
+### pay-in-posting-but-card-says-not-stated (12)
 - Financial Analyst, GTM at Webflow: $112,000 - $135,000
 - Lead Platform Engineer, Identity & Access at Webflow: $232,000 - 290,000
 - Staff Data Engineer at Webflow: $212,500 - $255,000
 - Platform Engineer at Resend: $150,000 - $180,000
 - Platform Engineer at Resend: $150,000 - $180,000
 
+## Changes since the previous run
+- source Jobicy: 67 -> 0 listings (source may be down or changed)
+
 ## Shape of the feed
 
 ```
-count: 1013
-bySource: {'Greenhouse': 488, 'Ashby': 319, 'Lever': 139, 'Jobicy': 67}
-pctEligibilityUnclear: 24.5
-pctRemoteUnclear: 12.5
-pctWorldwide: 1.3
-pctEarlyCareer: 9.9
-pctSeniorPlus: 42.9
+count: 1020
+bySource: {'Lever': 144, 'Greenhouse': 537, 'Ashby': 339}
+pctEligibilityUnclear: 25.7
+pctRemoteUnclear: 8.8
+pctWorldwide: 1.7
+pctEarlyCareer: 9.4
+pctSeniorPlus: 43.5
 ```
