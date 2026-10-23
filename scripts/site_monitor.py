@@ -13,7 +13,7 @@ import sys
 import requests
 
 SITE = os.environ.get("SITE_URL", "https://northcyprusremotejobboard.vercel.app").rstrip("/")
-PAGES = ["/", "/services", "/verify", "/privacy"]
+PAGES = ["/", "/services", "/verify", "/privacy", "/thanks"]
 APPROVED_EMAIL = "trueremote.jobs@gmail.com"
 WHATSAPP_NUMBER = "905338225854"
 FORBIDDEN = ["no work permit needed", "the only job board", "premium pay", "payhip", "guaranteed job", "guaranteed interview", "continues until you do", "until the target is reached", "until you reach 500"]
@@ -22,6 +22,30 @@ UA = {"User-Agent": "Mozilla/5.0 (compatible; site-monitor)"}
 SAMPLE = 12
 
 fails, warns = [], []
+
+
+LIVE_CHECKOUT = re.compile(r"^https://whop\.com/checkout/plan_[A-Za-z0-9]+/?$")
+
+
+def check_checkout(services_html):
+    """The card buttons must point at the live Whop checkout, never a sandbox, and the copy must match the config."""
+    try:
+        cfg = get("/site-config.js").text
+    except requests.RequestException as e:
+        fails.append(f"/site-config.js: could not load ({e})"); return
+    mode = re.search(r"checkout:\s*\{[^}]*?mode:\s*'(\w+)'", cfg, re.S)
+    mode = mode.group(1) if mode else None
+    urls = re.findall(r"(?:essential|professional):\s*'(https?://[^']*)'", cfg)
+    says_card = "pay by card" in services_html.lower()
+    if mode == "live":
+        if len(urls) != 2 or not all(LIVE_CHECKOUT.match(u) for u in urls):
+            fails.append(f"site-config.js: live checkout URLs are not https://whop.com/checkout/plan_... ({urls})")
+    elif mode == "sandbox":
+        fails.append("site-config.js: checkout mode is 'sandbox' on the live site; set 'live' with real URLs or 'off'")
+    elif mode != "off":
+        fails.append(f"site-config.js: checkout mode not recognised ({mode})")
+    if mode != "live" and says_card:
+        warns.append("/services: card-payment buttons exist but checkout mode is not 'live'; copy that says 'pay by card' must match")
 
 
 def get(path, **kw):
@@ -58,8 +82,21 @@ def main():
         for pr in PRICES:
             if pr not in html["/services"]:
                 fails.append(f"/services: approved price {pr} not shown")
-        if "payhip" in html["/services"].lower() or "checkout" in html["/services"].lower().replace("no online checkout", ""):
-            fails.append("/services: mentions a checkout; there must be no on-site payment")
+        if "payhip" in html["/services"].lower():
+            fails.append("/services: mentions payhip; the approved card provider is Whop")
+        check_checkout(html["/services"])
+    if "/thanks" in html:
+        low = html["/thanks"].lower()
+        if 'name="robots"' not in low or "noindex" not in low:
+            fails.append("/thanks: missing noindex meta tag")
+        try:
+            if "noindex" not in get("/thanks").headers.get("X-Robots-Tag", "").lower():
+                fails.append("/thanks: X-Robots-Tag noindex header missing")
+        except requests.RequestException as e:
+            fails.append(f"/thanks: header check failed ({e})")
+        for w in ("payment received", "payment confirmed", "order confirmed", "you have paid"):
+            if w in low:
+                fails.append(f"/thanks: claims a verified payment ('{w}'); the page cannot know that")
 
     # job data
     rows = []

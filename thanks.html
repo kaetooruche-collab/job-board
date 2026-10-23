@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thank you — TrueRemote</title>
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="description" content="Next steps after paying for a TrueRemote career service.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%231a1a2e'/><path d='M28 55 L43 70 L72 35' stroke='%2360a5fa' stroke-width='10' stroke-linecap='round' stroke-linejoin='round' fill='none'/></svg>">
+  <link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/fonts/inter.css">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #f8f9fb;
+      --surface: #ffffff;
+      --text: #1a1a2e;
+      --text-secondary: #5f6368;
+      --accent: #2563eb;
+      --accent-hover: #1d4ed8;
+      --accent-light: #eff6ff;
+      --border: #e2e5e9;
+      --tag-bg: #f1f3f5;
+      --green: #0d9488;
+      --green-light: #f0fdfa;
+      --yellow-dark: #f59e0b;
+      --radius: 10px;
+      --shadow: 0 1px 3px rgba(0,0,0,0.06);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) {
+        --bg: #0c0c18;
+        --surface: #161625;
+        --text: #e8e8f0;
+        --text-secondary: #9ca3af;
+        --accent: #60a5fa;
+        --accent-hover: #93bbfd;
+        --accent-light: #1e293b;
+        --border: #262640;
+        --tag-bg: #1e1e36;
+        --green: #2dd4bf;
+        --green-light: #0d2d2a;
+        color-scheme: dark;
+      }
+    }
+    :root[data-theme="dark"] {
+      --bg: #0c0c18;
+      --surface: #161625;
+      --text: #e8e8f0;
+      --text-secondary: #9ca3af;
+      --accent: #60a5fa;
+      --accent-hover: #93bbfd;
+      --accent-light: #1e293b;
+      --border: #262640;
+      --tag-bg: #1e1e36;
+      --green: #2dd4bf;
+      --green-light: #0d2d2a;
+      color-scheme: dark;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    nav {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 0 1.5rem;
+      height: 56px;
+      position: sticky;
+      top: 0;
+      z-index: 200;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .nav-brand {
+      font-weight: 800;
+      font-size: 1.25rem;
+      color: var(--text);
+      text-decoration: none;
+      letter-spacing: -0.5px;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+    .nav-brand span { color: var(--accent); }
+    .nav-links { display: flex; align-items: center; gap: 1.25rem; }
+    .nav-link {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+    }
+    .nav-link:hover { color: var(--accent); }
+    .nav-link.active { color: var(--accent); font-weight: 600; }
+    .nav-cta {
+      background: var(--accent);
+      color: #fff;
+      padding: 0.45rem 1rem;
+      border-radius: 6px;
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 600;
+      transition: background 0.2s;
+    }
+    .nav-cta:hover { background: var(--accent-hover); }
+
+    .hamburger {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0.25rem;
+      color: var(--text);
+    }
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 56px;
+      left: 0;
+      right: 0;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 1rem 1.5rem;
+      z-index: 199;
+      flex-direction: column;
+      gap: 0.75rem;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      color: var(--text);
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 500;
+      padding: 0.5rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .mobile-menu a:last-child { border-bottom: none; }
+
+    .container {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 2.5rem 1.5rem;
+    }
+
+    h1 {
+      font-size: clamp(1.5rem, 4vw, 2rem);
+      font-weight: 800;
+      margin-bottom: 0.75rem;
+      letter-spacing: -0.5px;
+    }
+
+    .page-intro {
+      font-size: 1rem;
+      color: var(--text-secondary);
+      margin-bottom: 2.5rem;
+      line-height: 1.7;
+      max-width: 600px;
+    }
+
+    .trust-rules {
+      margin-bottom: 3rem;
+    }
+    .trust-rules h2 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin-bottom: 1.25rem;
+    }
+    .trust-rule {
+      display: flex;
+      gap: 1rem;
+      padding: 1rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .trust-rule:last-child { border-bottom: none; }
+    .trust-rule-number {
+      flex-shrink: 0;
+      width: 2rem;
+      height: 2rem;
+      background: var(--green-light);
+      color: var(--green);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.82rem;
+      font-weight: 700;
+    }
+    .trust-rule-text {
+      font-size: 0.92rem;
+      color: var(--text);
+      line-height: 1.6;
+      padding-top: 0.25rem;
+    }
+
+    .process-section {
+      margin-bottom: 3rem;
+    }
+    .process-section h2 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin-bottom: 1.25rem;
+    }
+    .process-step {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 0.75rem;
+    }
+    .process-step h3 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      margin-bottom: 0.35rem;
+    }
+    .process-step p {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    .listing-standard {
+      margin-bottom: 3rem;
+    }
+    .listing-standard h2 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin-bottom: 1.25rem;
+    }
+    .standard-list {
+      list-style: none;
+      padding: 0;
+    }
+    .standard-list li {
+      padding: 0.6rem 0 0.6rem 1.75rem;
+      position: relative;
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      border-bottom: 1px solid var(--border);
+    }
+    .standard-list li:last-child { border-bottom: none; }
+    .standard-list li::before {
+      content: "\2713";
+      position: absolute;
+      left: 0;
+      color: var(--green);
+      font-weight: 700;
+    }
+
+    .report-section {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.75rem;
+      text-align: center;
+    }
+    .report-section h2 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+    .report-section p {
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      margin-bottom: 1.25rem;
+    }
+    .report-links {
+      display: flex;
+      justify-content: center;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+    .report-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.6rem 1.15rem;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text);
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .report-link:hover { border-color: var(--accent); color: var(--accent); }
+
+    footer {
+      text-align: center;
+      padding: 2rem 1.5rem;
+      color: var(--text-secondary);
+      font-size: 0.8rem;
+      border-top: 1px solid var(--border);
+      margin-top: 2rem;
+    }
+    footer a { color: var(--accent); text-decoration: none; }
+
+    @media (max-width: 640px) {
+      .container { padding: 1.5rem 1rem; }
+      .nav-links { display: none; }
+      .hamburger { display: block; }
+      .process-step { padding: 1rem 1.15rem; }
+    }
+
+    .next-steps { margin: 2rem 0; display: grid; gap: 0.75rem; }
+    .next-step { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem 1.15rem; display: flex; gap: 0.9rem; align-items: flex-start; }
+    .next-step-number { flex: 0 0 1.9rem; height: 1.9rem; border-radius: 50%; background: var(--accent); color: #fff; font-weight: 700; display: flex; align-items: center; justify-content: center; font-size: 0.9rem; }
+    .next-step p { margin: 0; line-height: 1.6; }
+    .thanks-note { color: var(--text-secondary); font-size: 0.9rem; line-height: 1.6; margin-top: 1.5rem; }
+    .thanks-note a { color: var(--accent); }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="/" class="nav-brand">
+      <svg width="22" height="22" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="100" height="100" rx="20" fill="var(--accent)"/><path d="M28 55 L43 70 L72 35" stroke="#fff" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      True<span>Remote</span>
+    </a>
+    <div class="nav-links">
+      <a href="/" class="nav-link">Jobs</a>
+      <a href="/verify" class="nav-link">How We Verify</a>
+      <a href="/services" class="nav-cta">Get Job-Ready</a>
+    </div>
+    <button class="hamburger" onclick="document.getElementById('mobile-menu').classList.toggle('open')" aria-label="Toggle navigation menu">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+  </nav>
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="/">Jobs</a>
+    <a href="/verify">How We Verify</a>
+    <a href="/services">Get Job-Ready</a>
+  </div>
+
+
+  <div class="container">
+
+    <h1>Thank you</h1>
+    <p class="page-intro">If your card payment went through, Whop, our payment provider, emails you a receipt. Here is what happens next.</p>
+
+    <div class="next-steps">
+      <div class="next-step"><div class="next-step-number">1</div><p><strong>Email us your CV and target roles.</strong> Send your current CV (or tell us you do not have one) and the roles you are applying for to <a href="mailto:trueremote.jobs@gmail.com">trueremote.jobs@gmail.com</a>. Please do not send documents on WhatsApp.</p></div>
+      <div class="next-step"><div class="next-step-number">2</div><p><strong>Answer our questions.</strong> We may reply with a few questions. Your onboarding is complete once we have everything we need, and all delivery timing starts then.</p></div>
+      <div class="next-step"><div class="next-step-number">3</div><p><strong>Check Promotions and Spam.</strong> If you hear nothing from us, look there, or message us on <a href="https://wa.me/905338225854" target="_blank" rel="noopener">WhatsApp</a>.</p></div>
+    </div>
+
+    <p class="thanks-note">You do not need a Whop account to receive our service. If Whop asks for a code to create one, you can skip it.</p>
+    <p class="thanks-note">Reached this page without paying? Nothing is owed and nothing has been ordered. <a href="/services">See the packages</a>.</p>
+    <p class="thanks-note">Refunds: see <a href="/services#terms">our refund and cancellation terms</a>.</p>
+
+  </div>
+
+  <footer>
+    <p>TrueRemote &mdash; Built for job seekers at every stage, looking for remote work.</p>
+    <p style="margin-top:0.25rem;">Questions? <a href="mailto:trueremote.jobs@gmail.com">trueremote.jobs@gmail.com</a> &middot; <a href="/privacy">Privacy</a></p>
+  </footer>
+
+  <script data-goatcounter="https://kayzglobal.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+
+</body>
+</html>
