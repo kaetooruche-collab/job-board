@@ -57,3 +57,32 @@ Reconciliation without webhooks: Whop dashboard payments list and notification e
 3. Keep "Questions? Chat first" and the free CV check beside the pay button (recommended).
 4. Create the sandbox business and products and send the sandbox checkout URLs; then the production URLs after the sandbox tests pass.
 5. Tax and address decisions (accountant), and the Whop account checks from `2026-10-19-whop-payments.md`.
+
+## 8. Sandbox test results (23 Oct 2026, run by Claude in a headless browser against the sandbox product page)
+Environment: `https://sandbox.whop.com/northcyprusremotejobboard/essential-cv-package/` (business "Kaeto Career Services (test)"). Sandbox only; no real money. Product-page URLs, not checkout-link URLs (checkout links with questions are not created yet).
+
+**Verified by running it**
+| Test | Result |
+|---|---|
+| Buyer without a Whop account | Works: guest checkout, email plus card plus billing details, no sign-in. |
+| Price shown in checkout | $29.00, "One-time payment." Matches the plan. |
+| Success card 4242 4242 4242 4242, full billing details | "Payment complete" page at `sandbox.whop.com/checkout/return/?session=chs_...`; says a receipt is on its way. |
+| Decline card 4000 0000 0000 0002 | Clear red message "This payment could not be processed right now. Please try a different payment method, or contact your bank"; buyer stays at checkout; no success page. |
+| Incomplete billing details | Blocked with "Please complete the highlighted fields" (address, city, ZIP and state are required for a US billing country). |
+| Mobile (390 px) | Checkout opens as a bottom sheet, readable, Apple Pay button, card fields. |
+| Close with Escape key | Checkout stays open (no cancel via Escape). Not a bug, but a buyer closes it with the page's own back or close control. |
+
+**Findings that need action before any live launch**
+1. The submit button says **"Join"**, not "Pay $29". Misleading for a one-time service. Check the product type, product page and checkout settings in Whop for a button-label or product-type setting; if it cannot be changed, the site copy next to the button must say "You will see a Join button; it completes your $29 payment."
+2. The product pages show a **fake compare-at price** ($36.25 struck through, "Save 20%" for Essential; $61.25 for Professional). This is a reference price we never charged. Remove it in the product pricing, because it breaks the site's no-misleading-claims standard.
+3. After payment the buyer lands on a Whop page asking for a **6-digit code to create a Whop account** ("to open what you bought"). Our service is delivered by email, so this is confusing. Test a checkout link with a redirect URL to our `/thanks` page, and explain on the checkout description that no Whop account is needed.
+4. Checkout also offers **ACH, crypto and WeChat Pay** besides card and Apple Pay. KT decides which to keep; card only is recommended for the first pilot (matches the earlier plan).
+5. Pre-checkout questions (target role, have CV yes or no) work only on checkout links, not on product-page checkout; still untested.
+
+**Not run, and why**
+- 3-D Secure card (5385 3083 6013 5181): not run.
+- Apple Pay: needs a real device; the QR code appeared but was not completed.
+- Redirect to our `/thanks` page, direct visit to `/thanks`, and the pre-checkout questions: need the checkout links and the `thanks.html` page (not built yet).
+- Receipt email contents and the business name/address buyers see: the receipt goes to the buyer's inbox; only a real test purchase with an inbox KT controls can show it.
+- Payout, refund and dispute flow: sandbox has no payouts.
+- Webhook tests: not applicable (hosted links, no backend).
