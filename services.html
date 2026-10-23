@@ -650,7 +650,7 @@
       margin-top: 0.25rem;
     }
     .pricing-card .btn { width: 100%; justify-content: center; }
-    .test-banner { background: #fef3c7; color: #78350f; border: 1px solid #f59e0b; border-radius: var(--radius, 10px); padding: 0.6rem 0.9rem; font-weight: 600; margin-top: 0.75rem; }
+    .test-banner { position: sticky; top: 56px; z-index: 150; background: #fef3c7; color: #78350f; border-bottom: 2px solid #f59e0b; padding: 0.55rem 1rem; font-weight: 700; font-size: 0.85rem; text-align: center; }
     .pricing-question-link {
       display: block;
       text-align: center;
@@ -969,6 +969,7 @@
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
     </button>
   </nav>
+  <div class="test-banner" id="test-banner" hidden>TEST MODE: the card buttons open a sandbox checkout. No real money moves.</div>
   <div class="mobile-menu" id="mobile-menu">
     <a href="/">Jobs</a>
     <a href="/verify">How We Verify</a>
@@ -1090,7 +1091,6 @@
         </div>
       </details>
       <p class="pricing-note">Essential and Professional can be paid by card on a secure checkout page hosted by Whop, our payment provider; we never see your card details. For bank transfer or crypto, or for Executive, add-ons and the monthly LinkedIn plan, message us on WhatsApp and we send payment details there.</p>
-      <p class="test-banner" id="test-banner" hidden>TEST MODE: the card buttons open a sandbox checkout. No real money moves.</p>
     </section>
 
     <!-- Add-ons and monthly plan -->
