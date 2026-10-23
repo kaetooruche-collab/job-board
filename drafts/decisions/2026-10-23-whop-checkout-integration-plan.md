@@ -116,3 +116,15 @@ Not verified
 - Pay buttons, secondary WhatsApp links and Executive (WhatsApp) looked right on the phone in dark mode. The TEST banner was too low on the page; it is now pinned under the top bar.
 - Found: checkout showed **TRY 2,485.38** for the $49 package (about 50.7 TRY per USD) because adaptive pricing was on. Claude first switched it off to match the page wording "All prices are in USD"; KT objected, correctly: copy should follow what is best for the buyer, not the reverse. Per Whop's docs (docs.whop.com/payments-and-billing/fees/adaptive-pricing): free for sellers, processed as domestic (replaces the international card and FX fees), higher bank acceptance, buyers can switch back to the original currency, and the buyer's local price includes a small conversion fee; one-time payments only. DECISION (KT, 23 Oct): keep adaptive pricing ON. Adaptive pricing is back on for both sandbox plans and the page copy now says prices are listed in USD and card checkout may show the buyer's own currency. Not verified: whether the fee shown on a real non-US purchase is actually lower (sandbox test buyer was in the US); rate drift means the local amount changes day to day; vendor statements about conversion and acceptance are Whop's claims, not measured by us.
 - Checkout defaulted the billing country to Türkiye, the question fields and the "Purchase" button showed as set up.
+
+## 11. Real purchase from KT's iPhone in Türkiye and the receipt email (23 Oct 2026, 4:10 PM, sandbox)
+Verified from KT's screenshots
+- The payment completed on iPhone: Professional Package, charged in lira, **TRY 2,485.38** (subtotal and total identical, so no separate fee line shown to the buyer), Visa ending 4242, billing address as typed.
+- The buyer gets a Whop "Order Confirmation" email: sender "Kaeto Career Services (test) via Whop", "Business on Whop", invoice number and date, product name, total, billing address, payment method, a "Manage purchase" button and "Need help? contact our support team".
+- The seller's own street address is not shown in the email.
+
+Findings
+1. The receipt gives no next step (it never says to email the CV and target roles). Claude set a customer-visible plan description with those instructions and the already-approved refund sentence on both plans. It shows in the checkout "Details" panel before payment (verified in a browser). NOT verified: whether it also appears in the receipt email (the email KT received predates the change).
+2. "Need help? contact our support team" points to Whop's support, not ours. KT to look for a support-email setting in Whop (Settings) and set it to trueremote.jobs@gmail.com; not yet checked whether the setting exists.
+3. The receipt shows the lira amount only, no USD figure. For refunds and bookkeeping KT will see the USD value in the Whop dashboard.
+4. Not yet received from KT: where the buyer landed after paying, the Whop fee breakdown for this non-US payment (needed to test Whop's claim that adaptive pricing lowers fees), and whether the optional WhatsApp number appears under Custom fields.
