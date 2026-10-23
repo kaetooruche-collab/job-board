@@ -66,6 +66,11 @@ class CheckoutFiles(unittest.TestCase):
         for price in ("$29", "$49", "$149", "$99"):
             self.assertIn(price, SERVICES)
 
+    def test_copy_does_not_promise_usd_only_card_checkout(self):
+        # Whop adaptive pricing shows buyers their local currency at card checkout (KT decision, 23 Oct).
+        self.assertNotIn("all prices are in usd", SERVICES.lower())
+        self.assertIn("your own currency", SERVICES)
+
     def test_thanks_page_is_noindex_and_claims_nothing_verified(self):
         self.assertRegex(THANKS, r'<meta name="robots" content="[^"]*noindex')
         low = THANKS.lower()
