@@ -21,15 +21,17 @@ Claude built: the Yireh Careers rebrand, the free address https://yirehcareers.v
 - [ ] **Start the enquiry log** (`drafts/enquiry-log-template.csv`, no names). Only KT.
 - [ ] **Decide whether to review the website copy** against `drafts/voice-and-copy-guide.md` (Claude proposes before/after for the main blocks; changing the live site needs your yes).
 
-## 0c. Brevo email system rebuild (24 Oct 2026; blueprint in `drafts/email-system/`, start at its README)
-- [ ] **TODAY, in Brevo > Automations: look at #3, #9 and #10** (made with Brevo's AI builder). If any is switched on and triggered by a list, pause it until the new design is approved, so no old wording reaches subscribers. Only KT.
-- [ ] **Check the two non-KT contacts in list 11** (created 14 and 18 Sept): does the contact timeline show a form signup? If not, tell Claude (they get no promotional email). Only KT.
-- [ ] **Read the blueprint and decide D-01 to D-15** (`drafts/email-system/10-roadmap-and-decisions.md`; each has a recommendation). Nothing is built, sent or deleted until you approve. Only KT.
-- [ ] **Open `drafts/email-system/preview/index.html` in a browser** and read `copy/05-operational.md`; mark anything that sounds stiff. Only KT.
-- [ ] **Domain:** choose and buy a sending domain before any public send (decision D-04). Only KT.
-- [ ] **After approval:** build 3 forms and 4 automations in the Brevo dashboard from Claude's click-by-click steps (about 2 to 3 hours); the API key can then be revoked and IP blocking restored.
-- [ ] **Free CV check:** decide the weekly cap and turnaround (D-06) so the site's "limited number each week" line is true.
-- [ ] **Qualified review (one hour) of the risk items in `08-risk-register.md`** before the first public send (D-12).
+## 0c. Brevo email system rebuild (24 Oct 2026; blueprint in `drafts/email-system/`, your steps in `12-dashboard-build-guide.md`)
+Claude already built through the API: lists, attributes, 12 templates, and deleted the old lists, drafts and templates 63-73. What only you can do (Brevo's API has no automation, form or segment endpoints):
+- [ ] **Now: pause and delete automations #3, #9, #10** (Part A), then their templates 54-61 (or tell Claude to). Only KT.
+- [ ] **Check the two older contacts in list 11** (created 14 and 18 Sept): form signup on the timeline or not? Tell Claude. Only KT.
+- [ ] **Build 3 segments** (Part B, 10 min). Only KT.
+- [ ] **Build the 3 forms** (Part C, about 1 hour), then send Claude each form's embed link or action URL so it can wire the site and update the privacy page. Only KT.
+- [ ] **Build automations AU-1 to AU-4** (Part D, 45 min), then run the tests (Part E). Only KT.
+- [ ] **Domain:** choose and buy it in Vercel, tell Claude (Part F); no public send before this. Only KT.
+- [ ] **Free CV check:** decide the weekly cap and turnaround (D-06) so "a limited number each week" on the site is true. Only KT.
+- [ ] **Qualified review (about an hour) of the risk items in `08-risk-register.md`** before the first public send (D-12). Only KT.
+- [ ] **Security:** the Brevo key was pasted into a chat. Keep it until the domain step is done, then revoke it in Brevo, remove `BREVO_API_KEY` from the cloud environment, and turn Brevo's IP blocking back on.
 
 ## 0b. Strategy validation (24 Oct 2026; see `drafts/decisions/2026-10-24-board-strategy-icp-inventory-seniority.md`)
 - [ ] **List the groups and pages you will post in**: roughly how many members, which countries, and whether they are mostly students, graduates or working professionals. This decides whether we need jobs open to non-US readers. Only KT.

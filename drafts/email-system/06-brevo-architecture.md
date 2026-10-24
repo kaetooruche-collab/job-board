@@ -115,21 +115,8 @@ A small script (`scripts/email_audit.py`, to be written after approval) reading 
 
 Also a local **copy linter** (`scripts/email_lint.py`): word counts, banned phrases, unsubscribe and address present in P and S emails, UTM links, no promotion in O emails. Tests live in `tests/`.
 
-## Deleting the old system (needs separate approval, exact list)
+## Deleting the old system: done on 24 Oct 2026 (KT approved D-02)
 
-State read from Brevo on 24 Oct 2026 (about 12:00 UTC): 26 templates, 4 campaigns, 7 lists.
+Done through the API and verified by reading back: lists 12-17 (empty), draft campaigns 19 and 53, templates 63-73 deleted; list 11 renamed Job alerts and kept with its 3 contacts. **Left for KT:** automations #3, #9, #10 and their step templates 54-61 (the API has no automation endpoints). Not touched: sent campaigns 17 and 18, templates 1, 2, 5-16, lists 6-10. Full record: `brevo-manifest.json`; what the API can and cannot do: `13-api-capabilities.md`.
 
-| Object | Action proposed | Note |
-|---|---|---|
-| Lists 12, 13, 14, 15, 16, 17 | Delete (all empty) | Retired taxonomy |
-| List 11 | **Keep and rename** to "Job alerts" | Holds the 3 existing contacts |
-| Templates 63 to 73 (`YC \| A1 ... S1`) | Delete | First rebuild, old copy and design; created before the master prompt |
-| Draft campaign 19 | Delete | Old claims, old sender |
-| Draft campaign 53 | Delete | Sample digest, old design |
-| Sent campaigns 17, 18 | Keep | History; deleting loses sent reports |
-| Templates 54 to 61 (`Yireh MKT Welcome Series #9`, `Automation #10`, `Yireh MKT Essential Customers #3`) | **KT's decision.** They are step templates that Brevo's AI builder created for automations KT started building today. I cannot see the automations themselves | If those automations are switched on and triggered by list 11, they can email subscribers with old wording. **KT: open Automations and pause or delete #3, #9 and #10 until the new design is approved** |
-| Templates 1, 2, 5-16, lists 6-10, sender 1 | **Do not touch** | Belong to other projects |
-
-Deleting needs the API (the connector has no delete) or KT by hand in the dashboard.
-
-The three existing contacts: KT's own, plus two created 14 and 18 Sept with no recorded consent source. **Until KT checks their Brevo timeline, they receive no promotional email and no digest** (07, rule C-3).
+The three existing contacts: KT's own, plus two created 14 and 18 Sept with no recorded consent source (the API shows no source field). **Until KT checks their timeline, they receive no promotional email and no digest** (07, rule C-3).

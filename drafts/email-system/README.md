@@ -1,6 +1,6 @@
 # Yireh Careers email system: blueprint for approval
 
-Status: **APPROVED by KT, 24 Oct 2026 ("approve all"). Phase 12 in progress; see 10 and 12.** Written 24 Oct 2026. Done so far (stage 1): templates 74-77 created in Brevo (inactive until KT builds the automations), one test email to KT's own address, digest and signup message fixed in code. Nothing has been sent to any other contact, no contact was imported, no form is live.
+Status: **APPROVED by KT, 24 Oct 2026 ("approve all"). Phase 12 in progress; see 10 and 12.** Written 24 Oct 2026. Done so far: lists, attributes and 12 templates built in Brevo through the API and old objects deleted (`13-api-capabilities.md`, `brevo-manifest.json`); one test email to KT's own address; digest and signup message fixed in code. KT's remaining dashboard work is in `12-dashboard-build-guide.md`. Nothing has been sent to any other contact, no contact was imported, no form is live.
 
 ## The design in one paragraph
 

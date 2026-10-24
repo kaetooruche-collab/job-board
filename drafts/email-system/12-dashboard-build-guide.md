@@ -1,81 +1,67 @@
-# 12 · Brevo dashboard build guide (for KT)
+# 12 · What KT does in the Brevo dashboard (updated after the API build)
 
-Status: approved 24 Oct 2026 ("approve all"). Brevo's connection to Claude cannot create lists, attributes, forms or automations or delete anything, and the API key in the cloud environment returns "Key not found" (it is invalid or revoked), so these steps are done by you in the dashboard. Menu names can differ slightly from Brevo's current screens: if one doesn't match, tell Claude what you see and the steps are adjusted. **Total: about 2 to 3 hours, in the order below. Stop after any part.** Nothing here sends email to anyone.
+Status: 24 Oct 2026. With the new API key, Claude built everything the API allows (see `13-api-capabilities.md`). What is left can only be done in the dashboard, because Brevo's API has **no endpoints for automations, forms or segments**. Menu names may differ slightly from Brevo's current screens: if one doesn't match, tell Claude what you see and the step is adjusted. Nothing here sends email to anyone.
+
+## Already done by Claude (verified by reading back)
+- List 11 renamed **Job alerts** (3 contacts kept). New lists: **18 Career tips**, **19 Check result sent**, **20 Order completed**.
+- 8 attributes created: `CONSENT_JOBS_AT`, `CONSENT_JOBS_SRC`, `CONSENT_TIPS_AT`, `CONSENT_TIPS_SRC`, `LEVEL_INTEREST`, `STAGE`, `LAST_PACKAGE`, `COMPLETED_ON`.
+- 12 templates created (all `YC2 | ...`, sender Yireh Careers): see the table in Part F.
+- Deleted: old lists 12-17, draft campaigns 19 and 53, old templates 63-73.
 
 ## Part A · Make it safe (10 minutes, do first)
-1. **Automations:** open Brevo, then **Automations**. Find **#3, #9 and #10** (the ones the AI builder made today). If any shows *Active*, switch it to *Paused*. Reason: they could email subscribers the old wording.
-2. **The two other contacts:** **Contacts**, then list **11**. Open each contact that is not yours and read its timeline. If it shows a form signup, tell Claude "contact X has a form signup on <date>". If not, tell Claude "no record". (Without a record they receive nothing promotional.)
+1. **Automations:** Brevo, **Automations**. Open **#3, #9 and #10** (made today with the AI builder). If any is *Active*, set it to *Paused*; then delete all three. Reason: they could email subscribers the old wording.
+2. **Templates 54 to 61** (named `Yireh MKT ...` and `Automation #10 ...`) belong to those automations. Once the automations are deleted, deactivate and delete the templates (Brevo only allows deleting inactive ones). Tell Claude if you'd rather Claude deletes them through the API: it can, once you confirm.
+3. **The two older contacts on list 11** (created 14 and 18 Sept): open each one's timeline. If it shows a form signup, tell Claude "contact X has a form signup on <date>". If not, tell Claude "no record". The API cannot read this.
 
-## Part B · Tidy the old build (15 minutes)
-Delete only what is listed. **Do not touch** templates 1, 2, 5-16, lists 6-10, or sender id 1 (other projects).
-1. **Contacts, Lists:** delete lists **12, 13, 14, 15, 16, 17** (all empty). **Rename list 11** to `Job alerts`.
-2. **Campaigns:** delete the two drafts **19** and **53**. Keep the sent campaigns 17 and 18.
-3. **Templates (Campaigns, Templates or Transactional, Templates):** delete templates **63 to 73** (names start `YC |`). The new ones are named `YC2 |`.
-4. **Your automation step templates 54 to 61** (`Yireh MKT Welcome Series #9...`, `Automation #10...`, `Yireh MKT Essential Customers #3...`): delete the automations #3, #9, #10 first (Part A showed them), then these templates.
+## Part B · Segments (10 minutes)
+Contacts, Segments, create three (the API can't):
+- `Tips eligible`: in list **Career tips** AND not blocklisted AND `CONSENT_TIPS_AT` is set.
+- `Dormant`: in list **Job alerts** AND no link click in the last 90 days AND added more than 90 days ago.
+- `Needs consent audit`: in list **Career tips** AND `CONSENT_TIPS_AT` is empty. (Target: always zero.)
 
-## Part C · Lists (5 minutes)
-In Contacts, Lists, create three lists in the same folder as `Job alerts`:
-- `Career tips` (consent: CV and LinkedIn tips and offers)
-- `Check result sent` (marker only; add this description: "Marker. Means nothing about consent.")
-- `Order completed` (marker only; same description)
+## Part C · Forms (about 1 hour; this is what makes consent real)
+In Brevo, Contacts (or Marketing), Forms: build **three subscription forms**. Wording is in `07-data-consent-event-model.md` (Wording v1). Rules for all three: **single opt-in, no pre-ticked boxes**, the tips box adds the person to **Career tips** *only when ticked*, keep a CAPTCHA or honeypot if offered.
 
-Send Claude the new list numbers.
+1. **Signup form** (edit the existing one; the site already posts to it). Fields: Email (required); First name (optional); "I'm looking for" (optional choice: Starting out, Mid-level, Senior and leadership, saved to `LEVEL_INTEREST`); then the **unticked** box *"Also send me occasional CV and LinkedIn tips, and Yireh Careers service offers. Roughly twice a month at most. You can unsubscribe in any email. This is separate from the weekly job email."* Main list: Job alerts.
+2. **Free CV check form** (new). Email (required), First name (required), the same unticked tips box. **No list for the check itself.** Notice: *"We'll use your details to review your CV and send you the result. If you don't order anything, we delete your CV within 30 days."*
+3. **Order intake form** (new, a private link you send a customer). Email, First name, Package (choice), "Roles you're aiming for" (text), the same unticked tips box. Notice: *"We'll use these details to do your order and email you about it. We delete your files within 90 days of finishing."*
 
-## Part D · Contact attributes (10 minutes)
-Contacts, Settings, Contact attributes, Add. Create these eight, **exactly** these names (capitals, underscores):
+**While building, test T2:** can a form set a hidden or default value for `CONSENT_JOBS_SRC` / `CONSENT_TIPS_SRC` (for example `signup-v1`) and the consent date? If yes, set them. If not, tell Claude: the fallback is one form per wording version, and Claude fills the dates later through the API.
 
-| Name | Type |
-|---|---|
-| `CONSENT_JOBS_AT` | Date |
-| `CONSENT_JOBS_SRC` | Text |
-| `CONSENT_TIPS_AT` | Date |
-| `CONSENT_TIPS_SRC` | Text |
-| `LEVEL_INTEREST` | Text |
-| `STAGE` | Text |
-| `LAST_PACKAGE` | Text |
-| `COMPLETED_ON` | Date |
+When each form is built, send Claude its **embed link or the form's action URL**. Claude wires it into the site (free-check page, order page, the tips box on the signup) and updates the privacy page, which is the last step before anything goes live.
 
-Leave `OPT_IN`, `ENGAGEMENT_SCORE` and `AWARENESS_STAGE` alone and unused.
+## Part D · Automations (about 45 minutes; the only place they can be built)
+Every automation: stop for blocklisted contacts (Brevo's default; don't override). Template numbers are fixed; do not edit templates in Brevo's editor (Claude updates them from the source through the API).
 
-## Part E · Forms (about 1 hour; this is what makes consent real)
-In Brevo, Contacts, Forms (or Marketing, Forms), build **three subscription forms**. For each, use the wording in `07-data-consent-event-model.md` (Wording v1). Rules for all three: **single opt-in, no pre-ticked boxes**, the tips box adds the person to `Career tips` **only when ticked**, keep a honeypot or CAPTCHA if Brevo offers one.
-
-1. **Signup form** (edit the existing one; the site already posts to it): fields Email (required), First name (optional), "I'm looking for" (optional choice: Starting out, Mid-level, Senior and leadership; saves to `LEVEL_INTEREST`), then the unticked box *"Also send me occasional CV and LinkedIn tips, and Yireh Careers service offers. Roughly twice a month at most. You can unsubscribe in any email. This is separate from the weekly job email."* Main list: `Job alerts`.
-2. **Free CV check form** (new): Email (required), First name (required), "Which role are you aiming for?" (text, goes into a note field if Brevo offers one; otherwise skip), the same unticked tips box. **Do not add any list for the check itself.** Notice text: *"We'll use your details to review your CV and send you the result. If you don't order anything, we delete your CV within 30 days."*
-3. **Order intake form** (new, private link you send to a customer): Email, First name, Package (choice), "Roles you're aiming for" (text), the same unticked tips box. Notice: *"We'll use these details to do your order and email you about it. We delete your files within 90 days of finishing."*
-
-**Test T2 while building:** see if a form can set a hidden or default value for `CONSENT_JOBS_SRC` / `CONSENT_TIPS_SRC` (for example `signup-v1`). If yes, set it. If no, tell Claude; the fallback is one form per wording version.
-
-When each form is built, send Claude its **embed link or the HTML/form action URL**. Claude then wires it into the site (new free-check and order pages, the tips box on the signup) and updates the privacy page, which is the last step before anything goes live.
-
-## Part F · Automations (about 45 minutes)
-Templates are already in Brevo (sender Yireh Careers, reply-to yirehcareers@gmail.com). Build in Automations, Create. Each one: **exit the workflow if the contact is blocklisted** (Brevo does this by default; do not override it).
-
-| Name | Trigger | Steps |
+| Automation | Trigger | Steps |
 |---|---|---|
-| `YC2 | AU-1 Job alerts welcome` | Contact added to list `Job alerts` | Send template **74** now. End. |
-| `YC2 | AU-2 Tips series` | Contact added to list `Career tips` | Send **75** now. Wait 7 days. Send **76**. Wait 9 days. Send **77**. End. |
+| `YC2 \| AU-1 Job alerts welcome` | Contact added to list **Job alerts** | Send **74** now. End. |
+| `YC2 \| AU-2 Tips series` | Contact added to list **Career tips** | Send **75** now. Wait 7 days. Send **76**. Wait 9 days. Send **77**. End. |
+| `YC2 \| AU-3 Free-check follow-up` | Contact added to list **Check result sent** | Wait 4 days. If the contact is in **Career tips** and not in **Order completed**: send **82**. End. |
+| `YC2 \| AU-4 After the order` | Contact added to list **Order completed** | Wait 21 days. If in **Career tips**: if `LAST_PACKAGE` = essential send **83**, if professional send **84** (executive: skip). Wait 39 days. If in **Career tips**: send **85**. End. |
 
-After the first two run clean in the tests below, tell Claude and it creates the templates for AU-3 (free-check follow-up) and AU-4 (after-completion), which need the marker lists from Part C. **Test T4 first:** in the automation editor, is there a condition step ("if contact is in list `Career tips`")? AU-3 and AU-4 need it. If not, tell Claude.
+**Test T4 first:** does the editor offer a condition step ("if contact is in list ...")? AU-3 and AU-4 need it. If not, tell Claude.
 
-Template numbers: 74 JA-1, 75 CT-1, 76 CT-2, 77 CT-3. Do not edit them in Brevo's editor; Claude edits the source and updates them, so the wording and the repo stay in step.
+Other templates (campaigns you send by hand): **78** JA-R (quarterly "still want these?"), **79 / 80 / 81** CT-M1 / M2 / M3 (monthly tips, rotate). The weekly digest is generated by `python3 scripts/make_digest.py`.
 
-## Part G · Tests with your own addresses (30 minutes)
-Use `kaetooruche@gmail.com` and, if you have one, a non-Google address. Add test contacts by hand first, then delete them after. **Write down what you see; Claude wants the results, not "it worked".**
+## Part E · Tests with your own addresses (30 minutes)
+Use `kaetooruche@gmail.com` and, if you have one, a non-Google address. Add test contacts by hand; delete them afterwards. Report what you *see*.
 
 | Test | Do this | Expect |
 |---|---|---|
-| T1 | Submit the signup form once with the tips box unticked, once ticked (different test address) | First: on `Job alerts` only. Second: on both |
-| T3 | Add a contact to `Career tips` by hand; submit the form; (later) add via API | Does AU-2 start each time? |
-| T5 | Unsubscribe a test contact (or blocklist it), then submit the form again with its address | Does it stay blocklisted? Tell Claude exactly what changed |
-| T6 | Open a received email in Gmail, three dots, **Show original** | Look for `List-Unsubscribe` and `List-Unsubscribe-Post`. Tell Claude if present, and whether SPF/DKIM show PASS |
-| T7 | Unsubscribe from a tips email only | Still on `Job alerts`? |
-| T9 | Submit the form twice quickly | One contact, one welcome email |
+| T1 | Submit the signup form with the tips box unticked, then (another test address) ticked | First: Job alerts only. Second: both lists |
+| T3 | Add a contact to Career tips by hand, then by form | Does AU-2 start both times? |
+| T5 | Blocklist a test contact, then submit the form with its address | Does it stay blocklisted? Tell Claude exactly what changed |
+| T6 | In Gmail, three dots, **Show original** on a received Brevo email | Look for `List-Unsubscribe` and `List-Unsubscribe-Post`, and SPF/DKIM results |
+| T7 | Unsubscribe from a tips email only | Still on Job alerts? |
+| T9 | Submit the form twice quickly | One contact, one welcome |
 
-## Part H · Domain (before any public send)
-1. Pick the name (short, plain; it appears in email addresses). Buy it in Vercel (Domains), where the site already lives. Tell Claude the name.
-2. In Brevo: Senders, Domains and Dedicated IPs, Domains, **Add a domain**. Brevo shows DNS records (a verification code, DKIM, and a DMARC suggestion). Send Claude those records; Claude adds them in Vercel DNS through the connection, you click **Authenticate** in Brevo.
-3. Create the sender `hello@<domain>` (or similar) with a mailbox or forwarding to yirehcareers@gmail.com, and switch the templates' sender to it. Then the first **public** send is allowed, with your separate go-ahead.
+Claude can read the contacts back through the API after each test and tell you what happened.
+
+## Part F · Domain (before any public send)
+1. Pick a short, plain name and buy it in Vercel (Domains). Tell Claude the name.
+2. Claude creates the domain in Brevo through the API and reads the DNS records Brevo needs, adds them in Vercel DNS, and asks you to click **Authenticate** in Brevo (or does it through the API).
+3. Create the sender (for example `hello@<domain>`), forward its mail to yirehcareers@gmail.com, and Claude switches the 12 templates and the digest to that sender. Then the first **public** send is allowed, with your separate go-ahead.
 
 ## What stays blocked until you say go
-No email goes to anyone but you; no form is live on the site; the privacy page is not changed; no contact is imported. Those happen in the stages in `10-roadmap-and-decisions.md`, each with your go-ahead.
+No email to anyone but you; no form live on the site; privacy page unchanged; no contact import.
