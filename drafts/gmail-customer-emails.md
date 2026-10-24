@@ -33,7 +33,7 @@ Hi [First name],
 
 Thanks for asking for a free CV check. To start, please reply to this email with your CV (Word, PDF or plain text). If there's a job post you're aiming at, send that too.
 
-We'll reply with the three things we'd fix first within [X working days]. You don't need to send ID or bank details. Email works best for documents, so they stay private and in one place.
+We'll reply with the three things we'd fix first within 2 working days. You don't need to send ID or bank details. Email works best for documents, so they stay private and in one place.
 
 We keep your CV only for the check. If you don't order anything, we delete it within 30 days.
 ```
@@ -86,7 +86,7 @@ If you've changed your mind, no problem. There's nothing to do and we won't writ
 
 ## OP-2 Free check: the result
 
-When: Check completed. Within the promised turnaround [KT to confirm and publish].
+When: Check completed. Within 2 working days (published on the site).
 
 Template name in Gmail: `OP-2 Free check: the result`
 

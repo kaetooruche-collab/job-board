@@ -44,6 +44,13 @@ class Digest(unittest.TestCase):
         self.assertIn("{{ unsubscribe }}", doc)
         self.assertIn("https://example.com/", doc)
 
+    def test_rename_note_is_optional_and_in_place(self):
+        plain = md.build(self.rows(), self.now)[0]
+        noted = md.build(self.rows(), self.now, rename_note=True)[0]
+        self.assertNotIn("RemoteNC", plain)
+        self.assertIn("RemoteNC is now Yireh Careers", noted)
+        self.assertIn("{{ unsubscribe }}", noted)
+
 
 if __name__ == "__main__":
     unittest.main()

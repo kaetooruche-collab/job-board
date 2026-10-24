@@ -144,7 +144,8 @@ def render_html(email, preview_mode=True, digest_cards=None, n_total=None, shown
     unsub = "#unsubscribe-link-goes-here" if preview_mode else "{{ unsubscribe }}"
     jobs_only = ('<p style="margin:0 0 8px;">Only want the weekly job email? Reply &ldquo;jobs only&rdquo; and we&rsquo;ll stop the tips. '
                  'The unsubscribe link below stops everything.</p>') if email["cls"] == "P" else ""
-    foot = (f'<p style="margin:0 0 8px;">{FOOT[email["cls"]]}</p>' + jobs_only +
+    foot_text = "You're getting this because you signed up for our weekly job email." if email["id"] == "JA-D" else FOOT[email["cls"]]
+    foot = (f'<p style="margin:0 0 8px;">{foot_text}</p>' + jobs_only +
             f'<p style="margin:0 0 8px;">{html.escape(ed.ADDRESS)}</p>'
             f'<p style="margin:0;">Replies come to a real inbox. <a href="{unsub}" style="color:{C["mut"]};text-decoration:underline;">Unsubscribe from all our emails</a> '
             f'(one tap) &middot; <a href="{ed.SITE}/privacy" style="color:{C["mut"]};text-decoration:underline;">Privacy</a></p>')

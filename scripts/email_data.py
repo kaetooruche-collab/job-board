@@ -242,7 +242,7 @@ EMAILS = [
         subject="Thanks, send us your CV when you're ready", preview="",
         body=[("p", "Hi {FIRST},"),
               ("p", "Thanks for asking for a free CV check. To start, please reply to this email with your CV (Word, PDF or plain text). If there's a job post you're aiming at, send that too."),
-              ("p", "We'll reply with the three things we'd fix first within [X working days]. You don't need to send ID or bank details. Email works best for documents, so they stay private and in one place."),
+              ("p", "We'll reply with the three things we'd fix first within 2 working days. You don't need to send ID or bank details. Email works best for documents, so they stay private and in one place."),
               ("p", "We keep your CV only for the check. If you don't order anything, we delete it within 30 days.")],
         cta=None, utm=None,
         exit="CV received, or 7 days pass (OP-15)", freq="Once", failure="If not sent within 1 working day, send OP-13 or apologise briefly",
@@ -279,7 +279,7 @@ EMAILS = [
     dict(
         id="OP-2", name="Free check: the result", cls="O", stage="05-operational", channel="Gmail template",
         journey="J3", audience="Free-check requesters who sent a CV", purpose="Deliver the three specific fixes; one honest strength",
-        trigger="Check completed", entry="CV received", consent="None needed", timing="Within the promised turnaround [KT to confirm and publish]",
+        trigger="Check completed", entry="CV received", consent="None needed", timing="Within 2 working days (published on the site)",
         subject="Your CV check: three things to fix first", preview="",
         body=[("p", "Hi {FIRST},"),
               ("p", "Thanks for sending your CV. Here are the three things we'd fix first:"),

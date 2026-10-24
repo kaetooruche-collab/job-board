@@ -37,7 +37,7 @@ Method: tests ran against the live Brevo account and the live signup form, using
 | AU-1 starts on **API add** to Job alerts | **Pass.** Same email, same speed |
 | AU-1 does NOT fire for the **free-check form** (no Job alerts list) | **Pass** (no email) |
 | AU-2 does not send CT-1 immediately (one-day wait) | **Consistent so far:** nothing arrived for tips contacts added by form (t3b, t3c) or by API (t3d). The positive proof (CT-1 arriving after a day) is scheduled for ~15:20 UTC on 25 Oct |
-| AU-3 and AU-4 start from the marker lists | **Pending:** t3c added to *Check result sent*, t3d to *Order completed*; KT looks at each automation's contacts view. Waits are 4 and 21 days, so full proof of the conditions needs those waits or a test copy with short waits |
+| AU-3 and AU-4 start from the marker lists | **Pass (KT, 24 Oct):** the test contacts show correctly in both automations. Their waits are 4 and 21 days, so the final emails will only prove themselves on those dates (the scheduled test contacts are deleted after the AU-2 check) |
 | T4 condition step exists | **Yes**, KT built conditions in AU-3 and AU-4 (confirmed by KT's message that the automations are built as specified; ask KT if any condition was missing) |
 
 ## Leftovers

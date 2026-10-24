@@ -22,7 +22,7 @@ Classes: **S** subscribed content (Brevo, consent: job alerts) · **P** promotio
 | OP-1 | Free check: request received | O | Gmail template | Free-check form submitted (or WhatsApp request) | None needed (a request they made) | Within 1 working day | Thanks, send us your CV when you're ready | 91 | High |
 | OP-13 | Free check: we're full this week | O | Gmail template | Weekly cap reached | None needed | Within 1 working day | Your free CV check: we're full this week | 62 | High |
 | OP-15 | Free check: did your CV come through? | O | Gmail template | 7 days after OP-1 with no CV | None needed | Day 7, once | Did your CV come through? | 45 | Low |
-| OP-2 | Free check: the result | O | Gmail template | Check completed | None needed | Within the promised turnaround [KT to confirm and publish] | Your CV check: three things to fix first | 81 | Low |
+| OP-2 | Free check: the result | O | Gmail template | Check completed | None needed | Within 2 working days (published on the site) | Your CV check: three things to fix first | 81 | Low |
 | OP-3 | Order: payment received, what we need | O | Gmail template | KT confirms payment and records it | None needed (contract) | Same day | Thanks, here's what we need to get started | 103 | High |
 | OP-16 | Order: still need something | O | Gmail template | Missing information after OP-3 | None needed | Working day 3 and day 7 | We're ready when you are | 38 | Low |
 | OP-4 | Order: we've started | O | Gmail template | Onboarding complete | None needed | Same day | We've started: here are your dates | 47 | High |
