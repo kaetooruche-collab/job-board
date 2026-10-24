@@ -1,0 +1,106 @@
+{
+ "W1": {
+  "flow": "Welcome",
+  "when": "Day 0, right after sign-up (add to list: Job alert subscribers)",
+  "subject": "You're in. Here's your first move",
+  "preheader": "Every job links to the employer's own posting.",
+  "file": "w1.html",
+  "button": "Browse remote jobs"
+ },
+ "W2": {
+  "flow": "Welcome",
+  "when": "Day 3",
+  "subject": "The 30-second check that saves hours",
+  "preheader": "Before you spend an evening on an application.",
+  "file": "w2.html",
+  "button": "Open the board"
+ },
+ "W3": {
+  "flow": "Welcome",
+  "when": "Day 7 (skip if they are already in any Customers list)",
+  "subject": "Applying and hearing nothing?",
+  "preheader": "A free CV check. Three fixes, no strings.",
+  "file": "w3.html",
+  "button": "Get my free CV check"
+ },
+ "F1": {
+  "flow": "Free CV check follow-up",
+  "when": "Day 3 after the check was sent (add to list: Free CV check requested, on the day you send the result)",
+  "subject": "Did the three fixes help?",
+  "preheader": "Quick check-in from us.",
+  "file": "f1.html",
+  "button": "See what's included"
+ },
+ "F2": {
+  "flow": "Free CV check follow-up",
+  "when": "Day 8 (skip if they ordered)",
+  "subject": "Still thinking it over?",
+  "preheader": "No rush. Two honest answers.",
+  "file": "f2.html",
+  "button": "Chat with us"
+ },
+ "P1": {
+  "flow": "After an order (Essential / Professional / Executive)",
+  "when": "Day 1 after 'order complete'",
+  "subject": "How's the new CV feeling?",
+  "preheader": "Tell us if anything needs a tweak.",
+  "file": "p1.html",
+  "button": "Reply with your thoughts"
+ },
+ "P2": {
+  "flow": "After an order",
+  "when": "Day 10",
+  "subject": "Could you spare 30 seconds?",
+  "preheader": "One sentence from you helps the next person.",
+  "file": "p2.html",
+  "button": "Write a line"
+ },
+ "P3-ES": {
+  "flow": "After an order: Essential",
+  "when": "Day 21",
+  "subject": "Want a cover letter and LinkedIn to match?",
+  "preheader": "Your CV is sorted. Here's the next step.",
+  "file": "p3-es.html",
+  "button": "See the add-ons"
+ },
+ "P3-PRO": {
+  "flow": "After an order: Professional",
+  "when": "Day 21",
+  "subject": "Keep your LinkedIn working while you search",
+  "preheader": "12 posts and weekly connections, month to month.",
+  "file": "p3-pro.html",
+  "button": "Tell me more"
+ },
+ "P3-EXEC": {
+  "flow": "After an order: Executive",
+  "when": "Day 30 (when the 30-day service ends)",
+  "subject": "Want to keep the momentum going?",
+  "preheader": "Your 30 days are up.",
+  "file": "p3-exec.html",
+  "button": "Keep it going"
+ },
+ "P4": {
+  "flow": "After an order",
+  "when": "Day 60",
+  "subject": "How's the search going?",
+  "preheader": "Two months on.",
+  "file": "p4.html",
+  "button": "See the newest jobs"
+ },
+ "S1": {
+  "flow": "Sunset (inactive subscribers)",
+  "when": "After about 60 days with no clicks (subscribers only)",
+  "subject": "Still want these job emails?",
+  "preheader": "No hard feelings either way.",
+  "file": "s1.html",
+  "button": "Yes, keep them coming"
+ },
+ "T1": {
+  "flow": "Monthly tip",
+  "when": "Once a month, to subscribers",
+  "subject": "One CV fix you can make tonight",
+  "preheader": "It takes five minutes.",
+  "file": "t1.html",
+  "button": "Get my free CV check"
+ }
+}
