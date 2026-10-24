@@ -23,7 +23,7 @@ There is no database (Verified, 01). The brief asks us to compare two realistic 
 | IP allow-list conflict | None (no server calls Brevo) | A Vercel function calling Brevo meets Brevo's IP blocking (F21) |
 | Time to launch | Days of configuration | Weeks |
 
-**Recommendation: A**, because the events that matter (order agreed, payment confirmed, delivered, completed) are produced by a person, not by the website, so a database would be filled by hand anyway. It satisfies the brief's "simplest architecture that satisfies demonstrated requirements".
+**Recommendation: A**, as first written. **Update 24 Oct 2026 (KT approved): option A+ — still no database, but forms post to a small serverless function (`api/subscribe.js`) instead of Brevo-hosted forms** (`drafts/decisions/2026-10-24-signup-function.md`). Original reasoning: because the events that matter (order agreed, payment confirmed, delivered, completed) are produced by a person, not by the website, so a database would be filled by hand anyway. It satisfies the brief's "simplest architecture that satisfies demonstrated requirements".
 
 **Gate to move to B (Stage 2).** Re-decide when **any** is true: card checkout goes live with webhooks; orders exceed about 15 a month (**Assumption**: hand-keeping starts to cause mistakes around there); a preference centre is needed beyond Brevo's; or an audit shows consent records cannot be reconstructed from Brevo plus the register.
 

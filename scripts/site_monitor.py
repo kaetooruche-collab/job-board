@@ -13,7 +13,7 @@ import sys
 import requests
 
 SITE = os.environ.get("SITE_URL", "https://yirehcareers.vercel.app").rstrip("/")
-PAGES = ["/", "/services", "/verify", "/privacy", "/thanks"]
+PAGES = ["/", "/services", "/verify", "/privacy", "/thanks", "/free-check"]
 APPROVED_EMAIL = "yirehcareers@gmail.com"
 WHATSAPP_NUMBER = "905338225854"
 FORBIDDEN = ["no work permit needed", "the only job board", "premium pay", "payhip", "guaranteed job", "guaranteed interview", "continues until you do", "until the target is reached", "until you reach 500", "kaeto", "kayz global ltd", "kt-photo.webp", "founder, "]
@@ -49,8 +49,22 @@ def get(path, **kw):
     return requests.get(SITE + path if path.startswith("/") else path, headers=UA, timeout=30, **kw)
 
 
+def check_api():
+    """The form endpoint must be deployed and must refuse strangers. Neither call writes anything."""
+    try:
+        r = get("/api/subscribe")
+        if r.status_code != 405:
+            fails.append(f"/api/subscribe: GET should answer 405, got {r.status_code} (function missing or broken)")
+        r = requests.post(SITE + "/api/subscribe", json={"form": "signup", "email": "monitor@example.com"}, timeout=20)
+        if r.status_code != 403:
+            fails.append(f"/api/subscribe: a post without our origin should be refused (403), got {r.status_code}")
+    except requests.RequestException as e:
+        fails.append(f"/api/subscribe: could not check ({e})")
+
+
 def main():
     html = {}
+    check_api()
     for p in PAGES:
         try:
             r = get(p)

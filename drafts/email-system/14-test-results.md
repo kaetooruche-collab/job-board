@@ -20,6 +20,16 @@ Method: tests ran against the live Brevo account and the live signup form, using
 3. **Footers:** every Brevo email now says "Unsubscribe from all our emails", and promotional emails add: "Only want the weekly job email? Reply 'jobs only' and we'll stop the tips." (KT then removes that contact from the Career tips list; it is manual and rare.) This replaces the design assumption that one click could stop only one purpose.
 4. **Risk register and rules** updated (RK-27, RK-28; C-8 and C-9 restated).
 
+## Re-tests after the server function (24 Oct, live Brevo, KT's plus-addresses, all deleted afterwards)
+| Test | Result |
+|---|---|
+| **T5** blocklisted address submits the signup | **Pass:** contact stays blocklisted, nothing written, the visitor is told plainly |
+| **T1** consent evidence | **Pass:** `CONSENT_JOBS_AT`/`SRC`, `CONSENT_TIPS_AT`/`SRC`, level, stage and lead source set; repeat signup does not overwrite the original consent |
+| **T2** wording version stored | **Pass:** `signup-v1`, `check-v1`, `order-v1` set by the function |
+| **T9** three parallel submissions | **Pass** after a retry fix: one contact, three successes |
+| Free check and order | **Pass:** no marketing list for the check; the order sets `LAST_PACKAGE`; a notice email to yirehcareers@gmail.com showed as *delivered* in Brevo's event log |
+| Origin check | **Pass:** another origin gets 403 |
+
 ## Leftovers
 - Campaign **86** ("TEST T7 delete me", sent to the test address) cannot be deleted through the API once sent. KT may delete it in the dashboard (Campaigns); it holds no personal data beyond the deleted test address.
 - Test addresses deleted: yct1, yct5, yct7, yct9. Verified: 3 contacts, list 18 empty.
