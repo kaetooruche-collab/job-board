@@ -23,13 +23,13 @@ Claude built: the Yireh Careers rebrand, the free address https://yirehcareers.v
 
 ## 0c. Brevo email system rebuild (24 Oct 2026; blueprint in `drafts/email-system/`, your steps in `12-dashboard-build-guide.md`, test results in `14-test-results.md`)
 Done by Claude: lists, attributes, 12 templates (From name Yireh Careers), old objects deleted, tests T1, T5, T6, T7, T9. No domain for now (your decision); mail goes from the Gmail sender.
-- [ ] **Decide: double opt-in on the signup form?** Test T5 found that re-submitting the form switches a blocklisted address back on. Claude recommends YES (Part A of the guide). Reply "DOI yes" or "single stays". Only KT.
 - [ ] **Delete in Brevo if you can see them:** templates 54-61 and campaign 86 (the API can't). Only KT.
 - [ ] **Check the two older contacts in list 11** (created 14 and 18 Sept): form signup on the timeline or not? Tell Claude. Only KT.
-- [ ] **Build 3 segments** (Part B), **3 forms** (Part C) and send Claude each form's link, then **4 automations, left OFF** (Part D). Tell Claude when each is saved; Claude runs the remaining tests. Only KT.
+- [ ] **Build the 4 automations, left OFF** (Part D of the guide; segments are optional). Tell Claude when each is saved; Claude runs T3 and T4. Only KT.
+- [ ] **Keep Brevo's "Block unknown IP addresses" OFF and keep the Brevo key active**: the website forms now use it (Vercel stores it). Only KT.
 - [ ] **Free CV check:** decide the weekly cap and turnaround (D-06) so "a limited number each week" on the site is true. Only KT.
 - [ ] **Qualified review (about an hour) of the risk items in `08-risk-register.md`** before the first public send (D-12). Only KT.
-- [ ] **Security:** the Brevo key was pasted into a chat. Keep it until the forms are wired and tested, then revoke it in Brevo, remove `BREVO_API_KEY` from the cloud environment, and turn Brevo's IP blocking back on. (Claude deletes its scratch copy of the key at the end of the session.)
+- [ ] **Security:** the Brevo key was pasted into a chat and now also lives in Vercel (sensitive). Treat it as sensitive; consider replacing it with a fresh key later (Brevo, SMTP and API, API keys: create new, give it to Claude to replace in Vercel, delete the old). Claude deletes its scratch copy of the key at the end of the session.
 
 ## 0b. Strategy validation (24 Oct 2026; see `drafts/decisions/2026-10-24-board-strategy-icp-inventory-seniority.md`)
 - [ ] **List the groups and pages you will post in**: roughly how many members, which countries, and whether they are mostly students, graduates or working professionals. This decides whether we need jobs open to non-US readers. Only KT.

@@ -51,6 +51,7 @@ Effort and cost summary: no cash cost except the domain (and any paid mailbox or
 | L-11 | Brevo blocklist is the only suppression record; no "Do not send" list | One source of truth | 06 |
 | L-12 | No incomplete-enquiry follow-up | Not observable; consent unclear | 05 |
 | L-13 | **No domain for now; send from the Gmail sender (id 4)** and accept the deliverability risk | KT, 24 Oct: cannot buy a domain currently; risks already discussed | KT |
+| L-15 | Website forms post to `api/subscribe.js` (key in Vercel, sensitive); Brevo IP blocking must stay off | KT approved the recommendation after asking why forms were needed | drafts/decisions/2026-10-24-signup-function.md |
 | L-14 | Unsubscribe is global; offer a manual 'jobs only' route for tips | Test T7 | 14-test-results.md |
 
 ## Unresolved decisions for KT (each with my recommended default)
@@ -63,11 +64,11 @@ Effort and cost summary: no cash cost except the domain (and any paid mailbox or
 | **D-04** | Domain and mailbox | **DECIDED by KT, 24 Oct: no domain for now; send from the Gmail sender** | Revisit when affordable; watch complaints and bounces in the meantime | Residual risk accepted (RK-1, RK-23) |
 | **D-05** | Add "tips and offers" unticked box to the signup form | Yes / no | Yes; keeps the two purposes clean | Without it the tips list grows only from other forms |
 | **D-06** | Free-check weekly cap and turnaround time | A number | KT picks (docs suggest about 10 a week); publish both | RK-11 |
-| **D-07** | Free-check form: build it | Yes / keep WhatsApp-only | Yes: it captures email, consent and the quota count | Without it, no consent record for check requesters |
-| **D-08** | Order intake form: build it | Yes / keep WhatsApp onboarding | Yes: gives structured details and the consent box | Same |
+| **D-07** | Free-check form: build it | **DONE 24 Oct: `/free-check`, posts to api/subscribe.js** | | |
+| **D-08** | Order intake form: build it | **DONE 24 Oct: private `/order` page** | | |
 | **D-09** | Lead magnet (a one-page "10-minute CV self-check" on the site) | Approve / skip | Optional, after S3; no attachment, a web page | Brief lists it as "if approved" |
 | **D-10** | Level field on the signup form (optional, one select) | Yes / no | Yes; used to weight the digest; never inferred | Personalisation without sensitive inference |
-| **D-11** | Double opt-in | Keep single / add | **Reopened by test T5: add double opt-in to the signup form** (one confirmation email stops strangers undoing an unsubscribe) | See 14-test-results.md and 12, Part A |
+| **D-11** | Double opt-in | **CLOSED 24 Oct: single opt-in stays.** Test T5's flaw is fixed in the function instead | | |
 | **D-12** | Counsel review before the first public send | Yes / no / budget | Yes, a one-hour review of the RK items in 08 | Not legal advice from me |
 | **D-13** | Brevo API key | Keep / revoke | Not needed after one-off setup; revoke afterwards; restore IP allow-list | RK-15 |
 | **D-14** | Who builds the four automations and three forms in the Brevo dashboard | KT with my click-by-click steps / I guide live | KT with steps | No API for automations (F22) |

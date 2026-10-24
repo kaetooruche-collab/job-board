@@ -537,14 +537,10 @@
       color: rgba(255,255,255,0.5);
       margin-top: 0.75rem;
     }
-    .cta-form {
-      display: flex;
-      gap: 0.5rem;
-      max-width: 440px;
-      margin: 0 auto;
-    }
-    .cta-form input[type="email"] {
-      flex: 1;
+    .cta-form { max-width: 520px; margin: 0 auto; text-align: left; }
+    .cta-row { display: flex; gap: 0.5rem; margin-bottom: 0.5rem; }
+    .cta-form input[type="email"], .cta-form input[type="text"], .cta-form select {
+      flex: 1; min-width: 0;
       padding: 0.7rem 1rem;
       border-radius: 6px;
       border: none;
@@ -563,10 +559,16 @@
       font-size: 0.85rem;
       cursor: pointer;
       font-family: inherit;
-      white-space: nowrap;
       transition: background 0.2s;
     }
     .cta-form button:hover { background: #3b82f6; }
+    .cta-form button:disabled { opacity: 0.6; cursor: default; }
+    .cta-check { display: flex; gap: 0.6rem; align-items: flex-start; font-size: 0.8rem; color: rgba(255,255,255,0.85); line-height: 1.45; margin: 0.6rem 0 0.4rem; cursor: pointer; }
+    .cta-check input { margin-top: 0.2rem; flex: none; width: 1rem; height: 1rem; }
+    .hp { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
+    .form-msg { margin-top: 0.75rem; font-size: 0.85rem; }
+    .form-msg.is-ok { color: #e2e8f0; }
+    .form-msg.is-bad { color: #fecaca; }
 
     /* SERVICES SECTION */
     .services {
@@ -796,7 +798,7 @@
       .toolbar { padding: 0.75rem 1rem; margin-left: -1rem; margin-right: -1rem; border-radius: 0; border-left: none; border-right: none; }
       .job-card { padding: 1rem 1.1rem; }
       .job-card-header { flex-direction: column; gap: 0.4rem; }
-      .cta-form { flex-direction: column; }
+      .cta-row { flex-direction: column; }
       .cta-section { padding: 2rem 1.25rem; }
       .service-grid { grid-template-columns: 1fr; }
       .nav-links { display: none; }
@@ -806,6 +808,7 @@
     }
   </style>
   <script src="site-config.js"></script>
+  <script src="site-forms.js"></script>
 </head>
 <body>
 
@@ -938,16 +941,29 @@
     <section class="cta-section" id="subscribe">
       <h2>Get verified remote jobs in your inbox</h2>
       <p>A weekly shortlist of real, link-checked remote opportunities. No spam, no broken links.</p>
-      <form class="cta-form" id="signup-form" method="POST" action="https://83bc9f70.sibforms.com/serve/MUIFACGtGEoSn3jE56VZDDnLlJfzppyzZA-kCNtZs5AVp3x6KjQpqE8k2RWMDh87O7Jj0GsjLaIKPZ2WsaIz3zujHnUuyrMu_xeAOzQoYbeHMWABgo4IoRDJC-41RXhrS1FjKwLPt2S_pHGlOkXOEkxZmI73tuqKaQ8OmTJyTBasS2XQqJE7HSgIA0fOVUijmMpYS-p1Hq4zeg3VHg==" onsubmit="return handleSignup(event)">
-        <input type="email" placeholder="Your email address" id="email-input" name="EMAIL" required aria-label="Email address">
-        <input type="text" name="email_address_check" value="" style="display:none;" tabindex="-1" aria-hidden="true">
-        <input type="hidden" name="locale" value="en">
-        <input type="hidden" name="html_type" value="simple">
-        <button type="submit" id="signup-btn">Send me the weekly job email</button>
+      <form class="cta-form" id="signup-form" onsubmit="return submitSiteForm(event, 'signup')">
+        <div class="cta-row">
+          <input type="email" name="email" id="email-input" placeholder="Your email address" required aria-label="Email address" autocomplete="email" maxlength="254">
+          <button type="submit" id="signup-btn">Send me the weekly job email</button>
+        </div>
+        <div class="cta-row cta-row-opt">
+          <input type="text" name="firstName" placeholder="First name (optional)" aria-label="First name (optional)" autocomplete="given-name" maxlength="60">
+          <select name="level" aria-label="I'm looking for (optional)">
+            <option value="">I'm looking for... (optional)</option>
+            <option value="early">Starting out</option>
+            <option value="mid">Mid-level</option>
+            <option value="senior_plus">Senior and leadership</option>
+          </select>
+        </div>
+        <label class="cta-check">
+          <input type="checkbox" name="tips">
+          <span>Also send me occasional CV and LinkedIn tips, and Yireh Careers service offers. Roughly twice a month at most. You can unsubscribe in any email. This is separate from the weekly job email.</span>
+        </label>
+        <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" class="hp">
+        <p id="signup-msg" data-msg role="status" aria-live="polite" hidden></p>
       </form>
-      <p id="signup-msg" role="status" aria-live="polite" style="margin-top:0.75rem; font-size:0.85rem; display:none;"></p>
       <p class="cta-social-proof">Join job seekers worldwide who trust Yireh Careers for verified opportunities.</p>
-      <p style="margin-top:0.5rem; font-size:0.8rem; opacity:0.85;">We'll send you the weekly job email, and every one has a one-tap unsubscribe. <a href="/privacy" style="color:inherit; text-decoration:underline;">Privacy policy</a></p>
+      <p style="margin-top:0.5rem; font-size:0.8rem; opacity:0.85;">We'll send you the weekly job email. One tap to unsubscribe. See our <a href="/privacy" style="color:inherit; text-decoration:underline;">privacy policy</a>.</p>
     </section>
 
     <!-- SERVICES -->
@@ -1005,14 +1021,6 @@
   </footer>
 
   <script>
-    // Set Brevo form action from config
-    (function() {
-      var form = document.getElementById('signup-form');
-      if (typeof SITE !== 'undefined' && SITE.brevoFormAction) {
-        form.action = SITE.brevoFormAction;
-      }
-    })();
-
     var allJobs = [];
     var geoLexicon = null;
     var state = { category: 'all', query: '', level: '', country: '', type: '', posted: '', confirmed: false, stated: false, shown: 40 };
@@ -1343,33 +1351,6 @@
       if (window.goatcounter && window.goatcounter.count) {
         window.goatcounter.count({ path: 'apply-click', title: jobId, event: true, referrer: source });
       }
-    }
-
-    // Brevo's form answers our origin with JSON ({"success":true|false,"message":...}), so we show the real outcome.
-    // If the answer cannot be read (network or browser problem) we say so instead of claiming success.
-    async function handleSignup(ev) {
-      ev.preventDefault();
-      var form = ev.target;
-      var msg = document.getElementById('signup-msg');
-      var btn = document.getElementById('signup-btn');
-      var email = (window.SITE && SITE.email) || 'yirehcareers@gmail.com';
-      function show(text, bad) { msg.style.display = 'block'; msg.style.color = bad ? '#fecaca' : '#e2e8f0'; msg.textContent = text; }
-      btn.disabled = true;
-      show('Sending...', false);
-      try {
-        var res = await fetch(form.action, { method: 'POST', headers: { 'Accept': 'application/json' }, body: new URLSearchParams(new FormData(form)) });
-        var data = await res.json();
-        if (data && data.success === true) {
-          show("Thanks, you're on the list. Your weekly job email will arrive in your inbox.", false);
-          form.reset();
-        } else {
-          show("That didn't work. Please check the email address and try again, or email us at " + email + ".", true);
-        }
-      } catch (err) {
-        show("We couldn't confirm that it went through. Please try again, or email us at " + email + ".", true);
-      }
-      btn.disabled = false;
-      return false;
     }
 
     async function loadPlatforms() {

@@ -4,7 +4,7 @@ import unittest
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-PAGES = ["index.html", "services.html", "verify.html", "privacy.html", "thanks.html", "subscribed.html"]
+PAGES = ["index.html", "services.html", "verify.html", "privacy.html", "thanks.html", "subscribed.html", "free-check.html", "order.html"]
 RETIRED = ["kaeto", "kayz global ltd", "kt-photo.webp", "founder, "]
 DOMAIN = "https://yirehcareers.vercel.app"
 

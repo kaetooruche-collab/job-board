@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Free CV check — Yireh Careers</title>
+  <meta name="description" content="Ask for a free quick CV check from Yireh Careers. We reply with the three things we would fix first.">
+  <link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/fonts/inter.css">
+  <link rel="stylesheet" href="/form-page.css">
+</head>
+<body>
+  <main>
+    <div class="brand"><a href="/">Yireh <span>Careers</span></a></div>
+    <h1>Get a free CV check</h1>
+    <p>Send us your CV and we'll reply with the three things we'd fix first. It's free, one per person. We review a limited number each week; if we're full, we'll say so.</p>
+    <form id="check-form" onsubmit="return submitSiteForm(event, 'check')">
+      <label class="f" for="firstName">First name</label>
+      <input type="text" id="firstName" name="firstName" required autocomplete="given-name" maxlength="60">
+      <label class="f" for="email">Email</label>
+      <input type="email" id="email" name="email" required autocomplete="email" maxlength="254">
+      <label class="f" for="role">Which role are you aiming for? <small>(optional)</small></label>
+      <input type="text" id="role" name="role" maxlength="200">
+      <label class="check">
+        <input type="checkbox" name="tips">
+        <span>Also send me occasional CV and LinkedIn tips, and Yireh Careers service offers. Roughly twice a month at most. You can unsubscribe in any email. This is separate from the free check.</span>
+      </label>
+      <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" class="hp">
+      <button type="submit">Request my free check</button>
+      <p class="form-msg" data-msg role="status" aria-live="polite" hidden></p>
+    </form>
+    <div class="after" data-after-success hidden>
+      <h2>Next: email us your CV</h2>
+      <p>Send it as a Word or PDF file to <a href="mailto:yirehcareers@gmail.com?subject=My%20CV%20for%20the%20free%20check">yirehcareers@gmail.com</a>. Email keeps your CV private and in one place, so please don't send it on WhatsApp. You don't need to send ID or bank details.</p>
+    </div>
+    <p class="fine">We'll use your details to review your CV and send you the result. If you don't order anything, we delete your CV within 30 days. See our <a href="/privacy">privacy policy</a>. Prefer WhatsApp? <a href="https://wa.me/905338225854?text=Hello%2C%20I%20would%20like%20a%20free%20quick%20CV%20check.%20Please%20tell%20me%20how%20to%20send%20my%20CV.">Message us there</a>.</p>
+  </main>
+  <script src="/site-config.js"></script>
+  <script src="/site-forms.js"></script>
+  <script data-goatcounter="https://kayzglobal.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>
