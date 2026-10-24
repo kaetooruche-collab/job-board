@@ -1,5 +1,5 @@
 """Builds the weekly jobs email from jobs.json: data/weekly_digest.html and data/weekly_digest.txt.
-Run: python3 scripts/make_digest.py
+Run: python3 scripts/make_digest.py [--rename-note]
 Copy and design now live in scripts/email_data.py (JA-D) and scripts/email_render.py (see drafts/email-system/).
 Rules (CLAUDE.md copy rules + drafts/voice-and-copy-guide.md): only roles that read as remote and were posted in the last 7 days;
 one per company; clear eligibility first; a spread of levels; no promotion inside the digest; every link goes to the employer's own posting.
@@ -69,7 +69,7 @@ def ago(r, now):
     return "today" if d == 0 else "1 day ago" if d == 1 else f"{d} days ago"
 
 
-def build(rows=None, now=None):
+def build(rows=None, now=None, rename_note=False):
     """Returns (html, subject, preview, sections, new_total, now). Copy and design: scripts/email_data.py (JA-D) and scripts/email_render.py."""
     import email_data as ed
     import email_render as er
@@ -77,7 +77,9 @@ def build(rows=None, now=None):
     now = now or D.datetime.now(D.timezone.utc)
     sections, new_total = pick(rows, now)
     cards, new_total, shown = er.render_digest_cards(sections, new_total, now, sys.modules[__name__])
-    email = next(e for e in ed.EMAILS if e["id"] == "JA-D")
+    email = dict(next(e for e in ed.EMAILS if e["id"] == "JA-D"))
+    if rename_note:   # one-off line for the first send after the rename from RemoteNC
+        email["body"] = [email["body"][0], ("p", "A quick note: RemoteNC is now Yireh Careers. It's the same weekly job email, with the same one-tap unsubscribe.")] + list(email["body"][1:])
     doc = er.render_html(email, preview_mode=False, digest_cards=cards, n_total=new_total, shown=shown)
     subject = email["subject"].replace("{N}", str(new_total))
     preview = email["preview"]
@@ -85,7 +87,7 @@ def build(rows=None, now=None):
 
 
 def main():
-    doc, subject, preview, sections, new_total, now = build()
+    doc, subject, preview, sections, new_total, now = build(rename_note="--rename-note" in sys.argv)
     if sum(len(i) for _, i in sections) < MIN_SHOWN:
         print(f"Only {sum(len(i) for _, i in sections)} qualifying roles: skip this week, do not send an empty digest.")
         return

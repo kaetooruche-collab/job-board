@@ -23,14 +23,15 @@ Claude built: the Yireh Careers rebrand, the free address https://yirehcareers.v
 
 ## 0c. Brevo email system rebuild (24 Oct 2026; blueprint in `drafts/email-system/`, your steps in `12-dashboard-build-guide.md`, test results in `14-test-results.md`)
 Done by Claude: lists, attributes, 12 templates (From name Yireh Careers), old objects deleted, tests T1, T5, T6, T7, T9. No domain for now (your decision); mail goes from the Gmail sender.
-- [ ] **Delete in Brevo if you can see them:** templates 54-61 and campaign 86 (the API can't). Only KT.
-- [ ] **Check the two older contacts in list 11** (created 14 and 18 Sept): form signup on the timeline or not? Tell Claude. Only KT.
-- [ ] **Build the 4 automations, left OFF** (Part D of the guide; segments are optional). Tell Claude when each is saved; Claude runs T3 and T4. Only KT.
+- [x] Templates 54-61 deleted by KT. Campaign 86 (a sent test) can't be deleted in Brevo; leave it.
+- [x] The two older contacts: KT checked their timelines (24 Oct): both signed up through the old signup form and got the old welcome email and two campaigns. Consent recorded as `legacy` (dates 14 and 18 Sept); KT's own as `owner`.
+- [x] The 4 automations are built and AU-3, AU-4 entries show correctly (KT, 24 Oct). AU-1 verified sending. AU-2's one-day wait is being checked on 25 Oct (scheduled).
 - [ ] **Keep Brevo's "Block unknown IP addresses" OFF and keep the Brevo key active**: the website forms now use it (Vercel stores it). Only KT.
-- [ ] **Free CV check:** decide the weekly cap and turnaround (D-06) so "a limited number each week" on the site is true. Only KT.
+- [x] Free CV check: about 10 a week, reply within 2 working days (KT agreed 24 Oct; now on the free-check page, services page and the reply template). Keep to it or tell Claude to change it.
+- [ ] **Tuesday 27 Oct, 08:30 Istanbul: Claude generates the first weekly job email** (fresh jobs, includes a one-line note that RemoteNC is now Yireh Careers), sends a test to you, and schedules it for 09:30 to the 3 people on Job alerts. Look at the test; to stop it: Brevo, Marketing, Campaigns, unschedule. After it goes, say yes or no to making it a recurring Tuesday task. KT.
 - [ ] **Qualified review (about an hour) of the risk items in `08-risk-register.md`** before the first public send (D-12). Only KT.
-- [ ] **BEFORE the Brevo key expires (about 31 Oct 2026, seven days after you made it): create a new key with the longest or no expiry and put it in Vercel yourself.** Vercel, project north_cyprus_remote_job_board, Settings, Environment Variables, edit `BREVO_API_KEY` (Production), paste the new key (the plain `xkeysib-...` text or the `eyJ...` text both work), save, then Deployments, Redeploy the latest. Do NOT paste it into chat. After that, delete the old key in Brevo. If you forget, the website forms show an error and the site monitor emails you within about 3 hours ("health check failed"). Only KT.
-- [ ] **Security:** the Brevo key was pasted into a chat and now also lives in Vercel (sensitive). Treat it as sensitive; consider replacing it with a fresh key later (Brevo, SMTP and API, API keys: create new, give it to Claude to replace in Vercel, delete the old). Claude deletes its scratch copy of the key at the end of the session.
+- [x] **Brevo key expiry:** KT extended the key (the one stored in Vercel) from one week to one year on 24 Oct 2026, so it runs until about 24 Oct 2027. Put a reminder in your calendar for early Oct 2027 to extend or replace it. If it ever stops working, the site monitor emails you within about 3 hours ("health check failed").
+- [ ] **Security:** the Brevo key was pasted into a chat and now also lives in Vercel (sensitive). Treat it as sensitive; consider replacing it with a fresh key at some point (create a new key in Brevo, paste it into Vercel yourself under `BREVO_API_KEY`, redeploy, delete the old one). Claude deletes its scratch copy of the key at the end of the session.
 
 ## 0b. Strategy validation (24 Oct 2026; see `drafts/decisions/2026-10-24-board-strategy-icp-inventory-seniority.md`)
 - [ ] **List the groups and pages you will post in**: roughly how many members, which countries, and whether they are mostly students, graduates or working professionals. This decides whether we need jobs open to non-US readers. Only KT.

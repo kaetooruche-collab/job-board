@@ -39,6 +39,13 @@ class Forms(unittest.TestCase):
         for needle in ["CV and LinkedIn tips and offers", "Order details form", "do-not-email list", "jobs only"]:
             self.assertIn(needle, t)
 
+    def test_free_check_promise_has_real_numbers(self):
+        for n in ["free-check.html", "services.html"]:
+            t = read(n)
+            self.assertIn("about 10 a week", t, n)
+            self.assertIn("within 2 working days", t, n)
+            self.assertNotIn("limited number", t, n)
+
     def test_no_secret_in_client_files(self):
         for n in ["index.html", "free-check.html", "order.html", "site-forms.js", "site-config.js"]:
             self.assertNotIn("xkeysib", read(n), n)

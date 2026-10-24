@@ -28,19 +28,21 @@ Brevo: **Automations, Create an automation**. Two ways: build by hand, or open *
 | # | Name | Trigger | Steps |
 |---|---|---|---|
 | AU-1 | `YC2 AU-1 Job alerts welcome` | Contact added to list **Job alerts** | Send template **74** now. End. |
-| AU-2 | `YC2 AU-2 Tips series` | Contact added to list **Career tips** | Send **75**. Wait **7 days**. Send **76**. Wait **9 days**. Send **77**. End. |
+| AU-2 | `YC2 AU-2 Tips series` | Contact added to list **Career tips** | **Wait 1 day.** Send **75**. Wait **7 days**. Send **76**. Wait **9 days**. Send **77**. End. |
 | AU-3 | `YC2 AU-3 Free-check follow-up` | Contact added to list **Check result sent** | Wait **4 days**. Condition: contact is in list **Career tips** AND not in list **Order completed**. If yes, send **82**. End. |
 | AU-4 | `YC2 AU-4 After the order` | Contact added to list **Order completed** | Wait **21 days**. Condition: in **Career tips**. If yes: if attribute **LAST_PACKAGE** is *essential* send **83**; if *professional* send **84**; if *executive* skip. Wait **39 days**. Condition: in **Career tips**. If yes, send **85**. End. |
 
 AI-builder sentences (paste one at a time):
 - AU-1: "When a contact is added to the list Job alerts, send the template YC2 | JA-1 Job alerts welcome, then end."
-- AU-2: "When a contact is added to the list Career tips, send template YC2 | CT-1, wait 7 days, send template YC2 | CT-2, wait 9 days, send template YC2 | CT-3, then end."
+- AU-2: "When a contact is added to the list Career tips, wait 1 day, send template YC2 | CT-1, wait 7 days, send template YC2 | CT-2, wait 9 days, send template YC2 | CT-3, then end."
 - AU-3: "When a contact is added to the list Check result sent, wait 4 days, then if the contact is in the list Career tips and not in the list Order completed, send template YC2 | FC-1, then end."
 - AU-4: "When a contact is added to the list Order completed, wait 21 days, then if the contact is in the list Career tips and the attribute LAST_PACKAGE is essential send template YC2 | CU-1-ES, or if it is professional send template YC2 | CU-1-PRO. Then wait 39 days and, if the contact is in the list Career tips, send template YC2 | CU-2, then end."
 
 **Leave all four switched OFF** (draft/paused) until Claude has run the tests that need them (T3, T4) with test addresses and tells you they pass. Claude does those tests; you only tell Claude when an automation is saved. If a condition step doesn't exist (T4), tell Claude and the design is changed.
 
 Hand-sent campaigns (no automation): **78** JA-R (quarterly "still want these?"), **79 / 80 / 81** monthly tips, and the weekly digest (Claude generates it and creates the draft campaign; you schedule it).
+
+**Heads-up (found 24 Oct):** Brevo's builder copies each template into the automation (step templates 87-94), so the automation sends the *copy*, not templates 74-85. Claude checked all eight copies: text, links, subject and sender match the originals. The catch: if the wording is ever changed in `scripts/email_data.py`, the API can update 74-85 but **cannot** update the copies, so you would re-pick the email inside the automation. Map: 87=JA-1, 88=CT-1, 89=CT-2, 90=CT-3, 91=FC-1, 92=CU-1-ES, 93=CU-1-PRO, 94=CU-2.
 
 ## Part E · How a customer moves through (so the markers make sense)
 1. Free check done: you reply by email, then add the person to list **Check result sent** (only if they ticked tips; the automation checks).

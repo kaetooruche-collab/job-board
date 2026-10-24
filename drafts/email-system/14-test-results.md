@@ -30,6 +30,16 @@ Method: tests ran against the live Brevo account and the live signup form, using
 | Free check and order | **Pass:** no marketing list for the check; the order sets `LAST_PACKAGE`; a notice email to yirehcareers@gmail.com showed as *delivered* in Brevo's event log |
 | Origin check | **Pass:** another origin gets 403 |
 
+## T3 and T4 (24 Oct, after KT built the four automations)
+| Check | Result |
+|---|---|
+| AU-1 starts on **form signup** (jobs only, and jobs + tips) | **Pass.** Welcome (copy 87) arrived within seconds, first name merged ("Hi Aa") |
+| AU-1 starts on **API add** to Job alerts | **Pass.** Same email, same speed |
+| AU-1 does NOT fire for the **free-check form** (no Job alerts list) | **Pass** (no email) |
+| AU-2 does not send CT-1 immediately (one-day wait) | **Consistent so far:** nothing arrived for tips contacts added by form (t3b, t3c) or by API (t3d). The positive proof (CT-1 arriving after a day) is scheduled for ~15:20 UTC on 25 Oct |
+| AU-3 and AU-4 start from the marker lists | **Pass (KT, 24 Oct):** the test contacts show correctly in both automations. Their waits are 4 and 21 days, so the final emails will only prove themselves on those dates (the scheduled test contacts are deleted after the AU-2 check) |
+| T4 condition step exists | **Yes**, KT built conditions in AU-3 and AU-4 (confirmed by KT's message that the automations are built as specified; ask KT if any condition was missing) |
+
 ## Leftovers
 - Campaign **86** ("TEST T7 delete me", sent to the test address) cannot be deleted through the API once sent. KT may delete it in the dashboard (Campaigns); it holds no personal data beyond the deleted test address.
 - Test addresses deleted: yct1, yct5, yct7, yct9. Verified: 3 contacts, list 18 empty.
