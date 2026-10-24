@@ -15,6 +15,14 @@ Claude built: the Yireh Careers rebrand, the free address https://yirehcareers.v
 - [ ] **When you can afford a domain**: tell Claude; the address is changed in one pass (a domain, the share tags, the redirect and the monitor).
 - [ ] **Later, not blocking launch**: register a company (accountant), then the trademark and Whop live setup; the privacy page wording is updated when the company exists.
 
+## 0a. Email and WhatsApp setup (24 Oct 2026)
+- [ ] **Read the 7 test emails in kaetooruche@gmail.com** (Brevo templates 34-40) and tell Claude what still sounds stiff. Only KT.
+- [ ] **Brevo: delete the old templates 20-33** (True Remote / Kaeto sets). Keep 1-16 (other projects). Claude cannot delete. Only KT.
+- [ ] **Brevo: switch the signup welcome automation to template 40.** Only KT.
+- [ ] **WhatsApp Business profile:** follow `drafts/whatsapp-business-setup.md` (copy and paste, about 30 minutes) with the pictures in `drafts/whatsapp-profile/`. Decide your reply hours first (the away message has a bracket for it). Only KT.
+- [ ] **Start the enquiry log** (`drafts/enquiry-log-template.csv`, no names). Only KT.
+- [ ] **Decide whether to review the website copy** against `drafts/voice-and-copy-guide.md` (Claude proposes before/after for the main blocks; changing the live site needs your yes).
+
 ## 0b. Strategy validation (24 Oct 2026; see `drafts/decisions/2026-10-24-board-strategy-icp-inventory-seniority.md`)
 - [ ] **List the groups and pages you will post in**: roughly how many members, which countries, and whether they are mostly students, graduates or working professionals. This decides whether we need jobs open to non-US readers. Only KT.
 - [ ] **Log every free CV check request** (date, career stage, country, ordered yes/no). Claude can set up the sheet; you fill it in. Only KT.
