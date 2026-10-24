@@ -7,7 +7,7 @@ Owner: C = Claude, K = KT. Status is what was verified, not what was hoped.
 ## A. Site and pipeline (Claude)
 - [x] Services page, WhatsApp-only ordering, email-based documents: merged to main and live (live page fetched and checked).
 - [x] Privacy policy live at /privacy (entity KAYZ Global Ltd, one contact email, AI-tool disclosure, bank/crypto payments); footer links on all pages; consent line under the newsletter form. Live page fetched and read.
-- [x] Single contact email everywhere: trueremote.jobs@gmail.com (no old address left in served files).
+- [x] Single contact email everywhere: yirehcareers@gmail.com (no old address left in served files).
 - [x] Payment terms on the services page: client pays all fees; exchange rate at the time of payment (exact amount confirmed in chat); Bitcoin and USDT.
 - [x] Tests: 67 pass. Pages load with no console errors at 1280px and 360px dark (local server).
 - [x] Classifier fixes found in launch QA: false "cannot hire in: United States" (47 listings); senior/lead/manager titles shown as junior (11 listings). Both have regression tests.

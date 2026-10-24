@@ -3,7 +3,7 @@
 Status: DECIDED by KT (2026-10-15): proceed with Brevo using the Gmail sender. KT tested Brevo and clients receive emails in their inbox. Improving deliverability (custom domain, DKIM/DMARC) is deferred, not rejected. Templates 20-26 created. Revisit when the domain is bought, or if clients report missing emails.
 
 ## Question
-(1) Where should the "check Promotions and Spam" reminder live? (2) Should the client emails (order, onboarding, delivery, completion) be sent from Brevo templates with sender "True Remote <trueremote.jobs@gmail.com>"?
+(1) Where should the "check Promotions and Spam" reminder live? (2) Should the client emails (order, onboarding, delivery, completion) be sent from Brevo templates with sender "True Remote <yirehcareers@gmail.com>"?
 
 ## Evidence (read 2026-10-15)
 - Brevo, "Comply with Gmail, Yahoo and Microsoft's requirements": sending from a free address (@gmail.com) "will cause your emails to be rejected or filtered to spam". If you send from a free address, "Brevo temporarily replaces your sender address with a compliant one ... a stopgap measure ... not a permanent solution. Recipients may not recognize the replaced address and mark your emails as spam." Brevo replaces free addresses "regardless of the recipients". Example replacement: `name@<number>.t-sender-sib.com` (transactional), `@<number>.brevosend.com` (marketing). https://help.brevo.com/hc/en-us/articles/14925263522578

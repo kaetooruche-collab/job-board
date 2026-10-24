@@ -7,7 +7,7 @@ Decision (KT): conversations and negotiation happen on WhatsApp; **all documents
 - WhatsApp is for chatting only. If a client sends a document on WhatsApp anyway, reply asking them to resend by email, then delete the WhatsApp copy.
 
 ## 2. Set-up (once)
-1. Use the business inbox trueremote.jobs@gmail.com (not a personal inbox). Turn on 2-step verification and keep the password in a password manager.
+1. Use the business inbox yirehcareers@gmail.com (not a personal inbox). Turn on 2-step verification and keep the password in a password manager.
 2. Create one Gmail **label per client** named `Client – <order number>` (the order number from Payhip, not the full name). Apply it to every email in the thread.
 3. Create a folder `Clients` on the laptop with one subfolder per order number for working copies. Nothing is kept on a phone.
 4. Keep the log `client-data-log-template.csv` (order number, package, date received, date onboarding complete, date delivered, date completed, delete-by date, deleted on).
@@ -38,7 +38,7 @@ Send template TR-05 on completion and set the delete-by date.
 
 ## 7. Still to settle before the privacy policy goes live
 - Legal name and location to show (Brevo shows KAYZ Global Ltd, Girne).
-- A privacy contact email, and whether trueremote.jobs@gmail.com is it.
+- A privacy contact email, and whether yirehcareers@gmail.com is it.
 - Whether any AI tool is used on client documents (if yes, it must be disclosed).
 - Gmail account type (personal or Workspace) and invoice retention period.
 - Minimum age for clients; double confirmation for the newsletter.

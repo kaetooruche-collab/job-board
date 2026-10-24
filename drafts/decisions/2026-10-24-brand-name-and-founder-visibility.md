@@ -70,7 +70,7 @@ Honest limits of this pick: the name is chosen on clearance and story, not teste
 ### Suggested domain plan if KT approves (cost about $50 for the first year; NOT bought)
 - Primary web and email domain: `farhavenjobs.com` is descriptive for the board, but the brand covers services too; a neutral `.com` such as `getfarhaven.com` or `farhavenhq.com` serves email and the whole brand. Recommended: register `farhavenhq.com` (email and primary) and `farhaven.work` (the board's natural vanity address), plus `farhavenjobs.com` and `farhavencareers.com` as redirects. About $45 in the first year at $11.25 each.
 - Defensive: `farhaven.org` ($9.99) and `.io` ($14.99, renews $46) only if desired.
-- Keep trueremote.jobs@gmail.com working until the new domain's email is authenticated and tested; announce the change.
+- Keep yirehcareers@gmail.com working until the new domain's email is authenticated and tested; announce the change.
 
 ### What must still happen before announcing the name
 1. Search EUIPO (TMview), UK IPO, WIPO Global Brand Database and the registry of the country where KAYZ Global Ltd is registered; ideally a trademark attorney; classes 35 (employment services), 41 (training, coaching), 42 (online platform). Not run by Claude.

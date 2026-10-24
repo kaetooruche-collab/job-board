@@ -8,7 +8,7 @@ Decisions KT still has to make before messages 5 to 7 are final (see the end).
 
 ---
 ## 0. Profile (set once)
-Business name: Yireh Careers. Category: Professional services. Description: "CVs, cover letters and LinkedIn profiles, written for you." Email: trueremote.jobs@gmail.com. Website: the services page.
+Business name: Yireh Careers. Category: Professional services. Description: "CVs, cover letters and LinkedIn profiles, written for you." Email: yirehcareers@gmail.com. Website: the services page.
 
 ## 1. Pre-filled message (already on the website buttons)
 > Hello, I would like to order the *Essential* package ($29). Could you please confirm the next steps?
@@ -68,7 +68,7 @@ Shortcut `/crypto`
 Shortcut `/received`
 > Payment received. Thank you, [First name]. Your order is confirmed.
 >
-> *Next step:* I have emailed you from trueremote.jobs@gmail.com with simple instructions. Please reply to that email with your CV and any other documents. Documents go by email only, please not by WhatsApp.
+> *Next step:* I have emailed you from yirehcareers@gmail.com with simple instructions. Please reply to that email with your CV and any other documents. Documents go by email only, please not by WhatsApp.
 > If you do not see the email within a few minutes, please check your Promotions and Spam folders and move it to your main inbox.
 >
 > Your delivery time starts when onboarding is complete.
@@ -85,7 +85,7 @@ Shortcut `/spam`
 
 ## 10. Documents sent on WhatsApp by mistake
 Shortcut `/docs`
-> Thank you, [First name]. For your privacy and so that everything is kept in one place, I can only accept documents by email. Please send it as a reply to my email at trueremote.jobs@gmail.com. Once received, I will delete the copy from this chat.
+> Thank you, [First name]. For your privacy and so that everything is kept in one place, I can only accept documents by email. Please send it as a reply to my email at yirehcareers@gmail.com. Once received, I will delete the copy from this chat.
 
 ## 11. Onboarding reminder (if nothing received after 3 days)
 Shortcut `/onboard`
@@ -102,7 +102,7 @@ Shortcut `/started`
 
 ## 13. Delivery notice
 Shortcut `/delivered`
-> Hello [First name], your documents have been emailed to you from trueremote.jobs@gmail.com. Please check Promotions and Spam if you do not see them.
+> Hello [First name], your documents have been emailed to you from yirehcareers@gmail.com. Please check Promotions and Spam if you do not see them.
 >
 > Please read them carefully and check every date, job title and name. Your package includes up to [2 or 3] revision rounds. Please send all your changes together in one reply to the email. One consolidated message counts as one round.
 
@@ -141,7 +141,7 @@ Shortcut `/privacy`
 ## 20. Free quick CV check: first reply
 Shortcut `/check`
 (Opens from the "Get a free CV check" buttons. The button text is: "Hello, I would like a free quick CV check. Please tell me how to send my CV.")
-> Hello [First name], thank you for asking. Please email your CV to trueremote.jobs@gmail.com (please do not send it here on WhatsApp), and tell me the roles you are applying for. I will reply with the three things I would fix first.
+> Hello [First name], thank you for asking. Please email your CV to yirehcareers@gmail.com (please do not send it here on WhatsApp), and tell me the roles you are applying for. I will reply with the three things I would fix first.
 > It is one free check per person. Your CV is used only for the check, and I delete it within 30 days if you do not order a package.
 
 ## 21. Free CV check: result and next step
@@ -151,7 +151,7 @@ Shortcut `/checked`
 ## 22. Job-page button: first reply
 Shortcut `/role`
 (Opens from "Get a CV for this role" on a job card. The button text is: "Hello, I would like a CV for this role: [title] at [company]. Could you tell me which package to choose?")
-> Hello [First name], thank you for asking. Where are you in your search? If you already have a CV, the quickest start is the free CV check: email it to trueremote.jobs@gmail.com and I will tell you the three things I would fix first. If you would like a full package, *Essential ($29)* is the CV, *Professional ($49)* adds a cover letter and LinkedIn profile setup. Please check the employer's eligibility rules for your location before you apply.
+> Hello [First name], thank you for asking. Where are you in your search? If you already have a CV, the quickest start is the free CV check: email it to yirehcareers@gmail.com and I will tell you the three things I would fix first. If you would like a full package, *Essential ($29)* is the CV, *Professional ($49)* adds a cover letter and LinkedIn profile setup. Please check the employer's eligibility rules for your location before you apply.
 
 ## 23. Add-ons menu
 Shortcut `/addons`
@@ -186,10 +186,10 @@ Not live until KT approves the go-live checklist (`drafts/whop-go-live-checklist
 ### 25. Card payment link (send only if the customer chooses card, Essential or Professional)
 > Here is the secure card payment link for your *[Package]* package ([price]): [LIVE LINK]
 >
-> You will be asked three short questions first (your target role, whether you already have a CV, and an optional WhatsApp number). Whop, our payment provider, handles your card details; we never see them. Afterwards, please email your current CV and target roles to trueremote.jobs@gmail.com (not on WhatsApp). Your timing starts once onboarding is complete.
+> You will be asked three short questions first (your target role, whether you already have a CV, and an optional WhatsApp number). Whop, our payment provider, handles your card details; we never see them. Afterwards, please email your current CV and target roles to yirehcareers@gmail.com (not on WhatsApp). Your timing starts once onboarding is complete.
 >
 > For your safety: the only card link we use is the one on our website and the one sent from this number.
 
 
 ## Update 24 Oct 2026: brand is now Yireh Careers
-Replaces "True Remote" and "Kaeto Career Services" everywhere in this library. Messages that say "I" are fine in a 1:1 chat. The email address is still trueremote.jobs@gmail.com until KT creates a new one: set the Gmail "send mail as" display name to "Yireh Careers" so customers see the new name. The WhatsApp Business display name change may need approval from WhatsApp.
+Replaces "True Remote" and "Kaeto Career Services" everywhere in this library. Messages that say "I" are fine in a 1:1 chat. The email address is now yirehcareers@gmail.com (created 24 Oct); set its Gmail display name to "Yireh Careers". The WhatsApp Business display name change may need approval from WhatsApp.

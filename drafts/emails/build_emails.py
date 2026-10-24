@@ -2,7 +2,7 @@
 import os, html
 OUT = os.path.dirname(os.path.abspath(__file__))
 WA = "https://wa.me/905338225854"
-MAIL = "trueremote.jobs@gmail.com"
+MAIL = "yirehcareers@gmail.com"
 ADDR = "Yireh Careers · Kyrenia, Northern Cyprus"
 ADDR_NEWSLETTER = "Yireh Careers · Yenice Sokak, 99300 Kyrenia, Northern Cyprus"  # postal address in marketing email footers is legally required in many places; KT to confirm which address to use
 
@@ -43,7 +43,7 @@ def h(t): return f'<h1 style="margin:0 0 16px;font:700 22px/1.3 Arial,Helvetica,
 def box(t): return f'<div class="box" style="background:#f2f6fc;border:1px solid #d5e0f0;border-radius:8px;padding:14px 16px;margin:0 0 16px;">{t}</div>'
 def ul(items): return '<ul style="margin:0 0 14px;padding-left:20px;">' + ''.join(f'<li style="margin:0 0 6px;">{i}</li>' for i in items) + '</ul>'
 def btn(t, url): return f'<p style="margin:0 0 14px;"><a href="{url}" style="display:inline-block;background:#1d4f91;color:#ffffff;text-decoration:none;font-weight:700;padding:12px 22px;border-radius:8px;">{t}</a></p>'
-SPAM = box("<strong>Can't find our emails?</strong> Please check your <strong>Promotions</strong> and <strong>Spam</strong> folders, and move our messages to your main inbox or add trueremote.jobs@gmail.com to your contacts so you do not miss anything.")
+SPAM = box("<strong>Can't find our emails?</strong> Please check your <strong>Promotions</strong> and <strong>Spam</strong> folders, and move our messages to your main inbox or add yirehcareers@gmail.com to your contacts so you do not miss anything.")
 HI = p('Hi {{ params.FIRSTNAME | default:"there" }},')
 
 T = {}
@@ -117,7 +117,7 @@ T["TR-07 Newsletter welcome"] = ("Welcome to Yireh Careers job alerts", "You are
    "We never charge job seekers to apply or to see an apply link.",
  ])) +
  p("<strong>Please check each employer's eligibility rules before you apply.</strong> We cannot verify that an employer can hire in your country.") +
- btn("Browse open jobs", "https://northcyprusremotejobboard.vercel.app/") +
+ btn("Browse open jobs", "https://yirehcareers.vercel.app/?utm_source=email&utm_medium=email&utm_campaign=welcome") +
  p("We also offer paid CV, cover letter and LinkedIn writing if you would like help. It is optional and the job board stays free.") + SPAM)
 
 import json

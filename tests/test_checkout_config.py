@@ -86,7 +86,7 @@ class CheckoutFiles(unittest.TestCase):
         low = THANKS.lower()
         for phrase in ("payment received", "payment confirmed", "order confirmed", "you have paid", "guaranteed"):
             self.assertNotIn(phrase, low)
-        self.assertIn("trueremote.jobs@gmail.com", THANKS)
+        self.assertIn("yirehcareers@gmail.com", THANKS)
         self.assertIn("Reached this page without paying", THANKS)
 
     def test_vercel_sends_noindex_header_for_thanks(self):

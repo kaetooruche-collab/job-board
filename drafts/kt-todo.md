@@ -9,7 +9,7 @@ Claude built: the Yireh Careers rebrand, the free address https://yirehcareers.v
 - [ ] **Open the live site on your phone** (home, services, privacy). Tap the WhatsApp buttons once to see the message arrives. Tell Claude anything that looks wrong.
 - [ ] **Paste the site link into WhatsApp to yourself** and check the preview shows the Yireh Careers picture and title (WhatsApp caches previews; if it looks old, add `?v=2` to the link).
 - [ ] **Post using the kit**: open `/kit`, tap "Copy post", paste into WhatsApp groups and status, Facebook, TikTok and Snapchat. One post per group per day; read each group's rules; links go in the bio on TikTok and Snapchat. Post at least once a day for a week, then look at GoatCounter (which platform sends visitors: the links are tagged `utm_source`).
-- [ ] **Set the Gmail "send mail as" display name to Yireh Careers** (the address is still trueremote.jobs@gmail.com) so customers recognise the emails; same for the WhatsApp Business name (WhatsApp may need to approve it).
+- [ ] **Set the Gmail "send mail as" display name to Yireh Careers** (the address is yirehcareers@gmail.com, created 24 Oct) so customers see the brand name; same for the WhatsApp Business name (WhatsApp may need to approve it).
 - [ ] **GoatCounter**: after your first visit to the new address, check the dashboard shows it. If not, add the new address to the allowed domains in GoatCounter settings.
 - [ ] **Facebook page, TikTok and Snapchat accounts named Yireh Careers**, with the bio link https://yirehcareers.vercel.app (tagged links are in the kit). Handles for the name have not been checked.
 - [ ] **When you can afford a domain**: tell Claude; the address is changed in one pass (a domain, the share tags, the redirect and the monitor).
@@ -78,7 +78,7 @@ Moved to its own chat and its own list: `jobsearch/TODO.md`. Not tracked here.
 - [x] Services page rebuilt and live (18 Oct): Essential $29, Professional $49 (Recommended), Executive $149, LinkedIn Growth $99/month, add-ons, free CV check, "Get a CV for this role" button on job cards.
 - [x] Privacy policy live, updated 18 Oct (free check, Executive completion, LinkedIn Growth).
 - [x] Refund wording approved and published; no on-site payment; WhatsApp-arranged bank/crypto payments.
-- [x] Sender trueremote.jobs@gmail.com verified in Brevo; templates 27-33 created.
+- [x] Sender yirehcareers@gmail.com verified in Brevo; templates 27-33 created.
 - [x] Pricing and offer review approved (all five decisions as recommended).
 
 
