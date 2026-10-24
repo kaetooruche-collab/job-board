@@ -1,6 +1,6 @@
 # Yireh Careers email system: blueprint for approval
 
-Status: **PROPOSED. Waiting for KT's explicit approval (Phase 11 gate).** Written 24 Oct 2026 on branch `claude/optimistic-hopper-nv0qun`, not merged. Nothing was changed in Brevo or on the live site; nothing was sent.
+Status: **APPROVED by KT, 24 Oct 2026 ("approve all"). Phase 12 in progress; see 10 and 12.** Written 24 Oct 2026 on branch `claude/optimistic-hopper-nv0qun`, not merged. Nothing was changed in Brevo or on the live site; nothing was sent.
 
 ## The design in one paragraph
 
@@ -32,7 +32,7 @@ Two kinds of email, kept apart. **Service emails** (order, delivery, revisions, 
 | 12 | Roadmap, dependencies, effort, cost | `10-roadmap-and-decisions.md` |
 | 13 | Unresolved decisions | `10-roadmap-and-decisions.md` |
 
-Builders and tests: `email_data.py` (all copy), `build_library.py` (regenerates inventory, copy files, previews), `tests/test_email_library.py` (copy and consent rules). `automation-build.md` and `drafts/brevo-setup-guide.md` are superseded.
+Builders and tests: `email_data.py` (all copy), `build_library.py` (regenerates inventory, copy files, previews), `tests/test_email_library.py` (copy and consent rules). The first-build files (`automation-build.md`, `brevo-setup-guide.md`, `drafts/emails/`) are deleted. The code now lives in `scripts/email_data.py` and `scripts/email_render.py`; `12-dashboard-build-guide.md` is KT's step list.
 
 ## What is verified and what is not
 

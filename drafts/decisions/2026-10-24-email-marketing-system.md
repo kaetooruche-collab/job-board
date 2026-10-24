@@ -1,6 +1,6 @@
 # Decision review: the Yireh Careers email system (Brevo)
 
-Status: PROPOSED, built as far as the tools allow (templates and draft campaign are in Brevo; lists and automations need KT's hands, see `drafts/brevo-setup-guide.md`). Written 24 Oct 2026.
+Status: **SUPERSEDED on 24 Oct 2026 by `drafts/email-system/` (KT approved the rebuild).** Old status: PROPOSED, built as far as the tools allow (templates and draft campaign are in Brevo; lists and automations need KT's hands, see `drafts/brevo-setup-guide.md`). Written 24 Oct 2026.
 Evidence labels: **[Established]** from a named source or measured by us; **[Hypothesis]** reasoned, to test; **[Assumption]** needs validation.
 
 ## 0. What KT asked for, and a correction
