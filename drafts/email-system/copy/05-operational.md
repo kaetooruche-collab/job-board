@@ -157,14 +157,14 @@ That's the free check, and it's yours to keep whatever you decide. If you'd like
 | Failure handling | If nothing arrives in 3 working days, OP-16 |
 | Primary metric / guardrail | Days to complete onboarding / None |
 | Evidence and confidence | Verified: carries over the approved structure of the earlier TR-01. Confidence: **High** |
-| Body length | 103 words |
+| Body length | 104 words |
 
 **Subject:** Thanks, here's what we need to get started  
 
 ```
 Hi [First name],
 
-Thank you. We've received your payment for [Package].
+Thank you. We've received your payment for the [Package].
 
 To get going, please reply to this email with:
 

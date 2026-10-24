@@ -299,7 +299,7 @@ EMAILS = [
         trigger="KT confirms payment and records it", entry="payment_confirmed in the register", consent="None needed (contract)", timing="Same day",
         subject="Thanks, here's what we need to get started", preview="",
         body=[("p", "Hi {FIRST},"),
-              ("p", "Thank you. We've received your payment for [Package]."),
+              ("p", "Thank you. We've received your payment for the [Package]."),
               ("p", "To get going, please reply to this email with:"),
               ("ul", ["your current CV (Word, PDF or plain text), and your LinkedIn link if you have one",
                       "the kind of roles you're going for, and the countries you can work in (skip if you've already told us on the form)",

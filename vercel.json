@@ -38,6 +38,15 @@
           "value": "noindex, nofollow"
         }
       ]
+    },
+    {
+      "source": "/mail",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        }
+      ]
     }
   ],
   "redirects": [
