@@ -17,6 +17,7 @@ Claude built: the Yireh Careers rebrand, the free address https://yirehcareers.v
 
 ## 0a. Email and WhatsApp setup (24 Oct 2026)
 - [ ] **Read the 7 test emails in kaetooruche@gmail.com** (Brevo templates 34-40) and tell Claude what still sounds stiff. Only KT.
+- [ ] **Gmail: set up the 6 customer-email templates** from `drafts/gmail-customer-emails.md` (10 minutes, on a computer; instructions are at the top of that file). This is how order, onboarding, delivery, completion and privacy emails get sent. Only KT.
 - [ ] **Brevo: delete the old templates 20-33** (True Remote / Kaeto sets). Keep 1-16 (other projects). Claude cannot delete. Only KT.
 - [ ] **Brevo: switch the signup welcome automation to template 40.** Only KT.
 - [ ] **WhatsApp Business profile:** follow `drafts/whatsapp-business-setup.md` (copy and paste, about 30 minutes) with the pictures in `drafts/whatsapp-profile/`. Decide your reply hours first (the away message has a bracket for it). Only KT.
