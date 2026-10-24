@@ -16,6 +16,13 @@ Rename the existing list #11 ("North cyprus remote jobs Subscribers") to `Job al
 
 Optional later: `LinkedIn Growth: active` (service emails only).
 
+## Shortcut: let Brevo's AI automation builder draft them
+Brevo has a builder that turns a plain sentence into an inactive workflow you then check and activate (it is a dashboard feature, not available through the API). Automations, Create, then look for the AI / "describe your automation" option. Paste one of these, then open the result and fix the email steps to the templates named in the steps below. Always read what it built before activating.
+
+1. "When a contact is added to the list Job alert subscribers, send the email template 'Yireh MKT W1 Welcome (day 0)'. Wait 3 days, send 'Yireh MKT W2 Welcome (day 3)'. Wait 4 days. If the contact is in any of the lists Customers: Essential, Customers: Professional or Customers: Executive, stop; otherwise send 'Yireh MKT W3 Welcome (day 7)'."
+2. "When a contact is added to the list Free CV check requested, wait 3 days and send 'Yireh MKT F1 Free check follow-up (day 3)'. Wait 5 days. If the contact is in any Customers list, stop; otherwise send 'Yireh MKT F2 Free check follow-up (day 8)'."
+3. "When a contact is added to the list Customers: Essential, wait 1 day and send 'Yireh MKT P1 After order: check-in (day 1)'. Wait 9 days, send 'Yireh MKT P2 After order: feedback ask (day 10)'. Wait 11 days, send 'Yireh MKT P3 Essential upsell (day 21)'. Wait 39 days, send 'Yireh MKT P4 After order: how's the search (day 60)'." (Repeat for Professional with its P3, and for Executive: P1, P2, then wait 20 days and send 'Yireh MKT P3 Executive follow-on (day 30)', then wait 30 days and send P4.)
+
 ## Step 2. Welcome automation (Automations, Create, start from scratch)
 Name: `Welcome series`.
 1. **Triggers tab:** drag **Contact added to list** onto the canvas. Choose `Job alert subscribers`.
