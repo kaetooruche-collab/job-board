@@ -58,6 +58,10 @@ def check_api():
         r = requests.post(SITE + "/api/subscribe", json={"form": "signup", "email": "monitor@example.com"}, timeout=20)
         if r.status_code != 403:
             fails.append(f"/api/subscribe: a post without our origin should be refused (403), got {r.status_code}")
+        # Proves the Brevo key stored in Vercel still works (it can expire or be revoked). Writes nothing.
+        r = requests.post(SITE + "/api/subscribe", json={"form": "health"}, headers={"Origin": SITE}, timeout=30)
+        if r.status_code != 200:
+            fails.append(f"/api/subscribe health check failed (HTTP {r.status_code}: {r.text[:120]}): the website forms are probably broken; the Brevo key in Vercel may have expired")
     except requests.RequestException as e:
         fails.append(f"/api/subscribe: could not check ({e})")
 

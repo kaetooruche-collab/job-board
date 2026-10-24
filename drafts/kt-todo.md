@@ -29,6 +29,7 @@ Done by Claude: lists, attributes, 12 templates (From name Yireh Careers), old o
 - [ ] **Keep Brevo's "Block unknown IP addresses" OFF and keep the Brevo key active**: the website forms now use it (Vercel stores it). Only KT.
 - [ ] **Free CV check:** decide the weekly cap and turnaround (D-06) so "a limited number each week" on the site is true. Only KT.
 - [ ] **Qualified review (about an hour) of the risk items in `08-risk-register.md`** before the first public send (D-12). Only KT.
+- [ ] **BEFORE the Brevo key expires (about 31 Oct 2026, seven days after you made it): create a new key with the longest or no expiry and put it in Vercel yourself.** Vercel, project north_cyprus_remote_job_board, Settings, Environment Variables, edit `BREVO_API_KEY` (Production), paste the new key (the plain `xkeysib-...` text or the `eyJ...` text both work), save, then Deployments, Redeploy the latest. Do NOT paste it into chat. After that, delete the old key in Brevo. If you forget, the website forms show an error and the site monitor emails you within about 3 hours ("health check failed"). Only KT.
 - [ ] **Security:** the Brevo key was pasted into a chat and now also lives in Vercel (sensitive). Treat it as sensitive; consider replacing it with a fresh key later (Brevo, SMTP and API, API keys: create new, give it to Claude to replace in Vercel, delete the old). Claude deletes its scratch copy of the key at the end of the session.
 
 ## 0b. Strategy validation (24 Oct 2026; see `drafts/decisions/2026-10-24-board-strategy-icp-inventory-seniority.md`)

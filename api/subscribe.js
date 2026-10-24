@@ -94,6 +94,16 @@ function createHandler(deps) {
     if (!body || typeof body !== 'object' || JSON.stringify(body).length > MAX_BODY) { log('bad_body'); return send(400, false, MESSAGES.invalid); }
 
     const form = String(body.form || '');
+    if (form === 'health') {                                // used by the site monitor: proves the Brevo key still works, writes nothing
+      const k = loadKey(env);
+      if (!k) { log('health_no_key', form); return send(503, false, 'No Brevo key configured'); }
+      try {
+        const h = await brevo(k, 'GET', '/account');
+        if (h.status === 200) return send(200, true, 'ok');
+        log('health_brevo_' + h.status, form);
+        return send(503, false, 'Brevo rejected the key (status ' + h.status + ')');
+      } catch (e) { log('health_error', form); return send(503, false, 'Brevo could not be reached'); }
+    }
     if (!VERSION[form]) { log('bad_form'); return send(400, false, MESSAGES.invalid); }
     if (clean(body.website, 50)) { log('honeypot', form); return send(200, true, MESSAGES[form]); }   // bots get a quiet "success"
 
