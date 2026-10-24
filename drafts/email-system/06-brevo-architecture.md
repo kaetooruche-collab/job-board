@@ -106,7 +106,7 @@ Use only addresses KT owns (for example kaetooruche@gmail.com plus plus-aliases,
 
 ## Brevo-side verification tooling (Phase 12, read-only first)
 
-A small script (`scripts/email_audit.py`, to be written after approval) reading Brevo through the API from a machine whose IP is authorised, never writing without `--apply` and approval:
+A small script (`scripts/email_audit.py`, written and run 24 Oct 2026: passes, 0 hard failures) reading Brevo through the API from a machine whose IP is authorised, never writing without `--apply` and approval:
 1. Reports lists and counts against the taxonomy above.
 2. Lists contacts on "Career tips" with no `CONSENT_TIPS_AT`.
 3. Lists contacts on any list who are blocklisted.
