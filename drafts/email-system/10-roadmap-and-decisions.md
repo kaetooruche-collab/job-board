@@ -50,6 +50,8 @@ Effort and cost summary: no cash cost except the domain (and any paid mailbox or
 | L-10 | Customers join promotions only by an unticked box at order intake | Brief rule plus F12 | 07 |
 | L-11 | Brevo blocklist is the only suppression record; no "Do not send" list | One source of truth | 06 |
 | L-12 | No incomplete-enquiry follow-up | Not observable; consent unclear | 05 |
+| L-13 | **No domain for now; send from the Gmail sender (id 4)** and accept the deliverability risk | KT, 24 Oct: cannot buy a domain currently; risks already discussed | KT |
+| L-14 | Unsubscribe is global; offer a manual 'jobs only' route for tips | Test T7 | 14-test-results.md |
 
 ## Unresolved decisions for KT (each with my recommended default)
 
@@ -58,14 +60,14 @@ Effort and cost summary: no cash cost except the domain (and any paid mailbox or
 | **D-01** | Approve this blueprint and the architecture (Option A) | Approve / change | Approve | Everything depends on it |
 | **D-02** | Approve deleting the old Brevo objects listed in 06 | Yes / no / by hand | Yes, exact list in 06; sent campaigns kept | Needs API access or KT by hand |
 | **D-03** | The two non-KT contacts: check their Brevo timeline | Keep as job-alert only / remove | Check first; if no consent source, remove | Rule C-3 |
-| **D-04** | Domain and mailbox | Buy a domain now / wait | Buy before any public send; choose the name; mailbox by forwarding to Gmail at first | Deliverability gate: no public send until done |
+| **D-04** | Domain and mailbox | **DECIDED by KT, 24 Oct: no domain for now; send from the Gmail sender** | Revisit when affordable; watch complaints and bounces in the meantime | Residual risk accepted (RK-1, RK-23) |
 | **D-05** | Add "tips and offers" unticked box to the signup form | Yes / no | Yes; keeps the two purposes clean | Without it the tips list grows only from other forms |
 | **D-06** | Free-check weekly cap and turnaround time | A number | KT picks (docs suggest about 10 a week); publish both | RK-11 |
 | **D-07** | Free-check form: build it | Yes / keep WhatsApp-only | Yes: it captures email, consent and the quota count | Without it, no consent record for check requesters |
 | **D-08** | Order intake form: build it | Yes / keep WhatsApp onboarding | Yes: gives structured details and the consent box | Same |
 | **D-09** | Lead magnet (a one-page "10-minute CV self-check" on the site) | Approve / skip | Optional, after S3; no attachment, a web page | Brief lists it as "if approved" |
 | **D-10** | Level field on the signup form (optional, one select) | Yes / no | Yes; used to weight the digest; never inferred | Personalisation without sensitive inference |
-| **D-11** | Double opt-in | Keep single / add | Keep single now; revisit at 2% bounce or after domain | KT's earlier decision stands |
+| **D-11** | Double opt-in | Keep single / add | **Reopened by test T5: add double opt-in to the signup form** (one confirmation email stops strangers undoing an unsubscribe) | See 14-test-results.md and 12, Part A |
 | **D-12** | Counsel review before the first public send | Yes / no / budget | Yes, a one-hour review of the RK items in 08 | Not legal advice from me |
 | **D-13** | Brevo API key | Keep / revoke | Not needed after one-off setup; revoke afterwards; restore IP allow-list | RK-15 |
 | **D-14** | Who builds the four automations and three forms in the Brevo dashboard | KT with my click-by-click steps / I guide live | KT with steps | No API for automations (F22) |

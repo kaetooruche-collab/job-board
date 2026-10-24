@@ -142,9 +142,11 @@ def render_html(email, preview_mode=True, digest_cards=None, n_total=None, shown
     btn = button_html(email["cta"][0].replace("{N}", str(n_total or 6)), url) if url else ""
     sign = f'<p class="tx" style="margin:0;font-size:17px;line-height:1.5;color:{C["tx"]};">Best,<br><strong>{ed.SIGN}</strong></p>'
     unsub = "#unsubscribe-link-goes-here" if preview_mode else "{{ unsubscribe }}"
-    foot = (f'<p style="margin:0 0 8px;">{FOOT[email["cls"]]}</p>'
+    jobs_only = ('<p style="margin:0 0 8px;">Only want the weekly job email? Reply &ldquo;jobs only&rdquo; and we&rsquo;ll stop the tips. '
+                 'The unsubscribe link below stops everything.</p>') if email["cls"] == "P" else ""
+    foot = (f'<p style="margin:0 0 8px;">{FOOT[email["cls"]]}</p>' + jobs_only +
             f'<p style="margin:0 0 8px;">{html.escape(ed.ADDRESS)}</p>'
-            f'<p style="margin:0;">Replies come to a real inbox. <a href="{unsub}" style="color:{C["mut"]};text-decoration:underline;">Unsubscribe</a> '
+            f'<p style="margin:0;">Replies come to a real inbox. <a href="{unsub}" style="color:{C["mut"]};text-decoration:underline;">Unsubscribe from all our emails</a> '
             f'(one tap) &middot; <a href="{ed.SITE}/privacy" style="color:{C["mut"]};text-decoration:underline;">Privacy</a></p>')
     return shell(subject, email["preview"], head + "\n" + body + "\n" + btn + "\n" + sign, foot)
 
