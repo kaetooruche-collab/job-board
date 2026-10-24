@@ -15,7 +15,7 @@ Brevo emails: designed as a calm single-column letter (see `copy/00-design-and-v
 | Trigger | Contact added to list 'Career tips' |
 | Entry conditions | Tips consent recorded (CONSENT_TIPS_AT set); not blocklisted |
 | Permission | Tips and offers |
-| Timing | Immediately |
+| Timing | 1 day after they join (so a signup with the tips box ticked does not also get the welcome email in the same minute) |
 | Frequency | Counts toward the cap of 2 promotional emails per rolling 14 days |
 | Exit and suppression | Free-check request or order (series stops), unsubscribe (a blocklisted contact never receives any Brevo email) |
 | Failure handling | If the contact has no CONSENT_TIPS_AT, the audit flags it; remove from list |
@@ -53,7 +53,7 @@ Rendered preview: `preview/CT-1.html`
 | Trigger | 7 days after CT-1 |
 | Entry conditions | Still on 'Career tips'; has not requested a check or ordered |
 | Permission | Tips and offers |
-| Timing | Day 7 (keeps the cap of 2 per 14 days) |
+| Timing | Day 8 after joining (keeps the cap of 2 per 14 days) |
 | Frequency | Counts toward the cap |
 | Exit and suppression | Free-check request or order, unsubscribe (a blocklisted contact never receives any Brevo email) |
 | Failure handling | Skip if CT-1 was not delivered |
@@ -97,7 +97,7 @@ Rendered preview: `preview/CT-2.html`
 | Trigger | 9 days after CT-2 (day 16) |
 | Entry conditions | Still on 'Career tips'; no check or order |
 | Permission | Tips and offers |
-| Timing | Day 16 (a window of any 14 days holds at most 2 emails) |
+| Timing | Day 17 after joining (a window of any 14 days holds at most 2 emails) |
 | Frequency | Last email of the series; then monthly tips |
 | Exit and suppression | Free-check request or order, unsubscribe; end of series (a blocklisted contact never receives any Brevo email) |
 | Failure handling | Skip if the contact has ordered |

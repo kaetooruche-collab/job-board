@@ -96,8 +96,8 @@ class Library(unittest.TestCase):
                 self.assertNotIn(name, t, e["id"])
 
     def test_promotional_cap_design(self):
-        # tips series timing: CT-1 day 0, CT-2 day 7, CT-3 day 16 -> any 14-day window holds at most 2 emails
-        days = [0, 7, 16]
+        # tips series timing: CT-1 day 1, CT-2 day 8, CT-3 day 17 after joining -> any 14-day window holds at most 2 emails
+        days = [1, 8, 17]
         for start in range(0, 20):
             self.assertLessEqual(sum(1 for d in days if start <= d < start + 14), 2)
 

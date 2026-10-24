@@ -28,13 +28,13 @@ Brevo: **Automations, Create an automation**. Two ways: build by hand, or open *
 | # | Name | Trigger | Steps |
 |---|---|---|---|
 | AU-1 | `YC2 AU-1 Job alerts welcome` | Contact added to list **Job alerts** | Send template **74** now. End. |
-| AU-2 | `YC2 AU-2 Tips series` | Contact added to list **Career tips** | Send **75**. Wait **7 days**. Send **76**. Wait **9 days**. Send **77**. End. |
+| AU-2 | `YC2 AU-2 Tips series` | Contact added to list **Career tips** | **Wait 1 day.** Send **75**. Wait **7 days**. Send **76**. Wait **9 days**. Send **77**. End. |
 | AU-3 | `YC2 AU-3 Free-check follow-up` | Contact added to list **Check result sent** | Wait **4 days**. Condition: contact is in list **Career tips** AND not in list **Order completed**. If yes, send **82**. End. |
 | AU-4 | `YC2 AU-4 After the order` | Contact added to list **Order completed** | Wait **21 days**. Condition: in **Career tips**. If yes: if attribute **LAST_PACKAGE** is *essential* send **83**; if *professional* send **84**; if *executive* skip. Wait **39 days**. Condition: in **Career tips**. If yes, send **85**. End. |
 
 AI-builder sentences (paste one at a time):
 - AU-1: "When a contact is added to the list Job alerts, send the template YC2 | JA-1 Job alerts welcome, then end."
-- AU-2: "When a contact is added to the list Career tips, send template YC2 | CT-1, wait 7 days, send template YC2 | CT-2, wait 9 days, send template YC2 | CT-3, then end."
+- AU-2: "When a contact is added to the list Career tips, wait 1 day, send template YC2 | CT-1, wait 7 days, send template YC2 | CT-2, wait 9 days, send template YC2 | CT-3, then end."
 - AU-3: "When a contact is added to the list Check result sent, wait 4 days, then if the contact is in the list Career tips and not in the list Order completed, send template YC2 | FC-1, then end."
 - AU-4: "When a contact is added to the list Order completed, wait 21 days, then if the contact is in the list Career tips and the attribute LAST_PACKAGE is essential send template YC2 | CU-1-ES, or if it is professional send template YC2 | CU-1-PRO. Then wait 39 days and, if the contact is in the list Career tips, send template YC2 | CU-2, then end."
 
