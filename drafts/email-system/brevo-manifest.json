@@ -1,0 +1,11 @@
+{
+  "note": "Objects Claude created in Brevo for the email-system rebuild (24 Oct 2026). Sender id 4 (Yireh Careers), reply-to yirehcareers@gmail.com. HTML source: drafts/email-system/brevo/<ID>.html, built from scripts/email_data.py. Update with templates_update_smtp_template when copy changes; never edit in Brevo's editor.",
+  "templates": {
+    "74": {"email": "JA-1", "name": "YC2 | JA-1 Job alerts welcome"},
+    "75": {"email": "CT-1", "name": "YC2 | CT-1 Tips: one thing to check tonight"},
+    "76": {"email": "CT-2", "name": "YC2 | CT-2 Tips: using AI for your CV"},
+    "77": {"email": "CT-3", "name": "YC2 | CT-3 Tips: what we do, don't do, cost"}
+  },
+  "not_yet_created": ["JA-R", "CT-M1", "CT-M2", "CT-M3", "FC-1", "CU-1-ES", "CU-1-PRO", "CU-2"],
+  "tests_sent": [{"template": 74, "to": "kaetooruche@gmail.com", "result": "delivered to Gmail Updates tab, merge tag and link rewriting worked; headers not visible through the connector (T6 open)"}]
+}

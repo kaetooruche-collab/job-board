@@ -15,6 +15,22 @@ Claude built: the Yireh Careers rebrand, the free address https://yirehcareers.v
 - [ ] **When you can afford a domain**: tell Claude; the address is changed in one pass (a domain, the share tags, the redirect and the monitor).
 - [ ] **Later, not blocking launch**: register a company (accountant), then the trademark and Whop live setup; the privacy page wording is updated when the company exists.
 
+## 0a. Email and WhatsApp setup (24 Oct 2026)
+- [ ] **Gmail: set up the service-email templates** (the rewritten set is `drafts/email-system/copy/05-operational.md`; wait for the blueprint approval, it replaces `drafts/gmail-customer-emails.md`) (10 minutes, on a computer; instructions are at the top of that file). This is how order, onboarding, delivery, completion and privacy emails get sent. Only KT.
+- [ ] **WhatsApp Business profile:** follow `drafts/whatsapp-business-setup.md` (copy and paste, about 30 minutes) with the pictures in `drafts/whatsapp-profile/`. Decide your reply hours first (the away message has a bracket for it). Only KT.
+- [ ] **Start the enquiry log** (`drafts/enquiry-log-template.csv`, no names). Only KT.
+- [ ] **Decide whether to review the website copy** against `drafts/voice-and-copy-guide.md` (Claude proposes before/after for the main blocks; changing the live site needs your yes).
+
+## 0c. Brevo email system rebuild (24 Oct 2026; blueprint in `drafts/email-system/`, start at its README)
+- [ ] **TODAY, in Brevo > Automations: look at #3, #9 and #10** (made with Brevo's AI builder). If any is switched on and triggered by a list, pause it until the new design is approved, so no old wording reaches subscribers. Only KT.
+- [ ] **Check the two non-KT contacts in list 11** (created 14 and 18 Sept): does the contact timeline show a form signup? If not, tell Claude (they get no promotional email). Only KT.
+- [ ] **Read the blueprint and decide D-01 to D-15** (`drafts/email-system/10-roadmap-and-decisions.md`; each has a recommendation). Nothing is built, sent or deleted until you approve. Only KT.
+- [ ] **Open `drafts/email-system/preview/index.html` in a browser** and read `copy/05-operational.md`; mark anything that sounds stiff. Only KT.
+- [ ] **Domain:** choose and buy a sending domain before any public send (decision D-04). Only KT.
+- [ ] **After approval:** build 3 forms and 4 automations in the Brevo dashboard from Claude's click-by-click steps (about 2 to 3 hours); the API key can then be revoked and IP blocking restored.
+- [ ] **Free CV check:** decide the weekly cap and turnaround (D-06) so the site's "limited number each week" line is true.
+- [ ] **Qualified review (one hour) of the risk items in `08-risk-register.md`** before the first public send (D-12).
+
 ## 0b. Strategy validation (24 Oct 2026; see `drafts/decisions/2026-10-24-board-strategy-icp-inventory-seniority.md`)
 - [ ] **List the groups and pages you will post in**: roughly how many members, which countries, and whether they are mostly students, graduates or working professionals. This decides whether we need jobs open to non-US readers. Only KT.
 - [ ] **Log every free CV check request** (date, career stage, country, ordered yes/no). Claude can set up the sheet; you fill it in. Only KT.
