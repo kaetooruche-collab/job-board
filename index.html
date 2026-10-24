@@ -938,17 +938,16 @@
     <section class="cta-section" id="subscribe">
       <h2>Get verified remote jobs in your inbox</h2>
       <p>A weekly shortlist of real, link-checked remote opportunities. No spam, no broken links.</p>
-      <iframe name="brevo-frame" style="display:none;" title="Form submission target"></iframe>
-      <form class="cta-form" id="signup-form" method="POST" action="https://83bc9f70.sibforms.com/serve/MUIFACGtGEoSn3jE56VZDDnLlJfzppyzZA-kCNtZs5AVp3x6KjQpqE8k2RWMDh87O7Jj0GsjLaIKPZ2WsaIz3zujHnUuyrMu_xeAOzQoYbeHMWABgo4IoRDJC-41RXhrS1FjKwLPt2S_pHGlOkXOEkxZmI73tuqKaQ8OmTJyTBasS2XQqJE7HSgIA0fOVUijmMpYS-p1Hq4zeg3VHg==" target="brevo-frame" onsubmit="handleSignup()">
+      <form class="cta-form" id="signup-form" method="POST" action="https://83bc9f70.sibforms.com/serve/MUIFACGtGEoSn3jE56VZDDnLlJfzppyzZA-kCNtZs5AVp3x6KjQpqE8k2RWMDh87O7Jj0GsjLaIKPZ2WsaIz3zujHnUuyrMu_xeAOzQoYbeHMWABgo4IoRDJC-41RXhrS1FjKwLPt2S_pHGlOkXOEkxZmI73tuqKaQ8OmTJyTBasS2XQqJE7HSgIA0fOVUijmMpYS-p1Hq4zeg3VHg==" onsubmit="return handleSignup(event)">
         <input type="email" placeholder="Your email address" id="email-input" name="EMAIL" required aria-label="Email address">
         <input type="text" name="email_address_check" value="" style="display:none;" tabindex="-1" aria-hidden="true">
         <input type="hidden" name="locale" value="en">
         <input type="hidden" name="html_type" value="simple">
-        <button type="submit">Subscribe Free</button>
+        <button type="submit" id="signup-btn">Send me the weekly job email</button>
       </form>
-      <p id="signup-msg" style="margin-top:0.75rem; font-size:0.85rem; display:none;"></p>
+      <p id="signup-msg" role="status" aria-live="polite" style="margin-top:0.75rem; font-size:0.85rem; display:none;"></p>
       <p class="cta-social-proof">Join job seekers worldwide who trust Yireh Careers for verified opportunities.</p>
-      <p style="margin-top:0.5rem; font-size:0.8rem; opacity:0.85;">By subscribing you agree to receive our weekly job email. You can unsubscribe at any time. <a href="/privacy" style="color:inherit; text-decoration:underline;">Privacy policy</a></p>
+      <p style="margin-top:0.5rem; font-size:0.8rem; opacity:0.85;">We'll send you the weekly job email, and every one has a one-tap unsubscribe. <a href="/privacy" style="color:inherit; text-decoration:underline;">Privacy policy</a></p>
     </section>
 
     <!-- SERVICES -->
@@ -1346,13 +1345,30 @@
       }
     }
 
-    function handleSignup() {
+    // The Brevo form cannot be read across sites, so we never claim certainty: a network failure shows an error,
+    // anything else says what to expect and where to ask. (Fixes the old message that said "You're in" before Brevo answered.)
+    async function handleSignup(ev) {
+      ev.preventDefault();
+      var form = ev.target;
       var msg = document.getElementById('signup-msg');
-      var emailInput = document.getElementById('email-input');
-      msg.textContent = "You're in! Check your inbox.";
+      var btn = document.getElementById('signup-btn');
+      var email = (window.SITE && SITE.email) || 'yirehcareers@gmail.com';
+      btn.disabled = true;
       msg.style.display = 'block';
-      msg.style.color = '#86efac';
-      setTimeout(function() { emailInput.value = ''; }, 100);
+      msg.style.color = '#e2e8f0';
+      msg.textContent = 'Sending...';
+      try {
+        await fetch(form.action, { method: 'POST', mode: 'no-cors', body: new URLSearchParams(new FormData(form)) });
+        msg.textContent = "Thanks. Your welcome email should arrive in a few minutes. If it doesn't, check your spam folder or email us at " + email + ".";
+        form.reset();
+      } catch (err) {
+        msg.style.color = '#fecaca';
+        msg.textContent = "That didn't go through. Please try again, or email us at " + email + ".";
+        btn.disabled = false;
+        return false;
+      }
+      btn.disabled = false;
+      return false;
     }
 
     async function loadPlatforms() {

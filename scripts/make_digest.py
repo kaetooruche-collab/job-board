@@ -1,9 +1,10 @@
 """Builds the weekly jobs email from jobs.json: data/weekly_digest.html and data/weekly_digest.txt.
 Run: python3 scripts/make_digest.py
+Copy and design now live in scripts/email_data.py (JA-D) and scripts/email_render.py (see drafts/email-system/).
 Rules (CLAUDE.md copy rules + drafts/voice-and-copy-guide.md): only roles that read as remote and were posted in the last 7 days;
 one per company; clear eligibility first; a spread of levels; no promotion inside the digest; every link goes to the employer's own posting.
-KT sends the campaign by hand in Brevo (list: Job alert subscribers; exclude: Do not send)."""
-import json, os, html, datetime as D
+KT sends the campaign by hand in Brevo to the list "Job alerts" (Brevo skips blocklisted contacts automatically)."""
+import json, os, sys, html, datetime as D
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SITE = "https://yirehcareers.vercel.app"
@@ -13,6 +14,7 @@ EARLY = ("internship", "entry", "junior")
 LEVEL = {"internship": "Internship", "entry": "Entry level", "junior": "Junior", "mid": "Mid level",
          "senior": "Senior", "leadership": "Leadership", "unspecified": "Level not stated"}
 TOTAL = 6
+MIN_SHOWN = 3   # fewer than this: skip the week (email JA-D failure rule)
 
 
 def load():
@@ -68,59 +70,30 @@ def ago(r, now):
 
 
 def build(rows=None, now=None):
+    """Returns (html, subject, preview, sections, new_total, now). Copy and design: scripts/email_data.py (JA-D) and scripts/email_render.py."""
+    import email_data as ed
+    import email_render as er
     rows = rows or load()
     now = now or D.datetime.now(D.timezone.utc)
     sections, new_total = pick(rows, now)
-    shown = sum(len(i) for _, i in sections)
-    e = lambda s: html.escape(s or "", quote=True)
-    body = []
-    body.append('<p style="margin:0 0 14px;">Hi {{ contact.FIRSTNAME | default:"there" }},</p>')
-    body.append(f'<p style="margin:0 0 18px;">{new_total} new remote jobs went up this week. Here are {shown} to start with. Each one links to the employer\'s own posting.</p>')
-    for name, items in sections:
-        body.append(f'<p style="margin:18px 0 8px;font:700 13px Arial,Helvetica,sans-serif;letter-spacing:.06em;text-transform:uppercase;color:#1d4f91;">{e(name)}</p>')
-        for r in items:
-            pay = f' · {e(r["salaryText"])}' if r.get("salaryText") else ""
-            label = (r.get("eligibility") or {}).get("label") or "Eligibility unclear"
-            body.append(
-                '<div style="margin:0 0 14px;padding:0 0 14px;border-bottom:1px solid #e3e9f3;">'
-                f'<a href="{e(r["sourceUrl"])}" style="font-weight:700;font-size:17px;color:#1d4f91;text-decoration:none;">{e(r["title"].strip())}</a>'
-                f'<div style="font-size:14px;color:#55627a;margin-top:2px;">{e(r["company"])} · {e(LEVEL.get(r["level"], ""))} · Who can apply: {e(label)}{pay} · Posted {ago(r, now)}</div></div>')
-    body.append('<p style="margin:6px 0 14px;font-size:14px;color:#55627a;">Employers decide who they can hire, so check their rules for your country before you apply.</p>')
-    cta = f"{SITE}/?utm_source=brevo&utm_medium=email&utm_campaign=weekly-digest"
-    subject = f"This week's remote jobs: {shown} to start with"
-    preview = f"{new_total} new listings, each linked to the employer's own posting."
-    doc = f"""<!DOCTYPE html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="color-scheme" content="light dark"><meta name="supported-color-schemes" content="light dark">
-<title>Yireh Careers</title>
-<style>
-@media (prefers-color-scheme: dark){{ .bg{{background:#0b1220!important}} .card{{background:#131c2e!important}} .tx{{color:#e6ebf5!important}} }}
-@media only screen and (max-width:620px){{ .wrap{{width:100%!important}} .pad{{padding:22px 18px!important}} }}
-</style></head>
-<body class="bg" style="margin:0;padding:0;background:#eef2f8;">
-<div style="display:none;max-height:0;overflow:hidden;opacity:0;">{html.escape(preview, quote=False)}</div>
-<table role="presentation" width="100%" cellpadding="0" cellspacing="0" class="bg" style="background:#eef2f8;"><tr><td align="center" style="padding:24px 12px;">
-<table role="presentation" class="wrap" width="600" cellpadding="0" cellspacing="0" style="width:600px;max-width:100%;">
-<tr><td style="background:#0f2a4d;padding:18px 28px;border-radius:12px 12px 0 0;font:700 20px Arial,Helvetica,sans-serif;color:#ffffff;">Yireh Careers</td></tr>
-<tr><td class="card pad" style="background:#ffffff;padding:28px;font:16px/1.65 Arial,Helvetica,sans-serif;color:#1b2536;">
-<div class="tx">{''.join(body)}
-<p style="margin:22px 0 22px;"><a href="{cta}" style="display:inline-block;background:#1d4f91;color:#ffffff;text-decoration:none;font-weight:700;padding:13px 24px;border-radius:8px;">See all {new_total} new jobs</a></p>
-<p style="margin:0;">Thanks,<br><strong>The Yireh Careers team</strong></p></div></td></tr>
-<tr><td style="background:#0f2a4d;padding:18px 28px;border-radius:0 0 12px 12px;font:12.5px/1.6 Arial,Helvetica,sans-serif;color:#b9cdea;">
-<p style="margin:0;">Reply to this email any time, or message us on WhatsApp: <a href="https://wa.me/{WA}" style="color:#9db4d6;">+90 533 822 5854</a></p>
-<p style="margin:6px 0 0;">{ADDR}</p>
-<p style="margin:6px 0 0;">You're getting this because you signed up with Yireh Careers. <a href="{{{{ unsubscribe }}}}" style="color:#9db4d6;">Unsubscribe</a></p></td></tr>
-</table></td></tr></table></body></html>"""
+    cards, new_total, shown = er.render_digest_cards(sections, new_total, now, sys.modules[__name__])
+    email = next(e for e in ed.EMAILS if e["id"] == "JA-D")
+    doc = er.render_html(email, preview_mode=False, digest_cards=cards, n_total=new_total, shown=shown)
+    subject = email["subject"].replace("{N}", str(new_total))
+    preview = email["preview"]
     return doc, subject, preview, sections, new_total, now
 
 
 def main():
     doc, subject, preview, sections, new_total, now = build()
+    if sum(len(i) for _, i in sections) < MIN_SHOWN:
+        print(f"Only {sum(len(i) for _, i in sections)} qualifying roles: skip this week, do not send an empty digest.")
+        return
     out = os.path.join(ROOT, "data")
     open(os.path.join(out, "weekly_digest.html"), "w", encoding="utf-8").write(doc)
     name = "Weekly jobs " + now.strftime("%Y-%m-%d")
     open(os.path.join(out, "weekly_digest.txt"), "w", encoding="utf-8").write(
-        f"Campaign name: {name}\nSubject: {subject}\nPreview text: {preview}\nList: Job alert subscribers. Exclude: Do not send.\n"
+        f"Campaign name: {name}\nSubject: {subject}\nPreview text: {preview}\nList: Job alerts. Class S (consent: job alerts); no promotion inside.\n"
         "Suggested send: Tuesday morning, then compare with another day (no evidence yet for the best day).\n\n" +
         "\n".join(f"[{n}] {r['title']} at {r['company']} ({r['level']}, {(r.get('eligibility') or {}).get('label')}) {r['sourceUrl']}" for n, i in sections for r in i) + "\n")
     print(name, "|", subject, "|", sum(len(i) for _, i in sections), "jobs shown of", new_total, "new this week")
