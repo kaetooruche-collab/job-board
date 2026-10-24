@@ -1,13 +1,87 @@
 {
   "note": "State of the Brevo account after the API build of 24 Oct 2026. Sender id 4 (Yireh Careers), reply-to yirehcareers@gmail.com. Template HTML source: drafts/email-system/brevo/<ID>.html, built from scripts/email_data.py with scripts/email_render.py. To change copy: edit the data file, rebuild, then PUT /v3/smtp/templates/<id> (do not edit in Brevo's editor).",
-  "lists": {"11": "Job alerts (3 contacts)", "18": "Career tips", "19": "Check result sent (marker)", "20": "Order completed (marker)"},
-  "attributes_created": ["CONSENT_JOBS_AT", "CONSENT_JOBS_SRC", "CONSENT_TIPS_AT", "CONSENT_TIPS_SRC", "LEVEL_INTEREST", "STAGE", "LAST_PACKAGE", "COMPLETED_ON"],
-  "templates": {
-    "74": "JA-1", "75": "CT-1", "76": "CT-2", "77": "CT-3", "78": "JA-R", "79": "CT-M1", "80": "CT-M2",
-    "81": "CT-M3", "82": "FC-1", "83": "CU-1-ES", "84": "CU-1-PRO", "85": "CU-2"
+  "lists": {
+    "11": "Job alerts (3 contacts)",
+    "18": "Career tips",
+    "19": "Check result sent (marker)",
+    "20": "Order completed (marker)"
   },
-  "deleted": {"lists": [12, 13, 14, 15, 16, 17], "campaigns": [19, 53], "templates": [63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73]},
-  "left_alone": {"campaigns": [17, 18], "templates": "1, 2, 5-16, and 54-61 (KT's automation steps)", "lists": "6-10"},
-  "tests_sent": [{"template": 74, "to": "kaetooruche@gmail.com", "result": "delivered to Gmail Updates tab; first-name merge and link rewriting worked; headers not visible (T6 open)"}],
-  "not_possible_via_api": ["automations", "forms", "segments creation", "account activity log (Enterprise)", "consent groups (not enabled)"]
+  "attributes_created": [
+    "CONSENT_JOBS_AT",
+    "CONSENT_JOBS_SRC",
+    "CONSENT_TIPS_AT",
+    "CONSENT_TIPS_SRC",
+    "LEVEL_INTEREST",
+    "STAGE",
+    "LAST_PACKAGE",
+    "COMPLETED_ON"
+  ],
+  "templates": {
+    "74": "JA-1",
+    "75": "CT-1",
+    "76": "CT-2",
+    "77": "CT-3",
+    "78": "JA-R",
+    "79": "CT-M1",
+    "80": "CT-M2",
+    "81": "CT-M3",
+    "82": "FC-1",
+    "83": "CU-1-ES",
+    "84": "CU-1-PRO",
+    "85": "CU-2"
+  },
+  "deleted": {
+    "lists": [
+      12,
+      13,
+      14,
+      15,
+      16,
+      17
+    ],
+    "campaigns": [
+      19,
+      53
+    ],
+    "templates": [
+      63,
+      64,
+      65,
+      66,
+      67,
+      68,
+      69,
+      70,
+      71,
+      72,
+      73
+    ]
+  },
+  "left_alone": {
+    "campaigns": [
+      17,
+      18
+    ],
+    "templates": "1, 2, 5-16, and 54-61 (KT's automation steps)",
+    "lists": "6-10"
+  },
+  "tests_sent": [
+    {
+      "template": 74,
+      "to": "kaetooruche@gmail.com",
+      "result": "delivered to Gmail Updates tab; first-name merge and link rewriting worked; headers not visible (T6 open)"
+    }
+  ],
+  "not_possible_via_api": [
+    "automations",
+    "forms",
+    "segments creation",
+    "account activity log (Enterprise)",
+    "consent groups (not enabled)"
+  ],
+  "campaigns_left": {
+    "86": "TEST T7 delete me (sent to one test address; cannot be deleted via API)"
+  },
+  "templates_updated": "All 12 got sender name 'Yireh Careers' and the 'Unsubscribe from all our emails' footer (24 Oct)",
+  "automation_step_templates_54_61": "Cannot be deleted through the API (automation-owned); KT deletes in dashboard or leaves as orphans"
 }

@@ -20,6 +20,15 @@
           "value": "noindex, nofollow"
         }
       ]
+    },
+    {
+      "source": "/subscribed",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        }
+      ]
     }
   ],
   "redirects": [

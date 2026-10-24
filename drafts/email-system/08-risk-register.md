@@ -4,7 +4,7 @@ Status: PROPOSED (Phase 11 deliverable 10). Likelihood and impact are **judgemen
 
 | ID | Risk | L | I | Mitigation in the design | Owner | Status after approval |
 |---|---|---|---|---|---|---|
-| RK-1 | Marketing from a Gmail-based identity that Brevo cannot sign lands in spam or is throttled (F10; inference) | M | H | Buy and authenticate a domain before any public send (06); test headers (T6); no public campaign until done | KT | Open: needs D-04 |
+| RK-1 | Marketing from a Gmail-based identity that Brevo cannot sign lands in spam or is throttled (F10; inference). **Tested 24 Oct: DKIM, SPF and DMARC pass for Brevo's own domain; first emails reached the Gmail inbox (Updates and Promotions). KT accepted the residual risk and has no domain for now.** | L | H | Buy and authenticate a domain before any public send (06); test headers (T6); no public campaign until done | KT | Open: needs D-04 |
 | RK-2 | 300 emails a day cap hit by tests plus digest plus automations (F18) | L now, M later | M | Count tests; trigger to upgrade or stagger (09); never requeue in a hurry | KT | Monitor |
 | RK-3 | Plan limits assumed wrongly (2,000 automation contacts unverified, F19; Free-plan features) | M | M | Read the plan page logged in before building; tests T3, T4 | KT + Claude | Open |
 | RK-4 | The two non-KT contacts have no recorded consent source | H | M | Rule C-3: no digest or promotion until KT confirms source; otherwise remove | KT | Open: needs KT check |
@@ -29,6 +29,8 @@ Status: PROPOSED (Phase 11 deliverable 10). Likelihood and impact are **judgemen
 | RK-23 | Sender domain never bought; the system launches without it | M | H | Hard gate: no public send until done (10, D-04) | KT | Open |
 | RK-24 | System becomes too complex for one person to run | M | M | Option A, four lists, eight attributes, four automations; weekly checklist | Claude | Designed in |
 | RK-25 | Messaging people first on WhatsApp breaks the platform's policy (not verified here) | L | M | No design depends on business-initiated WhatsApp messages | Claude | Designed out |
+| RK-27 | The signup form re-subscribes a blocklisted address when anyone re-submits it (**confirmed by test T5**), so a stranger or bot can undo an opt-out or complaint | H | H | Double opt-in on the signup form (decision D-11); never script a blocklist change; weekly audit lists blocklisted contacts | KT | Open: needs KT's yes |
+| RK-28 | Brevo's unsubscribe is global (**confirmed by test T7**): unsubscribing from tips also stops the weekly job email | H | M | Footer says so; manual 'jobs only' reply route; no per-list link promised | Claude | Designed in |
 | RK-26 | Site-wide copy (for example "We cannot promise ..." five times) contradicts the new voice | H | L | Later review against `voice-and-copy-guide.md` (flagged by KT) | Claude | Deferred |
 
 ## Deliverability controls checklist (Phase 12 acceptance)

@@ -1345,27 +1345,28 @@
       }
     }
 
-    // The Brevo form cannot be read across sites, so we never claim certainty: a network failure shows an error,
-    // anything else says what to expect and where to ask. (Fixes the old message that said "You're in" before Brevo answered.)
+    // Brevo's form answers our origin with JSON ({"success":true|false,"message":...}), so we show the real outcome.
+    // If the answer cannot be read (network or browser problem) we say so instead of claiming success.
     async function handleSignup(ev) {
       ev.preventDefault();
       var form = ev.target;
       var msg = document.getElementById('signup-msg');
       var btn = document.getElementById('signup-btn');
       var email = (window.SITE && SITE.email) || 'yirehcareers@gmail.com';
+      function show(text, bad) { msg.style.display = 'block'; msg.style.color = bad ? '#fecaca' : '#e2e8f0'; msg.textContent = text; }
       btn.disabled = true;
-      msg.style.display = 'block';
-      msg.style.color = '#e2e8f0';
-      msg.textContent = 'Sending...';
+      show('Sending...', false);
       try {
-        await fetch(form.action, { method: 'POST', mode: 'no-cors', body: new URLSearchParams(new FormData(form)) });
-        msg.textContent = "Thanks. Your welcome email should arrive in a few minutes. If it doesn't, check your spam folder or email us at " + email + ".";
-        form.reset();
+        var res = await fetch(form.action, { method: 'POST', headers: { 'Accept': 'application/json' }, body: new URLSearchParams(new FormData(form)) });
+        var data = await res.json();
+        if (data && data.success === true) {
+          show("Thanks, you're on the list. Your weekly job email will arrive in your inbox.", false);
+          form.reset();
+        } else {
+          show("That didn't work. Please check the email address and try again, or email us at " + email + ".", true);
+        }
       } catch (err) {
-        msg.style.color = '#fecaca';
-        msg.textContent = "That didn't go through. Please try again, or email us at " + email + ".";
-        btn.disabled = false;
-        return false;
+        show("We couldn't confirm that it went through. Please try again, or email us at " + email + ".", true);
       }
       btn.disabled = false;
       return false;

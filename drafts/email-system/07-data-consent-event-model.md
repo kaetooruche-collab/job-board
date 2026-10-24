@@ -76,8 +76,8 @@ Retention: follows the privacy page (30 days for checks, 90 days after completio
 - **C-5** A purchase authorises P3 only. It never activates P2. Customers join P2 only via the unticked box on the order intake form (or a later signup form).
 - **C-6** We do **not** email existing contacts asking them to opt in (F13, F14). Consent is collected at the form, once.
 - **C-7** Service emails carry no promotion (F15, F12). Where a single sentence follows published terms (day-30 Growth continuation), it is flagged for review (RK-6).
-- **C-8** Suppression is applied within 2 days (target same day) and is never reversed by another form, import or script (F11, F15, F23).
-- **C-9** Withdrawing from P2 does not withdraw from P1 and vice versa (test T7).
+- **C-8** Suppression is applied within 2 days (target same day) and is never reversed by an import or script. **Test T5 (24 Oct) showed the current signup form DOES reverse a blocklist when someone re-submits an address (RK-27); fix: double opt-in on the form, decision pending (D-11).** (F11, F15, F23)
+- **C-9** Withdrawing from P2 should not withdraw from P1. **Test T7 (24 Oct) showed Brevo's default unsubscribe page is global: one click blocklists the contact for everything (RK-28).** Design change: promotional emails offer a manual 'reply jobs only' route to stop tips only; the unsubscribe link says plainly that it stops all emails.
 - **C-10** Double opt-in is **not** a substitute for explaining the purpose.
 
 ### Wording v1 (for the three forms)
