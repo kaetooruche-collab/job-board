@@ -1,3 +1,5 @@
+> **SUPERSEDED on 24 Oct 2026 by `06-brevo-architecture.md` and `05-lifecycle-and-funnel-map.md`.** Do not follow the steps below. Kept only so KT can compare. The templates it names (63-73) are on the deletion list in 06.
+
 # Yireh Careers: Brevo build and automations
 
 Built 24 Oct 2026 (rebuild, replaces `drafts/brevo-setup-guide.md`). Account checked first: KAYZ Global Ltd (label only), Free plan, Marketing Automation enabled, sender "Yireh Careers" (id 4).
