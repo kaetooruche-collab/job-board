@@ -84,5 +84,16 @@
   },
   "templates_updated": "All 12 got sender name 'Yireh Careers' and the 'Unsubscribe from all our emails' footer (24 Oct)",
   "automation_step_templates_54_61": "Cannot be deleted through the API (automation-owned); KT deletes in dashboard or leaves as orphans",
-  "website_forms": "api/subscribe.js; env BREVO_API_KEY (Vercel, sensitive, production)"
+  "website_forms": "api/subscribe.js; env BREVO_API_KEY (Vercel, sensitive, production)",
+  "automation_step_templates": {
+    "note": "Brevo's automation builder COPIES each template into its own step template. The automations send these copies, not templates 74-85. Verified 24 Oct 2026: text, links, subject, sender and reply-to are identical to the originals. The API cannot edit or delete these copies (PUT returns 404), so a copy change means KT replaces the email inside the automation.",
+    "87": "AU-1 step 2 = copy of 74 (JA-1)",
+    "88": "AU-2 step 2 = copy of 75 (CT-1)",
+    "89": "AU-2 step 4 = copy of 76 (CT-2)",
+    "90": "AU-2 step 6 = copy of 77 (CT-3)",
+    "91": "AU-3 step 4 = copy of 82 (FC-1)",
+    "92": "AU-4 step 4 = copy of 83 (CU-1-ES)",
+    "93": "AU-4 step 6 = copy of 84 (CU-1-PRO)",
+    "94": "AU-4 step 10 = copy of 85 (CU-2)"
+  }
 }

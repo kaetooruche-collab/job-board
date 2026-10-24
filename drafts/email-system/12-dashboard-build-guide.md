@@ -42,6 +42,8 @@ AI-builder sentences (paste one at a time):
 
 Hand-sent campaigns (no automation): **78** JA-R (quarterly "still want these?"), **79 / 80 / 81** monthly tips, and the weekly digest (Claude generates it and creates the draft campaign; you schedule it).
 
+**Heads-up (found 24 Oct):** Brevo's builder copies each template into the automation (step templates 87-94), so the automation sends the *copy*, not templates 74-85. Claude checked all eight copies: text, links, subject and sender match the originals. The catch: if the wording is ever changed in `scripts/email_data.py`, the API can update 74-85 but **cannot** update the copies, so you would re-pick the email inside the automation. Map: 87=JA-1, 88=CT-1, 89=CT-2, 90=CT-3, 91=FC-1, 92=CU-1-ES, 93=CU-1-PRO, 94=CU-2.
+
 ## Part E · How a customer moves through (so the markers make sense)
 1. Free check done: you reply by email, then add the person to list **Check result sent** (only if they ticked tips; the automation checks).
 2. Order done: you set `LAST_PACKAGE` and `COMPLETED_ON`, then add them to **Order completed** last. Claude can do these small updates for you through the API when you say "X finished Essential" while the key is active.
