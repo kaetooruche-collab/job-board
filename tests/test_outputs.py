@@ -38,8 +38,22 @@ class WhatsAppPost(unittest.TestCase):
         items = make_outputs.pick([row(1, "A", 1), row(2, "B", 2, category="X"), row(3, "C", 3, category="Y")], NOW)
         text = make_outputs.render(items, NOW)
         self.assertIn("https://example.com/1", text)
-        self.assertIn("UTC", text)
+        self.assertIn("Posted 17 Oct on Test", text)
         self.assertIn("Pay: not stated", text)
+        self.assertIn("utm_campaign=weekly", text)
+        self.assertNotIn("UTC", text)
+
+    def test_weekly_window_is_seven_days(self):
+        rows = [row(1, "A", 100), row(2, "B", 2), row(3, "C", 200)]
+        ids = [r["id"] for r in make_outputs.pick(rows, NOW, max_age_hours=make_outputs.WEEKLY_AGE_HOURS)]
+        self.assertEqual(sorted(ids), ["j1", "j2"])
+
+    def test_open_to_all_listings_come_first(self):
+        restricted = row(1, "A", 1, category="X")
+        restricted["eligibility"] = {"type": "countries", "label": "US only"}
+        rows = [restricted] + [row(i, f"C{i}", i + 1, category=f"Cat{i}") for i in range(2, 8)]
+        ids = [r["id"] for r in make_outputs.pick(rows, NOW)]
+        self.assertNotIn("j1", ids)
 
 
 if __name__ == "__main__":

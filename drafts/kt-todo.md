@@ -17,7 +17,8 @@ Claude built: the Yireh Careers rebrand, the free address https://yirehcareers.v
 
 ## 0a. Email and WhatsApp setup (24 Oct 2026)
 - [ ] **Gmail: set up the service-email templates** (the rewritten set is `drafts/email-system/copy/05-operational.md`; wait for the blueprint approval, it replaces `drafts/gmail-customer-emails.md`) (10 minutes, on a computer; instructions are at the top of that file). This is how order, onboarding, delivery, completion and privacy emails get sent. Only KT.
-- [ ] **WhatsApp Business profile:** follow `drafts/whatsapp-business-setup.md` (copy and paste, about 30 minutes) with the pictures in `drafts/whatsapp-profile/`. Decide your reply hours first (the away message has a bracket for it). Only KT.
+- [ ] **WhatsApp Business profile:** follow `drafts/whatsapp-business-setup.md` (copy and paste, about 30 minutes). Picture: upload `drafts/whatsapp-profile/yc-mark.png` (no words; WhatsApp shows the name beside it). Then add the new quick replies `/full`, `/nocv`, `/orderform`, `/weekly`, `/stop` and replace `/check` and the greeting (they now link the free-check form). Decide your reply hours first.
+- [ ] **Weekly WhatsApp post (Tuesdays, after the weekly email):** ask Claude for "weekly post"; it comes from `data/whatsapp_post.txt` (last 7 days, 3 to 5 roles, open-to-all first, links, pay only when stated). Open two links before posting. Skip the week if it says there are not enough listings.
 - [ ] **Start the enquiry log** (`drafts/enquiry-log-template.csv`, no names). Only KT.
 - [ ] **Decide whether to review the website copy** against `drafts/voice-and-copy-guide.md` (Claude proposes before/after for the main blocks; changing the live site needs your yes).
 

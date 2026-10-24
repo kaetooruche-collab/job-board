@@ -18,6 +18,7 @@ See `drafts/whatsapp-business-setup.md` (name, category, about, description, ema
 ## 2. Greeting (automatic, first message from a new contact)
 > Hi, thanks for messaging Yireh Careers.
 > What can we help with? A free quick CV check, or one of our packages (Essential $29, Professional $49, Executive $149)? Tell us a little about the roles you're going for and we'll reply as soon as we can.
+> Want the free CV check? The quickest way is this form: https://yirehcareers.vercel.app/free-check
 
 ## 3. Away message (automatic, outside your hours)
 > Thanks for your message. We're away at the moment, but we'll reply as soon as we're back. [We usually reply within X hours on weekdays.]
@@ -31,6 +32,8 @@ Shortcut `/package`
 > *When:* [timing], counted from when we have everything we need from you.
 >
 > How would you like to pay: bank transfer (USD, EUR, GBP or TL) or cryptocurrency? Tell me and I'll send the details.
+>
+> While you decide, this short form tells us where to send your documents: https://yirehcareers.vercel.app/order?package=[essential / professional / executive]
 
 Inclusions to paste:
 - Essential: CV creation or improvement, tailored to your industry and target roles; ATS-optimised; Word and PDF; up to 2 revision rounds. Timing: 5 working days.
@@ -143,9 +146,18 @@ Shortcut `/privacy`
 ## 20. Free quick CV check: first reply
 Shortcut `/check`
 (Opens from the "Get a free CV check" buttons and the bio links. The button text is: "Hello, I would like a free quick CV check. Please tell me how to send my CV.")
-> Hi [First name], thanks for asking. Please email your CV to yirehcareers@gmail.com (not here on WhatsApp) and tell me the roles you're going for. I'll reply with the three things I'd fix first.
-> If you're happy to, tell me which country you're in and whether you're a student, a recent graduate or already working. It's optional, and it helps me tailor the check.
+> Hi [First name], thanks for asking. The quickest way is our short form: https://yirehcareers.vercel.app/free-check
+> Then email your CV to yirehcareers@gmail.com (not here on WhatsApp) and tell me the roles you're going for. I'll reply with the three things I'd fix first, within 2 working days.
 > It's one free check per person. I only use your CV for the check, and I delete it within 30 days if you don't order.
+
+## 20b. Free CV check: we're full this week
+Shortcut `/full`
+> Hi [First name], thanks for your patience. We review about 10 CVs a week and this week's spots are taken. If you'd still like a check, send the form again next week: https://yirehcareers.vercel.app/free-check
+> In the meantime, the job board is open to everyone: https://yirehcareers.vercel.app
+
+## 20c. Free CV check: form done, CV not received
+Shortcut `/nocv`
+> Hi [First name], I got your form, thank you. I haven't seen your CV yet. Could you email it to yirehcareers@gmail.com? Once it's there, I'll reply within 2 working days.
 
 ## 21. Free CV check: result and next step
 Shortcut `/checked`
@@ -210,3 +222,28 @@ Shortcut `/card`
 
 ## Update 24 Oct 2026: brand is now Yireh Careers
 Replaces "True Remote" and "Kaeto Career Services" everywhere in this library. Messages that say "I" are fine in a 1:1 chat. The email address is now yirehcareers@gmail.com (created 24 Oct); set its Gmail display name to "Yireh Careers". The WhatsApp Business display name change may need approval from WhatsApp.
+
+## Update 24 Oct 2026 (b): forms, weekly post and stop requests
+The site now has a free-check form (`/free-check`) and a private order form (`/order`). Both post to the same small function as the signup box. Each sends a notice to yirehcareers@gmail.com, so you do not need to copy details by hand. Brevo sends nothing about the free check or an order until you add the person to a list yourself.
+
+### 26. Order form link (when someone has agreed a package)
+Shortcut `/orderform`
+> Great, [First name]. To get started, please fill in this short form so we have the right email and package on file: https://yirehcareers.vercel.app/order?package=[essential / professional / executive]
+> Then email your CV and answers to yirehcareers@gmail.com. Your delivery time starts once we have everything.
+
+### 27. Weekly job email: how to get it
+Shortcut `/weekly`
+> Our weekly job email goes out on Tuesday mornings: a short list of recent remote jobs with a link to each employer's own posting. You can sign up with just your email at https://yirehcareers.vercel.app/#subscribe and unsubscribe with one tap whenever you like.
+
+### 28. Someone asks us to stop emailing or messaging them
+Shortcut `/stop`
+> Of course, [First name]. I've noted it and we won't contact you again. Emails stop within 2 days. If you only want to stop the CV tips and keep the weekly job email, just say "jobs only" and I'll do that instead.
+(After you send this: in Brevo, open the contact and blocklist them for all emails, or for "jobs only" remove them from the Career tips list. Then add a line to your do-not-contact note.)
+
+## WhatsApp rules (KT and Claude, 24 Oct 2026)
+1. **Never message first with an offer.** Reply to people who message you. Do not send promotions to numbers you collected another way. WhatsApp's own policy for business accounts is not something I could verify here, so keep it simple.
+2. **Do not ask for email consent in WhatsApp.** The signup box on the website, and the unticked tips box on the forms, are where consent is recorded. A "yes" in a chat is not recorded anywhere.
+3. **No documents on WhatsApp.** The free check and orders use email only (messages 10 and 20).
+4. **The weekly channel post** is written by `scripts/make_outputs.py` into `data/whatsapp_post.txt` (and by the post kit at `/kit`). Post it on Tuesday after the weekly email goes out, once you have opened two of its links to check they work. If it says there are not enough fresh listings, skip the week; do not pad it.
+5. **Stop requests:** reply with `/stop`, then blocklist in Brevo within 2 days.
+6. **Student or graduate:** the free check no longer asks. If someone volunteers it, fine; do not claim a role suits a background.
