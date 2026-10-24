@@ -51,7 +51,7 @@ A free job board of verified remote jobs at every experience level and in every 
 
 Revenue comes from KT's paid CV and LinkedIn services, sold by WhatsApp (+90 533 822 5854) and email. The board earns trust and traffic. Later revenue lines (a seeker plan, employer listings, partners) wait for gates; do not build them.
 
-**Name.** Yireh Careers (decided by KT on 2026-10-24; see Version 4 changes). The contact email is still trueremote.jobs@gmail.com (the single address for the website and for clients) until KT creates a new one; keep it in `site-config.js`.
+**Name.** Yireh Careers (decided by KT on 2026-10-24; see Version 4 changes). The contact email is **yirehcareers@gmail.com** (KT created it on 2026-10-24; the single mailbox for the website, clients and the Brevo sender "Yireh Careers", sender id 4); keep it in `site-config.js`. Newsletter signup is **single opt-in** (KT decided 2026-10-24). Brevo cannot authenticate Gmail addresses, so a domain is needed before sending to more than a handful of people.
 
 Already in place and to be kept:
 - Static site on Vercel (project `north_cyprus_remote_job_board`, public address yirehcareers.vercel.app). A copy of the previous site is in the folder KT downloaded (`remotenc-oct5`); ask KT for its location. Keep the visual style: navy hero, job cards, category filters, search. Remove the country-specific hero copy.

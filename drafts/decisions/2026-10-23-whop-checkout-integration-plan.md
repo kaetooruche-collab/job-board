@@ -125,7 +125,7 @@ Verified from KT's screenshots
 
 Findings
 1. The receipt gives no next step (it never says to email the CV and target roles). Claude set a customer-visible plan description with those instructions and the already-approved refund sentence on both plans. It shows in the checkout "Details" panel before payment (verified in a browser). NOT verified: whether it also appears in the receipt email (the email KT received predates the change).
-2. "Need help? contact our support team" points to Whop's support, not ours. KT to look for a support-email setting in Whop (Settings) and set it to trueremote.jobs@gmail.com; not yet checked whether the setting exists.
+2. "Need help? contact our support team" points to Whop's support, not ours. KT to look for a support-email setting in Whop (Settings) and set it to yirehcareers@gmail.com; not yet checked whether the setting exists.
 3. The receipt shows the lira amount only, no USD figure. For refunds and bookkeeping KT will see the USD value in the Whop dashboard.
 4. Not yet received from KT: where the buyer landed after paying, the Whop fee breakdown for this non-US payment (needed to test Whop's claim that adaptive pricing lowers fees), and whether the optional WhatsApp number appears under Custom fields.
 
