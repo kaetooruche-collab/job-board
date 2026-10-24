@@ -4,7 +4,7 @@ OUT = os.path.dirname(os.path.abspath(__file__))
 WA = "https://wa.me/905338225854"
 MAIL = "yirehcareers@gmail.com"
 ADDR = "Yireh Careers · Kyrenia, Northern Cyprus"
-ADDR_NEWSLETTER = "Yireh Careers · Yenice Sokak, 99300 Kyrenia, Northern Cyprus"  # postal address in marketing email footers is legally required in many places; KT to confirm which address to use
+ADDR_NEWSLETTER = "Yireh Careers · Yenice Sokak, 99300 Kyrenia, Cyprus"  # postal address in marketing email footers is legally required in many places; KT to confirm which address to use
 
 def wrap(preheader, title, body, newsletter=False):
     unsub = ('<p style="margin:10px 0 0;">You are receiving this because you signed up for job alerts. '
