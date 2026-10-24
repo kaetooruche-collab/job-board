@@ -1,6 +1,6 @@
 # Yireh Careers email system: blueprint for approval
 
-Status: **APPROVED by KT, 24 Oct 2026 ("approve all"). Phase 12 in progress; see 10 and 12.** Written 24 Oct 2026 on branch `claude/optimistic-hopper-nv0qun`, not merged. Nothing was changed in Brevo or on the live site; nothing was sent.
+Status: **APPROVED by KT, 24 Oct 2026 ("approve all"). Phase 12 in progress; see 10 and 12.** Written 24 Oct 2026. Done so far (stage 1): templates 74-77 created in Brevo (inactive until KT builds the automations), one test email to KT's own address, digest and signup message fixed in code. Nothing has been sent to any other contact, no contact was imported, no form is live.
 
 ## The design in one paragraph
 
