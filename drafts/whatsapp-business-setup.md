@@ -19,12 +19,13 @@ Everything below is ready to copy. In the Claude app, tap the copy icon on each 
 
 ## 1. Profile picture
 
-Two pictures are saved next to this file in `drafts/whatsapp-profile/`. Both keep everything inside the circle WhatsApp crops to.
+Three pictures are saved next to this file in `drafts/whatsapp-profile/` (PNG for the app, SVG for printing or editing). All keep everything inside the circle WhatsApp crops to. `preview-circles.png` shows how each looks at the sizes people will see.
 
-- `yireh-careers-whatsapp-profile.png`: the check-mark logo only (clearest at small sizes; recommended).
-- `yireh-careers-whatsapp-profile-with-name.png`: the logo with the name under it.
+- `yc-mark.png`: **recommended.** A white Y whose right arm is a light-blue tick, on a blue tile over navy. No words, so it stays clear in the small circle beside your business name (WhatsApp shows "Yireh Careers" next to the picture anyway). It matches the site's navy and blue.
+- `yc-monogram.png`: the letters YC. A good second choice if you want the initials visible.
+- `yc-mark-with-name.png`: the mark with the name under it. The words are too small to read in a chat circle, so use it for bigger places (a Facebook cover, a flyer), not WhatsApp.
 
-In the app: Settings, tap your profile picture, Edit, choose the file. The same picture works for the channel (section 8) and for TikTok, Facebook and Snapchat.
+In the app: Settings, tap your profile picture, Edit, choose the file. The same picture works for the channel (section 8) and for TikTok, Facebook and Snapchat. A plain tick on its own is avoided on purpose: it looks like WhatsApp's own read ticks and verification badge.
 
 ## 2. Business name and category
 
@@ -87,6 +88,7 @@ Greeting message (turn on, send to new contacts and people who have not written 
 ```
 Hi, thanks for messaging Yireh Careers.
 What can we help with? A free quick CV check, or one of our packages (Essential $29, Professional $49, Executive $149)? Tell us a little about the roles you're going for and we'll reply as soon as we can.
+Want the free CV check? The quickest way is this form: https://yirehcareers.vercel.app/free-check
 ```
 
 Away message (turn on, send outside your hours or always, your choice):
@@ -111,6 +113,8 @@ Hi [First name], great choice. The *[Package]* package is $[price].
 *When:* [timing], counted from when we have everything we need from you.
 
 How would you like to pay: bank transfer (USD, EUR, GBP or TL) or cryptocurrency? Tell me and I'll send the details.
+
+While you decide, this short form tells us where to send your documents: https://yirehcareers.vercel.app/order?package=[essential / professional / executive]
 ```
 
 Inclusions to paste into the brackets above:
@@ -289,9 +293,26 @@ Thanks, [First name]. I've got your request about your personal information and 
 Shortcut: `/check`
 
 ```
-Hi [First name], thanks for asking. Please email your CV to yirehcareers@gmail.com (not here on WhatsApp) and tell me the roles you're going for. I'll reply with the three things I'd fix first.
-If you're happy to, tell me which country you're in and whether you're a student, a recent graduate or already working. It's optional, and it helps me tailor the check.
+Hi [First name], thanks for asking. The quickest way is our short form: https://yirehcareers.vercel.app/free-check
+Then email your CV to yirehcareers@gmail.com (not here on WhatsApp) and tell me the roles you're going for. I'll reply with the three things I'd fix first, within 2 working days.
 It's one free check per person. I only use your CV for the check, and I delete it within 30 days if you don't order.
+```
+
+### 20b. Free CV check: we're full this week
+
+Shortcut: `/full`
+
+```
+Hi [First name], thanks for your patience. We review about 10 CVs a week and this week's spots are taken. If you'd still like a check, send the form again next week: https://yirehcareers.vercel.app/free-check
+In the meantime, the job board is open to everyone: https://yirehcareers.vercel.app
+```
+
+### 20c. Free CV check: form done, CV not received
+
+Shortcut: `/nocv`
+
+```
+Hi [First name], I got your form, thank you. I haven't seen your CV yet. Could you email it to yirehcareers@gmail.com? Once it's there, I'll reply within 2 working days.
 ```
 
 ### 21. Free CV check: result and next step
@@ -355,6 +376,31 @@ You'll see three quick questions first: your target role, whether you already ha
 After you've paid, email your current CV and target roles to yirehcareers@gmail.com (not here on WhatsApp) and we'll take it from there.
 
 One safety note: the only card link we use is the one on our website or the one sent from this number.
+```
+
+### 26. Order form link (when someone has agreed a package)
+
+Shortcut: `/orderform`
+
+```
+Great, [First name]. To get started, please fill in this short form so we have the right email and package on file: https://yirehcareers.vercel.app/order?package=[essential / professional / executive]
+Then email your CV and answers to yirehcareers@gmail.com. Your delivery time starts once we have everything.
+```
+
+### 27. Weekly job email: how to get it
+
+Shortcut: `/weekly`
+
+```
+Our weekly job email goes out on Tuesday mornings: a short list of recent remote jobs with a link to each employer's own posting. You can sign up with just your email at https://yirehcareers.vercel.app/#subscribe and unsubscribe with one tap whenever you like.
+```
+
+### 28. Someone asks us to stop emailing or messaging them
+
+Shortcut: `/stop`
+
+```
+Of course, [First name]. I've noted it and we won't contact you again. Emails stop within 2 days. If you only want to stop the CV tips and keep the weekly job email, just say "jobs only" and I'll do that instead.
 ```
 
 ## 6. Labels (Settings, Business tools, Labels)
@@ -431,7 +477,7 @@ Description:
 Verified remote jobs, each linked to the employer's own posting and refreshed every 6 hours. Please check each employer's eligibility rules before you apply.
 ```
 
-Picture: the same profile picture. Then post from the kit: open `/kit` on the live site, choose WhatsApp, tap Copy post and paste it as the channel update.
+Picture: the same profile picture. Weekly post: after the Tuesday email, paste the text from `data/whatsapp_post.txt` (Claude can show it to you; the same post can be built at `/kit` on the live site, WhatsApp tab) as the channel update.
 
 ## 9. Links for your bios (each one tags where the person came from)
 
@@ -479,7 +525,7 @@ Job board link for the same bios (so people can browse first): https://yirehcare
 
 1. From a different phone, open each bio link and check your phone receives the pre-filled message.
 2. Send it a message from that phone and confirm the greeting arrives.
-3. Type `/check` in a chat and confirm the free-CV-check quick reply appears.
+3. Type `/check` in a chat and confirm the free-CV-check quick reply appears, then open its form link on the phone and confirm the form loads.
 4. Open https://yirehcareers.vercel.app/?utm_source=whatsapp&utm_medium=profile&utm_campaign=profile on your phone and confirm the site opens.
 5. Keep a note of what you changed and tell Claude anything that looks wrong.
 

@@ -86,10 +86,11 @@ def main():
     o.append("")
 
     o.append("## 1. Profile picture\n")
-    o.append("Two pictures are saved next to this file in `drafts/whatsapp-profile/`. Both keep everything inside the circle WhatsApp crops to.\n")
-    o.append("- `yireh-careers-whatsapp-profile.png`: the check-mark logo only (clearest at small sizes; recommended).")
-    o.append("- `yireh-careers-whatsapp-profile-with-name.png`: the logo with the name under it.")
-    o.append("\nIn the app: Settings, tap your profile picture, Edit, choose the file. The same picture works for the channel (section 8) and for TikTok, Facebook and Snapchat.\n")
+    o.append("Three pictures are saved next to this file in `drafts/whatsapp-profile/` (PNG for the app, SVG for printing or editing). All keep everything inside the circle WhatsApp crops to. `preview-circles.png` shows how each looks at the sizes people will see.\n")
+    o.append("- `yc-mark.png`: **recommended.** A white Y whose right arm is a light-blue tick, on a blue tile over navy. No words, so it stays clear in the small circle beside your business name (WhatsApp shows \"Yireh Careers\" next to the picture anyway). It matches the site's navy and blue.")
+    o.append("- `yc-monogram.png`: the letters YC. A good second choice if you want the initials visible.")
+    o.append("- `yc-mark-with-name.png`: the mark with the name under it. The words are too small to read in a chat circle, so use it for bigger places (a Facebook cover, a flyer), not WhatsApp.")
+    o.append("\nIn the app: Settings, tap your profile picture, Edit, choose the file. The same picture works for the channel (section 8) and for TikTok, Facebook and Snapchat. A plain tick on its own is avoided on purpose: it looks like WhatsApp's own read ticks and verification badge.\n")
 
     o.append("## 2. Business name and category\n")
     o.append("Business name:\n")
@@ -152,7 +153,7 @@ def main():
     o.append(block(CHANNEL_NAME))
     o.append("Description:\n")
     o.append(block(CHANNEL_DESC))
-    o.append("Picture: the same profile picture. Then post from the kit: open `/kit` on the live site, choose WhatsApp, tap Copy post and paste it as the channel update.\n")
+    o.append("Picture: the same profile picture. Weekly post: after the Tuesday email, paste the text from `data/whatsapp_post.txt` (Claude can show it to you; the same post can be built at `/kit` on the live site, WhatsApp tab) as the channel update.\n")
 
     o.append("## 9. Links for your bios (each one tags where the person came from)\n")
     o.append("A person who taps the link lands in a chat with you and the first message already says where they found you. Use one link per place so you can see which place works.\n")
@@ -164,7 +165,7 @@ def main():
     o.append("## 10. Test before you post (5 minutes)\n")
     o.append("1. From a different phone, open each bio link and check your phone receives the pre-filled message.")
     o.append("2. Send it a message from that phone and confirm the greeting arrives.")
-    o.append("3. Type `/check` in a chat and confirm the free-CV-check quick reply appears.")
+    o.append("3. Type `/check` in a chat and confirm the free-CV-check quick reply appears, then open its form link on the phone and confirm the form loads.")
     o.append(f"4. Open {WEB1} on your phone and confirm the site opens.")
     o.append("5. Keep a note of what you changed and tell Claude anything that looks wrong.\n")
 
