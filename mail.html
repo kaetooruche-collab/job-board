@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reply templates — Yireh Careers</title>
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="referrer" content="no-referrer">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/fonts/inter.css">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bg: #f8f9fb; --surface: #ffffff; --text: #1a1a2e; --text-secondary: #5f6368; --accent: #2563eb;
+      --accent-hover: #1d4ed8; --border: #e2e5e9; --green: #0d9488; --warn-bg: #fef3c7; --warn-text: #78350f; --radius: 10px;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) {
+        --bg: #0c0c18; --surface: #161625; --text: #e8e8f0; --text-secondary: #9ca3af; --accent: #60a5fa;
+        --accent-hover: #93bbfd; --border: #262640; --green: #2dd4bf; --warn-bg: #3a2e12; --warn-text: #f5d58a; color-scheme: dark;
+      }
+    }
+    body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; background: var(--bg); color: var(--text); line-height: 1.55; -webkit-font-smoothing: antialiased; }
+    .wrap { max-width: 860px; margin: 0 auto; padding: 1.5rem 1rem 4rem; }
+    h1 { font-size: clamp(1.4rem, 4vw, 1.9rem); font-weight: 800; letter-spacing: -0.5px; margin-bottom: 0.4rem; }
+    .lead { color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 1.25rem; max-width: 64ch; }
+    .controls { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; display: grid; gap: 0.9rem; margin-bottom: 1rem; }
+    .row { display: flex; gap: 1rem; flex-wrap: wrap; align-items: flex-end; }
+    label { font-size: 0.8rem; font-weight: 700; display: grid; gap: 0.3rem; color: var(--text-secondary); min-width: 0; }
+    label.inline { display: flex; align-items: center; gap: 0.45rem; font-weight: 600; }
+    select, input[type=text] { font: inherit; font-size: 0.95rem; background: var(--surface); color: var(--text); border: 1px solid var(--border); border-radius: 6px; padding: 0.45rem 0.55rem; min-width: 12rem; max-width: 100%; }
+    .grow { flex: 1 1 18rem; } .grow input, .grow select { width: 100%; }
+    button { font: inherit; }
+    .btn { background: var(--accent); color: #fff; border: none; border-radius: 8px; padding: 0.6rem 1.1rem; font-weight: 700; font-size: 0.9rem; cursor: pointer; }
+    .btn:hover { background: var(--accent-hover); }
+    .btn.secondary { background: transparent; color: var(--accent); border: 1px solid var(--accent); }
+    .btn:focus-visible, select:focus-visible, input:focus-visible, #editor:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+    .hint { font-size: 0.85rem; color: var(--text-secondary); }
+    .hint strong { color: var(--text); }
+    .paper { background: #ffffff; color: #1c2733; border: 1px solid var(--border); border-radius: var(--radius); padding: 1.4rem 1.2rem; margin-bottom: 0.8rem; overflow-x: auto; }
+    #editor { max-width: 600px; margin: 0 auto; }
+    mark.gap { background: #fff3a3; color: #1c2733; border-radius: 3px; padding: 0 2px; }
+    mark.gap.filled { background: transparent; padding: 0; }
+    .actions { display: flex; gap: 0.6rem; flex-wrap: wrap; align-items: center; margin-bottom: 0.6rem; }
+    #status { font-size: 0.85rem; font-weight: 700; }
+    #status.ok { color: var(--green); } #status.warn { color: var(--warn-text); background: var(--warn-bg); padding: 0.25rem 0.6rem; border-radius: 6px; }
+    .steps { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem 1.2rem; margin-top: 1.4rem; font-size: 0.88rem; }
+    .steps h2 { font-size: 1rem; font-weight: 800; margin-bottom: 0.4rem; }
+    .steps ol, .steps ul { padding-left: 1.2rem; display: grid; gap: 0.3rem; margin: 0.4rem 0; }
+    .rules { background: var(--warn-bg); color: var(--warn-text); border-radius: var(--radius); padding: 0.9rem 1rem; font-size: 0.85rem; margin-top: 1rem; }
+  </style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Reply templates</h1>
+  <p class="lead">The order and service emails, in the same look as our Brevo emails, ready to paste into Gmail. Pick one, type the name and package, change anything else right in the preview, then copy. This page is unlisted and not indexed, and it keeps nothing you type.</p>
+
+  <div class="controls">
+    <div class="row">
+      <label class="grow">Template
+        <select id="tpl"></select>
+      </label>
+    </div>
+    <div class="row">
+      <label>First name <input type="text" id="first" placeholder="e.g. Amara" autocomplete="off"></label>
+      <label>Package
+        <select id="pkg">
+          <option value="">(choose)</option>
+          <option>Essential package</option><option>Professional package</option><option>Executive package</option>
+        </select>
+      </label>
+      <label class="inline"><input type="checkbox" id="logo" checked> Include the logo</label>
+    </div>
+    <div class="row">
+      <label class="grow">Subject line <input type="text" id="subject" autocomplete="off"></label>
+    </div>
+    <p class="hint" id="when"></p>
+  </div>
+
+  <div class="paper"><div id="editor" contenteditable="true" spellcheck="true"></div></div>
+  <div class="actions">
+    <button class="btn" id="copy">Copy email</button>
+    <button class="btn secondary" id="copySubject">Copy subject</button>
+    <span id="status" role="status"></span>
+  </div>
+  <p class="hint">Yellow means "still to fill in". Click into the preview and type over it, or delete a paragraph you don't need. The yellow never reaches Gmail.</p>
+
+  <div class="steps">
+    <h2>In Gmail, every time</h2>
+    <ol>
+      <li>In yirehcareers@gmail.com, open the client's email thread and click <strong>Reply</strong> (or <strong>Compose</strong> for a new email).</li>
+      <li>Here: choose the template, fill in the name and package, edit the rest, tap <strong>Copy email</strong>.</li>
+      <li>In Gmail, click in the message body and paste (Ctrl+V, or Cmd+V on a Mac). Then tap <strong>Copy subject</strong> here and paste it into the subject (leave the subject alone when replying in a thread).</li>
+      <li>Attach any files. Read it once, then send.</li>
+    </ol>
+    <p class="hint">If a template is also in your Gmail "Templates", ignore that copy: this page is the up-to-date one.</p>
+  </div>
+
+  <div class="rules">
+    <strong>Check before the first real send:</strong>
+    <ul>
+      <li>Send yourself one first (from this page to kaetooruche@gmail.com) and open it on your phone. Pasted logos and layout can look different in each mail app. If the logo doesn't show, untick "Include the logo".</li>
+      <li>Service emails carry no offers, prices or promotion. Don't add any (the only prices are the ones already in the templates).</li>
+      <li>Never paste a CV or bank details into this page. It doesn't need them.</li>
+    </ul>
+  </div>
+</div>
+
+<script>
+(function () {
+  var DATA = [{"id": "OP-1", "group": "Free CV check", "name": "Free check: request received", "subject": "Thanks, send us your CV when you're ready", "when": "Free-check form submitted (or WhatsApp request) (within 1 working day)", "attach": false, "html": "<p style=\"margin:0 0 16px;font-size:16px;line-height:1.6;color:#1c2733;\">Hi <mark class=\"gap\" data-f=\"first\">[First name]<\/mark>,<\/p>\n<p style=\"margin:0 0 16px;font-size:16px;line-height:1.6;color:#1c2733;\">Thanks for asking for a free CV check. To start, please reply to this email with your CV (Word, PDF or plain text). If there's a job post you're aiming at, send that too.<\/p>\n<p style=\"margin:0 0 16px;font-size:16px;line-height:1.6;color:#1c2733;\">We'll reply with the three things we'd fix first within 2 working days. You don't need to send ID or bank details. Email works best for documents, so they stay private and in one place.<\/p>\n<p style=\"margin:0 0 16px;font-size:16px;line-height:1.6;color:#1c2733;\">We keep your CV only for the check. If you don't order anything, we delete it within 30 days.<\/p>"}, {"id": "OP-13", "group": "Free CV check", "name": "Free check: we're full this week", "subject": "Your free CV check: we're full this week", "when": "Weekly cap reached (within 1 working day)", "attach": false, "html": "<p style=\"margin:0 0 16px;font-size:16px;line-height:1.6;color:#1c2733;\">Hi <mark class=\"gap\" data-f=\"first\">[First name]<\/mark>,<\/p>\n<p style=\"margin:0 0 16px;font-size:16px;line-height:1.6;color:#1c2733;\">Thanks for asking for a free CV check. We're at our limit for this week, so we can't start yours yet.<\/p>\n<p style=\"margin:0 0 16px;font-size:16px;line-height:1.6;color:#1c2733;\"><mark class=\"gap\">[Choose one: We've put you first in line for [day], and we'll email you then. / Please ask again on [day], when we open up more places.]<\/mark><\/p>\n<p style=\"margin:0 0 16px;font-size:16px;line-height:1.6;color:#1c2733;\">You don't need to send your CV yet. Sorry for the wait.<\/p>"}, {"id": "OP-15", "group": "Free CV check", "name": "Free check: did your CV come through?", "subject": "Did your CV come through?", "when": "7 days after OP-1 with no CV (day 7, once)", "attach": true, "html": "<p style=\"margin:0 0 16px;font-size:16px;line-height:1.6;color:#1c2733;\">Hi <mark class=\"gap\" data-f=\"first\">[First name]<\/mark>,<\/p>\n<p style=\"margin:0 0 16px;font-size:16px;line-height:1.6;color:#1c2733;\">We haven't seen your CV yet for the free check. If it got lost, just reply to this email with it attached.<\/p>\n<p style=\"margin:0 0 16px;font-size:16px;line-height:1.6;color:#1c2733;\">If you've changed your mind, no problem. There's nothing to do and we won't write to you about it again.<\/p>"}, {"id": "OP-2", "group": "Free CV check", "name": "Free check: the result", "subject": "Your CV check: three things to fix first", "when": "Check completed (within 2 working days (published on the site))", "attach": false, "html": "<p style=\"margin:0 0 16px;font-size:16px;line-height:1.6;color:#1c2733;\">Hi <mark class=\"gap\" data-f=\"first\">[First name]<\/mark>,<\/p>\n<p style=\"margin:0 0 16px;font-size:16px;line-height:1.6;color:#1c2733;\">Thanks for sending your CV. Here are the three things we'd fix first:<\/p>\n<ul style=\"margin:0 0 16px;padding:0 0 0 22px;font-size:16px;line-height:1.6;color:#1c2733;\"><li style=\"margin:0 0 8px;\"><mark class=\"gap\">[What we noticed in your CV]<\/mark> → <mark class=\"gap\">[what to change, with an example from your own text]<\/mark><\/li><li style=\"margin:0 0 8px;\"><mark class=\"gap\">[What we noticed]<\/mark> → <mark class=\"gap\">[what to change]<\/mark><\/li><li style=\"margin:0 0 8px;\"><mark class=\"gap\">[What we noticed]<\/mark> → <mark class=\"gap\">[what to change]<\/mark><\/li><\/ul>\n<p style=\"margin:0 0 16px;font-size:16px;line-height:1.6;color:#1c2733;\">One thing already working: <mark class=\"gap\">[a real strength, in their words]<\/mark>.<\/p>\n<p style=\"margin:0 0 16px;font-size:16px;line-height:1.6;color:#1c2733;\">That's the free check, and it's yours to keep whatever you decide. If you'd like us to do the rewrite, reply and we'll explain how it works.<\/p>"}, {"id": "OP-3", "group": "Orders", "name": "Order: payment received, what we need", "subject": "Thanks, here's what we need to get started", "when": "KT confirms payment and records it (same day)", "attach": false, "html": "<p style=\"margin:0 0 16px;font-size:16px;line-height:1.6;color:#1c2733;\">Hi <mark class=\"gap\" data-f=\"first\">[First name]<\/mark>,<\/p>\n<p style=\"margin:0 0 16px;font-size:16px;line-height:1.6;color:#1c2733;\">Thank you. We've received your payment for the <mark class=\"gap\" data-f=\"package\">[Package]<\/mark>.<\/p>\n<p style=\"margin:0 0 16px;font-size:16px;line-height:1.6;color:#1c2733;\">To get going, please reply to this email with:<\/p>\n<ul style=\"margin:0 0 16px;padding:0 0 0 22px;font-size:16px;line-height:1.6;color:#1c2733;\"><li style=\"margin:0 0 8px;\">your current CV (Word, PDF or plain text), and your LinkedIn link if you have one<\/li><li style=\"margin:0 0 8px;\">the kind of roles you're going for, and the countries you can work in (skip if you've already told us on the form)<\/li><li style=\"margin:0 0 8px;\">any job posts you like (optional)<\/li><\/ul>\n<p style=\"margin:0 0 16px;font-size:16px;line-height:1.6;color:#1c2733;\">You don't need to send ID or bank details. Email keeps your documents private and in one place. WhatsApp is the place for questions.<\/p>\n<p style=\"margin:0 0 16px;font-size:16px;line-height:1.6;color:#1c2733;\">Your delivery time starts once we have everything, and we'll confirm your dates then.<\/p>"}, {"id": "OP-16", "group": "Orders", "name": "Order: still need something", "subject": "We're ready when you are", "when": "Missing information after OP-3 (working day 3 and day 7)", "attach": false, "html": "<p style=\"margin:0 0 16px;font-size:16px;line-height:1.6;color:#1c2733;\">Hi <mark class=\"gap\" data-f=\"first\">[First name]<\/mark>,<\/p>\n<p style=\"margin:0 0 16px;font-size:16px;line-height:1.6;color:#1c2733;\">We're ready to start on your <mark class=\"gap\" data-f=\"package\">[Package]<\/mark> as soon as we have <mark class=\"gap\">[what's missing]<\/mark>. Reply with it whenever you can and we'll confirm your dates.<\/p>\n<p style=\"margin:0 0 16px;font-size:16px;line-height:1.6;color:#1c2733;\">If something's holding you up, tell us and we'll help.<\/p>"}, {"id": "OP-4", "group": "Orders", "name": "Order: we've started", "subject": "We've started: here are your dates", "when": "Onboarding complete (same day)", "attach": false, "html": "<p style=\"margin:0 0 16px;font-size:16px;line-height:1.6;color:#1c2733;\">Hi <mark class=\"gap\" data-f=\"first\">[First name]<\/mark>,<\/p>\n<p style=\"margin:0 0 16px;font-size:16px;line-height:1.6;color:#1c2733;\">Thanks, we have everything we need and we're now working on your <mark class=\"gap\" data-f=\"package\">[Package]<\/mark>.<\/p>\n<div style=\"margin:0 0 16px;\"><p style=\"margin:0 0 4px;font-size:16px;line-height:1.5;color:#1c2733;\"><span style=\"color:#5b6877;\">Started:<\/span> <strong><mark class=\"gap\">[date]<\/mark><\/strong><\/p><p style=\"margin:0 0 4px;font-size:16px;line-height:1.5;color:#1c2733;\"><span style=\"color:#5b6877;\">Expected delivery:<\/span> <strong><mark class=\"gap\">[date]<\/mark> (working days)<\/strong><\/p><\/div>\n<p style=\"margin:0 0 16px;font-size:16px;line-height:1.6;color:#1c2733;\">We'll email your documents when they're ready. If we need to check anything first, we'll ask.<\/p>\n<p style=\"margin:0 0 16px;font-size:16px;line-height:1.6;color:#1c2733;\"><mark class=\"gap\">[Executive only: your 30-day LinkedIn service starts today.]<\/mark><\/p>"}, {"id": "OP-5", "group": "Orders", "name": "Order: documents delivered", "subject": "Your documents are ready", "when": "Documents ready (on delivery date)", "attach": true, "html": "<p style=\"margin:0 0 16px;font-size:16px;line-height:1.6;color:#1c2733;\">Hi <mark class=\"gap\" data-f=\"first\">[First name]<\/mark>,<\/p>\n<p style=\"margin:0 0 16px;font-size:16px;line-height:1.6;color:#1c2733;\">Your <mark class=\"gap\" data-f=\"package\">[Package]<\/mark> documents are attached. Please read them through and check every date, job title and name, since they go out under your name.<\/p>\n<p style=\"margin:0 0 16px;font-size:16px;line-height:1.6;color:#1c2733;\">Want changes? You have <mark class=\"gap\">[2 or 3]<\/mark> rounds. Reply once with everything you'd like changed, and that counts as one round.<\/p>\n<p style=\"margin:0 0 16px;font-size:16px;line-height:1.6;color:#1c2733;\">Happy with it? Just tell us and we'll wrap up your order. Please keep your own copy of the files.<\/p>"}, {"id": "OP-6", "group": "Orders", "name": "Order: your changes are done", "subject": "Your changes are done", "when": "Revision completed (within [2] working days)", "attach": true, "html": "<p style=\"margin:0 0 16px;font-size:16px;line-height:1.6;color:#1c2733;\">Hi <mark class=\"gap\" data-f=\"first\">[First name]<\/mark>,<\/p>\n<p style=\"margin:0 0 16px;font-size:16px;line-height:1.6;color:#1c2733;\">Your changes are attached. That was round <mark class=\"gap\">[1]<\/mark> of <mark class=\"gap\">[2]<\/mark>.<\/p>\n<p style=\"margin:0 0 16px;font-size:16px;line-height:1.6;color:#1c2733;\"><mark class=\"gap\">[If rounds remain: If you'd like more changes, reply with everything in one message. If you're happy, a quick “all good” lets us close your order.]<\/mark><\/p>\n<p style=\"margin:0 0 16px;font-size:16px;line-height:1.6;color:#1c2733;\"><mark class=\"gap\">[If that was the last round: That was your last included round. If you'd like another, an extra revision is $10.]<\/mark><\/p>"}, {"id": "OP-7", "group": "Orders", "name": "Order: complete, and what we delete", "subject": "All done, thank you", "when": "Approval or rounds finished (on completion; sets delete_by)", "attach": false, "html": "<p style=\"margin:0 0 16px;font-size:16px;line-height:1.6;color:#1c2733;\">Hi <mark class=\"gap\" data-f=\"first\">[First name]<\/mark>,<\/p>\n<p style=\"margin:0 0 16px;font-size:16px;line-height:1.6;color:#1c2733;\">Your <mark class=\"gap\" data-f=\"package\">[Package]<\/mark> order is complete. Thank you for trusting us with your career documents.<\/p>\n<p style=\"margin:0 0 16px;font-size:16px;line-height:1.6;color:#1c2733;\">Please keep your own copies of the final files. We'll delete your documents and details from our email, devices and WhatsApp within 90 days. Want that sooner, or a copy of what we hold? Just reply.<\/p>\n<p style=\"margin:0 0 16px;font-size:16px;line-height:1.6;color:#1c2733;\">One tip as you apply: check each employer's rules for your country.<\/p>\n<p style=\"margin:0 0 16px;font-size:16px;line-height:1.6;color:#1c2733;\">If you have a minute, tell us how it went, what worked and what didn't. It helps us improve. We never share anyone's words without asking first.<\/p>"}, {"id": "OP-8", "group": "Executive and LinkedIn Growth", "name": "Executive: branding plan for approval", "subject": "Your branding plan: a quick review, please", "when": "Branding plan ready (before any content is published)", "attach": true, "html": "<p style=\"margin:0 0 16px;font-size:16px;line-height:1.6;color:#1c2733;\">Hi <mark class=\"gap\" data-f=\"first\">[First name]<\/mark>,<\/p>\n<p style=\"margin:0 0 16px;font-size:16px;line-height:1.6;color:#1c2733;\">Your branding plan is attached. Please read it through before we write or publish anything for you.<\/p>\n<ul style=\"margin:0 0 16px;padding:0 0 0 22px;font-size:16px;line-height:1.6;color:#1c2733;\"><li style=\"margin:0 0 8px;\">Check every detail about your experience and qualifications, since it goes out under your name.<\/li><li style=\"margin:0 0 8px;\">Tell us who you most want to reach: the roles, industries and kinds of people.<\/li><li style=\"margin:0 0 8px;\">Reply “yes”, or send your changes in one message.<\/li><\/ul>\n<p style=\"margin:0 0 16px;font-size:16px;line-height:1.6;color:#1c2733;\">We won't post or send any connection requests until you've said yes. Your 30 days start once onboarding is complete.<\/p>"}, {"id": "OP-9", "group": "Executive and LinkedIn Growth", "name": "Executive: weekly update", "subject": "Week [n] of your 30 days", "when": "Days 7, 14, 21 and 28 of the service (weekly)", "attach": false, "html": "<p style=\"margin:0 0 16px;font-size:16px;line-height:1.6;color:#1c2733;\">Hi <mark class=\"gap\" data-f=\"first\">[First name]<\/mark>,<\/p>\n<p style=\"margin:0 0 16px;font-size:16px;line-height:1.6;color:#1c2733;\">Here's where we are after week <mark class=\"gap\">[n]<\/mark>.<\/p>\n<div style=\"margin:0 0 16px;\"><p style=\"margin:0 0 4px;font-size:16px;line-height:1.5;color:#1c2733;\"><span style=\"color:#5b6877;\">Posts published:<\/span> <strong><mark class=\"gap\">[x]<\/mark> of 12<\/strong><\/p><p style=\"margin:0 0 4px;font-size:16px;line-height:1.5;color:#1c2733;\"><span style=\"color:#5b6877;\">Connection requests sent this week:<\/span> <strong><mark class=\"gap\">[n]<\/mark><\/strong><\/p><p style=\"margin:0 0 4px;font-size:16px;line-height:1.5;color:#1c2733;\"><span style=\"color:#5b6877;\">Accepted so far:<\/span> <strong><mark class=\"gap\">[n]<\/mark><\/strong><\/p><p style=\"margin:0 0 4px;font-size:16px;line-height:1.5;color:#1c2733;\"><span style=\"color:#5b6877;\">Total connections:<\/span> <strong><mark class=\"gap\">[n]<\/mark> (you started at <mark class=\"gap\">[n]<\/mark>)<\/strong><\/p><p style=\"margin:0 0 4px;font-size:16px;line-height:1.5;color:#1c2733;\"><span style=\"color:#5b6877;\">Next week:<\/span> <strong><mark class=\"gap\">[one line]<\/mark><\/strong><\/p><\/div>\n<p style=\"margin:0 0 16px;font-size:16px;line-height:1.6;color:#1c2733;\">Want anything changed? Reply and we'll adjust. We can't control who accepts, so these numbers move at their own pace.<\/p>"}, {"id": "OP-10", "group": "Executive and LinkedIn Growth", "name": "Executive: your 30 days are up", "subject": "Your 30 days are up: where you stand", "when": "Day 30 (day 30)", "attach": false, "html": "<p style=\"margin:0 0 16px;font-size:16px;line-height:1.6;color:#1c2733;\">Hi <mark class=\"gap\" data-f=\"first\">[First name]<\/mark>,<\/p>\n<p style=\"margin:0 0 16px;font-size:16px;line-height:1.6;color:#1c2733;\">Your 30-day LinkedIn service is complete. Here's where you stand.<\/p>\n<div style=\"margin:0 0 16px;\"><p style=\"margin:0 0 4px;font-size:16px;line-height:1.5;color:#1c2733;\"><span style=\"color:#5b6877;\">Posts published:<\/span> <strong><mark class=\"gap\">[x]<\/mark> of 12<\/strong><\/p><p style=\"margin:0 0 4px;font-size:16px;line-height:1.5;color:#1c2733;\"><span style=\"color:#5b6877;\">Connection requests sent:<\/span> <strong><mark class=\"gap\">[n]<\/mark><\/strong><\/p><p style=\"margin:0 0 4px;font-size:16px;line-height:1.5;color:#1c2733;\"><span style=\"color:#5b6877;\">Total connections:<\/span> <strong><mark class=\"gap\">[start]<\/mark> to <mark class=\"gap\">[now]<\/mark><\/strong><\/p><\/div>\n<p style=\"margin:0 0 16px;font-size:16px;line-height:1.6;color:#1c2733;\"><mark class=\"gap\">[One honest sentence on what went well and what didn't.]<\/mark><\/p>\n<p style=\"margin:0 0 16px;font-size:16px;line-height:1.6;color:#1c2733;\">If you'd like to keep going, LinkedIn Growth continues the same work for $99 a month, month to month, by arrangement on WhatsApp. Nothing happens automatically.<\/p>\n<p style=\"margin:0 0 16px;font-size:16px;line-height:1.6;color:#1c2733;\">Thank you for letting us do this for you.<\/p>"}, {"id": "OP-11", "group": "Executive and LinkedIn Growth", "name": "LinkedIn Growth: same again next month?", "subject": "LinkedIn Growth: same again next month?", "when": "A few days before each month ends (3 days before the month ends)", "attach": false, "html": "<p style=\"margin:0 0 16px;font-size:16px;line-height:1.6;color:#1c2733;\">Hi <mark class=\"gap\" data-f=\"first\">[First name]<\/mark>,<\/p>\n<p style=\"margin:0 0 16px;font-size:16px;line-height:1.6;color:#1c2733;\">Your current month ends on <mark class=\"gap\">[date]<\/mark>. Same again next month, or stop here? Either is fine.<\/p>\n<p style=\"margin:0 0 16px;font-size:16px;line-height:1.6;color:#1c2733;\">Reply, or message us on WhatsApp, before <mark class=\"gap\">[date]<\/mark>. Nothing is charged automatically.<\/p>\n<p style=\"margin:0 0 16px;font-size:16px;line-height:1.6;color:#1c2733;\"><mark class=\"gap\">[This month: [x] posts published, [y] connection requests sent.]<\/mark><\/p>"}, {"id": "OP-12", "group": "Privacy and stop requests", "name": "Privacy request received", "subject": "We've got your request", "when": "A privacy request arrives (within a few days)", "attach": false, "html": "<p style=\"margin:0 0 16px;font-size:16px;line-height:1.6;color:#1c2733;\">Hi <mark class=\"gap\" data-f=\"first\">[First name]<\/mark>,<\/p>\n<p style=\"margin:0 0 16px;font-size:16px;line-height:1.6;color:#1c2733;\">Thanks for getting in touch about your personal information. We'll reply within one month, and it's free.<\/p>\n<p style=\"margin:0 0 16px;font-size:16px;line-height:1.6;color:#1c2733;\">We may ask you to confirm it's you. If so, we'll ask for as little as possible, and never a copy of your ID unless there's no other way.<\/p>\n<p style=\"margin:0 0 16px;font-size:16px;line-height:1.6;color:#1c2733;\">Anything to add? Just reply to this email.<\/p>"}, {"id": "OP-14", "group": "Privacy and stop requests", "name": "Stop confirmed", "subject": "Done: you won't hear from us", "when": "A 'stop' reply on email or WhatsApp (same day (rule: within 2 days))", "attach": false, "html": "<p style=\"margin:0 0 16px;font-size:16px;line-height:1.6;color:#1c2733;\">Hi <mark class=\"gap\" data-f=\"first\">[First name]<\/mark>,<\/p>\n<p style=\"margin:0 0 16px;font-size:16px;line-height:1.6;color:#1c2733;\">Done. We've removed you from our emails.<\/p>\n<p style=\"margin:0 0 16px;font-size:16px;line-height:1.6;color:#1c2733;\"><mark class=\"gap\">[If they also asked for deletion: We'll delete your details within one month and tell you when it's done.]<\/mark><\/p>\n<p style=\"margin:0 0 16px;font-size:16px;line-height:1.6;color:#1c2733;\">If that was a mistake, you can sign up again any time on the site.<\/p>"}];
+  var CFG = {"logo": "https://yirehcareers.vercel.app/yc-logo.png", "sign": "The Yireh Careers team", "address": "Yireh Careers, Yenice Sokak, 99300 Kyrenia, Cyprus", "tx": "#1c2733", "mut": "#5b6877", "brand": "#0f2a4d", "acc": "#1d4ed8"};
+  var sel = document.getElementById('tpl'), editor = document.getElementById('editor'), subj = document.getElementById('subject');
+  var first = document.getElementById('first'), pkg = document.getElementById('pkg'), logo = document.getElementById('logo');
+  var statusEl = document.getElementById('status'), whenEl = document.getElementById('when');
+  var armed = false, armTimer = null;
+
+  var g = '';
+  DATA.forEach(function (d, i) {
+    if (d.group !== g) { g = d.group; var og = document.createElement('optgroup'); og.label = g; sel.appendChild(og); }
+    var o = document.createElement('option'); o.value = i; o.textContent = d.name; sel.lastChild.appendChild(o);
+  });
+
+  function header() {
+    return '<table role="presentation" cellpadding="0" cellspacing="0" style="margin:0 0 6px;"><tr>' +
+      '<td style="padding:0 10px 0 0;vertical-align:middle;"><img src="' + CFG.logo + '" width="32" height="32" alt="" style="display:block;border:0;border-radius:7px;width:32px;height:32px;"></td>' +
+      '<td style="font-size:18px;font-weight:800;color:' + CFG.brand + ';vertical-align:middle;">Yireh Careers</td></tr></table>' +
+      '<div style="width:34px;border-top:3px solid ' + CFG.acc + ';margin:0 0 22px;"></div>';
+  }
+  function load() {
+    var d = DATA[sel.value];
+    editor.innerHTML = '<div style="font-family:Arial,Helvetica,sans-serif;color:' + CFG.tx + ';max-width:560px;">' + header() + d.html +
+      '<p style="margin:0 0 22px;font-size:16px;line-height:1.5;color:' + CFG.tx + ';">Best,<br><strong>' + CFG.sign + '</strong></p>' +
+      '<p style="margin:0;font-size:12px;line-height:1.5;color:' + CFG.mut + ';">Yireh Careers &middot; ' + CFG.address.replace('Yireh Careers, ', '') + '</p></div>';
+    subj.value = d.subject;
+    whenEl.innerHTML = '<strong>When to send:</strong> ' + d.when + (d.attach ? ' <strong>Remember to attach the file.</strong>' : '');
+    applyField('first'); applyField('package'); logoToggle(); disarm(); status('', '');
+  }
+  function applyField(kind) {
+    var v = (kind === 'first' ? first.value : pkg.value).trim(), token = kind === 'first' ? '[First name]' : '[Package]';
+    editor.querySelectorAll('mark[data-f="' + kind + '"]').forEach(function (m) {
+      m.textContent = v || token; m.classList.toggle('filled', !!v);
+    });
+  }
+  function logoToggle() {
+    var img = editor.querySelector('img'); if (img) img.style.display = logo.checked ? 'block' : 'none';
+  }
+  function gaps() {
+    var n = 0;
+    editor.querySelectorAll('mark').forEach(function (m) { if (/[\[\]]/.test(m.textContent)) n++; });
+    if (/[\[\]]/.test(subj.value)) n++;
+    return n;
+  }
+  function status(t, cls) { statusEl.textContent = t; statusEl.className = cls || ''; }
+  function disarm() { armed = false; clearTimeout(armTimer); }
+
+  function clean() {
+    var c = editor.cloneNode(true); c.removeAttribute('contenteditable'); c.removeAttribute('id'); c.removeAttribute('spellcheck');
+    c.querySelectorAll('mark').forEach(function (m) { m.replaceWith.apply(m, Array.prototype.slice.call(m.childNodes)); });
+    if (!logo.checked) { var img = c.querySelector('img'); if (img && img.closest('td')) img.closest('td').remove(); }
+    else { var im = c.querySelector('img'); if (im) im.style.display = 'block'; }
+    return c;
+  }
+  function copyRich() {
+    var box = document.createElement('div');
+    box.style.cssText = 'position:fixed;left:-9999px;top:0;width:600px;background:#fff;';
+    box.appendChild(clean()); document.body.appendChild(box);
+    var htmlStr = box.innerHTML, text = box.innerText;
+    function fallback() {
+      var r = document.createRange(); r.selectNodeContents(box);
+      var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+      var ok = false; try { ok = document.execCommand('copy'); } catch (e) {}
+      s.removeAllRanges(); document.body.removeChild(box); return ok;
+    }
+    if (navigator.clipboard && window.ClipboardItem) {
+      navigator.clipboard.write([new ClipboardItem({ 'text/html': new Blob([htmlStr], { type: 'text/html' }), 'text/plain': new Blob([text], { type: 'text/plain' }) })])
+        .then(function () { document.body.removeChild(box); done(true); }, function () { done(fallback()); });
+    } else { done(fallback()); }
+  }
+  function done(ok) { status(ok ? 'Copied. Paste it into Gmail.' : 'Copy was blocked. Select the preview and copy it by hand.', ok ? 'ok' : 'warn'); }
+
+  document.getElementById('copy').addEventListener('click', function () {
+    var n = gaps();
+    if (n && !armed) {
+      armed = true; armTimer = setTimeout(disarm, 10000);
+      status(n + ' gap' + (n === 1 ? '' : 's') + ' still in [brackets]. Fill them in, or tap Copy again to copy anyway.', 'warn'); return;
+    }
+    disarm(); copyRich();
+  });
+  document.getElementById('copySubject').addEventListener('click', function () {
+    var t = subj.value;
+    function ok() { status('Subject copied.', 'ok'); }
+    if (navigator.clipboard) navigator.clipboard.writeText(t).then(ok, function () { subj.select(); document.execCommand('copy'); ok(); });
+    else { subj.select(); document.execCommand('copy'); ok(); }
+  });
+  sel.addEventListener('change', load);
+  first.addEventListener('input', function () { applyField('first'); disarm(); });
+  pkg.addEventListener('change', function () { applyField('package'); disarm(); });
+  logo.addEventListener('change', logoToggle);
+  editor.addEventListener('input', disarm);
+  load();
+})();
+</script>
+</body>
+</html>

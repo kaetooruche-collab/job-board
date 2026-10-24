@@ -56,3 +56,31 @@ You accepted this risk on 24 Oct. The tests show the mail is authenticated as Br
 
 ## What stays blocked until you say go
 No email to anyone but you; automations stay off; no form is live on the site until you've sent the links and Claude's wiring is merged; no contact import.
+
+## Part H · Put the logo into the four automations (re-pick the eight emails; about 20 minutes)
+Added 25 Oct 2026. Claude re-pushed the 12 templates (74-85) with the YC logo header. The automations send their own copies (87-94, named like `YC2 AU-2 Tips series_step_#4`), which the API cannot edit, so they still go out without the logo. To fix, inside each automation you point each Send-email step at the matching template. Nothing else about the automations changes. I cannot see your screen, so menu names may differ a little; if one does not match, tell me what you see.
+
+**When:** AU-1 any time (nobody is waiting in it). Do AU-2, AU-3 and AU-4 **after 25 Oct, 15:20 UTC**, when Claude has finished the AU-2 check and deleted the three test contacts, so nobody is waiting inside while you edit. No real customer is in AU-2, AU-3 or AU-4 yet.
+
+**For every email below (same moves each time):**
+1. Brevo: **Automations**, open the automation. If Brevo says it must be paused before editing, pause it (it keeps its settings).
+2. Click the **Send an email** step with the number shown in the table (the number is in the step's old name: `..._step_#4` means step 4).
+3. Choose **Edit** or **Change email**, then **Choose a template** (or "Select an existing template").
+4. Find the template by the **exact name in the last column** and select it. Do **not** pick one whose name ends in `_step_#`.
+5. Check the subject and the sender before saving: the sender must say **Yireh Careers** (yirehcareers@gmail.com). Save the step.
+6. After the last step in that automation: **Save**, then switch the automation back on if you paused it. Check **re-entry** is still the setting you chose earlier.
+
+| Automation | Step | Sends now (no logo) | Replace with this template (name to search) | Subject you should see |
+|---|---|---|---|---|
+| AU-1 Job alerts welcome | #2 | 87 | **74** `YC2 \| JA-1 Job alerts welcome` | You're in. Here's what to expect |
+| AU-2 Tips series | #2 (after the 1-day wait) | 88 | **75** `YC2 \| CT-1 Tips: one thing to check tonight` | One thing to check on your CV tonight |
+| AU-2 Tips series | #4 | 89 | **76** `YC2 \| CT-2 Tips: using AI for your CV` | Using AI for your CV? Check these four things |
+| AU-2 Tips series | #6 | 90 | **77** `YC2 \| CT-3 Tips: what we do, don't do, cost` | What we do, what we don't, and what it costs |
+| AU-3 Free-check follow-up | #4 (inside the "yes" branch of the condition) | 91 | **82** `YC2 \| FC-1 Free check: did the fixes make sense?` | Did the three fixes make sense? |
+| AU-4 After the order | #4 (Essential branch) | 92 | **83** `YC2 \| CU-1-ES After Essential: what comes next` | Three weeks on: how's the CV working? |
+| AU-4 After the order | #6 (Professional branch) | 93 | **84** `YC2 \| CU-1-PRO After Professional: what comes next` | Three weeks on: how's the search going? |
+| AU-4 After the order | #10 (day-60 email) | 94 | **85** `YC2 \| CU-2 After any order: two months on` | Two months on: how's it going? |
+
+Leave alone: the Wait steps, the Condition steps and the end steps. The Executive branch of AU-4 sends nothing at the first email; keep it that way.
+
+**Tell Claude when it is done.** Claude then reads the automation's new step templates through the API (they get new numbers from 95 up), checks each one has the logo, the right subject and sender Yireh Careers, and updates `brevo-manifest.json` with the new map.
