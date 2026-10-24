@@ -1,43 +1,43 @@
 {
- "generatedAt": "2026-10-24T15:52:19.448951+00:00",
- "activeListings": 1038,
- "rawCandidates": 21075,
- "sentToReview": 515,
- "brokenLinksDropped": 24,
- "percentConfirmedRemote": 91.1,
- "percentWithStatedEligibility": 74.2,
+ "generatedAt": "2026-10-24T20:43:30.959141+00:00",
+ "activeListings": 1029,
+ "rawCandidates": 21082,
+ "sentToReview": 514,
+ "brokenLinksDropped": 25,
+ "percentConfirmedRemote": 91.2,
+ "percentWithStatedEligibility": 74.1,
  "byArrangement": {
-  "remote_geo_restricted": 740,
-  "fully_remote": 206,
-  "remote_unclear": 92
+  "remote_geo_restricted": 734,
+  "fully_remote": 204,
+  "remote_unclear": 91
  },
  "byEligibilityType": {
-  "countries": 724,
-  "unclear": 268,
-  "region": 23,
+  "countries": 718,
   "worldwide": 17,
+  "unclear": 266,
+  "region": 22,
   "timezone": 6
  },
  "byLevel": {
-  "senior": 330,
+  "leadership": 118,
+  "mid": 338,
+  "senior": 328,
   "entry": 8,
-  "mid": 345,
-  "leadership": 117,
-  "unspecified": 149,
+  "unspecified": 148,
   "junior": 76,
   "internship": 13
  },
  "byCategory": {
+  "Software & Engineering": 217,
   "Human Resources & Recruiting": 28,
   "Customer Service & Support": 53,
-  "Marketing & Communications": 98,
-  "Sales": 140,
+  "Marketing & Communications": 97,
+  "Sales": 139,
   "Trust, Safety & Moderation": 6,
   "Administration & Operations": 39,
-  "Software & Engineering": 221,
   "Healthcare & Life Sciences": 88,
   "Finance & Accounting": 74,
-  "Product & Project": 41,
+  "Product & Project": 38,
   "Design & Creative": 39,
   "Research": 12,
   "Other": 19,
@@ -51,9 +51,9 @@
   "Translation & Interpretation": 1
  },
  "bySource": {
-  "Greenhouse": 559,
-  "Lever": 147,
-  "Ashby": 332
+  "Lever": 146,
+  "Ashby": 328,
+  "Greenhouse": 555
  },
  "uniqueCompanies": 160,
  "note": "Search-to-apply click-through and user engagement come from GoatCounter, not this file."
