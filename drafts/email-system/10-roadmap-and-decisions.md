@@ -70,6 +70,7 @@ Effort and cost summary: no cash cost except the domain (and any paid mailbox or
 | **D-13** | Brevo API key | Keep / revoke | Not needed after one-off setup; revoke afterwards; restore IP allow-list | RK-15 |
 | **D-14** | Who builds the four automations and three forms in the Brevo dashboard | KT with my click-by-click steps / I guide live | KT with steps | No API for automations (F22) |
 | **D-15** | Quote the free-check "three fixes" promise as written on the site | Keep / change | Keep | Consistency |
+| **D-16** | Server function to create contacts through the API instead of Brevo forms | Keep forms / build the function | Keep forms for launch; revisit after tests T2 and T5 (see `13-brevo-api-capabilities.md`) | A full-access key on Vercel and IP blocking off permanently |
 
 ## What I did not do
 
