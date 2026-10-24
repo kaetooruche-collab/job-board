@@ -5,6 +5,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 PAGES = ["index.html", "services.html", "verify.html", "privacy.html", "thanks.html", "subscribed.html", "free-check.html", "order.html"]
+ALL_PAGES = PAGES + ["kit.html"]
 RETIRED = ["kaeto", "kayz global ltd", "kt-photo.webp", "founder, "]
 DOMAIN = "https://yirehcareers.vercel.app"
 
@@ -78,6 +79,30 @@ class Brand(unittest.TestCase):
     def test_jobicy_is_off(self):
         s = (ROOT / "scripts" / "fetch_jobs.py").read_text()
         self.assertIn("USE_JOBICY = False", s)
+
+
+class YCMark(unittest.TestCase):
+    """The YC mark is the tab icon on every page, the logo in every header, and the logo in every Brevo email."""
+
+    def test_every_page_has_the_tab_icons_and_files_exist(self):
+        for n in ALL_PAGES:
+            t = page(n)
+            for href in ("/favicon.svg", "/favicon-32.png", "/apple-touch-icon.png"):
+                self.assertIn(f'href="{href}"', t, f"{n} {href}")
+            self.assertNotIn("M28 55 L43 70 L72 35", t, f"{n} still has the old check-mark")
+        for f in ("favicon.svg", "favicon-32.png", "favicon.ico", "apple-touch-icon.png", "yc-logo.png"):
+            self.assertTrue((ROOT / f).stat().st_size > 200, f)
+        self.assertEqual((ROOT / "favicon-32.png").read_bytes()[:8], b"\x89PNG\r\n\x1a\n")
+        self.assertEqual((ROOT / "favicon.ico").read_bytes()[:4], b"\x00\x00\x01\x00")
+
+    def test_every_page_header_shows_the_mark(self):
+        for n in PAGES:
+            t = page(n)
+            self.assertIn('M25 31 L48 56', t, f"{n} header has no YC mark")
+
+    def test_emails_carry_the_logo(self):
+        for p in sorted((ROOT / "drafts" / "email-system" / "brevo").glob("*.html")):
+            self.assertIn(f'src="{DOMAIN}/yc-logo.png"', p.read_text(encoding="utf-8"), p.name)
 
 
 if __name__ == "__main__":
