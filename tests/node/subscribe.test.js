@@ -183,3 +183,19 @@ test('duplicate create retries the update if the parallel request has not finish
   assert.strictEqual(r.body.ok, true);
   assert.deepStrictEqual(h.calls.filter(c => c.method !== 'GET').map(c => c.method), ['POST', 'PUT', 'PUT']);
 });
+
+test('health check: ok when Brevo accepts the key, 503 when it does not, never writes', async () => {
+  const h = harness({ companyName: 'x' });
+  const r = await h.post({ form: 'health' });
+  assert.strictEqual(r.statusCode, 200); assert.deepStrictEqual(h.calls.map(c => c.method + ' ' + c.path), ['GET /account']);
+  const calls = [];
+  const bad = createHandler({ fetchImpl: async (u, i) => { calls.push(i.method); return { status: 401, json: async () => ({}) }; }, env: { BREVO_API_KEY: KEY } });
+  const res = { setHeader() {}, end(b) { this.body = JSON.parse(b); } };
+  await bad({ method: 'POST', headers: { origin: ORIGIN, 'x-forwarded-for': '5.5.5.5' }, body: { form: 'health' } }, res);
+  h.restore();
+  assert.strictEqual(res.statusCode, 503); assert.deepStrictEqual(calls, ['GET']);
+  const none = createHandler({ fetchImpl: async () => { throw new Error('no call'); }, env: {} });
+  const r2 = { setHeader() {}, end(b) { this.body = JSON.parse(b); } };
+  await none({ method: 'POST', headers: { origin: ORIGIN, 'x-forwarded-for': '6.6.6.6' }, body: { form: 'health' } }, r2);
+  assert.strictEqual(r2.statusCode, 503);
+});
