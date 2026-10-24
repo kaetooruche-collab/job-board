@@ -30,7 +30,7 @@ Claude built: the Yireh Careers rebrand, the free address https://yirehcareers.v
 - [ ] **Decide the three consent questions** (decision doc section 3): sign-up wording, customers' opt-in at completion, privacy page naming Brevo. Only KT.
 - [ ] **Weekly:** say "weekly email" to Claude, then schedule the draft in Brevo (Tuesday morning to start).
 - [ ] **Later:** buy a domain before the list passes about 100 (Brevo cannot authenticate Gmail), then move the sender off Gmail.
-- [ ] **Optional:** start a new session after adding the Brevo key as a network secret, so Claude can create lists and contacts through the API (saves clicking; automations stay manual).
+- [ ] **Optional:** add the Brevo key as a plain environment variable named `BREVO_API_KEY` (the network-secret attempt on 24 Oct was not visible to Claude), then start a new session so Claude can create lists and contacts through the API. It saves about 5 minutes; automations stay manual. Delete the key afterwards.
 
 ## 0b. Strategy validation (24 Oct 2026; see `drafts/decisions/2026-10-24-board-strategy-icp-inventory-seniority.md`)
 - [ ] **List the groups and pages you will post in**: roughly how many members, which countries, and whether they are mostly students, graduates or working professionals. This decides whether we need jobs open to non-US readers. Only KT.
