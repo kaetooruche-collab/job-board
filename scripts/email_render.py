@@ -121,8 +121,8 @@ def shell(subject, preview, inner, footer_html, title=None):
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" class="bg" style="background:{C['bg']};"><tr><td align="center" style="padding:28px 12px 36px;">
 <table role="presentation" class="wrap" width="600" cellpadding="0" cellspacing="0" style="width:600px;max-width:100%;">
 <tr><td class="card pad" style="background:{C['card']};border-radius:14px;padding:34px 40px 30px;">
-<table role="presentation" cellpadding="0" cellspacing="0" style="margin:0 0 26px;"><tr><td class="brand" style="font-size:18px;font-weight:800;letter-spacing:-.01em;color:{C['brand']};padding:0 0 8px;white-space:nowrap;">Yireh Careers</td></tr>
-<tr><td class="bar" style="height:3px;width:34px;background:{C['acc']};line-height:3px;font-size:3px;border-radius:2px;">&nbsp;</td></tr></table>
+<table role="presentation" cellpadding="0" cellspacing="0" style="margin:0 0 26px;"><tr><td style="padding:0 10px 8px 0;vertical-align:middle;"><img src="{ed.SITE}/yc-logo.png" width="34" height="34" alt="" style="display:block;border:0;border-radius:8px;width:34px;height:34px;"></td><td class="brand" style="font-size:18px;font-weight:800;letter-spacing:-.01em;color:{C['brand']};padding:0 0 8px;white-space:nowrap;vertical-align:middle;">Yireh Careers</td></tr>
+<tr><td colspan="2" class="bar" style="height:3px;width:34px;background:{C['acc']};line-height:3px;font-size:3px;border-radius:2px;">&nbsp;</td></tr></table>
 {inner}
 </td></tr>
 <tr><td class="mut" style="padding:20px 8px 0;font-size:13px;line-height:1.65;color:{C['mut']};">

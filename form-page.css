@@ -9,7 +9,9 @@ body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; back
 main { max-width: 560px; margin: 8vh auto 40px; background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 32px 28px; }
 .brand { font-weight: 800; letter-spacing: -0.01em; margin-bottom: 18px; }
 .brand a { color: inherit; text-decoration: none; }
-.brand span { color: var(--accent); }
+.brand, .brand a { display: flex; align-items: center; gap: 10px; }
+.brand .mark { flex-shrink: 0; }
+.brand .wm span { color: var(--accent); }
 h1 { font-size: 1.5rem; line-height: 1.25; margin-bottom: 12px; }
 p { color: var(--text-secondary); margin-bottom: 14px; }
 label.f { display: block; font-weight: 600; font-size: 0.9rem; margin: 14px 0 6px; color: var(--text); }

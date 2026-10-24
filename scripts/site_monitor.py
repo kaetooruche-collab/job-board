@@ -115,13 +115,15 @@ def main():
             if w in low:
                 fails.append(f"/thanks: claims a verified payment ('{w}'); the page cannot know that")
 
-    # share image must open
-    try:
-        ri = get("/og-image.png")
-        if ri.status_code != 200 or not ri.headers.get("content-type", "").startswith("image/"):
-            fails.append(f"/og-image.png: HTTP {ri.status_code}, type {ri.headers.get('content-type')}")
-    except requests.RequestException as e:
-        fails.append(f"/og-image.png: could not load ({e})")
+    # share image, tab icons and the email logo must open (the weekly emails load /yc-logo.png from here)
+    for img in ("/og-image.png", "/favicon.svg", "/favicon-32.png", "/favicon.ico", "/apple-touch-icon.png", "/yc-logo.png"):
+        try:
+            ri = get(img)
+            ctype = ri.headers.get("content-type", "")
+            if ri.status_code != 200 or not (ctype.startswith("image/") or ctype.startswith("application/octet")):
+                fails.append(f"{img}: HTTP {ri.status_code}, type {ctype}")
+        except requests.RequestException as e:
+            fails.append(f"{img}: could not load ({e})")
 
     # job data
     rows = []
