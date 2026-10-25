@@ -27,3 +27,22 @@ Refund, cancellation and personal-information wording (KT-decided terms); the "H
 
 ## Still open
 The rest of the site was not rewritten line by line. `privacy.html` is legal text and was left alone. The WhatsApp scripts and emails already follow `drafts/voice-and-copy-guide.md`.
+
+## Addendum: KT's pasted conversion rewrite (25 Oct 2026)
+KT pasted a full landing-page rewrite from another tool. Checked line by line against the project's copy rules (no guarantees, no unverifiable claims, KT-decided terms stay as decided).
+
+**Adopted (services page):** a pain-led hero ("Stop applying in silence. Get a CV and LinkedIn profile written for the roles you want."), the clearer "Get started with Essential/Professional/Executive" buttons, an ATS row in the comparison table, a three-step free-check explanation, and the "Ready to upgrade your job search?" closing line.
+
+**Not adopted, and why:**
+| Pasted wording | Problem |
+|---|---|
+| "...Profile That Land Interviews", "designed to get you hired", "top-tier candidate" | Outcome promises; the site says plainly we do not promise interviews or offers |
+| "Why 75%+ of Job Applications Never Receive a Reply" | Unsourced statistic |
+| "bypass ATS filters" | Unprovable claim; the page says ATS-optimised |
+| "Real Transformations" | The before/after examples are fictional and are labelled so; "Real" would mislead |
+| "guaranteed timeline", "100% satisfied" | The word "guaranteed" is banned by the copy rules; satisfaction is not guaranteed in the agreed terms |
+| "Priority 24-Hour Delivery" | Wrong: priority is 1 working day |
+| "every document is reviewed, edited, and approved by a human career specialist" | A factual claim only KT can confirm; the existing "we check everything before it is sent to you" stays |
+| Rewritten refund and privacy sections ("Because these are personalized digital services...", AI-tool disclosure dropped) | KT-decided terms; the AI data disclosure must stay |
+| "without lifting a finger", "Human Oversite" (typo), US spellings, "Bank Transfer or Crypto" only | Tone, typo, spelling mix, and card checkout exists |
+| "Up to 3 revision rounds" in the hero | Essential has 2 |
