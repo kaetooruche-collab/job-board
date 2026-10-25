@@ -1,8 +1,8 @@
-# Quality report, 2026-10-25T16:09+00:00
+# Quality report, 2026-10-25T20:46+00:00
 
 - Published: **1018**
 - Held back by a quality rule (not published): **4**
-- Warnings (published, but look): **12**
+- Warnings (published, but look): **11**
 
 ## Held back
 
@@ -18,11 +18,11 @@
 
 ## Warnings
 
-### pay-in-posting-but-card-says-not-stated (12)
-- Senior Strategic Account Executive at Twilio: $167,440 - $209,300
+### pay-in-posting-but-card-says-not-stated (11)
 - Financial Analyst, GTM at Webflow: $112,000 - $135,000
 - Lead Platform Engineer, Identity & Access at Webflow: $232,000 - 290,000
 - Staff Data Engineer at Webflow: $212,500 - $255,000
+- Platform Engineer at Resend: $150,000 - $180,000
 - Platform Engineer at Resend: $150,000 - $180,000
 
 ## Shape of the feed
@@ -30,9 +30,9 @@
 ```
 count: 1018
 bySource: {'Greenhouse': 550, 'Lever': 145, 'Ashby': 323}
-pctEligibilityUnclear: 25.5
-pctRemoteUnclear: 8.8
+pctEligibilityUnclear: 25.4
+pctRemoteUnclear: 8.7
 pctWorldwide: 1.7
 pctEarlyCareer: 9.5
-pctSeniorPlus: 43.6
+pctSeniorPlus: 43.4
 ```
