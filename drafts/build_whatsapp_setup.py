@@ -29,8 +29,8 @@ CATALOG = [
 
 LABELS = ["New enquiry", "Free CV check", "Awaiting payment", "Paid", "Onboarding", "In progress", "Delivered", "Complete", "Privacy request"]
 
-CHANNEL_NAME = "Yireh Careers Jobs"
-CHANNEL_DESC = "Verified remote jobs, each linked to the employer's own posting and refreshed every 6 hours. Please check each employer's eligibility rules before you apply."
+CHANNEL_NAME = "Yireh Careers: Verified Remote Jobs"
+CHANNEL_DESC = ("Remote jobs checked by a person. Every listing links to the employer's own posting and shows who can apply, so you can skip the ones that aren't open to you. New roles every week. Check each employer's eligibility rules before you apply.")
 
 SOURCES = [
     ("TikTok bio", "TikTok"), ("Facebook page", "Facebook"), ("Snapchat profile", "Snapchat"),
