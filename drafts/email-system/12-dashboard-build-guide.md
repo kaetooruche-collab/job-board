@@ -83,4 +83,6 @@ Added 25 Oct 2026. Claude re-pushed the 12 templates (74-85) with the YC logo he
 
 Leave alone: the Wait steps, the Condition steps and the end steps. The Executive branch of AU-4 sends nothing at the first email; keep it that way.
 
+**Why two of these now matter more (25 Oct):** the wording of CT-3 (step #6 in AU-2) and FC-1 (step #4 in AU-3) was updated after the delivery-time and tone changes ("Essential ... delivered within 2 working days", a more confident close). The copies in the automations still carry the old wording until you re-pick them. The other six differ from their templates only by the logo.
+
 **Tell Claude when it is done.** Claude then reads the automation's new step templates through the API (they get new numbers from 95 up), checks each one has the logo, the right subject and sender Yireh Careers, and updates `brevo-manifest.json` with the new map.

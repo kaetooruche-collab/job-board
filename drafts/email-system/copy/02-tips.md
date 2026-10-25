@@ -103,7 +103,7 @@ Rendered preview: `preview/CT-2.html`
 | Failure handling | Skip if the contact has ordered |
 | Primary metric / guardrail | Click on packages or free check / Unsubscribes |
 | Evidence and confidence | Hypothesis: honesty about alternatives builds trust with sceptics (ICP I8). Untested. Confidence: **Low** |
-| Body length | 98 words |
+| Body length | 108 words |
 
 **Subject:** What we do, what we don't, and what it costs  
 **Preview text:** Plain answers, including when you don't need us.  
@@ -115,11 +115,11 @@ Hi [First name],
 
 No sales pitch, just the facts so you can decide.
 
-What we do: read your CV and the roles you want, rewrite it for them, and check every claim with you. You get Word and PDF files and two rounds of changes. Essential is $29.
+What we do: read your CV and the roles you want, rewrite it for them, and check every claim with you. Word and PDF files, two rounds of changes, delivered within 2 working days. Essential is $29.
 
 What we don't do: promise interviews or offers, or write anything about you that isn't true.
 
-When you may not need us: if you're happy iterating with an AI tool and checking every line yourself.
+Who it helps: anyone who wants it done properly. If you're happy iterating with an AI tool and checking every line yourself, you may not need us.
 
 Not sure? The free check names three things to fix, and they're yours to keep.
 ```
