@@ -62,11 +62,11 @@ Fields follow the brief: job, signals, awareness, pains, alternatives, why AI/te
 
 ### I4 · The busy professional (wants to save time)
 - **Job and outcome:** a polished CV with minimal effort.
-- **Signals:** asks about delivery time or the 48-hour add-on.
+- **Signals:** asks about delivery time or the priority-delivery add-on.
 - **Pains:** time, not knowing what to put first.
 - **Alternatives:** do it themselves with AI.
 - **What resolves doubt:** clear timeline, exactly what we need from them, two revision rounds.
-- **Offer:** Essential; 48-hour priority add-on when they state a deadline. **Not:** extras they did not ask for.
+- **Offer:** Essential; priority-delivery add-on (1 working day) when they state a deadline. **Not:** extras they did not ask for.
 - **Angle:** "Send us the CV and the roles; we'll do the rest."
 - **Exit:** order placed. **Confidence:** Low. **Validate:** share of orders choosing priority delivery.
 
