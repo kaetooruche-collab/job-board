@@ -36,6 +36,10 @@
       show("We couldn't confirm that it went through. Please try again, or email us at " + EMAIL + '.', true);
     }
     if (ok) {
+      // conversion event for GoatCounter (counts only; no personal data is sent)
+      if (window.goatcounter && window.goatcounter.count) {
+        window.goatcounter.count({ path: 'conversion-' + kind, title: 'Form submitted: ' + kind, event: true });
+      }
       form.reset();
       var done = document.querySelector('[data-after-success]');
       if (done) done.hidden = false;
