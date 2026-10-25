@@ -468,13 +468,13 @@ Description: Email your CV and we tell you the three things we would fix first. 
 Open the channel, tap its name, Edit. Name:
 
 ```
-Yireh Careers Jobs
+Yireh Careers: Verified Remote Jobs
 ```
 
 Description:
 
 ```
-Verified remote jobs, each linked to the employer's own posting and refreshed every 6 hours. Please check each employer's eligibility rules before you apply.
+Remote jobs checked by a person. Every listing links to the employer's own posting and shows who can apply, so you can skip the ones that aren't open to you. New roles every week. Check each employer's eligibility rules before you apply.
 ```
 
 Picture: the same profile picture. Weekly post: after the Tuesday email, paste the text from `data/whatsapp_post.txt` (Claude can show it to you; the same post can be built at `/kit` on the live site, WhatsApp tab) as the channel update.
