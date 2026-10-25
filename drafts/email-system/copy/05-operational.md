@@ -157,7 +157,7 @@ That's the free check, and it's yours to keep whatever you decide. If you'd like
 | Failure handling | If nothing arrives in 3 working days, OP-16 |
 | Primary metric / guardrail | Days to complete onboarding / None |
 | Evidence and confidence | Verified: carries over the approved structure of the earlier TR-01. Confidence: **High** |
-| Body length | 104 words |
+| Body length | 111 words |
 
 **Subject:** Thanks, here's what we need to get started  
 
@@ -176,7 +176,7 @@ To get going, please reply to this email with:
 
 You don't need to send ID or bank details. Email keeps your documents private and in one place. WhatsApp is the place for questions.
 
-Your delivery time starts once we have everything, and we'll confirm your dates then.
+Your delivery time (Essential is 2 working days, Professional 3) starts once we have everything, and we'll confirm your dates then.
 ```
 
 ---

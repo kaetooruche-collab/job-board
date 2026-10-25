@@ -21,7 +21,7 @@ Brevo emails: designed as a calm single-column letter (see `copy/00-design-and-v
 | Failure handling | If KT forgets the marker add, nothing is sent (safe failure) |
 | Primary metric / guardrail | Orders within 30 days (register) / Unsubscribes; complaints |
 | Evidence and confidence | Adjacent: F6 (trial then follow-up). One email is enough because a second would repeat the same offer. Confidence: **Low** |
-| Body length | 71 words |
+| Body length | 75 words |
 
 **Subject:** Did the three fixes make sense?  
 **Preview text:** Questions are welcome, and so is doing it yourself.  
@@ -33,9 +33,9 @@ Hi [First name],
 
 A few days ago we sent you three things to fix in your CV. Did they make sense? If anything was unclear, just reply and ask. It's free.
 
-If you'd rather hand the whole thing over, Essential ($29) is a full rewrite for the roles you want, with Word and PDF files and two rounds of changes.
+If you'd rather hand the whole thing over, Essential ($29) is a professionally written CV for the roles you want, with Word and PDF files, two rounds of changes and delivery within 2 working days.
 
-If you'd rather do it yourself, that's a good outcome too.
+Either way, the three fixes are yours to keep.
 ```
 
 Rendered preview: `preview/FC-1.html`

@@ -145,7 +145,7 @@ To get going, please reply to this email with:
 
 You don't need to send ID or bank details. Email keeps your documents private and in one place. WhatsApp is the place for questions.
 
-Your delivery time starts once we have everything, and we'll confirm your dates then.
+Your delivery time (Essential is 2 working days, Professional 3) starts once we have everything, and we'll confirm your dates then.
 ```
 
 ## OP-16 Order: still need something

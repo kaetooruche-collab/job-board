@@ -167,7 +167,7 @@ Shortcut `/checked`
 Shortcut `/role`
 (Opens from "Get a CV for this role" on a job card. The button text is: "Hello, I would like a CV for this role: [title] at [company]. Could you tell me which package to choose?")
 > Hi [First name], thanks for getting in touch. Where are you in your search (and, if you're happy to say, which country are you in)?
-> If you already have a CV, the quickest start is the free check: email it to yirehcareers@gmail.com and I'll tell you the three things I'd fix first. For a full package, *Essential ($29)* is the CV, and *Professional ($49)* adds a cover letter and LinkedIn setup.
+> If you already have a CV, the quickest start is the free check: email it to yirehcareers@gmail.com and I'll tell you the three things I'd fix first. For a full package, *Essential ($29)* is a professionally written CV, delivered within 2 working days, and *Professional ($49)* adds a cover letter and LinkedIn setup, delivered within 3.
 > One tip: check the employer's rules for your location before you apply.
 
 ## 23. Add-ons menu

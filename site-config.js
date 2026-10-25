@@ -1,6 +1,6 @@
 const SITE = {
   name: 'Yireh Careers',
-  tagline: 'Every listing verified. Every link real.',
+  tagline: 'Every listing verified. Every link goes to the employer\'s own posting.',
   email: 'yirehcareers@gmail.com',
   whatsapp: '+905338225854',
   whatsappUrl: 'https://wa.me/905338225854',
