@@ -58,7 +58,7 @@ An add-on is offered **only when a factual trigger exists** that the customer to
 | LinkedIn profile setup $25 | They have no profile or told us it is outdated | They said their profile is fine |
 | Extra revision $10 | Both included rounds are used and they want another | Rounds unused |
 | Second CV $15 | They named two target roles | One role |
-| 48-hour priority $15 | They gave a deadline | No deadline |
+| Priority delivery (1 working day) $15 | They gave a deadline | No deadline |
 | Interview preparation sheet $29 | They told us they have an interview | Nothing scheduled |
 
 No blanket "add this now" messages. No countdowns.

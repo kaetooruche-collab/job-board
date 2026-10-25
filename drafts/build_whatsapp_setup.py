@@ -20,8 +20,8 @@ WEB1 = f"{SITE}/?utm_source=whatsapp&utm_medium=profile&utm_campaign=profile"
 WEB2 = f"{SITE}/services?utm_source=whatsapp&utm_medium=profile&utm_campaign=profile"
 
 CATALOG = [
-    ("Essential: CV", "$29", "CV creation or improvement for your target roles, ATS-optimised, Word and PDF. Up to 2 revision rounds. Delivered in 5 working days from when onboarding is complete."),
-    ("Professional: CV, cover letter and LinkedIn setup (Recommended)", "$49", "Everything in Essential, plus a targeted cover letter and LinkedIn profile setup. Up to 3 revision rounds. Delivered in 5 working days from when onboarding is complete."),
+    ("Essential: professionally written CV", "$29", "A polished, ATS-optimised CV written around your target roles, in Word and PDF. Up to 2 revision rounds. Delivered within 2 working days of completing onboarding."),
+    ("Professional: CV, cover letter and LinkedIn setup (Recommended)", "$49", "Everything in Essential, plus a targeted cover letter and LinkedIn profile setup. Up to 3 revision rounds. Delivered within 3 working days of completing onboarding."),
     ("Executive: Professional plus 30-day LinkedIn service", "$149", "Everything in Professional, plus a personal branding strategy, 12 LinkedIn posts over 30 days and targeted connection building by hand each week, aiming towards 500+ total connections (or 100 new relevant ones if you already have 500+). We do not promise interviews or job offers."),
     ("LinkedIn Growth (monthly, optional after Executive)", "$99 per month", "12 curated posts and weekly targeted connection requests, month to month. Paid by arrangement here on WhatsApp. Nothing is charged automatically."),
     ("Free quick CV check", "Free", "Email your CV and we tell you the three things we would fix first. One free check per person."),
