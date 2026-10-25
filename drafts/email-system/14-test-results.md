@@ -36,10 +36,13 @@ Method: tests ran against the live Brevo account and the live signup form, using
 | AU-1 starts on **form signup** (jobs only, and jobs + tips) | **Pass.** Welcome (copy 87) arrived within seconds, first name merged ("Hi Aa") |
 | AU-1 starts on **API add** to Job alerts | **Pass.** Same email, same speed |
 | AU-1 does NOT fire for the **free-check form** (no Job alerts list) | **Pass** (no email) |
-| AU-2 does not send CT-1 immediately (one-day wait) | **Consistent so far:** nothing arrived for tips contacts added by form (t3b, t3c) or by API (t3d). The positive proof (CT-1 arriving after a day) is scheduled for ~15:20 UTC on 25 Oct |
+| AU-2 one-day wait (T3) | **Pass (25 Oct, 15:22 UTC check).** Three test contacts joined Career tips at about 14:20 UTC on 24 Oct by form (t3b, t3c) and by API (t3d). All three received CT-1 ("One thing to check on your CV tonight") at 14:20 UTC on 25 Oct, exactly one day later, and nothing before. CT-2 had not arrived (correct; due about day 8). The email landed in Promotions. Sender: Yireh Careers |
 | AU-3 and AU-4 start from the marker lists | **Pass (KT, 24 Oct):** the test contacts show correctly in both automations. Their waits are 4 and 21 days, so the final emails will only prove themselves on those dates (the scheduled test contacts are deleted after the AU-2 check) |
 | T4 condition step exists | **Yes**, KT built conditions in AU-3 and AU-4 (confirmed by KT's message that the automations are built as specified; ask KT if any condition was missing) |
 
 ## Leftovers
 - Campaign **86** ("TEST T7 delete me", sent to the test address) cannot be deleted through the API once sent. KT may delete it in the dashboard (Campaigns); it holds no personal data beyond the deleted test address.
 - Test addresses deleted: yct1, yct5, yct7, yct9. Verified: 3 contacts, list 18 empty.
+
+## Cleanup, 25 Oct 2026
+After the AU-2 check, Claude (account confirmed KAYZ Global Ltd) deleted the test contacts kaetooruche+t3b, +t3c and +t3d from Brevo. Contacts are back to the three real ones on Job alerts. The AU-3 (4 days) and AU-4 (21 days) final emails therefore remain unproven end to end; their entry into the automations was verified by KT on 24 Oct. If you want them proven, add a plus-address test contact to list 19 or 20 and wait out the delay.
