@@ -1,47 +1,47 @@
 {
- "generatedAt": "2026-10-25T20:46:47.655797+00:00",
- "activeListings": 1018,
- "rawCandidates": 21084,
- "sentToReview": 478,
- "brokenLinksDropped": 23,
- "percentConfirmedRemote": 91.3,
- "percentWithStatedEligibility": 74.6,
+ "generatedAt": "2026-10-26T04:40:04.843249+00:00",
+ "activeListings": 1010,
+ "rawCandidates": 21086,
+ "sentToReview": 459,
+ "brokenLinksDropped": 28,
+ "percentConfirmedRemote": 91.1,
+ "percentWithStatedEligibility": 74.4,
  "byArrangement": {
-  "remote_geo_restricted": 730,
-  "remote_unclear": 89,
-  "fully_remote": 199
+  "remote_unclear": 90,
+  "remote_geo_restricted": 722,
+  "fully_remote": 198
  },
  "byEligibilityType": {
-  "countries": 714,
   "unclear": 259,
+  "countries": 706,
   "worldwide": 17,
   "region": 22,
   "timezone": 6
  },
  "byLevel": {
-  "leadership": 116,
-  "senior": 326,
-  "junior": 76,
-  "mid": 333,
-  "entry": 8,
-  "unspecified": 146,
-  "internship": 13
+  "mid": 330,
+  "leadership": 119,
+  "internship": 13,
+  "senior": 322,
+  "junior": 73,
+  "entry": 7,
+  "unspecified": 146
  },
  "byCategory": {
-  "Healthcare & Life Sciences": 88,
-  "Human Resources & Recruiting": 30,
+  "Software & Engineering": 208,
+  "Human Resources & Recruiting": 31,
+  "Sales": 134,
+  "Product & Project": 39,
+  "Healthcare & Life Sciences": 89,
   "Customer Service & Support": 55,
-  "Administration & Operations": 40,
-  "Software & Engineering": 213,
-  "Marketing & Communications": 95,
-  "Sales": 135,
+  "Administration & Operations": 38,
+  "Marketing & Communications": 94,
   "Trust, Safety & Moderation": 6,
-  "Finance & Accounting": 72,
-  "Product & Project": 38,
+  "Finance & Accounting": 69,
   "Design & Creative": 39,
   "Research": 11,
   "Other": 19,
-  "Legal & Compliance": 26,
+  "Legal & Compliance": 27,
   "Business & Analysis": 39,
   "IT & Security": 32,
   "Data & Analytics": 52,
@@ -51,9 +51,9 @@
   "Translation & Interpretation": 1
  },
  "bySource": {
-  "Greenhouse": 550,
-  "Lever": 145,
-  "Ashby": 323
+  "Greenhouse": 543,
+  "Ashby": 322,
+  "Lever": 145
  },
  "uniqueCompanies": 157,
  "note": "Search-to-apply click-through and user engagement come from GoatCounter, not this file."
