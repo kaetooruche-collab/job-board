@@ -48,6 +48,23 @@
       --new-text: #92400e;
       --verified-bg: #ecfdf5;
       --verified-text: #065f46;
+      --note-bg: #fffbeb;
+      --note-edge: #f59e0b;
+      --note-text: #78350f;
+
+      /* Spacing scale (8px-based): used by the listing column, cards and filters */
+      --space-1: 0.25rem;
+      --space-2: 0.5rem;
+      --space-3: 0.75rem;
+      --space-4: 1rem;
+      --space-5: 1.25rem;
+      --space-6: 1.5rem;
+      --space-8: 2rem;
+      --card-gap: 1.75rem;   /* vertical space between listings (28px) */
+      --card-pad: 1.5rem;    /* padding inside a listing (24px) */
+      --block-gap: 0.9rem;   /* space between sections inside a listing */
+      --radius-sm: 6px;
+      --radius-md: 8px;
     }
 
     @media (prefers-color-scheme: dark) {
@@ -69,6 +86,9 @@
         --new-text: #fde68a;
         --verified-bg: #052e16;
         --verified-text: #6ee7b7;
+        --note-bg: #241a08;
+        --note-edge: #b45309;
+        --note-text: #fcd34d;
         color-scheme: dark;
       }
     }
@@ -90,8 +110,13 @@
       --new-text: #fde68a;
       --verified-bg: #052e16;
       --verified-text: #6ee7b7;
+      --note-bg: #241a08;
+      --note-edge: #b45309;
+      --note-text: #fcd34d;
       color-scheme: dark;
     }
+
+    html { scroll-padding-top: 72px; }
 
     body {
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -150,6 +175,12 @@
       transition: background 0.2s;
     }
     .nav-cta:hover { background: var(--accent-hover); }
+    .nav-link:focus-visible, .nav-cta:focus-visible, .nav-brand:focus-visible, .hamburger:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+      border-radius: 4px;
+    }
+    .mobile-menu a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
 
     /* HAMBURGER */
     .hamburger {
@@ -250,18 +281,19 @@
 
     /* DISCLAIMER */
     .disclaimer {
-      background: var(--disclaimer-bg);
-      border: 1px solid var(--disclaimer-border);
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--accent);
       border-radius: var(--radius);
-      padding: 0.85rem 1.15rem;
-      margin-bottom: 1.5rem;
-      font-size: 0.82rem;
+      padding: 1rem 1.25rem;
+      margin-bottom: var(--space-6);
+      font-size: 0.85rem;
       color: var(--text-secondary);
-      line-height: 1.6;
+      line-height: 1.65;
     }
     .disclaimer strong {
       color: var(--text);
-      font-weight: 600;
+      font-weight: 700;
     }
 
     /* SEARCH + FILTERS BAR */
@@ -269,16 +301,61 @@
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: var(--radius);
-      padding: 1rem 1.25rem;
-      margin-bottom: 1.25rem;
+      padding: 1.15rem 1.35rem;
+      margin-bottom: var(--space-6);
       position: sticky;
       top: 56px;
       z-index: 100;
     }
+    .filter-group { margin-top: 1.1rem; }
+    .group-label {
+      display: block;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+      margin-bottom: 0.5rem;
+    }
+    /* Fields can be folded away so the listings, not the chip wall, carry the page */
+    .fields-group summary.group-label {
+      cursor: pointer;
+      list-style: none;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0.6rem;
+      padding: 0.15rem 0;
+      width: fit-content;
+    }
+    .fields-group summary.group-label::-webkit-details-marker { display: none; }
+    .fields-group summary.group-label::before {
+      content: "+";
+      font-weight: 800;
+      font-size: 0.85rem;
+      width: 1ch;
+      letter-spacing: 0;
+    }
+    .fields-group[open] summary.group-label::before { content: "\2212"; }
+    .fields-group summary.group-label:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
+    .fields-current {
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0;
+      text-transform: none;
+      color: var(--text-secondary);
+      max-width: 16rem;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .fields-current.is-set { color: var(--accent); }
+    .fields-group[open] .fields-current { display: none; }
     .search-bar input {
       width: 100%;
-      padding: 0.65rem 1rem 0.65rem 2.5rem;
-      border-radius: 8px;
+      min-height: 44px;
+      padding: 0.7rem 1rem 0.7rem 2.6rem;
+      border-radius: var(--radius-md);
       border: 1px solid var(--border);
       font-size: 0.9rem;
       font-family: inherit;
@@ -294,68 +371,109 @@
     .filters {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.4rem;
-      margin-top: 0.75rem;
+      gap: 0.5rem;
     }
-    .filter-btn {
-      padding: 0.35rem 0.8rem;
-      border-radius: 20px;
+    .filter-btn, .lvl-btn {
+      min-height: 32px;
+      padding: 0.4rem 0.9rem;
+      border-radius: 999px;
       border: 1px solid var(--border);
       background: transparent;
       color: var(--text-secondary);
-      font-size: 0.78rem;
+      font-size: 0.8rem;
       font-weight: 500;
+      line-height: 1.35;
       cursor: pointer;
-      transition: all 0.15s;
+      transition: border-color 0.15s, color 0.15s, background 0.15s;
       font-family: inherit;
     }
-    .filter-btn:hover {
+    .filter-btn:hover, .lvl-btn:hover {
       border-color: var(--accent);
       color: var(--accent);
     }
-    .filter-btn.active {
+    .filter-btn.active, .lvl-btn.active {
       background: var(--accent);
       color: #fff;
       border-color: var(--accent);
+      font-weight: 600;
     }
-    .level-row { display: flex; flex-wrap: wrap; gap: 0.4rem; align-items: center; margin-top: 0.75rem; }
-    .level-row .lvl-label { font-size: 0.78rem; font-weight: 700; color: var(--text-secondary); margin-right: 0.2rem; }
-    .lvl-btn {
-      padding: 0.35rem 0.8rem; border-radius: 20px; border: 1px solid var(--border); background: transparent;
-      color: var(--text-secondary); font-size: 0.78rem; font-weight: 500; cursor: pointer; transition: all 0.15s; font-family: inherit;
-    }
-    .lvl-btn:hover { border-color: var(--accent); color: var(--accent); }
-    .lvl-btn.active { background: var(--accent); color: #fff; border-color: var(--accent); }
-    .lvl-btn:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+    .filter-btn:focus-visible, .lvl-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+    .level-row { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; }
 
     /* JOB COUNT + UPDATED */
+    .results-head { margin: var(--space-6) 0 var(--space-4); }
     .job-meta {
       display: flex;
       justify-content: space-between;
-      align-items: center;
+      align-items: baseline;
       flex-wrap: wrap;
-      gap: 0.5rem;
-      margin-bottom: 0.75rem;
+      gap: 0.35rem 1rem;
+      margin: 0;
     }
     .job-count {
-      font-size: 0.82rem;
+      font-size: 0.9rem;
       color: var(--text-secondary);
     }
-    .job-count strong { color: var(--text); }
+    .job-count strong { color: var(--text); font-weight: 700; font-variant-numeric: tabular-nums; }
     .last-updated {
-      font-size: 0.75rem;
+      font-size: 0.8rem;
       color: var(--text-secondary);
     }
 
+    /* ACTIVE FILTERS: what is currently narrowing the results, and how to undo it */
+    .active-filters {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.4rem;
+      margin: 0.8rem 0 0;
+      font-size: 0.78rem;
+    }
+    .active-filters[hidden] { display: none; }
+    .active-filters .af-label {
+      color: var(--text-secondary);
+      font-weight: 600;
+      margin-right: 0.15rem;
+    }
+    .af-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      min-height: 28px;
+      padding: 0.2rem 0.6rem 0.2rem 0.7rem;
+      border-radius: 999px;
+      border: 1px solid var(--accent);
+      background: var(--accent-light);
+      color: var(--accent);
+      font: inherit;
+      font-weight: 600;
+      line-height: 1.3;
+      cursor: pointer;
+      transition: background 0.15s, color 0.15s;
+    }
+    .af-chip:hover { background: var(--accent); color: #fff; }
+    .af-chip:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+    .af-clear {
+      background: none;
+      border: none;
+      color: var(--text-secondary);
+      font: inherit;
+      font-weight: 600;
+      text-decoration: underline;
+      cursor: pointer;
+      padding: 0.2rem 0.3rem;
+    }
+    .af-clear:hover { color: var(--accent); }
+    .af-clear:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
+
     /* JOB CARDS */
+    #job-list { display: grid; gap: var(--card-gap); }
     .job-card {
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: var(--radius);
-      padding: 1.15rem 1.35rem;
-      margin-bottom: 0.6rem;
+      padding: var(--card-pad);
       transition: box-shadow 0.15s, border-color 0.15s;
-      cursor: pointer;
       text-decoration: none;
       display: block;
       color: inherit;
@@ -373,62 +491,71 @@
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
-      gap: 1rem;
-      margin-bottom: 0.4rem;
+      gap: 0.75rem 1rem;
+      margin-bottom: var(--block-gap);
     }
     .job-title {
-      font-size: 1rem;
+      font-size: 1.0625rem;
       font-weight: 700;
       color: var(--text);
-      line-height: 1.3;
+      line-height: 1.35;
+      letter-spacing: -0.01em;
     }
     .job-salary {
-      font-size: 0.8rem;
-      font-weight: 600;
+      font-size: 0.85rem;
+      font-weight: 700;
       color: var(--green);
       background: var(--green-light);
-      padding: 0.2rem 0.55rem;
-      border-radius: 4px;
+      padding: 0.25rem 0.6rem;
+      border-radius: var(--radius-sm);
       white-space: nowrap;
+      flex-shrink: 0;
     }
     .job-company {
-      font-size: 0.85rem;
+      font-size: 0.875rem;
       color: var(--text-secondary);
-      margin-bottom: 0.3rem;
+      margin-top: 0.3rem;
+      overflow-wrap: anywhere;
     }
     .job-date {
-      font-size: 0.75rem;
+      font-size: 0.8rem;
       color: var(--text-secondary);
-      margin-bottom: 0.4rem;
+      margin-bottom: 0.6rem;
     }
+    .job-date time { color: var(--text); font-weight: 600; }
     .job-tags {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.35rem;
+      gap: 0.4rem 0.5rem;
       align-items: center;
     }
+    /* Secondary metadata sits below the status pills in the hierarchy: present, scannable, but quiet */
     .job-tag {
       font-size: 0.72rem;
-      padding: 0.15rem 0.5rem;
-      border-radius: 4px;
+      padding: 0.18rem 0.55rem;
+      border-radius: 5px;
       background: var(--tag-bg);
       color: var(--text-secondary);
       font-weight: 500;
+      line-height: 1.4;
+      max-width: 100%;
+      overflow-wrap: anywhere;
     }
     .badge-new {
-      font-size: 0.68rem;
-      padding: 0.15rem 0.5rem;
-      border-radius: 4px;
+      font-size: 0.66rem;
+      padding: 0.2rem 0.55rem;
+      border-radius: 5px;
       background: var(--new-bg);
       color: var(--new-text);
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.5px;
+      line-height: 1.4;
     }
     .badge-verified {
-      font-size: 0.68rem;
-      padding: 0.15rem 0.5rem;
-      border-radius: 4px;
+      font-size: 0.7rem;
+      padding: 0.22rem 0.6rem;
+      border-radius: var(--radius-sm);
       background: var(--verified-bg);
       color: var(--verified-text);
       font-weight: 600;
@@ -439,77 +566,96 @@
     .job-source {
       font-size: 0.72rem;
       color: var(--text-secondary);
-      opacity: 0.7;
+      opacity: 0.75;
     }
 
 
     /* MORE FILTERS */
-    .more-filters { margin-top: 0.75rem; }
+    .more-filters { margin-top: 1.1rem; padding-top: 1rem; border-top: 1px solid var(--border); }
     .more-filters summary {
-      cursor: pointer; font-size: 0.82rem; font-weight: 600; color: var(--accent);
+      cursor: pointer; font-size: 0.85rem; font-weight: 600; color: var(--accent);
       list-style: none; display: inline-flex; align-items: center; gap: 0.35rem; padding: 0.2rem 0;
     }
     .more-filters summary::-webkit-details-marker { display: none; }
     .more-filters summary::before { content: "+"; font-weight: 800; width: 1ch; }
     .more-filters[open] summary::before { content: "\2212"; }
     .more-filters summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
-    .filter-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 0.6rem; margin-top: 0.6rem; }
-    .filter-field { display: flex; flex-direction: column; gap: 0.25rem; min-width: 0; }
-    .filter-field span { font-size: 0.72rem; font-weight: 600; color: var(--text-secondary); }
+    .filter-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(175px, 1fr)); gap: 0.85rem 0.75rem; margin-top: 0.9rem; }
+    .filter-field { display: flex; flex-direction: column; gap: 0.3rem; min-width: 0; }
+    .filter-field span { font-size: 0.75rem; font-weight: 600; color: var(--text-secondary); }
     .filter-field select {
-      width: 100%; padding: 0.5rem 0.6rem; border-radius: 8px; border: 1px solid var(--border);
-      background: var(--bg); color: var(--text); font-size: 0.85rem; font-family: inherit;
+      width: 100%; min-height: 40px; padding: 0.5rem 0.6rem; border-radius: var(--radius-md); border: 1px solid var(--border);
+      background: var(--bg); color: var(--text); font-size: 0.875rem; font-family: inherit;
     }
     .filter-field select:focus-visible, .check-row input:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
-    .check-row { display: flex; flex-wrap: wrap; gap: 0.5rem 1.25rem; align-items: center; margin-top: 0.7rem; font-size: 0.82rem; color: var(--text-secondary); }
-    .check-row label { display: inline-flex; align-items: center; gap: 0.4rem; cursor: pointer; }
+    .check-row { display: flex; flex-wrap: wrap; gap: 0.6rem 1.35rem; align-items: center; margin-top: 0.9rem; font-size: 0.85rem; color: var(--text-secondary); }
+    .check-row label { display: inline-flex; align-items: center; gap: 0.45rem; cursor: pointer; min-height: 28px; }
+    .check-row input { width: 1rem; height: 1rem; accent-color: var(--accent); }
     .link-btn { background: none; border: none; color: var(--accent); font: inherit; font-size: 0.82rem; font-weight: 600; cursor: pointer; padding: 0; }
     .link-btn:hover { text-decoration: underline; }
     .link-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
     .toolbar { position: static !important; }
 
     /* WORK-ARRANGEMENT AND ELIGIBILITY BADGES */
-    .job-badges { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-bottom: 0.5rem; }
-    .pill { font-size: 0.72rem; font-weight: 600; padding: 0.18rem 0.55rem; border-radius: 999px; display: inline-flex; align-items: center; gap: 0.3rem; line-height: 1.3; }
+    .job-badges { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: var(--block-gap); }
+    .pill { font-size: 0.75rem; font-weight: 600; padding: 0.24rem 0.7rem; border-radius: 999px; display: inline-flex; align-items: center; gap: 0.35rem; line-height: 1.3; min-height: 26px; }
     .pill-remote { background: var(--verified-bg); color: var(--verified-text); }
     .pill-world { background: var(--green-light); color: var(--green); }
     .pill-region { background: var(--accent-light); color: var(--accent); }
     .pill-unsure { background: var(--new-bg); color: var(--new-text); }
-    .job-card { cursor: default; }
     .job-card .job-title a { color: inherit; text-decoration: none; }
     .job-card .job-title a:hover { color: var(--accent); text-decoration: underline; }
     .job-card .job-title a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 3px; }
-    .job-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 0.6rem 1rem; margin-top: 0.7rem; }
+    .job-actions {
+      display: flex; flex-wrap: wrap; align-items: center; gap: 0.75rem 1rem;
+      margin-top: var(--block-gap); padding-top: var(--block-gap); border-top: 1px solid var(--border);
+    }
     .apply-btn {
-      display: inline-block; background: var(--accent); color: #fff; font-weight: 700; font-size: 0.82rem;
-      padding: 0.45rem 0.95rem; border-radius: 8px; text-decoration: none;
+      display: inline-flex; align-items: center; min-height: 42px; background: var(--accent); color: #fff;
+      font-weight: 700; font-size: 0.85rem; padding: 0.5rem 1.1rem; border-radius: var(--radius-md); text-decoration: none;
     }
     .apply-btn:hover { background: var(--accent-hover); }
     .cv-btn {
-      display: inline-block; background: transparent; color: var(--accent); font-weight: 700; font-size: 0.82rem;
-      padding: 0.4rem 0.9rem; border-radius: 8px; text-decoration: none; border: 1.5px solid var(--accent);
+      display: inline-flex; align-items: center; min-height: 42px; background: transparent; color: var(--accent);
+      font-weight: 700; font-size: 0.85rem; padding: 0.45rem 1.05rem; border-radius: var(--radius-md);
+      text-decoration: none; border: 1.5px solid var(--accent);
     }
     .cv-btn:hover { background: var(--accent-light); }
     .cv-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
     .apply-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
-    .job-why { font-size: 0.78rem; color: var(--text-secondary); }
-    .job-why summary { cursor: pointer; font-weight: 600; color: var(--accent); }
+    .job-why { font-size: 0.8rem; color: var(--text-secondary); max-width: 100%; }
+    .job-why summary { cursor: pointer; font-weight: 600; color: var(--accent); padding: 0.35rem 0; }
     .job-why summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 3px; }
-    .job-why ul { margin: 0.4rem 0 0 1.1rem; display: grid; gap: 0.25rem; }
-    .job-why .why-head { font-weight: 700; color: var(--text); margin-top: 0.5rem; }
-    .job-unsure { font-size: 0.78rem; color: var(--new-text); background: var(--new-bg); border-radius: 6px; padding: 0.35rem 0.6rem; margin-bottom: 0.5rem; }
-    .show-more { display: block; margin: 1rem auto; padding: 0.6rem 1.4rem; border-radius: 8px; border: 1px solid var(--accent); background: transparent; color: var(--accent); font-weight: 700; font-family: inherit; cursor: pointer; }
+    .job-why ul { margin: 0.4rem 0 0 1.1rem; display: grid; gap: 0.3rem; line-height: 1.5; }
+    .job-why .why-head { font-weight: 700; color: var(--text); margin-top: 0.6rem; }
+    /* Compact explanatory note: kept visible, but no longer the loudest thing on the card */
+    .job-unsure {
+      font-size: 0.8rem; line-height: 1.55; color: var(--note-text);
+      background: var(--note-bg); border-left: 3px solid var(--note-edge); border-radius: var(--radius-sm);
+      padding: 0.5rem 0.75rem; margin-bottom: var(--block-gap); overflow-wrap: anywhere;
+    }
+    .show-more {
+      display: block; width: fit-content; justify-self: center; margin: 0 auto;
+      min-height: 44px; padding: 0.6rem 1.5rem; border-radius: var(--radius-md);
+      border: 1px solid var(--accent); background: transparent; color: var(--accent);
+      font-weight: 700; font-size: 0.9rem; font-family: inherit; cursor: pointer;
+      transition: background 0.15s;
+    }
     .show-more:hover { background: var(--accent-light); }
     .show-more:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
     @media (max-width: 720px) {
-      .filters { flex-wrap: nowrap; overflow-x: auto; padding-bottom: 0.5rem; scroll-snap-type: x proximity; -webkit-overflow-scrolling: touch; }
+      .filters { flex-wrap: nowrap; overflow-x: auto; padding-bottom: 0.35rem; scroll-snap-type: x proximity; -webkit-overflow-scrolling: touch; }
       .filter-btn { flex: 0 0 auto; white-space: nowrap; scroll-snap-align: start; }
-      .level-row { flex-wrap: nowrap; overflow-x: auto; padding-bottom: 0.25rem; -webkit-overflow-scrolling: touch; }
-      .lvl-btn, .level-row .lvl-label { flex: 0 0 auto; white-space: nowrap; }
+      .level-row { flex-wrap: nowrap; overflow-x: auto; padding-bottom: 0.35rem; -webkit-overflow-scrolling: touch; }
+      .lvl-btn { flex: 0 0 auto; white-space: nowrap; min-height: 34px; }
+      .filter-btn { min-height: 34px; }
+    }
+    @media (min-width: 721px) {
+      .job-why { margin-left: auto; }
     }
     @media (max-width: 480px) {
-      .job-card-header { flex-direction: column; gap: 0.4rem; }
-      .job-card { padding: 1rem; }
+      .job-card-header { flex-direction: column; gap: 0.5rem; }
+      .job-salary { white-space: normal; align-self: flex-start; }
     }
 
     /* CTA SECTION */
@@ -579,6 +725,15 @@
       border-radius: var(--radius);
       padding: 2rem;
       margin: 2rem 0;
+    }
+    /* One quiet line that says the split out loud: board free, services paid */
+    .free-paid-line {
+      font-size: 0.9rem;
+      line-height: 1.55;
+      color: var(--text-secondary);
+      margin: 0 0 1rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--border);
     }
     .services h2 {
       font-size: 1.2rem;
@@ -790,16 +945,19 @@
 
     /* RESPONSIVE */
     @media (max-width: 640px) {
+      :root { --card-gap: 1.25rem; --card-pad: 1.15rem; --block-gap: 0.8rem; }
       .hero { padding: 1.75rem 1.25rem 1.5rem; }
       .hero-tagline { font-size: 0.95rem; margin-bottom: 0.75rem; }
       .hero p { font-size: 0.85rem; margin-bottom: 1.1rem; line-height: 1.5; }
       .hero-stats { gap: 1.25rem; }
       .hero-stat strong { font-size: 1.35rem; }
-      .disclaimer { font-size: 0.78rem; padding: 0.7rem 0.9rem; margin-bottom: 1rem; }
+      .disclaimer { font-size: 0.8rem; padding: 0.85rem 1rem; margin-bottom: var(--space-4); }
       .container { padding: 1rem; }
-      .toolbar { padding: 0.75rem 1rem; margin-left: -1rem; margin-right: -1rem; border-radius: 0; border-left: none; border-right: none; }
-      .job-card { padding: 1rem 1.1rem; }
-      .job-card-header { flex-direction: column; gap: 0.4rem; }
+      .toolbar { padding: 0.9rem 1rem 1rem; margin-left: -1rem; margin-right: -1rem; border-radius: 0; border-left: none; border-right: none; }
+      .filter-group { margin-top: 1rem; }
+      .results-head { margin-top: var(--space-5); }
+      .job-card-header { flex-direction: column; gap: 0.5rem; }
+      .apply-btn, .cv-btn { min-height: 44px; }
       .cta-row { flex-direction: column; }
       .cta-section { padding: 2rem 1.25rem; }
       .service-grid { grid-template-columns: 1fr; }
@@ -807,6 +965,14 @@
       .hamburger { display: block; }
       .platform-card { flex-direction: column; align-items: stretch; }
       .platform-visit { text-align: center; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
     }
   </style>
   <script src="site-config.js"></script>
@@ -865,20 +1031,55 @@
       <strong>How these listings work:</strong> Every job links directly to the employer's posting, with the original posting date and source. Remote does not always mean worldwide: each card says who can apply, and says "unclear" when the employer does not. Pay is shown only when the employer states it. Always check the employer's eligibility rules for your location before applying. The &ldquo;Get a CV for this role&rdquo; button opens WhatsApp with Yireh Careers, our own paid CV and LinkedIn service. It is not part of the employer&rsquo;s application, and you never need it to apply.
     </div>
 
+    <!-- SERVICES: above the listings, so the paid offer is reachable without scrolling past every job -->
+    <section class="services" id="services">
+      <p class="free-paid-line">The job board is free, and it stays free. When you've found the right role, our paid CV and LinkedIn services help your application read like it belongs there.</p>
+      <h2>Need help with your application?</h2>
+      <p>Professional CVs, cover letters and LinkedIn profiles, written for you. From $29, with a free quick CV check to start.</p>
+      <div class="service-grid">
+        <div class="service-item">
+          <h3>Essential &middot; $29</h3>
+          <p>A professionally written, ATS-optimised CV, with up to 2 revision rounds. Delivered in 2 working days.</p>
+        </div>
+        <div class="service-item">
+          <h3>Professional &middot; $49</h3>
+          <p>CV, cover letter and LinkedIn profile setup, with up to 3 revision rounds. Delivered in 3 working days.</p>
+        </div>
+        <div class="service-item">
+          <h3>Executive &middot; $149</h3>
+          <p>Everything in Professional, plus personal branding, 12 LinkedIn posts and 30 days of connection building.</p>
+        </div>
+      </div>
+      <div class="service-cta">
+        <p>See exactly what each package includes, or ask us a question first.</p>
+        <div class="service-cta-buttons">
+          <a href="/services" class="cta-email-btn">See the packages</a>
+          <a href="https://wa.me/905338225854?text=Hello%2C%20I%20would%20like%20a%20free%20quick%20CV%20check.%20Please%20tell%20me%20how%20to%20send%20my%20CV." target="_blank" rel="noopener" class="cta-whatsapp" onclick="trackCv('home-free-check','')">Get a free CV check</a>
+        </div>
+      </div>
+    </section>
+
     <!-- TOOLBAR: SEARCH + FILTERS -->
     <div class="toolbar">
       <div class="search-bar">
         <input type="text" id="search-input" placeholder="Search by title, company or keyword..." aria-label="Search jobs">
       </div>
-      <div class="level-row" id="level-row" role="group" aria-label="Experience level">
-        <span class="lvl-label">Experience:</span>
+      <div class="filter-group">
+        <span class="group-label" id="level-group-label">Experience</span>
+        <div class="level-row" id="level-row" role="group" aria-labelledby="level-group-label">
         <button type="button" class="lvl-btn active" data-lvl="" aria-pressed="true">All levels</button>
         <button type="button" class="lvl-btn" data-lvl="early" aria-pressed="false">Early career</button>
         <button type="button" class="lvl-btn" data-lvl="mid" aria-pressed="false">Mid-level</button>
         <button type="button" class="lvl-btn" data-lvl="senior_plus" aria-pressed="false">Senior &amp; leadership</button>
+        </div>
       </div>
-      <div class="filters" id="filter-container" role="group" aria-label="Job field">
-        <button class="filter-btn active" data-category="all">All fields</button>
+      <div class="filter-group">
+        <details class="fields-group" id="fields-group">
+          <summary class="group-label" id="field-group-label">Fields <span class="fields-current" id="fields-current">All fields</span></summary>
+          <div class="filters" id="filter-container" role="group" aria-labelledby="field-group-label">
+            <button class="filter-btn active" data-category="all" aria-pressed="true">All fields</button>
+          </div>
+        </details>
       </div>
       <details class="more-filters" id="more-filters">
         <summary>More filters</summary>
@@ -923,10 +1124,13 @@
       </details>
     </div>
 
-    <!-- JOB META -->
-    <div class="job-meta">
-      <p class="job-count" id="job-count"></p>
-      <p class="last-updated" id="last-updated"></p>
+    <!-- RESULTS HEAD: count, last update, and the filters currently applied -->
+    <div class="results-head">
+      <div class="job-meta">
+        <p class="job-count" id="job-count"></p>
+        <p class="last-updated" id="last-updated"></p>
+      </div>
+      <div class="active-filters" id="active-filters" hidden></div>
     </div>
 
     <!-- JOB LIST -->
@@ -966,33 +1170,6 @@
       </form>
       <p class="cta-social-proof">Every role in the email is checked and links to the employer's own posting.</p>
       <p style="margin-top:0.5rem; font-size:0.8rem; opacity:0.85;">We'll send you the weekly job email. One tap to unsubscribe. See our <a href="/privacy" style="color:inherit; text-decoration:underline;">privacy policy</a>.</p>
-    </section>
-
-    <!-- SERVICES -->
-    <section class="services" id="services">
-      <h2>Need help with your application?</h2>
-      <p>Professional CVs, cover letters and LinkedIn profiles, written for you. From $29, with a free quick CV check to start.</p>
-      <div class="service-grid">
-        <div class="service-item">
-          <h3>Essential &middot; $29</h3>
-          <p>A professionally written, ATS-optimised CV, with up to 2 revision rounds. Delivered in 2 working days.</p>
-        </div>
-        <div class="service-item">
-          <h3>Professional &middot; $49</h3>
-          <p>CV, cover letter and LinkedIn profile setup, with up to 3 revision rounds. Delivered in 3 working days.</p>
-        </div>
-        <div class="service-item">
-          <h3>Executive &middot; $149</h3>
-          <p>Everything in Professional, plus personal branding, 12 LinkedIn posts and 30 days of connection building.</p>
-        </div>
-      </div>
-      <div class="service-cta">
-        <p>See exactly what each package includes, or ask us a question first.</p>
-        <div class="service-cta-buttons">
-          <a href="/services" class="cta-email-btn">See the packages</a>
-          <a href="https://wa.me/905338225854?text=Hello%2C%20I%20would%20like%20a%20free%20quick%20CV%20check.%20Please%20tell%20me%20how%20to%20send%20my%20CV." target="_blank" rel="noopener" class="cta-whatsapp" onclick="trackCv('home-free-check','')">Get a free CV check</a>
-        </div>
-      </div>
     </section>
 
     <!-- HOW WE VERIFY -->
@@ -1084,7 +1261,9 @@
       } catch (err) { allJobs = []; }
       document.getElementById('total-jobs').textContent = allJobs.length;
       document.getElementById('total-companies').textContent = new Set(allJobs.map(function(j) { return j.company; })).size;
-      if (window.innerWidth >= 720) document.getElementById('more-filters').open = true;
+      var wide = window.innerWidth >= 720;
+      document.getElementById('more-filters').open = wide;
+      document.getElementById('fields-group').open = wide;
       buildCategoryFilters();
       await buildCountryFilter();
       bindControls();
@@ -1146,11 +1325,7 @@
         var btn = e.target.closest('.filter-btn');
         if (!btn) return;
         state.category = btn.dataset.category;
-        document.querySelectorAll('.filter-btn').forEach(function(b) {
-          var on = b.dataset.category === state.category;
-          b.classList.toggle('active', on);
-          b.setAttribute('aria-pressed', on ? 'true' : 'false');
-        });
+        syncCategoryUI();
         trackEvent('filter-field', state.category);
         resetAndRender();
       });
@@ -1177,19 +1352,10 @@
       document.getElementById('f-level').addEventListener('change', syncLevelUI);
       document.getElementById('f-confirmed').addEventListener('change', function(e) { state.confirmed = e.target.checked; resetAndRender(); });
       document.getElementById('f-stated').addEventListener('change', function(e) { state.stated = e.target.checked; resetAndRender(); });
-      document.getElementById('f-reset').addEventListener('click', function() {
-        state = { category: 'all', query: '', level: '', country: '', type: '', posted: '', confirmed: false, stated: false, shown: PAGE_SIZE };
-        document.getElementById('search-input').value = '';
-        ['f-level', 'f-country', 'f-type', 'f-posted'].forEach(function(id) { document.getElementById(id).value = ''; });
-        document.getElementById('f-confirmed').checked = false;
-        document.getElementById('f-stated').checked = false;
-        syncLevelUI();
-        document.querySelectorAll('.filter-btn').forEach(function(b) {
-          var on = b.dataset.category === 'all';
-          b.classList.toggle('active', on);
-          b.setAttribute('aria-pressed', on ? 'true' : 'false');
-        });
-        renderJobs();
+      document.getElementById('f-reset').addEventListener('click', resetAll);
+      document.getElementById('active-filters').addEventListener('click', function(e) {
+        var btn = e.target.closest('[data-clear]');
+        if (btn) clearFilter(btn.getAttribute('data-clear'));
       });
       document.getElementById('job-list').addEventListener('click', function(e) {
         var more = e.target.closest('.show-more');
@@ -1202,6 +1368,77 @@
     }
 
     function resetAndRender() { state.shown = PAGE_SIZE; renderJobs(); }
+
+    function syncCategoryUI() {
+      document.querySelectorAll('.filter-btn').forEach(function(b) {
+        var on = b.dataset.category === state.category;
+        b.classList.toggle('active', on);
+        b.setAttribute('aria-pressed', on ? 'true' : 'false');
+      });
+      var cur = document.getElementById('fields-current');
+      if (cur) {
+        cur.textContent = state.category === 'all' ? 'All fields' : state.category;
+        cur.classList.toggle('is-set', state.category !== 'all');
+      }
+    }
+
+    function resetAll() {
+      state = { category: 'all', query: '', level: '', country: '', type: '', posted: '', confirmed: false, stated: false, shown: PAGE_SIZE };
+      document.getElementById('search-input').value = '';
+      ['f-level', 'f-country', 'f-type', 'f-posted'].forEach(function(id) { document.getElementById(id).value = ''; });
+      document.getElementById('f-confirmed').checked = false;
+      document.getElementById('f-stated').checked = false;
+      syncLevelUI();
+      syncCategoryUI();
+      renderJobs();
+    }
+
+    /* Which filters are narrowing the results right now, shown above the list so they can be undone one by one */
+    var LEVEL_FILTER_NAME = { early: 'Early career', mid: 'Mid-level', senior_plus: 'Senior & leadership' };
+
+    function activeFilterList() {
+      var out = [];
+      if (state.category !== 'all') out.push({ key: 'category', label: 'Field: ' + state.category });
+      if (state.level) out.push({ key: 'level', label: 'Level: ' + (LEVEL_FILTER_NAME[state.level] || LEVEL_LABEL[state.level] || state.level) });
+      if (state.country) out.push({ key: 'country', label: 'From: ' + (state.country === '__worldwide' ? 'Worldwide only' : state.country) });
+      if (state.type) out.push({ key: 'type', label: 'Type: ' + state.type });
+      if (state.posted) out.push({ key: 'posted', label: 'Posted: last ' + state.posted + ' days' });
+      if (state.confirmed) out.push({ key: 'confirmed', label: 'Confirmed remote only' });
+      if (state.stated) out.push({ key: 'stated', label: 'Says who can apply' });
+      if (state.query) out.push({ key: 'query', label: 'Search: "' + state.query + '"' });
+      return out;
+    }
+
+    function renderActiveFilters() {
+      var el = document.getElementById('active-filters');
+      if (!el) return;
+      var items = activeFilterList();
+      if (!items.length) { el.hidden = true; el.innerHTML = ''; return; }
+      el.hidden = false;
+      el.innerHTML = '<span class="af-label">Filters:</span>'
+        + items.map(function(it) {
+            return '<button type="button" class="af-chip" data-clear="' + esc(it.key) + '"'
+              + ' title="Remove this filter" aria-label="Remove filter: ' + esc(it.label) + '">'
+              + esc(it.label) + '<span class="x" aria-hidden="true">&times;</span></button>';
+          }).join('')
+        + '<button type="button" class="af-clear" data-clear="all">Clear all</button>';
+    }
+
+    function clearFilter(key) {
+      if (key === 'all') { resetAll(); return; }
+      if (key === 'category') { state.category = 'all'; syncCategoryUI(); }
+      else if (key === 'level') { state.level = ''; syncLevelUI(); trackEvent('filter-level', 'any'); }
+      else if (key === 'country') { state.country = ''; document.getElementById('f-country').value = ''; trackEvent('filter-country', 'any'); }
+      else if (key === 'query') { state.query = ''; document.getElementById('search-input').value = ''; }
+      else if (key === 'confirmed') { state.confirmed = false; document.getElementById('f-confirmed').checked = false; }
+      else if (key === 'stated') { state.stated = false; document.getElementById('f-stated').checked = false; }
+      else {
+        state[key] = '';
+        var fieldId = { type: 'f-type', posted: 'f-posted' }[key];
+        if (fieldId) document.getElementById(fieldId).value = '';
+      }
+      resetAndRender();
+    }
 
     function matchesCountry(job, country) {
       var el = job.eligibility || {};
@@ -1295,6 +1532,7 @@
       var filtered = applyFilters();
       var countEl = document.getElementById('job-count');
       countEl.innerHTML = 'Showing <strong>' + Math.min(state.shown, filtered.length) + '</strong> of <strong>' + filtered.length + '</strong> matching listings (' + allJobs.length + ' in total)';
+      renderActiveFilters();
       var list = document.getElementById('job-list');
 
       if (filtered.length === 0) {
@@ -1316,7 +1554,7 @@
           ? '<div class="job-unsure">' + esc(job.unresolvedQuestions[0]) + '</div>' : '';
         var url = safeUrl(job.sourceUrl);
         return '<article class="job-card">'
-          + '<div class="job-card-header"><div>'
+          + '<div class="job-card-header"><div class="job-headings">'
           + '<div class="job-title"><a href="' + esc(url) + '" target="_blank" rel="noopener noreferrer" data-apply="1" data-id="' + esc(job.id) + '" data-source="' + esc(job.sourceName) + '">' + esc(job.title) + '</a></div>'
           + '<div class="job-company">' + esc(job.company) + ' &middot; ' + esc(job.regionAsStated || 'Remote') + '</div>'
           + '</div>' + salary + '</div>'
