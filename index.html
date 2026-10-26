@@ -60,7 +60,7 @@
       --space-5: 1.25rem;
       --space-6: 1.5rem;
       --space-8: 2rem;
-      --card-gap: 1.75rem;   /* vertical space between listings (28px) */
+      --card-gap: 2.5rem;   /* vertical space between listings (40px) */
       --card-pad: 1.5rem;    /* padding inside a listing (24px) */
       --block-gap: 0.9rem;   /* space between sections inside a listing */
       --radius-sm: 6px;
@@ -291,6 +291,21 @@
       color: var(--text-secondary);
       line-height: 1.65;
     }
+    /* The disclaimer folds away so it never stands between the hero and the search */
+    .disclaimer summary {
+      cursor: pointer;
+      list-style: none;
+    }
+    .disclaimer summary::-webkit-details-marker { display: none; }
+    .disclaimer summary::before {
+      content: "+";
+      font-weight: 800;
+      color: var(--accent);
+      margin-right: 0.45rem;
+    }
+    .disclaimer[open] summary::before { content: "\2212"; }
+    .disclaimer summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
+    .disclaimer-body { margin: 0.55rem 0 0; }
     .disclaimer strong {
       color: var(--text);
       font-weight: 700;
@@ -945,7 +960,7 @@
 
     /* RESPONSIVE */
     @media (max-width: 640px) {
-      :root { --card-gap: 1.25rem; --card-pad: 1.15rem; --block-gap: 0.8rem; }
+      :root { --card-gap: 2rem; --card-pad: 1.15rem; --block-gap: 0.8rem; }
       .hero { padding: 1.75rem 1.25rem 1.5rem; }
       .hero-tagline { font-size: 0.95rem; margin-bottom: 0.75rem; }
       .hero p { font-size: 0.85rem; margin-bottom: 1.1rem; line-height: 1.5; }
@@ -1027,9 +1042,10 @@
   <div class="container">
 
     <!-- DISCLAIMER -->
-    <div class="disclaimer">
-      <strong>How these listings work:</strong> Every card links to the employer&rsquo;s own posting and shows its real date, and says who can apply &mdash; or &ldquo;unclear&rdquo; when the employer doesn&rsquo;t. Always check the employer&rsquo;s eligibility rules for your location before applying. The &ldquo;Get a CV for this role&rdquo; button is our own paid CV service, not part of the employer&rsquo;s application.
-    </div>
+    <details class="disclaimer">
+      <summary><strong>How these listings work</strong> &mdash; always check the employer&rsquo;s eligibility rules for your location before applying.</summary>
+      <p class="disclaimer-body">Every card links to the employer&rsquo;s own posting and shows its real date, and says who can apply &mdash; or &ldquo;unclear&rdquo; when the employer doesn&rsquo;t. The &ldquo;Get a CV for this role&rdquo; button is our own paid CV service, not part of the employer&rsquo;s application.</p>
+    </details>
 
     <!-- SERVICES: above the listings, so the paid offer is reachable without scrolling past every job -->
     <section class="services" id="services">
