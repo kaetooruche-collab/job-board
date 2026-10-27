@@ -3,6 +3,14 @@
 (function () {
   var EMAIL = (window.SITE && window.SITE.email) || 'yirehcareers@gmail.com';
 
+  /* Click events for GoatCounter (counts only, no personal data). Shared so the pages
+     without their own helper — /free-check and /order — can measure their service links. */
+  window.trackEvt = function (path, title) {
+    if (window.goatcounter && window.goatcounter.count) {
+      window.goatcounter.count({ path: path, title: title || path, event: true });
+    }
+  };
+
   window.submitSiteForm = async function (ev, kind) {
     ev.preventDefault();
     var form = ev.target;

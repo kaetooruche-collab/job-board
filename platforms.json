@@ -1,6 +1,7 @@
 [
   {
     "name": "Jobicy",
+    "type": "board",
     "url": "https://jobicy.com",
     "description": "Remote job board with worldwide listings across multiple categories. Filter by role, tag, and location.",
     "signupRequired": false,
@@ -9,6 +10,7 @@
   },
   {
     "name": "Turing",
+    "type": "marketplace",
     "url": "https://www.turing.com",
     "description": "Platform matching developers and other tech professionals with remote roles at global companies.",
     "signupRequired": true,
@@ -17,6 +19,7 @@
   },
   {
     "name": "Toptal",
+    "type": "marketplace",
     "url": "https://www.toptal.com",
     "description": "Freelance marketplace for top talent in software, design, finance, and project management. Applicants go through a screening process.",
     "signupRequired": true,
@@ -25,6 +28,7 @@
   },
   {
     "name": "Crossover",
+    "type": "marketplace",
     "url": "https://www.crossover.com",
     "description": "Full-time remote roles across tech, operations, and more. Applicants complete assessments during the hiring process.",
     "signupRequired": true,
@@ -33,6 +37,7 @@
   },
   {
     "name": "Working Nomads",
+    "type": "board",
     "url": "https://www.workingnomads.com",
     "description": "Curated list of remote jobs for digital nomads. Covers development, marketing, design, customer support, and more.",
     "signupRequired": false,
@@ -41,6 +46,7 @@
   },
   {
     "name": "Wellfound (formerly AngelList Talent)",
+    "type": "marketplace",
     "url": "https://wellfound.com",
     "description": "Startup job platform with many remote-friendly positions. Create a profile and apply directly to startups.",
     "signupRequired": true,
@@ -49,6 +55,7 @@
   },
   {
     "name": "Himalayas",
+    "type": "board",
     "url": "https://himalayas.app",
     "description": "Remote job board with company profiles, salary transparency, and timezone-based filtering.",
     "signupRequired": false,
@@ -57,6 +64,7 @@
   },
   {
     "name": "NoDesk",
+    "type": "board",
     "url": "https://nodesk.co/remote-jobs/",
     "description": "Remote job board covering customer support, sales, marketing, design and engineering roles. Free to browse and apply; no account required.",
     "signupRequired": false,
@@ -65,6 +73,7 @@
   },
   {
     "name": "Skip The Drive",
+    "type": "board",
     "url": "https://www.skipthedrive.com/",
     "description": "Remote and work-from-home job board that lists customer service, accounting, development and entry-level and part-time roles. No registration and no charge to search.",
     "signupRequired": false,

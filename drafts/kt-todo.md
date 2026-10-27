@@ -87,6 +87,8 @@ Moved to its own chat and its own list: `jobsearch/TODO.md`. Not tracked here.
 ## 4. GoatCounter events to watch (after about 2 weeks of traffic)
 `services-click-hero-free-check`, `services-click-mid-free-check`, `services-click-sticky-free-check`, `services-click-final-free-check`, `services-click-pricing-essential`, `-professional`, `-executive`, `services-click-addons`, `services-click-growth`, `cv-click-job-cv-button`, `cv-click-home-free-check`, `apply-click`. Visitors x enquiry rate x close rate is the lever; these show the middle number.
 
+Added 27 Oct (home-page funnel + the platforms section decision, `drafts/decisions/2026-10-27-platforms-section.md`): `services-click-home-packages`, `services-click-nudge-packages`, `services-click-nudge-free-check`, `services-click-freecheck-packages`, `services-click-order-packages`, `guide-finder`, `filter-years`, `filter-minsal`, `service-nudge`, `platform-view`, `platform-click`. What to read: does `platform-view` turn into `platform-click` at all (if almost nobody clicks, the section earns little and could shrink); and do `services-click-home-packages` / `-nudge-*` fire now that they sit where people actually look. Note: since 27 Oct the home page sends a canonical URL, so filter links all count as `/` — compare events, not page paths.
+
 ## 5. Claude's open items (so you can see what is not on you)
 - [ ] Re-run the random spot-check on a fresh sample of listings (last result: 8 of 12 right first time, 2 wrong and fixed, 2 understated) and report the real number.
 - [ ] Google job-posting structured data: check Google's current rules for listings we do not own, then tell KT.

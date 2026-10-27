@@ -17,6 +17,9 @@
   <meta name="twitter:description" content="Verified remote jobs, updated every 6 hours. Every listing links to the employer's own posting, with the original posting date, source and who can apply.">
   <meta name="twitter:image" content="https://yirehcareers.vercel.app/og-image.png">
   <meta name="description" content="Free job board of verified remote jobs for students, graduates and experienced professionals across every field. Every listing links to the real posting, shows who can apply, and says plainly what we could not confirm.">
+  <!-- One page, many filter states: keep filtered URLs out of the index (GoatCounter reads this too, so
+       campaign parameters in the query are still reported by its utm handling, not by the path) -->
+  <link rel="canonical" href="https://yirehcareers.vercel.app/">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
@@ -1006,6 +1009,7 @@
     .platform-badge.free { background: var(--green-light); color: var(--green); }
     .platform-badge.paid { background: var(--disclaimer-bg); color: var(--yellow-dark); }
     .platform-badge.signup { background: var(--tag-bg); color: var(--text-secondary); }
+    .platform-badge.kind { background: var(--accent-light); color: var(--accent); font-weight: 600; }
     .platform-visit {
       padding: 0.45rem 0.9rem;
       background: var(--accent);
@@ -1093,7 +1097,6 @@
       Yireh <span>Careers</span>
     </a>
     <div class="nav-links">
-      <a href="#platforms" class="nav-link">Platforms</a>
       <a href="/verify" class="nav-link">How We Verify</a>
       <a href="/services" class="nav-cta">Get Job-Ready</a>
     </div>
@@ -1103,7 +1106,6 @@
   </nav>
   <div class="mobile-menu" id="mobile-menu">
     <a href="/" onclick="closeMenu()">Jobs</a>
-    <a href="#platforms" onclick="closeMenu()">Platforms</a>
     <a href="/verify" onclick="closeMenu()">How We Verify</a>
     <a href="/services" onclick="closeMenu()">Get Job-Ready</a>
   </div>
@@ -1160,7 +1162,7 @@
       <div class="service-cta">
         <p>See exactly what each package includes, or ask us a question first.</p>
         <div class="service-cta-buttons">
-          <a href="/services" class="cta-email-btn">See the packages</a>
+          <a href="/services" class="cta-email-btn" onclick="trackEvent('services-click-home-packages','Home block')">See the packages</a>
           <a href="https://wa.me/905338225854?text=Hello%2C%20I%20would%20like%20a%20free%20quick%20CV%20check.%20Please%20tell%20me%20how%20to%20send%20my%20CV." target="_blank" rel="noopener" class="cta-whatsapp" onclick="trackCv('home-free-check','')">Get a free CV check</a>
         </div>
       </div>
@@ -1316,13 +1318,6 @@
     <!-- ONE quiet offer, placed after the reader has been served a run of listings -->
     <div id="nudge-slot" style="margin-top: var(--card-gap);"></div>
 
-    <!-- PLATFORMS -->
-    <section class="platforms-section" id="platforms">
-      <h2>Platforms you can sign up to</h2>
-      <p>These platforms list remote jobs from multiple employers. We verified each signup page. No posting dates are shown because these are platforms, not individual listings.</p>
-      <div id="platform-list"></div>
-    </section>
-
     <!-- CTA: EMAIL SIGNUP -->
     <section class="cta-section" id="subscribe">
       <h2>Get verified remote jobs in your inbox</h2>
@@ -1366,6 +1361,14 @@
       <p style="margin-top:1rem; font-size:0.85rem;"><a href="/verify" style="color: var(--accent); font-weight:600; text-decoration:none;">Read our full verification process &rarr;</a></p>
     </section>
 
+    <!-- PLATFORMS: a fallback resource, deliberately last — after our own signup and trust sections,
+         reachable from the footer instead of the main nav -->
+    <section class="platforms-section" id="platforms">
+      <h2>Platforms you can sign up to</h2>
+      <p>Two different kinds here. <strong>Job boards</strong> list roles from many employers, like we do. <strong>Talent marketplaces</strong> ask you to build a profile and pass their own screening first. We check that each page opens, but we don&rsquo;t check their listings &mdash; so we don&rsquo;t show posting dates for them.</p>
+      <div id="platform-list"></div>
+    </section>
+
     <!-- REPORT -->
     <div style="text-align:center; padding: 1rem 0; font-size: 0.82rem; color: var(--text-secondary);">
       See something wrong? <a href="mailto:yirehcareers@gmail.com" style="color: var(--accent);">Report a listing</a> or <a href="https://wa.me/905338225854" target="_blank" rel="noopener" style="color: var(--accent);">message us on WhatsApp</a>.
@@ -1376,12 +1379,14 @@
   <!-- FOOTER -->
   <footer>
     <p>Yireh Careers &mdash; Built for job seekers at every stage, looking for remote work.</p>
-    <p style="margin-top:0.25rem;">Questions? <a href="mailto:yirehcareers@gmail.com">yirehcareers@gmail.com</a> &middot; <a href="/privacy">Privacy</a></p>
+    <p style="margin-top:0.25rem;">Questions? <a href="mailto:yirehcareers@gmail.com">yirehcareers@gmail.com</a> &middot; <a href="/privacy">Privacy</a> &middot; <a href="#platforms">Platforms</a></p>
   </footer>
 
   <script>
     var allJobs = [];
     var geoLexicon = null;
+    var loadFailed = false;
+    var baseQuery = null; /* campaign/foreign params preserved when filters rewrite the URL */
     var state = { category: 'all', query: '', level: '', country: '', type: '', posted: '', confirmed: false, stated: false, years: '', salary: '', minsal: '', currency: 'USD', shown: 40 };
     var PAGE_SIZE = 40;
 
@@ -1453,10 +1458,11 @@
     async function init() {
       try {
         var res = await fetch('./jobs.json');
+        if (!res.ok) throw new Error('HTTP ' + res.status);
         allJobs = await res.json();
-      } catch (err) { allJobs = []; }
-      document.getElementById('total-jobs').textContent = allJobs.length;
-      document.getElementById('total-companies').textContent = new Set(allJobs.map(function(j) { return j.company; })).size;
+      } catch (err) { allJobs = []; loadFailed = true; }
+      document.getElementById('total-jobs').textContent = loadFailed ? '\u2014' : allJobs.length;
+      document.getElementById('total-companies').textContent = loadFailed ? '\u2014' : new Set(allJobs.map(function(j) { return j.company; })).size;
       var wide = window.innerWidth >= 720;
       document.getElementById('more-filters').open = wide;
       document.getElementById('fields-group').open = wide;
@@ -1465,10 +1471,80 @@
       await buildCountryFilter();
       bindControls();
       buildLevelCounts();
-      var urlLevel = new URLSearchParams(location.search).get('level');
-      if (['early', 'mid', 'senior_plus', 'internship', 'entry', 'junior', 'senior', 'leadership'].indexOf(urlLevel) !== -1) { state.level = urlLevel; syncLevelUI(); }
+      baseQuery = new URLSearchParams(location.search);
+      readURL();
       renderJobs();
       updateLastUpdated();
+    }
+
+    /* Deep links: ?level= still works exactly as before, and the rest of the filter state
+       round-trips through the URL so a filtered view can be shared or bookmarked. */
+    function readURL() {
+      var q = new URLSearchParams(location.search);
+      var lvl = q.get('level');
+      if (['early', 'mid', 'senior_plus', 'internship', 'entry', 'junior', 'senior', 'leadership'].indexOf(lvl) !== -1) state.level = lvl;
+      var field = q.get('field');
+      if (field) {
+        var cats = {};
+        allJobs.forEach(function (j) { (j.categories && j.categories.length ? j.categories : [j.category]).forEach(function (c) { cats[c] = 1; }); });
+        if (cats[field]) state.category = field;
+      }
+      var c = q.get('country');
+      if (c && Array.prototype.some.call(document.getElementById('f-country').options, function (o) { return o.value === c; })) state.country = c;
+      var t = q.get('type');
+      if (['Full-time', 'Part-time', 'Contract', 'Freelance', 'Internship', 'Temporary'].indexOf(t) !== -1) state.type = t;
+      var p = q.get('posted');
+      if (['3', '7', '14'].indexOf(p) !== -1) state.posted = p;
+      var y = q.get('years');
+      if (['none', 'le2', '2to4', '5plus'].indexOf(y) !== -1) state.years = y;
+      var ms = q.get('minsal');
+      if (ms && /^\d{3,7}$/.test(ms)) {
+        state.minsal = ms;
+        var cur = (q.get('cur') || 'USD').toUpperCase();
+        state.currency = ['USD', 'EUR', 'GBP'].indexOf(cur) !== -1 ? cur : 'USD';
+      }
+      if (q.get('pay') === 'stated') state.salary = 'yes';
+      state.confirmed = q.get('confirmed') === '1';
+      state.stated = q.get('stated') === '1';
+      var query = (q.get('q') || '').slice(0, 100);
+      if (query) { state.query = query.toLowerCase(); document.getElementById('search-input').value = query; }
+      /* reflect everything on the controls so the chips and selects agree with the URL */
+      document.getElementById('f-level').value = state.level;
+      document.getElementById('f-country').value = state.country;
+      document.getElementById('f-type').value = state.type;
+      document.getElementById('f-posted').value = state.posted;
+      document.getElementById('f-years').value = state.years;
+      document.getElementById('f-salary').value = state.salary;
+      document.getElementById('f-minsal').value = state.minsal;
+      document.getElementById('f-currency').value = state.currency;
+      document.getElementById('f-confirmed').checked = state.confirmed;
+      document.getElementById('f-stated').checked = state.stated;
+      syncLevelUI();
+      syncCategoryUI();
+    }
+
+    /* Filters live in the URL, but campaign parameters (utm_*, ref, gclid) stay untouched */
+    function syncURL() {
+      if (!baseQuery) return;
+      var p = new URLSearchParams();
+      baseQuery.forEach(function (v, k) { p.set(k, v); });
+      var set = function (k, v) { if (v) p.set(k, v); else p.delete(k); };
+      set('q', state.query);
+      set('field', state.category === 'all' ? '' : state.category);
+      set('level', state.level);
+      set('country', state.country);
+      set('type', state.type);
+      set('posted', state.posted);
+      set('years', state.years);
+      set('minsal', state.minsal);
+      set('cur', state.minsal ? state.currency : '');
+      set('pay', state.salary === 'yes' ? 'stated' : '');
+      set('confirmed', state.confirmed ? '1' : '');
+      set('stated', state.stated ? '1' : '');
+      var qs = p.toString();
+      try {
+        history.replaceState(null, '', (location.pathname || '/') + (qs ? '?' + qs : '') + (location.hash || ''));
+      } catch (e) {}
     }
 
     function updateLastUpdated() {
@@ -1849,8 +1925,8 @@
         + '<button type="button" class="nudge-hide" aria-label="Hide this message">&times;</button>'
         + '<h3>You&rsquo;ve read ' + Math.min(state.shown, filteredCount) + ' listings. Your CV is the next step.</h3>'
         + '<p>When one of these roles is worth applying to, our paid CV and LinkedIn service writes the application to match. Not ready yet? The free quick CV check tells you what we would fix first.</p>'
-        + '<div class="nudge-actions"><a class="apply-btn" href="/services">See what each package includes</a>'
-        + '<a class="cv-btn" href="/free-check">Get a free CV check</a></div></aside>';
+        + '<div class="nudge-actions"><a class="apply-btn" href="/services" onclick="trackEvent(\'services-click-nudge-packages\',\'Nudge\')">See what each package includes</a>'
+        + '<a class="cv-btn" href="/free-check" onclick="trackEvent(\'services-click-nudge-free-check\',\'Nudge\')">Get a free CV check</a></div></aside>';
       slot.querySelector('.nudge-hide').addEventListener('click', function () {
         try { localStorage.setItem('yf-nudge', '1'); } catch (e) {}
         slot.innerHTML = '';
@@ -1871,7 +1947,9 @@
       var list = document.getElementById('job-list');
 
       if (filtered.length === 0) {
-        list.innerHTML = allJobs.length === 0
+        list.innerHTML = loadFailed
+          ? '<div class="no-results"><h3>We could not load the listings</h3><p>Something went wrong while loading the jobs &mdash; not a problem with your search. Refresh the page, and if it still does not load, email us at yirehcareers@gmail.com.</p></div>'
+          : allJobs.length === 0
           ? '<div class="no-results"><h3>No verified listings right now</h3><p>We refuse to show unverified jobs. Subscribe below to be told when new verified listings are added.</p></div>'
           : '<div class="no-results"><h3>No jobs match these filters</h3><p>Try fewer filters, a different field, or choose &ldquo;Any location&rdquo;. Use &ldquo;Clear filters&rdquo; to start again.</p></div>';
         return;
@@ -1916,6 +1994,7 @@
       }
       list.innerHTML = html;
       maybeNudge(filtered.length);
+      syncURL();
     }
 
     function cvLink(job) {
@@ -1933,15 +2012,13 @@
       if (window.goatcounter && window.goatcounter.count) {
         window.goatcounter.count({ path: 'apply-click', title: jobId, event: true, referrer: source });
       }
-    }
-
-    async function loadPlatforms() {
+    }    async function loadPlatforms() {
       try {
         var res = await fetch('./platforms.json');
         var platforms = await res.json();
         var list = document.getElementById('platform-list');
-        list.innerHTML = platforms.map(function(p) {
-          var badges = [];
+        list.innerHTML = platforms.map(function (p) {
+          var badges = ['<span class="platform-badge kind">' + (p.type === 'marketplace' ? 'Talent marketplace' : 'Job board') + '</span>'];
           if (p.free) badges.push('<span class="platform-badge free">Free</span>');
           else badges.push('<span class="platform-badge paid">Paid membership</span>');
           if (p.signupRequired) badges.push('<span class="platform-badge signup">Signup required</span>');
@@ -1951,10 +2028,28 @@
             + '<div class="platform-desc">' + esc(p.description) + '</div>'
             + '<div class="platform-badges">' + badges.join('') + '</div>'
             + '</div>'
-            + '<a href="' + esc(safeUrl(p.url)) + '" target="_blank" rel="noopener noreferrer" class="platform-visit">Visit</a>'
+            + '<a href="' + esc(safeUrl(p.url)) + '" target="_blank" rel="noopener noreferrer" class="platform-visit" data-platform="' + esc(p.name) + '">Visit</a>'
             + '</div>';
         }).join('');
+        list.addEventListener('click', function (e) {
+          var a = e.target.closest('[data-platform]');
+          if (!a) return;
+          trackEvent('platform-click', a.getAttribute('data-platform') + ' \u00b7 ' + (window.innerWidth <= 720 ? 'phone' : 'desktop'));
+        });
+        trackPlatformView();
       } catch(e) {}
+    }
+
+    /* One impression per page load, and only once the section is actually on screen */
+    function trackPlatformView() {
+      var sec = document.getElementById('platforms');
+      if (!sec || !('IntersectionObserver' in window)) return;
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (en) {
+          if (en.isIntersecting) { io.disconnect(); trackEvent('platform-view', 'home'); }
+        });
+      }, { threshold: 0.25 });
+      io.observe(sec);
     }
 
     init();
