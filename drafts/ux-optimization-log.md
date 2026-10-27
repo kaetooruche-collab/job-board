@@ -35,10 +35,28 @@ Per persona: **A first-time** — value prop + free/paid line + trust stats all 
 
 Deferred with reasons: toolbar stickiness stays `static` (deliberate since commit `bfe7617`; the expanded toolbar is ~400px on mobile and ~350px on desktop, so sticking it would eat a third of the screen); level chips at 34px pass WCAG 2.2 AA target size (24px) so they were left alone; footer links are inline text (exempt from target-size); desktop search sits ~1,182px down — noted, not changed (desktop layout untouched this round).
 
+## Baseline (pulled from the GoatCounter API, 27 Oct 2026 — the numbers to beat)
+
+Access: API key in `.env` as `GOATCOUNTER_API_KEY` (git-ignored; read-only usage). All-time since 1 Sep:
+
+- **144 pageviews, 12 events.** Last 30 days: **68 views, 12 events**; busiest day 26 Oct (11).
+- Pages: `/` 121, `/services` 8, `/services?pay=test` 2, `/verify` 1.
+- Events: `filter-field` 3, `filter-country` 2, `services-click-pay-professional` 2, `service-nudge` 1, `cv-click-job-cv-button` 1, `apply-click` 1, `filter-level` 1, `services-click-pricing-professional` 1.
+- **`conversion-*` never fired: zero form submissions ever** (signup, free-check, order).
+
+Caveats that change how this is read: (a) several of those events line up exactly with our own
+browser-verification sessions, so genuine human engagement may be near zero; (b) local preview
+visits also ping the counter; (c) at these volumes nothing is statistically meaningful — the
+numbers describe the plumbing, not visitor behaviour.
+**Reading:** the funnel is instrumented end-to-end but has never carried traffic. Distribution
+(WhatsApp kit posts, the weekly digest) is the binding constraint before any optimisation can be
+measured. Re-run the same queries after deploy; `platform-*`, `guide-finder`, `services-click-home/*`
+and `services-click-nudge-*` appear only then.
+
 ## Next priorities (in order)
 
-1. **Read the funnel data once traffic exists** (GoatCounter login is KT's; Claude has no data —
-   this blocks every "is it better?" question). Watch list: `drafts/kt-todo.md` §4.2. ~~Mobile user-flow walkthrough (six personas)~~ — **done 27 Oct**, see "Walkthrough findings" above; next is a real usability test with actual people, which cannot be done from this environment.
+1. **Read the funnel data once real traffic exists** (26 Oct baseline above; watch list:
+   `drafts/kt-todo.md` §4). Expect the first weekly digest on Tue 27 Oct to start moving it.2. ~~Mobile user-flow walkthrough (six personas)~~ — **done 27 Oct**, see "Walkthrough findings" above; next is a real usability test with actual people, which cannot be done from this environment.
 3. **Copy audit against `drafts/voice-and-copy-guide.md`** — the guide says the website copy has *not* been reviewed against it yet. Homepage hero, empty states, filter labels, services blurb.
 4. **Search relevance / result quality** — search currently matches raw substring across title,
    company, description; check recall on real queries ("customer support", "nurse", "no experience").
