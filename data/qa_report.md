@@ -1,14 +1,15 @@
-# Quality report, 2026-10-27T12:04+00:00
+# Quality report, 2026-10-27T17:57+00:00
 
-- Published: **857**
-- Held back by a quality rule (not published): **5**
-- Warnings (published, but look): **10**
+- Published: **971**
+- Held back by a quality rule (not published): **6**
+- Warnings (published, but look): **15**
 
 ## Held back
 
-### eligibility-contradicts-exclusion (2)
-- Data Engineer at Branch: label lists ['United States'] but note says cannot hire there: The posting says it cannot hire in: United States.
+### eligibility-contradicts-exclusion (3)
 - Senior Manager, FCC Monitoring at Airwallex: label lists ['United States'] but note says cannot hire there: The posting says it cannot hire in: United States, United Kingdom, EMEA, Australia, New Zealand, APAC.
+- Manager, FCC Monitoring & Testing, Americas at Airwallex: label lists ['United States'] but note says cannot hire there: The posting says it cannot hire in: United States.
+- Data Engineer at Branch: label lists ['United States'] but note says cannot hire there: The posting says it cannot hire in: United States.
 
 ### says-not-remote-but-published-as-remote (2)
 - Lead Product Manager, Growth at Monzo: e want to solve problems and change lives through Monzo ❤️  📍London/Hybrid | 💰 Salary range £120,000 - £140,000 + equity + Incentive A
@@ -19,21 +20,21 @@
 
 ## Warnings
 
-### pay-in-posting-but-card-says-not-stated (10)
-- Financial Analyst, GTM at Webflow: $112,000 - $135,000
-- Lead Platform Engineer, Identity & Access at Webflow: $232,000 - 290,000
-- Staff Data Engineer at Webflow: $212,500 - $255,000
-- Platform Engineer at Resend: $150,000 - $180,000
-- Platform Engineer at Resend: $150,000 - $180,000
+### pay-in-posting-but-card-says-not-stated (15)
+- Senior Software Engineer, Fullstack (Repayments UX) at Affirm: $32,000-$48,000
+- Software Engineer II, Fullstack (Repayment UX) at Affirm: $24,000 - $36,000
+- Staff Software Engineer, Backend (Recoveries) at Affirm: $48,000-$72,000
+- Manager, Machine Learning Engineering, Checkout at Affirm: $48,000-$72,000
+- Senior Strategic Account Executive at Twilio: $167,440 - $209,300
 
 ## Shape of the feed
 
 ```
-count: 857
-bySource: {'Greenhouse': 393, 'Ashby': 319, 'Lever': 145}
-pctEligibilityUnclear: 22.8
-pctRemoteUnclear: 6.8
-pctWorldwide: 2.1
-pctEarlyCareer: 9.7
-pctSeniorPlus: 41.8
+count: 971
+bySource: {'Ashby': 323, 'Greenhouse': 503, 'Lever': 145}
+pctEligibilityUnclear: 23.4
+pctRemoteUnclear: 8.1
+pctWorldwide: 1.9
+pctEarlyCareer: 10.0
+pctSeniorPlus: 43.5
 ```
