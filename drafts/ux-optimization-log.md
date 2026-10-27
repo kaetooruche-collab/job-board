@@ -18,10 +18,56 @@ session can resume without redoing the investigation. Decision details live in
 | 27 Oct | **GoatCounter access + baseline** (see Baseline section) — key in `.env`, read-only | `.env` (git-ignored), `drafts/analytics/GC-2026-10-27.md` |
 | 27 Oct | **Weekly analytics snapshot**: `scripts/gc_snapshot.py` pulls totals/pages/events via the API and writes `drafts/analytics/GC-<date>.md` with deltas against the previous snapshot; 5 offline tests; first snapshot generated | `scripts/gc_snapshot.py`, `tests/test_gc_snapshot.py` |
 | 27 Oct | **Copy audit vs the voice guide**: hero paragraph, results count (thousands separators, dropped the duplicate total, one mention of “on the board”), the three empty/error states (contractions, no “we refuse”), and the subscribe block’s duplicated weekly-email line replaced with a distinct fact | `index.html` |
+| 27 Oct | **Search relevance**: matching and ranking pulled out into `search.js` (normalised query, light stemming, weighted field ranking); 12 node tests over the real `jobs.json` + a Python runner | `search.js`, `index.html`, `tests/node/search.test.js`, `tests/test_search.py` |
 
-Test state: **168 tests, OK** (`python3 -I -m unittest discover -s tests`). Browser verification
-scripts: `artifacts/verify_ui2.py` (cards/finder/filters/nudge), `artifacts/verify_platforms.py`
-(platforms/URL/error state). Nothing deployed — local preview only.
+Test state: **174 tests, OK** (`python3 -I -m unittest discover -s tests`, which includes the 12
+node tests for `search.js`). Browser verification scripts: `artifacts/verify_ui2.py`
+(cards/finder/filters/nudge), `artifacts/verify_platforms.py` (platforms/URL/error state),
+`artifacts/verify_search.py` (ranking/precision/filters/console). Nothing deployed — local preview only.
+
+## Search relevance (27 Oct 2026)
+
+**What was wrong** (`artifacts/search_relevance.py` replays the old rule over `jobs.json`):
+
+1. **No ranking at all.** Results kept feed order, so for `software engineer` only **33% of page 1**
+   named the role — the rest merely mentioned it somewhere in the description. Same for `sales` (33%),
+   `marketing manager` (45%), `analyst` (97%).
+2. **Substring false positives.** `hr` returned **119 listings** because “hr” sits inside *their*,
+   *through*, *charts*.
+3. **Punctuation and inflection killed recall.** `customer-support` → 0 results; `nurses` / `nursing` →
+   0; `developers` never found a title reading “Software Developer” (only descriptions containing
+   the plural).
+
+**What changed** — `search.js`, used by `applyFilters()` and unit-tested directly:
+
+| | before | after |
+|---|---|---|
+| `software engineer` — share of page 1 naming the role | 0.33 | **1.00** (40 of 40) |
+| `sales` / `analyst` / `account executive` | 0.33 / 0.97 / 0.93 | **1.00 / 1.00 / 1.00** |
+| `marketing manager` | 0.45 | 0.80 |
+| `hr` | 119 hits, 0.03 | **6 hits**, 0.67 |
+| `customer-support` | 0 hits | 74 hits |
+| `developers` | 71 hits, 0.07 | 157 hits, 0.65 (all 26 title matches on page 1) |
+| queries whose title matches were all buried off page 1 | 3 | **0** |
+
+Rules now: the query is normalised (hyphens/case/punctuation → spaces); every term must match
+somewhere in the listing (the original AND rule, unchanged); a term matches a word by prefix, by
+shared root (one plural, one -ies/-es/-ing/-er/-or, one silent -e — applied to both sides), or as a
+**weaker 0.5-weight** “longer form” hit so *Business Development* ranks below *Software Developer* for
+`developers`. Ranking weights: title 8, company 4, category 3, location 2, description 1, with ties
+keeping feed order (newest first).
+
+**Deliberately not done:** no synonym expansion (`web developer` still returns 0 — the board has no
+such titles; inventing a mapping would be guessing at intent), no stopword list (it would change
+result counts for phrases like “no experience”), no relevance tuning against clicks (there is no
+click data yet — GoatCounter has never carried traffic).
+
+Two bugs I caught in my own first draft, both with tests now: a reverse-prefix rule let a single-letter
+word (“t”) satisfy `translator` (104 bogus hits), and letting a short stem satisfy a longer query made
+`accountant` match every “account” (164 hits instead of 5). Both regressions are pinned in
+`tests/node/search.test.js`.
+
+Cost: filter + rank over all 1,002 listings is **24–33 ms**, inside the 120 ms search debounce.
 
 ## Walkthrough findings (27 Oct, heuristic pass at 360×740 — not real user research)
 
@@ -60,9 +106,11 @@ and `services-click-nudge-*` appear only then.
 
 1. **Read the funnel data once real traffic exists** (26 Oct baseline above; watch list:
    `drafts/kt-todo.md` §4). Expect the first weekly digest on Tue 27 Oct to start moving it.2. ~~Mobile user-flow walkthrough (six personas)~~ — **done 27 Oct**, see "Walkthrough findings" above; next is a real usability test with actual people, which cannot be done from this environment.
-3. **Copy audit against `drafts/voice-and-copy-guide.md`** — the guide says the website copy has *not* been reviewed against it yet. Homepage hero, empty states, filter labels, services blurb.
-4. **Search relevance / result quality** — search currently matches raw substring across title,
-   company, description; check recall on real queries ("customer support", "nurse", "no experience").
+3. ~~Copy audit against `drafts/voice-and-copy-guide.md`~~ — **done 27 Oct** for the homepage; `/services`
+   and `/verify` are still unreviewed.
+4. ~~Search relevance / result quality~~ — **done 27 Oct**, see “Search relevance” above. Remaining
+   gap is coverage, not matching: queries the board genuinely has no listings for (`web developer`,
+   `graphic designer`, `nurse`) still return nothing, which is the inventory speaking, not the search.
 5. **Retention**: search persistence across visits (URL state now makes this shareable; localStorage
    restore for returning visitors is the cheap next step), weekly-email CTA prominence.
 6. **Competitive differentiator test** (§6 of the brief): does the eligibility labelling show up

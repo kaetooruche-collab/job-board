@@ -1092,6 +1092,7 @@
     }
   </style>
   <script src="site-config.js"></script>
+  <script src="search.js"></script>
   <script src="site-forms.js"></script>
 </head>
 <body>
@@ -1839,7 +1840,7 @@
 
     function applyFilters() {
       var cutoff = state.posted ? Date.now() - Number(state.posted) * 86400000 : 0;
-      return allJobs.filter(function (j) {
+      var out = allJobs.filter(function (j) {
         if (state.category !== 'all' && (j.categories || [j.category]).indexOf(state.category) === -1) return false;
         if (!levelMatch(j)) return false;
         if (state.type && (j.jobType || '').indexOf(state.type) === -1) return false;
@@ -1849,13 +1850,13 @@
         if (!yearsMatch(j)) return false;
         if (!salaryMatch(j)) return false;
         if (state.country && !matchesCountry(j, state.country)) return false;
-        if (state.query) {
-          var hay = (j.title + ' ' + j.company + ' ' + (j.description || '') + ' ' + (j.categories || [j.category]).join(' ') + ' ' + (j.regionAsStated || '') + ' ' + ((j.eligibility || {}).label || '')).toLowerCase();
-          var terms = state.query.split(/\s+/);
-          for (var i = 0; i < terms.length; i++) if (hay.indexOf(terms[i]) === -1) return false;
-        }
+        if (state.query && !YCSearch.matches(j, state.query)) return false;
         return true;
       });
+      /* Search results are ranked by relevance (title first), instead of raw feed order, so
+         the listings that actually name the role land on the first page. Ties keep feed order. */
+      if (state.query) out = YCSearch.rank(out, state.query);
+      return out;
     }
 
     function arrangementPill(job) {

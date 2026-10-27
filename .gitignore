@@ -1,5 +1,9 @@
 __pycache__/
 *.pyc
 .env
+# local browser-test tooling (Playwright venv, extracted system libraries, apt lists)
+.pw-venv/
+pw-libs/
+apt/
 .env.*
 !.env.example
