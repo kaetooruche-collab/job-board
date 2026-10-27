@@ -19,6 +19,7 @@ session can resume without redoing the investigation. Decision details live in
 | 27 Oct | **Weekly analytics snapshot**: `scripts/gc_snapshot.py` pulls totals/pages/events via the API and writes `drafts/analytics/GC-<date>.md` with deltas against the previous snapshot; 5 offline tests; first snapshot generated | `scripts/gc_snapshot.py`, `tests/test_gc_snapshot.py` |
 | 27 Oct | **Copy audit vs the voice guide**: hero paragraph, results count (thousands separators, dropped the duplicate total, one mention of “on the board”), the three empty/error states (contractions, no “we refuse”), and the subscribe block’s duplicated weekly-email line replaced with a distinct fact | `index.html` |
 | 27 Oct | **Search relevance**: matching and ranking pulled out into `search.js` (normalised query, light stemming, weighted field ranking); 12 node tests over the real `jobs.json` + a Python runner | `search.js`, `index.html`, `tests/node/search.test.js`, `tests/test_search.py` |
+| 27 Oct | **Pay understated on 11+ published cards**: the extractor now looks 400 chars for the pay word (employers list zones under a heading), keeps the currency the employer wrote, never merges two currencies, and rejects a range labelled as equity; old-vs-new on the 982 published listings — 20 gain, 0 lose | `scripts/pay_text.py`, `tests/test_pay_text.py` |
 
 Test state: **174 tests, OK** (`python3 -I -m unittest discover -s tests`, which includes the 12
 node tests for `search.js`). Browser verification scripts: `artifacts/verify_ui2.py`
