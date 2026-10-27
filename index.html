@@ -1067,7 +1067,13 @@
       .apply-btn, .cv-btn { min-height: 44px; }
       .cta-row { flex-direction: column; }
       .cta-section { padding: 2rem 1.25rem; }
-      .service-grid { grid-template-columns: 1fr; }
+      /* Mobile: the services teaser stays above the search, but its package cards move to
+         /services — otherwise search starts 2.5 screens down (measured: block was 1,088px) */
+      .services { padding: 1.15rem 1.1rem; margin: 1.5rem 0; }
+      .service-grid { display: none; }
+      .services > p { margin-bottom: 1rem; }
+      .service-cta { margin-top: 1.1rem; padding-top: 1.1rem; }
+      .hamburger { padding: 0.6rem; }
       .nav-links { display: none; }
       .hamburger { display: block; }
       .platform-card { flex-direction: column; align-items: stretch; }
