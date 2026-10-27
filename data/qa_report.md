@@ -1,8 +1,8 @@
-# Quality report, 2026-10-27T04:57+00:00
+# Quality report, 2026-10-27T12:04+00:00
 
-- Published: **1017**
+- Published: **857**
 - Held back by a quality rule (not published): **5**
-- Warnings (published, but look): **11**
+- Warnings (published, but look): **10**
 
 ## Held back
 
@@ -19,7 +19,7 @@
 
 ## Warnings
 
-### pay-in-posting-but-card-says-not-stated (11)
+### pay-in-posting-but-card-says-not-stated (10)
 - Financial Analyst, GTM at Webflow: $112,000 - $135,000
 - Lead Platform Engineer, Identity & Access at Webflow: $232,000 - 290,000
 - Staff Data Engineer at Webflow: $212,500 - $255,000
@@ -29,11 +29,11 @@
 ## Shape of the feed
 
 ```
-count: 1017
-bySource: {'Lever': 145, 'Greenhouse': 554, 'Ashby': 318}
-pctEligibilityUnclear: 25.0
-pctRemoteUnclear: 8.8
-pctWorldwide: 1.8
-pctEarlyCareer: 10.1
-pctSeniorPlus: 44.1
+count: 857
+bySource: {'Greenhouse': 393, 'Ashby': 319, 'Lever': 145}
+pctEligibilityUnclear: 22.8
+pctRemoteUnclear: 6.8
+pctWorldwide: 2.1
+pctEarlyCareer: 9.7
+pctSeniorPlus: 41.8
 ```
