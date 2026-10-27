@@ -15,6 +15,9 @@ session can resume without redoing the investigation. Decision details live in
 | 27 Oct | **Backlog 2 — honest load-error state**: failed `jobs.json` fetch now says the load failed instead of claiming an empty feed; hero counters show "—" | `index.html` |
 | 27 Oct | **Backlog 3 — filter state in the URL**: `readURL`/`syncURL`, campaign params preserved, canonical link so filtered URLs don't fan out pageviews; `?level=` deep links unchanged | `index.html`, `tests/test_platforms.py` |
 | 27 Oct | **Six-persona mobile walkthrough (360×740) + fixes**: compact mobile services block, hamburger tap target | `artifacts/walkthrough.py`, `index.html` |
+| 27 Oct | **GoatCounter access + baseline** (see Baseline section) — key in `.env`, read-only | `.env` (git-ignored), `drafts/analytics/GC-2026-10-27.md` |
+| 27 Oct | **Weekly analytics snapshot**: `scripts/gc_snapshot.py` pulls totals/pages/events via the API and writes `drafts/analytics/GC-<date>.md` with deltas against the previous snapshot; 5 offline tests; first snapshot generated | `scripts/gc_snapshot.py`, `tests/test_gc_snapshot.py` |
+| 27 Oct | **Copy audit vs the voice guide**: hero paragraph, results count (thousands separators, dropped the duplicate total, one mention of “on the board”), the three empty/error states (contractions, no “we refuse”), and the subscribe block’s duplicated weekly-email line replaced with a distinct fact | `index.html` |
 
 Test state: **168 tests, OK** (`python3 -I -m unittest discover -s tests`). Browser verification
 scripts: `artifacts/verify_ui2.py` (cards/finder/filters/nudge), `artifacts/verify_platforms.py`

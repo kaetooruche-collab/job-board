@@ -1120,7 +1120,7 @@
   <section class="hero">
     <h1>Verified remote jobs for <em>every stage of your career</em></h1>
     <p class="hero-tagline">Every listing verified. Every link goes to the employer's own posting.</p>
-    <p>Remote roles for students, graduates and experienced professionals, in support, administration, finance, healthcare, education, marketing, technology and more. Each listing states whether it is fully remote and who can apply.</p>
+    <p>Remote roles in support, admin, finance, healthcare, education, marketing, tech and more &mdash; for students, graduates and career-changers. Every listing says whether it&rsquo;s fully remote, who can apply, and the pay when the employer states it.</p>
     <div class="hero-stats">
       <div class="hero-stat">
         <strong id="total-jobs">0</strong>
@@ -1349,8 +1349,8 @@
         <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" class="hp">
         <p id="signup-msg" data-msg role="status" aria-live="polite" hidden></p>
       </form>
-      <p class="cta-social-proof">Every role in the email is checked and links to the employer's own posting.</p>
-      <p style="margin-top:0.5rem; font-size:0.8rem; opacity:0.85;">We'll send you the weekly job email. One tap to unsubscribe. See our <a href="/privacy" style="color:inherit; text-decoration:underline;">privacy policy</a>.</p>
+      <p class="cta-social-proof">The board is refreshed every 6 hours; the email comes once a week.</p>
+      <p style="margin-top:0.5rem; font-size:0.8rem; opacity:0.85;">One tap to unsubscribe whenever you like. See our <a href="/privacy" style="color:inherit; text-decoration:underline;">privacy policy</a>.</p>
     </section>
 
     <!-- HOW WE VERIFY -->
@@ -1947,17 +1947,17 @@
 
     function renderJobs() {
       var filtered = applyFilters();
-      var countEl = document.getElementById('job-count');
-      countEl.innerHTML = 'Showing <strong>' + Math.min(state.shown, filtered.length) + '</strong> of <strong>' + filtered.length + '</strong> matching listings (' + allJobs.length + ' in total)';
+      var countEl = document.getElementById('job-count');        var totalNote = filtered.length < allJobs.length ? ' (' + allJobs.length.toLocaleString() + ' on the board)' : '';
+        countEl.innerHTML = 'Showing <strong>' + Math.min(state.shown, filtered.length).toLocaleString() + '</strong> of <strong>' + filtered.length.toLocaleString() + '</strong> matching jobs' + totalNote;
       renderActiveFilters();
       var list = document.getElementById('job-list');
 
       if (filtered.length === 0) {
         list.innerHTML = loadFailed
-          ? '<div class="no-results"><h3>We could not load the listings</h3><p>Something went wrong while loading the jobs &mdash; not a problem with your search. Refresh the page, and if it still does not load, email us at yirehcareers@gmail.com.</p></div>'
+          ? '<div class="no-results"><h3>We couldn&rsquo;t load the listings</h3><p>That&rsquo;s on our side, not your search. Refresh the page and it should come back &mdash; if it doesn&rsquo;t, email us at yirehcareers@gmail.com.</p></div>'
           : allJobs.length === 0
-          ? '<div class="no-results"><h3>No verified listings right now</h3><p>We refuse to show unverified jobs. Subscribe below to be told when new verified listings are added.</p></div>'
-          : '<div class="no-results"><h3>No jobs match these filters</h3><p>Try fewer filters, a different field, or choose &ldquo;Any location&rdquo;. Use &ldquo;Clear filters&rdquo; to start again.</p></div>';
+          ? '<div class="no-results"><h3>No verified listings right now</h3><p>We only show jobs we&rsquo;ve checked, and right now there are none. Subscribe below and we&rsquo;ll email you when new ones land.</p></div>'
+          : '<div class="no-results"><h3>No jobs match these filters</h3><p>Try fewer filters, a different field, or choose &ldquo;Any location&rdquo; &mdash; or use &ldquo;Clear filters&rdquo; to start again.</p></div>';
         return;
       }      var html = filtered.slice(0, state.shown).map(function (job) {
         var posted = job.postedAt;
