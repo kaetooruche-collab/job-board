@@ -532,30 +532,36 @@
       margin-top: 0.3rem;
       overflow-wrap: anywhere;
     }
-    .job-date {
-      font-size: 0.8rem;
-      color: var(--text-secondary);
-      margin-bottom: 0.6rem;
+    .job-headings { min-width: 0; }
+    /* The monogram gives each card an anchor so a run of listings does not read as one block */
+    .job-head-row { display: flex; gap: 0.75rem; align-items: flex-start; }
+    .job-mono {
+      width: 40px; height: 40px; flex: none;
+      border-radius: var(--radius-sm);
+      background: var(--accent-light); color: var(--accent);
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 800; font-size: 1.05rem;
     }
+    /* Status row: remote and eligibility on the left, when it was posted on the right */
+    .job-status {
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 0.5rem 0.75rem;
+      margin-bottom: var(--block-gap);
+    }
+    .job-status .job-badges { margin-bottom: 0; }
+    .job-posted { display: inline-flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; }
+    .job-date { font-size: 0.78rem; color: var(--text-secondary); }
     .job-date time { color: var(--text); font-weight: 600; }
-    .job-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.4rem 0.5rem;
-      align-items: center;
+    /* Secondary metadata: one quiet icon line instead of a row of competing chips */
+    .job-meta-line {
+      display: flex; flex-wrap: wrap; align-items: center;
+      gap: 0.3rem 0.7rem;
+      font-size: 0.78rem; color: var(--text-secondary);
+      line-height: 1.45; overflow-wrap: anywhere;
     }
-    /* Secondary metadata sits below the status pills in the hierarchy: present, scannable, but quiet */
-    .job-tag {
-      font-size: 0.72rem;
-      padding: 0.18rem 0.55rem;
-      border-radius: 5px;
-      background: var(--tag-bg);
-      color: var(--text-secondary);
-      font-weight: 500;
-      line-height: 1.4;
-      max-width: 100%;
-      overflow-wrap: anywhere;
-    }
+    .job-meta-line .m { display: inline-flex; align-items: center; gap: 0.28rem; }
+    .job-meta-line svg { flex: none; opacity: 0.7; }
+    .job-meta-line .m-sep { opacity: 0.45; }
     .badge-new {
       font-size: 0.66rem;
       padding: 0.2rem 0.55rem;
@@ -626,7 +632,7 @@
       margin-top: var(--block-gap); padding-top: var(--block-gap); border-top: 1px solid var(--border);
     }
     .apply-btn {
-      display: inline-flex; align-items: center; min-height: 42px; background: var(--accent); color: #fff;
+      display: inline-flex; align-items: center; gap: 0.45rem; min-height: 42px; background: var(--accent); color: #fff;
       font-weight: 700; font-size: 0.85rem; padding: 0.5rem 1.1rem; border-radius: var(--radius-md); text-decoration: none;
     }
     .apply-btn:hover { background: var(--accent-hover); }
@@ -658,19 +664,101 @@
     }
     .show-more:hover { background: var(--accent-light); }
     .show-more:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+    /* SERVICE OFFER: shown only after someone has read a run of listings, and never blocks the board */
+    .service-nudge {
+      background: var(--accent-light);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--accent);
+      border-radius: var(--radius);
+      padding: 1.25rem 1.5rem;
+      position: relative;
+    }
+    .service-nudge h3 { font-size: 1rem; font-weight: 800; margin-bottom: 0.35rem; padding-right: 2rem; }
+    .service-nudge p { font-size: 0.86rem; color: var(--text-secondary); line-height: 1.55; margin-bottom: 0.9rem; }
+    .service-nudge .nudge-actions { display: flex; flex-wrap: wrap; gap: 0.6rem; align-items: center; }
+    .service-nudge .nudge-hide {
+      position: absolute; top: 0.55rem; right: 0.55rem;
+      background: none; border: none; color: var(--text-secondary);
+      font-size: 1.15rem; line-height: 1; cursor: pointer; padding: 0.3rem;
+      border-radius: 4px;
+    }
+    .service-nudge .nudge-hide:hover { color: var(--text); }
+    .service-nudge .nudge-hide:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+    /* GUIDED FINDER: three plain questions for anyone who would rather not work through the chip wall */
+    .guide-open {
+      display: none; width: 100%; align-items: center; justify-content: center; gap: 0.5rem;
+      min-height: 44px; margin-top: 0.9rem; padding: 0.6rem 1rem;
+      border: 1px dashed var(--border); border-radius: var(--radius-md);
+      background: var(--bg); color: var(--accent);
+      font: inherit; font-size: 0.88rem; font-weight: 700; cursor: pointer;
+    }
+    .guide-open:hover { border-color: var(--accent); }
+    .guide-open:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+    .guide {
+      border: 1px solid var(--border); border-radius: var(--radius);
+      background: var(--surface); color: var(--text);
+      padding: 0; width: min(92vw, 460px); max-height: 86vh;
+    }
+    .guide::backdrop { background: rgba(12,12,24,0.55); }
+    .guide-inner { padding: 1.2rem 1.25rem 1rem; overflow-y: auto; max-height: 86vh; }
+    .guide-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; }
+    .guide-head h2 { font-size: 1.05rem; font-weight: 800; }
+    .guide-close { background: none; border: none; color: var(--text-secondary); cursor: pointer; padding: 0.2rem; border-radius: 4px; }
+    .guide-close:hover { color: var(--text); }
+    .guide-close:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+    .guide-step-n {
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase;
+      color: var(--text-secondary); margin: 0.7rem 0 0.15rem;
+    }
+    .guide h3 { font-size: 0.92rem; font-weight: 700; margin: 1rem 0 0.55rem; }
+    .guide-options { display: grid; grid-template-columns: 1fr 1fr; gap: 0.45rem; }
+    .guide-options.one { grid-template-columns: 1fr; }
+    .guide-opt {
+      display: flex; align-items: center; gap: 0.5rem;
+      min-height: 44px; padding: 0.5rem 0.7rem;
+      border: 1px solid var(--border); border-radius: var(--radius-md);
+      background: var(--bg); font-size: 0.85rem; line-height: 1.35; cursor: pointer;
+    }
+    .guide-opt:has(input:checked) { border-color: var(--accent); background: var(--accent-light); font-weight: 600; }
+    .guide-opt:has(input:focus-visible) { outline: 2px solid var(--accent); outline-offset: 2px; }
+    .guide-opt input { accent-color: var(--accent); flex: none; margin: 0; }
+    .guide-select {
+      width: 100%; min-height: 44px; padding: 0.5rem 0.6rem;
+      border-radius: var(--radius-md); border: 1px solid var(--border);
+      background: var(--bg); color: var(--text); font: inherit; font-size: 0.875rem;
+    }
+    .guide-select:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+    .guide-foot {
+      display: flex; gap: 0.6rem; justify-content: flex-end; align-items: center;
+      margin-top: 1.15rem; padding-top: 0.9rem; border-top: 1px solid var(--border);
+    }
+    .guide-foot button {
+      min-height: 44px; padding: 0.5rem 1.15rem; border-radius: var(--radius-md);
+      font: inherit; font-size: 0.87rem; font-weight: 700; cursor: pointer;
+    }
+    .guide-back { background: transparent; border: 1px solid var(--border); color: var(--text-secondary); margin-right: auto; }
+    .guide-next, .guide-done { background: var(--accent); border: 1px solid var(--accent); color: #fff; }
+    .guide-foot button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+    .row-note { grid-column: 1 / -1; font-size: 0.72rem; color: var(--text-secondary); line-height: 1.5; margin-top: -0.35rem; }
     @media (max-width: 720px) {
-      .filters { flex-wrap: nowrap; overflow-x: auto; padding-bottom: 0.35rem; scroll-snap-type: x proximity; -webkit-overflow-scrolling: touch; }
-      .filter-btn { flex: 0 0 auto; white-space: nowrap; scroll-snap-align: start; }
-      .level-row { flex-wrap: nowrap; overflow-x: auto; padding-bottom: 0.35rem; -webkit-overflow-scrolling: touch; }
-      .lvl-btn { flex: 0 0 auto; white-space: nowrap; min-height: 34px; }
-      .filter-btn { min-height: 34px; }
+      /* Fields and levels wrap on phones instead of scrolling sideways out of view */
+      .filters { display: grid; grid-template-columns: 1fr 1fr; gap: 0.45rem; }
+      .filter-btn { white-space: normal; text-align: left; min-height: 34px; line-height: 1.3; padding: 0.45rem 0.7rem; }
+      .level-row { flex-wrap: wrap; }
+      .lvl-btn { min-height: 34px; }
+      .guide-open { display: flex; }
+      .guide-options { grid-template-columns: 1fr; }
     }
     @media (min-width: 721px) {
       .job-why { margin-left: auto; }
     }
     @media (max-width: 480px) {
-      .job-card-header { flex-direction: column; gap: 0.5rem; }
+      .job-card-header { flex-direction: column; gap: 0.6rem; }
       .job-salary { white-space: normal; align-self: flex-start; }
+      .job-status { align-items: flex-start; }
+      .service-nudge { padding: 1.1rem 1.1rem 1.2rem; }
     }
 
     /* CTA SECTION */
@@ -982,6 +1070,9 @@
       .platform-visit { text-align: center; }
     }
 
+    /* The finder's field list keeps its own grid at every width */
+    .guide-cat { display: grid; grid-template-columns: 1fr; gap: 0.45rem; }
+
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after {
         transition-duration: 0.01ms !important;
@@ -1096,6 +1187,7 @@
             <button class="filter-btn active" data-category="all" aria-pressed="true">All fields</button>
           </div>
         </details>
+        <button type="button" class="guide-open" id="guide-open">Not sure where to look? Answer 3 quick questions</button>
       </div>
       <details class="more-filters" id="more-filters">
         <summary>More filters</summary>
@@ -1131,6 +1223,37 @@
               <option value="14">Last 14 days</option>
             </select>
           </label>
+          <label class="filter-field"><span>Experience asked for</span>
+            <select id="f-years">
+              <option value="">Any</option>
+              <option value="none">None stated (great for a first role)</option>
+              <option value="le2">Up to 2 years</option>
+              <option value="2to4">2 to 4 years</option>
+              <option value="5plus">5 years or more</option>
+            </select>
+          </label>
+          <label class="filter-field"><span>Salary stated</span>
+            <select id="f-salary">
+              <option value="">Any</option>
+              <option value="yes">Only listings that state pay</option>
+            </select>
+          </label>
+          <div class="filter-field"><span>Minimum salary (annual, approx.)</span>
+            <select id="f-currency">
+              <option value="USD">USD</option>
+              <option value="EUR">EUR</option>
+              <option value="GBP">GBP</option>
+            </select>
+            <select id="f-minsal" aria-label="Minimum salary">
+              <option value="">Any minimum</option>
+              <option value="20000">20,000</option>
+              <option value="40000">40,000</option>
+              <option value="60000">60,000</option>
+              <option value="80000">80,000</option>
+              <option value="100000">100,000</option>
+            </select>
+            <p class="row-note">Pay is shown exactly as the employer wrote it, and other currencies are converted at rounded approximate rates &mdash; treat them as a rough guide.</p>
+          </div>
         </div>
         <div class="check-row">
           <label><input type="checkbox" id="f-confirmed"> Confirmed remote only</label>
@@ -1149,8 +1272,49 @@
       <div class="active-filters" id="active-filters" hidden></div>
     </div>
 
+    <!-- GUIDED FINDER: an alternative to working through the chip wall, one question at a time -->
+    <dialog class="guide" id="guide" aria-labelledby="guide-title">
+      <form method="dialog" class="guide-inner" id="guide-form">
+        <div class="guide-head">
+          <h2 id="guide-title">Let&rsquo;s narrow it down</h2>
+          <button type="button" class="guide-close" id="guide-close" aria-label="Close">&#10005;</button>
+        </div>
+        <div id="guide-steps">
+          <section data-step="0">
+            <p class="guide-step-n">Question 1 of 3</p>
+            <h3>What kind of work are you after?</h3>
+            <div class="filters guide-cat" id="guide-cat" role="group" aria-label="Field"></div>
+          </section>
+          <section data-step="1" hidden>
+            <p class="guide-step-n">Question 2 of 3</p>
+            <h3>How much experience do you have?</h3>
+            <div class="guide-options one" id="guide-exp" role="group" aria-label="Experience">
+              <label class="guide-opt"><input type="radio" name="gexp" value="early"><span>Starting out &mdash; internship, entry-level or junior</span></label>
+              <label class="guide-opt"><input type="radio" name="gexp" value="mid"><span>Mid-level</span></label>
+              <label class="guide-opt"><input type="radio" name="gexp" value="senior_plus"><span>Senior or leadership</span></label>
+              <label class="guide-opt"><input type="radio" name="gexp" value="" checked><span>No preference</span></label>
+            </div>
+          </section>
+          <section data-step="2" hidden>
+            <p class="guide-step-n">Question 3 of 3</p>
+            <h3>Where could you work from?</h3>
+            <label class="guide-step-n" for="guide-country" style="text-transform:none; letter-spacing:0; font-weight:600; margin-top:0.6rem;">Country or region</label>
+            <select class="guide-select" id="guide-country"><option value="">Anywhere, or worldwide only</option></select>
+          </section>
+        </div>
+        <div class="guide-foot">
+          <button type="button" class="guide-back" id="guide-back" hidden>Back</button>
+          <button type="button" class="guide-next" id="guide-next">Next</button>
+          <button type="button" class="guide-done" id="guide-done" hidden>Show my jobs</button>
+        </div>
+      </form>
+    </dialog>
+
     <!-- JOB LIST -->
     <div id="job-list"></div>
+
+    <!-- ONE quiet offer, placed after the reader has been served a run of listings -->
+    <div id="nudge-slot" style="margin-top: var(--card-gap);"></div>
 
     <!-- PLATFORMS -->
     <section class="platforms-section" id="platforms">
@@ -1218,8 +1382,24 @@
   <script>
     var allJobs = [];
     var geoLexicon = null;
-    var state = { category: 'all', query: '', level: '', country: '', type: '', posted: '', confirmed: false, stated: false, shown: 40 };
+    var state = { category: 'all', query: '', level: '', country: '', type: '', posted: '', confirmed: false, stated: false, years: '', salary: '', minsal: '', currency: 'USD', shown: 40 };
     var PAGE_SIZE = 40;
+
+    /* The nine fields the guided finder offers first, plus anything else in the data */
+    var GUIDE_FIELDS = ['Customer Service & Support', 'Software & Engineering', 'Sales', 'Marketing & Communications', 'Finance & Accounting', 'Administration & Operations', 'Design & Creative', 'Healthcare & Life Sciences', 'Data & Analytics'];
+    var YEARS_FILTER_NAME = { none: 'None stated', le2: 'Up to 2 years', '2to4': '2 to 4 years', '5plus': '5 years or more' };
+    /* Rounded approximate rates: pay stays exactly as the employer wrote it on the card */
+    var FX = { USDEUR: 0.92, USDGBP: 0.78, EURUSD: 1.09, EURGBP: 0.85, GBPUSD: 1.28, GBPEUR: 1.17 };
+    var ICONS = {
+      cal: '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>',
+      case: '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>',
+      lvl: '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>',
+      check: '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="8.5 12.5 11 15 16 9.5"/></svg>',
+      help: '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M9.1 9a3 3 0 0 1 5.8 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>',
+      globe: '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>',
+      pin: '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>',
+      ext: '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>'
+    };
 
     function esc(v) {
       return String(v == null ? '' : v).replace(/[&<>"']/g, function(c) {
@@ -1281,6 +1461,7 @@
       document.getElementById('more-filters').open = wide;
       document.getElementById('fields-group').open = wide;
       buildCategoryFilters();
+      buildGuide();
       await buildCountryFilter();
       bindControls();
       buildLevelCounts();
@@ -1324,15 +1505,17 @@
         var set = {};
         allJobs.forEach(function(j) { (j.eligibility.countries || []).forEach(function(c) { set[c] = 1; }); });
         names = Object.keys(set);
-      }
-      names.sort();
-      var ww = document.createElement('option');
-      ww.value = '__worldwide'; ww.textContent = 'Worldwide roles only';
-      select.appendChild(ww);
-      names.forEach(function(n) {
-        var o = document.createElement('option');
-        o.value = n; o.textContent = n;
-        select.appendChild(o);
+      }      names.sort();
+      [document.getElementById('f-country'), document.getElementById('guide-country')].forEach(function (sel) {
+        if (!sel) return;
+        var ww = document.createElement('option');
+        ww.value = '__worldwide'; ww.textContent = 'Worldwide roles only';
+        sel.appendChild(ww);
+        names.forEach(function (n) {
+          var o = document.createElement('option');
+          o.value = n; o.textContent = n;
+          sel.appendChild(o);
+        });
       });
     }
 
@@ -1350,11 +1533,10 @@
         state.query = e.target.value.toLowerCase().trim();
         clearTimeout(searchTimer);
         searchTimer = setTimeout(resetAndRender, 120);
-      });
-      [['f-level', 'level'], ['f-country', 'country'], ['f-type', 'type'], ['f-posted', 'posted']].forEach(function(pair) {
-        document.getElementById(pair[0]).addEventListener('change', function(e) {
+      });      [['f-level', 'level'], ['f-country', 'country'], ['f-type', 'type'], ['f-posted', 'posted'], ['f-years', 'years'], ['f-salary', 'salary'], ['f-minsal', 'minsal'], ['f-currency', 'currency']].forEach(function (pair) {
+        document.getElementById(pair[0]).addEventListener('change', function (e) {
           state[pair[1]] = e.target.value;
-          if (pair[1] === 'country' || pair[1] === 'level') trackEvent('filter-' + pair[1], e.target.value || 'any');
+          if (['country', 'level', 'years', 'minsal'].indexOf(pair[1]) !== -1) trackEvent('filter-' + pair[1], e.target.value || 'any');
           resetAndRender();
         });
       });
@@ -1368,10 +1550,29 @@
       document.getElementById('f-level').addEventListener('change', syncLevelUI);
       document.getElementById('f-confirmed').addEventListener('change', function(e) { state.confirmed = e.target.checked; resetAndRender(); });
       document.getElementById('f-stated').addEventListener('change', function(e) { state.stated = e.target.checked; resetAndRender(); });
-      document.getElementById('f-reset').addEventListener('click', resetAll);
-      document.getElementById('active-filters').addEventListener('click', function(e) {
+      document.getElementById('f-reset').addEventListener('click', resetAll);      document.getElementById('active-filters').addEventListener('click', function (e) {
         var btn = e.target.closest('[data-clear]');
         if (btn) clearFilter(btn.getAttribute('data-clear'));
+      });
+      /* Guided finder: open, step, close, apply */
+      document.getElementById('guide-open').addEventListener('click', function () {
+        guideGo(0);
+        var d = document.getElementById('guide');
+        if (d.showModal) d.showModal(); else d.setAttribute('open', '');
+      });
+      document.getElementById('guide-close').addEventListener('click', closeGuide);
+      document.getElementById('guide-next').addEventListener('click', function () { guideGo(Math.min(2, guideStep + 1)); });
+      document.getElementById('guide-back').addEventListener('click', function () { guideGo(Math.max(0, guideStep - 1)); });
+      document.getElementById('guide-done').addEventListener('click', function () {
+        var c = document.querySelector('input[name="gcat"]:checked');
+        state.category = c ? c.value : 'all'; syncCategoryUI();
+        var e2 = document.querySelector('input[name="gexp"]:checked');
+        state.level = e2 ? e2.value : ''; syncLevelUI();
+        state.country = document.getElementById('guide-country').value || '';
+        document.getElementById('f-country').value = state.country;
+        trackEvent('guide-finder', 'applied');
+        closeGuide();
+        resetAndRender();
       });
       document.getElementById('job-list').addEventListener('click', function(e) {
         var more = e.target.closest('.show-more');
@@ -1396,12 +1597,11 @@
         cur.textContent = state.category === 'all' ? 'All fields' : state.category;
         cur.classList.toggle('is-set', state.category !== 'all');
       }
-    }
-
-    function resetAll() {
-      state = { category: 'all', query: '', level: '', country: '', type: '', posted: '', confirmed: false, stated: false, shown: PAGE_SIZE };
+    }    function resetAll() {
+      state = { category: 'all', query: '', level: '', country: '', type: '', posted: '', confirmed: false, stated: false, years: '', salary: '', minsal: '', currency: 'USD', shown: PAGE_SIZE };
       document.getElementById('search-input').value = '';
-      ['f-level', 'f-country', 'f-type', 'f-posted'].forEach(function(id) { document.getElementById(id).value = ''; });
+      ['f-level', 'f-country', 'f-type', 'f-posted', 'f-years', 'f-salary', 'f-minsal'].forEach(function (id) { document.getElementById(id).value = ''; });
+      document.getElementById('f-currency').value = 'USD';
       document.getElementById('f-confirmed').checked = false;
       document.getElementById('f-stated').checked = false;
       syncLevelUI();
@@ -1421,6 +1621,9 @@
       if (state.posted) out.push({ key: 'posted', label: 'Posted: last ' + state.posted + ' days' });
       if (state.confirmed) out.push({ key: 'confirmed', label: 'Confirmed remote only' });
       if (state.stated) out.push({ key: 'stated', label: 'Says who can apply' });
+      if (state.years) out.push({ key: 'years', label: 'Experience asked: ' + YEARS_FILTER_NAME[state.years] });
+      if (state.salary === 'yes') out.push({ key: 'salary', label: 'Pay stated' });
+      if (state.minsal) out.push({ key: 'minsal', label: 'Min ~' + state.currency + ' ' + Number(state.minsal).toLocaleString() });
       if (state.query) out.push({ key: 'query', label: 'Search: "' + state.query + '"' });
       return out;
     }
@@ -1448,6 +1651,9 @@
       else if (key === 'query') { state.query = ''; document.getElementById('search-input').value = ''; }
       else if (key === 'confirmed') { state.confirmed = false; document.getElementById('f-confirmed').checked = false; }
       else if (key === 'stated') { state.stated = false; document.getElementById('f-stated').checked = false; }
+      else if (key === 'years') { state.years = ''; document.getElementById('f-years').value = ''; }
+      else if (key === 'salary') { state.salary = ''; document.getElementById('f-salary').value = ''; }
+      else if (key === 'minsal') { state.minsal = ''; document.getElementById('f-minsal').value = ''; }
       else {
         state[key] = '';
         var fieldId = { type: 'f-type', posted: 'f-posted' }[key];
@@ -1495,17 +1701,71 @@
       });
       var names = { '': 'All levels', early: 'Early career', mid: 'Mid-level', senior_plus: 'Senior & leadership' };
       document.querySelectorAll('.lvl-btn').forEach(function(b) { b.textContent = names[b.dataset.lvl] + ' (' + counts[b.dataset.lvl] + ')'; });
+    }    /* Pay is only ever filtered on numbers the employer actually wrote. Currencies are compared with
+       rounded approximate rates, and the card always shows the original string unchanged. */
+    function parseSalary(text) {
+      if (!text) return null;
+      var nums = [];
+      var re = /(\d[\d,\. ]*)/g, m;
+      while ((m = re.exec(text)) !== null) {
+        var raw = m[1].replace(/[\s,]/g, '').replace(/\.$/, '');
+        var n = parseFloat(raw);
+        if (!isNaN(n)) nums.push(n);
+      }
+      if (!nums.length) return null;
+      if (text.indexOf('K') !== -1 && Math.max.apply(null, nums) < 1000) nums = nums.map(function (n) { return n * 1000; });
+      var out = { min: Math.min.apply(null, nums), max: Math.max.apply(null, nums), cur: null, per: 'year' };
+      var cur = (text.match(/\b(USD|EUR|GBP|CAD|AUD|CHF|SEK|NOK|DKK|PLN|RON)\b/i) || [])[1];
+      if (cur) out.cur = cur.toUpperCase();
+      else if (/^\s*\$/.test(text)) out.cur = 'USD';
+      else if (/^\s*£/.test(text)) out.cur = 'GBP';
+      else if (/^\s*€/.test(text)) out.cur = 'EUR';
+      if (/\bC\$|\bCAD/i.test(text)) out.cur = 'CAD';
+      if (/\bhour\b|\bhr\b/i.test(text)) out.per = 'hour';
+      else if (/\bmonth\b|\bmo\b/i.test(text)) out.per = 'month';
+      return out;
+    }
+    function annualise(p) {
+      if (p.per === 'hour') return { min: p.min * 2080, max: p.max * 2080, cur: p.cur };
+      if (p.per === 'month') return { min: p.min * 12, max: p.max * 12, cur: p.cur };
+      return p;
+    }
+    function yearsMatch(j) {
+      if (!state.years) return true;
+      var n = j.yearsExperienceMin;
+      if (state.years === 'none') return n == null;
+      if (n == null) return false;
+      if (state.years === 'le2') return n <= 2;
+      if (state.years === '2to4') return n >= 2 && n <= 4;
+      if (state.years === '5plus') return n >= 5;
+      return true;
+    }
+    function salaryMatch(j) {
+      if (state.salary !== 'yes' && !state.minsal) return true;
+      if (!j.salaryText) return state.salary !== 'yes' && !state.minsal;
+      if (state.salary === 'yes') return true;
+      var p = annualise(parseSalary(j.salaryText) || {});
+      var hi = p.max != null ? p.max : p.min;
+      if (hi == null) return false;
+      if (p.cur && p.cur !== state.currency) {
+        var rate = FX[p.cur + state.currency];
+        if (!rate) return false;
+        hi = hi * rate;
+      }
+      return hi >= Number(state.minsal);
     }
 
     function applyFilters() {
       var cutoff = state.posted ? Date.now() - Number(state.posted) * 86400000 : 0;
-      return allJobs.filter(function(j) {
+      return allJobs.filter(function (j) {
         if (state.category !== 'all' && (j.categories || [j.category]).indexOf(state.category) === -1) return false;
         if (!levelMatch(j)) return false;
         if (state.type && (j.jobType || '').indexOf(state.type) === -1) return false;
         if (cutoff && new Date(j.postedAt).getTime() < cutoff) return false;
         if (state.confirmed && !(j.workArrangement !== 'remote_unclear' && j.classificationConfidence !== 'low')) return false;
         if (state.stated && (j.eligibility || {}).type === 'unclear') return false;
+        if (!yearsMatch(j)) return false;
+        if (!salaryMatch(j)) return false;
         if (state.country && !matchesCountry(j, state.country)) return false;
         if (state.query) {
           var hay = (j.title + ' ' + j.company + ' ' + (j.description || '') + ' ' + (j.categories || [j.category]).join(' ') + ' ' + (j.regionAsStated || '') + ' ' + ((j.eligibility || {}).label || '')).toLowerCase();
@@ -1518,17 +1778,17 @@
 
     function arrangementPill(job) {
       if (job.workArrangement === 'remote_unclear' || job.classificationConfidence === 'low') {
-        return '<span class="pill pill-unsure" title="The listing does not clearly confirm the role is fully remote">Remote: not confirmed</span>';
+        return '<span class="pill pill-unsure" title="The listing does not clearly confirm the role is fully remote">' + ICONS.help + 'Remote: not confirmed</span>';
       }
-      return '<span class="pill pill-remote">Remote</span>';
+      return '<span class="pill pill-remote">' + ICONS.check + 'Remote</span>';
     }
 
     function eligibilityPill(job) {
       var el = job.eligibility || {};
       var label = esc(el.label || 'Eligibility unclear');
-      if (el.type === 'worldwide') return '<span class="pill pill-world">Worldwide</span>';
-      if (el.type === 'unclear') return '<span class="pill pill-unsure" title="The employer does not say where applicants must live">Eligibility unclear</span>';
-      return '<span class="pill pill-region" title="Applicants must meet this location requirement">' + label + '</span>';
+      if (el.type === 'worldwide') return '<span class="pill pill-world">' + ICONS.globe + 'Worldwide</span>';
+      if (el.type === 'unclear') return '<span class="pill pill-unsure" title="The employer does not say where applicants must live">' + ICONS.help + 'Eligibility unclear</span>';
+      return '<span class="pill pill-region" title="Applicants must meet this location requirement">' + ICONS.pin + label + '</span>';
     }
 
     function whyBlock(job) {
@@ -1544,6 +1804,65 @@
       return '<details class="job-why"><summary>Why this label?</summary>' + html + '</details>';
     }
 
+    /* Three questions, applied as the ordinary filters afterwards: same state, same chips, same clearing */
+    var guideStep = 0;
+    function buildGuide() {
+      var box = document.getElementById('guide-cat');
+      if (!box) return;
+      var counts = {};
+      allJobs.forEach(function (j) { (j.categories && j.categories.length ? j.categories : [j.category]).forEach(function (c) { counts[c] = (counts[c] || 0) + 1; }); });
+      var html = '<label class="guide-opt"><input type="radio" name="gcat" value="all" checked><span>Everything (' + allJobs.length + ')</span></label>';
+      GUIDE_FIELDS.forEach(function (c) {
+        if (!counts[c]) return;
+        html += '<label class="guide-opt"><input type="radio" name="gcat" value="' + esc(c) + '"><span>' + esc(c) + ' (' + counts[c] + ')</span></label>';
+      });
+      Object.keys(counts).sort(function (a, b) { return counts[b] - counts[a]; }).forEach(function (c) {
+        if (GUIDE_FIELDS.indexOf(c) !== -1) return;
+        html += '<label class="guide-opt"><input type="radio" name="gcat" value="' + esc(c) + '"><span>' + esc(c) + ' (' + counts[c] + ')</span></label>';
+      });
+      box.innerHTML = html;
+    }
+    function guideGo(step) {
+      guideStep = step;
+      document.querySelectorAll('#guide-steps [data-step]').forEach(function (s) {
+        s.hidden = Number(s.getAttribute('data-step')) !== step;
+      });
+      document.getElementById('guide-back').hidden = step === 0;
+      document.getElementById('guide-next').hidden = step === 2;
+      document.getElementById('guide-done').hidden = step !== 2;
+    }
+    function closeGuide() {
+      var d = document.getElementById('guide');
+      if (d.close) d.close(); else d.removeAttribute('open');
+    }
+
+    /* One quiet offer, shown only after the reader has been served a run of listings.
+       It never replaces or hides a listing, and it can be switched off for good. */
+    var nudgeTracked = false;
+    function maybeNudge(filteredCount) {
+      var slot = document.getElementById('nudge-slot');
+      if (!slot) return;
+      var dismissed = false;
+      try { dismissed = localStorage.getItem('yf-nudge') === '1'; } catch (e) {}
+      if (dismissed || filteredCount <= 12 || state.shown < 40) { slot.innerHTML = ''; return; }
+      slot.innerHTML = '<aside class="service-nudge" aria-label="Yireh Careers services">'
+        + '<button type="button" class="nudge-hide" aria-label="Hide this message">&times;</button>'
+        + '<h3>You&rsquo;ve read ' + Math.min(state.shown, filteredCount) + ' listings. Your CV is the next step.</h3>'
+        + '<p>When one of these roles is worth applying to, our paid CV and LinkedIn service writes the application to match. Not ready yet? The free quick CV check tells you what we would fix first.</p>'
+        + '<div class="nudge-actions"><a class="apply-btn" href="/services">See what each package includes</a>'
+        + '<a class="cv-btn" href="/free-check">Get a free CV check</a></div></aside>';
+      slot.querySelector('.nudge-hide').addEventListener('click', function () {
+        try { localStorage.setItem('yf-nudge', '1'); } catch (e) {}
+        slot.innerHTML = '';
+        trackEvent('service-nudge-dismiss', 'nudge');
+      });
+      if (!nudgeTracked) { nudgeTracked = true; trackEvent('service-nudge', 'nudge'); }
+    }
+
+    function companyMono(name) {
+      return (String(name || '').trim().split(/\s+/).slice(0, 2).map(function (w) { return w.charAt(0); }).join('') || '?').toUpperCase();
+    }
+
     function renderJobs() {
       var filtered = applyFilters();
       var countEl = document.getElementById('job-count');
@@ -1556,32 +1875,38 @@
           ? '<div class="no-results"><h3>No verified listings right now</h3><p>We refuse to show unverified jobs. Subscribe below to be told when new verified listings are added.</p></div>'
           : '<div class="no-results"><h3>No jobs match these filters</h3><p>Try fewer filters, a different field, or choose &ldquo;Any location&rdquo;. Use &ldquo;Clear filters&rdquo; to start again.</p></div>';
         return;
-      }
-
-      var html = filtered.slice(0, state.shown).map(function(job) {
+      }      var html = filtered.slice(0, state.shown).map(function (job) {
         var posted = job.postedAt;
         var absolute = formatDate(posted);
-        var dateDisplay = posted
-          ? '<div class="job-date">Posted <time datetime="' + esc(posted) + '" title="' + esc(absolute) + '">' + esc(timeAgo(posted)) + '</time> (' + esc(absolute) + ')</div>'
-          : '';
         var salary = job.salaryText ? '<span class="job-salary">' + esc(job.salaryText) + '</span>' : '';
         var newBadge = isNew(job.firstSeenAt || job.postedAt) ? '<span class="badge-new">New</span>' : '';
         var unsure = (job.workArrangement === 'remote_unclear' || job.classificationConfidence === 'low') && (job.unresolvedQuestions || []).length
           ? '<div class="job-unsure">' + esc(job.unresolvedQuestions[0]) + '</div>' : '';
+        var postedRow = posted || newBadge
+          ? '<div class="job-posted">' + newBadge + (posted
+              ? '<span class="job-date">Posted <time datetime="' + esc(posted) + '" title="' + esc(absolute) + '">' + esc(timeAgo(posted)) + '</time></span>'
+              : '') + '</div>'
+          : '';
+        /* Secondary metadata: one quiet icon line, so chips no longer compete with the title and pills */
+        var meta = [];
+        if (posted) meta.push('<span class="m">' + ICONS.cal + '<span>' + esc(absolute) + '</span></span>');
+        if (job.jobType) meta.push('<span class="m">' + ICONS.case + '<span>' + esc(job.jobType) + '</span></span>');
+        if (job.level && job.level !== 'unspecified') meta.push('<span class="m">' + ICONS.lvl + '<span>' + esc(LEVEL_LABEL[job.level] || job.level) + '</span></span>');
+        meta.push('<span class="m"><span>Source: ' + esc(job.sourceName || '') + '</span></span>');
         var url = safeUrl(job.sourceUrl);
         return '<article class="job-card">'
           + '<div class="job-card-header"><div class="job-headings">'
+          + '<div class="job-head-row">'
+          + '<span class="job-mono" aria-hidden="true">' + companyMono(job.company) + '</span>'
+          + '<div>'
           + '<div class="job-title"><a href="' + esc(url) + '" target="_blank" rel="noopener noreferrer" data-apply="1" data-id="' + esc(job.id) + '" data-source="' + esc(job.sourceName) + '">' + esc(job.title) + '</a></div>'
           + '<div class="job-company">' + esc(job.company) + ' &middot; ' + esc(job.regionAsStated || 'Remote') + '</div>'
+          + '</div></div>'
           + '</div>' + salary + '</div>'
-          + '<div class="job-badges">' + arrangementPill(job) + eligibilityPill(job) + '</div>'
-          + unsure + dateDisplay
-          + '<div class="job-tags">' + newBadge
-          + '<span class="job-tag">' + esc(job.category) + '</span>'
-          + (job.level && job.level !== 'unspecified' ? '<span class="job-tag">' + esc(LEVEL_LABEL[job.level] || job.level) + '</span>' : '')
-          + (job.jobType ? '<span class="job-tag">' + esc(job.jobType) + '</span>' : '')
-          + '<span class="job-source">Source: ' + esc(job.sourceName || '') + '</span></div>'
-          + '<div class="job-actions"><a class="apply-btn" href="' + esc(url) + '" target="_blank" rel="noopener noreferrer" data-apply="1" data-id="' + esc(job.id) + '" data-source="' + esc(job.sourceName) + '">Apply on employer site</a>'
+          + '<div class="job-status"><div class="job-badges">' + arrangementPill(job) + eligibilityPill(job) + '</div>' + postedRow + '</div>'
+          + unsure
+          + '<div class="job-meta-line">' + meta.join('<span class="m-sep" aria-hidden="true">&middot;</span>') + '</div>'
+          + '<div class="job-actions"><a class="apply-btn" href="' + esc(url) + '" target="_blank" rel="noopener noreferrer" data-apply="1" data-id="' + esc(job.id) + '" data-source="' + esc(job.sourceName) + '">' + ICONS.ext + 'Apply on employer site</a>'
           + '<a class="cv-btn" href="' + esc(cvLink(job)) + '" target="_blank" rel="noopener" data-cv="1" data-id="' + esc(job.id) + '" title="Opens WhatsApp with a message to Yireh Careers, our paid CV and LinkedIn service">Get a CV for this role</a>'
           + whyBlock(job) + '</div>'
           + '</article>';
@@ -1590,6 +1915,7 @@
         html += '<button type="button" class="show-more">Show ' + Math.min(PAGE_SIZE, filtered.length - state.shown) + ' more</button>';
       }
       list.innerHTML = html;
+      maybeNudge(filtered.length);
     }
 
     function cvLink(job) {
