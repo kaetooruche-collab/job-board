@@ -1,8 +1,8 @@
-# Quality report, 2026-10-27T17:57+00:00
+# Quality report, 2026-10-27T22:09+00:00
 
-- Published: **971**
+- Published: **1022**
 - Held back by a quality rule (not published): **6**
-- Warnings (published, but look): **15**
+- Warnings (published, but look): **16**
 
 ## Held back
 
@@ -20,7 +20,7 @@
 
 ## Warnings
 
-### pay-in-posting-but-card-says-not-stated (15)
+### pay-in-posting-but-card-says-not-stated (16)
 - Senior Software Engineer, Fullstack (Repayments UX) at Affirm: $32,000-$48,000
 - Software Engineer II, Fullstack (Repayment UX) at Affirm: $24,000 - $36,000
 - Staff Software Engineer, Backend (Recoveries) at Affirm: $48,000-$72,000
@@ -30,11 +30,11 @@
 ## Shape of the feed
 
 ```
-count: 971
-bySource: {'Ashby': 323, 'Greenhouse': 503, 'Lever': 145}
-pctEligibilityUnclear: 23.4
-pctRemoteUnclear: 8.1
-pctWorldwide: 1.9
-pctEarlyCareer: 10.0
-pctSeniorPlus: 43.5
+count: 1022
+bySource: {'Ashby': 327, 'Greenhouse': 550, 'Lever': 145}
+pctEligibilityUnclear: 24.6
+pctRemoteUnclear: 8.8
+pctWorldwide: 1.8
+pctEarlyCareer: 9.8
+pctSeniorPlus: 43.9
 ```
