@@ -103,17 +103,48 @@ numbers describe the plumbing, not visitor behaviour.
 measured. Re-run the same queries after deploy; `platform-*`, `guide-finder`, `services-click-home/*`
 and `services-click-nudge-*` appear only then.
 
+## 28 Oct: filters remembered, and the copy pass finished
+
+**Search persistence (backlog item 5).** The board now remembers a returning visitor's filters on
+their own device: the filter state that `syncURL()` already writes to the address bar is also saved
+to `localStorage` (`yf-filters`, filter values only, never anything else), and a *plain* visit —
+no query string — restores it through the exact same `applyParams()` validator the URL uses, so a
+stale or hand-edited value can never set a bad state.
+
+**Precedence rule (this is why URL state is not broken):** if the URL carries *any* filter key, the
+URL wins and the saved state is ignored entirely — so the kit's `?level=early` deep links, shared
+filtered links and campaign parameters behave exactly as they did. `resetAll()` ("Clear filters")
+empties both the URL and the storage. No second filtering path was added: `state` +
+`readURL`/`syncURL` remain the only ones.
+
+**Copy audit of `/services` and `/verify` (backlog item 3).** Findings and what changed:
+- `/verify` stated its publishing rules **three times** (6 trust rules, 7 check cards, then a 9-item
+  checklist that restated 7 of those cards). The checklist is now 4 lines covering only what the
+  cards did *not* say (source credit, closed-role wording, commission-only, 30 days, "none of the
+  checks came back with a problem"). Intro's "what we promise" dropped — the trust rules already
+  carry the promises. Also fixed a missing `</p>` on the "Every experience level" card.
+- `/services` "How do I pay?" was one 200-word block stacking card, WhatsApp, exchange rate,
+  currency-conversion and anti-fraud copy. Split into 5 short paragraphs with the same facts
+  (nothing added or removed — fees, exchange rate and the wrong-details warning all stay, as the
+  voice guide requires). Fixed the broken sentence "Please do not pay to details you received from
+  anyone else" → "…pay using details…".
+- Not changed, deliberately: prices, package names, revision limits, delivery times, the 90/30-day
+  deletion promises and the refund wording (all pinned by `tests/test_services_terms.py`,
+  `tests/test_site_forms.py` and `scripts/site_monitor.py`).
+- Verified in a browser at 1440 and 360: 179 tests OK, zero console errors, no horizontal overflow
+  on `/`, `/verify` or `/services`. Harness: `artifacts/verify_persistence.py`.
+
 ## Next priorities (in order)
 
 1. **Read the funnel data once real traffic exists** (26 Oct baseline above; watch list:
    `drafts/kt-todo.md` §4). Expect the first weekly digest on Tue 27 Oct to start moving it.2. ~~Mobile user-flow walkthrough (six personas)~~ — **done 27 Oct**, see "Walkthrough findings" above; next is a real usability test with actual people, which cannot be done from this environment.
-3. ~~Copy audit against `drafts/voice-and-copy-guide.md`~~ — **done 27 Oct** for the homepage; `/services`
-   and `/verify` are still unreviewed.
+3. ~~Copy audit against `drafts/voice-and-copy-guide.md`~~ — **done**: homepage 27 Oct, `/services` and
+   `/verify` 28 Oct (above). Nothing on the site is now unreviewed against the guide.
 4. ~~Search relevance / result quality~~ — **done 27 Oct**, see “Search relevance” above. Remaining
    gap is coverage, not matching: queries the board genuinely has no listings for (`web developer`,
    `graphic designer`, `nurse`) still return nothing, which is the inventory speaking, not the search.
-5. **Retention**: search persistence across visits (URL state now makes this shareable; localStorage
-   restore for returning visitors is the cheap next step), weekly-email CTA prominence.
+5. ~~Retention: search persistence across visits~~ — **done 28 Oct** (above). Still open: weekly-email
+   CTA prominence.
 6. **Competitive differentiator test** (§6 of the brief): does the eligibility labelling show up
    above the fold on mobile, and do users understand "Remote: not confirmed"? Needs real users or a
    guerrilla test — cannot be settled from code.

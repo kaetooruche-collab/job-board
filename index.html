@@ -1485,37 +1485,69 @@
     }
 
     /* Deep links: ?level= still works exactly as before, and the rest of the filter state
-       round-trips through the URL so a filtered view can be shared or bookmarked. */
+       round-trips through the URL so a filtered view can be shared or bookmarked.
+       When the URL carries NO filter state, a returning visitor's own last choices are restored
+       from this device (localStorage). A URL that does carry filter state always wins, so
+       shared links, the kit's ?level=deep links and campaign links behave exactly as they did. */
+    var FILTER_KEYS = ['q', 'field', 'level', 'country', 'type', 'posted', 'years', 'minsal', 'cur', 'pay', 'confirmed', 'stated'];
+
+    function savedQuery() {
+      try {
+        var raw = localStorage.getItem('yf-filters');
+        if (!raw) return null;
+        var o = JSON.parse(raw);
+        var p = new URLSearchParams();
+        FILTER_KEYS.forEach(function (k) { if (o && o[k]) p.set(k, o[k]); });
+        return p.toString() ? p : null;
+      } catch (e) { return null; }   // private browsing or storage disabled: carry on without it
+    }
+
     function readURL() {
       var q = new URLSearchParams(location.search);
-      var lvl = q.get('level');
+      var fromURL = FILTER_KEYS.some(function (k) { return q.get(k); });
+      var saved = fromURL ? null : savedQuery();
+      var get;
+      if (fromURL) get = function (k) { return q.get(k); };
+      else if (saved) get = function (k) { return saved.get(k); };
+      else get = function () { return null; };
+      applyParams(get);
+      reflectControls();
+    }
+
+    /* One validator for both sources: URL parameters and saved filters are checked against the
+       same allowed values, so a stale or hand-edited saved value can never set a bad state. */
+    function applyParams(get) {
+      var lvl = get('level');
       if (['early', 'mid', 'senior_plus', 'internship', 'entry', 'junior', 'senior', 'leadership'].indexOf(lvl) !== -1) state.level = lvl;
-      var field = q.get('field');
+      var field = get('field');
       if (field) {
         var cats = {};
         allJobs.forEach(function (j) { (j.categories && j.categories.length ? j.categories : [j.category]).forEach(function (c) { cats[c] = 1; }); });
         if (cats[field]) state.category = field;
       }
-      var c = q.get('country');
+      var c = get('country');
       if (c && Array.prototype.some.call(document.getElementById('f-country').options, function (o) { return o.value === c; })) state.country = c;
-      var t = q.get('type');
+      var t = get('type');
       if (['Full-time', 'Part-time', 'Contract', 'Freelance', 'Internship', 'Temporary'].indexOf(t) !== -1) state.type = t;
-      var p = q.get('posted');
+      var p = get('posted');
       if (['3', '7', '14'].indexOf(p) !== -1) state.posted = p;
-      var y = q.get('years');
+      var y = get('years');
       if (['none', 'le2', '2to4', '5plus'].indexOf(y) !== -1) state.years = y;
-      var ms = q.get('minsal');
+      var ms = get('minsal');
       if (ms && /^\d{3,7}$/.test(ms)) {
         state.minsal = ms;
-        var cur = (q.get('cur') || 'USD').toUpperCase();
+        var cur = (get('cur') || 'USD').toUpperCase();
         state.currency = ['USD', 'EUR', 'GBP'].indexOf(cur) !== -1 ? cur : 'USD';
       }
-      if (q.get('pay') === 'stated') state.salary = 'yes';
-      state.confirmed = q.get('confirmed') === '1';
-      state.stated = q.get('stated') === '1';
-      var query = (q.get('q') || '').slice(0, 100);
+      if (get('pay') === 'stated') state.salary = 'yes';
+      state.confirmed = get('confirmed') === '1';
+      state.stated = get('stated') === '1';
+      var query = (get('q') || '').slice(0, 100);
       if (query) { state.query = query.toLowerCase(); document.getElementById('search-input').value = query; }
-      /* reflect everything on the controls so the chips and selects agree with the URL */
+    }
+
+    /* reflect everything on the controls so the chips and selects agree with the state */
+    function reflectControls() {
       document.getElementById('f-level').value = state.level;
       document.getElementById('f-country').value = state.country;
       document.getElementById('f-type').value = state.type;
@@ -1551,6 +1583,19 @@
       var qs = p.toString();
       try {
         history.replaceState(null, '', (location.pathname || '/') + (qs ? '?' + qs : '') + (location.hash || ''));
+      } catch (e) {}
+      saveFilters(p);
+    }
+
+    /* Remember the visitor's filters on their own device, so a plain visit next time shows the
+       same view. Only filter values are stored, never anything else, and the storage is theirs
+       (localStorage, not sent anywhere). "Clear filters" empties it again. */
+    function saveFilters(p) {
+      try {
+        var o = {};
+        FILTER_KEYS.forEach(function (k) { var v = p.get(k); if (v) o[k] = v; });
+        if (Object.keys(o).length) localStorage.setItem('yf-filters', JSON.stringify(o));
+        else localStorage.removeItem('yf-filters');
       } catch (e) {}
     }
 
