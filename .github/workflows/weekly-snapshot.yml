@@ -1,0 +1,47 @@
+name: Weekly analytics snapshot
+
+# Closes the gap left by the other two workflows: the feed refreshes every 6h and the live site
+# is watched every 3h, but nobody scheduled the funnel numbers. Runs Tuesdays 05:00 UTC
+# (08:00 Istanbul — KT's Tuesday-morning slot), right before the weekly email ritual, and can be
+# triggered by hand.
+#
+# Requires one repository secret: GOATCOUNTER_API_KEY (Settings -> Secrets and variables ->
+# Actions). Without it this job fails loudly with that message instead of writing a fake report.
+
+on:
+  schedule:
+    - cron: '0 5 * * 2'
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  snapshot:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Pull the funnel numbers from GoatCounter
+        env:
+          GOATCOUNTER_API_KEY: ${{ secrets.GOATCOUNTER_API_KEY }}
+        run: |
+          if [ -z "$GOATCOUNTER_API_KEY" ]; then
+            echo "::error::GOATCOUNTER_API_KEY is not set as a repository secret. Add it: GitHub -> Settings -> Secrets and variables -> Actions."
+            exit 1
+          fi
+          python -I scripts/gc_snapshot.py
+      - name: Commit the snapshot
+        run: |
+          git config user.name "yireh-ops"
+          git config user.email "yirehcareers@gmail.com"
+          git add drafts/analytics
+          if git diff --cached --quiet; then
+            echo "No new snapshot file to commit."
+          else
+            git commit -m "Weekly GoatCounter snapshot"
+            git push
+          fi

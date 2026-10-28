@@ -257,6 +257,30 @@
       gap: 2.5rem;
       flex-wrap: wrap;
     }
+    /* The only above-the-fold route to the listings: everything below the hero is either
+       the services pitch or requires scrolling ~1.3 screens to reach a job. */
+    .hero-jobs-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      margin-top: 1.75rem;
+      padding: 0.78rem 1.5rem;
+      background: var(--accent);
+      color: #fff;
+      border-radius: 8px;
+      font-size: 0.98rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+    .hero-jobs-cta:hover { background: var(--accent-hover); }
+    .hero-jobs-cta::after { content: "\2193"; }
+    /* white on #60a5fa is only ~2:1, so the button takes dark text on both dark paths */
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) .hero-jobs-cta { color: #0f172a; }
+    }
+    :root[data-theme="dark"] .hero-jobs-cta { color: #0f172a; }
+    .toolbar { scroll-margin-top: 4.75rem; }
     .hero-stat {
       text-align: center;
     }
@@ -1136,6 +1160,7 @@
         <small>Link-Checked</small>
       </div>
     </div>
+    <a class="hero-jobs-cta" href="#jobs" onclick="trackEvent('jobs-hero-jump','Hero')">Browse the jobs</a>
   </section>
 
   <!-- MAIN -->
@@ -1176,7 +1201,7 @@
     </section>
 
     <!-- TOOLBAR: SEARCH + FILTERS -->
-    <div class="toolbar">
+    <div class="toolbar" id="jobs">
       <div class="search-bar">
         <input type="text" id="search-input" placeholder="Search by title, company or keyword..." aria-label="Search jobs">
       </div>
