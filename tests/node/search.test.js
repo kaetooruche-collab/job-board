@@ -117,14 +117,18 @@ test('every title match outranks every description-only match (real data)', () =
 });
 
 test('a query with no real roles never shows a listing that claims that role', () => {
-  // The board has no translation or bookkeeping work. Stemming may still surface listings whose
-  // *description* uses the verb ("translating customer needs into products"), which is honest —
-  // but no card may claim in its title to be something the board does not have.
+  // Stemming may surface listings whose *description* uses the verb ("translating customer needs
+  // into products"), which is honest — but a card may only claim a role in its title when the word
+  // is really there. This guards against stemming inventing a claim, and it stays true as the feed
+  // changes: the board gained a genuine "Writer/Translator" listing on 28 Oct, which is a real
+  // match, not a fabricated one.
   const inTitle = (x, q) => S.matches({ title: x.title, categories: [], eligibility: {} }, q);
+  const literal = (x, q) => new RegExp('\\b' + q.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + 's?\\b', 'i').test(x.title);
   for (const q of ['translator', 'nursing', 'bookkeeper']) {
     const hits = jobs.filter((x) => S.matches(x, q));
     const claimed = hits.filter((x) => inTitle(x, q));
-    assert.strictEqual(claimed.length, 0, `"${q}": ${claimed.length} listing(s) claim that role in the title`);
+    const fabricated = claimed.filter((x) => !literal(x, q));
+    assert.strictEqual(fabricated.length, 0, `"${q}": ${fabricated.length} title(s) claim a role the word is not in`);
     assert.ok(hits.length < 25, `"${q}": ${hits.length} results is noise, not a match`);
   }
 });
