@@ -1,6 +1,6 @@
 # KT's to-do list (the single master list)
 
-Last updated: 24 October 2026. Claude: when KT asks "what do I need to get done?", show the OPEN items below, most urgent first, in plain language. Update this file every time something is done, added or decided. `drafts/launch-checklist.md` is the older history; this file wins.
+Last updated: 28 October 2026. Claude: when KT asks "what do I need to get done?", show the OPEN items below, most urgent first, in plain language. Update this file every time something is done, added or decided. `drafts/launch-checklist.md` is the older history; this file wins.
 
 Legend: [ ] open, [x] done. "Only KT" means nobody else can do it (logins, accounts, money, approvals).
 
@@ -90,11 +90,14 @@ Moved to its own chat and its own list: `jobsearch/TODO.md`. Not tracked here.
 Added 27 Oct (home-page funnel + the platforms section decision, `drafts/decisions/2026-10-27-platforms-section.md`): `services-click-home-packages`, `services-click-nudge-packages`, `services-click-nudge-free-check`, `services-click-freecheck-packages`, `services-click-order-packages`, `guide-finder`, `filter-years`, `filter-minsal`, `service-nudge`, `platform-view`, `platform-click`. What to read: does `platform-view` turn into `platform-click` at all (if almost nobody clicks, the section earns little and could shrink); and do `services-click-home-packages` / `-nudge-*` fire now that they sit where people actually look. Note: since 27 Oct the home page sends a canonical URL, so filter links all count as `/` — compare events, not page paths.
 
 ## 5. Claude's open items (so you can see what is not on you)
-- [ ] Re-run the random spot-check on a fresh sample of listings (last result: 8 of 12 right first time, 2 wrong and fixed, 2 understated) and report the real number.
-- [ ] Google job-posting structured data: check Google's current rules for listings we do not own, then tell KT.
+- [x] **Re-run the random spot-check on a fresh sample of listings — DONE 27 Oct 2026: 11 of 12 cards fully correct**, the 12th was the known pay-understatement bug (Webflow “Financial Analyst, GTM”: card said “not stated”, the posting states $98,300–$135,000 across three zones) — fixed in the same session, see `drafts/ux-optimization-log.md`. All 12 URLs opened (HTTP 200). Checked: title, company, posting date, pay (text and the employer’s structured compensation field), the countries named for eligibility, hybrid/on-site wording. Sample seed `2026-10-27`, script `artifacts/spot_check_audit.py`.
+- [ ] Google job-posting structured data: check Google's current rules for listings we do not own, then tell KT. (In progress 28 Oct.)
+- [x] **Feed-shape drift checked against the strategy review — DONE 28 Oct 2026.** `drafts/feed-shape-drift-2026-10-28.md`. No drift: senior+leadership 43.6% (was 43.7%), worldwide still exactly 17 listings = 1.7%, unclear eligibility 25.0% (was 25.7%), pay stated 59.2% (was 58.6%). The strategy review's findings all stand; watch item is slowing inflow (median age 7.5 → 11 days), re-measured on a fresh pull before acting.
+- [x] **Live-site monitor run by hand — DONE 28 Oct 2026:** 6 pages checked, 968 listings, newest 3.1 h old, 12 apply links sampled, 0 inconclusive, exit 0. Also confirms the 6-hourly refresh Action is still working (live data is current even though this branch's snapshot is from 26 Oct).
+- [x] **Weekly job email generated — DONE 28 Oct 2026** (`data/weekly_digest.txt` + `.html`, 299 new jobs, carries the one-off "RemoteNC is now Yireh Careers" line for the first send). Still **blocked on KT**: creating the Brevo draft, sending the test and scheduling it needs the Brevo login, which Claude has not been given.
 - [ ] Brevo template versions that mention the Executive offer (if any are used) need new versions, since templates cannot be edited.
 - [ ] Add the first real testimonials to the services page when you have them.
-- [ ] **Check Jobicy dates on the public job board.** Two research agents found Jobicy shows old postings as new (Elation 2 Jul, Maven Sept, PointClickCare 9 Jul, H1 31 Jul, Bayesian Nov 2025, all shown as 14-18 Oct). Compare every Jobicy listing with the employer's own date, report the real number, and fix the pipeline (use the employer's date or drop Jobicy listings that cannot be dated). This affects the board's 30-day rule.
+- [x] **Jobicy dates — CLOSED 28 Oct 2026, no longer applicable.** The problem was real (Jobicy showed old postings as new) and the fix chosen was to switch the source off entirely: `USE_JOBICY = False` in `scripts/fetch_jobs.py`, plus a `source-date-not-original` BLOCK rule in `scripts/qa_checks.py` so a mis-dated source cannot slip back in (evidence: `tests/fixtures/jobicy_dates.json`). No Jobicy listings are published, so there is nothing left to compare. Only reopen if a trustworthy original posting date becomes available.
 - [ ] Keep this file updated.
 
 ## 6. Done (for reference)
