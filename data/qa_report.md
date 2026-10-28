@@ -1,8 +1,8 @@
-# Quality report, 2026-10-28T12:45+00:00
+# Quality report, 2026-10-28T22:30+00:00
 
-- Published: **975**
+- Published: **1000**
 - Held back by a quality rule (not published): **6**
-- Warnings (published, but look): **11**
+- Warnings (published, but look): **12**
 
 ## Held back
 
@@ -21,20 +21,23 @@
 ## Warnings
 
 ### pay-in-posting-but-card-says-not-stated (11)
+- Staff Machine Learning Engineer (Credit International ML) at Affirm: $48,000-$72,000
 - Senior Software Engineer, Fullstack (Repayments UX) at Affirm: $32,000-$48,000
 - Software Engineer II, Fullstack (Repayment UX) at Affirm: $24,000 - $36,000
 - Staff Software Engineer, Backend (Recoveries) at Affirm: $48,000-$72,000
-- Manager, Machine Learning Engineering, Checkout at Affirm: $48,000-$72,000
 - Platform Engineer at Resend: $150,000 - $180,000
+
+### eligibility-label-partly-unsupported (1)
+- Supervisor, Billing Operations at Twilio: not found in evidence: ['India']
 
 ## Shape of the feed
 
 ```
-count: 975
-bySource: {'Ashby': 336, 'Greenhouse': 496, 'Lever': 143}
-pctEligibilityUnclear: 23.4
-pctRemoteUnclear: 8.2
+count: 1000
+bySource: {'Ashby': 339, 'Greenhouse': 533, 'Lever': 128}
+pctEligibilityUnclear: 24.1
+pctRemoteUnclear: 8.6
 pctWorldwide: 1.8
-pctEarlyCareer: 9.6
-pctSeniorPlus: 43.8
+pctEarlyCareer: 9.7
+pctSeniorPlus: 44.9
 ```
