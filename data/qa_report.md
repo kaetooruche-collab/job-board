@@ -1,8 +1,8 @@
-# Quality report, 2026-10-28T05:33+00:00
+# Quality report, 2026-10-28T12:45+00:00
 
-- Published: **968**
+- Published: **975**
 - Held back by a quality rule (not published): **6**
-- Warnings (published, but look): **16**
+- Warnings (published, but look): **11**
 
 ## Held back
 
@@ -20,21 +20,21 @@
 
 ## Warnings
 
-### pay-in-posting-but-card-says-not-stated (16)
-- Senior Counsel, Commercial Transactions at Webflow: $183,300 - $220,000
+### pay-in-posting-but-card-says-not-stated (11)
 - Senior Software Engineer, Fullstack (Repayments UX) at Affirm: $32,000-$48,000
 - Software Engineer II, Fullstack (Repayment UX) at Affirm: $24,000 - $36,000
 - Staff Software Engineer, Backend (Recoveries) at Affirm: $48,000-$72,000
 - Manager, Machine Learning Engineering, Checkout at Affirm: $48,000-$72,000
+- Platform Engineer at Resend: $150,000 - $180,000
 
 ## Shape of the feed
 
 ```
-count: 968
-bySource: {'Ashby': 332, 'Greenhouse': 492, 'Lever': 144}
-pctEligibilityUnclear: 23.6
+count: 975
+bySource: {'Ashby': 336, 'Greenhouse': 496, 'Lever': 143}
+pctEligibilityUnclear: 23.4
 pctRemoteUnclear: 8.2
-pctWorldwide: 1.9
-pctEarlyCareer: 9.7
+pctWorldwide: 1.8
+pctEarlyCareer: 9.6
 pctSeniorPlus: 43.8
 ```
