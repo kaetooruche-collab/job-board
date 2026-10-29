@@ -6,6 +6,8 @@ Legend: [ ] open, [x] done. "Only KT" means nobody else can do it (logins, accou
 
 - [ ] **Weekly job email is now a routine (KT approved 29 Oct; testing rule updated the same day).** Every Tuesday at about 08:20 Istanbul a Claude session generates the digest, checks the Brevo account (KAYZ Global Ltd) and the recipients, creates the campaign, tests it to you through Gmail and schedules it for 09:30. **If it cannot read the test email, it still schedules the send and tells you so; the email goes out at 09:30 unless you unschedule it** (Brevo, Campaigns, unschedule). It stops without sending only if the recipient safety check fails or it can read the test and finds a real defect. To pause the routine, tell Claude "hold the weekly email". First regular run: Tuesday 3 Nov.
 
+- [ ] **Add the GoatCounter key as a GitHub secret (checked 29 Oct: it is NOT set, the weekly report fails with "GOATCOUNTER_API_KEY is not set").** GoatCounter: your account, Settings, API: create a key with permission to read statistics. GitHub: `job-board` repo, Settings, Secrets and variables, Actions, New repository secret, name `GOATCOUNTER_API_KEY`, paste the key. Then tell Claude and the workflow is run once by hand to prove it.
+
 ## 0. LAUNCH (24 Oct 2026): what KT does to start bringing people in
 Claude built: the Yireh Careers rebrand, the free address https://yirehcareers.vercel.app, link previews, and the post kit at https://yirehcareers.vercel.app/kit (unlisted; bookmark it on your phone).
 - [ ] **Open the live site on your phone** (home, services, privacy). Tap the WhatsApp buttons once to see the message arrives. Tell Claude anything that looks wrong.

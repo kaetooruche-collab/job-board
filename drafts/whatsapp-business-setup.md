@@ -122,7 +122,7 @@ Inclusions to paste into the brackets above:
 ```
 - Essential: a professionally written or rewritten CV, tailored to your industry and target roles; ATS-optimised; Word and PDF; up to 2 revision rounds. Timing: within 2 working days.
 - Professional: everything in Essential, plus a targeted cover letter and LinkedIn profile setup; up to 3 revision rounds. Timing: within 3 working days.
-- Executive: everything in Professional, plus a personal branding strategy, 12 LinkedIn posts written and published over 30 days, and targeted connection building by hand each week of the 30-day service, within LinkedIn's limits, aiming to move you towards 500+ total connections (or 100 new relevant connections if you already have 500+). Timing: CV and cover letter within 2 working days; LinkedIn profile setup within 5 working days; the 30-day service period starts when onboarding is complete.
+- Executive: everything in Professional, plus a personal branding strategy, 12 LinkedIn posts written and published over 30 days, and targeted connection building by hand each week of the 30-day service, within LinkedIn's limits, aiming to move you towards 500+ total connections (or 100 new relevant connections if you already have 500+). Timing: CV and cover letter within 2 working days; LinkedIn profile setup within 3 working days; the 30-day service period starts when onboarding is complete.
 ```
 
 ### 5. Payment details: bank transfer

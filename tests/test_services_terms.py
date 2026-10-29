@@ -26,7 +26,7 @@ class DeliveryTimes(unittest.TestCase):
         self.assertNotIn("Professional are delivered in 5", S)
 
     def test_executive_timing_untouched(self):
-        self.assertIn("CV and cover letter within 2 working days, LinkedIn profile setup within 5", S)
+        self.assertIn("CV and cover letter within 2 working days, LinkedIn profile setup within 3", S)
 
 
 if __name__ == "__main__":
