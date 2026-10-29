@@ -48,6 +48,7 @@
       if (window.goatcounter && window.goatcounter.count) {
         window.goatcounter.count({ path: 'conversion-' + kind, title: 'Form submitted: ' + kind, event: true });
       }
+      if (kind === 'signup') { try { localStorage.setItem('yf-subbed', '1'); } catch (e) {} }
       form.reset();
       var done = document.querySelector('[data-after-success]');
       if (done) done.hidden = false;

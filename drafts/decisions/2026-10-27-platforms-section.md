@@ -101,3 +101,6 @@ click rate on `platform-view` means the section is decoration — shrink it to o
 high rate with weak `conversion-check` means it is leaking intent — that argues for reordering, not
 for dishonesty. Return-after-visit **cannot** be measured on GoatCounter (no persistent identity);
 if that question ever matters, it needs a tool that can do it and a privacy review first.
+
+## Addendum, 29 Oct 2026: REMOVED (KT's decision, Claude's recommendation)
+KT asked again whether the section hurts us. There is still no direct evidence either way, but the case for removal is stronger than for keeping: it sat at about 90% of a very long page (23,392 px on a phone), so few people saw it; it conflicts with the "verified" promise (Jobicy was excluded as a source for bad dates and Toptal cannot be machine-checked); and the board's own "Worldwide roles only" filter already answers the real need. **The section, its footer link, its tracking events (`platform-view`, `platform-click`), `platforms.json` and `tests/test_platforms.py` were deleted.** To bring it back, KT must ask for it.

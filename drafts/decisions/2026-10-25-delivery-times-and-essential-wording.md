@@ -16,3 +16,6 @@ All timing is still counted from when onboarding is complete. Essential's descri
 **Risk to keep in view (judgement):** 2 and 3 working days are faster promises than the 5 the service ran on. They only hold if onboarding information arrives complete and orders stay small; the "counted from when onboarding is complete" line carries that. Watch the first orders and tell Claude if the dates slip.
 
 Where changed: `services.html` (cards, comparison table, add-on row, FAQ), `index.html` teaser, `drafts/whatsapp-messages.md` and the generated setup kit (catalog), CLAUDE.md. Guarded by `tests/test_services_terms.py`.
+
+## Update, 29 Oct 2026: Executive LinkedIn setup now 3 working days
+The open point is closed: Executive includes everything in Professional, and Professional's LinkedIn setup is within 3 working days, so Executive's LinkedIn setup moved from 5 to 3 to match (KT: "fix everything"). CV and cover letter stay at 2. Changed on the services page (card, table, timeline, FAQ) and the WhatsApp inclusions. Revert by restoring "5" in those places and in `tests/test_services_terms.py`.
