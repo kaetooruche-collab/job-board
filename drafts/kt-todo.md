@@ -4,6 +4,8 @@ Last updated: 28 October 2026. Claude: when KT asks "what do I need to get done?
 
 Legend: [ ] open, [x] done. "Only KT" means nobody else can do it (logins, accounts, money, approvals).
 
+- [ ] **Weekly job email is now a routine (KT approved 29 Oct).** Every Tuesday at about 08:20 Istanbul a Claude session generates the digest, checks the Brevo account (KAYZ Global Ltd) and the recipients, creates the campaign, tests it to you and tries to schedule it for 09:30. Because routines cannot carry the Gmail connector, that session may be unable to read the test; if so it leaves the campaign as an unscheduled draft and tells you. **Then open the test in your inbox and schedule it in Brevo (Campaigns, open the draft, Schedule, 09:30), or tell Claude "schedule it".** To pause the routine, tell Claude "hold the weekly email". First regular run: Tuesday 3 Nov.
+
 ## 0. LAUNCH (24 Oct 2026): what KT does to start bringing people in
 Claude built: the Yireh Careers rebrand, the free address https://yirehcareers.vercel.app, link previews, and the post kit at https://yirehcareers.vercel.app/kit (unlisted; bookmark it on your phone).
 - [ ] **Open the live site on your phone** (home, services, privacy). Tap the WhatsApp buttons once to see the message arrives. Tell Claude anything that looks wrong.
