@@ -1,6 +1,6 @@
-# Quality report, 2026-10-29T22:41+00:00
+# Quality report, 2026-10-30T05:40+00:00
 
-- Published: **1032**
+- Published: **1033**
 - Held back by a quality rule (not published): **6**
 - Warnings (published, but look): **12**
 
@@ -33,11 +33,11 @@
 ## Shape of the feed
 
 ```
-count: 1032
-bySource: {'Ashby': 347, 'Greenhouse': 543, 'Lever': 142}
+count: 1033
+bySource: {'Ashby': 346, 'Lever': 142, 'Greenhouse': 545}
 pctEligibilityUnclear: 24.6
 pctRemoteUnclear: 9.1
-pctWorldwide: 1.7
-pctEarlyCareer: 9.4
-pctSeniorPlus: 44.7
+pctWorldwide: 1.5
+pctEarlyCareer: 9.3
+pctSeniorPlus: 44.2
 ```
