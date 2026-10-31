@@ -946,6 +946,16 @@
     .exec-steps strong { display: block; font-size: 1.05rem; color: var(--accent); }
     .exec-steps span { font-size: 0.84rem; color: var(--text-secondary); }
     .illustrative { font-style: normal; display: inline-block; background: var(--tag-bg, #f1f3f5); border: 1px solid var(--border); border-radius: 999px; padding: 0.22rem 0.75rem; font-size: 0.76rem; }
+  
+    /* ── Founder block (31 Oct 2026) ── */
+    .founder-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.75rem; display: flex; gap: 1.75rem; align-items: flex-start; }
+    .founder-photo { width: 176px; height: 176px; border-radius: 50%; object-fit: cover; flex: 0 0 auto; border: 3px solid #fff; box-shadow: 0 0 0 1px var(--border); }
+    .founder-text { min-width: 0; }
+    .founder-text h2 { font-size: 1.3rem; letter-spacing: -0.3px; color: #0f2a4d; margin-bottom: 0.2rem; }
+    .founder-name { font-size: 0.9rem; font-weight: 700; color: var(--accent); margin-bottom: 0.8rem; }
+    .founder-text p { font-size: 0.95rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 0.75rem; max-width: 62ch; }
+    .founder-text p:last-child { margin-bottom: 0; }
+    @media (max-width: 640px) { .founder-card { flex-direction: column; align-items: center; text-align: left; padding: 1.4rem; } .founder-photo { width: 128px; height: 128px; } }
   </style>
 </head>
 <body>
@@ -1416,13 +1426,27 @@
       </div>
     </section>
 
+    <!-- Meet the person behind Yireh Careers (copy and photo approved by KT, 31 Oct 2026) -->
+    <section class="section" style="padding-top: 0;" id="founder">
+      <div class="founder-card">
+        <img class="founder-photo" src="/images/about-480.webp" srcset="/images/about-480.webp 480w, /images/about-960.webp 960w" sizes="(max-width: 640px) 128px, 176px" width="176" height="176" loading="lazy" alt="Kaeto Oruche, founder of Yireh Careers">
+        <div class="founder-text">
+          <h2>Meet the person behind Yireh Careers</h2>
+          <p class="founder-name">Kaeto Oruche &middot; Founder</p>
+          <p>I wanted remote work that would fit around my life, so I applied to over 200 remote jobs. Every time I found a role that looked right, the real work started: researching who had posted it, picking the posting apart, writing a CV, finding out it wasn&rsquo;t built for applicant tracking systems, and learning that a cover letter only works when it genuinely speaks to that job. It took so much time, for every application.</p>
+          <p>I started Yireh Careers to fix that. The job board links every role to the employer&rsquo;s own posting and shows who can apply. The CV, cover letter and LinkedIn help is the support I wished I&rsquo;d had.</p>
+          <p>When you message Yireh Careers on WhatsApp, you&rsquo;re talking to me, and I check everything before it reaches you.</p>
+        </div>
+      </div>
+    </section>
+
     <!-- How we work -->
     <section class="section" style="padding-top: 0;">
       <div class="about-section">
         <div class="about-text">
           <h3>How we work</h3>
           <p>Every order is handled personally. You message a real person on WhatsApp, we work from your own CV and the roles you are aiming for, and we are clear about timing, revisions and refunds before you pay.</p>
-          <p>The same team runs the job board: <a href="/verify">see how we verify every listing</a>.</p>
+          <p>Yireh Careers also runs the job board: <a href="/verify">see how we verify every listing</a>.</p>
           <a href="https://wa.me/905338225854?text=Hello%2C%20I%20have%20a%20question%20before%20I%20choose%20a%20package." target="_blank" rel="noopener" class="btn btn-outline" onclick="trackClick('about-whatsapp')">Message us on WhatsApp</a>
         </div>
       </div>
