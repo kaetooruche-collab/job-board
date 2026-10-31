@@ -67,5 +67,16 @@ class Render(unittest.TestCase):
         self.assertNotIn(key, md)
 
 
+
+class Referrers(unittest.TestCase):
+    def test_referrer_section_renders_and_missing_data_is_harmless(self):
+        d = {k: dict(v) for k, v in DATA.items()}
+        d["All time"]["refs"] = [{"name": "facebook", "count": 7}]
+        d["Last 7 days"]["refs"] = None
+        md = gc.render("2026-11-03", d, None)
+        self.assertIn("Where visitors came from (all time)", md)
+        self.assertIn("| 7 | facebook |", md)
+        self.assertIn("Referrer data could not be fetched", md)
+
 if __name__ == "__main__":
     unittest.main()

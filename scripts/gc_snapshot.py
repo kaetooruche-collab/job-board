@@ -70,7 +70,13 @@ def fetch(key, start, end):
     total = get(f"/stats/total?start={start}&end={end}", key)
     hits = get(f"/stats/hits?start={start}&end={end}", key)
     rows = (hits or {}).get("hits", []) if isinstance(hits, dict) else []
+    try:  # referrers are a bonus: never fail the snapshot over them
+        refs_raw = get(f"/stats/toprefs?start={start}&end={end}", key)
+        refs = [r for r in ((refs_raw or {}).get("stats") or []) if isinstance(r, dict)]
+    except RuntimeError:
+        refs = None
     return {
+        "refs": refs,
         "views": total.get("total", 0),
         "events": total.get("total_events", 0),
         "pages": sorted((r for r in rows if not r.get("event")), key=lambda r: -(r.get("count") or 0)),
@@ -132,6 +138,16 @@ def render(date, data, prev):
         for r in all_time["event_rows"]
     ] or ["| — | no data |"]
     conv = [r for r in all_time["event_rows"] if "conversion" in str(r.get("path"))]
+    for window in ("Last 7 days", "All time"):
+        refs = (data.get(window) or {}).get("refs")
+        lines += ["", f"## Where visitors came from ({window.lower()})", ""]
+        if refs is None:
+            lines.append("Referrer data could not be fetched this time.")
+        elif not refs:
+            lines.append("No referrer recorded (direct visits, or visitors whose browser sends none).")
+        else:
+            lines += ["| Visitors | Referrer or tagged source |", "|---|---|"]
+            lines += [f"| {r.get('count', 0)} | {str(r.get('name') or '(direct)')[:60]} |" for r in refs[:15]]
     lines += [
         "",
         f"Form submissions (conversion-*): **{sum(r.get('count', 0) for r in conv)}**",
