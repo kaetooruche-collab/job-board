@@ -31,6 +31,7 @@ Save this file as `CLAUDE.md` in the project folder so it is read at the start o
 - Verify changes with appropriate tests and checks. Never claim verification that was not performed.
 - Use proportionate reviews for minor tasks.
 - Before ANY action in Brevo (create, change, send), first call `accounts_get_account` and check that `companyName` is "KAYZ Global Ltd" (account email kaetooruche@gmail.com). If it is not, do not create or change anything and tell KT. (Rule from KT, 2026-10-17.)
+- **Priority (KT, 2026-10-31): whatever brings visitors comes first, such as outreach (Facebook, Reddit, Instagram, WhatsApp channel) and the free-check wording.** Do protective work (terms checks, test hygiene, accessibility audits) as short, bounded tasks and say how important each is to the goal before doing it. Conversion is not the bottleneck while traffic is about 50 home views a week.
 - KT may override any rule by saying OVERRIDE.
 
 ## Quality system for the job feed (KT asked for this on 2026-10-17: "we keep finding something new")
