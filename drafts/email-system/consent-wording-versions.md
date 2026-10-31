@@ -6,6 +6,7 @@ Brevo's form submissions record when someone was added to a list, but not which 
 |---|---|---|---|---|
 | `legacy` | until 24 Oct 2026 | "RemoteNC Job Alerts Signup" (email only) | Job alerts | Site notice: "By subscribing you agree to receive our weekly job email. You can unsubscribe at any time." No tips box. |
 | `signup-v1` | set on go-live | `Yireh Careers: job alerts signup` | Job alerts + optional tips | See `07-data-consent-event-model.md`, Wording v1 |
+| `signup-v2` | 31 Oct 2026 | Site form (`index.html`, `api/subscribe.js`) | Job alerts + optional tips + optional country | As v1, plus under the optional country dropdown ("Where can you work from? (optional)"): "Optional. If you pick a country, we put roles open to applicants there first in your weekly email. We don't use it for anything else." The home-page inline card sends the country the visitor already chose in the filter and says so ("Roles open to applicants in X will come first, because you chose it above."). Stored in `WORK_COUNTRY`. |
 | `check-v1` | set on go-live | `Yireh Careers: free CV check` | Free check + optional tips | As above |
 | `order-v1` | set on go-live | `Yireh Careers: order intake` | Order + optional tips | As above |
 

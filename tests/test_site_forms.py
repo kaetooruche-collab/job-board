@@ -51,5 +51,18 @@ class Forms(unittest.TestCase):
             self.assertNotIn("xkeysib", read(n), n)
 
 
+    def test_country_field_is_optional_explained_and_sent(self):
+        home = read("index.html")
+        self.assertIn('name="country" id="signup-country"', home)
+        self.assertIn("Optional. If you pick a country, we put roles open to applicants there first in your weekly email. We don't use it for anything else.", home)
+        sel = re.search(r'<select name="country"[^>]*>', home).group(0)
+        self.assertNotIn("required", sel)
+        self.assertIn("country: fd.get('country')", read("site-forms.js"))
+        self.assertIn("because you chose it above", home)                       # the inline card says where its country came from
+        self.assertIn("signup-v2", read("api/subscribe.js"))
+        self.assertIn("`signup-v2`", read("drafts/email-system/consent-wording-versions.md"))
+        self.assertIn("the country you choose", read("privacy.html"))
+
+
 if __name__ == "__main__":
     unittest.main()

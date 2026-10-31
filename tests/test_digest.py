@@ -52,5 +52,55 @@ class Digest(unittest.TestCase):
         self.assertIn("{{ unsubscribe }}", noted)
 
 
+    LEX = {"countries": [{"name": "Nigeria"}, {"name": "Germany"}, {"name": "Canada"}],
+           "regions": {"Africa": {"members": ["Nigeria"]}, "EMEA": {"members": ["Nigeria", "Germany"]}}}
+
+    def test_open_to_is_strict(self):
+        ww = job(1, "A", elig="worldwide", label="Worldwide")
+        ca = job(2, "B", elig="countries")
+        ca["eligibility"]["countries"] = ["Canada"]
+        reg = job(3, "C", elig="region")
+        reg["eligibility"]["regions"] = ["Africa"]
+        unknown_region = job(4, "D", elig="region")
+        unknown_region["eligibility"]["regions"] = ["Nowhere"]
+        unclear = job(5, "E", elig="unclear")
+        tz = job(6, "F", elig="timezone")
+        self.assertTrue(md.open_to(ww, "Nigeria", self.LEX))
+        self.assertFalse(md.open_to(ca, "Nigeria", self.LEX))
+        self.assertTrue(md.open_to(ca, "Canada", self.LEX))
+        self.assertTrue(md.open_to(reg, "Nigeria", self.LEX))
+        self.assertFalse(md.open_to(reg, "Germany", self.LEX))
+        self.assertFalse(md.open_to(unknown_region, "Nigeria", self.LEX))   # the site is lenient here; an email must not be
+        self.assertFalse(md.open_to(unclear, "Nigeria", self.LEX))
+        self.assertFalse(md.open_to(tz, "Nigeria", self.LEX))
+
+    def test_coverage_counts_only_recent_remote_roles(self):
+        rows = self.rows()
+        counts, total = md.coverage(rows, self.now, self.LEX)
+        self.assertEqual(counts["Nigeria"], 1)           # only the worldwide one
+        self.assertGreaterEqual(counts["Canada"], 1)
+        self.assertEqual(list(counts.values()), sorted(counts.values(), reverse=True))
+
+    def test_country_edition_only_has_open_roles_and_says_why(self):
+        rows = []
+        for i in range(5):
+            rows.append(job(i, f"Ww{i}", level=["junior", "mid", "senior", "mid", "junior"][i], elig="worldwide", label="Worldwide"))
+        for i in range(5, 9):
+            r = job(i, f"Us{i}", level="mid")
+            r["eligibility"]["countries"] = ["United States"]
+            rows.append(r)
+        import unittest.mock as mock
+        with mock.patch.object(md, "load_lexicon", return_value=self.LEX):
+            doc, subject, preview, sections, total, now = md.build(rows, self.now, country="Nigeria")
+        shown = [r for _, items in sections for r in items]
+        self.assertTrue(shown)
+        self.assertTrue(all(r["company"].startswith("Ww") for r in shown))
+        self.assertEqual(total, 5)
+        self.assertIn("You told us you can work from Nigeria", doc)
+        self.assertIn("Check each employer", doc)
+        self.assertIn("{{ unsubscribe }}", doc)
+        self.assertEqual(subject, "5 new remote jobs this week")
+
+
 if __name__ == "__main__":
     unittest.main()

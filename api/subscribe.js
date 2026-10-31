@@ -3,7 +3,7 @@
  * POST /api/subscribe: the one server-side door from the website to Brevo.
  * Decision record: drafts/decisions/2026-10-24-signup-function.md. Design and consent rules: drafts/email-system/07-data-consent-event-model.md.
  *
- * Forms (JSON body): { form: 'signup' | 'check' | 'order', email, firstName?, level?, package?, role?, tips?: boolean, website?: '' (honeypot) }
+ * Forms (JSON body): { form: 'signup' | 'check' | 'order', email, firstName?, level?, country?, package?, role?, tips?: boolean, website?: '' (honeypot) }
  * What it does, in order: checks origin, size, honeypot and rate limit; validates; reads the Brevo contact; NEVER writes to a blocklisted
  * contact (a form can no longer reverse an unsubscribe); records consent evidence once (date and wording version, never overwritten);
  * adds the contact to the right lists; for the free check and order forms it emails KT a notice so no request is missed.
@@ -17,7 +17,8 @@ const SENDER_ID = 4;                                  // Brevo sender "Yireh Car
 const LIST_JOBS = 11;                                 // "Job alerts"
 const LIST_TIPS = 18;                                 // "Career tips"
 const ORIGINS = ['https://yirehcareers.vercel.app'];
-const VERSION = { signup: 'signup-v1', check: 'check-v1', order: 'order-v1' };
+const VERSION = { signup: 'signup-v2', check: 'check-v1', order: 'order-v1' };   // signup-v2: the form says the optional country picks the roles in the weekly email
+const COUNTRY_OK = /^[A-Za-z][A-Za-z .,'()&-]{1,58}$/;   // a country name as the site's list spells it; anything else is ignored
 const LEVELS = { early: 'early', mid: 'mid', senior_plus: 'senior_plus' };
 const PACKAGES = ['essential', 'professional', 'executive'];
 const MAX_BODY = 4096;
@@ -114,6 +115,8 @@ function createHandler(deps) {
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email) || email.length > 254) { log('bad_email', form); return send(400, false, MESSAGES.invalid); }
     const firstName = clean(body.firstName, 60);
     const level = LEVELS[String(body.level || '')] || '';
+    const countryRaw = clean(body.country, 60);
+    const country = COUNTRY_OK.test(countryRaw) ? countryRaw : '';
     const pkg = PACKAGES.includes(String(body.package || '').toLowerCase()) ? String(body.package).toLowerCase() : '';
     const role = clean(body.role, 200);
     const wantsTips = body.tips === true || body.tips === 'true' || body.tips === 'on';
@@ -148,6 +151,7 @@ function createHandler(deps) {
         lists.push(LIST_JOBS);
         if (!attrs0.CONSENT_JOBS_AT) { attrs.CONSENT_JOBS_AT = today; attrs.CONSENT_JOBS_SRC = VERSION.signup; }
         if (level) attrs.LEVEL_INTEREST = level;
+        if (country) attrs.WORK_COUNTRY = country;
         if (!attrs0.STAGE) attrs.STAGE = 'subscriber';
       } else if (form === 'check') {
         if (attrs0.STAGE !== 'customer') attrs.STAGE = 'check_requested';

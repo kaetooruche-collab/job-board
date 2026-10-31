@@ -27,7 +27,7 @@ Other public files: `jobs.json` (the feed), `platforms.json`, `og-image.png`, fa
 3. **Listings notice** and a quiet services offer ("Need help with your application?", y 788) above the job list.
 4. **Guided finder** ("Let's narrow it down"), search box (ranked, substring-safe), experience row, field, country, job type, posted-within, pay filter, "confirmed remote only", clear filters; filters are remembered for returning visitors.
 5. **Job list** (~y 1,200 to 14,400): 40 cards per page with "Show more". Each card: title, company, level, type, who can apply, pay if stated, posted date, source, "Why this label?", Apply, "Get a CV for this role" (opens WhatsApp).
-6. **Email signup**: an **inline email-only card after the 6th listing** (added 29 Oct) plus the full form near the bottom (email, optional first name, level, unticked tips checkbox, honeypot). The inline card is hidden once someone has signed up (localStorage `yf-subbed`).
+6. **Email signup**: an **inline email-only card after the 6th listing** (added 29 Oct) plus the full form near the bottom (email, optional first name, level, optional country with a one-line purpose note, unticked tips checkbox, honeypot; added 31 Oct). The inline card sends the country the visitor already picked in the filter and says so. The inline card is hidden once someone has signed up (localStorage `yf-subbed`).
 7. **How we verify** (y 14,910): the six trust rules.
 8. ~~Platforms section~~ **removed 29 Oct 2026** (KT's decision). Footer only.
 
