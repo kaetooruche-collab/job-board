@@ -1,8 +1,8 @@
-# Quality report, 2026-10-31T12:18+00:00
+# Quality report, 2026-10-31T21:29+00:00
 
-- Published: **1038**
+- Published: **826**
 - Held back by a quality rule (not published): **7**
-- Warnings (published, but look): **7**
+- Warnings (published, but look): **5**
 
 ## Held back
 
@@ -21,12 +21,11 @@
 
 ## Warnings
 
-### pay-in-posting-but-card-says-not-stated (6)
+### pay-in-posting-but-card-says-not-stated (4)
 - Platform Engineer at Resend: $150,000 - $180,000
 - Platform Engineer at Resend: $150,000 - $180,000
 - Software Engineer, Trust & Safety  at Resend: $150,000 - $175,000
 - Software Engineer, Trust & Safety  at Resend: $150,000 - $175,000
-- Software Engineer, Developer Tools at Resend: $130,000 - $160,000
 
 ### eligibility-label-partly-unsupported (1)
 - Supervisor, Billing Operations at Twilio: not found in evidence: ['India']
@@ -34,11 +33,11 @@
 ## Shape of the feed
 
 ```
-count: 1038
-bySource: {'Ashby': 352, 'Greenhouse': 549, 'Lever': 137}
-pctEligibilityUnclear: 25.0
-pctRemoteUnclear: 9.0
-pctWorldwide: 1.3
-pctEarlyCareer: 9.6
-pctSeniorPlus: 43.6
+count: 826
+bySource: {'Greenhouse': 341, 'Ashby': 349, 'Lever': 136}
+pctEligibilityUnclear: 23.6
+pctRemoteUnclear: 6.7
+pctWorldwide: 1.7
+pctEarlyCareer: 9.4
+pctSeniorPlus: 41.9
 ```
