@@ -120,7 +120,7 @@ While you decide, this short form tells us where to send your documents: https:/
 Inclusions to paste into the brackets above:
 
 ```
-- Essential: a professionally written or rewritten CV, tailored to your industry and target roles; ATS-optimised; Word and PDF; up to 2 revision rounds. Timing: within 2 working days.
+- Essential: a professionally written or rewritten CV, tailored to your industry and target roles; ATS-friendly structure and role-relevant keywords; Word and PDF; up to 2 revision rounds. Timing: within 2 working days.
 - Professional: everything in Essential, plus a targeted cover letter and LinkedIn profile setup; up to 3 revision rounds. Timing: within 3 working days.
 - Executive: everything in Professional, plus a personal branding strategy, 12 LinkedIn posts written and published over 30 days, and targeted connection building by hand each week of the 30-day service, within LinkedIn's limits, aiming to move you towards 500+ total connections (or 100 new relevant connections if you already have 500+). Timing: CV and cover letter within 2 working days; LinkedIn profile setup within 3 working days; the 30-day service period starts when onboarding is complete.
 ```
@@ -428,7 +428,7 @@ Add one item for each entry. Title, price, then description. Currency: USD. Add 
 ```
 Title: Essential: professionally written CV
 Price: $29
-Description: A polished, ATS-optimised CV written around your target roles, in Word and PDF. Up to 2 revision rounds. Delivered within 2 working days of completing onboarding.
+Description: A polished CV with an ATS-friendly structure, written around your target roles, in Word and PDF. Up to 2 revision rounds. Delivered within 2 working days of completing onboarding.
 ```
 
 **Professional: CV, cover letter and LinkedIn setup (Recommended)**

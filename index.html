@@ -299,6 +299,12 @@
       text-overflow: ellipsis;
       white-space: nowrap;
     }
+
+    .search-bar { display: flex; gap: 0.6rem; align-items: stretch; }
+    .search-bar input { flex: 1 1 auto; min-width: 0; }
+    .search-country { flex: 0 0 17.5rem; min-width: 0; min-height: 44px; padding: 0.55rem 0.8rem; border-radius: var(--radius-md); border: 1px solid var(--border); background: var(--bg); color: var(--text); font: inherit; font-size: 0.9rem; }
+    .search-country:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+    @media (max-width: 640px) { .search-bar { flex-direction: column; } .search-country { flex: 1 1 auto; } }
     .fields-current.is-set { color: var(--accent); }
     .fields-group[open] .fields-current { display: none; }
     .search-bar input {
@@ -993,7 +999,7 @@
   <section class="hero">
     <h1>Remote jobs that show <em>who can apply</em></h1>
     <p class="hero-sub">Fresh listings from employers&rsquo; own job feeds, each with the posting date, who is eligible to apply, and a direct link to the employer&rsquo;s page.</p>
-    <p class="hero-facts"><span><strong id="total-jobs">0</strong> remote jobs</span><span><strong id="total-companies">0</strong> companies</span><span><a href="/verify#verified-means">What &ldquo;verified&rdquo; means</a></span></p>
+    <p class="hero-facts"><span><strong id="total-jobs">0</strong> remote jobs</span><span><strong id="total-companies">0</strong> companies</span><span><a href="/verify#verified-means" onclick="trackEvent('verified-meaning-click','Hero')">What &ldquo;verified&rdquo; means</a></span></p>
   </section>
 
   <!-- MAIN -->
@@ -1011,6 +1017,7 @@
     <div class="toolbar" id="jobs">
       <div class="search-bar">
         <input type="text" id="search-input" placeholder="Search by title, company or keyword..." aria-label="Search jobs">
+        <select id="f-country" class="search-country" aria-label="Where you can work from (optional)"><option value="">Where can you work from?</option></select>
       </div>
       <div class="filter-group">
         <span class="group-label" id="level-group-label">Experience</span>
@@ -1019,6 +1026,7 @@
         <button type="button" class="lvl-btn" data-lvl="early" aria-pressed="false">Early career</button>
         <button type="button" class="lvl-btn" data-lvl="mid" aria-pressed="false">Mid-level</button>
         <button type="button" class="lvl-btn" data-lvl="senior_plus" aria-pressed="false">Senior &amp; leadership</button>
+        <button type="button" class="lvl-btn" data-lvl="unspecified" aria-pressed="false">Level not stated</button>
         </div>
       </div>
       <div class="filter-group">
@@ -1038,6 +1046,7 @@
               <option value="">Any level</option>
               <option value="early">Early career (internship, entry-level, junior)</option>
               <option value="senior_plus">Senior and leadership</option>
+              <option value="unspecified">Level not stated</option>
               <option value="internship">Internship or student</option>
               <option value="entry">Entry-level</option>
               <option value="junior">Junior</option>
@@ -1046,10 +1055,7 @@
               <option value="leadership">Management or leadership</option>
             </select>
           </label>
-          <label class="filter-field"><span>Where you can work from</span>
-            <select id="f-country"><option value="">Any location</option></select>
-          </label>
-          <label class="filter-field"><span>Job type</span>
+                    <label class="filter-field"><span>Job type</span>
             <select id="f-type">
               <option value="">Any type</option>
               <option>Full-time</option><option>Part-time</option><option>Contract</option>
@@ -1194,7 +1200,7 @@
       <div class="service-grid">
         <div class="service-item">
           <h3>Essential &middot; $29</h3>
-          <p>A professionally written, ATS-optimised CV, with up to 2 revision rounds. Delivered in 2 working days.</p>
+          <p>A professionally written CV with an ATS-friendly structure, with up to 2 revision rounds. Delivered in 2 working days.</p>
         </div>
         <div class="service-item">
           <h3>Professional &middot; $49</h3>
@@ -1371,7 +1377,7 @@
        same allowed values, so a stale or hand-edited saved value can never set a bad state. */
     function applyParams(get) {
       var lvl = get('level');
-      if (['early', 'mid', 'senior_plus', 'internship', 'entry', 'junior', 'senior', 'leadership'].indexOf(lvl) !== -1) state.level = lvl;
+      if (['early', 'mid', 'senior_plus', 'unspecified', 'internship', 'entry', 'junior', 'senior', 'leadership'].indexOf(lvl) !== -1) state.level = lvl;
       var field = get('field');
       if (field) {
         var cats = {};
@@ -1512,6 +1518,7 @@
       var searchTimer;
       document.getElementById('search-input').addEventListener('input', function(e) {
         state.query = e.target.value.toLowerCase().trim();
+        trackSearchUse();
         clearTimeout(searchTimer);
         searchTimer = setTimeout(resetAndRender, 120);
       });      [['f-level', 'level'], ['f-country', 'country'], ['f-type', 'type'], ['f-posted', 'posted'], ['f-years', 'years'], ['f-salary', 'salary'], ['f-minsal', 'minsal'], ['f-currency', 'currency']].forEach(function (pair) {
@@ -1578,7 +1585,24 @@
         cur.textContent = state.category === 'all' ? 'All fields' : state.category;
         cur.classList.toggle('is-set', state.category !== 'all');
       }
-    }    function resetAll() {
+    }    /* Search measurement: counts only. The words typed are never sent, just a length bucket. */
+    var searchUseTimer = null, lastNoResults = '';
+    function trackSearchUse() {
+      clearTimeout(searchUseTimer);
+      var q = state.query;
+      if (q.length < 3) return;
+      searchUseTimer = setTimeout(function () { trackEvent('search-used', q.length <= 8 ? 'short' : q.length <= 20 ? 'medium' : 'long'); }, 1500);
+    }
+    function trackNoResults() {
+      var sig = JSON.stringify([state.query ? 1 : 0, state.level, state.country, state.type, state.posted, state.category, state.years, state.salary, state.minsal, state.confirmed, state.stated]);
+      if (sig === lastNoResults) return;
+      lastNoResults = sig;
+      var n = [state.query, state.level, state.country, state.type, state.posted, state.years, state.salary, state.minsal].filter(Boolean).length + (state.category !== 'all' ? 1 : 0) + (state.confirmed ? 1 : 0) + (state.stated ? 1 : 0);
+      trackEvent('no-results', n + ' filters');
+    }
+
+    function resetAll() {
+      trackEvent('filters-cleared', 'clear all');
       state = { category: 'all', query: '', level: '', country: '', type: '', posted: '', confirmed: false, stated: false, years: '', salary: '', minsal: '', currency: 'USD', shown: PAGE_SIZE };
       document.getElementById('search-input').value = '';
       ['f-level', 'f-country', 'f-type', 'f-posted', 'f-years', 'f-salary', 'f-minsal'].forEach(function (id) { document.getElementById(id).value = ''; });
@@ -1591,7 +1615,7 @@
     }
 
     /* Which filters are narrowing the results right now, shown above the list so they can be undone one by one */
-    var LEVEL_FILTER_NAME = { early: 'Early career', mid: 'Mid-level', senior_plus: 'Senior & leadership' };
+    var LEVEL_FILTER_NAME = { early: 'Early career', mid: 'Mid-level', senior_plus: 'Senior & leadership', unspecified: 'Level not stated' };
 
     function activeFilterList() {
       var out = [];
@@ -1663,6 +1687,7 @@
       if (!l) return true;
       if (l === 'early') return ['internship', 'entry', 'junior'].indexOf(j.level) !== -1;
       if (l === 'senior_plus') return j.level === 'senior' || j.level === 'leadership';
+      if (l === 'unspecified') return !j.level || j.level === 'unspecified';
       return j.level === l;
     }
     function syncLevelUI() {
@@ -1674,13 +1699,14 @@
       });
     }
     function buildLevelCounts() {
-      var counts = { '': allJobs.length, early: 0, mid: 0, senior_plus: 0 };
+      var counts = { '': allJobs.length, early: 0, mid: 0, senior_plus: 0, unspecified: 0 };
       allJobs.forEach(function(j) {
         if (['internship', 'entry', 'junior'].indexOf(j.level) !== -1) counts.early++;
         else if (j.level === 'mid') counts.mid++;
         else if (j.level === 'senior' || j.level === 'leadership') counts.senior_plus++;
+        else counts.unspecified++;
       });
-      var names = { '': 'All levels', early: 'Early career', mid: 'Mid-level', senior_plus: 'Senior & leadership' };
+      var names = { '': 'All levels', early: 'Early career', mid: 'Mid-level', senior_plus: 'Senior & leadership', unspecified: 'Level not stated' };
       document.querySelectorAll('.lvl-btn').forEach(function(b) { b.textContent = names[b.dataset.lvl] + ' (' + counts[b.dataset.lvl] + ')'; });
     }    /* Pay is only ever filtered on numbers the employer actually wrote. Currencies are compared with
        rounded approximate rates, and the card always shows the original string unchanged. */
@@ -1769,7 +1795,8 @@
       var label = esc(el.label || 'Eligibility unclear');
       if (el.type === 'worldwide') return '<span class="pill pill-world">' + ICONS.globe + 'Worldwide</span>';
       if (el.type === 'unclear') return '<span class="pill pill-unsure" title="The employer does not say where applicants must live">' + ICONS.help + 'Eligibility unclear</span>';
-      return '<span class="pill pill-region" title="Applicants must meet this location requirement">' + ICONS.pin + label + '</span>';
+      var lead = (el.type === 'countries' || el.type === 'region') ? 'Apply from: ' : '';
+      return '<span class="pill pill-region" title="Applicants must meet this location requirement">' + ICONS.pin + lead + label + '</span>';
     }
 
     function whyBlock(job) {
@@ -1852,6 +1879,7 @@
       var list = document.getElementById('job-list');
 
       if (filtered.length === 0) {
+        if (!loadFailed && allJobs.length) trackNoResults();
         list.innerHTML = loadFailed
           ? '<div class="no-results"><h3>We couldn&rsquo;t load the listings</h3><p>That&rsquo;s on our side, not your search. Refresh the page and it should come back &mdash; if it doesn&rsquo;t, email us at yirehcareers@gmail.com.</p></div>'
           : allJobs.length === 0
