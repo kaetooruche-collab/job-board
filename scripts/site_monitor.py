@@ -125,6 +125,16 @@ def main():
         except requests.RequestException as e:
             fails.append(f"{img}: could not load ({e})")
 
+    # crawl basics: robots.txt must point at the sitemap, the sitemap must list the public pages
+    try:
+        rb = get("/robots.txt"); sm = get("/sitemap.xml")
+        if rb.status_code != 200 or "Sitemap:" not in rb.text:
+            fails.append("/robots.txt: missing or no Sitemap line")
+        if sm.status_code != 200 or "<urlset" not in sm.text or f"{SITE}/services" not in sm.text:
+            fails.append("/sitemap.xml: missing or does not list the public pages")
+    except requests.RequestException as e:
+        fails.append(f"crawl files: could not load ({e})")
+
     # job data
     rows = []
     try:
