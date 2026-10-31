@@ -32,3 +32,6 @@ Remote OK: no hero, a single row of dropdowns, jobs immediately. Remotive: headl
 - **"Best for" line** on each package card (the intended customer), without claiming suitability for any background.
 - **Example label** kept (the examples are fictional) but shortened and restyled: "Sample for illustration: a fictional person and fictional figures. Not a client result." No more italics.
 - **Not done:** the human-credibility/photo block. KT's 24 Oct rule forbids a personal name or photo on the brand; it needs KT's explicit yes and a genuine photo. The page has room for it (after "How we work") once approved.
+
+## Addendum: "verified" is now defined on the site (31 Oct 2026)
+The ChatGPT analysis KT shared flagged that "verified" needs a defined meaning. The pipeline does test every link on each refresh (`check_links` in `scripts/fetch_jobs.py`) and drops failures, so the claim is accurate, but it was never spelled out. `/verify` now opens with "What 'verified' means here": what is checked every 6 hours, and what is not (employer identity is not audited; a role can be filled before the employer removes it; acceptance of an applicant's country is the employer's decision; no promise of interviews). The home hero links to it ("What 'verified' means"). Guarded by `tests/test_hero_jobs.py`.

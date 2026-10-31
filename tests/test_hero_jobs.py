@@ -19,6 +19,12 @@ class FirstScreen(unittest.TestCase):
         self.assertIn('id="total-jobs"', INDEX)
         self.assertNotIn("Every 6 hrs", INDEX)  # confused a first-time reader
 
+    def test_verified_is_defined_and_linked_from_the_hero(self):
+        self.assertIn('href="/verify#verified-means"', INDEX)
+        v = (ROOT / "verify.html").read_text(encoding="utf-8")
+        self.assertIn('id="verified-means"', v)
+        self.assertIn("What we do not check", v)
+
     def test_services_block_comes_after_the_job_list_and_signup(self):
         self.assertGreater(INDEX.index('<section class="services"'), INDEX.index('id="job-list"'))
         self.assertGreater(INDEX.index('<section class="services"'), INDEX.index('id="subscribe"'))

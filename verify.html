@@ -303,6 +303,19 @@
       .hamburger { display: block; }
       .process-step { padding: 1rem 1.15rem; }
     }
+  
+    .verified-means { margin: 0 0 2rem; }
+    .verified-means h2 { font-size: 1.3rem; margin-bottom: 0.4rem; }
+    .vm-intro { color: var(--text-secondary); font-size: 0.92rem; margin-bottom: 1rem; max-width: 62ch; }
+    .vm-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; }
+    .vm-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius, 10px); padding: 1.2rem 1.3rem; min-width: 0; }
+    .vm-card h3 { font-size: 0.98rem; margin-bottom: 0.6rem; }
+    .vm-yes { border-top: 3px solid var(--green, #0d9488); }
+    .vm-no { border-top: 3px solid #d97706; }
+    .vm-card ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.5rem; }
+    .vm-card li { position: relative; padding-left: 1.3rem; font-size: 0.88rem; line-height: 1.55; color: var(--text-secondary); }
+    .vm-yes li::before { content: "\2713"; position: absolute; left: 0; color: var(--green, #0d9488); font-weight: 700; }
+    .vm-no li::before { content: "\2013"; position: absolute; left: 0.1rem; color: #d97706; font-weight: 700; }
   </style>
 </head>
 <body>
@@ -331,6 +344,33 @@
 
     <h1>How we verify listings</h1>
     <p class="page-intro">Every listing on Yireh Careers goes through a verification process before it appears. We built this board for job seekers who are tired of broken links, vague descriptions and roles that don't exist. Here is exactly what we check.</p>
+
+    <section class="verified-means" id="verified-means">
+      <h2>What &ldquo;verified&rdquo; means here</h2>
+      <p class="vm-intro">We use the word for specific checks, not as a blanket promise. Here is exactly what is and is not checked.</p>
+      <div class="vm-grid">
+        <div class="vm-card vm-yes">
+          <h3>What we check, on every update (every 6 hours)</h3>
+          <ul>
+            <li>The listing comes from the employer&rsquo;s own job feed, and its apply link goes to that posting, never a homepage or a search page.</li>
+            <li>The link opens. A listing whose link fails is removed.</li>
+            <li>The listing is still in the employer&rsquo;s feed and was posted within the last 30 days (by its original posting date).</li>
+            <li>The whole posting reads as remote. Hybrid, on-site and self-contradicting roles are left out.</li>
+            <li>&ldquo;Who can apply&rdquo; shows what the employer states, or &ldquo;unclear&rdquo; when they do not say.</li>
+            <li>Pay is shown only when the posting states it.</li>
+          </ul>
+        </div>
+        <div class="vm-card vm-no">
+          <h3>What we do not check</h3>
+          <ul>
+            <li>We do not investigate each employer. We choose which employers to include, but we do not audit them.</li>
+            <li>We cannot see inside an employer&rsquo;s hiring process. A role can occasionally be filled before the employer removes it from their feed.</li>
+            <li>We do not confirm that an applicant from your country will be accepted. That is the employer&rsquo;s decision, so read their eligibility rules before you apply.</li>
+            <li>We do not promise interviews or job offers.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
 
     <section class="trust-rules">
       <h2>Our trust rules</h2>
