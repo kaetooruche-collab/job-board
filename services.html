@@ -921,7 +921,32 @@
       .sticky-wa { width: auto; height: 46px; bottom: 0.9rem; right: 0.9rem; padding: 0 1rem 0 0.8rem; }
       .sticky-wa svg { width: 22px; height: 22px; }
     }
-</style>
+
+    /* ── Phase 2 (31 Oct 2026): light, jobs-first identity; Executive laid out openly ── */
+    .hero { background: linear-gradient(180deg, #eaf1ff 0%, var(--bg) 100%); color: var(--text); padding: 2.6rem 1.25rem 1.8rem; border-bottom: 1px solid var(--border); }
+    .hero h1 { color: #0f2a4d; }
+    .hero p { color: var(--text-secondary); }
+    .btn-white { background: #fff; color: var(--accent); border: 1px solid var(--accent); }
+    .btn-white:hover { background: var(--accent-light, #eff6ff); }
+    .trust-row, .pain-chips { color: var(--text-secondary); }
+    .trust-row li::before { color: var(--green); }
+    .final-cta { background: var(--accent-light, #eff6ff); border: 1px solid var(--border); color: var(--text); }
+    .final-cta h2 { color: #0f2a4d; }
+    .final-cta p { color: var(--text-secondary); }
+    .best-for { font-size: 0.84rem; color: var(--text-secondary); margin: 0.2rem 0 0.8rem; line-height: 1.5; }
+    .best-for strong { color: var(--text); }
+    .exec-benefit { font-weight: 600; color: var(--accent); font-size: 0.9rem; margin: 0 0 0.6rem; }
+    .exec-card ul { margin-bottom: 0; }
+    .exec-card li { margin-bottom: 0.35rem; line-height: 1.5; }
+    .exec-timeline { background: var(--accent-light, #eff6ff); border: 1px solid var(--border); border-left: 4px solid var(--accent); border-radius: var(--radius); padding: 1.3rem 1.4rem; margin-top: 1rem; }
+    .exec-timeline h3 { font-size: 1rem; margin-bottom: 0.8rem; color: #0f2a4d; }
+    .exec-timeline p { font-size: 0.85rem; color: var(--text-secondary); line-height: 1.65; margin: 0.9rem 0 0; }
+    .exec-steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 0.8rem; }
+    .exec-steps div { background: #fff; border: 1px solid var(--border); border-radius: 8px; padding: 0.7rem 0.9rem; }
+    .exec-steps strong { display: block; font-size: 1.05rem; color: var(--accent); }
+    .exec-steps span { font-size: 0.84rem; color: var(--text-secondary); }
+    .illustrative { font-style: normal; display: inline-block; background: var(--tag-bg, #f1f3f5); border: 1px solid var(--border); border-radius: 999px; padding: 0.22rem 0.75rem; font-size: 0.76rem; }
+  </style>
 </head>
 <body>
 
@@ -979,6 +1004,7 @@
           <h3>Essential</h3>
           <p class="tagline">A professionally written CV</p>
           <p class="pricing-desc">A polished, ATS-optimised CV, written around the roles you are targeting. The focused choice when your CV is what needs to change.</p>
+          <p class="best-for"><strong>Best for:</strong> a search where your CV is the main thing to fix.</p>
           <div class="pricing-price"><span class="price-amount">$29</span></div>
           <p class="card-progress">The CV</p>
           <ul class="pricing-features">
@@ -997,6 +1023,7 @@
           <span class="popular-badge">Recommended</span><h3>Professional</h3>
           <p class="tagline">CV, cover letter and LinkedIn profile</p>
           <p class="pricing-desc">One consistent professional identity across your CV, cover letter and LinkedIn profile. Our recommended choice for an active job search.</p>
+          <p class="best-for"><strong>Best for:</strong> an active search where your CV, cover letter and LinkedIn profile need to tell the same story.</p>
           <div class="pricing-price"><span class="price-amount">$49</span></div>
           <p class="card-progress">Everything in Essential, plus:</p>
           <ul class="pricing-features">
@@ -1014,6 +1041,7 @@
           <h3>Executive</h3>
           <p class="tagline">Positioning, content and network building</p>
           <p class="pricing-desc">For people who want more than career documents: professional positioning, deliberate network building and ongoing LinkedIn content.</p>
+          <p class="best-for"><strong>Best for:</strong> experienced professionals who want a stronger, more visible professional profile.</p>
           <div class="pricing-price"><span class="price-amount">$149</span><span class="price-anchor">30-day service</span></div>
           <p class="card-progress">Everything in Professional, plus:</p>
           <ul class="pricing-features">
@@ -1060,6 +1088,51 @@
         </div>
       </details>
       <p class="pricing-note"><span data-wa-only>To order, message us on WhatsApp. We agree the details and send payment instructions there (bank transfer or crypto).</span><span data-card-copy hidden>Essential and Professional can be paid by card on a secure checkout page hosted by Whop, our payment provider; we never see your card details. For bank transfer or crypto, or for Executive, add-ons and the monthly LinkedIn plan, message us on WhatsApp and we send payment details there.</span></p>
+    </section>
+
+    <!-- Executive, in detail: open, benefit-led, right after the packages (was a collapsible near the bottom) -->
+    <section class="section" style="padding-top: 0;" id="executive">
+      <p class="section-label">Executive, in detail</p>
+      <h2 class="section-title">A 30-day service that builds your professional profile.</h2>
+      <p class="section-subtitle">Everything in Professional, plus personal branding, 12 LinkedIn posts and hand-picked connection building. You approve the direction before anything is published.</p>
+      <div class="exec-grid">
+        <div class="exec-card">
+          <h3>Personal branding strategy</h3>
+          <p class="exec-benefit">Know how to present yourself for the roles you want.</p>
+          <ul>
+            <li>How you should be positioned, beyond a headline or a nicer photo</li>
+            <li>Which people to connect with: recruiters, hiring managers, peers and specialists in your field</li>
+            <li>Presented to you for approval before any work on content begins</li>
+          </ul>
+        </div>
+        <div class="exec-card">
+          <h3>Targeted connection building</h3>
+          <p class="exec-benefit">A network that fits the roles you are targeting.</p>
+          <ul>
+            <li>People chosen by hand for your industry and goals; requests sent each week within LinkedIn&rsquo;s limits</li>
+            <li>Our aim: move you towards 500+ total connections, or 100 new relevant ones if you already have 500+</li>
+            <li>Where you end up depends on where you start and on who accepts</li>
+          </ul>
+        </div>
+        <div class="exec-card">
+          <h3>LinkedIn content, written and published</h3>
+          <p class="exec-benefit">A consistent, credible presence for 30 days.</p>
+          <ul>
+            <li>12 curated posts, about 3 a week, written and published for you</li>
+            <li>Based on your real experience; we never invent achievements or opinions</li>
+            <li>Posts go out across the month, not all at once</li>
+          </ul>
+        </div>
+      </div>
+      <div class="exec-timeline">
+        <h3>Your Executive timeline</h3>
+        <div class="exec-steps">
+          <div><strong>2 working days</strong><span>CV and cover letter</span></div>
+          <div><strong>3 working days</strong><span>LinkedIn profile setup</span></div>
+          <div><strong>30 days</strong><span>Branding, connection building and the 12 posts</span></div>
+        </div>
+        <p>All timing is counted from when your onboarding is complete: once you have sent your current CV and target roles and answered our questions. Dates can move if we are waiting for your information, feedback or approvals, and we will tell you if a delivery date changes materially. At day 30 we tell you where you stand; continuing is optional, as the separate LinkedIn Growth plan ($99 a month).</p>
+      </div>
     </section>
 
     <!-- Add-ons and monthly plan -->
@@ -1124,7 +1197,7 @@
           </div>
         </div>
       </div>
-      <p class="illustrative">Illustrative example: a fictional person and fictional figures, shown to demonstrate the style of rewrite. Not a client result.</p>
+      <p class="illustrative">Sample for illustration: a fictional person and fictional figures. Not a client result.</p>
     </section>
 
     <div style="margin-bottom:2rem;">
@@ -1177,7 +1250,7 @@
           </div>
         </div>
       </div>
-      <p class="illustrative">Illustrative example: a fictional person and fictional figures, shown to demonstrate the style of work. Not a client result.</p>
+      <p class="illustrative">Sample for illustration: a fictional person and fictional figures. Not a client result.</p>
     </section>
 
         </div>
@@ -1378,44 +1451,6 @@
       </div>
     </section>
 
-    <!-- Executive detail (collapsed) -->
-    <section class="section" style="padding-top: 0;">
-      <details class="more" id="executive">
-        <summary>What is inside the Executive package</summary>
-        <div class="more-body">
-          <div class="exec-grid">
-            <div class="exec-card">
-              <h3>Personal branding strategy</h3>
-              <p>This is not just a LinkedIn headline or a nicer profile photo. We work out how you should be positioned for the roles you want, and which kinds of people you should be connected with to support your career goals.</p>
-              <p>Depending on your background, industry and objectives, that can include recruiters, hiring managers, experienced professionals in your target field, peers and industry specialists.</p>
-              <p>The aim is relevant professional relationships, not a random pile of connections.</p>
-            </div>
-            <div class="exec-card">
-              <h3>Targeted connection building</h3>
-              <p>We choose the people to connect with based on your target industry, desired roles, experience and career objectives, and send the requests by hand each week of the 30-day service, within LinkedIn&rsquo;s limits.</p>
-              <p><strong>Our aim is to move you towards 500+ total connections</strong>, counting the connections you already have. If you already have 500+, our aim is 100 new relevant connections of the types you choose. How far you get depends on where you start and on who accepts: a profile beginning with 24 connections and one beginning with 134 will not get the same result. We cannot promise how many people accept or how they respond.</p>
-              <p>At day 30 we tell you where you stand. If you want to keep going, LinkedIn Growth ($99 a month) continues the same work.</p>
-            </div>
-            <div class="exec-card">
-              <h3>LinkedIn content, written and published</h3>
-              <p>We write and publish 12 curated posts for you over the 30 days, about 3 a week, tailored to your background, target industry, career goals and branding strategy.</p>
-              <p>The posts reflect your real experience and knowledge. We do not invent achievements or opinions. We produce and publish the content, not just advise you on what to post. Posts go out across the month, not all at once.</p>
-              <p>The purpose is to strengthen your professional identity and keep a consistent presence.</p>
-            </div>
-          </div>
-          <div class="timeline-box">
-            <h3>The Executive timeline</h3>
-            <p>Everything below is counted from when your onboarding is complete. Onboarding means you have sent us your current CV and the roles you are targeting, and answered our questions about your goals.</p>
-            <ul class="timeline-list">
-              <li><strong>CV and cover letter:</strong> delivered together within 48 hours (2 working days).</li>
-              <li><strong>LinkedIn profile setup:</strong> delivered within 3 working days.</li>
-              <li><strong>Personal branding, connection building and the 12 posts:</strong> delivered over the 30-day service period.</li>
-            </ul>
-            <p>Dates can move if we are waiting for your information, feedback or approvals. If a delivery date changes materially, we will tell you.</p>
-          </div>
-        </div>
-      </details>
-    </section>
 
     <!-- What we promise, and what we do not -->
     <section class="section" style="padding-top: 0;">
