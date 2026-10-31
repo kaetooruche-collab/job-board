@@ -33,3 +33,7 @@ Assets prepared: `images/about-480.webp`, `images/about-960.webp` (square crop o
 
 ## Also fixed in this change
 The public site was serving CLAUDE.md (the internal brief), `scripts/`, `tests/`, `.github/` and several `data/` reports. No secrets were in them, but they are internal. `.vercelignore` now hides them; the files the site loads (`jobs.json`, `data/geo_lexicon.json`, `api/`, `fonts/`, `images/`) are unaffected and guarded by `tests/test_public_surface.py`.
+
+
+## APPROVED and published (31 Oct 2026)
+KT approved: name "Kaeto Oruche", role "Founder", the first-person story without the university reference ("I wanted remote work that would fit around my life, so I applied to over 200 remote jobs..."), no Kyrenia. Live on the services page as `#founder`, above "How we work". Kyrenia stays on the privacy page and in Cyprus-focused social posts only.

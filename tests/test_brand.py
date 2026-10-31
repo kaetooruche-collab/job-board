@@ -6,7 +6,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 PAGES = ["index.html", "services.html", "verify.html", "privacy.html", "thanks.html", "subscribed.html", "free-check.html", "order.html"]
 ALL_PAGES = PAGES + ["kit.html", "mail.html"]
-RETIRED = ["kaeto", "kayz global ltd", "kt-photo.webp", "founder, "]
+RETIRED = ["kaeto career", "kayz global ltd", "kt-photo.webp"]
 DOMAIN = "https://yirehcareers.vercel.app"
 
 
@@ -31,10 +31,19 @@ class Brand(unittest.TestCase):
         for n in PAGES:
             self.assertIn("Yireh <span>Careers</span>", page(n), n)
 
-    def test_founder_photo_and_section_are_removed(self):
+    def test_the_old_founder_block_is_gone_and_the_approved_one_is_present(self):
         self.assertFalse((ROOT / "kt-photo.webp").exists())
-        self.assertNotIn("Who&rsquo;s behind this", page("services.html"))
-        self.assertIn("How we work", page("services.html"))
+        sv = page("services.html")
+        self.assertNotIn("Who&rsquo;s behind this", sv)
+        self.assertIn("How we work", sv)
+        # KT approved a founder block on the services page only (31 Oct 2026): real photo, name, role, approved text, no city
+        self.assertIn('alt="Kaeto Oruche, founder of Yireh Careers"', sv)
+        self.assertIn("Kaeto Oruche &middot; Founder", sv)
+        self.assertIn("over 200 remote jobs", sv)
+        self.assertNotIn("Kyrenia", sv)
+        self.assertTrue((ROOT / "images" / "about-480.webp").exists())
+        for n in ("index.html", "verify.html", "thanks.html", "free-check.html", "order.html"):
+            self.assertNotIn("Kaeto Oruche", page(n), n)
 
     def test_privacy_page_does_not_claim_a_company(self):
         p = page("privacy.html")
