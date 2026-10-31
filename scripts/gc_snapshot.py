@@ -68,7 +68,7 @@ def get(path, key, tries=3):
 
 def fetch(key, start, end):
     total = get(f"/stats/total?start={start}&end={end}", key)
-    hits = get(f"/stats/hits?start={start}&end={end}", key)
+    hits = get(f"/stats/hits?start={start}&end={end}&limit=100", key)  # default is 20 rows: funnel counts would silently miss events
     rows = (hits or {}).get("hits", []) if isinstance(hits, dict) else []
     try:  # referrers are a bonus: never fail the snapshot over them
         refs_raw = get(f"/stats/toprefs?start={start}&end={end}", key)
@@ -104,6 +104,55 @@ def delta(now, prev, key):
     if step == 0:
         return "no change"
     return f"{'+' if step > 0 else ''}{step} since {prev['file']}"
+
+
+# The visitor's path through the site, in order. Each stage counts GoatCounter events whose name starts with
+# one of the prefixes (exact name when it has no trailing dash). Counts are clicks and form submits, not people.
+FUNNEL = [
+    ("Looked at jobs (home page views)", None),
+    ("Clicked Apply on a job", ("apply-click",)),
+    ("Joined the weekly email (form sent)", ("conversion-signup",)),
+    ("Opened WhatsApp about a CV or free check", ("cv-click-",)),
+    ("Asked for a free CV check (form sent)", ("conversion-check",)),
+    ("Reached the 'email us your CV' step", ("free-check-open-email", "free-check-copy-address")),
+    ("Looked at prices or pay buttons", ("services-click-pay-", "services-click-pricing-")),
+    ("Sent an order form", ("conversion-order",)),
+]
+NOT_MEASURED = ("CVs received by email, free checks answered and paid orders are not in GoatCounter. "
+                "Log them by hand (drafts/kt-todo.md, free-check log) and compare with the rows above.")
+
+
+def funnel_counts(window):
+    """[(label, count)] for one window of fetch() data. The first stage is views of '/'."""
+    window = window or {}
+    home = sum(r.get("count", 0) for r in window.get("pages", []) if str(r.get("path")) in ("/", ""))
+    out = [(FUNNEL[0][0], home)]
+    for label, prefixes in FUNNEL[1:]:
+        n = 0
+        for r in window.get("event_rows", []):
+            name = str(r.get("path") or "").lstrip("/")
+            if any(name == p or (p.endswith("-") and name.startswith(p)) for p in prefixes):
+                n += r.get("count", 0)
+        out.append((label, n))
+    return out
+
+
+def render_funnel(data):
+    lines = ["", "## Funnel (clicks and form submits, not people)", ""]
+    wins = [w for w in ("Last 7 days", "All time") if w in data]
+    lines += ["| Step | " + " | ".join(wins) + " |", "|---|" + "---|" * len(wins)]
+    counts = {w: funnel_counts(data[w]) for w in wins}
+    for i, (label, _) in enumerate(FUNNEL):
+        lines.append(f"| {label} | " + " | ".join(str(counts[w][i][1]) for w in wins) + " |")
+    for w in wins:
+        home, signups = counts[w][0][1], counts[w][2][1]
+        checks = counts[w][4][1] + counts[w][3][1]
+        if home:
+            lines.append("")
+            lines.append(f"- {w}: {signups} email signups and {checks} free-check or CV contacts per {home} home page views "
+                         f"({signups * 100 / home:.1f} and {checks * 100 / home:.1f} per 100). Page views, not visitors.")
+    lines += ["", NOT_MEASURED]
+    return lines
 
 
 def render(date, data, prev):
@@ -148,6 +197,7 @@ def render(date, data, prev):
         else:
             lines += ["| Visitors | Referrer or tagged source |", "|---|---|"]
             lines += [f"| {r.get('count', 0)} | {str(r.get('name') or '(direct)')[:60]} |" for r in refs[:15]]
+    lines += render_funnel(data)
     lines += [
         "",
         f"Form submissions (conversion-*): **{sum(r.get('count', 0) for r in conv)}**",
