@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="color-scheme" content="light">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Privacy Policy | Yireh Careers</title>
   <meta property="og:type" content="website">
@@ -26,6 +27,7 @@
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
     :root {
+      color-scheme: light;
       --bg: #f8f9fb;
       --surface: #ffffff;
       --text: #1a1a2e;
@@ -42,36 +44,8 @@
       --shadow: 0 1px 3px rgba(0,0,0,0.06);
     }
 
-    @media (prefers-color-scheme: dark) {
-      :root:not([data-theme="light"]) {
-        --bg: #0c0c18;
-        --surface: #161625;
-        --text: #e8e8f0;
-        --text-secondary: #9ca3af;
-        --accent: #60a5fa;
-        --accent-hover: #93bbfd;
-        --accent-light: #1e293b;
-        --border: #262640;
-        --tag-bg: #1e1e36;
-        --green: #2dd4bf;
-        --green-light: #0d2d2a;
-        color-scheme: dark;
-      }
-    }
-    :root[data-theme="dark"] {
-      --bg: #0c0c18;
-      --surface: #161625;
-      --text: #e8e8f0;
-      --text-secondary: #9ca3af;
-      --accent: #60a5fa;
-      --accent-hover: #93bbfd;
-      --accent-light: #1e293b;
-      --border: #262640;
-      --tag-bg: #1e1e36;
-      --green: #2dd4bf;
-      --green-light: #0d2d2a;
-      color-scheme: dark;
-    }
+
+
 
     body {
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;

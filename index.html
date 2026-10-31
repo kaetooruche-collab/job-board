@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="color-scheme" content="light">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Yireh Careers — Verified Remote Jobs</title>
   <meta property="og:type" content="website">
@@ -29,6 +30,7 @@
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
     :root {
+      color-scheme: light;
       --bg: #f8f9fb;
       --surface: #ffffff;
       --text: #1a1a2e;
@@ -70,54 +72,8 @@
       --radius-md: 8px;
     }
 
-    @media (prefers-color-scheme: dark) {
-      :root:not([data-theme="light"]) {
-        --bg: #0c0c18;
-        --surface: #161625;
-        --text: #e8e8f0;
-        --text-secondary: #9ca3af;
-        --accent: #60a5fa;
-        --accent-hover: #93bbfd;
-        --accent-light: #1e293b;
-        --border: #262640;
-        --tag-bg: #1e1e36;
-        --green: #2dd4bf;
-        --green-light: #0d2d2a;
-        --disclaimer-bg: #1c1a0f;
-        --disclaimer-border: #92400e;
-        --new-bg: #451a03;
-        --new-text: #fde68a;
-        --verified-bg: #052e16;
-        --verified-text: #6ee7b7;
-        --note-bg: #241a08;
-        --note-edge: #b45309;
-        --note-text: #fcd34d;
-        color-scheme: dark;
-      }
-    }
-    :root[data-theme="dark"] {
-      --bg: #0c0c18;
-      --surface: #161625;
-      --text: #e8e8f0;
-      --text-secondary: #9ca3af;
-      --accent: #60a5fa;
-      --accent-hover: #93bbfd;
-      --accent-light: #1e293b;
-      --border: #262640;
-      --tag-bg: #1e1e36;
-      --green: #2dd4bf;
-      --green-light: #0d2d2a;
-      --disclaimer-bg: #1c1a0f;
-      --disclaimer-border: #92400e;
-      --new-bg: #451a03;
-      --new-text: #fde68a;
-      --verified-bg: #052e16;
-      --verified-text: #6ee7b7;
-      --note-bg: #241a08;
-      --note-edge: #b45309;
-      --note-text: #fcd34d;
-      color-scheme: dark;
-    }
+
+
 
     html { scroll-padding-top: 72px; }
 
@@ -221,83 +177,34 @@
 
     /* HERO */
     .hero {
-      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
-      color: #fff;
-      padding: 3.5rem 1.5rem 3rem;
+      background: linear-gradient(180deg, #eaf1ff 0%, var(--bg) 100%);
+      color: var(--text);
+      padding: 2.1rem 1.25rem 1.1rem;
       text-align: center;
+      border-bottom: 1px solid var(--border);
     }
     .hero h1 {
-      font-size: clamp(1.75rem, 5vw, 2.75rem);
+      font-size: clamp(1.65rem, 4.6vw, 2.5rem);
       font-weight: 800;
       line-height: 1.15;
-      margin-bottom: 0.75rem;
-      letter-spacing: -1px;
+      margin-bottom: 0.6rem;
+      letter-spacing: -0.8px;
+      color: #0f2a4d;
     }
-    .hero h1 em {
-      font-style: normal;
-      color: #60a5fa;
+    .hero h1 em { font-style: normal; color: var(--accent); }
+    .hero .hero-sub {
+      font-size: 1rem;
+      color: var(--text-secondary);
+      max-width: 600px;
+      margin: 0 auto 0.9rem;
+      line-height: 1.55;
     }
-    .hero-tagline {
-      font-size: 1.1rem;
-      color: rgba(255,255,255,0.7);
-      margin-bottom: 1.5rem;
-      font-weight: 500;
-      letter-spacing: 0.3px;
+    .hero .hero-facts {
+      display: flex; justify-content: center; flex-wrap: wrap; gap: 0.35rem 1.4rem;
+      font-size: 0.86rem; color: var(--text-secondary); margin: 0;
     }
-    .hero p {
-      font-size: 0.95rem;
-      color: rgba(255,255,255,0.65);
-      max-width: 540px;
-      margin: 0 auto 2rem;
-      line-height: 1.6;
-    }
-    .hero-stats {
-      display: flex;
-      justify-content: center;
-      gap: 2.5rem;
-      flex-wrap: wrap;
-    }
-    /* The only above-the-fold route to the listings: everything below the hero is either
-       the services pitch or requires scrolling ~1.3 screens to reach a job. */
-    .hero-jobs-cta {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.45rem;
-      margin-top: 1.75rem;
-      padding: 0.78rem 1.5rem;
-      background: var(--accent);
-      color: #fff;
-      border-radius: 8px;
-      font-size: 0.98rem;
-      font-weight: 600;
-      text-decoration: none;
-      transition: background 0.2s;
-    }
-    .hero-jobs-cta:hover { background: var(--accent-hover); }
-    .hero-jobs-cta::after { content: "\2193"; }
-    /* white on #60a5fa is only ~2:1, so the button takes dark text on both dark paths */
-    @media (prefers-color-scheme: dark) {
-      :root:not([data-theme="light"]) .hero-jobs-cta { color: #0f172a; }
-    }
-    :root[data-theme="dark"] .hero-jobs-cta { color: #0f172a; }
+    .hero .hero-facts strong { color: var(--text); font-variant-numeric: tabular-nums; }
     .toolbar { scroll-margin-top: 4.75rem; }
-    .hero-stat {
-      text-align: center;
-    }
-    .hero-stat strong {
-      display: block;
-      font-size: 1.75rem;
-      font-weight: 800;
-      color: #fff;
-      font-variant-numeric: tabular-nums;
-    }
-    .hero-stat small {
-      font-size: 0.75rem;
-      color: rgba(255,255,255,0.5);
-      text-transform: uppercase;
-      letter-spacing: 0.75px;
-      font-weight: 500;
-    }
 
     /* MAIN */
     .container {
@@ -1021,11 +928,9 @@
     /* RESPONSIVE */
     @media (max-width: 640px) {
       :root { --card-gap: 2rem; --card-pad: 1.15rem; --block-gap: 0.8rem; }
-      .hero { padding: 1.75rem 1.25rem 1.5rem; }
-      .hero-tagline { font-size: 0.95rem; margin-bottom: 0.75rem; }
-      .hero p { font-size: 0.85rem; margin-bottom: 1.1rem; line-height: 1.5; }
-      .hero-stats { gap: 1.25rem; }
-      .hero-stat strong { font-size: 1.35rem; }
+      .hero { padding: 1.4rem 1rem 0.9rem; }
+      .hero .hero-sub { font-size: 0.9rem; margin-bottom: 0.7rem; }
+      .hero .hero-facts { font-size: 0.8rem; gap: 0.2rem 1rem; }
       .disclaimer { font-size: 0.8rem; padding: 0.85rem 1rem; margin-bottom: var(--space-4); }
       .container { padding: 1rem; }
       .toolbar { padding: 0.9rem 1rem 1rem; margin-left: -1rem; margin-right: -1rem; border-radius: 0; border-left: none; border-right: none; }
@@ -1085,24 +990,9 @@
 
   <!-- HERO -->
   <section class="hero">
-    <h1>Verified remote jobs for <em>every stage of your career</em></h1>
-    <p class="hero-tagline">Every listing verified. Every link goes to the employer's own posting.</p>
-    <p>Remote roles in support, admin, finance, healthcare, education, marketing, tech and more &mdash; from internships to senior leadership. Every listing says whether it&rsquo;s fully remote, who can apply, and the pay when the employer states it.</p>
-    <div class="hero-stats">
-      <div class="hero-stat">
-        <strong id="total-jobs">0</strong>
-        <small>Verified Listings</small>
-      </div>
-      <div class="hero-stat">
-        <strong id="total-companies">0</strong>
-        <small>Companies</small>
-      </div>
-      <div class="hero-stat">
-        <strong>Every 6 hrs</strong>
-        <small>Re-checked</small>
-      </div>
-    </div>
-    <a class="hero-jobs-cta" href="#jobs" onclick="trackEvent('jobs-hero-jump','Hero')">Browse the jobs</a>
+    <h1>Remote jobs that show <em>who can apply</em></h1>
+    <p class="hero-sub">Fresh listings from employers&rsquo; own job feeds, each with the posting date, who is eligible to apply, and a direct link to the employer&rsquo;s page.</p>
+    <p class="hero-facts"><span><strong id="total-jobs">0</strong> remote jobs</span><span><strong id="total-companies">0</strong> companies</span><span>Updated every 6 hours</span></p>
   </section>
 
   <!-- MAIN -->
@@ -1115,32 +1005,6 @@
     </details>
 
     <!-- SERVICES: above the listings, so the paid offer is reachable without scrolling past every job -->
-    <section class="services" id="services">
-      <p class="free-paid-line">The job board is free, and it stays free. When you've found the right role, our paid CV and LinkedIn services help your application read like it belongs there.</p>
-      <h2>Need help with your application?</h2>
-      <p>Professional CVs, cover letters and LinkedIn profiles, written for you. From $29, with a free quick CV check to start.</p>
-      <div class="service-grid">
-        <div class="service-item">
-          <h3>Essential &middot; $29</h3>
-          <p>A professionally written, ATS-optimised CV, with up to 2 revision rounds. Delivered in 2 working days.</p>
-        </div>
-        <div class="service-item">
-          <h3>Professional &middot; $49</h3>
-          <p>CV, cover letter and LinkedIn profile setup, with up to 3 revision rounds. Delivered in 3 working days.</p>
-        </div>
-        <div class="service-item">
-          <h3>Executive &middot; $149</h3>
-          <p>Everything in Professional, plus personal branding, 12 LinkedIn posts and 30 days of connection building.</p>
-        </div>
-      </div>
-      <div class="service-cta">
-        <p>See exactly what each package includes, or ask us a question first.</p>
-        <div class="service-cta-buttons">
-          <a href="/services" class="cta-email-btn" onclick="trackEvent('services-click-home-packages','Home block')">See the packages</a>
-          <a href="https://wa.me/905338225854?text=Hello%2C%20I%20would%20like%20a%20free%20quick%20CV%20check.%20Please%20tell%20me%20how%20to%20send%20my%20CV." target="_blank" rel="noopener" class="cta-whatsapp" onclick="trackCv('home-free-check','')">Get a free CV check</a>
-        </div>
-      </div>
-    </section>
 
     <!-- TOOLBAR: SEARCH + FILTERS -->
     <div class="toolbar" id="jobs">
@@ -1321,6 +1185,34 @@
       <p style="margin-top:0.5rem; font-size:0.8rem; opacity:0.85;">One tap to unsubscribe whenever you like. See our <a href="/privacy" style="color:inherit; text-decoration:underline;">privacy policy</a>.</p>
     </section>
 
+    <!-- CAREER SERVICES: after the jobs and the free email, never between a visitor and the listings -->
+    <section class="services" id="services">
+      <p class="free-paid-line">The job board is free, and it stays free. When you've found the right role, our paid CV and LinkedIn services help your application read like it belongs there.</p>
+      <h2>Need help with your application?</h2>
+      <p>Professional CVs, cover letters and LinkedIn profiles, written for you. From $29, with a free quick CV check to start.</p>
+      <div class="service-grid">
+        <div class="service-item">
+          <h3>Essential &middot; $29</h3>
+          <p>A professionally written, ATS-optimised CV, with up to 2 revision rounds. Delivered in 2 working days.</p>
+        </div>
+        <div class="service-item">
+          <h3>Professional &middot; $49</h3>
+          <p>CV, cover letter and LinkedIn profile setup, with up to 3 revision rounds. Delivered in 3 working days.</p>
+        </div>
+        <div class="service-item">
+          <h3>Executive &middot; $149</h3>
+          <p>Everything in Professional, plus personal branding, 12 LinkedIn posts and 30 days of connection building.</p>
+        </div>
+      </div>
+      <div class="service-cta">
+        <p>See exactly what each package includes, or ask us a question first.</p>
+        <div class="service-cta-buttons">
+          <a href="/services" class="cta-email-btn" onclick="trackEvent('services-click-home-packages','Home block')">See the packages</a>
+          <a href="https://wa.me/905338225854?text=Hello%2C%20I%20would%20like%20a%20free%20quick%20CV%20check.%20Please%20tell%20me%20how%20to%20send%20my%20CV." target="_blank" rel="noopener" class="cta-whatsapp" onclick="trackCv('home-free-check','')">Get a free CV check</a>
+        </div>
+      </div>
+    </section>
+
     <!-- HOW WE VERIFY -->
     <section class="verify-section" id="how-we-verify">
       <h2>How we verify listings</h2>
@@ -1430,9 +1322,9 @@
       } catch (err) { allJobs = []; loadFailed = true; }
       document.getElementById('total-jobs').textContent = loadFailed ? '\u2014' : allJobs.length;
       document.getElementById('total-companies').textContent = loadFailed ? '\u2014' : new Set(allJobs.map(function(j) { return j.company; })).size;
-      var wide = window.innerWidth >= 720;
-      document.getElementById('more-filters').open = wide;
-      document.getElementById('fields-group').open = wide;
+      // collapsed on every screen size: the listings come first, the refinements are one tap away
+      document.getElementById('more-filters').open = false;
+      document.getElementById('fields-group').open = false;
       buildCategoryFilters();
       buildGuide();
       await buildCountryFilter();
