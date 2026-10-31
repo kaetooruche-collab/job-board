@@ -1,12 +1,13 @@
-# Quality report, 2026-10-30T05:40+00:00
+# Quality report, 2026-10-31T09:39+00:00
 
-- Published: **1033**
-- Held back by a quality rule (not published): **6**
-- Warnings (published, but look): **12**
+- Published: **1041**
+- Held back by a quality rule (not published): **7**
+- Warnings (published, but look): **7**
 
 ## Held back
 
-### eligibility-contradicts-exclusion (3)
+### eligibility-contradicts-exclusion (4)
+- Stylist at Stitch Fix: label lists ['United States'] but note says cannot hire there: The posting says it cannot hire in: United States, Alaska, California, Colorado, Connecticut, Hawaii and others.
 - Senior Manager, FCC Monitoring at Airwallex: label lists ['United States'] but note says cannot hire there: The posting says it cannot hire in: United States, United Kingdom, EMEA, Australia, New Zealand, APAC.
 - Manager, FCC Monitoring & Testing, Americas at Airwallex: label lists ['United States'] but note says cannot hire there: The posting says it cannot hire in: United States.
 - Data Engineer at Branch: label lists ['United States'] but note says cannot hire there: The posting says it cannot hire in: United States.
@@ -20,12 +21,12 @@
 
 ## Warnings
 
-### pay-in-posting-but-card-says-not-stated (11)
-- Staff Machine Learning Engineer (Credit International ML) at Affirm: $48,000-$72,000
-- Senior Software Engineer, Fullstack (Repayments UX) at Affirm: $32,000-$48,000
-- Software Engineer II, Fullstack (Repayment UX) at Affirm: $24,000 - $36,000
-- Staff Software Engineer, Backend (Recoveries) at Affirm: $48,000-$72,000
+### pay-in-posting-but-card-says-not-stated (6)
 - Platform Engineer at Resend: $150,000 - $180,000
+- Platform Engineer at Resend: $150,000 - $180,000
+- Software Engineer, Trust & Safety  at Resend: $150,000 - $175,000
+- Software Engineer, Trust & Safety  at Resend: $150,000 - $175,000
+- Software Engineer, Developer Tools at Resend: $130,000 - $160,000
 
 ### eligibility-label-partly-unsupported (1)
 - Supervisor, Billing Operations at Twilio: not found in evidence: ['India']
@@ -33,11 +34,11 @@
 ## Shape of the feed
 
 ```
-count: 1033
-bySource: {'Ashby': 346, 'Lever': 142, 'Greenhouse': 545}
-pctEligibilityUnclear: 24.6
-pctRemoteUnclear: 9.1
-pctWorldwide: 1.5
-pctEarlyCareer: 9.3
-pctSeniorPlus: 44.2
+count: 1041
+bySource: {'Ashby': 352, 'Greenhouse': 552, 'Lever': 137}
+pctEligibilityUnclear: 25.1
+pctRemoteUnclear: 8.9
+pctWorldwide: 1.4
+pctEarlyCareer: 9.5
+pctSeniorPlus: 43.6
 ```
