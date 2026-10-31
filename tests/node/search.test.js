@@ -123,7 +123,9 @@ test('a query with no real roles never shows a listing that claims that role', (
   // changes: the board gained a genuine "Writer/Translator" listing on 28 Oct, which is a real
   // match, not a fabricated one.
   const inTitle = (x, q) => S.matches({ title: x.title, categories: [], eligibility: {} }, q);
-  const literal = (x, q) => new RegExp('\\b' + q.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + 's?\\b', 'i').test(x.title);
+  // a real inflection of the same word is an honest match too ("Nurse" for "nursing")
+  const FORMS = { nursing: 'nurs(?:e|es|ing)' };
+  const literal = (x, q) => new RegExp('\\b' + (FORMS[q] || q.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + 's?') + '\\b', 'i').test(x.title);
   for (const q of ['translator', 'nursing', 'bookkeeper']) {
     const hits = jobs.filter((x) => S.matches(x, q));
     const claimed = hits.filter((x) => inTitle(x, q));
