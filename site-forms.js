@@ -22,6 +22,7 @@
       email: fd.get('email') || '',
       firstName: fd.get('firstName') || '',
       level: fd.get('level') || '',
+      country: fd.get('country') || '',
       package: fd.get('package') || '',
       role: fd.get('role') || '',
       tips: fd.get('tips') === 'on',

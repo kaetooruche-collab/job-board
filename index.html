@@ -766,6 +766,7 @@
     }
     .cta-form button:hover { background: #3b82f6; }
     .cta-form button:disabled { opacity: 0.6; cursor: default; }
+    .cta-fine { font-size: 0.78rem; color: rgba(255,255,255,0.8); line-height: 1.45; margin: 0 0 0.2rem; }
     .cta-check { display: flex; gap: 0.6rem; align-items: flex-start; font-size: 0.8rem; color: rgba(255,255,255,0.85); line-height: 1.45; margin: 0.6rem 0 0.4rem; cursor: pointer; }
     .cta-check input { margin-top: 0.2rem; flex: none; width: 1rem; height: 1rem; }
     .hp { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
@@ -1183,6 +1184,12 @@
             <option value="senior_plus">Senior and leadership</option>
           </select>
         </div>
+        <div class="cta-row cta-row-opt">
+          <select name="country" id="signup-country" aria-label="Where you can work from (optional)">
+            <option value="">Where can you work from? (optional)</option>
+          </select>
+        </div>
+        <p class="cta-fine">Optional. If you pick a country, we put roles open to applicants there first in your weekly email. We don't use it for anything else.</p>
         <label class="cta-check">
           <input type="checkbox" name="tips">
           <span>Also send me occasional CV and LinkedIn tips, and Yireh Careers service offers. Roughly twice a month at most. You can unsubscribe in any email. This is separate from the weekly job email.</span>
@@ -1495,11 +1502,13 @@
         allJobs.forEach(function(j) { (j.eligibility.countries || []).forEach(function(c) { set[c] = 1; }); });
         names = Object.keys(set);
       }      names.sort();
-      [document.getElementById('f-country'), document.getElementById('guide-country')].forEach(function (sel) {
+      [document.getElementById('f-country'), document.getElementById('guide-country'), document.getElementById('signup-country')].forEach(function (sel) {
         if (!sel) return;
-        var ww = document.createElement('option');
-        ww.value = '__worldwide'; ww.textContent = 'Worldwide roles only';
-        sel.appendChild(ww);
+        if (sel.id !== 'signup-country') {
+          var ww = document.createElement('option');
+          ww.value = '__worldwide'; ww.textContent = 'Worldwide roles only';
+          sel.appendChild(ww);
+        }
         names.forEach(function (n) {
           var o = document.createElement('option');
           o.value = n; o.textContent = n;
@@ -1940,15 +1949,17 @@
 
     /* One email-only signup card after the sixth listing, so the weekly email is offered where people are reading (not 14,000px down) */
     function inlineSignupCard() {
+      var c = (state.country && state.country !== '__worldwide') ? state.country : '';
       return '<aside class="inline-signup" aria-label="Weekly job email">'
         + '<h3>Get the best new roles in your inbox</h3>'
         + '<p>One short email a week. Every role links to the employer&rsquo;s own posting. Free, and one tap to unsubscribe.</p>'
         + '<form onsubmit="return submitSiteForm(event, \'signup\')"><div class="row">'
         + '<input type="email" name="email" required placeholder="Your email address" aria-label="Email address" autocomplete="email" maxlength="254">'
         + '<input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" class="hp">'
+        + (c ? '<input type="hidden" name="country" value="' + esc(c) + '">' : '')
         + '<button type="submit">Send me the weekly email</button></div>'
         + '<p class="form-msg" data-msg role="status" aria-live="polite" hidden></p>'
-        + '<p class="fine">We\'ll send you the weekly job email only. See our <a href="/privacy">privacy policy</a>.</p></form></aside>';
+        + '<p class="fine">' + (c ? 'Roles open to applicants in ' + esc(c) + ' will come first, because you chose it above. ' : '') + 'We\'ll send you the weekly job email only. See our <a href="/privacy">privacy policy</a>.</p></form></aside>';
     }
 
     function cvLink(job) {

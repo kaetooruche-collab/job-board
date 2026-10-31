@@ -57,6 +57,7 @@ Old lists 12-17 (Free CV check requested, Customers: Essential/Professional/Exec
 | `CONSENT_TIPS_AT` | date | when tips-and-offers consent was given | form or manual | Evidence |
 | `CONSENT_TIPS_SRC` | text | form id and wording version, e.g. `check-v1` | form or manual | Evidence |
 | `LEVEL_INTEREST` | text | `early`, `mid`, `senior` (what they chose, optional) | signup form field | Digest weighting; never inferred |
+| `WORK_COUNTRY` | text | A country name exactly as in `data/geo_lexicon.json` (optional; added 31 Oct 2026, wording `signup-v2`) | signup form dropdown, or the country already chosen in the home-page filter (the inline card says so) | Country edition of the weekly email (`make_digest.py --country`); never inferred, never used for anything else |
 | `STAGE` | text | `subscriber`, `check_requested`, `check_sent`, `customer` | KT by hand | Eligibility and counting |
 | `LAST_PACKAGE` | text | `essential`, `professional`, `executive`, or empty | KT by hand | Which CU-1 variant |
 | `COMPLETED_ON` | date | service completion date | KT by hand | AU-4 timing and exclusions |

@@ -56,10 +56,43 @@ test('new signup: creates contact on Job alerts with consent evidence, no tips',
   assert.strictEqual(w.body.email, 'new@example.com');
   assert.deepStrictEqual(w.body.listIds, [11]);
   assert.strictEqual(w.body.attributes.CONSENT_JOBS_AT, '2026-10-24');
-  assert.strictEqual(w.body.attributes.CONSENT_JOBS_SRC, 'signup-v1');
+  assert.strictEqual(w.body.attributes.CONSENT_JOBS_SRC, 'signup-v2');
   assert.strictEqual(w.body.attributes.LEVEL_INTEREST, 'early');
   assert.strictEqual(w.body.attributes.CONSENT_TIPS_AT, undefined);
   assert.strictEqual(w.body.updateEnabled, false);
+});
+
+test('signup stores the optional country; junk values are ignored; check and order forms never store it', async () => {
+  let h = harness(null);
+  await h.post({ form: 'signup', email: 'a@b.co', country: "C\u00f4te d'Ivoire" });
+  h.restore();
+  let w = h.calls.find(c => c.method === 'POST' && c.path === '/contacts');
+  assert.strictEqual(w.body.attributes.WORK_COUNTRY, undefined, 'non-ASCII letters are not in the site list, so ignored');
+  h = harness(null);
+  await h.post({ form: 'signup', email: 'a@b.co', country: 'Nigeria' });
+  h.restore();
+  w = h.calls.find(c => c.method === 'POST' && c.path === '/contacts');
+  assert.strictEqual(w.body.attributes.WORK_COUNTRY, 'Nigeria');
+  assert.strictEqual(w.body.attributes.CONSENT_JOBS_SRC, 'signup-v2');
+  for (const bad of ['__worldwide', '<script>alert(1)</script>', '12345', 'x'.repeat(80), '']) {
+    h = harness(null);
+    await h.post({ form: 'signup', email: 'a@b.co', country: bad });
+    h.restore();
+    w = h.calls.find(c => c.method === 'POST' && c.path === '/contacts');
+    assert.strictEqual(w.body.attributes.WORK_COUNTRY, undefined, 'ignored: ' + bad);
+  }
+  h = harness(null);
+  await h.post({ form: 'check', email: 'a@b.co', firstName: 'Amara', country: 'Nigeria' });
+  h.restore();
+  w = h.calls.find(c => c.method === 'POST' && c.path === '/contacts');
+  assert.strictEqual(w.body.attributes.WORK_COUNTRY, undefined);
+});
+
+test('country never reaches a blocklisted contact', async () => {
+  const h = harness({ emailBlacklisted: true, attributes: {} });
+  await h.post({ form: 'signup', email: 'a@b.co', country: 'Nigeria' });
+  h.restore();
+  assert.strictEqual(h.calls.filter(c => c.method !== 'GET').length, 0);
 });
 
 test('signup with the tips box adds Career tips and records tips consent', async () => {
@@ -69,7 +102,7 @@ test('signup with the tips box adds Career tips and records tips consent', async
   const w = h.calls.find(c => c.path === '/contacts' && c.method === 'POST');
   assert.deepStrictEqual(w.body.listIds, [11, 18]);
   assert.strictEqual(w.body.attributes.CONSENT_TIPS_AT, '2026-10-24');
-  assert.strictEqual(w.body.attributes.CONSENT_TIPS_SRC, 'signup-v1');
+  assert.strictEqual(w.body.attributes.CONSENT_TIPS_SRC, 'signup-v2');
 });
 
 test('existing contact keeps its original consent evidence', async () => {

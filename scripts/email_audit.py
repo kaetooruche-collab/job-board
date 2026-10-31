@@ -19,7 +19,7 @@ EXPECTED_COMPANY = "KAYZ Global Ltd"
 LISTS = ["Job alerts", "Career tips", "Check result sent", "Order completed"]
 RETIRED_LISTS = ["Free CV check requested", "Customers: Essential", "Customers: Professional", "Customers: Executive",
                  "LinkedIn Growth: active", "Do not send", "Job alert subscribers"]
-ATTRIBUTES = ["CONSENT_JOBS_AT", "CONSENT_JOBS_SRC", "CONSENT_TIPS_AT", "CONSENT_TIPS_SRC", "LEVEL_INTEREST", "STAGE", "LAST_PACKAGE", "COMPLETED_ON"]
+ATTRIBUTES = ["CONSENT_JOBS_AT", "CONSENT_JOBS_SRC", "CONSENT_TIPS_AT", "CONSENT_TIPS_SRC", "LEVEL_INTEREST", "WORK_COUNTRY", "STAGE", "LAST_PACKAGE", "COMPLETED_ON"]
 TEMPLATE_PREFIX = "YC2 | "
 ADDRESS_FRAGMENT = "Yenice Sokak"
 
