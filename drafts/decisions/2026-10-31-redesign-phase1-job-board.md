@@ -26,5 +26,9 @@ Remote OK: no hero, a single row of dropdowns, jobs immediately. Remotive: headl
 - Showing a founder photo: KT's own rule of 24 Oct says no personal name, face or photo on the brand. KT now suggests a photo for the services page. That needs KT's explicit yes (and a genuine photo); not built yet.
 - Removing the "illustrative example" label: the before/after examples are fictional. Deleting the disclosure would make them read as client results. Plan: keep the disclosure, make it shorter and clearer.
 
-## Next (phase 2, services page)
-Light hero, balanced package cards with the benefit first, the Executive section laid out openly instead of an awkward collapsible, clearer example label, a human-credibility block built so a real photo can be dropped in once KT approves.
+## Phase 2 (services page), done 31 Oct 2026
+- **Light hero** and light closing band (navy removed on the services page too); secondary buttons now outline-on-light.
+- **Executive** is no longer a collapsible at the bottom (it sat at 4,460 px, three dense text columns and a dark box). It is now an open section directly after the packages (about 1,940 px), each card leading with a benefit line and three short bullets, and the timeline as three clear steps. All service terms are unchanged (2 / 3 working days, 30 days, 12 posts, the connection aim and its caveat, approval before publishing, Growth $99 optional). The `/services#executive` link used by emails still works.
+- **"Best for" line** on each package card (the intended customer), without claiming suitability for any background.
+- **Example label** kept (the examples are fictional) but shortened and restyled: "Sample for illustration: a fictional person and fictional figures. Not a client result." No more italics.
+- **Not done:** the human-credibility/photo block. KT's 24 Oct rule forbids a personal name or photo on the brand; it needs KT's explicit yes and a genuine photo. The page has room for it (after "How we work") once approved.
