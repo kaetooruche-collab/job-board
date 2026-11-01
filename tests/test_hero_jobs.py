@@ -14,7 +14,7 @@ INDEX = (ROOT / "index.html").read_text(encoding="utf-8")
 
 class FirstScreen(unittest.TestCase):
     def test_hero_is_compact_and_states_the_unique_value(self):
-        self.assertIn("See which remote jobs are open <em>where you live</em>", INDEX)
+        self.assertIn("See which remote jobs hire <em>where you live</em>", INDEX)
         # KT, 1 Nov: the hero sells the outcome; it must not name the hiring systems (Greenhouse, Lever, Ashby). Where listings come from
         # is disclosed in "How these listings work" (below) and on /verify.
         hero = INDEX[INDEX.index('<section class="hero"'):INDEX.index("</section>", INDEX.index('<section class="hero"'))]
