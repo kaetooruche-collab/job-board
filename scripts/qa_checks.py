@@ -163,13 +163,13 @@ def drift(current, previous):
     abort, warn = [], []
     if not previous:
         return abort, warn
-    if previous["count"] >= 100 and current["count"] < 0.6 * previous["count"]:
-        abort.append(f"listings fell from {previous['count']} to {current['count']} (more than 40%); keeping the previous data")
+    if previous["count"] >= 100 and current["count"] < 0.85 * previous["count"]:
+        abort.append(f"listings fell from {previous['count']} to {current['count']} (more than 15%; normal refreshes move 1-2%); keeping the previous data")
     if current["count"] == 0:
         abort.append("no listings at all; keeping the previous data")
     for src, was in previous.get("bySource", {}).items():
         now = current["bySource"].get(src, 0)
-        if was >= 20 and now < 0.3 * was:
+        if was >= 20 and now < 0.8 * was:
             warn.append(f"source {src}: {was} -> {now} listings (source may be down or changed)")
     for key, limit, label in [("pctEligibilityUnclear", 15, "listings with unclear eligibility"),
                               ("pctRemoteUnclear", 15, "listings with unclear remote status"),

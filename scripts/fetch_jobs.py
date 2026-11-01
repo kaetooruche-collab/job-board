@@ -31,6 +31,7 @@ SCRIPT_DIR = Path(__file__).resolve().parent
 sys.path.insert(0, str(SCRIPT_DIR))
 
 import classify as C
+import link_check as L  # noqa: E402
 import qa_checks as Q  # noqa: E402
 from pay_text import pay_from_text  # noqa: E402
 REPO_ROOT = SCRIPT_DIR.parent
@@ -41,6 +42,7 @@ METRICS_FILE = REPO_ROOT / "data" / "metrics.json"
 QA_REPORT_FILE = REPO_ROOT / "data" / "qa_report.md"
 QA_HISTORY_FILE = REPO_ROOT / "data" / "qa_history.json"
 QA_HISTORY_KEEP = 28
+LINK_STATE_FILE = REPO_ROOT / "data" / "link_state.json"
 BOARDS_FILE = REPO_ROOT / "data" / "boards.json"
 
 MAX_AGE_DAYS = 30
@@ -306,21 +308,6 @@ def fetch_all(boards):
 
 # ── Link check ────────────────────────────────────────────────────────
 
-def verify_link(url, timeout=15):
-    for attempt in range(2):
-        try:
-            resp = S.head(url, timeout=timeout, allow_redirects=True)
-            if resp.status_code in (403, 405, 501):
-                resp = S.get(url, timeout=timeout, allow_redirects=True, stream=True)
-                resp.close()
-            if "error=true" in resp.url:
-                return False
-            return resp.status_code < 400
-        except requests.RequestException:
-            time.sleep(1)
-    return False
-
-
 # ── Processing ────────────────────────────────────────────────────────
 
 ARRANGEMENT_LABEL = {
@@ -421,27 +408,19 @@ def cap_per_company(items, removed):
     return out
 
 
-def check_links(items, removed):
-    ok = []
-    with ThreadPoolExecutor(max_workers=24) as ex:
-        fmap = {ex.submit(verify_link, j["url"]): j for j in items}
-        for f in as_completed(fmap):
-            j = fmap[f]
-            try:
-                good = f.result()
-            except Exception:
-                good = False
-            if good:
-                ok.append(j)
-            else:
-                removed.append(f"link-dead | {j['title']} | {j['company']} | {j['url']}")
-    return ok
-
-
 def load_previous():
     try:
         prev = json.loads(OUTPUT_FILE.read_text(encoding="utf-8"))
         return {p["sourceUrl"]: p.get("firstSeenAt") for p in prev if p.get("sourceUrl")}
+    except (OSError, ValueError, KeyError, TypeError):
+        return {}
+
+
+def load_published():
+    """{apply url: lastVerifiedAt} of what is on the board now, so a link we cannot check this run keeps its real last-checked time."""
+    try:
+        prev = json.loads(OUTPUT_FILE.read_text(encoding="utf-8"))
+        return {p["sourceUrl"]: p.get("lastVerifiedAt") for p in prev if p.get("sourceUrl")}
     except (OSError, ValueError, KeyError, TypeError):
         return {}
 
@@ -479,7 +458,7 @@ def to_record(j, first_seen):
         "sourceName": j["source"],
         "sourceUrl": j["url"],
         "firstSeenAt": first_seen or NOW.isoformat(),
-        "lastVerifiedAt": NOW.isoformat(),
+        "lastVerifiedAt": j.get("verifiedAt") or NOW.isoformat(),
         "flags": r["quality"]["flags"] + r["flags"],
         "description": desc[:300],
     }
@@ -529,10 +508,16 @@ def main():
     enrich_greenhouse_pay(keep)
 
     print("=== Verify links ===")
+    link_state = L.load_state(LINK_STATE_FILE)
     before = len(keep)
-    keep = check_links(keep, removed)
+    keep, link_stats, link_state = L.check_links(keep, S, link_state, load_published(), removed)
     dead = before - len(keep)
-    print(f"  Links OK: {len(keep)} (dropped {dead})")
+    print(f"  Links: {link_stats['alive']} open, {link_stats['dead']} gone, {link_stats['unknown']} could not be checked "
+          f"(fail rate {link_stats['failRate']:.1%}, normal about {(link_stats['baselineRate'] or 0):.1%})")
+    print(f"  Published {len(keep)}; removed {dead}; kept on an older check {link_stats['carriedOnOldCheck']}; new but unchecked, held {link_stats['newHeldUntilChecked']}")
+    if link_stats["degraded"]:
+        print(f"::warning::Link checker looks blocked this run ({link_stats['failRate']:.0%} of links failed, normal is about {(link_stats['baselineRate'] or 0):.0%}). "
+              f"Nothing was dropped for a failed check. Run {link_stats['degradedStreak']} of {L.MAX_DEGRADED_RUNS} before the workflow fails.")
 
     keep.sort(key=lambda x: x["posted"], reverse=True)
     keep = keep[:MAX_LISTINGS]
@@ -561,14 +546,25 @@ def main():
     QA_REPORT_FILE.write_text(qa_text, encoding="utf-8")
     print(qa_text.split("## Shape")[0])
     if d_abort and not os.environ.get("QA_FORCE"):
-        print("QUALITY CHECK STOPPED THE RUN: previous data kept. Set QA_FORCE=1 to override.")
-        sys.exit(2)
+        holds = link_state.get("driftAborts", 0)
+        if holds >= L.MAX_DRIFT_ABORTS:
+            print(f"Accepting the lower count after {holds} runs on hold: it looks real, not a glitch.")
+            link_state["driftAborts"] = 0
+        else:
+            link_state["driftAborts"] = holds + 1
+            L.save_state(LINK_STATE_FILE, {**L.load_state(LINK_STATE_FILE), "driftAborts": holds + 1})   # keep the hold count, not this run's link state
+            print(f"QUALITY CHECK STOPPED THE RUN (hold {holds + 1} of {L.MAX_DRIFT_ABORTS}): previous data kept. Set QA_FORCE=1 to override.")
+            sys.exit(2)
+    else:
+        link_state["driftAborts"] = 0
     history.append({"at": NOW.isoformat(), "summary": summary, "held": len(held), "warnings": sum(len(v) for v in warnings.values())})
     QA_HISTORY_FILE.write_text(json.dumps(history[-QA_HISTORY_KEEP:], indent=1), encoding="utf-8")
 
     OUTPUT_FILE.write_text("[\n" + ",\n".join(json.dumps(r, ensure_ascii=False) for r in records) + "\n]\n", encoding="utf-8")
     REVIEW_FILE.write_text(json.dumps(review[:REVIEW_LIMIT], indent=1, ensure_ascii=False), encoding="utf-8")
+    L.save_state(LINK_STATE_FILE, link_state)
     metrics = build_metrics(records, len(raw), len(removed), dead, len(review))
+    metrics["linkCheck"] = link_stats
     METRICS_FILE.write_text(json.dumps(metrics, indent=1), encoding="utf-8")
     REMOVED_LOG.parent.mkdir(parents=True, exist_ok=True)
     header = [f"# Removed listings, {NOW.isoformat()}",

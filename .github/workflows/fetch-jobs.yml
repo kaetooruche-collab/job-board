@@ -43,11 +43,14 @@ jobs:
       - name: Write the ready-to-post WhatsApp message
         run: python -I scripts/make_outputs.py
 
+      # always(): the memory file (data/link_state.json) must be saved even when this run stops on purpose
+      # (listings fell sharply), otherwise the "how many runs in a row" counters never move.
       - name: Commit if changed
+        if: always()
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add jobs.json data/removed.log data/review_queue.json data/metrics.json data/whatsapp_post.txt data/qa_report.md data/qa_history.json
+          git add jobs.json data/removed.log data/review_queue.json data/metrics.json data/whatsapp_post.txt data/qa_report.md data/qa_history.json data/link_state.json
           if git diff --cached --quiet; then
             echo "No changes to commit"
           else
@@ -59,3 +62,21 @@ jobs:
             done
             git status -sb | head -1
           fi
+
+      # The feed is the source of truth for which roles are open; the link checker is only a second opinion.
+      # If the checker has been blocked for several runs in a row, the board is running on old checks: go red so it is noticed.
+      - name: Fail loudly if the link checker has been blocked too long
+        if: always()
+        run: |
+          python -I - <<'PY'
+          import json, sys
+          try:
+              s = json.load(open("data/link_state.json"))
+          except (OSError, ValueError):
+              s = {}
+          streak = s.get("degradedStreak", 0)
+          if streak >= 4:
+              print(f"::error::The link checker has been blocked for {streak} refreshes in a row (about {streak * 6} hours). Listings are being kept on older checks. Look at data/metrics.json linkCheck.")
+              sys.exit(1)
+          print(f"link checker blocked-streak: {streak}")
+          PY
