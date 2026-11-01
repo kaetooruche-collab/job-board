@@ -1000,7 +1000,7 @@
   <!-- HERO -->
   <section class="hero">
     <h1>Remote jobs that show <em>who can apply</em></h1>
-    <p class="hero-sub">Fresh postings from companies&rsquo; own hiring pages (Greenhouse, Lever, Ashby). See who can apply, then apply on the original posting.</p>
+    <p class="hero-sub">Fresh postings from companies&rsquo; own hiring pages (Greenhouse, Lever, Ashby), each showing who can apply before you spend an hour on it.</p>
     <p class="hero-facts"><span><strong id="total-jobs">0</strong> remote jobs</span><span><strong id="total-companies">0</strong> companies</span><span><a href="/verify#verified-means" onclick="trackEvent('verified-meaning-click','Hero')">What &ldquo;verified&rdquo; means</a></span></p>
   </section>
 
@@ -1223,7 +1223,7 @@
         <p>See exactly what each package includes, or ask us a question first.</p>
         <div class="service-cta-buttons">
           <a href="/services" class="cta-email-btn" onclick="trackEvent('services-click-home-packages','Home block')">See the packages</a>
-          <a href="https://wa.me/905338225854?text=Hello%2C%20I%20would%20like%20a%20free%20quick%20CV%20check.%20Please%20tell%20me%20how%20to%20send%20my%20CV." target="_blank" rel="noopener" class="cta-whatsapp" onclick="trackCv('home-free-check','')">Get a free CV check</a>
+          <a href="https://wa.me/905338225854?text=Hello%2C%20I%20would%20like%20a%20free%20quick%20CV%20check.%20Please%20tell%20me%20how%20to%20send%20my%20CV." target="_blank" rel="noopener" class="cta-whatsapp" onclick="trackCv('home-free-check','')">Get my free CV check</a>
         </div>
       </div>
     </section>
@@ -1868,7 +1868,7 @@
         + '<h3>You&rsquo;ve read ' + Math.min(state.shown, filteredCount) + ' listings. Your CV is the next step.</h3>'
         + '<p>When one of these roles is worth applying to, our paid CV and LinkedIn service writes the application to match. Not ready yet? The free quick CV check tells you what we would fix first.</p>'
         + '<div class="nudge-actions"><a class="apply-btn" href="/services" onclick="trackEvent(\'services-click-nudge-packages\',\'Nudge\')">See what each package includes</a>'
-        + '<a class="cv-btn" href="/free-check" onclick="trackEvent(\'services-click-nudge-free-check\',\'Nudge\')">Get a free CV check</a></div></aside>';
+        + '<a class="cv-btn" href="/free-check" onclick="trackEvent(\'services-click-nudge-free-check\',\'Nudge\')">Get my free CV check</a></div></aside>';
       slot.querySelector('.nudge-hide').addEventListener('click', function () {
         try { localStorage.setItem('yf-nudge', '1'); } catch (e) {}
         slot.innerHTML = '';
