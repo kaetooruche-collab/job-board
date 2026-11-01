@@ -34,3 +34,23 @@ KT's steer: the writing side is where Claude is weakest; use Firecrawl to resear
 
 ## 4. How we will know
 GoatCounter funnel (weekly snapshot): free-check form submits, WhatsApp CV clicks, "email us your CV" step reached, signups. Compare four-week windows before and after (this change dated 1 Nov); with this traffic, read it as direction, not proof.
+
+## 5. Revision the same day (KT's challenge: "is this really the best hero you can write?")
+**What was wrong with the first version [Established, by KT's read and a second analysis KT pasted]:** it named Greenhouse, Lever and Ashby in the hero. Most visitors do not know them and read them as other boards; the headline should sell the outcome, and the sourcing disclosure belongs where people look for it ("How these listings work" and `/verify`). "Before you spend an hour on it" was also awkward and slightly exaggerated. "Who can apply" could be read as qualifications or demographics, when the audience's own words are about location ("not open to my country", "US only", "outside the US").
+
+**Checked, not assumed (Firecrawl, 1 Nov):** the figures in the pasted analysis match their sources. [Job Badger, 16 Sept 2026](https://job-badger.com/guides/remote-jobs-report): 993 listings from four boards, 92% name a country, region, city or time zone, 38% US-only, 6% no rule found; someone in the US could apply to 53%, India 12%, Nigeria 11%. [WorkinVirtual, 13 Aug 2026](https://workinvirtual.com/research/remote-job-eligibility-index-2026/): 112 listings, 11.6% worldwide, 61.6% US-restricted, 99.1% external apply. Corrections to the analysis: (1) Job Badger's homepage sells "Your application, prepared by AI" (cover letters, a paste-a-posting checker, search in 30+ countries); the eligibility study is content marketing, so it is an adjacent competitor, not a head-on one, but it shows the problem is public knowledge and not ours alone. (2) The [NextAfter](https://www.nextafter.com/experiments/how-value-focused-copy-in-a-headline-affects-conversion-rate-in-a-facebook-ad/) +79.4% is real (sample 99,845) but is 0.26% to 0.47%, for a Facebook ad for a marriage course, against a control of just "Learn More"; our hero already stated a benefit, so expect much less. (3) Our own worldwide share (14 of 1,001, 1.4%) is lower than those studies' 6% to 11.6%, so never present our numbers as "the market".
+
+**Returning visitors [Reported, thin]:** claims that applying in the first 24 hours to 4 days multiplies interview chances (LinkedIn "8x", Talent Works "6x") come from unverified secondary posts; do not use them in copy. Vendor guidance for job-board email is a weekly digest for most boards and a click-through of about 3% to 5% for alerts (Cavuno, a vendor). Reasons to return we already have: the weekly Tuesday email, the WhatsApp channel, remembered filters and country, "New" badges, original posting dates. Not built: "new since your last visit". Backlog, not urgent while traffic is about 50 views a week.
+
+**Headline options weighed** (criteria: says what it is in five seconds; uses the audience's frame; outcome first; honest overall impression; short; points at the country control under it):
+| Option | Verdict |
+|---|---|
+| "Remote jobs that show who can apply" (before) | Clear category and honest, but mechanism-led and ambiguous ("who"). |
+| "Stop guessing which remote jobs are open to you" | Strong pain-led runner-up; negative and a command, and "stop" over-promises slightly. |
+| "Remote jobs that tell you where they hire from" | Honest, plain, but passive and does not say what the visitor gets. |
+| "Find remote jobs you can apply for" | Rejected: promises each job applies to the visitor; 25% are "unclear". |
+| **"See which remote jobs are open where you live"** (used) | Category, outcome and audience frame in eight words; "see" is exactly what we do; leads straight into "Where can you work from?" below. |
+
+**Sub-line (used):** "Each job shows where applicants can be based, in the employer's own words, or tells you when that isn't clear. Free, and we never charge you to apply." Names the mechanism in plain language, is honest about the 25% that are unclear (a transparency signal competitors do not give), and answers the scam fear with a fact that is already one of our trust rules. No third-party names.
+
+**Not testable yet:** traffic is too low for an A/B test. The cheap first-party test is a five-second comprehension check with a handful of people in the target groups: "What does this site do? Who is it for? How is it different from LinkedIn or Indeed?" Run it before the next hero change, not another round of options.

@@ -22,7 +22,7 @@ class SourceClaims(unittest.TestCase):
             m = OVERSTATES.search(text)
             self.assertIsNone(m, f"{f}: {m.group(0) if m else ''}")
 
-    def test_the_hero_and_verify_page_name_the_hiring_systems(self):
+    def test_the_hiring_systems_are_named_where_sources_are_disclosed_not_in_the_hero(self):
         for f in ("index.html", "verify.html"):
             t = (ROOT / f).read_text(encoding="utf-8")
             for name in ("Greenhouse", "Lever", "Ashby"):
