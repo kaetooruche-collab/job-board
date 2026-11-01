@@ -9,7 +9,7 @@ Status: DRAFTS for KT's approval. Nothing has been posted. No hook below has per
 3. **Two claims I cannot verify.** "We never message you first" (a strong anti-scam line) and "we explain every change in your CV" (what delighted paying customers elsewhere). Only use them if they are true of how you actually work.
 
 ## 1. The spine every post shares
-**Promise:** remote jobs that show who can apply. **Proof:** each job links to the employer's own posting, shows the employer's wording on who can apply, and the date. **Safety:** we never charge to apply or to see a link. **Step:** open the board and pick your country.
+**Promise:** remote jobs that show who can apply. **Proof:** each job links to its original posting on the company's hiring page, shows the employer's wording on who can apply, and the date. **Safety:** we never charge to apply or to see a link. **Step:** open the board and pick your country.
 
 **Five-beat structure (all platforms, adapted):**
 1. **Hook**: one line, their words, a specific pain. No brand name.
@@ -55,7 +55,7 @@ Each hook names a pain in the audience's own words (see the research file for th
 > 2. Check the location field. A country there beats the word Remote in the title
 > 3. Not clear? Ask before you apply
 >
-> Our free board shows who can apply on every job, with a link to the employer's own page: [link with utm_source=facebook&utm_campaign=fb-fineprint]
+> Our free board shows who can apply on every job, with a link to its original posting: [link with utm_source=facebook&utm_campaign=fb-fineprint]
 >
 > We made the board, so we're biased. Please check each employer's rules before you apply.
 
@@ -75,12 +75,12 @@ Each hook names a pain in the audience's own words (see the research file for th
 > A real remote employer won't ask you to pay, or to interview you on Telegram or WhatsApp.
 >
 > Four more checks before you send anyone your details:
-> 1. The apply link opens the employer's own site, not a form on a stranger's page
+> 1. The apply link opens the company's real posting (its own careers page, or the hiring system it uses, such as Greenhouse, Lever or Ashby), not a form on a stranger's page
 > 2. No fee for equipment, training, "registration" or a background check
 > 3. The job exists on the company's own careers page
 > 4. The pay and the country rules are written in the posting, not "we'll discuss in chat"
 >
-> Every job on our free board links to the employer's own posting: [link, campaign=fb-real]
+> Every job on our free board links to its original posting: [link, campaign=fb-real]
 
 **Draft F-D (weekly roles):** generated from `data/whatsapp_post.txt` or `/kit` (Facebook tab): hook "5 remote roles posted this week, with who can apply", the list, then one link. Keep.
 
@@ -102,7 +102,7 @@ Each hook names a pain in the audience's own words (see the research file for th
 **Comment structure (60 to 120 words):** (1) answer the question with 2 to 4 concrete checks; (2) no link in the first reply; (3) if a reader asks "where do I look?", one line with the board and "we run it" disclosure, only if the sub allows. Never post the same comment twice.
 
 **Template RC-1: "Is this remote job real?" threads**
-> Four things I check before sending anyone my details: the apply link opens the employer's own careers page; there's no fee of any kind; the posting says the pay and which countries can apply; nobody wants to interview on Telegram or WhatsApp. If any of those fail, I skip it. What did the listing say about where you'd be paid from?
+> Four things I check before sending anyone my details: the apply link opens the company's real posting (its own careers page or a hiring system like Greenhouse, Lever or Ashby); there's no fee of any kind; the posting says the pay and which countries can apply; nobody wants to interview on Telegram or WhatsApp. If any of those fail, I skip it. What did the listing say about where you'd be paid from?
 
 **Template RC-2: "Applied to 100+, no replies" threads**
 > Before rewriting everything, check how many of those 100 were actually open to where you live. A role that says Remote but lists one state or country in the location field will usually ignore applicants from elsewhere. Worth sorting your list by "who could actually apply" first. How many of the 100 named your country or said worldwide?

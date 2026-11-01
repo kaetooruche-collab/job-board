@@ -6,8 +6,8 @@ Classes: **S** subscribed content (Brevo, consent: job alerts) · **P** promotio
 
 | ID | Name | Class | Channel | Trigger | Permission | Timing | Subject | Words | Confidence |
 |---|---|---|---|---|---|---|---|---|---|
-| JA-1 | Job alerts: welcome | S | Brevo automation AU-1 | Contact added to list 'Job alerts' | Job alerts | Immediately (they just asked for it) | You're in. Here's what to expect | 74 | Low |
-| JA-D | Weekly job digest (frame) | S | Brevo campaign (manual, weekly) | KT sends once a week (suggested Tuesday morning) | Job alerts | Weekly, one fixed day; compare another day only when the list can show a difference (09, E-2) | {N} new remote jobs this week | 60 | Low |
+| JA-1 | Job alerts: welcome | S | Brevo automation AU-1 | Contact added to list 'Job alerts' | Job alerts | Immediately (they just asked for it) | You're in. Here's what to expect | 72 | Low |
+| JA-D | Weekly job digest (frame) | S | Brevo campaign (manual, weekly) | KT sends once a week (suggested Tuesday morning) | Job alerts | Weekly, one fixed day; compare another day only when the list can show a difference (09, E-2) | {N} new remote jobs this week | 59 | Low |
 | JA-R | Job alerts: still want these? | S | Brevo campaign (manual, quarterly) | KT sends the quarterly sweep to the 'Dormant' segment | Job alerts (within original consent) | Quarterly; stop sending 14 days later if no click | Still want the weekly jobs? | 57 | Medium |
 | CT-1 | Tips: one thing to check tonight | P | Brevo automation AU-2 | Contact added to list 'Career tips' | Tips and offers | 1 day after they join (so a signup with the tips box ticked does not also get the welcome email in the same minute) | One thing to check on your CV tonight | 92 | Low |
 | CT-2 | Tips: using AI for your CV | P | Brevo automation AU-2 | 7 days after CT-1 | Tips and offers | Day 8 after joining (keeps the cap of 2 per 14 days) | Using AI for your CV? Check these four things | 94 | Low |

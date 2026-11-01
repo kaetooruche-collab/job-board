@@ -197,7 +197,7 @@
       if (direct) L.push('   ' + r.sourceUrl);
       L.push('');
     });
-    L.push('All the jobs, with filters, and a direct link to each employer\'s own posting: ' + tag('whatsapp', 'jobs'));
+    L.push('All the jobs, with filters, and a link to each original posting: ' + tag('whatsapp', 'jobs'));
     L.push('');
     L.push('Please check each employer\'s eligibility rules before you apply. We never charge you to apply or to see a listing\'s apply link.');
     return L.join('\n');
@@ -206,7 +206,7 @@
     var L = [(audience() === 'early' ? 'Starting out? ' + items.length + ' verified entry-level and junior remote roles posted ' + span(items) + ':' : 'Looking for remote work? ' + items.length + ' verified remote roles posted ' + span(items) + ':'), ''];
     items.forEach(function (r) { L.push('• ' + r.title + ' at ' + r.company + ' (' + elig(r) + ')'); });
     L.push('');
-    L.push('Every job links straight to the employer\'s own posting, shows who can apply and when it was posted, and is refreshed every 6 hours.');
+    L.push('Every job links to its original posting, shows who can apply and when it was posted, and is refreshed every 6 hours.');
     L.push('See them all and filter by field: ' + tag('facebook', 'jobs'));
     L.push('');
     L.push('Please check each employer\'s eligibility rules before you apply. We never charge you to apply or to see a listing\'s apply link.');
@@ -222,7 +222,7 @@
       L.push('Say: "' + r.title + ' at ' + r.company + '. Who can apply: ' + elig(r) + '."');
     });
     L.push('');
-    L.push('CLOSE: "Every link goes to the employer\'s own posting. Check each employer\'s eligibility before you apply. Link in my bio."');
+    L.push('CLOSE: "Every link goes to the original posting. Check each employer\'s eligibility before you apply. Link in my bio."');
     L.push('');
     L.push('CAPTION: ' + items.length + ' verified remote jobs, updated every 6 hours. Link in bio. #remotejobs #remotework #jobsearch #hiring #workfromhome');
     L.push('');

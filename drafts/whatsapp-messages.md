@@ -233,7 +233,7 @@ Shortcut `/orderform`
 
 ### 27. Weekly job email: how to get it
 Shortcut `/weekly`
-> Our weekly job email goes out on Tuesday mornings: a short list of recent remote jobs with a link to each employer's own posting. You can sign up with just your email at https://yirehcareers.vercel.app/#subscribe and unsubscribe with one tap whenever you like.
+> Our weekly job email goes out on Tuesday mornings: a short list of recent remote jobs with a link to each original posting. You can sign up with just your email at https://yirehcareers.vercel.app/#subscribe and unsubscribe with one tap whenever you like.
 
 ### 28. Someone asks us to stop emailing or messaging them
 Shortcut `/stop`

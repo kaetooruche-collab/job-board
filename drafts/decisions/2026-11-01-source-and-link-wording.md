@@ -1,0 +1,33 @@
+# Where listings come from, and what we say about the links (1 Nov 2026)
+
+Trigger: KT noticed the home page said each listing has "a direct link to the employer's page" while most links open a job-board style page. KT also asked for copy that is factual, legally safe and persuasive, not literal or rigid. Evidence labels: [Established] measured or read first-hand; [Inference] reasoned.
+
+## Facts [Established]
+- **Sources.** Every listing comes from three places: the public job feeds that Greenhouse, Lever and Ashby publish for each company (`scripts/fetch_jobs.py`; Jobicy is off). We do not scrape other job boards or recruiters, and we do not read page HTML for listings. The three vendors' public feeds are documented for third parties; Lever's own page says published postings "may be scraped by third parties" (terms check, `2026-10-31-ats-terms-check.md`).
+- **Where the apply link goes.** Of 1,001 listings on 1 Nov, 1,001 link to a page hosted by the hiring system (job-boards.greenhouse.io 482, jobs.ashbyhq.com 347, jobs.lever.co 134, other Greenhouse hosts 38). **None** link to an employer's own domain. In a browser some Greenhouse links then pass the visitor on to the company's own careers page (earlier audit: about 20%).
+- So the page is the company's real posting, on the hiring system the company uses, with the company's name and its application form. It is not a job board in the Indeed sense, and it is not the company's own website.
+
+## Why the old wording was a problem
+- "A direct link to the employer's page", "the employer's own posting" and "straight to the employer" can be read as "the employer's own website". Each sentence is defensible alone, but the overall impression is what counts: the FTC judges the "net impression" an ad conveys, with express claims judged by their words and implied claims by the whole message ([FTC Deception Policy Statement](https://www.ftc.gov/system/files/documents/public_statements/410531/831014deceptionstmt.pdf)); EU law treats a practice as misleading if its overall presentation is likely to deceive the average consumer even when each statement is true, and treats omitting material information as a second route ([Directive 2005/29/EC arts 6 and 7](https://www.legislation.gov.uk/eudr/2005/29/chapter/2/section/1)). The nuance is [Established] from those texts; that a court would find our old wording misleading is [Inference] and was not tested. The risk was small but real, and the fix costs nothing.
+- Persuasion cost [Inference]: a visitor who clicks "the employer's page" and lands on a Greenhouse page gets an expectation violation at the exact moment trust matters. Stating the mechanism up front removes the surprise. Credibility guidance consistently favours specific, checkable statements over vague assurances (Stanford Web Credibility guidelines; vendor blogs summarising NN/g, lower confidence). A comparable board, Himalayas, states its sourcing plainly: listings are "aggregated from company career pages and applicant tracking systems, then filtered and reviewed" ([Himalayas docs](https://himalayas.app/docs/what-is-himalayas)).
+
+## Copy decision
+Principles: say the mechanism once, plainly, where the reader decides; name the systems (specific beats vague, and Greenhouse, Lever and Ashby are pages many applicants already know); end on what the reader does next; keep "employer" for who runs the process ("you apply with the employer") and "original posting" for what the link opens; no "direct", "straight" or "no middleman".
+
+| Option for the hero line | Verdict |
+|---|---|
+| "...each with the posting date, who is eligible to apply, and a direct link to the employer's page." (old) | Rejected: overstates. 0 of 1,001 links are on an employer domain. |
+| A: "Fresh listings from companies' own job pages, each with the posting date, who can apply and a link to the original posting." | Accurate, but still lets the reader assume the company's site. |
+| **B (used): "Fresh postings from companies' own hiring pages (Greenhouse, Lever, Ashby). See who can apply, then apply on the original posting."** | Accurate, specific, verb-led: it tells the reader how the board works and what to do. |
+| C: "Read straight from company hiring pages, so you apply with the employer, not a middleman." | Rejected: "straight" and "middleman" invite the same over-reading. |
+
+Rollout (all done, one PR): home hero, page description and social cards, "How these listings work" note, both signup blurbs, `site-config.js` tagline, share image text (image rebuilt), `subscribed.html`, welcome and weekly digest emails (`scripts/email_data.py`; Brevo template 74 updated), the weekly WhatsApp post, the post kit, the WhatsApp setup text, the outreach drafts and PDF. New: a "Where the listings come from" section on `/verify`, and the verify text on link checks now matches the new checker (a page we cannot reach for a moment is kept and re-checked; the card shows its real last check).
+- **Founder story (needs your eye):** one sentence on the services page changed from "The job board links every role to the employer's own posting and shows who can apply." to "The job board shows who can apply to each role and links to the original posting." This is inside your approved story, so I kept the edit to that one sentence; tell me if you want it worded differently.
+- **Not changed:** the brand-level promise "Every listing verified" and the founder's "I check everything before it reaches you" (your approved words; the verify page defines what is checked).
+- **Brevo automation copies:** automation step emails 87 to 94 are copies Brevo made; the welcome email in the automation still holds the old sentence until you re-pick template 74 in the step (same task as the logo re-pick, `12-dashboard-build-guide.md` Part H). New weekly digests already use the new wording.
+
+## Guard
+`tests/test_source_claims.py` fails if any live page, email copy, WhatsApp output, share image text or the kit says "employer's own posting/page/site", "direct link to the employer" or "straight to the employer"; requires the hero and verify page to name the three systems; and (locally only, never in the refresh workflow) fails if a listing ever links outside Greenhouse, Lever and Ashby, which is the cue to revisit this wording.
+
+## Standing rule (also in CLAUDE.md)
+Public copy is not edited word for word. Before changing a claim: measure the fact, check the honest overall impression (FTC net impression; EU arts 6 and 7), look at how comparable sites word it, write two or three options, pick one on accuracy first and reader psychology second, show the reasoning, and add a test where a wrong claim could creep back.

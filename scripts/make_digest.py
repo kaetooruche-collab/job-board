@@ -4,7 +4,7 @@ Run: python3 scripts/make_digest.py [--rename-note]
      python3 scripts/make_digest.py --coverage            (how many of this week's roles are open to each country)
 Copy and design now live in scripts/email_data.py (JA-D) and scripts/email_render.py (see drafts/email-system/).
 Rules (CLAUDE.md copy rules + drafts/voice-and-copy-guide.md): only roles that read as remote and were posted in the last 7 days;
-one per company; clear eligibility first; a spread of levels; no promotion inside the digest; every link goes to the employer's own posting.
+one per company; clear eligibility first; a spread of levels; no promotion inside the digest; every link goes to the original posting.
 KT sends the campaign by hand in Brevo to the list "Job alerts" (Brevo skips blocklisted contacts automatically)."""
 import json, os, sys, html, datetime as D
 

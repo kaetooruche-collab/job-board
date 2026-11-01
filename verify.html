@@ -29,7 +29,7 @@
 
     :root {
       color-scheme: light;
-      --bg: #f8f9fb;
+      --bg: #eef2f8;
       --surface: #ffffff;
       --text: #1a1a2e;
       --text-secondary: #5f6368;
@@ -348,6 +348,11 @@
     <h1>How we verify listings</h1>
     <p class="page-intro">Every listing on Yireh Careers goes through a verification process before it appears. We built this board for job seekers who are tired of broken links, vague descriptions and roles that don't exist. Here is exactly what we check.</p>
 
+    <section class="process-step" id="where-from" style="margin: 0 0 1.5rem;">
+      <h2 style="font-size:1.15rem; margin-bottom:0.5rem;">Where the listings come from</h2>
+      <p>We read the public job pages that companies publish through Greenhouse, Lever and Ashby, the hiring systems many employers use. We don&rsquo;t copy from other job boards or recruiters. Each apply link opens the original posting on that page (a few companies pass you on to their own careers site), so you apply with the employer, not through us. We never charge you to apply or to see a link.</p>
+    </section>
+
     <section class="verified-means" id="verified-means">
       <h2>What &ldquo;verified&rdquo; means here</h2>
       <p class="vm-intro">We use the word for specific checks, not as a blanket promise. Here is exactly what is and is not checked.</p>
@@ -355,8 +360,8 @@
         <div class="vm-card vm-yes">
           <h3>What we check, on every update (every 6 hours)</h3>
           <ul>
-            <li>The listing comes from the employer&rsquo;s own job feed, and its apply link goes to that posting, never a homepage or a search page.</li>
-            <li>The link opens. A listing whose link fails is removed.</li>
+            <li>The listing comes from the company&rsquo;s own public job feed, and its apply link opens that original posting, never a homepage or a search page.</li>
+            <li>The link opens. If a posting is gone, it is removed. If a page can&rsquo;t be reached for a short while, the listing stays and is re-checked; its card shows when it was last checked.</li>
             <li>The listing is still in the employer&rsquo;s feed and was posted within the last 30 days (by its original posting date).</li>
             <li>The whole posting reads as remote. Hybrid, on-site and self-contradicting roles are left out.</li>
             <li>&ldquo;Who can apply&rdquo; shows what the employer states, or &ldquo;unclear&rdquo; when they do not say.</li>
@@ -423,7 +428,7 @@
       </div>
       <div class="process-step">
         <h3>Link check</h3>
-        <p>Every listing's link is checked at each update. Listings are read from the employer's own job feed, which only lists open roles. A listing is removed when its link fails, redirects to an error page, or disappears from the feed.</p>
+        <p>Every listing's link is checked at each update. Listings are read from the company's own job feed, which only lists open roles. A listing is removed when its posting is gone, the link redirects to an error page, or the role disappears from the feed. If a page simply can&rsquo;t be reached for a moment (for example, the site is slow or blocks automated checks), the listing is kept and re-checked at the next update, for up to about 18 hours, and its card keeps showing the real time of its last successful check.</p>
       </div>
       <div class="process-step">
         <h3>Is it really remote?</h3>

@@ -1,6 +1,6 @@
 /* Shared look for the small standalone form pages (/free-check, /order, /subscribed). */
 * { margin: 0; padding: 0; box-sizing: border-box; }
-:root { --bg: #f8f9fb; --surface: #ffffff; --text: #1a1a2e; --text-secondary: #5f6368; --accent: #2563eb; --accent-hover: #1d4ed8; --border: #e2e5e9; --field: #ffffff; }
+:root { --bg: #eef2f8; --surface: #ffffff; --text: #1a1a2e; --text-secondary: #5f6368; --accent: #2563eb; --accent-hover: #1d4ed8; --border: #e2e5e9; --field: #ffffff; }
 
 
 body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; padding: 16px; }
