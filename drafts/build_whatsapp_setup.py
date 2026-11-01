@@ -12,7 +12,7 @@ NAME = "Yireh Careers"
 CATEGORY = "Professional Services"
 ABOUT = "Verified remote jobs, plus CVs, cover letters and LinkedIn profiles written for you. Free quick CV check. Message us to start."
 DESCRIPTION = (
-    "Yireh Careers lists verified remote jobs, each linked to the employer's own posting and refreshed every 6 hours. "
+    "Yireh Careers lists verified remote jobs, each linked to its original posting and refreshed every 6 hours. "
     "We also write CVs, cover letters and LinkedIn profiles (from $29), and we offer a free quick CV check to get you started. "
     f"Send documents by email ({MAIL}) and use WhatsApp for questions. We never charge job seekers to apply."
 )
@@ -30,7 +30,7 @@ CATALOG = [
 LABELS = ["New enquiry", "Free CV check", "Awaiting payment", "Paid", "Onboarding", "In progress", "Delivered", "Complete", "Privacy request"]
 
 CHANNEL_NAME = "Yireh Careers: Verified Remote Jobs"
-CHANNEL_DESC = ("Remote jobs checked by a person. Every listing links to the employer's own posting and shows who can apply, so you can skip the ones that aren't open to you. New roles every week. Check each employer's eligibility rules before you apply.")
+CHANNEL_DESC = ("Remote jobs checked by a person. Every listing links to its original posting and shows who can apply, so you can skip the ones that aren't open to you. New roles every week. Check each employer's eligibility rules before you apply.")
 
 SOURCES = [
     ("TikTok bio", "TikTok"), ("Facebook page", "Facebook"), ("Snapchat profile", "Snapchat"),

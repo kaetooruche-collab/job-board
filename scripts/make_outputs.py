@@ -80,7 +80,7 @@ def render(items, now=None):
         lines.append("")
     lines.append(f"More jobs, with filters: {SITE_URL}?utm_source=whatsapp&utm_medium=channel&utm_campaign=weekly")
     lines.append("")
-    lines.append("Every link goes to the employer's own posting. Please check each employer's eligibility rules before you apply. We never charge you to apply.")
+    lines.append("Every link goes to the original posting. Please check each employer's eligibility rules before you apply. We never charge you to apply.")
     return "\n".join(lines) + "\n"
 
 

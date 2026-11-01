@@ -8,14 +8,14 @@
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Yireh Careers">
   <meta property="og:title" content="Yireh Careers — Verified Remote Jobs">
-  <meta property="og:description" content="Verified remote jobs, updated every 6 hours. Every listing links to the employer's own posting, with the original posting date, source and who can apply.">
+  <meta property="og:description" content="Verified remote jobs, updated every 6 hours. Every listing links to its original posting, with the original posting date, source and who can apply.">
   <meta property="og:url" content="https://yirehcareers.vercel.app/">
   <meta property="og:image" content="https://yirehcareers.vercel.app/og-image.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Yireh Careers — Verified Remote Jobs">
-  <meta name="twitter:description" content="Verified remote jobs, updated every 6 hours. Every listing links to the employer's own posting, with the original posting date, source and who can apply.">
+  <meta name="twitter:description" content="Verified remote jobs, updated every 6 hours. Every listing links to its original posting, with the original posting date, source and who can apply.">
   <meta name="twitter:image" content="https://yirehcareers.vercel.app/og-image.png">
   <meta name="description" content="Free job board of verified remote jobs for job seekers at every level, across every field. Every listing links to the real posting, shows who can apply, and says plainly what we could not confirm.">
   <!-- One page, many filter states: keep filtered URLs out of the index (GoatCounter reads this too, so
@@ -1000,7 +1000,7 @@
   <!-- HERO -->
   <section class="hero">
     <h1>Remote jobs that show <em>who can apply</em></h1>
-    <p class="hero-sub">Fresh listings from employers&rsquo; own job feeds, each with the posting date, who is eligible to apply, and a direct link to the employer&rsquo;s page.</p>
+    <p class="hero-sub">Fresh postings from companies&rsquo; own hiring pages (Greenhouse, Lever, Ashby). See who can apply, then apply on the original posting.</p>
     <p class="hero-facts"><span><strong id="total-jobs">0</strong> remote jobs</span><span><strong id="total-companies">0</strong> companies</span><span><a href="/verify#verified-means" onclick="trackEvent('verified-meaning-click','Hero')">What &ldquo;verified&rdquo; means</a></span></p>
   </section>
 
@@ -1010,7 +1010,7 @@
     <!-- DISCLAIMER -->
     <details class="disclaimer">
       <summary><strong>How these listings work</strong> &mdash; always check the employer&rsquo;s eligibility rules for your location before applying.</summary>
-      <p class="disclaimer-body">Every card links to the employer&rsquo;s own posting and shows its real date, and says who can apply &mdash; or &ldquo;unclear&rdquo; when the employer doesn&rsquo;t. The &ldquo;Get a CV for this role&rdquo; button is our own paid CV service, not part of the employer&rsquo;s application.</p>
+      <p class="disclaimer-body">Every card links to the original posting on the company&rsquo;s hiring page, shows its real posting date, and says who can apply &mdash; or &ldquo;unclear&rdquo; when the employer doesn&rsquo;t. The &ldquo;Get a CV for this role&rdquo; button is our own paid CV service, not part of the employer&rsquo;s application.</p>
     </details>
 
     <!-- SERVICES: above the listings, so the paid offer is reachable without scrolling past every job -->
@@ -1168,7 +1168,7 @@
     <!-- CTA: EMAIL SIGNUP -->
     <section class="cta-section" id="subscribe">
       <h2>Get verified remote jobs in your inbox</h2>
-      <p>A weekly shortlist of recent remote roles, each linked to the employer's own posting. One email a week.</p>
+      <p>A weekly shortlist of recent remote roles, each linked to its original posting. One email a week.</p>
       <form class="cta-form" id="signup-form" onsubmit="return submitSiteForm(event, 'signup')">
         <div class="cta-row">
           <input type="email" name="email" id="email-input" placeholder="Your email address" required aria-label="Email address" autocomplete="email" maxlength="254">
@@ -1951,7 +1951,7 @@
       var c = (state.country && state.country !== '__worldwide') ? state.country : '';
       return '<aside class="inline-signup" aria-label="Weekly job email">'
         + '<h3>Get the best new roles in your inbox</h3>'
-        + '<p>One short email a week. Every role links to the employer&rsquo;s own posting. Free, and one tap to unsubscribe.</p>'
+        + '<p>One short email a week. Every role links to its original posting. Free, and one tap to unsubscribe.</p>'
         + '<form onsubmit="return submitSiteForm(event, \'signup\')"><div class="row">'
         + '<input type="email" name="email" required placeholder="Your email address" aria-label="Email address" autocomplete="email" maxlength="254">'
         + '<input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" class="hp">'

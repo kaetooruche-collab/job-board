@@ -49,10 +49,10 @@ About (short line under your name, 126 of 139 characters):
 Verified remote jobs, plus CVs, cover letters and LinkedIn profiles written for you. Free quick CV check. Message us to start.
 ```
 
-Business description (353 of 512 characters):
+Business description (347 of 512 characters):
 
 ```
-Yireh Careers lists verified remote jobs, each linked to the employer's own posting and refreshed every 6 hours. We also write CVs, cover letters and LinkedIn profiles (from $29), and we offer a free quick CV check to get you started. Send documents by email (yirehcareers@gmail.com) and use WhatsApp for questions. We never charge job seekers to apply.
+Yireh Careers lists verified remote jobs, each linked to its original posting and refreshed every 6 hours. We also write CVs, cover letters and LinkedIn profiles (from $29), and we offer a free quick CV check to get you started. Send documents by email (yirehcareers@gmail.com) and use WhatsApp for questions. We never charge job seekers to apply.
 ```
 
 Email:
@@ -392,7 +392,7 @@ Then email your CV and answers to yirehcareers@gmail.com. Your delivery time sta
 Shortcut: `/weekly`
 
 ```
-Our weekly job email goes out on Tuesday mornings: a short list of recent remote jobs with a link to each employer's own posting. You can sign up with just your email at https://yirehcareers.vercel.app/#subscribe and unsubscribe with one tap whenever you like.
+Our weekly job email goes out on Tuesday mornings: a short list of recent remote jobs with a link to each original posting. You can sign up with just your email at https://yirehcareers.vercel.app/#subscribe and unsubscribe with one tap whenever you like.
 ```
 
 ### 28. Someone asks us to stop emailing or messaging them
@@ -474,7 +474,7 @@ Yireh Careers: Verified Remote Jobs
 Description:
 
 ```
-Remote jobs checked by a person. Every listing links to the employer's own posting and shows who can apply, so you can skip the ones that aren't open to you. New roles every week. Check each employer's eligibility rules before you apply.
+Remote jobs checked by a person. Every listing links to its original posting and shows who can apply, so you can skip the ones that aren't open to you. New roles every week. Check each employer's eligibility rules before you apply.
 ```
 
 Picture: the same profile picture. Weekly post: after the Tuesday email, paste the text from `data/whatsapp_post.txt` (Claude can show it to you; the same post can be built at `/kit` on the live site, WhatsApp tab) as the channel update.

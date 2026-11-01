@@ -133,7 +133,7 @@ Seen in search results, not tested by us, no performance numbers:
 - Instagram Reel: "5 Scams About Multinational Jobs! 1. Scam: You need to ..." and "Dreaming of working abroad? Don't let a fake recruiter put your future at risk."
 - LinkedIn: "Stop believing you can't land a remote job because you're not a U.S. citizen."
 
-**Read:** the field is crowded with "legit jobs for [country]" and "scam warning" hooks that promise a list. Our difference is **evidence on each job** (the employer's own link, who can apply in the employer's words, the date, no fee). A hook built on a specific, checkable fact will stand out more than another promise.
+**Read:** the field is crowded with "legit jobs for [country]" and "scam warning" hooks that promise a list. Our difference is **evidence on each job** (a link to the original posting, who can apply in the employer's words, the date, no fee). A hook built on a specific, checkable fact will stand out more than another promise.
 
 ## 6. What this changes in the current plan
 | # | Finding | Evidence | Change |

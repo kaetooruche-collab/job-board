@@ -15,10 +15,10 @@ def table(rows, head):
     return f'<table><thead><tr>{th}</tr></thead><tbody>{tr}</tbody></table>'
 
 CH_NAME = "Yireh Careers: Verified Remote Jobs"
-CH_DESC = ("Remote jobs checked by a person. Every listing links to the employer's own posting and shows who can apply, "
+CH_DESC = ("Remote jobs checked by a person. Every listing links to its original posting and shows who can apply, "
            "so you can skip the ones that aren't open to you. New roles every week. Check each employer's eligibility rules before you apply.")
 
-CH_FIRST = "We've renamed! This channel is now Yireh Careers: Verified Remote Jobs.\n\nSame idea, better checking: every job links to the employer's own posting and shows who can apply. New roles every Tuesday.\n\nKnow someone job hunting? Forward this."
+CH_FIRST = "We've renamed! This channel is now Yireh Careers: Verified Remote Jobs.\n\nSame idea, better checking: every job links to its original posting and shows who can apply. New roles every Tuesday.\n\nKnow someone job hunting? Forward this."
 R1 = ("I checked 1,000+ \"remote\" job posts for who can actually apply. Only about 2 in 100 are open to applicants anywhere.\n\n"
 "Context: I run a small job board (Yireh Careers) and every listing gets read for where the employer says applicants must live.\n\n"
 "On 24 Oct, 1,029 remote roles on the board:\n- about 1.6% were open to applicants anywhere\n- about 26% didn't say who could apply at all\n- the rest named a country or region\n\n"
@@ -35,9 +35,9 @@ R3 = ("What's the most frustrating \"remote\" posting you've seen?\n\n"
 R5 = ("How to read a remote job posting in 2 minutes (for people applying from outside the US)\n\n"
 "1. Location field: country or state? That's the real rule.\n2. Search \"reside\", \"authorised to work\", \"visa\", \"sponsor\", \"time zone\", \"overlap\".\n"
 "3. Payroll: \"we hire through an employer of record\" is often a good sign for international hires. It isn't a promise.\n4. Pay: shown or hidden? If hidden, ask before interview two.\n5. Date: a posting over 30 days old is usually stale.\n\n"
-"I put these checks into a free board: each card shows who can apply, the original posting date and a link to the employer's own page. Mods: remove this if links aren't allowed. Not selling anything.")
+"I put these checks into a free board: each card shows who can apply, the original posting date and a link to the original posting. Mods: remove this if links aren't allowed. Not selling anything.")
 F1 = ("Tired of applying for \"remote\" jobs and finding out halfway down that it's \"US residents only\"?\n\n"
-"We read the whole posting for you. Every job on Yireh Careers shows who can apply, the original posting date and a direct link to the employer's own page. We never charge you to apply.\n\n"
+"We read the whole posting for you. Every job on Yireh Careers shows who can apply, the original posting date and a link to the original posting. We never charge you to apply.\n\n"
 f"See today's roles: {utm('facebook','fb-pain')}\n\nPlease check each employer's eligibility rules before you apply.")
 F2 = ("Quick tip for remote job hunters: before you spend an hour on an application, search the posting for the words \"reside\", \"authorised\" and \"time zone\".\n\n"
 "If the role is limited to one country, you'll usually find it there.\n\n"
@@ -48,9 +48,9 @@ F4 = ("Quick poll for remote job hunters: what wastes the most of your time?\n\n
 "Comment your letter. We're building the board around your answers.")
 F5 = ("\"Remote\" does not always mean \"anywhere\". 3 phrases to watch for in a posting:\n\n1. \"Must reside in...\"\n2. \"Authorised to work in...\"\n3. \"Overlap with [time zone] hours\"\n\n"
 f"On Yireh Careers every card says who can apply, or says \"unclear\" when the employer doesn't. {utm('facebook','fb-phrases')}")
-REPLY_LINK = "Happy to share it: a free board where each card shows who can apply, the original posting date and a link to the employer's own posting. It's yirehcareers.vercel.app (I run it, so I'm biased)."
+REPLY_LINK = "Happy to share it: a free board where each card shows who can apply, the original posting date and a link to the original posting. It's yirehcareers.vercel.app (I run it, so I'm biased)."
 REPLY_CV = "If your CV is part of the problem, we do a free quick CV check: you email it, we reply with the three things we'd fix first. Message me and I'll send the details."
-CH_POST = "New this week on the board, 3 to 5 roles with who can apply. Tap the links, they go straight to the employer's own page.\n\n[paste data/whatsapp_post.txt]\n\nForward this to one friend who's job hunting."
+CH_POST = "New this week on the board, 3 to 5 roles with who can apply. Tap the links to open each original posting.\n\n[paste data/whatsapp_post.txt]\n\nForward this to one friend who's job hunting."
 
 W = [  # (date, time, where, what, how)
  ("<b>Sun 25 Oct</b>", "19:00", "WhatsApp Channel", "Rename to the new name, paste the new description, upload the YC picture", "Channel, tap name, Edit. Text on page 3."),

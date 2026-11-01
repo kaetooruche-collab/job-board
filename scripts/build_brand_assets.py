@@ -41,7 +41,7 @@ h1{{position:absolute;left:84px;top:262px;width:860px;margin:0;font-size:58px;li
 .pills span{{border:2px solid #3a4a6b;border-radius:30px;padding:14px 26px;font-size:26px;font-weight:600;color:#c7d6f5;background:rgba(255,255,255,.04)}}
 </style>
 <div class="logo">{EMAIL_SVG}<div>Yireh <b>Careers</b></div></div>
-<h1>Verified remote jobs. Every link goes to the employer’s own posting.</h1>
+<h1>Verified remote jobs. Every link goes to the original posting.</h1>
 <div class="pills"><span>Updated every 6 hours</span><span>CV &amp; LinkedIn help</span></div>
 """
 
