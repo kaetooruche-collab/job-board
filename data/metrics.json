@@ -1,46 +1,46 @@
 {
- "generatedAt": "2026-11-01T01:56:09.198167+00:00",
- "activeListings": 1001,
- "rawCandidates": 21053,
- "sentToReview": 521,
+ "generatedAt": "2026-11-01T02:14:57.100364+00:00",
+ "activeListings": 986,
+ "rawCandidates": 20161,
+ "sentToReview": 516,
  "brokenLinksDropped": 48,
- "percentConfirmedRemote": 91.2,
- "percentWithStatedEligibility": 75.2,
+ "percentConfirmedRemote": 91.1,
+ "percentWithStatedEligibility": 74.8,
  "byArrangement": {
   "remote_unclear": 88,
-  "remote_geo_restricted": 724,
+  "remote_geo_restricted": 709,
   "fully_remote": 189
  },
  "byEligibilityType": {
   "unclear": 248,
-  "countries": 714,
+  "countries": 699,
   "worldwide": 14,
   "region": 20,
   "timezone": 5
  },
  "byLevel": {
   "unspecified": 135,
-  "mid": 339,
+  "mid": 332,
   "junior": 75,
   "leadership": 117,
-  "senior": 315,
+  "senior": 307,
   "entry": 6,
   "internship": 14
  },
  "byCategory": {
-  "Customer Service & Support": 54,
-  "Software & Engineering": 180,
-  "Product & Project": 47,
+  "Customer Service & Support": 51,
+  "Software & Engineering": 179,
+  "Product & Project": 46,
   "Sales": 145,
   "Finance & Accounting": 78,
-  "Data & Analytics": 51,
+  "Data & Analytics": 49,
   "Human Resources & Recruiting": 36,
   "Business & Analysis": 33,
-  "Healthcare & Life Sciences": 96,
+  "Healthcare & Life Sciences": 89,
   "Legal & Compliance": 25,
   "Marketing & Communications": 90,
   "Administration & Operations": 33,
-  "IT & Security": 33,
+  "IT & Security": 32,
   "Research": 15,
   "Other": 18,
   "Design & Creative": 34,
@@ -53,8 +53,22 @@
  "bySource": {
   "Greenhouse": 520,
   "Ashby": 347,
-  "Lever": 134
+  "Lever": 119
  },
- "uniqueCompanies": 157,
- "note": "Search-to-apply click-through and user engagement come from GoatCounter, not this file."
+ "uniqueCompanies": 156,
+ "note": "Search-to-apply click-through and user engagement come from GoatCounter, not this file.",
+ "linkCheck": {
+  "checked": 1041,
+  "alive": 947,
+  "dead": 13,
+  "unknown": 81,
+  "failRate": 0.0903,
+  "baselineRate": null,
+  "degraded": false,
+  "degradedStreak": 0,
+  "carriedOnOldCheck": 46,
+  "newHeldUntilChecked": 35,
+  "droppedDead": 13,
+  "droppedUnverifiable": 0
+ }
 }
