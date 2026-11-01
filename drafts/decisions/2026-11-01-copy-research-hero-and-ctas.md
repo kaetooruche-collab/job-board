@@ -54,3 +54,13 @@ GoatCounter funnel (weekly snapshot): free-check form submits, WhatsApp CV click
 **Sub-line (used):** "Each job shows where applicants can be based, in the employer's own words, or tells you when that isn't clear. Free, and we never charge you to apply." Names the mechanism in plain language, is honest about the 25% that are unclear (a transparency signal competitors do not give), and answers the scam fear with a fact that is already one of our trust rules. No third-party names.
 
 **Not testable yet:** traffic is too low for an A/B test. The cheap first-party test is a five-second comprehension check with a handful of people in the target groups: "What does this site do? Who is it for? How is it different from LinkedIn or Indeed?" Run it before the next hero change, not another round of options.
+
+## 6. Economy of words (KT, same day)
+Rule: if fewer words evoke the same emotion, use fewer. Method: name each line's emotional jobs, cut every word that serves none.
+- Sub-line before (28 words): "Each job shows where applicants can be based, in the employer's own words, or tells you when that isn't clear. Free, and we never charge you to apply."
+- Jobs it must do: relief (I will know where I can apply), honesty (it says when it is unclear), safety (no fee to apply).
+- Cut: "in the employer's own words" (a transparency detail that already sits on every card and on /verify); "applicants can be based" (the card pill already says "Apply from"); "tells you" and "we never charge you" (longer forms of the same two ideas).
+- After (17 words): "Every job shows where it hires from, or says when that's unclear. Free. No fee to apply."
+- Headline: "open" changed to "hire" ("See which remote jobs hire where you live"): one word shorter in effect, plainer, and it removes the reading "open vacancy vs closed".
+- Kept on purpose: "or says when that's unclear" (without it the line over-claims, since about a quarter of listings are unclear) and "No fee to apply" (specific, true, and does not clash with the paid CV services the way "no fees" would).
+- Layout: `text-wrap: balance` so a word is never stranded on its own line on desktop.
