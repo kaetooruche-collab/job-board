@@ -27,13 +27,13 @@ class Crawl(unittest.TestCase):
 
 
 class Nav(unittest.TestCase):
-    def test_header_cta_is_the_free_cv_check_and_services_stays_reachable(self):
+    def test_header_corner_button_is_get_job_ready_and_free_check_stays_one_tap_away(self):
+        """KT liked "Get Job-Ready" in the corner (restored 1 Nov 2026); the free CV check stays as the link beside it."""
         for f in ("index.html", "services.html", "verify.html", "privacy.html", "thanks.html"):
             t = (ROOT / f).read_text(encoding="utf-8")
-            self.assertIn('class="nav-cta"', t, f)
-            self.assertIn('href="/free-check"', t, f)
-            self.assertNotIn("Get Job-Ready", t, f)
-            self.assertIn(">Career services</a>", t, f)
+            self.assertRegex(t, r'<a href="/services" class="nav-cta[^"]*"[^>]*>Get Job-Ready</a>', f)
+            self.assertIn('<a href="/free-check" class="nav-link">Free CV check</a>', t, f)
+            self.assertIn('<a href="/services"', t, f)
 
 
 if __name__ == "__main__":

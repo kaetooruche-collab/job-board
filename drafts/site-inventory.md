@@ -62,3 +62,8 @@ Prices $29 / $49 / $149 / $99 a month; delivery 2 / 3 working days (Executive: C
 
 ## 9. Fixed on 29 Oct 2026 (same day as the inspection)
 Findings 1 to 3, 4 and 5 above were fixed: the "100% link-checked" stat now reads "Every 6 hrs / Re-checked"; the Platforms section, link, events and data file were removed; an inline signup card now appears after the 6th listing; the hero no longer says the roles are "for students, graduates and career-changers" (now "from internships to senior leadership"); Executive LinkedIn setup is 3 working days. Still open: finding 6 (GoatCounter repository secret: checked, it is NOT set, so the weekly numbers workflow fails until KT adds it) and finding 7 (Whop sandbox wording, unverifiable from here).
+
+## Update 1 Nov 2026 (KT's feedback: "too white", and "the Get Job-Ready in the corner was nice")
+- **Header (all five pages with the nav):** `How We Verify` · `Free CV check` (plain link, `/free-check`) · **`Get Job-Ready`** (the filled corner button, `/services`; event `nav-get-job-ready`). This restores the corner button KT liked; the 29-31 Oct "quick win" had replaced it with Free CV check without asking. The free check stays one tap away. The mobile menu lists the same two.
+- **Home hero:** navy gradient again (compact, same height as the light version, so the first job card still starts at about 691px on a 1280x800 screen), white headline with a light-blue "who can apply". Page background is a light blue-grey (`--bg: #eef2f8`) so white cards stand out. Everything below the hero is unchanged.
+- Services and other pages keep their light heroes; only the job board hero changed.

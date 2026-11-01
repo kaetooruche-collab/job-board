@@ -31,7 +31,7 @@
 
     :root {
       color-scheme: light;
-      --bg: #f8f9fb;
+      --bg: #eef2f8;
       --surface: #ffffff;
       --text: #1a1a2e;
       --text-secondary: #5f6368;
@@ -177,11 +177,10 @@
 
     /* HERO */
     .hero {
-      background: linear-gradient(180deg, #eaf1ff 0%, var(--bg) 100%);
-      color: var(--text);
-      padding: 2.1rem 1.25rem 1.1rem;
+      background: linear-gradient(135deg, #131c35 0%, #0f2a4d 58%, #17407a 100%);
+      color: #fff;
+      padding: 1.9rem 1.25rem 1.3rem;
       text-align: center;
-      border-bottom: 1px solid var(--border);
     }
     .hero h1 {
       font-size: clamp(1.65rem, 4.6vw, 2.5rem);
@@ -189,22 +188,22 @@
       line-height: 1.15;
       margin-bottom: 0.6rem;
       letter-spacing: -0.8px;
-      color: #0f2a4d;
+      color: #fff;
     }
-    .hero h1 em { font-style: normal; color: var(--accent); }
+    .hero h1 em { font-style: normal; color: #7cb3ff; }
     .hero .hero-sub {
       font-size: 1rem;
-      color: var(--text-secondary);
+      color: rgba(255,255,255,0.84);
       max-width: 600px;
       margin: 0 auto 0.9rem;
       line-height: 1.55;
     }
     .hero .hero-facts {
       display: flex; justify-content: center; flex-wrap: wrap; gap: 0.35rem 1.4rem;
-      font-size: 0.86rem; color: var(--text-secondary); margin: 0;
+      font-size: 0.86rem; color: rgba(255,255,255,0.8); margin: 0;
     }
-    .hero .hero-facts a { color: var(--accent); text-decoration: underline; text-underline-offset: 2px; }
-    .hero .hero-facts strong { color: var(--text); font-variant-numeric: tabular-nums; }
+    .hero .hero-facts a { color: #a9ccff; text-decoration: underline; text-underline-offset: 2px; }
+    .hero .hero-facts strong { color: #fff; font-variant-numeric: tabular-nums; }
     .toolbar { scroll-margin-top: 4.75rem; }
 
     /* MAIN */
@@ -984,8 +983,8 @@
     </a>
     <div class="nav-links">
       <a href="/verify" class="nav-link">How We Verify</a>
-      <a href="/services" class="nav-link">Career services</a>
-      <a href="/free-check" class="nav-cta" onclick="trackEvent('nav-free-check','Header')">Free CV check</a>
+      <a href="/free-check" class="nav-link">Free CV check</a>
+      <a href="/services" class="nav-cta" onclick="trackEvent('nav-get-job-ready','Header')">Get Job-Ready</a>
     </div>
     <button class="hamburger" onclick="toggleMenu()" aria-label="Toggle navigation menu">
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
@@ -994,7 +993,7 @@
   <div class="mobile-menu" id="mobile-menu">
     <a href="/" onclick="closeMenu()">Jobs</a>
     <a href="/verify" onclick="closeMenu()">How We Verify</a>
-    <a href="/services" onclick="closeMenu()">Career services</a>
+    <a href="/services" onclick="closeMenu()">Get Job-Ready</a>
     <a href="/free-check" onclick="closeMenu()">Free CV check</a>
   </div>
 
