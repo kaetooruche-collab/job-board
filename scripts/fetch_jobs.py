@@ -513,7 +513,8 @@ def main():
     keep, link_stats, link_state = L.check_links(keep, S, link_state, load_published(), removed)
     dead = before - len(keep)
     print(f"  Links: {link_stats['alive']} open, {link_stats['dead']} gone, {link_stats['unknown']} could not be checked "
-          f"(fail rate {link_stats['failRate']:.1%}, normal about {(link_stats['baselineRate'] or 0):.1%})")
+          f"(fail rate {link_stats['failRate']:.1%}, normal about {(link_stats['baselineRate'] or 0):.1%}); "
+          f"{link_stats['firstPassUnknown']} were unreachable on the first pass, {link_stats['recoveredOnRetry']} opened on the gentle second pass")
     print(f"  Published {len(keep)}; removed {dead}; kept on an older check {link_stats['carriedOnOldCheck']}; new but unchecked, held {link_stats['newHeldUntilChecked']}")
     if link_stats["degraded"]:
         print(f"::warning::Link checker looks blocked this run ({link_stats['failRate']:.0%} of links failed, normal is about {(link_stats['baselineRate'] or 0):.0%}). "

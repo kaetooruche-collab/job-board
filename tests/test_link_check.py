@@ -55,7 +55,7 @@ def run(items, bad, state=None, published=True, bad_verdict=L.UNKNOWN):
     pub = {j["url"]: "2026-10-31T12:00:00+00:00" for j in items} if published is True else (published or {})
     removed = []
     ok, stats, ns = L.check_links(items, None, state or L.load_state(pathlib.Path("/nonexistent")), pub, removed,
-                                  verdict_fn=lambda u: bad_verdict if u in bad_urls else L.ALIVE)
+                                  verdict_fn=lambda u: bad_verdict if u in bad_urls else L.ALIVE, retry_delay=0, sleep=lambda s: None)
     return ok, stats, ns, removed
 
 
@@ -66,7 +66,7 @@ class CheckLinks(unittest.TestCase):
         removed = []
         ok, st, ns = L.check_links(items, None, L.load_state(pathlib.Path("/nonexistent")),
                                    {j["url"]: "2026-10-31T12:00:00+00:00" for j in items[1:]}, removed,
-                                   verdict_fn=lambda u: verdicts.get(u, L.ALIVE))
+                                   verdict_fn=lambda u: verdicts.get(u, L.ALIVE), retry_delay=0, sleep=lambda s: None)
         urls = {j["url"] for j in ok}
         self.assertNotIn(items[0]["url"], urls)                        # gone, and also not published before: simply dropped
         self.assertNotIn(items[1]["url"], urls)                        # gone: dropped even though it was published
@@ -149,6 +149,53 @@ class CheckLinks(unittest.TestCase):
             self.assertEqual(len(s["failRates"]), L.RATE_HISTORY)
             self.assertEqual((s["unknown"], s["degradedStreak"], s["driftAborts"]), ({"u": 1}, 1, 2))
         self.assertEqual(L.load_state(pathlib.Path("/nonexistent"))["failRates"], [])
+
+
+class Reasons(unittest.TestCase):
+    def test_unknown_links_record_why(self):
+        from collections import Counter
+        c = Counter()
+        for head in (Resp(403), Resp(429), Resp(503), requests.Timeout(), requests.ConnectionError(), Resp(200), Resp(404)):
+            L.link_verdict("https://x.test/job", FakeSession(head), sleep=lambda s: None, reasons=c)
+        self.assertEqual(dict(c), {"http-403": 1, "http-429": 1, "http-503": 1, "timeout": 1, "connection-error": 1})
+
+    def test_stats_carry_the_reasons(self):
+        items = listings(60)
+        ok, st, ns = L.check_links(items, FakeSession(Resp(403)), L.load_state(pathlib.Path("/nonexistent")), {}, [],
+                                   retry_delay=0, sleep=lambda s: None)
+        self.assertEqual(st["unknownReasons"], {"http-403": 120})     # 60 links, counted once in the first pass and once in the second
+
+
+class SecondPass(unittest.TestCase):
+    def test_throttled_links_that_open_on_the_second_try_are_published_normally(self):
+        """1 Nov: all 46 unreachable links were on one host and opened fine minutes later (burst throttling)."""
+        items = listings(300)
+        seen = {}
+        def flaky(u):
+            seen[u] = seen.get(u, 0) + 1
+            return L.UNKNOWN if (u in {j["url"] for j in items[:40]} and seen[u] == 1) else L.ALIVE
+        ok, st, ns = L.check_links(items, None, L.load_state(pathlib.Path("/nonexistent")), {}, [], verdict_fn=flaky,
+                                   retry_delay=0, sleep=lambda s: None)
+        self.assertEqual(len(ok), 300)
+        self.assertEqual((st["firstPassUnknown"], st["recoveredOnRetry"], st["unknown"]), (40, 40, 0))
+        self.assertEqual(ns["failRates"][-1], 0.0)                      # the baseline records the real, post-retry failure rate
+
+    def test_only_unknown_links_are_retried_and_dead_ones_are_not(self):
+        items = listings(120)
+        calls = {}
+        def v(u):
+            calls[u] = calls.get(u, 0) + 1
+            return {items[0]["url"]: L.DEAD, items[1]["url"]: L.UNKNOWN}.get(u, L.ALIVE)
+        L.check_links(items, None, L.load_state(pathlib.Path("/nonexistent")), {}, [], verdict_fn=v, retry_delay=0, sleep=lambda s: None)
+        self.assertEqual(calls[items[0]["url"]], 1)
+        self.assertEqual(calls[items[1]["url"]], 2)
+        self.assertEqual(calls[items[2]["url"]], 1)
+
+    def test_the_pause_before_the_second_pass_is_used(self):
+        slept = []
+        L.check_links(listings(80), None, L.load_state(pathlib.Path("/nonexistent")), {}, [],
+                      verdict_fn=lambda u: L.UNKNOWN, retry_delay=8, sleep=slept.append)
+        self.assertEqual(slept, [8])
 
 
 class DriftGuard(unittest.TestCase):

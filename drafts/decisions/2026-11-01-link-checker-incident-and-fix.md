@@ -19,6 +19,12 @@ Status: built, tested, merged after this record. Evidence labels: [Established] 
 4. **Tighter drift guard.** A drop of more than 15% (was 40%) stops the run and keeps the previous data. Normal refresh-to-refresh moves were 0.1% to 1.5% over the last six runs. To avoid freezing the board on a real, lasting drop, the hold ends after 3 runs in a row and the lower count is accepted. A source losing more than 20% (was 70%) is flagged in the quality report.
 5. The commit step now runs even when a run stops, so the hold counters are saved.
 
+## Follow-up the same day (production run and a second pass)
+- [Established] The first production run with the new checker (1 Nov 02:14 UTC) published 986 listings: 13 gone, 81 could not be checked, 46 of those kept on their older check time (the old checker would have deleted them), 35 new ones held. The failure rate was 9%, above the old 3 to 5%.
+- [Established] All 46 carried links were on `job-boards.greenhouse.io`, and 27 of 30 opened normally minutes later from another network. [Inference] That fits a burst of simultaneous requests being throttled; it is not proved.
+- Added: a gentle second pass (pause 8 seconds, 3 at a time) for links that could not be checked, and first-pass concurrency 16 instead of 24. [Established] On the same 1,001 real links from this network, concurrency 16 and 5 gave identical results (971 open, 15 unreachable) and the second pass recovered none, so these are firm blocks here (for example Carvana's 403) and the second pass is a precaution, not a proven cure.
+- Added: every link that cannot be checked now records why (`http-403`, `http-429`, `timeout`, `connection-error`) in `data/metrics.json` under `linkCheck.unknownReasons`. The next time the rate rises, the cause can be read, not guessed.
+
 ## Evidence the fix works
 - Incident replay (1,038 published, 229 failing): 1,038 stay published, whether the failures look like timeouts or like 404s. With the circuit breaker removed, 4 tests fail (checked on purpose).
 - Real postings: 120 random current listings checked with the new checker: 120 open, same as the old logic (the old logic and the new agree on healthy links).
