@@ -1,4 +1,4 @@
-# Quality report, 2026-11-01T21:58+00:00
+# Quality report, 2026-11-02T05:55+00:00
 
 - Published: **985**
 - Held back by a quality rule (not published): **7**
@@ -34,10 +34,10 @@
 
 ```
 count: 985
-bySource: {'Ashby': 334, 'Greenhouse': 520, 'Lever': 131}
+bySource: {'Greenhouse': 522, 'Ashby': 332, 'Lever': 131}
 pctEligibilityUnclear: 24.7
-pctRemoteUnclear: 8.8
+pctRemoteUnclear: 9.1
 pctWorldwide: 1.4
-pctEarlyCareer: 9.3
-pctSeniorPlus: 43.8
+pctEarlyCareer: 9.6
+pctSeniorPlus: 43.7
 ```
