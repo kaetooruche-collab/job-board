@@ -1,7 +1,7 @@
-# Quality report, 2026-11-02T05:55+00:00
+# Quality report, 2026-11-02T15:41+00:00
 
-- Published: **985**
-- Held back by a quality rule (not published): **7**
+- Published: **986**
+- Held back by a quality rule (not published): **6**
 - Warnings (published, but look): **5**
 
 ## Held back
@@ -15,9 +15,6 @@
 ### says-not-remote-but-published-as-remote (2)
 - Lead Product Manager, Growth at Monzo: e want to solve problems and change lives through Monzo ❤️  📍London/Hybrid | 💰 Salary range £120,000 - £140,000 + equity + Incentive A
 - Senior Product Manager, Web Growth at Monzo: e want to solve problems and change lives through Monzo ❤️  📍London/Hybrid | 💰 Salary range £100,000 - £125,000 + Incentive Awards tie
-
-### eligibility-label-unsupported (1)
-- Technical Program Associate or Manager  at GiveDirectly: label=['Cameroon', 'Canada', 'Colombia', 'Germany', 'Ghana', 'Kenya', 'Malawi', 'Mozambique', 'Netherlands', 'Nigeria', 'Poland', 'Portugal', 'Rwanda', 'South Africa', 'Spain', 'Turkey', 'Uganda', 'United Kingdom', 'United States'] but nothing in the location or evidence names them
 
 ## Warnings
 
@@ -33,11 +30,11 @@
 ## Shape of the feed
 
 ```
-count: 985
-bySource: {'Greenhouse': 522, 'Ashby': 332, 'Lever': 131}
+count: 986
+bySource: {'Greenhouse': 523, 'Lever': 131, 'Ashby': 332}
 pctEligibilityUnclear: 24.7
-pctRemoteUnclear: 9.1
+pctRemoteUnclear: 9.3
 pctWorldwide: 1.4
-pctEarlyCareer: 9.6
-pctSeniorPlus: 43.7
+pctEarlyCareer: 9.7
+pctSeniorPlus: 43.2
 ```
