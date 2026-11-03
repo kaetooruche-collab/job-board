@@ -36,24 +36,6 @@
   "source": "Greenhouse"
  },
  {
-  "title": "Lead Product Manager, Growth",
-  "company": "Monzo",
-  "url": "https://job-boards.greenhouse.io/monzo/jobs/8317753",
-  "location": "London",
-  "reason": "quality check: says-not-remote-but-published-as-remote",
-  "detail": "e want to solve problems and change lives through Monzo ❤️  📍London/Hybrid | 💰 Salary range £120,000 - £140,000 + equity + Incentive A",
-  "source": "Greenhouse"
- },
- {
-  "title": "Senior Product Manager, Web Growth",
-  "company": "Monzo",
-  "url": "https://job-boards.greenhouse.io/monzo/jobs/8312078",
-  "location": "London",
-  "reason": "quality check: says-not-remote-but-published-as-remote",
-  "detail": "e want to solve problems and change lives through Monzo ❤️  📍London/Hybrid | 💰 Salary range £100,000 - £125,000 + Incentive Awards tie",
-  "source": "Greenhouse"
- },
- {
   "title": "Senior Manager, Corporate FP&A",
   "company": "2U",
   "url": "https://job-boards.greenhouse.io/2u/jobs/8871017002",
@@ -463,9 +445,50 @@
   "source": "Greenhouse"
  },
  {
-  "title": "Senior Software Engineer, Backend (Capacity Modeling)",
+  "title": "Senior Sales Engineer",
   "company": "Affirm",
-  "url": "https://job-boards.greenhouse.io/affirm/jobs/8033589003",
+  "url": "https://job-boards.greenhouse.io/affirm/jobs/8016833003",
+  "location": "Remote US",
+  "reason": "contradictory remote/office information",
+  "scores": {
+   "remote": 8.0,
+   "office": 4.0
+  },
+  "evidence": [
+   {
+    "signal": "location field",
+    "text": "Remote US",
+    "effect": "remote"
+   },
+   {
+    "signal": "description",
+    "text": "Remote Poland",
+    "effect": "remote (weak)"
+   },
+   {
+    "signal": "description",
+    "text": "[REMOVE IF POSTING IS NOT REMOTE] LI-Remote",
+    "effect": "on_site"
+   },
+   {
+    "signal": "description",
+    "text": "Remote-first with flexibility built in",
+    "effect": "remote"
+   }
+  ],
+  "unresolved": [
+   "Mentions in-person onboarding or training; confirm how long and whether the ongoing role is remote.",
+   "The listing contradicts itself about remote versus office work; needs review.",
+   "Occasional office or in-person attendance is mentioned; confirm how often.",
+   "Applicants may need existing work authorisation; check the posting.",
+   "The location field lists Remote US, but the listing does not confirm the role is remote there."
+  ],
+  "source": "Greenhouse"
+ },
+ {
+  "title": "Senior Sales Engineer",
+  "company": "Affirm",
+  "url": "https://job-boards.greenhouse.io/affirm/jobs/8016835003",
   "location": "Remote Canada",
   "reason": "contradictory remote/office information",
   "scores": {
@@ -586,24 +609,24 @@
   "source": "Greenhouse"
  },
  {
-  "title": "Staff Machine Learning Engineer (Credit International ML)",
+  "title": "Senior Staff Software Engineer, Backend (Compute Platform)",
   "company": "Affirm",
-  "url": "https://job-boards.greenhouse.io/affirm/jobs/8045395003",
-  "location": "Remote Poland",
+  "url": "https://job-boards.greenhouse.io/affirm/jobs/8057950003",
+  "location": "Remote Canada",
   "reason": "contradictory remote/office information",
   "scores": {
-   "remote": 8.0,
+   "remote": 7.5,
    "office": 4.0
   },
   "evidence": [
    {
     "signal": "location field",
-    "text": "Remote Poland",
+    "text": "Remote Canada",
     "effect": "remote"
    },
    {
     "signal": "description",
-    "text": "Remote Poland",
+    "text": "Remote Canada",
     "effect": "remote (weak)"
    },
    {
@@ -622,7 +645,48 @@
    "The listing contradicts itself about remote versus office work; needs review.",
    "Occasional office or in-person attendance is mentioned; confirm how often.",
    "Applicants may need existing work authorisation; check the posting.",
-   "The location field lists Remote Poland, but the listing does not confirm the role is remote there."
+   "The location field lists Remote Canada, but the listing does not confirm the role is remote there."
+  ],
+  "source": "Greenhouse"
+ },
+ {
+  "title": "Senior Staff Software Engineer, Backend (Compute Platform)",
+  "company": "Affirm",
+  "url": "https://job-boards.greenhouse.io/affirm/jobs/8057948003",
+  "location": "Remote US",
+  "reason": "contradictory remote/office information",
+  "scores": {
+   "remote": 7.5,
+   "office": 4.0
+  },
+  "evidence": [
+   {
+    "signal": "location field",
+    "text": "Remote US",
+    "effect": "remote"
+   },
+   {
+    "signal": "description",
+    "text": "Remote Canada",
+    "effect": "remote (weak)"
+   },
+   {
+    "signal": "description",
+    "text": "[REMOVE IF POSTING IS NOT REMOTE] LI-Remote",
+    "effect": "on_site"
+   },
+   {
+    "signal": "description",
+    "text": "Remote-first with flexibility built in",
+    "effect": "remote"
+   }
+  ],
+  "unresolved": [
+   "Mentions in-person onboarding or training; confirm how long and whether the ongoing role is remote.",
+   "The listing contradicts itself about remote versus office work; needs review.",
+   "Occasional office or in-person attendance is mentioned; confirm how often.",
+   "Applicants may need existing work authorisation; check the posting.",
+   "The location field lists Remote US, but the listing does not confirm the role is remote there."
   ],
   "source": "Greenhouse"
  },
@@ -743,6 +807,38 @@
   "unresolved": [
    "The listing contradicts itself about remote versus office work; needs review.",
    "The location field lists Remote, USA, but the listing does not confirm the role is remote there."
+  ],
+  "source": "Greenhouse"
+ },
+ {
+  "title": "Business Intelligence Analyst (Contractor)",
+  "company": "Doximity",
+  "url": "https://job-boards.greenhouse.io/doximity/jobs/8262005",
+  "location": "San Francisco, CA or Remote (U.S.)",
+  "reason": "contradictory remote/office information",
+  "scores": {
+   "remote": 3.5,
+   "office": 2.0
+  },
+  "evidence": [
+   {
+    "signal": "location field",
+    "text": "San Francisco, CA or Remote (U.S.)",
+    "effect": "remote"
+   },
+   {
+    "signal": "description (mixed office and remote wording)",
+    "text": "Location : This role is Remote in the U.S., with the option to work onsite from our San Francisco, CA headquarters.",
+    "effect": "remote (weak)"
+   },
+   {
+    "signal": "description",
+    "text": "Location : This role is Remote in the U.S., with the option to work onsite from our San Francisco, CA headquarters.",
+    "effect": "on_site"
+   }
+  ],
+  "unresolved": [
+   "The listing contradicts itself about remote versus office work; needs review."
   ],
   "source": "Greenhouse"
  },
@@ -943,34 +1039,40 @@
   "source": "Greenhouse"
  },
  {
-  "title": "Business Intelligence Analyst (Contractor)",
-  "company": "Doximity",
-  "url": "https://job-boards.greenhouse.io/doximity/jobs/8262005",
-  "location": "San Francisco, CA or Remote (U.S.)",
+  "title": "Staff Credit Risk Analyst",
+  "company": "EarnIn",
+  "url": "https://job-boards.greenhouse.io/earnin/jobs/8248342",
+  "location": "Remote, US",
   "reason": "contradictory remote/office information",
   "scores": {
-   "remote": 3.5,
+   "remote": 4.0,
    "office": 2.0
   },
   "evidence": [
    {
     "signal": "location field",
-    "text": "San Francisco, CA or Remote (U.S.)",
+    "text": "Remote, US",
     "effect": "remote"
    },
    {
     "signal": "description (mixed office and remote wording)",
-    "text": "Location : This role is Remote in the U.S., with the option to work onsite from our San Francisco, CA headquarters.",
+    "text": "This is a remote role in the US, however those local to Mountain View (headquarters) will require in-office work 2 days a week.",
     "effect": "remote (weak)"
    },
    {
     "signal": "description",
-    "text": "Location : This role is Remote in the U.S., with the option to work onsite from our San Francisco, CA headquarters.",
+    "text": "This is a remote role in the US, however those local to Mountain View (headquarters) will require in-office work 2 days a week.",
     "effect": "on_site"
+   },
+   {
+    "signal": "description",
+    "text": "#LI-Remote",
+    "effect": "remote (weak)"
    }
   ],
   "unresolved": [
-   "The listing contradicts itself about remote versus office work; needs review."
+   "The listing contradicts itself about remote versus office work; needs review.",
+   "The location field lists Remote, US, but the listing does not confirm the role is remote there."
   ],
   "source": "Greenhouse"
  },
@@ -1036,105 +1138,6 @@
    {
     "signal": "description",
     "text": "#LI-Onsite",
-    "effect": "on_site"
-   }
-  ],
-  "unresolved": [
-   "The listing contradicts itself about remote versus office work; needs review.",
-   "The location field names a place but does not say the role is remote there; confirm whether applicants elsewhere are accepted."
-  ],
-  "source": "Greenhouse"
- },
- {
-  "title": "Customer Support Specialist II",
-  "company": "Coinbase",
-  "url": "https://job-boards.greenhouse.io/coinbase/jobs/8334152",
-  "location": "Hyderabad, India",
-  "reason": "contradictory remote/office information",
-  "scores": {
-   "remote": 2.0,
-   "office": 2.0
-  },
-  "evidence": [
-   {
-    "signal": "description",
-    "text": "Coinbase is a remote-first, but not remote-only company.",
-    "effect": "remote"
-   },
-   {
-    "signal": "description (occasional attendance)",
-    "text": "Expect to get together quarterly for intense in-person working sessions called “surges.” learn more about working at Coinbase .",
-    "effect": "occasional"
-   },
-   {
-    "signal": "description",
-    "text": "This role requires full-time, in-office presence, five days a week.",
-    "effect": "on_site"
-   }
-  ],
-  "unresolved": [
-   "The listing contradicts itself about remote versus office work; needs review.",
-   "The location field names a place but does not say the role is remote there; confirm whether applicants elsewhere are accepted."
-  ],
-  "source": "Greenhouse"
- },
- {
-  "title": "Customer Support Specialist II",
-  "company": "Coinbase",
-  "url": "https://job-boards.greenhouse.io/coinbase/jobs/8333981",
-  "location": "Hyderabad, India",
-  "reason": "contradictory remote/office information",
-  "scores": {
-   "remote": 2.0,
-   "office": 2.0
-  },
-  "evidence": [
-   {
-    "signal": "description",
-    "text": "Coinbase is a remote-first, but not remote-only company.",
-    "effect": "remote"
-   },
-   {
-    "signal": "description (occasional attendance)",
-    "text": "Expect to get together quarterly for intense in-person working sessions called “surges.” learn more about working at Coinbase .",
-    "effect": "occasional"
-   },
-   {
-    "signal": "description",
-    "text": "This role requires full-time, in-office presence, five days a week.",
-    "effect": "on_site"
-   }
-  ],
-  "unresolved": [
-   "The listing contradicts itself about remote versus office work; needs review.",
-   "The location field names a place but does not say the role is remote there; confirm whether applicants elsewhere are accepted."
-  ],
-  "source": "Greenhouse"
- },
- {
-  "title": "Customer Support Specialist II",
-  "company": "Coinbase",
-  "url": "https://job-boards.greenhouse.io/coinbase/jobs/8333273",
-  "location": "Hyderabad, India",
-  "reason": "contradictory remote/office information",
-  "scores": {
-   "remote": 2.0,
-   "office": 2.0
-  },
-  "evidence": [
-   {
-    "signal": "description",
-    "text": "Coinbase is a remote-first, but not remote-only company.",
-    "effect": "remote"
-   },
-   {
-    "signal": "description (occasional attendance)",
-    "text": "Expect to get together quarterly for intense in-person working sessions called “surges.” learn more about working at Coinbase .",
-    "effect": "occasional"
-   },
-   {
-    "signal": "description",
-    "text": "This role requires full-time, in-office presence, five days a week.",
     "effect": "on_site"
    }
   ],
@@ -1234,72 +1237,6 @@
    {
     "signal": "description",
     "text": "This role requires full-time, in-office presence, five days a week.",
-    "effect": "on_site"
-   }
-  ],
-  "unresolved": [
-   "The listing contradicts itself about remote versus office work; needs review.",
-   "The location field names a place but does not say the role is remote there; confirm whether applicants elsewhere are accepted."
-  ],
-  "source": "Greenhouse"
- },
- {
-  "title": "Payments Risk Analyst II",
-  "company": "Coinbase",
-  "url": "https://job-boards.greenhouse.io/coinbase/jobs/8334164",
-  "location": "Hyderabad, India",
-  "reason": "contradictory remote/office information",
-  "scores": {
-   "remote": 2.0,
-   "office": 2.0
-  },
-  "evidence": [
-   {
-    "signal": "description",
-    "text": "Coinbase is a remote-first, but not remote-only company.",
-    "effect": "remote"
-   },
-   {
-    "signal": "description (occasional attendance)",
-    "text": "Expect to get together quarterly for intense in-person working sessions called “surges.” learn more about working at Coinbase .",
-    "effect": "occasional"
-   },
-   {
-    "signal": "description",
-    "text": "Demonstrated ability to work collaboratively in a fast-paced, in-office environment.",
-    "effect": "on_site"
-   }
-  ],
-  "unresolved": [
-   "The listing contradicts itself about remote versus office work; needs review.",
-   "The location field names a place but does not say the role is remote there; confirm whether applicants elsewhere are accepted."
-  ],
-  "source": "Greenhouse"
- },
- {
-  "title": "Payments Risk Analyst II",
-  "company": "Coinbase",
-  "url": "https://job-boards.greenhouse.io/coinbase/jobs/8334161",
-  "location": "Hyderabad, India",
-  "reason": "contradictory remote/office information",
-  "scores": {
-   "remote": 2.0,
-   "office": 2.0
-  },
-  "evidence": [
-   {
-    "signal": "description",
-    "text": "Coinbase is a remote-first, but not remote-only company.",
-    "effect": "remote"
-   },
-   {
-    "signal": "description (occasional attendance)",
-    "text": "Expect to get together quarterly for intense in-person working sessions called “surges.” learn more about working at Coinbase .",
-    "effect": "occasional"
-   },
-   {
-    "signal": "description",
-    "text": "Demonstrated ability to work collaboratively in a fast-paced, in-office environment.",
     "effect": "on_site"
    }
   ],
@@ -1423,44 +1360,6 @@
   "source": "Greenhouse"
  },
  {
-  "title": "Staff Credit Risk Analyst",
-  "company": "EarnIn",
-  "url": "https://job-boards.greenhouse.io/earnin/jobs/8248342",
-  "location": "Remote, US",
-  "reason": "contradictory remote/office information",
-  "scores": {
-   "remote": 4.0,
-   "office": 2.0
-  },
-  "evidence": [
-   {
-    "signal": "location field",
-    "text": "Remote, US",
-    "effect": "remote"
-   },
-   {
-    "signal": "description (mixed office and remote wording)",
-    "text": "This is a remote role in the US, however those local to Mountain View (headquarters) will require in-office work 2 days a week.",
-    "effect": "remote (weak)"
-   },
-   {
-    "signal": "description",
-    "text": "This is a remote role in the US, however those local to Mountain View (headquarters) will require in-office work 2 days a week.",
-    "effect": "on_site"
-   },
-   {
-    "signal": "description",
-    "text": "#LI-Remote",
-    "effect": "remote (weak)"
-   }
-  ],
-  "unresolved": [
-   "The listing contradicts itself about remote versus office work; needs review.",
-   "The location field lists Remote, US, but the listing does not confirm the role is remote there."
-  ],
-  "source": "Greenhouse"
- },
- {
   "title": "Senior Associate, Fraud Operations",
   "company": "Gemini",
   "url": "https://boards.greenhouse.io/embed/job_app?for=gemini&token=8328881&gh_jid=8328881",
@@ -1494,6 +1393,88 @@
   ],
   "unresolved": [
    "The listing contradicts itself about remote versus office work; needs review."
+  ],
+  "source": "Greenhouse"
+ },
+ {
+  "title": "Contract Technical Recruiter",
+  "company": "Invisible Technologies",
+  "url": "https://job-boards.eu.greenhouse.io/invisibletech/jobs/4997999101",
+  "location": "United States - Remote",
+  "reason": "contradictory remote/office information",
+  "scores": {
+   "remote": 3.0,
+   "office": 2.8
+  },
+  "evidence": [
+   {
+    "signal": "location field",
+    "text": "United States - Remote",
+    "effect": "remote"
+   },
+   {
+    "signal": "description (company-level wording, not counted)",
+    "text": "While some roles may offer remote flexibility, most positions involve in-office collaboration and are tied to specific locations.",
+    "effect": "unclear"
+   },
+   {
+    "signal": "description",
+    "text": "While some roles may offer remote flexibility, most positions involve in-office collaboration and are tied to specific locations.",
+    "effect": "on_site"
+   },
+   {
+    "signal": "description (company-level wording)",
+    "text": "Any location-based requirements or hybrid expectations will be communicated by our Talent Acquisition team during the recruiting process.",
+    "effect": "unclear"
+   }
+  ],
+  "unresolved": [
+   "The listing mentions hybrid arrangements in general terms; confirm what applies to this role.",
+   "The listing contradicts itself about remote versus office work; needs review.",
+   "The listing only mentions remote work in general company terms; it does not confirm this role.",
+   "The location field and the description disagree about where applicants can be; check the employer's wording.",
+   "Eligibility wording conflicts inside the listing."
+  ],
+  "source": "Greenhouse"
+ },
+ {
+  "title": "Staffing Associate (Contract)",
+  "company": "Invisible Technologies",
+  "url": "https://job-boards.eu.greenhouse.io/invisibletech/jobs/5010247101",
+  "location": "United States - Remote",
+  "reason": "contradictory remote/office information",
+  "scores": {
+   "remote": 3.0,
+   "office": 2.8
+  },
+  "evidence": [
+   {
+    "signal": "location field",
+    "text": "United States - Remote",
+    "effect": "remote"
+   },
+   {
+    "signal": "description (company-level wording, not counted)",
+    "text": "While some roles may offer remote flexibility, most positions involve in-office collaboration and are tied to specific locations.",
+    "effect": "unclear"
+   },
+   {
+    "signal": "description",
+    "text": "While some roles may offer remote flexibility, most positions involve in-office collaboration and are tied to specific locations.",
+    "effect": "on_site"
+   },
+   {
+    "signal": "description (company-level wording)",
+    "text": "Any location-based requirements or hybrid expectations will be communicated by our Talent Acquisition team during the recruiting process.",
+    "effect": "unclear"
+   }
+  ],
+  "unresolved": [
+   "The listing mentions hybrid arrangements in general terms; confirm what applies to this role.",
+   "The listing contradicts itself about remote versus office work; needs review.",
+   "The listing only mentions remote work in general company terms; it does not confirm this role.",
+   "The location field and the description disagree about where applicants can be; check the employer's wording.",
+   "Eligibility wording conflicts inside the listing."
   ],
   "source": "Greenhouse"
  },
@@ -1701,88 +1682,6 @@
   "source": "Greenhouse"
  },
  {
-  "title": "Contract Technical Recruiter",
-  "company": "Invisible Technologies",
-  "url": "https://job-boards.eu.greenhouse.io/invisibletech/jobs/4997999101",
-  "location": "United States - Remote",
-  "reason": "contradictory remote/office information",
-  "scores": {
-   "remote": 3.0,
-   "office": 2.8
-  },
-  "evidence": [
-   {
-    "signal": "location field",
-    "text": "United States - Remote",
-    "effect": "remote"
-   },
-   {
-    "signal": "description (company-level wording, not counted)",
-    "text": "While some roles may offer remote flexibility, most positions involve in-office collaboration and are tied to specific locations.",
-    "effect": "unclear"
-   },
-   {
-    "signal": "description",
-    "text": "While some roles may offer remote flexibility, most positions involve in-office collaboration and are tied to specific locations.",
-    "effect": "on_site"
-   },
-   {
-    "signal": "description (company-level wording)",
-    "text": "Any location-based requirements or hybrid expectations will be communicated by our Talent Acquisition team during the recruiting process.",
-    "effect": "unclear"
-   }
-  ],
-  "unresolved": [
-   "The listing mentions hybrid arrangements in general terms; confirm what applies to this role.",
-   "The listing contradicts itself about remote versus office work; needs review.",
-   "The listing only mentions remote work in general company terms; it does not confirm this role.",
-   "The location field and the description disagree about where applicants can be; check the employer's wording.",
-   "Eligibility wording conflicts inside the listing."
-  ],
-  "source": "Greenhouse"
- },
- {
-  "title": "Staffing Associate (Contract)",
-  "company": "Invisible Technologies",
-  "url": "https://job-boards.eu.greenhouse.io/invisibletech/jobs/5010247101",
-  "location": "United States - Remote",
-  "reason": "contradictory remote/office information",
-  "scores": {
-   "remote": 3.0,
-   "office": 2.8
-  },
-  "evidence": [
-   {
-    "signal": "location field",
-    "text": "United States - Remote",
-    "effect": "remote"
-   },
-   {
-    "signal": "description (company-level wording, not counted)",
-    "text": "While some roles may offer remote flexibility, most positions involve in-office collaboration and are tied to specific locations.",
-    "effect": "unclear"
-   },
-   {
-    "signal": "description",
-    "text": "While some roles may offer remote flexibility, most positions involve in-office collaboration and are tied to specific locations.",
-    "effect": "on_site"
-   },
-   {
-    "signal": "description (company-level wording)",
-    "text": "Any location-based requirements or hybrid expectations will be communicated by our Talent Acquisition team during the recruiting process.",
-    "effect": "unclear"
-   }
-  ],
-  "unresolved": [
-   "The listing mentions hybrid arrangements in general terms; confirm what applies to this role.",
-   "The listing contradicts itself about remote versus office work; needs review.",
-   "The listing only mentions remote work in general company terms; it does not confirm this role.",
-   "The location field and the description disagree about where applicants can be; check the employer's wording.",
-   "Eligibility wording conflicts inside the listing."
-  ],
-  "source": "Greenhouse"
- },
- {
   "title": "Senior Manager, Social & Integrated Campaigns",
   "company": "Later",
   "url": "https://job-boards.greenhouse.io/later/jobs/8863925002",
@@ -1915,6 +1814,138 @@
   "unresolved": [
    "The listing contradicts itself about remote versus office work; needs review.",
    "The location field names a place but does not say the role is remote there; confirm whether applicants elsewhere are accepted."
+  ],
+  "source": "Greenhouse"
+ },
+ {
+  "title": "Director of Marketing",
+  "company": "Parsley Health",
+  "url": "https://job-boards.greenhouse.io/parsleyhealth/jobs/8160104003",
+  "location": "New York, New York, United States; Remote",
+  "reason": "contradictory remote/office information",
+  "scores": {
+   "remote": 3.5,
+   "office": 3.0
+  },
+  "evidence": [
+   {
+    "signal": "location field",
+    "text": "New York, New York, United States; Remote",
+    "effect": "remote"
+   },
+   {
+    "signal": "description",
+    "text": "Parsley Health · Marketing · Remote US, with a preference for Eastern or Central time zones and NYC metro · Full-time",
+    "effect": "remote (weak)"
+   },
+   {
+    "signal": "description",
+    "text": "Hybrid opportunity with remote work and time on site at our NYC HQ",
+    "effect": "hybrid"
+   }
+  ],
+  "unresolved": [
+   "The listing contradicts itself about remote versus office work; needs review.",
+   "The location field lists New York, New York, United States; Remote, but the listing does not confirm the role is remote there."
+  ],
+  "source": "Greenhouse"
+ },
+ {
+  "title": "Forward Deployed Engineer (SDEV)",
+  "company": "PagerDuty",
+  "url": "https://job-boards.greenhouse.io/pagerduty/jobs/6216870004",
+  "location": "Remote (USA - New York City, NY)",
+  "reason": "contradictory remote/office information",
+  "scores": {
+   "remote": 3.8,
+   "office": 3.0
+  },
+  "evidence": [
+   {
+    "signal": "location field",
+    "text": "Remote (USA - New York City, NY)",
+    "effect": "remote"
+   },
+   {
+    "signal": "description",
+    "text": "PagerDuty operates a hybrid work model with offices in 8 major cities: Atlanta, Lisbon, London, San Francisco, Santiago, Sydney, Tokyo, and Toronto.",
+    "effect": "hybrid"
+   },
+   {
+    "signal": "description",
+    "text": "Flexible work arrangements",
+    "effect": "remote (weak)"
+   }
+  ],
+  "unresolved": [
+   "The listing contradicts itself about remote versus office work; needs review.",
+   "The location field lists Remote (USA - New York City, NY), but the listing does not confirm the role is remote there."
+  ],
+  "source": "Greenhouse"
+ },
+ {
+  "title": "Principal CS Strategy & Operations Manager",
+  "company": "PagerDuty",
+  "url": "https://job-boards.greenhouse.io/pagerduty/jobs/6220984004",
+  "location": "San Francisco",
+  "reason": "contradictory remote/office information",
+  "scores": {
+   "remote": 2.3,
+   "office": 3.0
+  },
+  "evidence": [
+   {
+    "signal": "description",
+    "text": "Comfortable operating with ambiguity in a fast-moving, distributed organization.",
+    "effect": "remote"
+   },
+   {
+    "signal": "description",
+    "text": "PagerDuty operates a hybrid work model with offices in 8 major cities: Atlanta, Lisbon, London, San Francisco, Santiago, Sydney, Tokyo, and Toronto.",
+    "effect": "hybrid"
+   },
+   {
+    "signal": "description",
+    "text": "Flexible work arrangements",
+    "effect": "remote (weak)"
+   }
+  ],
+  "unresolved": [
+   "The listing contradicts itself about remote versus office work; needs review.",
+   "The location field names a place but does not say the role is remote there; confirm whether applicants elsewhere are accepted."
+  ],
+  "source": "Greenhouse"
+ },
+ {
+  "title": "Strategic Alliances Senior Manager",
+  "company": "PagerDuty",
+  "url": "https://job-boards.greenhouse.io/pagerduty/jobs/6209023004",
+  "location": "Remote (USA)",
+  "reason": "contradictory remote/office information",
+  "scores": {
+   "remote": 3.8,
+   "office": 3.0
+  },
+  "evidence": [
+   {
+    "signal": "location field",
+    "text": "Remote (USA)",
+    "effect": "remote"
+   },
+   {
+    "signal": "description",
+    "text": "PagerDuty operates a hybrid work model with offices in 8 major cities: Atlanta, Lisbon, London, San Francisco, Santiago, Sydney, Tokyo, and Toronto.",
+    "effect": "hybrid"
+   },
+   {
+    "signal": "description",
+    "text": "Flexible work arrangements",
+    "effect": "remote (weak)"
+   }
+  ],
+  "unresolved": [
+   "The listing contradicts itself about remote versus office work; needs review.",
+   "The location field lists Remote (USA), but the listing does not confirm the role is remote there."
   ],
   "source": "Greenhouse"
  },
@@ -2136,6 +2167,108 @@
   "unresolved": [
    "The listing contradicts itself about remote versus office work; needs review.",
    "Occasional office or in-person attendance is mentioned; confirm how often."
+  ],
+  "source": "Greenhouse"
+ },
+ {
+  "title": "Sr Phlebotomist - Kansas City, MO",
+  "company": "Natera",
+  "url": "https://job-boards.greenhouse.io/natera/jobs/6216515004",
+  "location": "US Remote",
+  "reason": "contradictory remote/office information",
+  "scores": {
+   "remote": 3.0,
+   "office": 3.0
+  },
+  "evidence": [
+   {
+    "signal": "location field",
+    "text": "US Remote",
+    "effect": "remote"
+   },
+   {
+    "signal": "description",
+    "text": "***This is an onsite position in Kansas City, MO****",
+    "effect": "on_site"
+   },
+   {
+    "signal": "description",
+    "text": "Other benefits include pregnancy and baby bonding leave, 401k benefits, commuter benefits and much more.",
+    "effect": "on_site"
+   }
+  ],
+  "unresolved": [
+   "The listing contradicts itself about remote versus office work; needs review.",
+   "The location field and the description disagree about where applicants can be; check the employer's wording.",
+   "Eligibility wording conflicts inside the listing."
+  ],
+  "source": "Greenhouse"
+ },
+ {
+  "title": "Sr Phlebotomist - Washington, DC",
+  "company": "Natera",
+  "url": "https://job-boards.greenhouse.io/natera/jobs/6236350004",
+  "location": "US Remote",
+  "reason": "contradictory remote/office information",
+  "scores": {
+   "remote": 3.0,
+   "office": 4.0
+  },
+  "evidence": [
+   {
+    "signal": "location field",
+    "text": "US Remote",
+    "effect": "remote"
+   },
+   {
+    "signal": "description",
+    "text": "This is not a remote position.",
+    "effect": "on_site"
+   },
+   {
+    "signal": "description",
+    "text": "Other benefits include pregnancy and baby bonding leave, 401k benefits, commuter benefits and much more.",
+    "effect": "on_site"
+   }
+  ],
+  "unresolved": [
+   "The listing contradicts itself about remote versus office work; needs review.",
+   "The location field and the description disagree about where applicants can be; check the employer's wording.",
+   "Eligibility wording conflicts inside the listing."
+  ],
+  "source": "Greenhouse"
+ },
+ {
+  "title": "Supervisor, MLS Data Review",
+  "company": "Natera",
+  "url": "https://job-boards.greenhouse.io/natera/jobs/6203768004",
+  "location": "US Remote",
+  "reason": "contradictory remote/office information",
+  "scores": {
+   "remote": 3.0,
+   "office": 3.0
+  },
+  "evidence": [
+   {
+    "signal": "location field",
+    "text": "US Remote",
+    "effect": "remote"
+   },
+   {
+    "signal": "description",
+    "text": "Duties typically performed in office setting",
+    "effect": "on_site"
+   },
+   {
+    "signal": "description",
+    "text": "Other benefits include pregnancy and baby bonding leave, 401k benefits, commuter benefits and much more.",
+    "effect": "on_site"
+   }
+  ],
+  "unresolved": [
+   "The listing contradicts itself about remote versus office work; needs review.",
+   "The location field and the description disagree about where applicants can be; check the employer's wording.",
+   "Eligibility wording conflicts inside the listing."
   ],
   "source": "Greenhouse"
  },
@@ -2510,240 +2643,6 @@
   "source": "Greenhouse"
  },
  {
-  "title": "Forward Deployed Engineer (SDEV)",
-  "company": "PagerDuty",
-  "url": "https://job-boards.greenhouse.io/pagerduty/jobs/6216870004",
-  "location": "Remote (USA - New York City, NY)",
-  "reason": "contradictory remote/office information",
-  "scores": {
-   "remote": 3.8,
-   "office": 3.0
-  },
-  "evidence": [
-   {
-    "signal": "location field",
-    "text": "Remote (USA - New York City, NY)",
-    "effect": "remote"
-   },
-   {
-    "signal": "description",
-    "text": "PagerDuty operates a hybrid work model with offices in 8 major cities: Atlanta, Lisbon, London, San Francisco, Santiago, Sydney, Tokyo, and Toronto.",
-    "effect": "hybrid"
-   },
-   {
-    "signal": "description",
-    "text": "Flexible work arrangements",
-    "effect": "remote (weak)"
-   }
-  ],
-  "unresolved": [
-   "The listing contradicts itself about remote versus office work; needs review.",
-   "The location field lists Remote (USA - New York City, NY), but the listing does not confirm the role is remote there."
-  ],
-  "source": "Greenhouse"
- },
- {
-  "title": "Principal CS Strategy & Operations Manager",
-  "company": "PagerDuty",
-  "url": "https://job-boards.greenhouse.io/pagerduty/jobs/6220984004",
-  "location": "San Francisco",
-  "reason": "contradictory remote/office information",
-  "scores": {
-   "remote": 2.3,
-   "office": 3.0
-  },
-  "evidence": [
-   {
-    "signal": "description",
-    "text": "Comfortable operating with ambiguity in a fast-moving, distributed organization.",
-    "effect": "remote"
-   },
-   {
-    "signal": "description",
-    "text": "PagerDuty operates a hybrid work model with offices in 8 major cities: Atlanta, Lisbon, London, San Francisco, Santiago, Sydney, Tokyo, and Toronto.",
-    "effect": "hybrid"
-   },
-   {
-    "signal": "description",
-    "text": "Flexible work arrangements",
-    "effect": "remote (weak)"
-   }
-  ],
-  "unresolved": [
-   "The listing contradicts itself about remote versus office work; needs review.",
-   "The location field names a place but does not say the role is remote there; confirm whether applicants elsewhere are accepted."
-  ],
-  "source": "Greenhouse"
- },
- {
-  "title": "Strategic Alliances Senior Manager",
-  "company": "PagerDuty",
-  "url": "https://job-boards.greenhouse.io/pagerduty/jobs/6209023004",
-  "location": "Remote (USA)",
-  "reason": "contradictory remote/office information",
-  "scores": {
-   "remote": 3.8,
-   "office": 3.0
-  },
-  "evidence": [
-   {
-    "signal": "location field",
-    "text": "Remote (USA)",
-    "effect": "remote"
-   },
-   {
-    "signal": "description",
-    "text": "PagerDuty operates a hybrid work model with offices in 8 major cities: Atlanta, Lisbon, London, San Francisco, Santiago, Sydney, Tokyo, and Toronto.",
-    "effect": "hybrid"
-   },
-   {
-    "signal": "description",
-    "text": "Flexible work arrangements",
-    "effect": "remote (weak)"
-   }
-  ],
-  "unresolved": [
-   "The listing contradicts itself about remote versus office work; needs review.",
-   "The location field lists Remote (USA), but the listing does not confirm the role is remote there."
-  ],
-  "source": "Greenhouse"
- },
- {
-  "title": "Director of Marketing",
-  "company": "Parsley Health",
-  "url": "https://job-boards.greenhouse.io/parsleyhealth/jobs/8160104003",
-  "location": "New York, New York, United States; Remote",
-  "reason": "contradictory remote/office information",
-  "scores": {
-   "remote": 3.5,
-   "office": 3.0
-  },
-  "evidence": [
-   {
-    "signal": "location field",
-    "text": "New York, New York, United States; Remote",
-    "effect": "remote"
-   },
-   {
-    "signal": "description",
-    "text": "Parsley Health · Marketing · Remote US, with a preference for Eastern or Central time zones and NYC metro · Full-time",
-    "effect": "remote (weak)"
-   },
-   {
-    "signal": "description",
-    "text": "Hybrid opportunity with remote work and time on site at our NYC HQ",
-    "effect": "hybrid"
-   }
-  ],
-  "unresolved": [
-   "The listing contradicts itself about remote versus office work; needs review.",
-   "The location field lists New York, New York, United States; Remote, but the listing does not confirm the role is remote there."
-  ],
-  "source": "Greenhouse"
- },
- {
-  "title": "Sr Phlebotomist - Kansas City, MO",
-  "company": "Natera",
-  "url": "https://job-boards.greenhouse.io/natera/jobs/6216515004",
-  "location": "US Remote",
-  "reason": "contradictory remote/office information",
-  "scores": {
-   "remote": 3.0,
-   "office": 3.0
-  },
-  "evidence": [
-   {
-    "signal": "location field",
-    "text": "US Remote",
-    "effect": "remote"
-   },
-   {
-    "signal": "description",
-    "text": "***This is an onsite position in Kansas City, MO****",
-    "effect": "on_site"
-   },
-   {
-    "signal": "description",
-    "text": "Other benefits include pregnancy and baby bonding leave, 401k benefits, commuter benefits and much more.",
-    "effect": "on_site"
-   }
-  ],
-  "unresolved": [
-   "The listing contradicts itself about remote versus office work; needs review.",
-   "The location field and the description disagree about where applicants can be; check the employer's wording.",
-   "Eligibility wording conflicts inside the listing."
-  ],
-  "source": "Greenhouse"
- },
- {
-  "title": "Sr Phlebotomist - Washington, DC",
-  "company": "Natera",
-  "url": "https://job-boards.greenhouse.io/natera/jobs/6236350004",
-  "location": "US Remote",
-  "reason": "contradictory remote/office information",
-  "scores": {
-   "remote": 3.0,
-   "office": 4.0
-  },
-  "evidence": [
-   {
-    "signal": "location field",
-    "text": "US Remote",
-    "effect": "remote"
-   },
-   {
-    "signal": "description",
-    "text": "This is not a remote position.",
-    "effect": "on_site"
-   },
-   {
-    "signal": "description",
-    "text": "Other benefits include pregnancy and baby bonding leave, 401k benefits, commuter benefits and much more.",
-    "effect": "on_site"
-   }
-  ],
-  "unresolved": [
-   "The listing contradicts itself about remote versus office work; needs review.",
-   "The location field and the description disagree about where applicants can be; check the employer's wording.",
-   "Eligibility wording conflicts inside the listing."
-  ],
-  "source": "Greenhouse"
- },
- {
-  "title": "Supervisor, MLS Data Review",
-  "company": "Natera",
-  "url": "https://job-boards.greenhouse.io/natera/jobs/6203768004",
-  "location": "US Remote",
-  "reason": "contradictory remote/office information",
-  "scores": {
-   "remote": 3.0,
-   "office": 3.0
-  },
-  "evidence": [
-   {
-    "signal": "location field",
-    "text": "US Remote",
-    "effect": "remote"
-   },
-   {
-    "signal": "description",
-    "text": "Duties typically performed in office setting",
-    "effect": "on_site"
-   },
-   {
-    "signal": "description",
-    "text": "Other benefits include pregnancy and baby bonding leave, 401k benefits, commuter benefits and much more.",
-    "effect": "on_site"
-   }
-  ],
-  "unresolved": [
-   "The listing contradicts itself about remote versus office work; needs review.",
-   "The location field and the description disagree about where applicants can be; check the employer's wording.",
-   "Eligibility wording conflicts inside the listing."
-  ],
-  "source": "Greenhouse"
- },
- {
   "title": "Enterprise Account Executive - Financial Services, New York/Northeast",
   "company": "Qualtrics",
   "url": "https://job-boards.greenhouse.io/qualtrics/jobs/8247188",
@@ -3106,6 +3005,185 @@
   ],
   "unresolved": [
    "The listing contradicts itself about remote versus office work; needs review."
+  ],
+  "source": "Greenhouse"
+ },
+ {
+  "title": "Account Executive, Enterprise",
+  "company": "Sprout Social",
+  "url": "https://job-boards.greenhouse.io/sproutsocial/jobs/8335144",
+  "location": "Remote US",
+  "reason": "contradictory remote/office information",
+  "scores": {
+   "remote": 4.5,
+   "office": 3.0
+  },
+  "evidence": [
+   {
+    "signal": "location field",
+    "text": "Remote US",
+    "effect": "remote"
+   },
+   {
+    "signal": "description (mixed office and remote wording)",
+    "text": "Work From Home Support: A one-time $550 USD stipend to set up your home office, plus a monthly $50 USD stipend for internet.",
+    "effect": "remote (weak)"
+   },
+   {
+    "signal": "description",
+    "text": "Additional Financial Perks: Access to pre-tax commuter benefits, subsidized child/eldercare (Care.com), discounted pet insurance (Figo), and no-cost personalized financi…",
+    "effect": "on_site"
+   },
+   {
+    "signal": "description",
+    "text": "Sprout maintains a remote workforce in many places in the United States.",
+    "effect": "remote (weak)"
+   }
+  ],
+  "unresolved": [
+   "The listing contradicts itself about remote versus office work; needs review.",
+   "The location field lists Remote US, but the listing does not confirm the role is remote there."
+  ],
+  "source": "Greenhouse"
+ },
+ {
+  "title": "Bilingual Strategic Services Consultant",
+  "company": "Sprout Social",
+  "url": "https://job-boards.greenhouse.io/sproutsocial/jobs/8265765",
+  "location": "Remote US",
+  "reason": "contradictory remote/office information",
+  "scores": {
+   "remote": 4.5,
+   "office": 3.0
+  },
+  "evidence": [
+   {
+    "signal": "location field",
+    "text": "Remote US",
+    "effect": "remote"
+   },
+   {
+    "signal": "description (mixed office and remote wording)",
+    "text": "Work From Home Support: A one-time $550 USD stipend to set up your home office, plus a monthly $50 USD stipend for internet.",
+    "effect": "remote (weak)"
+   },
+   {
+    "signal": "description",
+    "text": "Additional Financial Perks: Access to pre-tax commuter benefits, subsidized child/eldercare (Care.com), discounted pet insurance (Figo), and no-cost personalized financi…",
+    "effect": "on_site"
+   },
+   {
+    "signal": "description",
+    "text": "Sprout maintains a remote workforce in many places in the United States.",
+    "effect": "remote (weak)"
+   }
+  ],
+  "unresolved": [
+   "The listing contradicts itself about remote versus office work; needs review.",
+   "The location field lists Remote US, but the listing does not confirm the role is remote there."
+  ],
+  "source": "Greenhouse"
+ },
+ {
+  "title": "Director, Enterprise Sales",
+  "company": "Sprout Social",
+  "url": "https://job-boards.greenhouse.io/sproutsocial/jobs/8204919",
+  "location": "Remote US",
+  "reason": "contradictory remote/office information",
+  "scores": {
+   "remote": 4.0,
+   "office": 2.0
+  },
+  "evidence": [
+   {
+    "signal": "location field",
+    "text": "Remote US",
+    "effect": "remote"
+   },
+   {
+    "signal": "description",
+    "text": "Sprout maintains a remote workforce in many places in the United States.",
+    "effect": "remote (weak)"
+   },
+   {
+    "signal": "description",
+    "text": "If your position requires a physical presence in a Sprout office, it will be evident in the job listing and your offer letter.",
+    "effect": "on_site"
+   }
+  ],
+  "unresolved": [
+   "The listing contradicts itself about remote versus office work; needs review."
+  ],
+  "source": "Greenhouse"
+ },
+ {
+  "title": "Director, Enterprise Sales (Public Sector)",
+  "company": "Sprout Social",
+  "url": "https://job-boards.greenhouse.io/sproutsocial/jobs/8333863",
+  "location": "Remote US",
+  "reason": "contradictory remote/office information",
+  "scores": {
+   "remote": 4.0,
+   "office": 2.0
+  },
+  "evidence": [
+   {
+    "signal": "location field",
+    "text": "Remote US",
+    "effect": "remote"
+   },
+   {
+    "signal": "description",
+    "text": "Sprout maintains a remote workforce in many places in the United States.",
+    "effect": "remote (weak)"
+   },
+   {
+    "signal": "description",
+    "text": "If your position requires a physical presence in a Sprout office, it will be evident in the job listing and your offer letter.",
+    "effect": "on_site"
+   }
+  ],
+  "unresolved": [
+   "The listing contradicts itself about remote versus office work; needs review."
+  ],
+  "source": "Greenhouse"
+ },
+ {
+  "title": "Sr. Applied AI/ML Scientist (B2B)",
+  "company": "Sprout Social",
+  "url": "https://job-boards.greenhouse.io/sproutsocial/jobs/8260823",
+  "location": "Remote Poland",
+  "reason": "contradictory remote/office information",
+  "scores": {
+   "remote": 6.5,
+   "office": 5.5
+  },
+  "evidence": [
+   {
+    "signal": "location field",
+    "text": "Remote Poland",
+    "effect": "remote"
+   },
+   {
+    "signal": "description",
+    "text": "Remote & Hybrid Work Support: A flexible, remote-first model supported by a one-time $550 USD home office setup stipend and a monthly internet reimbursement.",
+    "effect": "hybrid"
+   },
+   {
+    "signal": "description (occasional attendance)",
+    "text": "International Travel: Opportunities to travel to our Chicago HQ for team meetups and collaboration.",
+    "effect": "occasional"
+   },
+   {
+    "signal": "description",
+    "text": "Kraków Office Perks: A daily 50 zł lunch stipend when you choose to work from our office.",
+    "effect": "on_site"
+   }
+  ],
+  "unresolved": [
+   "The listing contradicts itself about remote versus office work; needs review.",
+   "Occasional office or in-person attendance is mentioned; confirm how often.",
+   "The location field lists Remote Poland, but the listing does not confirm the role is remote there."
   ],
   "source": "Greenhouse"
  },
@@ -4000,7 +4078,7 @@
  {
   "title": "Staff Machine Learning Engineer",
   "company": "Pinterest",
-  "url": "https://job-boards.greenhouse.io/pinterest/jobs/8240355",
+  "url": "https://job-boards.greenhouse.io/pinterest/jobs/8015543",
   "location": "San Francisco, CA, US; Remote, US",
   "reason": "contradictory remote/office information",
   "scores": {
@@ -4037,7 +4115,7 @@
  {
   "title": "Staff Machine Learning Engineer",
   "company": "Pinterest",
-  "url": "https://job-boards.greenhouse.io/pinterest/jobs/8015543",
+  "url": "https://job-boards.greenhouse.io/pinterest/jobs/8240355",
   "location": "San Francisco, CA, US; Remote, US",
   "reason": "contradictory remote/office information",
   "scores": {
@@ -4368,106 +4446,30 @@
   "source": "Greenhouse"
  },
  {
-  "title": "Account Executive, Enterprise",
-  "company": "Sprout Social",
-  "url": "https://job-boards.greenhouse.io/sproutsocial/jobs/8335144",
-  "location": "Remote US",
+  "title": "Engineering Manager, Knowledge Graph Platform",
+  "company": "Reddit",
+  "url": "https://job-boards.greenhouse.io/reddit/jobs/8256326",
+  "location": "Remote - United States",
   "reason": "contradictory remote/office information",
   "scores": {
-   "remote": 4.5,
+   "remote": 6.0,
    "office": 3.0
   },
   "evidence": [
    {
     "signal": "location field",
-    "text": "Remote US",
-    "effect": "remote"
-   },
-   {
-    "signal": "description (mixed office and remote wording)",
-    "text": "Work From Home Support: A one-time $550 USD stipend to set up your home office, plus a monthly $50 USD stipend for internet.",
-    "effect": "remote (weak)"
-   },
-   {
-    "signal": "description",
-    "text": "Additional Financial Perks: Access to pre-tax commuter benefits, subsidized child/eldercare (Care.com), discounted pet insurance (Figo), and no-cost personalized financi…",
-    "effect": "on_site"
-   },
-   {
-    "signal": "description",
-    "text": "Sprout maintains a remote workforce in many places in the United States.",
-    "effect": "remote (weak)"
-   }
-  ],
-  "unresolved": [
-   "The listing contradicts itself about remote versus office work; needs review.",
-   "The location field lists Remote US, but the listing does not confirm the role is remote there."
-  ],
-  "source": "Greenhouse"
- },
- {
-  "title": "Bilingual Strategic Services Consultant",
-  "company": "Sprout Social",
-  "url": "https://job-boards.greenhouse.io/sproutsocial/jobs/8265765",
-  "location": "Remote US",
-  "reason": "contradictory remote/office information",
-  "scores": {
-   "remote": 4.5,
-   "office": 3.0
-  },
-  "evidence": [
-   {
-    "signal": "location field",
-    "text": "Remote US",
-    "effect": "remote"
-   },
-   {
-    "signal": "description (mixed office and remote wording)",
-    "text": "Work From Home Support: A one-time $550 USD stipend to set up your home office, plus a monthly $50 USD stipend for internet.",
-    "effect": "remote (weak)"
-   },
-   {
-    "signal": "description",
-    "text": "Additional Financial Perks: Access to pre-tax commuter benefits, subsidized child/eldercare (Care.com), discounted pet insurance (Figo), and no-cost personalized financi…",
-    "effect": "on_site"
-   },
-   {
-    "signal": "description",
-    "text": "Sprout maintains a remote workforce in many places in the United States.",
-    "effect": "remote (weak)"
-   }
-  ],
-  "unresolved": [
-   "The listing contradicts itself about remote versus office work; needs review.",
-   "The location field lists Remote US, but the listing does not confirm the role is remote there."
-  ],
-  "source": "Greenhouse"
- },
- {
-  "title": "Director, Enterprise Sales",
-  "company": "Sprout Social",
-  "url": "https://job-boards.greenhouse.io/sproutsocial/jobs/8204919",
-  "location": "Remote US",
-  "reason": "contradictory remote/office information",
-  "scores": {
-   "remote": 4.0,
-   "office": 2.0
-  },
-  "evidence": [
-   {
-    "signal": "location field",
-    "text": "Remote US",
+    "text": "Remote - United States",
     "effect": "remote"
    },
    {
     "signal": "description",
-    "text": "Sprout maintains a remote workforce in many places in the United States.",
-    "effect": "remote (weak)"
+    "text": "This role is 100% remote (US & Canada only) and will regularly meet with teams in the EU and the US.",
+    "effect": "remote"
    },
    {
     "signal": "description",
-    "text": "If your position requires a physical presence in a Sprout office, it will be evident in the job listing and your offer letter.",
-    "effect": "on_site"
+    "text": "100% remote opportunity (we have 4 office locations for hybrid/onsite work preference in NY, SF, LA and Chicago)",
+    "effect": "hybrid"
    }
   ],
   "unresolved": [
@@ -4476,30 +4478,25 @@
   "source": "Greenhouse"
  },
  {
-  "title": "Director, Enterprise Sales (Public Sector)",
-  "company": "Sprout Social",
-  "url": "https://job-boards.greenhouse.io/sproutsocial/jobs/8333863",
-  "location": "Remote US",
+  "title": "Senior Staff Applied Scientist, Science Platform",
+  "company": "Reddit",
+  "url": "https://job-boards.greenhouse.io/reddit/jobs/8282748",
+  "location": "Remote - United States",
   "reason": "contradictory remote/office information",
   "scores": {
-   "remote": 4.0,
-   "office": 2.0
+   "remote": 3.0,
+   "office": 3.0
   },
   "evidence": [
    {
     "signal": "location field",
-    "text": "Remote US",
+    "text": "Remote - United States",
     "effect": "remote"
    },
    {
     "signal": "description",
-    "text": "Sprout maintains a remote workforce in many places in the United States.",
-    "effect": "remote (weak)"
-   },
-   {
-    "signal": "description",
-    "text": "If your position requires a physical presence in a Sprout office, it will be evident in the job listing and your offer letter.",
-    "effect": "on_site"
+    "text": "100% remote opportunity (we have four office locations for hybrid/onsite work preference in NY, SF, LA and Chicago)",
+    "effect": "hybrid"
    }
   ],
   "unresolved": [
@@ -4508,41 +4505,94 @@
   "source": "Greenhouse"
  },
  {
-  "title": "Sr. Applied AI/ML Scientist (B2B)",
-  "company": "Sprout Social",
-  "url": "https://job-boards.greenhouse.io/sproutsocial/jobs/8260823",
-  "location": "Remote Poland",
+  "title": "Software Engineer, Ad Signals",
+  "company": "Reddit",
+  "url": "https://job-boards.greenhouse.io/reddit/jobs/8319655",
+  "location": "Remote - United States",
   "reason": "contradictory remote/office information",
   "scores": {
-   "remote": 6.5,
-   "office": 5.5
+   "remote": 3.0,
+   "office": 3.0
   },
   "evidence": [
    {
     "signal": "location field",
-    "text": "Remote Poland",
+    "text": "Remote - United States",
     "effect": "remote"
    },
    {
     "signal": "description",
-    "text": "Remote & Hybrid Work Support: A flexible, remote-first model supported by a one-time $550 USD home office setup stipend and a monthly internet reimbursement.",
+    "text": "100% remote opportunity (we have 4 office locations for hybrid/onsite work preference in NY, SF, LA and Chicago)",
+    "effect": "hybrid"
+   }
+  ],
+  "unresolved": [
+   "The listing contradicts itself about remote versus office work; needs review."
+  ],
+  "source": "Greenhouse"
+ },
+ {
+  "title": "Staff Machine Learning Engineer, Retrieval & Targeting",
+  "company": "Reddit",
+  "url": "https://job-boards.greenhouse.io/reddit/jobs/8316086",
+  "location": "Remote - United States",
+  "reason": "contradictory remote/office information",
+  "scores": {
+   "remote": 3.0,
+   "office": 3.0
+  },
+  "evidence": [
+   {
+    "signal": "location field",
+    "text": "Remote - United States",
+    "effect": "remote"
+   },
+   {
+    "signal": "description",
+    "text": "100% remote opportunity (we have 4 office locations for hybrid/onsite work preference in NY, SF, LA and Chicago)",
+    "effect": "hybrid"
+   }
+  ],
+  "unresolved": [
+   "The listing contradicts itself about remote versus office work; needs review."
+  ],
+  "source": "Greenhouse"
+ },
+ {
+  "title": "Sales Manager",
+  "company": "Sword Health",
+  "url": "https://job-boards.greenhouse.io/swordhealth/jobs/4435046009",
+  "location": "Remote - Germany",
+  "reason": "contradictory remote/office information",
+  "scores": {
+   "remote": 7.0,
+   "office": 3.0
+  },
+  "evidence": [
+   {
+    "signal": "location field",
+    "text": "Remote - Germany",
+    "effect": "remote"
+   },
+   {
+    "signal": "description",
+    "text": "You'll be one of the first members of our German team, with a lot of ownership in a remote-first setup and a direct impact on our growth.",
+    "effect": "remote"
+   },
+   {
+    "signal": "description",
+    "text": "Hybrid selling: Run video calls and digital meetings with physicians and practice teams, and visit in person where it makes a difference",
     "effect": "hybrid"
    },
    {
-    "signal": "description (occasional attendance)",
-    "text": "International Travel: Opportunities to travel to our Chicago HQ for team meetups and collaboration.",
-    "effect": "occasional"
-   },
-   {
     "signal": "description",
-    "text": "Kraków Office Perks: A daily 50 zł lunch stipend when you choose to work from our office.",
-    "effect": "on_site"
+    "text": "A high degree of self-organisation and ownership, suited to a remote-first setup",
+    "effect": "remote"
    }
   ],
   "unresolved": [
    "The listing contradicts itself about remote versus office work; needs review.",
-   "Occasional office or in-person attendance is mentioned; confirm how often.",
-   "The location field lists Remote Poland, but the listing does not confirm the role is remote there."
+   "The location field lists Remote - Germany, but the listing does not confirm the role is remote there."
   ],
   "source": "Greenhouse"
  },
@@ -4904,92 +4954,6 @@
   "source": "Greenhouse"
  },
  {
-  "title": "Engineering Manager, Knowledge Graph Platform",
-  "company": "Reddit",
-  "url": "https://job-boards.greenhouse.io/reddit/jobs/8256326",
-  "location": "Remote - United States",
-  "reason": "contradictory remote/office information",
-  "scores": {
-   "remote": 6.0,
-   "office": 3.0
-  },
-  "evidence": [
-   {
-    "signal": "location field",
-    "text": "Remote - United States",
-    "effect": "remote"
-   },
-   {
-    "signal": "description",
-    "text": "This role is 100% remote (US & Canada only) and will regularly meet with teams in the EU and the US.",
-    "effect": "remote"
-   },
-   {
-    "signal": "description",
-    "text": "100% remote opportunity (we have 4 office locations for hybrid/onsite work preference in NY, SF, LA and Chicago)",
-    "effect": "hybrid"
-   }
-  ],
-  "unresolved": [
-   "The listing contradicts itself about remote versus office work; needs review."
-  ],
-  "source": "Greenhouse"
- },
- {
-  "title": "Software Engineer, Ad Signals",
-  "company": "Reddit",
-  "url": "https://job-boards.greenhouse.io/reddit/jobs/8319655",
-  "location": "Remote - United States",
-  "reason": "contradictory remote/office information",
-  "scores": {
-   "remote": 3.0,
-   "office": 3.0
-  },
-  "evidence": [
-   {
-    "signal": "location field",
-    "text": "Remote - United States",
-    "effect": "remote"
-   },
-   {
-    "signal": "description",
-    "text": "100% remote opportunity (we have 4 office locations for hybrid/onsite work preference in NY, SF, LA and Chicago)",
-    "effect": "hybrid"
-   }
-  ],
-  "unresolved": [
-   "The listing contradicts itself about remote versus office work; needs review."
-  ],
-  "source": "Greenhouse"
- },
- {
-  "title": "Staff Machine Learning Engineer, Retrieval & Targeting",
-  "company": "Reddit",
-  "url": "https://job-boards.greenhouse.io/reddit/jobs/8316086",
-  "location": "Remote - United States",
-  "reason": "contradictory remote/office information",
-  "scores": {
-   "remote": 3.0,
-   "office": 3.0
-  },
-  "evidence": [
-   {
-    "signal": "location field",
-    "text": "Remote - United States",
-    "effect": "remote"
-   },
-   {
-    "signal": "description",
-    "text": "100% remote opportunity (we have 4 office locations for hybrid/onsite work preference in NY, SF, LA and Chicago)",
-    "effect": "hybrid"
-   }
-  ],
-  "unresolved": [
-   "The listing contradicts itself about remote versus office work; needs review."
-  ],
-  "source": "Greenhouse"
- },
- {
   "title": "Business Development Representative, AI",
   "company": "Talkspace",
   "url": "https://job-boards.greenhouse.io/talkspace/jobs/6233369004",
@@ -5102,40 +5066,150 @@
   "source": "Greenhouse"
  },
  {
-  "title": "Sales Manager",
-  "company": "Sword Health",
-  "url": "https://job-boards.greenhouse.io/swordhealth/jobs/4435046009",
-  "location": "Remote - Germany",
+  "title": "Early Career Family Medicine Physician - 4 days in clinic, 1 day remote",
+  "company": "One Medical",
+  "url": "https://job-boards.greenhouse.io/onemedical/jobs/8264556",
+  "location": "Boston, MA",
   "reason": "contradictory remote/office information",
   "scores": {
-   "remote": 7.0,
+   "remote": 2.0,
    "office": 3.0
   },
   "evidence": [
    {
-    "signal": "location field",
-    "text": "Remote - Germany",
+    "signal": "title",
+    "text": "Early Career Family Medicine Physician - 4 days in clinic, 1 day remote",
     "effect": "remote"
    },
    {
-    "signal": "description",
-    "text": "You'll be one of the first members of our German team, with a lot of ownership in a remote-first setup and a direct impact on our growth.",
-    "effect": "remote"
+    "signal": "description (occasional attendance)",
+    "text": "Treating patients in-office or in testing centers as well as conducting occasional tele-health visits",
+    "effect": "occasional"
    },
    {
     "signal": "description",
-    "text": "Hybrid selling: Run video calls and digital meetings with physicians and practice teams, and visit in person where it makes a difference",
-    "effect": "hybrid"
+    "text": "Utilization of your specific clinical training and opportunities to perform in-office procedures",
+    "effect": "on_site"
    },
    {
     "signal": "description",
-    "text": "A high degree of self-organisation and ownership, suited to a remote-first setup",
-    "effect": "remote"
+    "text": "Pre-Tax commuter benefits",
+    "effect": "on_site"
    }
   ],
   "unresolved": [
-   "The listing contradicts itself about remote versus office work; needs review.",
-   "The location field lists Remote - Germany, but the listing does not confirm the role is remote there."
+   "The listing contradicts itself about remote versus office work; needs review."
+  ],
+  "source": "Greenhouse"
+ },
+ {
+  "title": "Early Career Family Medicine Physician - 4 days in clinic, 1 day remote",
+  "company": "One Medical",
+  "url": "https://job-boards.greenhouse.io/onemedical/jobs/8275116",
+  "location": "Raleigh, NC",
+  "reason": "contradictory remote/office information",
+  "scores": {
+   "remote": 2.0,
+   "office": 3.0
+  },
+  "evidence": [
+   {
+    "signal": "title",
+    "text": "Early Career Family Medicine Physician - 4 days in clinic, 1 day remote",
+    "effect": "remote"
+   },
+   {
+    "signal": "description (occasional attendance)",
+    "text": "Treating patients in-office or in testing centers as well as conducting occasional tele-health visits",
+    "effect": "occasional"
+   },
+   {
+    "signal": "description",
+    "text": "Utilization of your specific clinical training and opportunities to perform in-office procedures",
+    "effect": "on_site"
+   },
+   {
+    "signal": "description",
+    "text": "Pre-Tax commuter benefits",
+    "effect": "on_site"
+   }
+  ],
+  "unresolved": [
+   "The listing contradicts itself about remote versus office work; needs review."
+  ],
+  "source": "Greenhouse"
+ },
+ {
+  "title": "Early Career Family Medicine Physician - 4 days in clinic, 1 day remote",
+  "company": "One Medical",
+  "url": "https://job-boards.greenhouse.io/onemedical/jobs/8265635",
+  "location": "Hoboken, NJ",
+  "reason": "contradictory remote/office information",
+  "scores": {
+   "remote": 2.0,
+   "office": 3.0
+  },
+  "evidence": [
+   {
+    "signal": "title",
+    "text": "Early Career Family Medicine Physician - 4 days in clinic, 1 day remote",
+    "effect": "remote"
+   },
+   {
+    "signal": "description (occasional attendance)",
+    "text": "Treating patients in-office or in testing centers as well as conducting occasional tele-health visits",
+    "effect": "occasional"
+   },
+   {
+    "signal": "description",
+    "text": "Utilization of your specific clinical training and opportunities to perform in-office procedures",
+    "effect": "on_site"
+   },
+   {
+    "signal": "description",
+    "text": "Pre-Tax commuter benefits",
+    "effect": "on_site"
+   }
+  ],
+  "unresolved": [
+   "The listing contradicts itself about remote versus office work; needs review."
+  ],
+  "source": "Greenhouse"
+ },
+ {
+  "title": "Early Career Family Medicine Physician - 4 days in clinic, 1 day remote",
+  "company": "One Medical",
+  "url": "https://job-boards.greenhouse.io/onemedical/jobs/8264938",
+  "location": "Washington, DC",
+  "reason": "contradictory remote/office information",
+  "scores": {
+   "remote": 2.0,
+   "office": 3.0
+  },
+  "evidence": [
+   {
+    "signal": "title",
+    "text": "Early Career Family Medicine Physician - 4 days in clinic, 1 day remote",
+    "effect": "remote"
+   },
+   {
+    "signal": "description (occasional attendance)",
+    "text": "Treating patients in-office or in testing centers as well as conducting occasional tele-health visits",
+    "effect": "occasional"
+   },
+   {
+    "signal": "description",
+    "text": "Utilization of your specific clinical training and opportunities to perform in-office procedures",
+    "effect": "on_site"
+   },
+   {
+    "signal": "description",
+    "text": "Pre-Tax commuter benefits",
+    "effect": "on_site"
+   }
+  ],
+  "unresolved": [
+   "The listing contradicts itself about remote versus office work; needs review."
   ],
   "source": "Greenhouse"
  }
