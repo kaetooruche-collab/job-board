@@ -1,14 +1,15 @@
-# Quality report, 2026-11-04T23:37+00:00
+# Quality report, 2026-11-05T06:37+00:00
 
-- Published: **1055**
-- Held back by a quality rule (not published): **2**
+- Published: **1057**
+- Held back by a quality rule (not published): **3**
 - Warnings (published, but look): **8**
 
 ## Held back
 
-### eligibility-contradicts-exclusion (2)
+### eligibility-contradicts-exclusion (3)
 - Senior Manager, FCC Monitoring at Airwallex: label lists ['United States'] but note says cannot hire there: The posting says it cannot hire in: United States, United Kingdom, EMEA, Australia, New Zealand, APAC.
 - Stylist at Stitch Fix: label lists ['United States'] but note says cannot hire there: The posting says it cannot hire in: United States, Alaska, California, Colorado, Connecticut, District Of Columbia and others.
+- Data Engineer at Branch: label lists ['United States'] but note says cannot hire there: The posting says it cannot hire in: United States.
 
 ## Warnings
 
@@ -27,11 +28,11 @@
 ## Shape of the feed
 
 ```
-count: 1055
-bySource: {'Greenhouse': 552, 'Lever': 142, 'Ashby': 361}
+count: 1057
+bySource: {'Greenhouse': 554, 'Ashby': 361, 'Lever': 142}
 pctEligibilityUnclear: 24.5
 pctRemoteUnclear: 8.4
 pctWorldwide: 1.2
-pctEarlyCareer: 11.0
+pctEarlyCareer: 10.8
 pctSeniorPlus: 44.8
 ```
