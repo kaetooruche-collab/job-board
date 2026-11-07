@@ -1,19 +1,19 @@
 {
- "generatedAt": "2026-11-07T05:52:45.711722+00:00",
- "activeListings": 1056,
+ "generatedAt": "2026-11-07T12:54:02.308239+00:00",
+ "activeListings": 1052,
  "rawCandidates": 20696,
- "sentToReview": 522,
+ "sentToReview": 521,
  "brokenLinksDropped": 23,
  "percentConfirmedRemote": 92.9,
- "percentWithStatedEligibility": 75.0,
+ "percentWithStatedEligibility": 75.2,
  "byArrangement": {
-  "remote_geo_restricted": 769,
-  "fully_remote": 212,
+  "remote_geo_restricted": 768,
+  "fully_remote": 209,
   "remote_unclear": 75
  },
  "byEligibilityType": {
-  "countries": 756,
-  "unclear": 264,
+  "countries": 755,
+  "unclear": 261,
   "worldwide": 13,
   "region": 17,
   "timezone": 6
@@ -21,17 +21,17 @@
  "byLevel": {
   "junior": 102,
   "senior": 331,
-  "unspecified": 128,
+  "unspecified": 127,
   "leadership": 138,
-  "mid": 342,
+  "mid": 339,
   "internship": 13,
   "entry": 2
  },
  "byCategory": {
   "Sales": 162,
-  "Finance & Accounting": 69,
+  "Finance & Accounting": 66,
   "Administration & Operations": 36,
-  "Marketing & Communications": 94,
+  "Marketing & Communications": 93,
   "Design & Creative": 48,
   "IT & Security": 41,
   "Customer Service & Support": 57,
@@ -51,29 +51,29 @@
   "Trust, Safety & Moderation": 4
  },
  "bySource": {
-  "Ashby": 377,
-  "Greenhouse": 546,
+  "Ashby": 374,
+  "Greenhouse": 545,
   "Lever": 133
  },
  "uniqueCompanies": 164,
  "note": "Search-to-apply click-through and user engagement come from GoatCounter, not this file.",
  "linkCheck": {
-  "checked": 1081,
-  "alive": 983,
+  "checked": 1077,
+  "alive": 1008,
   "dead": 7,
-  "unknown": 91,
-  "failRate": 0.0907,
+  "unknown": 62,
+  "failRate": 0.0641,
   "baselineRate": 0.0436,
   "degraded": false,
   "degradedStreak": 0,
-  "carriedOnOldCheck": 75,
+  "carriedOnOldCheck": 46,
   "newHeldUntilChecked": 16,
   "droppedDead": 7,
   "droppedUnverifiable": 0,
-  "firstPassUnknown": 91,
+  "firstPassUnknown": 62,
   "recoveredOnRetry": 0,
   "unknownReasons": {
-   "http-403": 175,
+   "http-403": 117,
    "http-429": 7
   }
  }
