@@ -1,35 +1,35 @@
 {
- "generatedAt": "2026-11-08T05:54:48.677442+00:00",
+ "generatedAt": "2026-11-08T13:16:01.030082+00:00",
  "activeListings": 1027,
- "rawCandidates": 20694,
- "sentToReview": 506,
+ "rawCandidates": 20695,
+ "sentToReview": 502,
  "brokenLinksDropped": 28,
  "percentConfirmedRemote": 92.8,
  "percentWithStatedEligibility": 74.8,
  "byArrangement": {
-  "remote_unclear": 74,
   "remote_geo_restricted": 745,
+  "remote_unclear": 74,
   "fully_remote": 208
  },
  "byEligibilityType": {
-  "unclear": 259,
   "countries": 735,
+  "unclear": 259,
   "worldwide": 13,
   "region": 15,
   "timezone": 5
  },
  "byLevel": {
-  "senior": 325,
+  "senior": 326,
   "junior": 98,
   "unspecified": 126,
   "leadership": 134,
-  "mid": 329,
+  "mid": 328,
   "internship": 13,
   "entry": 2
  },
  "byCategory": {
+  "Sales": 162,
   "Customer Service & Support": 56,
-  "Sales": 161,
   "Finance & Accounting": 63,
   "Administration & Operations": 35,
   "Marketing & Communications": 88,
@@ -37,7 +37,7 @@
   "IT & Security": 40,
   "Software & Engineering": 200,
   "Healthcare & Life Sciences": 102,
-  "Product & Project": 30,
+  "Product & Project": 29,
   "Business & Analysis": 37,
   "Legal & Compliance": 29,
   "Data & Analytics": 50,
@@ -51,8 +51,8 @@
   "Trust, Safety & Moderation": 4
  },
  "bySource": {
-  "Greenhouse": 530,
   "Ashby": 366,
+  "Greenhouse": 530,
   "Lever": 131
  },
  "uniqueCompanies": 163,
@@ -67,9 +67,9 @@
   "degraded": false,
   "degradedStreak": 0,
   "carriedOnOldCheck": 0,
-  "newHeldUntilChecked": 18,
+  "newHeldUntilChecked": 22,
   "droppedDead": 6,
-  "droppedUnverifiable": 4,
+  "droppedUnverifiable": 0,
   "firstPassUnknown": 22,
   "recoveredOnRetry": 0,
   "unknownReasons": {
