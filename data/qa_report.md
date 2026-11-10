@@ -1,8 +1,8 @@
-# Quality report, 2026-11-09T22:16+00:00
+# Quality report, 2026-11-10T07:10+00:00
 
-- Published: **1016**
+- Published: **1019**
 - Held back by a quality rule (not published): **3**
-- Warnings (published, but look): **4**
+- Warnings (published, but look): **5**
 
 ## Held back
 
@@ -13,7 +13,8 @@
 
 ## Warnings
 
-### pay-in-posting-but-card-says-not-stated (2)
+### pay-in-posting-but-card-says-not-stated (3)
+- Mid-Market Account Executive, UK & Ireland at Customer.io: $20,000-75,000
 - Senior Solutions Architect at Buildkite: 180,000 USD - $205,000
 - Senior Infrastructure Engineer at Webflow: $187,500 - 225,000
 
@@ -24,11 +25,11 @@
 ## Shape of the feed
 
 ```
-count: 1016
-bySource: {'Ashby': 349, 'Greenhouse': 537, 'Lever': 130}
-pctEligibilityUnclear: 25.2
-pctRemoteUnclear: 7.2
-pctWorldwide: 1.3
-pctEarlyCareer: 10.0
-pctSeniorPlus: 44.4
+count: 1019
+bySource: {'Greenhouse': 543, 'Ashby': 349, 'Lever': 127}
+pctEligibilityUnclear: 24.8
+pctRemoteUnclear: 7.1
+pctWorldwide: 1.2
+pctEarlyCareer: 9.8
+pctSeniorPlus: 45.3
 ```
