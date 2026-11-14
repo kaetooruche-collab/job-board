@@ -1,13 +1,14 @@
-# Quality report, 2026-11-14T13:28+00:00
+# Quality report, 2026-11-14T22:18+00:00
 
-- Published: **1021**
-- Held back by a quality rule (not published): **1**
+- Published: **1012**
+- Held back by a quality rule (not published): **2**
 - Warnings (published, but look): **6**
 
 ## Held back
 
-### eligibility-contradicts-exclusion (1)
+### eligibility-contradicts-exclusion (2)
 - Senior Manager, Sanctions Regulatory Analysis at Airwallex: label lists ['United Kingdom'] but note says cannot hire there: The posting says it cannot hire in: EMEA, United Kingdom, European Union.
+- Stylist at Stitch Fix: label lists ['United States'] but note says cannot hire there: The posting says it cannot hire in: United States, Alaska, California, Colorado, Connecticut, District Of Columbia and others.
 
 ## Warnings
 
@@ -21,11 +22,11 @@
 ## Shape of the feed
 
 ```
-count: 1021
-bySource: {'Ashby': 371, 'Greenhouse': 519, 'Lever': 131}
-pctEligibilityUnclear: 24.7
+count: 1012
+bySource: {'Greenhouse': 520, 'Ashby': 363, 'Lever': 129}
+pctEligibilityUnclear: 24.5
 pctRemoteUnclear: 7.1
 pctWorldwide: 1.2
 pctEarlyCareer: 8.4
-pctSeniorPlus: 43.2
+pctSeniorPlus: 43.4
 ```
