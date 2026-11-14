@@ -1,18 +1,18 @@
 {
- "generatedAt": "2026-11-14T06:12:32.501499+00:00",
- "activeListings": 1022,
- "rawCandidates": 20565,
- "sentToReview": 477,
- "brokenLinksDropped": 49,
- "percentConfirmedRemote": 93.0,
+ "generatedAt": "2026-11-14T13:28:46.488393+00:00",
+ "activeListings": 1021,
+ "rawCandidates": 20566,
+ "sentToReview": 474,
+ "brokenLinksDropped": 51,
+ "percentConfirmedRemote": 92.9,
  "percentWithStatedEligibility": 75.3,
  "byArrangement": {
-  "remote_geo_restricted": 749,
+  "remote_geo_restricted": 748,
   "fully_remote": 201,
   "remote_unclear": 72
  },
  "byEligibilityType": {
-  "countries": 738,
+  "countries": 737,
   "unclear": 252,
   "worldwide": 12,
   "region": 12,
@@ -20,7 +20,7 @@
  },
  "byLevel": {
   "mid": 365,
-  "senior": 296,
+  "senior": 295,
   "leadership": 146,
   "unspecified": 129,
   "junior": 70,
@@ -37,7 +37,7 @@
   "Design & Creative": 44,
   "Legal & Compliance": 34,
   "Marketing & Communications": 88,
-  "Customer Service & Support": 56,
+  "Customer Service & Support": 55,
   "IT & Security": 35,
   "Healthcare & Life Sciences": 106,
   "Product & Project": 38,
@@ -51,29 +51,29 @@
   "Education & Language": 7
  },
  "bySource": {
-  "Ashby": 372,
+  "Ashby": 371,
   "Greenhouse": 519,
   "Lever": 131
  },
  "uniqueCompanies": 163,
  "note": "Search-to-apply click-through and user engagement come from GoatCounter, not this file.",
  "linkCheck": {
-  "checked": 1074,
-  "alive": 1025,
+  "checked": 1073,
+  "alive": 910,
   "dead": 7,
-  "unknown": 42,
-  "failRate": 0.0456,
+  "unknown": 156,
+  "failRate": 0.1519,
   "baselineRate": 0.1654,
   "degraded": false,
   "degradedStreak": 0,
-  "carriedOnOldCheck": 0,
-  "newHeldUntilChecked": 42,
+  "carriedOnOldCheck": 112,
+  "newHeldUntilChecked": 44,
   "droppedDead": 7,
   "droppedUnverifiable": 0,
-  "firstPassUnknown": 42,
+  "firstPassUnknown": 156,
   "recoveredOnRetry": 0,
   "unknownReasons": {
-   "http-403": 80,
+   "http-403": 308,
    "http-429": 4
   }
  }
