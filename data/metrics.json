@@ -1,36 +1,37 @@
 {
- "generatedAt": "2026-11-14T22:18:43.109426+00:00",
- "activeListings": 1012,
- "rawCandidates": 20570,
+ "generatedAt": "2026-11-15T06:20:08.171466+00:00",
+ "activeListings": 1011,
+ "rawCandidates": 20574,
  "sentToReview": 471,
- "brokenLinksDropped": 42,
+ "brokenLinksDropped": 38,
  "percentConfirmedRemote": 92.9,
- "percentWithStatedEligibility": 75.5,
+ "percentWithStatedEligibility": 75.6,
  "byArrangement": {
   "remote_geo_restricted": 743,
-  "fully_remote": 197,
+  "fully_remote": 196,
   "remote_unclear": 72
  },
  "byEligibilityType": {
   "countries": 732,
-  "unclear": 248,
+  "unclear": 247,
   "worldwide": 12,
   "region": 12,
   "timezone": 8
  },
  "byLevel": {
+  "mid": 360,
   "unspecified": 129,
-  "mid": 359,
-  "senior": 293,
-  "leadership": 146,
+  "senior": 292,
+  "leadership": 145,
   "junior": 69,
   "entry": 3,
   "internship": 13
  },
  "byCategory": {
+  "Research": 11,
   "Finance & Accounting": 58,
   "Software & Engineering": 205,
-  "Business & Analysis": 29,
+  "Business & Analysis": 28,
   "Administration & Operations": 39,
   "Trust, Safety & Moderation": 3,
   "Sales": 165,
@@ -47,33 +48,33 @@
   "Other": 14,
   "Writing & Editing": 5,
   "Supply Chain & Procurement": 6,
-  "Research": 11,
   "Education & Language": 7
  },
  "bySource": {
-  "Greenhouse": 520,
   "Ashby": 363,
-  "Lever": 129
+  "Greenhouse": 520,
+  "Lever": 128
  },
  "uniqueCompanies": 162,
  "note": "Search-to-apply click-through and user engagement come from GoatCounter, not this file.",
  "linkCheck": {
-  "checked": 1056,
-  "alive": 939,
+  "checked": 1051,
+  "alive": 942,
   "dead": 7,
-  "unknown": 110,
-  "failRate": 0.1108,
-  "baselineRate": 0.1654,
+  "unknown": 102,
+  "failRate": 0.1037,
+  "baselineRate": 0.1519,
   "degraded": false,
   "degradedStreak": 0,
-  "carriedOnOldCheck": 75,
-  "newHeldUntilChecked": 35,
+  "carriedOnOldCheck": 71,
+  "newHeldUntilChecked": 31,
   "droppedDead": 7,
   "droppedUnverifiable": 0,
-  "firstPassUnknown": 110,
+  "firstPassUnknown": 102,
   "recoveredOnRetry": 0,
   "unknownReasons": {
-   "http-403": 216,
+   "http-403": 185,
+   "connection-error": 15,
    "http-429": 4
   }
  }
