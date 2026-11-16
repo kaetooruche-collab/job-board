@@ -1,13 +1,16 @@
-# Quality report, 2026-11-16T06:18+00:00
+# Quality report, 2026-11-16T21:57+00:00
 
-- Published: **1006**
-- Held back by a quality rule (not published): **1**
+- Published: **1029**
+- Held back by a quality rule (not published): **4**
 - Warnings (published, but look): **5**
 
 ## Held back
 
-### eligibility-contradicts-exclusion (1)
+### eligibility-contradicts-exclusion (4)
+- Director of Risk & Recovery Enablement at Branch: label lists ['United States'] but note says cannot hire there: The posting says it cannot hire in: United States.
 - Senior Manager, Sanctions Regulatory Analysis at Airwallex: label lists ['United Kingdom'] but note says cannot hire there: The posting says it cannot hire in: EMEA, United Kingdom, European Union.
+- Stylist at Stitch Fix: label lists ['United States'] but note says cannot hire there: The posting says it cannot hire in: United States, Alaska, California, Colorado, Connecticut, District Of Columbia and others.
+- Data Engineer at Branch: label lists ['United States'] but note says cannot hire there: The posting says it cannot hire in: United States.
 
 ## Warnings
 
@@ -21,11 +24,11 @@
 ## Shape of the feed
 
 ```
-count: 1006
-bySource: {'Greenhouse': 527, 'Ashby': 357, 'Lever': 122}
-pctEligibilityUnclear: 24.8
-pctRemoteUnclear: 7.7
+count: 1029
+bySource: {'Ashby': 368, 'Greenhouse': 539, 'Lever': 122}
+pctEligibilityUnclear: 23.9
+pctRemoteUnclear: 7.9
 pctWorldwide: 1.2
 pctEarlyCareer: 8.4
-pctSeniorPlus: 43.1
+pctSeniorPlus: 42.9
 ```
