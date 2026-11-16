@@ -1,0 +1,117 @@
+# UNVERIFIED. Supplied by KT on 16 Nov 2026 from another AI (ChatGPT). Nobody has checked these sites, their traffic, their remote share, or their terms of use. Do not rely on any row until you have verified it. The source said: "It is not a ranking of countries by the number of worldwide-eligible remote vacancies" and "a selected subset, not an independently verified ranking of traffic or vacancies". Column check_first flags rows that need a sanctions or terms check before ANY use (a flag is a prompt to check, not a finding).
+kind,rank,country_or_scope,region,board_1,domain_1,board_2,domain_2,check_first
+international,I1,Worldwide,Remote,Himalayas,himalayas.app,,,"terms: earlier repo research found its apply button goes to a Himalayas signup page and its docs ask that jobs not be submitted to third-party sites"
+international,I2,Worldwide,Remote,We Work Remotely,weworkremotely.com,,,"terms; earlier research removed it (paywall on apply); RSS reuse needs attribution"
+international,I3,Worldwide,Remote,Remote OK,remoteok.com,,,"terms never vetted; earlier research removed it"
+international,I4,Worldwide,Remote,Working Nomads,workingnomads.com,,,"written permission needed per earlier research"
+international,I5,Worldwide,Remote,Jobgether,jobgether.com,,,"earlier research: reposts for other employers; signup wall"
+international,I6,Worldwide,Remote,Remotive,remotive.com,,,"EXCLUDED by project rules: its terms forbid showing its jobs to collect email signups"
+international,I7,Worldwide,Remote,Dynamite Jobs,dynamitejobs.com,,,"terms unknown"
+international,I8,Worldwide,Remote,Jobicy,jobicy.com,,,"EXCLUDED by project rules: its dates are not the employer's original dates"
+international,I9,Worldwide,Remote,FlexJobs,flexjobs.com,,,"paywall"
+international,I10,Worldwide,Remote,Remote.co,remote.co,,,"terms unknown"
+international,I11,Worldwide,Startups,Wellfound,wellfound.com,,,"terms unknown"
+international,I12,Worldwide,General,Indeed,indeed.com,,,"believed to forbid scraping; verify"
+international,I13,Worldwide,General,LinkedIn Jobs,linkedin.com/jobs,,,"believed to forbid scraping; verify"
+international,I14,Worldwide,General,Glassdoor,glassdoor.com,,,"believed to forbid scraping; verify"
+international,I15,Latin America,Tech,Get on Board,getonbrd.com,,,"terms unknown"
+country,1,United Kingdom,Europe,Reed,reed.co.uk,Totaljobs,totaljobs.com,
+country,2,Germany,Europe,StepStone,stepstone.de,XING Jobs,xing.com/jobs,
+country,3,France,Europe,France Travail,francetravail.fr,APEC,apec.fr,
+country,4,Netherlands,Europe,Nationale Vacaturebank,nationalevacaturebank.nl,Indeed NL,nl.indeed.com,
+country,5,Ireland,Europe,IrishJobs,irishjobs.ie,Jobs.ie,jobs.ie,
+country,6,Spain,Europe,InfoJobs,infojobs.net,Tecnoempleo,tecnoempleo.com,
+country,7,Italy,Europe,InfoJobs Italy,infojobs.it,Cliclavoro,cliclavoro.gov.it,
+country,8,Portugal,Europe,Net-Empregos,net-empregos.com,Sapo Emprego,emprego.sapo.pt,
+country,9,Poland,Europe,Pracuj.pl,pracuj.pl,No Fluff Jobs,nofluffjobs.com,
+country,10,Czechia,Europe,Jobs.cz,jobs.cz,StartupJobs,startupjobs.cz,
+country,11,Austria,Europe,karriere.at,karriere.at,StepStone Austria,stepstone.at,
+country,12,Switzerland,Europe,jobs.ch,jobs.ch,JobScout24,jobscout24.ch,
+country,13,Belgium,Europe,StepStone Belgium,stepstone.be,VDAB,vdab.be,
+country,14,Sweden,Europe,Arbetsformedlingen,arbetsformedlingen.se,Jobbsafari,jobbsafari.se,
+country,15,Norway,Europe,FINN Jobb,finn.no/job,Arbeidsplassen,arbeidsplassen.nav.no,
+country,16,Denmark,Europe,Jobindex,jobindex.dk,Workindenmark,workindenmark.dk,
+country,17,Finland,Europe,Duunitori,duunitori.fi,Jobly,jobly.fi,
+country,18,Estonia,Europe,CV Keskus,cvkeskus.ee,CV.ee,cv.ee,
+country,19,Lithuania,Europe,CVbankas,cvbankas.lt,CV Online,cvonline.lt,
+country,20,Latvia,Europe,CV.lv,cv.lv,Visidarbi,visidarbi.lv,
+country,21,Greece,Europe,Kariera.gr,kariera.gr,Skywalker,skywalker.gr,
+country,22,Romania,Europe,eJobs,ejobs.ro,BestJobs,bestjobs.eu,
+country,23,Hungary,Europe,Profession.hu,profession.hu,Jobline,jobline.hu,
+country,24,Croatia,Europe,MojPosao,moj-posao.net,Posao.hr,posao.hr,
+country,25,Serbia,Europe,Poslovi Infostud,poslovi.infostud.com,HelloWorld,helloworld.rs,
+country,26,Ukraine,Europe,Work.ua,work.ua,Robota.ua,robota.ua,
+country,27,Turkiye,Europe,Kariyer.net,kariyer.net,Eleman.net,eleman.net,
+country,28,Cyprus,Europe,Ergodotisi,ergodotisi.com,Carierista,carierista.com,
+country,29,Luxembourg,Europe,Jobs.lu,jobs.lu,Moovijob,moovijob.com,
+country,30,Iceland,Europe,Alfred,alfred.is,Job.is,job.is,
+country,31,India,Asia-Pacific,Naukri,naukri.com,Instahyre,instahyre.com,
+country,32,Pakistan,Asia-Pacific,Rozee.pk,rozee.pk,Mustakbil,mustakbil.com,
+country,33,Bangladesh,Asia-Pacific,Bdjobs,bdjobs.com,Chakri,chakri.com,
+country,34,Sri Lanka,Asia-Pacific,TopJobs,topjobs.lk,XpressJobs,xpress.jobs,
+country,35,Nepal,Asia-Pacific,Merojob,merojob.com,JobsNepal,jobsnepal.com,
+country,36,Philippines,Asia-Pacific,JobStreet PH,jobstreet.com.ph,OnlineJobs.ph,onlinejobs.ph,
+country,37,Indonesia,Asia-Pacific,JobStreet ID,jobstreet.co.id,Kalibrr,kalibrr.com,
+country,38,Malaysia,Asia-Pacific,JobStreet MY,jobstreet.com.my,Hiredly,my.hiredly.com,
+country,39,Singapore,Asia-Pacific,MyCareersFuture,mycareersfuture.gov.sg,JobStreet SG,jobstreet.com.sg,
+country,40,Thailand,Asia-Pacific,JobsDB TH,th.jobsdb.com,JobThai,jobthai.com,
+country,41,Vietnam,Asia-Pacific,VietnamWorks,vietnamworks.com,TopCV,topcv.vn,
+country,42,Japan,Asia-Pacific,Daijob,daijob.com,Green,green-japan.com,
+country,43,South Korea,Asia-Pacific,JobKorea,jobkorea.co.kr,Saramin,saramin.co.kr,
+country,44,China,Asia-Pacific,51job,51job.com,Zhaopin,zhaopin.com,"check legal and data-export rules before any use"
+country,45,Taiwan,Asia-Pacific,104 Job Bank,104.com.tw,1111 Job Bank,1111.com.tw,
+country,46,Hong Kong,Asia-Pacific,JobsDB HK,hk.jobsdb.com,CTgoodjobs,ctgoodjobs.hk,
+country,47,Australia,Asia-Pacific,SEEK,seek.com.au,CareerOne,careerone.com.au,
+country,48,New Zealand,Asia-Pacific,SEEK NZ,seek.co.nz,Trade Me Jobs,trademe.co.nz/a/jobs,
+country,49,Kazakhstan,Asia-Pacific,HeadHunter KZ,hh.kz,Enbek,enbek.kz,
+country,50,Uzbekistan,Asia-Pacific,HeadHunter UZ,hh.uz,Ishkop,ishkop.uz,
+country,51,South Africa,Africa,PNet,pnet.co.za,Careers24,careers24.com,
+country,52,Nigeria,Africa,Jobberman,jobberman.com,MyJobMag,myjobmag.com,
+country,53,Kenya,Africa,BrighterMonday,brightermonday.co.ke,Fuzu,fuzu.com,
+country,54,Ghana,Africa,Jobberman Ghana,jobberman.com.gh,Jobsinghana,jobsinghana.com,
+country,55,Egypt,Africa,Wuzzuf,wuzzuf.net,Forasna,forasna.com,
+country,56,Morocco,Africa,ReKrute,rekrute.com,Emploi.ma,emploi.ma,
+country,57,Algeria,Africa,Emploitic,emploitic.com,EmploiPartner,emploipartner.com,
+country,58,Tunisia,Africa,Keejob,keejob.com,Tanitjobs,tanitjobs.com,
+country,59,Uganda,Africa,BrighterMonday UG,brightermonday.co.ug,Great Uganda Jobs,greatugandajobs.com,
+country,60,Tanzania,Africa,Ajira Portal,portal.ajira.go.tz,Zoom Tanzania,zoomtanzania.com,
+country,61,Rwanda,Africa,Job in Rwanda,jobinrwanda.com,Great Rwanda Jobs,greatrwandajobs.com,
+country,62,Ethiopia,Africa,Ethiojobs,ethiojobs.net,HaHuJobs,hahujobs.io,
+country,63,Senegal,Africa,Emploi Dakar,emploidakar.com,Senjob,senjob.com,
+country,64,Mauritius,Africa,MyJob,myjob.mu,CareerHub,careerhub.mu,
+country,65,Botswana,Africa,Botswana Jobs,botswanajob.com,Jobs Botswana,jobsbotswana.info,
+country,66,United States,Americas,Indeed,indeed.com,Dice,dice.com,"Indeed: believed to forbid scraping; verify"
+country,67,Canada,Americas,Job Bank,jobbank.gc.ca,Workopolis,workopolis.com,
+country,68,Mexico,Americas,OCC,occ.com.mx,Computrabajo,computrabajo.com.mx,
+country,69,Brazil,Americas,Catho,catho.com.br,Gupy,gupy.io,
+country,70,Argentina,Americas,Bumeran,bumeran.com.ar,Computrabajo AR,ar.computrabajo.com,
+country,71,Chile,Americas,Laborum,laborum.cl,Trabajando,trabajando.cl,
+country,72,Colombia,Americas,Computrabajo CO,co.computrabajo.com,Elempleo,elempleo.com,
+country,73,Peru,Americas,Bumeran PE,bumeran.com.pe,Computrabajo PE,pe.computrabajo.com,
+country,74,Ecuador,Americas,Multitrabajos,multitrabajos.com,Computrabajo EC,ec.computrabajo.com,
+country,75,Uruguay,Americas,Buscojobs,buscojobs.com.uy,Computrabajo UY,uy.computrabajo.com,
+country,76,Paraguay,Americas,Computrabajo PY,py.computrabajo.com,Clasipar,clasipar.com,
+country,77,Bolivia,Americas,Trabajando BO,trabajando.com.bo,Computrabajo BO,bo.computrabajo.com,
+country,78,Costa Rica,Americas,Elempleo CR,elempleo.com/cr,Computrabajo CR,cr.computrabajo.com,
+country,79,Panama,Americas,Konzerta,konzerta.com,Encuentra24,encuentra24.com,
+country,80,Dominican Republic,Americas,Aldaba,aldaba.com,Computrabajo DO,do.computrabajo.com,
+country,81,Guatemala,Americas,Tecoloco GT,tecoloco.com.gt,Computrabajo GT,gt.computrabajo.com,
+country,82,El Salvador,Americas,Tecoloco SV,tecoloco.com.sv,Computrabajo SV,sv.computrabajo.com,
+country,83,Honduras,Americas,Tecoloco HN,tecoloco.com.hn,Computrabajo HN,hn.computrabajo.com,
+country,84,Nicaragua,Americas,Tecoloco NI,tecoloco.com.ni,Computrabajo NI,ni.computrabajo.com,
+country,85,Venezuela,Americas,Bumeran VE,bumeran.com.ve,Computrabajo VE,ve.computrabajo.com,"check sanctions exposure before any use"
+country,86,Jamaica,Americas,CaribbeanJobs,caribbeanjobs.com,Go-Jamaica Jobs,jobs.go-jamaica.com,
+country,87,Trinidad and Tobago,Americas,CaribbeanJobs,caribbeanjobs.com,JobLink,joblinktt.com,
+country,88,Puerto Rico,Americas,ClasificadosOnline,clasificadosonline.com,Indeed PR,pr.indeed.com,
+country,89,Cuba,Americas,Ofertas de Empleo,trabajo.cu,LinkedIn,linkedin.com/jobs,"sanctions: check before any use"
+country,90,Haiti,Americas,JobPaw,jobpaw.com,LinkedIn,linkedin.com/jobs,
+country,91,United Arab Emirates,Middle East,Bayt,bayt.com,Naukrigulf,naukrigulf.com,
+country,92,Saudi Arabia,Middle East,Jadarat,jadarat.sa,Bayt,bayt.com,
+country,93,Qatar,Middle East,Bayt,bayt.com,GulfTalent,gulftalent.com,
+country,94,Kuwait,Middle East,Bayt,bayt.com,Naukrigulf,naukrigulf.com,
+country,95,Bahrain,Middle East,Bahrain Jobs,bahrainjobs.com,GulfTalent,gulftalent.com,
+country,96,Oman,Middle East,Oman Jobs,omanjobs.om,Bayt,bayt.com,
+country,97,Israel,Middle East,AllJobs,alljobs.co.il,Drushim,drushim.co.il,
+country,98,Jordan,Middle East,Akhtaboot,akhtaboot.com,Bayt,bayt.com,
+country,99,Lebanon,Middle East,HireLebanese,hirelebanese.com,Bayt,bayt.com,
+country,100,Iran,Middle East,Jobinja,jobinja.ir,JobVision,jobvision.ir,"sanctions: check before any use"
