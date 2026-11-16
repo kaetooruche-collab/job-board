@@ -1,19 +1,17 @@
-# Quality report, 2026-11-15T18:47+00:00
+# Quality report, 2026-11-16T06:18+00:00
 
-- Published: **1015**
-- Held back by a quality rule (not published): **3**
-- Warnings (published, but look): **6**
+- Published: **1006**
+- Held back by a quality rule (not published): **1**
+- Warnings (published, but look): **5**
 
 ## Held back
 
-### eligibility-contradicts-exclusion (3)
+### eligibility-contradicts-exclusion (1)
 - Senior Manager, Sanctions Regulatory Analysis at Airwallex: label lists ['United Kingdom'] but note says cannot hire there: The posting says it cannot hire in: EMEA, United Kingdom, European Union.
-- Stylist at Stitch Fix: label lists ['United States'] but note says cannot hire there: The posting says it cannot hire in: United States, Alaska, California, Colorado, Connecticut, District Of Columbia and others.
-- Data Engineer at Branch: label lists ['United States'] but note says cannot hire there: The posting says it cannot hire in: United States.
 
 ## Warnings
 
-### pay-in-posting-but-card-says-not-stated (6)
+### pay-in-posting-but-card-says-not-stated (5)
 - Software Engineer II, Fullstack (International) at Affirm: $24,000 - $36,000
 - Senior Software Engineer, Fullstack (International)  at Affirm: $32,000-$48,000
 - Mid-Market Account Executive, UK & Ireland at Customer.io: $20,000-75,000
@@ -23,11 +21,11 @@
 ## Shape of the feed
 
 ```
-count: 1015
-bySource: {'Ashby': 360, 'Lever': 127, 'Greenhouse': 528}
-pctEligibilityUnclear: 24.4
-pctRemoteUnclear: 7.5
+count: 1006
+bySource: {'Greenhouse': 527, 'Ashby': 357, 'Lever': 122}
+pctEligibilityUnclear: 24.8
+pctRemoteUnclear: 7.7
 pctWorldwide: 1.2
 pctEarlyCareer: 8.4
-pctSeniorPlus: 43.5
+pctSeniorPlus: 43.1
 ```
