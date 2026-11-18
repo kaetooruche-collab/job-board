@@ -1,12 +1,12 @@
-# Quality report, 2026-11-17T20:50+00:00
+# Quality report, 2026-11-18T07:18+00:00
 
-- Published: **1025**
-- Held back by a quality rule (not published): **7**
+- Published: **1029**
+- Held back by a quality rule (not published): **6**
 - Warnings (published, but look): **4**
 
 ## Held back
 
-### eligibility-contradicts-exclusion (7)
+### eligibility-contradicts-exclusion (6)
 - Risk Controls Manager at Branch: label lists ['United States'] but note says cannot hire there: The posting says it cannot hire in: United States.
 - Risk and Recovery Contact Operations Manager at Branch: label lists ['United States'] but note says cannot hire there: The posting says it cannot hire in: United States.
 - Compliance Analyst at Branch: label lists ['United States'] but note says cannot hire there: The posting says it cannot hire in: United States.
@@ -24,11 +24,11 @@
 ## Shape of the feed
 
 ```
-count: 1025
-bySource: {'Greenhouse': 529, 'Ashby': 374, 'Lever': 122}
-pctEligibilityUnclear: 24.3
-pctRemoteUnclear: 7.7
+count: 1029
+bySource: {'Greenhouse': 530, 'Ashby': 377, 'Lever': 122}
+pctEligibilityUnclear: 24.4
+pctRemoteUnclear: 7.5
 pctWorldwide: 1.2
-pctEarlyCareer: 8.5
-pctSeniorPlus: 42.4
+pctEarlyCareer: 8.4
+pctSeniorPlus: 43.2
 ```

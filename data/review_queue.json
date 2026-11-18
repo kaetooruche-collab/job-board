@@ -54,15 +54,6 @@
   "source": "Ashby"
  },
  {
-  "title": "Stylist",
-  "company": "Stitch Fix",
-  "url": "https://job-boards.greenhouse.io/stitchfix/jobs/8337076",
-  "location": "Remote, USA",
-  "reason": "quality check: eligibility-contradicts-exclusion",
-  "detail": "label lists ['United States'] but note says cannot hire there: The posting says it cannot hire in: United States, Alaska, California, Colorado, Connecticut, District Of Columbia and others.",
-  "source": "Greenhouse"
- },
- {
   "title": "Senior Counsel",
   "company": "2U",
   "url": "https://job-boards.greenhouse.io/2u/jobs/8933549002",
@@ -134,63 +125,43 @@
   "source": "Greenhouse"
  },
  {
-  "title": "Forward Deployed Engineer",
-  "company": "Buildkite",
-  "url": "https://job-boards.greenhouse.io/buildkite/jobs/5462954008",
-  "location": "United States - Pacific Time ",
+  "title": "Affirm Bank Treasury Manager",
+  "company": "Affirm",
+  "url": "https://job-boards.greenhouse.io/affirm/jobs/8202705003",
+  "location": "Remote US",
   "reason": "contradictory remote/office information",
   "scores": {
-   "remote": 3.5,
-   "office": 2.0
-  },
-  "evidence": [
-   {
-    "signal": "description",
-    "text": "You'll spend time on site with the platform teams behind some of the most demanding CI workloads in the world, in the room with their engineers and executives, and you'l…",
-    "effect": "on_site"
-   },
-   {
-    "signal": "description",
-    "text": "An ongoing remote-work allowance to help you do your best work",
-    "effect": "remote (weak)"
-   },
-   {
-    "signal": "description",
-    "text": "Flexibility to work from anywhere in the world for up to 6 weeks a year",
-    "effect": "remote"
-   }
-  ],
-  "unresolved": [
-   "The listing contradicts itself about remote versus office work; needs review.",
-   "The location field and the description disagree about where applicants can be; check the employer's wording.",
-   "Eligibility wording conflicts inside the listing."
-  ],
-  "source": "Greenhouse"
- },
- {
-  "title": "Senior Product Marketing Manager",
-  "company": "Calendly",
-  "url": "https://job-boards.greenhouse.io/calendly/jobs/8922278002",
-  "location": "Remote - US",
-  "reason": "contradictory remote/office information",
-  "scores": {
-   "remote": 3.0,
+   "remote": 8.0,
    "office": 3.0
   },
   "evidence": [
    {
     "signal": "location field",
-    "text": "Remote - US",
+    "text": "Remote US",
     "effect": "remote"
    },
    {
     "signal": "description",
-    "text": "Calendly uses the zip code of an employee's remote work location, or the onsite building location if hybrid, to determine which metropolitan pay range we use.",
-    "effect": "hybrid"
+    "text": "#LI-Remote",
+    "effect": "remote (weak)"
+   },
+   {
+    "signal": "description",
+    "text": "Affirm is proud to be a remote-first company!",
+    "effect": "remote"
+   },
+   {
+    "signal": "description (company-level wording, not counted)",
+    "text": "Affirmers in proximal roles have the flexibility to work remotely, but will occasionally be required to work out of their assigned Affirm office.",
+    "effect": "unclear"
    }
   ],
   "unresolved": [
-   "The listing contradicts itself about remote versus office work; needs review."
+   "Mentions in-person onboarding or training; confirm how long and whether the ongoing role is remote.",
+   "The listing contradicts itself about remote versus office work; needs review.",
+   "The listing only mentions remote work in general company terms; it does not confirm this role.",
+   "Occasional office or in-person attendance is mentioned; confirm how often.",
+   "The location field lists Remote US, but the listing does not confirm the role is remote there."
   ],
   "source": "Greenhouse"
  },
@@ -273,6 +244,67 @@
   "source": "Greenhouse"
  },
  {
+  "title": "Senior Product Marketing Manager",
+  "company": "Calendly",
+  "url": "https://job-boards.greenhouse.io/calendly/jobs/8922278002",
+  "location": "Remote - US",
+  "reason": "contradictory remote/office information",
+  "scores": {
+   "remote": 3.0,
+   "office": 3.0
+  },
+  "evidence": [
+   {
+    "signal": "location field",
+    "text": "Remote - US",
+    "effect": "remote"
+   },
+   {
+    "signal": "description",
+    "text": "Calendly uses the zip code of an employee's remote work location, or the onsite building location if hybrid, to determine which metropolitan pay range we use.",
+    "effect": "hybrid"
+   }
+  ],
+  "unresolved": [
+   "The listing contradicts itself about remote versus office work; needs review."
+  ],
+  "source": "Greenhouse"
+ },
+ {
+  "title": "Forward Deployed Engineer",
+  "company": "Buildkite",
+  "url": "https://job-boards.greenhouse.io/buildkite/jobs/5462954008",
+  "location": "United States - Pacific Time ",
+  "reason": "contradictory remote/office information",
+  "scores": {
+   "remote": 3.5,
+   "office": 2.0
+  },
+  "evidence": [
+   {
+    "signal": "description",
+    "text": "You'll spend time on site with the platform teams behind some of the most demanding CI workloads in the world, in the room with their engineers and executives, and you'l…",
+    "effect": "on_site"
+   },
+   {
+    "signal": "description",
+    "text": "An ongoing remote-work allowance to help you do your best work",
+    "effect": "remote (weak)"
+   },
+   {
+    "signal": "description",
+    "text": "Flexibility to work from anywhere in the world for up to 6 weeks a year",
+    "effect": "remote"
+   }
+  ],
+  "unresolved": [
+   "The listing contradicts itself about remote versus office work; needs review.",
+   "The location field and the description disagree about where applicants can be; check the employer's wording.",
+   "Eligibility wording conflicts inside the listing."
+  ],
+  "source": "Greenhouse"
+ },
+ {
   "title": "Senior Training Lead",
   "company": "Chime",
   "url": "https://boards.greenhouse.io/chime/jobs/8928783002?gh_jid=8928783002",
@@ -347,591 +379,6 @@
   "source": "Greenhouse"
  },
  {
-  "title": "Brand Design Manager, Growth",
-  "company": "Brex",
-  "url": "https://job-boards.greenhouse.io/brex/jobs/8932573002",
-  "location": "Seattle, Washington, United States",
-  "reason": "contradictory remote/office information",
-  "scores": {
-   "remote": 3.5,
-   "office": 3.0
-  },
-  "evidence": [
-   {
-    "signal": "description (mixed office and remote wording)",
-    "text": "We are a hybrid environment that combines the energy and connections of being in the office with the benefits and flexibility of working from home.",
-    "effect": "remote (weak)"
-   },
-   {
-    "signal": "description",
-    "text": "We currently require three days per week in office",
-    "effect": "hybrid"
-   },
-   {
-    "signal": "description",
-    "text": "As a perk, we also have up to four weeks per year of fully remote work!",
-    "effect": "remote"
-   }
-  ],
-  "unresolved": [
-   "The listing contradicts itself about remote versus office work; needs review."
-  ],
-  "source": "Greenhouse"
- },
- {
-  "title": "Brand Design Manager, Growth",
-  "company": "Brex",
-  "url": "https://job-boards.greenhouse.io/brex/jobs/8932572002",
-  "location": "New York, New York, United States",
-  "reason": "contradictory remote/office information",
-  "scores": {
-   "remote": 3.5,
-   "office": 3.0
-  },
-  "evidence": [
-   {
-    "signal": "description (mixed office and remote wording)",
-    "text": "We are a hybrid environment that combines the energy and connections of being in the office with the benefits and flexibility of working from home.",
-    "effect": "remote (weak)"
-   },
-   {
-    "signal": "description",
-    "text": "We currently require three days per week in office",
-    "effect": "hybrid"
-   },
-   {
-    "signal": "description",
-    "text": "As a perk, we also have up to four weeks per year of fully remote work!",
-    "effect": "remote"
-   }
-  ],
-  "unresolved": [
-   "The listing contradicts itself about remote versus office work; needs review."
-  ],
-  "source": "Greenhouse"
- },
- {
-  "title": "Brand Design Manager, Growth",
-  "company": "Brex",
-  "url": "https://job-boards.greenhouse.io/brex/jobs/8920564002",
-  "location": "San Francisco, California, United States",
-  "reason": "contradictory remote/office information",
-  "scores": {
-   "remote": 3.5,
-   "office": 3.0
-  },
-  "evidence": [
-   {
-    "signal": "description (mixed office and remote wording)",
-    "text": "We are a hybrid environment that combines the energy and connections of being in the office with the benefits and flexibility of working from home.",
-    "effect": "remote (weak)"
-   },
-   {
-    "signal": "description",
-    "text": "We currently require three days per week in office",
-    "effect": "hybrid"
-   },
-   {
-    "signal": "description",
-    "text": "As a perk, we also have up to four weeks per year of fully remote work!",
-    "effect": "remote"
-   }
-  ],
-  "unresolved": [
-   "The listing contradicts itself about remote versus office work; needs review."
-  ],
-  "source": "Greenhouse"
- },
- {
-  "title": "Business Recruiter",
-  "company": "Brex",
-  "url": "https://job-boards.greenhouse.io/brex/jobs/8928177002",
-  "location": "Seattle, Washington, United States",
-  "reason": "contradictory remote/office information",
-  "scores": {
-   "remote": 3.5,
-   "office": 3.5
-  },
-  "evidence": [
-   {
-    "signal": "description (mixed office and remote wording)",
-    "text": "We are a hybrid environment that combines the energy and connections of being in the office with the benefits and flexibility of working from home.",
-    "effect": "remote (weak)"
-   },
-   {
-    "signal": "description",
-    "text": "As a perk, we also have up to four weeks per year of fully remote work!",
-    "effect": "remote"
-   },
-   {
-    "signal": "description",
-    "text": "Must be willing to work in office 3 days per week on Monday, Wednesday and Thursday",
-    "effect": "hybrid"
-   }
-  ],
-  "unresolved": [
-   "The listing contradicts itself about remote versus office work; needs review."
-  ],
-  "source": "Greenhouse"
- },
- {
-  "title": "Business Recruiter",
-  "company": "Brex",
-  "url": "https://job-boards.greenhouse.io/brex/jobs/8928174002",
-  "location": "San Francisco, California, United States",
-  "reason": "contradictory remote/office information",
-  "scores": {
-   "remote": 3.5,
-   "office": 3.5
-  },
-  "evidence": [
-   {
-    "signal": "description (mixed office and remote wording)",
-    "text": "We are a hybrid environment that combines the energy and connections of being in the office with the benefits and flexibility of working from home.",
-    "effect": "remote (weak)"
-   },
-   {
-    "signal": "description",
-    "text": "As a perk, we also have up to four weeks per year of fully remote work!",
-    "effect": "remote"
-   },
-   {
-    "signal": "description",
-    "text": "Must be willing to work in office 3 days per week on Monday, Wednesday and Thursday",
-    "effect": "hybrid"
-   }
-  ],
-  "unresolved": [
-   "The listing contradicts itself about remote versus office work; needs review."
-  ],
-  "source": "Greenhouse"
- },
- {
-  "title": "Business Recruiter",
-  "company": "Brex",
-  "url": "https://job-boards.greenhouse.io/brex/jobs/8928173002",
-  "location": "New York, New York, United States",
-  "reason": "contradictory remote/office information",
-  "scores": {
-   "remote": 3.5,
-   "office": 3.5
-  },
-  "evidence": [
-   {
-    "signal": "description (mixed office and remote wording)",
-    "text": "We are a hybrid environment that combines the energy and connections of being in the office with the benefits and flexibility of working from home.",
-    "effect": "remote (weak)"
-   },
-   {
-    "signal": "description",
-    "text": "As a perk, we also have up to four weeks per year of fully remote work!",
-    "effect": "remote"
-   },
-   {
-    "signal": "description",
-    "text": "Must be willing to work in office 3 days per week on Monday, Wednesday and Thursday",
-    "effect": "hybrid"
-   }
-  ],
-  "unresolved": [
-   "The listing contradicts itself about remote versus office work; needs review."
-  ],
-  "source": "Greenhouse"
- },
- {
-  "title": "Business Recruiter",
-  "company": "Brex",
-  "url": "https://job-boards.greenhouse.io/brex/jobs/8928184002",
-  "location": "Vancouver, British Columbia, Canada",
-  "reason": "contradictory remote/office information",
-  "scores": {
-   "remote": 3.5,
-   "office": 3.5
-  },
-  "evidence": [
-   {
-    "signal": "description (mixed office and remote wording)",
-    "text": "We are a hybrid environment that combines the energy and connections of being in the office with the benefits and flexibility of working from home.",
-    "effect": "remote (weak)"
-   },
-   {
-    "signal": "description",
-    "text": "As a perk, we also have up to four weeks per year of fully remote work!",
-    "effect": "remote"
-   },
-   {
-    "signal": "description",
-    "text": "Must be willing to work in office 3 days per week on Monday, Wednesday and Thursday",
-    "effect": "hybrid"
-   }
-  ],
-  "unresolved": [
-   "The listing contradicts itself about remote versus office work; needs review."
-  ],
-  "source": "Greenhouse"
- },
- {
-  "title": "Business Recruiter",
-  "company": "Brex",
-  "url": "https://job-boards.greenhouse.io/brex/jobs/8928181002",
-  "location": "Salt Lake City, Utah, United States",
-  "reason": "contradictory remote/office information",
-  "scores": {
-   "remote": 3.5,
-   "office": 3.5
-  },
-  "evidence": [
-   {
-    "signal": "description (mixed office and remote wording)",
-    "text": "We are a hybrid environment that combines the energy and connections of being in the office with the benefits and flexibility of working from home.",
-    "effect": "remote (weak)"
-   },
-   {
-    "signal": "description",
-    "text": "As a perk, we also have up to four weeks per year of fully remote work!",
-    "effect": "remote"
-   },
-   {
-    "signal": "description",
-    "text": "Must be willing to work in office 3 days per week on Monday, Wednesday and Thursday",
-    "effect": "hybrid"
-   }
-  ],
-  "unresolved": [
-   "The listing contradicts itself about remote versus office work; needs review.",
-   "The location field names a place but does not say the role is remote there; confirm whether applicants elsewhere are accepted."
-  ],
-  "source": "Greenhouse"
- },
- {
-  "title": "Director, Enterprise Sales",
-  "company": "Brex",
-  "url": "https://job-boards.greenhouse.io/brex/jobs/8938895002",
-  "location": "Seattle, Washington, United States",
-  "reason": "contradictory remote/office information",
-  "scores": {
-   "remote": 3.5,
-   "office": 3.0
-  },
-  "evidence": [
-   {
-    "signal": "description (mixed office and remote wording)",
-    "text": "Our hybrid environment combines the energy and connection of being in the office with the benefits and flexibility of working from home.",
-    "effect": "remote (weak)"
-   },
-   {
-    "signal": "description",
-    "text": "We currently require a minimum of three days per week in the office",
-    "effect": "hybrid"
-   },
-   {
-    "signal": "description",
-    "text": "As a perk, we also offer up to four weeks per year of fully remote work.",
-    "effect": "remote"
-   }
-  ],
-  "unresolved": [
-   "The listing contradicts itself about remote versus office work; needs review."
-  ],
-  "source": "Greenhouse"
- },
- {
-  "title": "Director, Enterprise Sales",
-  "company": "Brex",
-  "url": "https://job-boards.greenhouse.io/brex/jobs/8938896002",
-  "location": "Salt Lake City, Utah, United States",
-  "reason": "contradictory remote/office information",
-  "scores": {
-   "remote": 3.5,
-   "office": 3.0
-  },
-  "evidence": [
-   {
-    "signal": "description (mixed office and remote wording)",
-    "text": "Our hybrid environment combines the energy and connection of being in the office with the benefits and flexibility of working from home.",
-    "effect": "remote (weak)"
-   },
-   {
-    "signal": "description",
-    "text": "We currently require a minimum of three days per week in the office",
-    "effect": "hybrid"
-   },
-   {
-    "signal": "description",
-    "text": "As a perk, we also offer up to four weeks per year of fully remote work.",
-    "effect": "remote"
-   }
-  ],
-  "unresolved": [
-   "The listing contradicts itself about remote versus office work; needs review."
-  ],
-  "source": "Greenhouse"
- },
- {
-  "title": "Director, Enterprise Sales",
-  "company": "Brex",
-  "url": "https://job-boards.greenhouse.io/brex/jobs/8938894002",
-  "location": "New York, New York, United States",
-  "reason": "contradictory remote/office information",
-  "scores": {
-   "remote": 3.5,
-   "office": 3.0
-  },
-  "evidence": [
-   {
-    "signal": "description (mixed office and remote wording)",
-    "text": "Our hybrid environment combines the energy and connection of being in the office with the benefits and flexibility of working from home.",
-    "effect": "remote (weak)"
-   },
-   {
-    "signal": "description",
-    "text": "We currently require a minimum of three days per week in the office",
-    "effect": "hybrid"
-   },
-   {
-    "signal": "description",
-    "text": "As a perk, we also offer up to four weeks per year of fully remote work.",
-    "effect": "remote"
-   }
-  ],
-  "unresolved": [
-   "The listing contradicts itself about remote versus office work; needs review."
-  ],
-  "source": "Greenhouse"
- },
- {
-  "title": "Director, Enterprise Sales",
-  "company": "Brex",
-  "url": "https://job-boards.greenhouse.io/brex/jobs/8935952002",
-  "location": "San Francisco, California, United States",
-  "reason": "contradictory remote/office information",
-  "scores": {
-   "remote": 3.5,
-   "office": 3.0
-  },
-  "evidence": [
-   {
-    "signal": "description (mixed office and remote wording)",
-    "text": "Our hybrid environment combines the energy and connection of being in the office with the benefits and flexibility of working from home.",
-    "effect": "remote (weak)"
-   },
-   {
-    "signal": "description",
-    "text": "We currently require a minimum of three days per week in the office",
-    "effect": "hybrid"
-   },
-   {
-    "signal": "description",
-    "text": "As a perk, we also offer up to four weeks per year of fully remote work.",
-    "effect": "remote"
-   }
-  ],
-  "unresolved": [
-   "The listing contradicts itself about remote versus office work; needs review."
-  ],
-  "source": "Greenhouse"
- },
- {
-  "title": "Senior Director, Client Sales",
-  "company": "Brex",
-  "url": "https://job-boards.greenhouse.io/brex/jobs/8917093002",
-  "location": "San Francisco, California, United States",
-  "reason": "contradictory remote/office information",
-  "scores": {
-   "remote": 3.5,
-   "office": 3.0
-  },
-  "evidence": [
-   {
-    "signal": "description (mixed office and remote wording)",
-    "text": "Our hybrid environment combines the energy and connections of being in the office with the benefits and flexibility of working from home.",
-    "effect": "remote (weak)"
-   },
-   {
-    "signal": "description",
-    "text": "We currently require a minimum of three days per week in the office-Monday, Wednesday, and Thursday.",
-    "effect": "hybrid"
-   },
-   {
-    "signal": "description",
-    "text": "As a perk, we also offer up to four weeks per year of fully remote work.",
-    "effect": "remote"
-   }
-  ],
-  "unresolved": [
-   "The listing contradicts itself about remote versus office work; needs review.",
-   "The location field names a place but does not say the role is remote there; confirm whether applicants elsewhere are accepted."
-  ],
-  "source": "Greenhouse"
- },
- {
-  "title": "Senior Director, Client Sales",
-  "company": "Brex",
-  "url": "https://job-boards.greenhouse.io/brex/jobs/8928814002",
-  "location": "Seattle, Washington, United States",
-  "reason": "contradictory remote/office information",
-  "scores": {
-   "remote": 3.5,
-   "office": 3.0
-  },
-  "evidence": [
-   {
-    "signal": "description (mixed office and remote wording)",
-    "text": "Our hybrid environment combines the energy and connections of being in the office with the benefits and flexibility of working from home.",
-    "effect": "remote (weak)"
-   },
-   {
-    "signal": "description",
-    "text": "We currently require a minimum of three days per week in the office-Monday, Wednesday, and Thursday.",
-    "effect": "hybrid"
-   },
-   {
-    "signal": "description",
-    "text": "As a perk, we also offer up to four weeks per year of fully remote work.",
-    "effect": "remote"
-   }
-  ],
-  "unresolved": [
-   "The listing contradicts itself about remote versus office work; needs review.",
-   "The location field names a place but does not say the role is remote there; confirm whether applicants elsewhere are accepted."
-  ],
-  "source": "Greenhouse"
- },
- {
-  "title": "Senior Director, Client Sales",
-  "company": "Brex",
-  "url": "https://job-boards.greenhouse.io/brex/jobs/8928812002",
-  "location": "New York, New York, United States",
-  "reason": "contradictory remote/office information",
-  "scores": {
-   "remote": 3.5,
-   "office": 3.0
-  },
-  "evidence": [
-   {
-    "signal": "description (mixed office and remote wording)",
-    "text": "Our hybrid environment combines the energy and connections of being in the office with the benefits and flexibility of working from home.",
-    "effect": "remote (weak)"
-   },
-   {
-    "signal": "description",
-    "text": "We currently require a minimum of three days per week in the office-Monday, Wednesday, and Thursday.",
-    "effect": "hybrid"
-   },
-   {
-    "signal": "description",
-    "text": "As a perk, we also offer up to four weeks per year of fully remote work.",
-    "effect": "remote"
-   }
-  ],
-  "unresolved": [
-   "The listing contradicts itself about remote versus office work; needs review.",
-   "The location field names a place but does not say the role is remote there; confirm whether applicants elsewhere are accepted."
-  ],
-  "source": "Greenhouse"
- },
- {
-  "title": "Software Engineer, Intern  (Summer 2027)",
-  "company": "Brex",
-  "url": "https://job-boards.greenhouse.io/brex/jobs/8936403002",
-  "location": "San Francisco, California, United States",
-  "reason": "contradictory remote/office information",
-  "scores": {
-   "remote": 3.5,
-   "office": 3.0
-  },
-  "evidence": [
-   {
-    "signal": "description (mixed office and remote wording)",
-    "text": "We are a hybrid environment that combines the energy and connections of being in the office with the benefits and flexibility of working from home.",
-    "effect": "remote (weak)"
-   },
-   {
-    "signal": "description",
-    "text": "We currently require a minimum of 3 days per week in the office",
-    "effect": "hybrid"
-   },
-   {
-    "signal": "description",
-    "text": "As a perk, we also have up to four weeks per year of fully remote work!",
-    "effect": "remote"
-   }
-  ],
-  "unresolved": [
-   "The listing contradicts itself about remote versus office work; needs review."
-  ],
-  "source": "Greenhouse"
- },
- {
-  "title": "Staff Software Engineer - Identity & Access Management",
-  "company": "Brex",
-  "url": "https://job-boards.greenhouse.io/brex/jobs/8922246002",
-  "location": "Vancouver, British Columbia, Canada",
-  "reason": "contradictory remote/office information",
-  "scores": {
-   "remote": 3.5,
-   "office": 2.0
-  },
-  "evidence": [
-   {
-    "signal": "description (mixed office and remote wording)",
-    "text": "We are a hybrid environment that combines the energy and connections of being in the office with the benefits and flexibility of working from home.",
-    "effect": "remote (weak)"
-   },
-   {
-    "signal": "description",
-    "text": "We currently require Monday, Wednesday and Thursday to be designated in office days.",
-    "effect": "on_site"
-   },
-   {
-    "signal": "description",
-    "text": "As a perk, we also have up to four weeks per year of fully remote work!",
-    "effect": "remote"
-   }
-  ],
-  "unresolved": [
-   "The listing contradicts itself about remote versus office work; needs review."
-  ],
-  "source": "Greenhouse"
- },
- {
-  "title": "Commercial Counsel, Advertising and Partnerships",
-  "company": "Doximity",
-  "url": "https://job-boards.greenhouse.io/doximity/jobs/8379024",
-  "location": "San Francisco, CA ",
-  "reason": "contradictory remote/office information",
-  "scores": {
-   "remote": 4.0,
-   "office": 7.5
-  },
-  "evidence": [
-   {
-    "signal": "description",
-    "text": "This is an onsite role based in our San Francisco office.",
-    "effect": "on_site"
-   },
-   {
-    "signal": "description",
-    "text": "The team is in the office on a regular basis (minimally 3 days per week) for collaboration, and this position is expected to be present in person accordingly.",
-    "effect": "on_site"
-   },
-   {
-    "signal": "description",
-    "text": "We recognize that many talented attorneys are seeking fully remote roles.",
-    "effect": "remote"
-   },
-   {
-    "signal": "description",
-    "text": "For this position, however, we are only considering candidates who are able to work onsite in San Francisco and who do not require a fully remote arrangement.",
-    "effect": "on_site"
-   }
-  ],
-  "unresolved": [
-   "The listing contradicts itself about remote versus office work; needs review."
-  ],
-  "source": "Greenhouse"
- },
- {
   "title": "Complaints Analyst III",
   "company": "Coinbase",
   "url": "https://job-boards.greenhouse.io/coinbase/jobs/8289787",
@@ -972,7 +419,7 @@
  {
   "title": "Customer Support Specialist ll",
   "company": "Coinbase",
-  "url": "https://job-boards.greenhouse.io/coinbase/jobs/8337782",
+  "url": "https://job-boards.greenhouse.io/coinbase/jobs/8337209",
   "location": "Manila, Philippines",
   "reason": "contradictory remote/office information",
   "scores": {
@@ -1005,7 +452,7 @@
  {
   "title": "Customer Support Specialist ll",
   "company": "Coinbase",
-  "url": "https://job-boards.greenhouse.io/coinbase/jobs/8337209",
+  "url": "https://job-boards.greenhouse.io/coinbase/jobs/8337782",
   "location": "Manila, Philippines",
   "reason": "contradictory remote/office information",
   "scores": {
@@ -1102,45 +549,6 @@
   ],
   "unresolved": [
    "The listing contradicts itself about remote versus office work; needs review."
-  ],
-  "source": "Greenhouse"
- },
- {
-  "title": "Senior Analytics Engineer",
-  "company": "Coinbase",
-  "url": "https://job-boards.greenhouse.io/coinbase/jobs/8394402",
-  "location": "Remote - USA",
-  "reason": "contradictory remote/office information",
-  "scores": {
-   "remote": 5.0,
-   "office": 3.0
-  },
-  "evidence": [
-   {
-    "signal": "location field",
-    "text": "Remote - USA",
-    "effect": "remote"
-   },
-   {
-    "signal": "description",
-    "text": "Coinbase is a remote-first, but not remote-only company.",
-    "effect": "remote"
-   },
-   {
-    "signal": "description (occasional attendance)",
-    "text": "Expect to get together quarterly for intense in-person working sessions called “surges.” Learn more about working at Coinbase .",
-    "effect": "occasional"
-   },
-   {
-    "signal": "description",
-    "text": "Analytics Engineer is a hybrid role that blends data engineering and data science.",
-    "effect": "hybrid"
-   }
-  ],
-  "unresolved": [
-   "The listing contradicts itself about remote versus office work; needs review.",
-   "Occasional office or in-person attendance is mentioned; confirm how often.",
-   "The location field lists Remote - USA, but the listing does not confirm the role is remote there."
   ],
   "source": "Greenhouse"
  },
@@ -1254,35 +662,647 @@
   "source": "Greenhouse"
  },
  {
-  "title": "Senior Associate, Fraud Operations",
-  "company": "Gemini",
-  "url": "https://boards.greenhouse.io/embed/job_app?for=gemini&token=8328881&gh_jid=8328881",
-  "location": "New York, New York; Miami, Florida; Remote (USA)",
+  "title": "Commercial Counsel, Advertising and Partnerships",
+  "company": "Doximity",
+  "url": "https://job-boards.greenhouse.io/doximity/jobs/8379024",
+  "location": "San Francisco, CA ",
   "reason": "contradictory remote/office information",
   "scores": {
-   "remote": 3.5,
-   "office": 4.5
+   "remote": 4.0,
+   "office": 7.5
   },
   "evidence": [
    {
-    "signal": "location field",
-    "text": "New York, New York; Miami, Florida; Remote (USA)",
+    "signal": "description",
+    "text": "This is an onsite role based in our San Francisco office.",
+    "effect": "on_site"
+   },
+   {
+    "signal": "description",
+    "text": "The team is in the office on a regular basis (minimally 3 days per week) for collaboration, and this position is expected to be present in person accordingly.",
+    "effect": "on_site"
+   },
+   {
+    "signal": "description",
+    "text": "We recognize that many talented attorneys are seeking fully remote roles.",
     "effect": "remote"
    },
    {
     "signal": "description",
-    "text": "In the United States, we offer a hybrid work approach at our hub offices, balancing the benefits of in-person collaboration with the flexibility of remote work.",
-    "effect": "hybrid"
-   },
+    "text": "For this position, however, we are only considering candidates who are able to work onsite in San Francisco and who do not require a fully remote arrangement.",
+    "effect": "on_site"
+   }
+  ],
+  "unresolved": [
+   "The listing contradicts itself about remote versus office work; needs review."
+  ],
+  "source": "Greenhouse"
+ },
+ {
+  "title": "Brand Design Manager, Growth",
+  "company": "Brex",
+  "url": "https://job-boards.greenhouse.io/brex/jobs/8932572002",
+  "location": "New York, New York, United States",
+  "reason": "contradictory remote/office information",
+  "scores": {
+   "remote": 3.5,
+   "office": 3.0
+  },
+  "evidence": [
    {
-    "signal": "description",
-    "text": "Employees who do not live near one of our hubs are part of our remote workforce.",
+    "signal": "description (mixed office and remote wording)",
+    "text": "We are a hybrid environment that combines the energy and connections of being in the office with the benefits and flexibility of working from home.",
     "effect": "remote (weak)"
    },
    {
     "signal": "description",
-    "text": "All employees, however, are required to onboard in-person at one of our office locations.",
+    "text": "We currently require three days per week in office",
+    "effect": "hybrid"
+   },
+   {
+    "signal": "description",
+    "text": "As a perk, we also have up to four weeks per year of fully remote work!",
+    "effect": "remote"
+   }
+  ],
+  "unresolved": [
+   "The listing contradicts itself about remote versus office work; needs review."
+  ],
+  "source": "Greenhouse"
+ },
+ {
+  "title": "Brand Design Manager, Growth",
+  "company": "Brex",
+  "url": "https://job-boards.greenhouse.io/brex/jobs/8920564002",
+  "location": "San Francisco, California, United States",
+  "reason": "contradictory remote/office information",
+  "scores": {
+   "remote": 3.5,
+   "office": 3.0
+  },
+  "evidence": [
+   {
+    "signal": "description (mixed office and remote wording)",
+    "text": "We are a hybrid environment that combines the energy and connections of being in the office with the benefits and flexibility of working from home.",
+    "effect": "remote (weak)"
+   },
+   {
+    "signal": "description",
+    "text": "We currently require three days per week in office",
+    "effect": "hybrid"
+   },
+   {
+    "signal": "description",
+    "text": "As a perk, we also have up to four weeks per year of fully remote work!",
+    "effect": "remote"
+   }
+  ],
+  "unresolved": [
+   "The listing contradicts itself about remote versus office work; needs review."
+  ],
+  "source": "Greenhouse"
+ },
+ {
+  "title": "Brand Design Manager, Growth",
+  "company": "Brex",
+  "url": "https://job-boards.greenhouse.io/brex/jobs/8932573002",
+  "location": "Seattle, Washington, United States",
+  "reason": "contradictory remote/office information",
+  "scores": {
+   "remote": 3.5,
+   "office": 3.0
+  },
+  "evidence": [
+   {
+    "signal": "description (mixed office and remote wording)",
+    "text": "We are a hybrid environment that combines the energy and connections of being in the office with the benefits and flexibility of working from home.",
+    "effect": "remote (weak)"
+   },
+   {
+    "signal": "description",
+    "text": "We currently require three days per week in office",
+    "effect": "hybrid"
+   },
+   {
+    "signal": "description",
+    "text": "As a perk, we also have up to four weeks per year of fully remote work!",
+    "effect": "remote"
+   }
+  ],
+  "unresolved": [
+   "The listing contradicts itself about remote versus office work; needs review."
+  ],
+  "source": "Greenhouse"
+ },
+ {
+  "title": "Business Recruiter",
+  "company": "Brex",
+  "url": "https://job-boards.greenhouse.io/brex/jobs/8928174002",
+  "location": "San Francisco, California, United States",
+  "reason": "contradictory remote/office information",
+  "scores": {
+   "remote": 3.5,
+   "office": 3.5
+  },
+  "evidence": [
+   {
+    "signal": "description (mixed office and remote wording)",
+    "text": "We are a hybrid environment that combines the energy and connections of being in the office with the benefits and flexibility of working from home.",
+    "effect": "remote (weak)"
+   },
+   {
+    "signal": "description",
+    "text": "As a perk, we also have up to four weeks per year of fully remote work!",
+    "effect": "remote"
+   },
+   {
+    "signal": "description",
+    "text": "Must be willing to work in office 3 days per week on Monday, Wednesday and Thursday",
+    "effect": "hybrid"
+   }
+  ],
+  "unresolved": [
+   "The listing contradicts itself about remote versus office work; needs review."
+  ],
+  "source": "Greenhouse"
+ },
+ {
+  "title": "Business Recruiter",
+  "company": "Brex",
+  "url": "https://job-boards.greenhouse.io/brex/jobs/8928184002",
+  "location": "Vancouver, British Columbia, Canada",
+  "reason": "contradictory remote/office information",
+  "scores": {
+   "remote": 3.5,
+   "office": 3.5
+  },
+  "evidence": [
+   {
+    "signal": "description (mixed office and remote wording)",
+    "text": "We are a hybrid environment that combines the energy and connections of being in the office with the benefits and flexibility of working from home.",
+    "effect": "remote (weak)"
+   },
+   {
+    "signal": "description",
+    "text": "As a perk, we also have up to four weeks per year of fully remote work!",
+    "effect": "remote"
+   },
+   {
+    "signal": "description",
+    "text": "Must be willing to work in office 3 days per week on Monday, Wednesday and Thursday",
+    "effect": "hybrid"
+   }
+  ],
+  "unresolved": [
+   "The listing contradicts itself about remote versus office work; needs review."
+  ],
+  "source": "Greenhouse"
+ },
+ {
+  "title": "Business Recruiter",
+  "company": "Brex",
+  "url": "https://job-boards.greenhouse.io/brex/jobs/8928181002",
+  "location": "Salt Lake City, Utah, United States",
+  "reason": "contradictory remote/office information",
+  "scores": {
+   "remote": 3.5,
+   "office": 3.5
+  },
+  "evidence": [
+   {
+    "signal": "description (mixed office and remote wording)",
+    "text": "We are a hybrid environment that combines the energy and connections of being in the office with the benefits and flexibility of working from home.",
+    "effect": "remote (weak)"
+   },
+   {
+    "signal": "description",
+    "text": "As a perk, we also have up to four weeks per year of fully remote work!",
+    "effect": "remote"
+   },
+   {
+    "signal": "description",
+    "text": "Must be willing to work in office 3 days per week on Monday, Wednesday and Thursday",
+    "effect": "hybrid"
+   }
+  ],
+  "unresolved": [
+   "The listing contradicts itself about remote versus office work; needs review.",
+   "The location field names a place but does not say the role is remote there; confirm whether applicants elsewhere are accepted."
+  ],
+  "source": "Greenhouse"
+ },
+ {
+  "title": "Business Recruiter",
+  "company": "Brex",
+  "url": "https://job-boards.greenhouse.io/brex/jobs/8928177002",
+  "location": "Seattle, Washington, United States",
+  "reason": "contradictory remote/office information",
+  "scores": {
+   "remote": 3.5,
+   "office": 3.5
+  },
+  "evidence": [
+   {
+    "signal": "description (mixed office and remote wording)",
+    "text": "We are a hybrid environment that combines the energy and connections of being in the office with the benefits and flexibility of working from home.",
+    "effect": "remote (weak)"
+   },
+   {
+    "signal": "description",
+    "text": "As a perk, we also have up to four weeks per year of fully remote work!",
+    "effect": "remote"
+   },
+   {
+    "signal": "description",
+    "text": "Must be willing to work in office 3 days per week on Monday, Wednesday and Thursday",
+    "effect": "hybrid"
+   }
+  ],
+  "unresolved": [
+   "The listing contradicts itself about remote versus office work; needs review."
+  ],
+  "source": "Greenhouse"
+ },
+ {
+  "title": "Business Recruiter",
+  "company": "Brex",
+  "url": "https://job-boards.greenhouse.io/brex/jobs/8928173002",
+  "location": "New York, New York, United States",
+  "reason": "contradictory remote/office information",
+  "scores": {
+   "remote": 3.5,
+   "office": 3.5
+  },
+  "evidence": [
+   {
+    "signal": "description (mixed office and remote wording)",
+    "text": "We are a hybrid environment that combines the energy and connections of being in the office with the benefits and flexibility of working from home.",
+    "effect": "remote (weak)"
+   },
+   {
+    "signal": "description",
+    "text": "As a perk, we also have up to four weeks per year of fully remote work!",
+    "effect": "remote"
+   },
+   {
+    "signal": "description",
+    "text": "Must be willing to work in office 3 days per week on Monday, Wednesday and Thursday",
+    "effect": "hybrid"
+   }
+  ],
+  "unresolved": [
+   "The listing contradicts itself about remote versus office work; needs review."
+  ],
+  "source": "Greenhouse"
+ },
+ {
+  "title": "Customer Marketing Manager",
+  "company": "Brex",
+  "url": "https://job-boards.greenhouse.io/brex/jobs/8949361002",
+  "location": "San Francisco, California, United States",
+  "reason": "contradictory remote/office information",
+  "scores": {
+   "remote": 3.5,
+   "office": 3.0
+  },
+  "evidence": [
+   {
+    "signal": "description (mixed office and remote wording)",
+    "text": "We are a hybrid environment that combines the energy and connections of being in the office with the benefits and flexibility of working from home.",
+    "effect": "remote (weak)"
+   },
+   {
+    "signal": "description",
+    "text": "We currently require three days per week in office",
+    "effect": "hybrid"
+   },
+   {
+    "signal": "description",
+    "text": "As a perk, we also have up to four weeks per year of fully remote work!",
+    "effect": "remote"
+   }
+  ],
+  "unresolved": [
+   "The listing contradicts itself about remote versus office work; needs review."
+  ],
+  "source": "Greenhouse"
+ },
+ {
+  "title": "Customer Marketing Manager",
+  "company": "Brex",
+  "url": "https://job-boards.greenhouse.io/brex/jobs/8949362002",
+  "location": "New York, New York, United States",
+  "reason": "contradictory remote/office information",
+  "scores": {
+   "remote": 3.5,
+   "office": 3.0
+  },
+  "evidence": [
+   {
+    "signal": "description (mixed office and remote wording)",
+    "text": "We are a hybrid environment that combines the energy and connections of being in the office with the benefits and flexibility of working from home.",
+    "effect": "remote (weak)"
+   },
+   {
+    "signal": "description",
+    "text": "We currently require three days per week in office",
+    "effect": "hybrid"
+   },
+   {
+    "signal": "description",
+    "text": "As a perk, we also have up to four weeks per year of fully remote work!",
+    "effect": "remote"
+   }
+  ],
+  "unresolved": [
+   "The listing contradicts itself about remote versus office work; needs review."
+  ],
+  "source": "Greenhouse"
+ },
+ {
+  "title": "Director, Enterprise Sales",
+  "company": "Brex",
+  "url": "https://job-boards.greenhouse.io/brex/jobs/8938894002",
+  "location": "New York, New York, United States",
+  "reason": "contradictory remote/office information",
+  "scores": {
+   "remote": 3.5,
+   "office": 3.0
+  },
+  "evidence": [
+   {
+    "signal": "description (mixed office and remote wording)",
+    "text": "Our hybrid environment combines the energy and connection of being in the office with the benefits and flexibility of working from home.",
+    "effect": "remote (weak)"
+   },
+   {
+    "signal": "description",
+    "text": "We currently require a minimum of three days per week in the office",
+    "effect": "hybrid"
+   },
+   {
+    "signal": "description",
+    "text": "As a perk, we also offer up to four weeks per year of fully remote work.",
+    "effect": "remote"
+   }
+  ],
+  "unresolved": [
+   "The listing contradicts itself about remote versus office work; needs review."
+  ],
+  "source": "Greenhouse"
+ },
+ {
+  "title": "Director, Enterprise Sales",
+  "company": "Brex",
+  "url": "https://job-boards.greenhouse.io/brex/jobs/8938895002",
+  "location": "Seattle, Washington, United States",
+  "reason": "contradictory remote/office information",
+  "scores": {
+   "remote": 3.5,
+   "office": 3.0
+  },
+  "evidence": [
+   {
+    "signal": "description (mixed office and remote wording)",
+    "text": "Our hybrid environment combines the energy and connection of being in the office with the benefits and flexibility of working from home.",
+    "effect": "remote (weak)"
+   },
+   {
+    "signal": "description",
+    "text": "We currently require a minimum of three days per week in the office",
+    "effect": "hybrid"
+   },
+   {
+    "signal": "description",
+    "text": "As a perk, we also offer up to four weeks per year of fully remote work.",
+    "effect": "remote"
+   }
+  ],
+  "unresolved": [
+   "The listing contradicts itself about remote versus office work; needs review."
+  ],
+  "source": "Greenhouse"
+ },
+ {
+  "title": "Director, Enterprise Sales",
+  "company": "Brex",
+  "url": "https://job-boards.greenhouse.io/brex/jobs/8938896002",
+  "location": "Salt Lake City, Utah, United States",
+  "reason": "contradictory remote/office information",
+  "scores": {
+   "remote": 3.5,
+   "office": 3.0
+  },
+  "evidence": [
+   {
+    "signal": "description (mixed office and remote wording)",
+    "text": "Our hybrid environment combines the energy and connection of being in the office with the benefits and flexibility of working from home.",
+    "effect": "remote (weak)"
+   },
+   {
+    "signal": "description",
+    "text": "We currently require a minimum of three days per week in the office",
+    "effect": "hybrid"
+   },
+   {
+    "signal": "description",
+    "text": "As a perk, we also offer up to four weeks per year of fully remote work.",
+    "effect": "remote"
+   }
+  ],
+  "unresolved": [
+   "The listing contradicts itself about remote versus office work; needs review."
+  ],
+  "source": "Greenhouse"
+ },
+ {
+  "title": "Director, Enterprise Sales",
+  "company": "Brex",
+  "url": "https://job-boards.greenhouse.io/brex/jobs/8935952002",
+  "location": "San Francisco, California, United States",
+  "reason": "contradictory remote/office information",
+  "scores": {
+   "remote": 3.5,
+   "office": 3.0
+  },
+  "evidence": [
+   {
+    "signal": "description (mixed office and remote wording)",
+    "text": "Our hybrid environment combines the energy and connection of being in the office with the benefits and flexibility of working from home.",
+    "effect": "remote (weak)"
+   },
+   {
+    "signal": "description",
+    "text": "We currently require a minimum of three days per week in the office",
+    "effect": "hybrid"
+   },
+   {
+    "signal": "description",
+    "text": "As a perk, we also offer up to four weeks per year of fully remote work.",
+    "effect": "remote"
+   }
+  ],
+  "unresolved": [
+   "The listing contradicts itself about remote versus office work; needs review."
+  ],
+  "source": "Greenhouse"
+ },
+ {
+  "title": "Senior Director, Client Sales",
+  "company": "Brex",
+  "url": "https://job-boards.greenhouse.io/brex/jobs/8917093002",
+  "location": "San Francisco, California, United States",
+  "reason": "contradictory remote/office information",
+  "scores": {
+   "remote": 3.5,
+   "office": 3.0
+  },
+  "evidence": [
+   {
+    "signal": "description (mixed office and remote wording)",
+    "text": "Our hybrid environment combines the energy and connections of being in the office with the benefits and flexibility of working from home.",
+    "effect": "remote (weak)"
+   },
+   {
+    "signal": "description",
+    "text": "We currently require a minimum of three days per week in the office-Monday, Wednesday, and Thursday.",
+    "effect": "hybrid"
+   },
+   {
+    "signal": "description",
+    "text": "As a perk, we also offer up to four weeks per year of fully remote work.",
+    "effect": "remote"
+   }
+  ],
+  "unresolved": [
+   "The listing contradicts itself about remote versus office work; needs review.",
+   "The location field names a place but does not say the role is remote there; confirm whether applicants elsewhere are accepted."
+  ],
+  "source": "Greenhouse"
+ },
+ {
+  "title": "Senior Director, Client Sales",
+  "company": "Brex",
+  "url": "https://job-boards.greenhouse.io/brex/jobs/8928812002",
+  "location": "New York, New York, United States",
+  "reason": "contradictory remote/office information",
+  "scores": {
+   "remote": 3.5,
+   "office": 3.0
+  },
+  "evidence": [
+   {
+    "signal": "description (mixed office and remote wording)",
+    "text": "Our hybrid environment combines the energy and connections of being in the office with the benefits and flexibility of working from home.",
+    "effect": "remote (weak)"
+   },
+   {
+    "signal": "description",
+    "text": "We currently require a minimum of three days per week in the office-Monday, Wednesday, and Thursday.",
+    "effect": "hybrid"
+   },
+   {
+    "signal": "description",
+    "text": "As a perk, we also offer up to four weeks per year of fully remote work.",
+    "effect": "remote"
+   }
+  ],
+  "unresolved": [
+   "The listing contradicts itself about remote versus office work; needs review.",
+   "The location field names a place but does not say the role is remote there; confirm whether applicants elsewhere are accepted."
+  ],
+  "source": "Greenhouse"
+ },
+ {
+  "title": "Senior Director, Client Sales",
+  "company": "Brex",
+  "url": "https://job-boards.greenhouse.io/brex/jobs/8928814002",
+  "location": "Seattle, Washington, United States",
+  "reason": "contradictory remote/office information",
+  "scores": {
+   "remote": 3.5,
+   "office": 3.0
+  },
+  "evidence": [
+   {
+    "signal": "description (mixed office and remote wording)",
+    "text": "Our hybrid environment combines the energy and connections of being in the office with the benefits and flexibility of working from home.",
+    "effect": "remote (weak)"
+   },
+   {
+    "signal": "description",
+    "text": "We currently require a minimum of three days per week in the office-Monday, Wednesday, and Thursday.",
+    "effect": "hybrid"
+   },
+   {
+    "signal": "description",
+    "text": "As a perk, we also offer up to four weeks per year of fully remote work.",
+    "effect": "remote"
+   }
+  ],
+  "unresolved": [
+   "The listing contradicts itself about remote versus office work; needs review.",
+   "The location field names a place but does not say the role is remote there; confirm whether applicants elsewhere are accepted."
+  ],
+  "source": "Greenhouse"
+ },
+ {
+  "title": "Software Engineer, Intern  (Summer 2027)",
+  "company": "Brex",
+  "url": "https://job-boards.greenhouse.io/brex/jobs/8936403002",
+  "location": "San Francisco, California, United States",
+  "reason": "contradictory remote/office information",
+  "scores": {
+   "remote": 3.5,
+   "office": 3.0
+  },
+  "evidence": [
+   {
+    "signal": "description (mixed office and remote wording)",
+    "text": "We are a hybrid environment that combines the energy and connections of being in the office with the benefits and flexibility of working from home.",
+    "effect": "remote (weak)"
+   },
+   {
+    "signal": "description",
+    "text": "We currently require a minimum of 3 days per week in the office",
+    "effect": "hybrid"
+   },
+   {
+    "signal": "description",
+    "text": "As a perk, we also have up to four weeks per year of fully remote work!",
+    "effect": "remote"
+   }
+  ],
+  "unresolved": [
+   "The listing contradicts itself about remote versus office work; needs review."
+  ],
+  "source": "Greenhouse"
+ },
+ {
+  "title": "Staff Software Engineer - Identity & Access Management",
+  "company": "Brex",
+  "url": "https://job-boards.greenhouse.io/brex/jobs/8922246002",
+  "location": "Vancouver, British Columbia, Canada",
+  "reason": "contradictory remote/office information",
+  "scores": {
+   "remote": 3.5,
+   "office": 2.0
+  },
+  "evidence": [
+   {
+    "signal": "description (mixed office and remote wording)",
+    "text": "We are a hybrid environment that combines the energy and connections of being in the office with the benefits and flexibility of working from home.",
+    "effect": "remote (weak)"
+   },
+   {
+    "signal": "description",
+    "text": "We currently require Monday, Wednesday and Thursday to be designated in office days.",
     "effect": "on_site"
+   },
+   {
+    "signal": "description",
+    "text": "As a perk, we also have up to four weeks per year of fully remote work!",
+    "effect": "remote"
    }
   ],
   "unresolved": [
@@ -1465,43 +1485,214 @@
   "source": "Greenhouse"
  },
  {
-  "title": "Staffing Associate (Contract)",
-  "company": "Invisible Technologies",
-  "url": "https://job-boards.eu.greenhouse.io/invisibletech/jobs/5010247101",
-  "location": "United States - Remote",
+  "title": "Senior Associate, Fraud Operations",
+  "company": "Gemini",
+  "url": "https://boards.greenhouse.io/embed/job_app?for=gemini&token=8328881&gh_jid=8328881",
+  "location": "New York, New York; Miami, Florida; Remote (USA)",
   "reason": "contradictory remote/office information",
   "scores": {
-   "remote": 3.0,
-   "office": 2.8
+   "remote": 3.5,
+   "office": 4.5
   },
   "evidence": [
    {
     "signal": "location field",
-    "text": "United States - Remote",
+    "text": "New York, New York; Miami, Florida; Remote (USA)",
     "effect": "remote"
    },
    {
-    "signal": "description (company-level wording, not counted)",
-    "text": "While some roles may offer remote flexibility, most positions involve in-office collaboration and are tied to specific locations.",
-    "effect": "unclear"
+    "signal": "description",
+    "text": "In the United States, we offer a hybrid work approach at our hub offices, balancing the benefits of in-person collaboration with the flexibility of remote work.",
+    "effect": "hybrid"
    },
    {
     "signal": "description",
-    "text": "While some roles may offer remote flexibility, most positions involve in-office collaboration and are tied to specific locations.",
-    "effect": "on_site"
+    "text": "Employees who do not live near one of our hubs are part of our remote workforce.",
+    "effect": "remote (weak)"
    },
    {
-    "signal": "description (company-level wording)",
-    "text": "Any location-based requirements or hybrid expectations will be communicated by our Talent Acquisition team during the recruiting process.",
-    "effect": "unclear"
+    "signal": "description",
+    "text": "All employees, however, are required to onboard in-person at one of our office locations.",
+    "effect": "on_site"
    }
   ],
   "unresolved": [
-   "The listing mentions hybrid arrangements in general terms; confirm what applies to this role.",
+   "The listing contradicts itself about remote versus office work; needs review."
+  ],
+  "source": "Greenhouse"
+ },
+ {
+  "title": "ABM Regional Manager, EMEA",
+  "company": "Elastic",
+  "url": "https://job-boards.greenhouse.io/elastic/jobs/8365322",
+  "location": "Ireland",
+  "reason": "contradictory remote/office information",
+  "scores": {
+   "remote": 2.3,
+   "office": 3.0
+  },
+  "evidence": [
+   {
+    "signal": "description",
+    "text": "Work with Regional Marketing Managers in EMEA to coordinate event logistics and experiences (in-person, virtual, or hybrid) for ABM programs, including executive briefin…",
+    "effect": "hybrid"
+   },
+   {
+    "signal": "description",
+    "text": "As a distributed company, diversity drives our identity.",
+    "effect": "remote"
+   },
+   {
+    "signal": "description",
+    "text": "Ability to craft your calendar with flexible locations and schedules for many roles",
+    "effect": "remote (weak)"
+   }
+  ],
+  "unresolved": [
    "The listing contradicts itself about remote versus office work; needs review.",
-   "The listing only mentions remote work in general company terms; it does not confirm this role.",
-   "The location field and the description disagree about where applicants can be; check the employer's wording.",
-   "Eligibility wording conflicts inside the listing."
+   "The location field names a place but does not say the role is remote there; confirm whether applicants elsewhere are accepted.",
+   "The posting says it cannot hire in: Belarus, Cuba, Iran, South Korea, Syria, Russia and others."
+  ],
+  "source": "Greenhouse"
+ },
+ {
+  "title": "ABM Regional Manager, EMEA",
+  "company": "Elastic",
+  "url": "https://job-boards.greenhouse.io/elastic/jobs/8289151",
+  "location": "United Kingdom",
+  "reason": "contradictory remote/office information",
+  "scores": {
+   "remote": 2.3,
+   "office": 3.0
+  },
+  "evidence": [
+   {
+    "signal": "description",
+    "text": "Work with Regional Marketing Managers in EMEA to coordinate event logistics and experiences (in-person, virtual, or hybrid) for ABM programs, including executive briefin…",
+    "effect": "hybrid"
+   },
+   {
+    "signal": "description",
+    "text": "As a distributed company, diversity drives our identity.",
+    "effect": "remote"
+   },
+   {
+    "signal": "description",
+    "text": "Ability to craft your calendar with flexible locations and schedules for many roles",
+    "effect": "remote (weak)"
+   }
+  ],
+  "unresolved": [
+   "The listing contradicts itself about remote versus office work; needs review.",
+   "The location field names a place but does not say the role is remote there; confirm whether applicants elsewhere are accepted.",
+   "The posting says it cannot hire in: Belarus, Cuba, Iran, South Korea, Syria, Russia and others."
+  ],
+  "source": "Greenhouse"
+ },
+ {
+  "title": "ABM Regional Manager, EMEA",
+  "company": "Elastic",
+  "url": "https://job-boards.greenhouse.io/elastic/jobs/8365321",
+  "location": "Spain",
+  "reason": "contradictory remote/office information",
+  "scores": {
+   "remote": 2.3,
+   "office": 3.0
+  },
+  "evidence": [
+   {
+    "signal": "description",
+    "text": "Work with Regional Marketing Managers in EMEA to coordinate event logistics and experiences (in-person, virtual, or hybrid) for ABM programs, including executive briefin…",
+    "effect": "hybrid"
+   },
+   {
+    "signal": "description",
+    "text": "As a distributed company, diversity drives our identity.",
+    "effect": "remote"
+   },
+   {
+    "signal": "description",
+    "text": "Ability to craft your calendar with flexible locations and schedules for many roles",
+    "effect": "remote (weak)"
+   }
+  ],
+  "unresolved": [
+   "The listing contradicts itself about remote versus office work; needs review.",
+   "The location field names a place but does not say the role is remote there; confirm whether applicants elsewhere are accepted.",
+   "The posting says it cannot hire in: Belarus, Cuba, Iran, South Korea, Syria, Russia and others."
+  ],
+  "source": "Greenhouse"
+ },
+ {
+  "title": "Event Content Strategist",
+  "company": "Elastic",
+  "url": "https://job-boards.greenhouse.io/elastic/jobs/8359528",
+  "location": "United States",
+  "reason": "contradictory remote/office information",
+  "scores": {
+   "remote": 2.3,
+   "office": 2.0
+  },
+  "evidence": [
+   {
+    "signal": "description",
+    "text": "Support onsite presence with a focus on content execution, including speaker readiness and rehearsal, stage messaging, session moderation support, AV content checks, and…",
+    "effect": "on_site"
+   },
+   {
+    "signal": "description",
+    "text": "As a distributed company, diversity drives our identity.",
+    "effect": "remote"
+   },
+   {
+    "signal": "description",
+    "text": "Ability to craft your calendar with flexible locations and schedules for many roles",
+    "effect": "remote (weak)"
+   }
+  ],
+  "unresolved": [
+   "The listing contradicts itself about remote versus office work; needs review.",
+   "The posting says it cannot hire in: Belarus, Cuba, Iran, South Korea, Syria, Russia and others.",
+   "The location field lists United States, but the listing does not confirm the role is remote there."
+  ],
+  "source": "Greenhouse"
+ },
+ {
+  "title": "Sales Development Representative - New York",
+  "company": "Elastic",
+  "url": "https://job-boards.greenhouse.io/elastic/jobs/8318605",
+  "location": "New York, United States",
+  "reason": "contradictory remote/office information",
+  "scores": {
+   "remote": 2.3,
+   "office": 3.0
+  },
+  "evidence": [
+   {
+    "signal": "description",
+    "text": "We provide office space for in-person trainings, collaboration, and team building which is used by SDRs on average of 1-3 days per week depending on tenure, team, and pr…",
+    "effect": "on_site"
+   },
+   {
+    "signal": "description",
+    "text": "The in-person collaboration helps our SDRs to build stronger relationships and develop in a more collaborative and supportive environment.",
+    "effect": "on_site"
+   },
+   {
+    "signal": "description",
+    "text": "As a distributed company, diversity drives our identity.",
+    "effect": "remote"
+   },
+   {
+    "signal": "description",
+    "text": "Ability to craft your calendar with flexible locations and schedules for many roles",
+    "effect": "remote (weak)"
+   }
+  ],
+  "unresolved": [
+   "The listing contradicts itself about remote versus office work; needs review.",
+   "The location field names a place but does not say the role is remote there; confirm whether applicants elsewhere are accepted.",
+   "The posting says it cannot hire in: Belarus, Cuba, Iran, South Korea, Syria, Russia and others."
   ],
   "source": "Greenhouse"
  },
@@ -1603,6 +1794,47 @@
   ],
   "unresolved": [
    "The listing contradicts itself about remote versus office work; needs review."
+  ],
+  "source": "Greenhouse"
+ },
+ {
+  "title": "Staffing Associate (Contract)",
+  "company": "Invisible Technologies",
+  "url": "https://job-boards.eu.greenhouse.io/invisibletech/jobs/5010247101",
+  "location": "United States - Remote",
+  "reason": "contradictory remote/office information",
+  "scores": {
+   "remote": 3.0,
+   "office": 2.8
+  },
+  "evidence": [
+   {
+    "signal": "location field",
+    "text": "United States - Remote",
+    "effect": "remote"
+   },
+   {
+    "signal": "description (company-level wording, not counted)",
+    "text": "While some roles may offer remote flexibility, most positions involve in-office collaboration and are tied to specific locations.",
+    "effect": "unclear"
+   },
+   {
+    "signal": "description",
+    "text": "While some roles may offer remote flexibility, most positions involve in-office collaboration and are tied to specific locations.",
+    "effect": "on_site"
+   },
+   {
+    "signal": "description (company-level wording)",
+    "text": "Any location-based requirements or hybrid expectations will be communicated by our Talent Acquisition team during the recruiting process.",
+    "effect": "unclear"
+   }
+  ],
+  "unresolved": [
+   "The listing mentions hybrid arrangements in general terms; confirm what applies to this role.",
+   "The listing contradicts itself about remote versus office work; needs review.",
+   "The listing only mentions remote work in general company terms; it does not confirm this role.",
+   "The location field and the description disagree about where applicants can be; check the employer's wording.",
+   "Eligibility wording conflicts inside the listing."
   ],
   "source": "Greenhouse"
  },
@@ -1753,6 +1985,122 @@
   "source": "Greenhouse"
  },
  {
+  "title": "Manager, Solutions Consulting (LATAM)",
+  "company": "New Relic",
+  "url": "https://job-boards.greenhouse.io/newrelic/jobs/5480569008",
+  "location": "Miami, Florida, USA",
+  "reason": "contradictory remote/office information",
+  "scores": {
+   "remote": 2.0,
+   "office": 3.0
+  },
+  "evidence": [
+   {
+    "signal": "description",
+    "text": "Build, Lead, and Inspire : Recruit, develop, and mentor a high-performing, distributed team of pre-sales Solutions Consultants (SCs) and post-sales Technical Success Man…",
+    "effect": "remote"
+   },
+   {
+    "signal": "description (occasional attendance)",
+    "text": "Willingness and ability to travel 25%+ regionally within Latin America and periodically to global headquarters as business needs require",
+    "effect": "occasional"
+   },
+   {
+    "signal": "description",
+    "text": "#LI-MM1 #LI-Remote",
+    "effect": "remote (weak)"
+   },
+   {
+    "signal": "description",
+    "text": "This model allows us to work in a variety of workplaces that best support our success, including fully office-based, fully remote, or hybrid.",
+    "effect": "hybrid"
+   }
+  ],
+  "unresolved": [
+   "The listing contradicts itself about remote versus office work; needs review.",
+   "The location field names a place but does not say the role is remote there; confirm whether applicants elsewhere are accepted."
+  ],
+  "source": "Greenhouse"
+ },
+ {
+  "title": "Associate Director / Director of Product Management, Signatera Hematologic Oncology (Heme)",
+  "company": "Natera",
+  "url": "https://job-boards.greenhouse.io/natera/jobs/6242264004",
+  "location": "US Remote",
+  "reason": "contradictory remote/office information",
+  "scores": {
+   "remote": 3.5,
+   "office": 4.0
+  },
+  "evidence": [
+   {
+    "signal": "location field",
+    "text": "US Remote",
+    "effect": "remote"
+   },
+   {
+    "signal": "description",
+    "text": "Duties are typically performed in a [remote home office / hybrid office] setting.",
+    "effect": "hybrid"
+   },
+   {
+    "signal": "description",
+    "text": "Remote USA",
+    "effect": "remote (weak)"
+   },
+   {
+    "signal": "description",
+    "text": "Other benefits include pregnancy and baby bonding leave, 401k benefits, commuter benefits and much more.",
+    "effect": "on_site"
+   }
+  ],
+  "unresolved": [
+   "The listing contradicts itself about remote versus office work; needs review.",
+   "The location field and the description disagree about where applicants can be; check the employer's wording.",
+   "Eligibility wording conflicts inside the listing."
+  ],
+  "source": "Greenhouse"
+ },
+ {
+  "title": "Clinical Director, Clinical Development",
+  "company": "Natera",
+  "url": "https://job-boards.greenhouse.io/natera/jobs/6102265004",
+  "location": "US Remote",
+  "reason": "contradictory remote/office information",
+  "scores": {
+   "remote": 3.5,
+   "office": 3.0
+  },
+  "evidence": [
+   {
+    "signal": "location field",
+    "text": "US Remote",
+    "effect": "remote"
+   },
+   {
+    "signal": "description",
+    "text": "Primarily office-based or hybrid environment with extended computer use.",
+    "effect": "on_site"
+   },
+   {
+    "signal": "description",
+    "text": "Remote USA",
+    "effect": "remote (weak)"
+   },
+   {
+    "signal": "description",
+    "text": "Other benefits include pregnancy and baby bonding leave, 401k benefits, commuter benefits and much more.",
+    "effect": "on_site"
+   }
+  ],
+  "unresolved": [
+   "The listing contradicts itself about remote versus office work; needs review.",
+   "The location field and the description disagree about where applicants can be; check the employer's wording.",
+   "Eligibility wording conflicts inside the listing."
+  ],
+  "source": "Greenhouse"
+ },
+ {
   "title": "AFC Associate - SAR Delegate (Italian speaker)",
   "company": "N26",
   "url": "https://job-boards.greenhouse.io/n26/jobs/8345614",
@@ -1818,219 +2166,6 @@
   "source": "Greenhouse"
  },
  {
-  "title": "Manager, Solutions Consulting (LATAM)",
-  "company": "New Relic",
-  "url": "https://job-boards.greenhouse.io/newrelic/jobs/5480569008",
-  "location": "Miami, Florida, USA",
-  "reason": "contradictory remote/office information",
-  "scores": {
-   "remote": 2.0,
-   "office": 3.0
-  },
-  "evidence": [
-   {
-    "signal": "description",
-    "text": "Build, Lead, and Inspire : Recruit, develop, and mentor a high-performing, distributed team of pre-sales Solutions Consultants (SCs) and post-sales Technical Success Man…",
-    "effect": "remote"
-   },
-   {
-    "signal": "description (occasional attendance)",
-    "text": "Willingness and ability to travel 25%+ regionally within Latin America and periodically to global headquarters as business needs require",
-    "effect": "occasional"
-   },
-   {
-    "signal": "description",
-    "text": "#LI-MM1 #LI-Remote",
-    "effect": "remote (weak)"
-   },
-   {
-    "signal": "description",
-    "text": "This model allows us to work in a variety of workplaces that best support our success, including fully office-based, fully remote, or hybrid.",
-    "effect": "hybrid"
-   }
-  ],
-  "unresolved": [
-   "The listing contradicts itself about remote versus office work; needs review.",
-   "The location field names a place but does not say the role is remote there; confirm whether applicants elsewhere are accepted."
-  ],
-  "source": "Greenhouse"
- },
- {
-  "title": "ABM Regional Manager, EMEA",
-  "company": "Elastic",
-  "url": "https://job-boards.greenhouse.io/elastic/jobs/8365322",
-  "location": "Ireland",
-  "reason": "contradictory remote/office information",
-  "scores": {
-   "remote": 2.3,
-   "office": 3.0
-  },
-  "evidence": [
-   {
-    "signal": "description",
-    "text": "Work with Regional Marketing Managers in EMEA to coordinate event logistics and experiences (in-person, virtual, or hybrid) for ABM programs, including executive briefin…",
-    "effect": "hybrid"
-   },
-   {
-    "signal": "description",
-    "text": "As a distributed company, diversity drives our identity.",
-    "effect": "remote"
-   },
-   {
-    "signal": "description",
-    "text": "Ability to craft your calendar with flexible locations and schedules for many roles",
-    "effect": "remote (weak)"
-   }
-  ],
-  "unresolved": [
-   "The listing contradicts itself about remote versus office work; needs review.",
-   "The location field names a place but does not say the role is remote there; confirm whether applicants elsewhere are accepted.",
-   "The posting says it cannot hire in: Belarus, Cuba, Iran, South Korea, Syria, Russia and others."
-  ],
-  "source": "Greenhouse"
- },
- {
-  "title": "ABM Regional Manager, EMEA",
-  "company": "Elastic",
-  "url": "https://job-boards.greenhouse.io/elastic/jobs/8365321",
-  "location": "Spain",
-  "reason": "contradictory remote/office information",
-  "scores": {
-   "remote": 2.3,
-   "office": 3.0
-  },
-  "evidence": [
-   {
-    "signal": "description",
-    "text": "Work with Regional Marketing Managers in EMEA to coordinate event logistics and experiences (in-person, virtual, or hybrid) for ABM programs, including executive briefin…",
-    "effect": "hybrid"
-   },
-   {
-    "signal": "description",
-    "text": "As a distributed company, diversity drives our identity.",
-    "effect": "remote"
-   },
-   {
-    "signal": "description",
-    "text": "Ability to craft your calendar with flexible locations and schedules for many roles",
-    "effect": "remote (weak)"
-   }
-  ],
-  "unresolved": [
-   "The listing contradicts itself about remote versus office work; needs review.",
-   "The location field names a place but does not say the role is remote there; confirm whether applicants elsewhere are accepted.",
-   "The posting says it cannot hire in: Belarus, Cuba, Iran, South Korea, Syria, Russia and others."
-  ],
-  "source": "Greenhouse"
- },
- {
-  "title": "ABM Regional Manager, EMEA",
-  "company": "Elastic",
-  "url": "https://job-boards.greenhouse.io/elastic/jobs/8289151",
-  "location": "United Kingdom",
-  "reason": "contradictory remote/office information",
-  "scores": {
-   "remote": 2.3,
-   "office": 3.0
-  },
-  "evidence": [
-   {
-    "signal": "description",
-    "text": "Work with Regional Marketing Managers in EMEA to coordinate event logistics and experiences (in-person, virtual, or hybrid) for ABM programs, including executive briefin…",
-    "effect": "hybrid"
-   },
-   {
-    "signal": "description",
-    "text": "As a distributed company, diversity drives our identity.",
-    "effect": "remote"
-   },
-   {
-    "signal": "description",
-    "text": "Ability to craft your calendar with flexible locations and schedules for many roles",
-    "effect": "remote (weak)"
-   }
-  ],
-  "unresolved": [
-   "The listing contradicts itself about remote versus office work; needs review.",
-   "The location field names a place but does not say the role is remote there; confirm whether applicants elsewhere are accepted.",
-   "The posting says it cannot hire in: Belarus, Cuba, Iran, South Korea, Syria, Russia and others."
-  ],
-  "source": "Greenhouse"
- },
- {
-  "title": "Event Content Strategist",
-  "company": "Elastic",
-  "url": "https://job-boards.greenhouse.io/elastic/jobs/8359528",
-  "location": "United States",
-  "reason": "contradictory remote/office information",
-  "scores": {
-   "remote": 2.3,
-   "office": 2.0
-  },
-  "evidence": [
-   {
-    "signal": "description",
-    "text": "Support onsite presence with a focus on content execution, including speaker readiness and rehearsal, stage messaging, session moderation support, AV content checks, and…",
-    "effect": "on_site"
-   },
-   {
-    "signal": "description",
-    "text": "As a distributed company, diversity drives our identity.",
-    "effect": "remote"
-   },
-   {
-    "signal": "description",
-    "text": "Ability to craft your calendar with flexible locations and schedules for many roles",
-    "effect": "remote (weak)"
-   }
-  ],
-  "unresolved": [
-   "The listing contradicts itself about remote versus office work; needs review.",
-   "The posting says it cannot hire in: Belarus, Cuba, Iran, South Korea, Syria, Russia and others.",
-   "The location field lists United States, but the listing does not confirm the role is remote there."
-  ],
-  "source": "Greenhouse"
- },
- {
-  "title": "Sales Development Representative - New York",
-  "company": "Elastic",
-  "url": "https://job-boards.greenhouse.io/elastic/jobs/8318605",
-  "location": "New York, United States",
-  "reason": "contradictory remote/office information",
-  "scores": {
-   "remote": 2.3,
-   "office": 3.0
-  },
-  "evidence": [
-   {
-    "signal": "description",
-    "text": "We provide office space for in-person trainings, collaboration, and team building which is used by SDRs on average of 1-3 days per week depending on tenure, team, and pr…",
-    "effect": "on_site"
-   },
-   {
-    "signal": "description",
-    "text": "The in-person collaboration helps our SDRs to build stronger relationships and develop in a more collaborative and supportive environment.",
-    "effect": "on_site"
-   },
-   {
-    "signal": "description",
-    "text": "As a distributed company, diversity drives our identity.",
-    "effect": "remote"
-   },
-   {
-    "signal": "description",
-    "text": "Ability to craft your calendar with flexible locations and schedules for many roles",
-    "effect": "remote (weak)"
-   }
-  ],
-  "unresolved": [
-   "The listing contradicts itself about remote versus office work; needs review.",
-   "The location field names a place but does not say the role is remote there; confirm whether applicants elsewhere are accepted.",
-   "The posting says it cannot hire in: Belarus, Cuba, Iran, South Korea, Syria, Russia and others."
-  ],
-  "source": "Greenhouse"
- },
- {
   "title": "Principal CS Strategy & Operations Manager",
   "company": "PagerDuty",
   "url": "https://job-boards.greenhouse.io/pagerduty/jobs/6220984004",
@@ -2064,35 +2199,40 @@
   "source": "Greenhouse"
  },
  {
-  "title": "Director of Marketing",
-  "company": "Parsley Health",
-  "url": "https://job-boards.greenhouse.io/parsleyhealth/jobs/8160104003",
-  "location": "New York, New York, United States; Remote",
+  "title": "Senior Channels Partner Manager, Sage",
+  "company": "Paystand",
+  "url": "https://job-boards.greenhouse.io/paystand/jobs/8207515003",
+  "location": "Austin, Texas, United States; Minneapolis, Minnesota, United States; Remote; San Francisco, California, United States; Santa Cruz, California, United States",
   "reason": "contradictory remote/office information",
   "scores": {
    "remote": 3.5,
-   "office": 3.0
+   "office": 4.8
   },
   "evidence": [
    {
     "signal": "location field",
-    "text": "New York, New York, United States; Remote",
+    "text": "Austin, Texas, United States; Minneapolis, Minnesota, United States; Remote; San Francisco, California, United States; Santa Cruz, California, United States",
     "effect": "remote"
    },
    {
     "signal": "description",
-    "text": "Parsley Health · Marketing · Remote US, with a preference for Eastern or Central time zones and NYC metro · Full-time",
+    "text": "Ability to manage a portfolio independently, prioritize time and resources, and work effectively across remote, cross-functional teams.",
     "effect": "remote (weak)"
    },
    {
     "signal": "description",
-    "text": "Hybrid opportunity with remote work and time on site at our NYC HQ",
-    "effect": "hybrid"
+    "text": "Most of our roles are onsite.",
+    "effect": "on_site"
+   },
+   {
+    "signal": "description (company-level wording)",
+    "text": "Positions that are eligible for remote or hybrid work arrangements will be clearly indicated in the job posting.",
+    "effect": "unclear"
    }
   ],
   "unresolved": [
-   "The listing contradicts itself about remote versus office work; needs review.",
-   "The location field lists New York, New York, United States; Remote, but the listing does not confirm the role is remote there."
+   "The listing mentions hybrid arrangements in general terms; confirm what applies to this role.",
+   "The listing contradicts itself about remote versus office work; needs review."
   ],
   "source": "Greenhouse"
  },
@@ -2245,10 +2385,10 @@
   "source": "Greenhouse"
  },
  {
-  "title": "Senior Specialist, Accounts Payable",
+  "title": "Senior Manager, Network Optimization",
   "company": "Oscar Health",
-  "url": "https://job-boards.greenhouse.io/oscar/jobs/8373843",
-  "location": "Dallas, Texas, United States",
+  "url": "https://job-boards.greenhouse.io/oscar/jobs/8397481",
+  "location": "Atlanta, Georgia, United States",
   "reason": "contradictory remote/office information",
   "scores": {
    "remote": 6.5,
@@ -2257,7 +2397,7 @@
   "evidence": [
    {
     "signal": "description",
-    "text": "Work Location: This is a remote position, open to candidates who reside in: Dallas, TX.",
+    "text": "Work Location: This is a remote position, open to candidates who reside in: Atlanta, Georgia.",
     "effect": "remote"
    },
    {
@@ -2282,10 +2422,10 @@
   "source": "Greenhouse"
  },
  {
-  "title": "Staff Product Manager, Personalization",
+  "title": "Senior Manager, Network Optimization",
   "company": "Oscar Health",
-  "url": "https://job-boards.greenhouse.io/oscar/jobs/8383329",
-  "location": "San Francisco, California, United States",
+  "url": "https://job-boards.greenhouse.io/oscar/jobs/8397485",
+  "location": "Dallas, Texas, United States",
   "reason": "contradictory remote/office information",
   "scores": {
    "remote": 6.5,
@@ -2294,7 +2434,44 @@
   "evidence": [
    {
     "signal": "description",
-    "text": "Work Location: This is a remote position, open to candidates who reside in: San Francisco, CA.",
+    "text": "Work Location: This is a remote position, open to candidates who reside in: Dallas, Texas.",
+    "effect": "remote"
+   },
+   {
+    "signal": "description",
+    "text": "You will be fully remote",
+    "effect": "remote"
+   },
+   {
+    "signal": "description",
+    "text": "Future models could potentially involve a hybrid presence at the hub office associated with your metro area.",
+    "effect": "hybrid"
+   },
+   {
+    "signal": "description",
+    "text": "#LI-Remote",
+    "effect": "remote (weak)"
+   }
+  ],
+  "unresolved": [
+   "The listing contradicts itself about remote versus office work; needs review."
+  ],
+  "source": "Greenhouse"
+ },
+ {
+  "title": "Senior Specialist, Accounts Payable",
+  "company": "Oscar Health",
+  "url": "https://job-boards.greenhouse.io/oscar/jobs/8373843",
+  "location": "Dallas, Texas, United States",
+  "reason": "contradictory remote/office information",
+  "scores": {
+   "remote": 6.5,
+   "office": 3.0
+  },
+  "evidence": [
+   {
+    "signal": "description",
+    "text": "Work Location: This is a remote position, open to candidates who reside in: Dallas, TX.",
     "effect": "remote"
    },
    {
@@ -2356,1491 +2533,35 @@
   "source": "Greenhouse"
  },
  {
-  "title": "Senior Channels Partner Manager, Sage",
-  "company": "Paystand",
-  "url": "https://job-boards.greenhouse.io/paystand/jobs/8207515003",
-  "location": "Austin, Texas, United States; Minneapolis, Minnesota, United States; Remote; San Francisco, California, United States; Santa Cruz, California, United States",
+  "title": "Staff Product Manager, Personalization",
+  "company": "Oscar Health",
+  "url": "https://job-boards.greenhouse.io/oscar/jobs/8383329",
+  "location": "San Francisco, California, United States",
   "reason": "contradictory remote/office information",
   "scores": {
-   "remote": 3.5,
-   "office": 4.8
-  },
-  "evidence": [
-   {
-    "signal": "location field",
-    "text": "Austin, Texas, United States; Minneapolis, Minnesota, United States; Remote; San Francisco, California, United States; Santa Cruz, California, United States",
-    "effect": "remote"
-   },
-   {
-    "signal": "description",
-    "text": "Ability to manage a portfolio independently, prioritize time and resources, and work effectively across remote, cross-functional teams.",
-    "effect": "remote (weak)"
-   },
-   {
-    "signal": "description",
-    "text": "Most of our roles are onsite.",
-    "effect": "on_site"
-   },
-   {
-    "signal": "description (company-level wording)",
-    "text": "Positions that are eligible for remote or hybrid work arrangements will be clearly indicated in the job posting.",
-    "effect": "unclear"
-   }
-  ],
-  "unresolved": [
-   "The listing mentions hybrid arrangements in general terms; confirm what applies to this role.",
-   "The listing contradicts itself about remote versus office work; needs review."
-  ],
-  "source": "Greenhouse"
- },
- {
-  "title": "Associate Director / Director of Product Management, Signatera Hematologic Oncology (Heme)",
-  "company": "Natera",
-  "url": "https://job-boards.greenhouse.io/natera/jobs/6242264004",
-  "location": "US Remote",
-  "reason": "contradictory remote/office information",
-  "scores": {
-   "remote": 3.5,
-   "office": 4.0
-  },
-  "evidence": [
-   {
-    "signal": "location field",
-    "text": "US Remote",
-    "effect": "remote"
-   },
-   {
-    "signal": "description",
-    "text": "Duties are typically performed in a [remote home office / hybrid office] setting.",
-    "effect": "hybrid"
-   },
-   {
-    "signal": "description",
-    "text": "Remote USA",
-    "effect": "remote (weak)"
-   },
-   {
-    "signal": "description",
-    "text": "Other benefits include pregnancy and baby bonding leave, 401k benefits, commuter benefits and much more.",
-    "effect": "on_site"
-   }
-  ],
-  "unresolved": [
-   "The listing contradicts itself about remote versus office work; needs review.",
-   "The location field and the description disagree about where applicants can be; check the employer's wording.",
-   "Eligibility wording conflicts inside the listing."
-  ],
-  "source": "Greenhouse"
- },
- {
-  "title": "Clinical Director, Clinical Development",
-  "company": "Natera",
-  "url": "https://job-boards.greenhouse.io/natera/jobs/6102265004",
-  "location": "US Remote",
-  "reason": "contradictory remote/office information",
-  "scores": {
-   "remote": 3.5,
+   "remote": 6.5,
    "office": 3.0
   },
   "evidence": [
    {
-    "signal": "location field",
-    "text": "US Remote",
+    "signal": "description",
+    "text": "Work Location: This is a remote position, open to candidates who reside in: San Francisco, CA.",
     "effect": "remote"
    },
    {
     "signal": "description",
-    "text": "Primarily office-based or hybrid environment with extended computer use.",
-    "effect": "on_site"
-   },
-   {
-    "signal": "description",
-    "text": "Remote USA",
-    "effect": "remote (weak)"
-   },
-   {
-    "signal": "description",
-    "text": "Other benefits include pregnancy and baby bonding leave, 401k benefits, commuter benefits and much more.",
-    "effect": "on_site"
-   }
-  ],
-  "unresolved": [
-   "The listing contradicts itself about remote versus office work; needs review.",
-   "The location field and the description disagree about where applicants can be; check the employer's wording.",
-   "Eligibility wording conflicts inside the listing."
-  ],
-  "source": "Greenhouse"
- },
- {
-  "title": "Business Development, AI Product Partnerships",
-  "company": "Pinterest",
-  "url": "https://job-boards.greenhouse.io/pinterest/jobs/8319154",
-  "location": "San Francisco, CA, US; Remote, US",
-  "reason": "contradictory remote/office information",
-  "scores": {
-   "remote": 5.5,
-   "office": 5.0
-  },
-  "evidence": [
-   {
-    "signal": "location field",
-    "text": "San Francisco, CA, US; Remote, US",
+    "text": "You will be fully remote",
     "effect": "remote"
    },
    {
     "signal": "description",
-    "text": "Relocation Statement:",
-    "effect": "on_site"
-   },
-   {
-    "signal": "description (explicitly no office)",
-    "text": "This position is not eligible for relocation assistance.",
-    "effect": "remote"
-   },
-   {
-    "signal": "description",
-    "text": "In-Office Requirement Statement:",
-    "effect": "on_site"
-   }
-  ],
-  "unresolved": [
-   "The listing contradicts itself about remote versus office work; needs review."
-  ],
-  "source": "Greenhouse"
- },
- {
-  "title": "Designer, PPM",
-  "company": "Pinterest",
-  "url": "https://job-boards.greenhouse.io/pinterest/jobs/8268336",
-  "location": "Remote, US",
-  "reason": "contradictory remote/office information",
-  "scores": {
-   "remote": 5.0,
-   "office": 5.0
-  },
-  "evidence": [
-   {
-    "signal": "location field",
-    "text": "Remote, US",
-    "effect": "remote"
-   },
-   {
-    "signal": "description",
-    "text": "Relocation Statement:",
-    "effect": "on_site"
-   },
-   {
-    "signal": "description (explicitly no office)",
-    "text": "This position is not eligible for relocation assistance.",
-    "effect": "remote"
-   },
-   {
-    "signal": "description",
-    "text": "In-Office Requirement Statement",
-    "effect": "on_site"
-   }
-  ],
-  "unresolved": [
-   "The listing contradicts itself about remote versus office work; needs review."
-  ],
-  "source": "Greenhouse"
- },
- {
-  "title": "Editor",
-  "company": "Pinterest",
-  "url": "https://job-boards.greenhouse.io/pinterest/jobs/8336037",
-  "location": "Tokyo, Japan",
-  "reason": "contradictory remote/office information",
-  "scores": {
-   "remote": 2.0,
-   "office": 3.5
-  },
-  "evidence": [
-   {
-    "signal": "description",
-    "text": "Relocation Statement:",
-    "effect": "on_site"
-   },
-   {
-    "signal": "description (explicitly no office)",
-    "text": "This position is not eligible for relocation assistance.",
-    "effect": "remote"
-   },
-   {
-    "signal": "description",
-    "text": "In-Office Requirement Statement:",
-    "effect": "on_site"
-   },
-   {
-    "signal": "description (explicitly no office)",
-    "text": "That means we're not always working in an office, but we continue to gather for key moments of collaboration and connection.",
-    "effect": "remote"
-   }
-  ],
-  "unresolved": [
-   "The listing contradicts itself about remote versus office work; needs review.",
-   "The location field names a place but does not say the role is remote there; confirm whether applicants elsewhere are accepted."
-  ],
-  "source": "Greenhouse"
- },
- {
-  "title": "Equity Administrator II",
-  "company": "Pinterest",
-  "url": "https://job-boards.greenhouse.io/pinterest/jobs/8331360",
-  "location": "San Francisco, CA, US; Remote, US",
-  "reason": "contradictory remote/office information",
-  "scores": {
-   "remote": 5.5,
-   "office": 5.0
-  },
-  "evidence": [
-   {
-    "signal": "location field",
-    "text": "San Francisco, CA, US; Remote, US",
-    "effect": "remote"
-   },
-   {
-    "signal": "description",
-    "text": "Relocation Statement:",
-    "effect": "on_site"
-   },
-   {
-    "signal": "description (explicitly no office)",
-    "text": "This position is not eligible for relocation assistance.",
-    "effect": "remote"
-   },
-   {
-    "signal": "description",
-    "text": "In-Office Requirement Statement:",
-    "effect": "on_site"
-   }
-  ],
-  "unresolved": [
-   "The listing contradicts itself about remote versus office work; needs review."
-  ],
-  "source": "Greenhouse"
- },
- {
-  "title": "Lead Digital Producer",
-  "company": "Pinterest",
-  "url": "https://job-boards.greenhouse.io/pinterest/jobs/8268318",
-  "location": "San Francisco, CA, US; Remote, CA, US",
-  "reason": "contradictory remote/office information",
-  "scores": {
-   "remote": 4.5,
-   "office": 5.0
-  },
-  "evidence": [
-   {
-    "signal": "location field",
-    "text": "San Francisco, CA, US; Remote, CA, US",
-    "effect": "remote"
-   },
-   {
-    "signal": "description",
-    "text": "Relocation Statement:",
-    "effect": "on_site"
-   },
-   {
-    "signal": "description (explicitly no office)",
-    "text": "This position is not eligible for relocation assistance.",
-    "effect": "remote"
-   },
-   {
-    "signal": "description",
-    "text": "In-Office Requirement Statement:",
-    "effect": "on_site"
-   }
-  ],
-  "unresolved": [
-   "The listing contradicts itself about remote versus office work; needs review."
-  ],
-  "source": "Greenhouse"
- },
- {
-  "title": "Manager II, Engineering - Kubernetes Platform",
-  "company": "Pinterest",
-  "url": "https://job-boards.greenhouse.io/pinterest/jobs/8139439",
-  "location": "San Francisco, CA, US; Remote, CA, US",
-  "reason": "contradictory remote/office information",
-  "scores": {
-   "remote": 4.5,
-   "office": 5.0
-  },
-  "evidence": [
-   {
-    "signal": "location field",
-    "text": "San Francisco, CA, US; Remote, CA, US",
-    "effect": "remote"
-   },
-   {
-    "signal": "description",
-    "text": "In-Office Requirement Statement:",
-    "effect": "on_site"
-   },
-   {
-    "signal": "description",
-    "text": "This role will need to be in the office for in-person collaboration 1-2 times per quarter and therefore can be situated anywhere in the country.",
-    "effect": "on_site"
-   },
-   {
-    "signal": "description",
-    "text": "Relocation Statement:",
-    "effect": "on_site"
-   }
-  ],
-  "unresolved": [
-   "The listing contradicts itself about remote versus office work; needs review."
-  ],
-  "source": "Greenhouse"
- },
- {
-  "title": "Motion Designer, PPM SMB",
-  "company": "Pinterest",
-  "url": "https://job-boards.greenhouse.io/pinterest/jobs/8268342",
-  "location": "San Francisco, CA, US; Remote, US",
-  "reason": "contradictory remote/office information",
-  "scores": {
-   "remote": 3.5,
-   "office": 5.0
-  },
-  "evidence": [
-   {
-    "signal": "location field",
-    "text": "San Francisco, CA, US; Remote, US",
-    "effect": "remote"
-   },
-   {
-    "signal": "description",
-    "text": "In-Office Requirement Statement:",
-    "effect": "on_site"
-   },
-   {
-    "signal": "description",
-    "text": "This role will need to be in the office for in-person collaboration 1-2 times every 6-months and therefore can be situated anywhere in the country.",
-    "effect": "on_site"
-   },
-   {
-    "signal": "description",
-    "text": "Relocation Statement: This position is not eligible for relocation assistance.",
-    "effect": "on_site"
-   }
-  ],
-  "unresolved": [
-   "The listing contradicts itself about remote versus office work; needs review."
-  ],
-  "source": "Greenhouse"
- },
- {
-  "title": "Product Policy Lead, Ads",
-  "company": "Pinterest",
-  "url": "https://job-boards.greenhouse.io/pinterest/jobs/8287196",
-  "location": "San Francisco, CA, US; Remote, US",
-  "reason": "contradictory remote/office information",
-  "scores": {
-   "remote": 5.0,
-   "office": 9.0
-  },
-  "evidence": [
-   {
-    "signal": "location field",
-    "text": "San Francisco, CA, US; Remote, US",
-    "effect": "remote"
-   },
-   {
-    "signal": "description",
-    "text": "Relocation Statement:",
-    "effect": "on_site"
-   },
-   {
-    "signal": "description (explicitly no office)",
-    "text": "This position is not eligible for relocation assistance.",
-    "effect": "remote"
-   },
-   {
-    "signal": "description",
-    "text": "In-Office Requirement Statement:",
-    "effect": "on_site"
-   }
-  ],
-  "unresolved": [
-   "The listing contradicts itself about remote versus office work; needs review."
-  ],
-  "source": "Greenhouse"
- },
- {
-  "title": "Retail Transformation Lead",
-  "company": "Pinterest",
-  "url": "https://job-boards.greenhouse.io/pinterest/jobs/8287192",
-  "location": "Remote, US",
-  "reason": "contradictory remote/office information",
-  "scores": {
-   "remote": 4.5,
-   "office": 5.0
-  },
-  "evidence": [
-   {
-    "signal": "location field",
-    "text": "Remote, US",
-    "effect": "remote"
-   },
-   {
-    "signal": "description",
-    "text": "Relocation Statement",
-    "effect": "on_site"
-   },
-   {
-    "signal": "description (explicitly no office)",
-    "text": "This position is not eligible for relocation assistance.",
-    "effect": "remote"
-   },
-   {
-    "signal": "description",
-    "text": "In-Office Requirement Statement",
-    "effect": "on_site"
-   }
-  ],
-  "unresolved": [
-   "The listing contradicts itself about remote versus office work; needs review."
-  ],
-  "source": "Greenhouse"
- },
- {
-  "title": "Sr. Counsel",
-  "company": "Pinterest",
-  "url": "https://job-boards.greenhouse.io/pinterest/jobs/8356287",
-  "location": "San Francisco, CA, US; Remote, US",
-  "reason": "contradictory remote/office information",
-  "scores": {
-   "remote": 5.5,
-   "office": 5.0
-  },
-  "evidence": [
-   {
-    "signal": "location field",
-    "text": "San Francisco, CA, US; Remote, US",
-    "effect": "remote"
-   },
-   {
-    "signal": "description",
-    "text": "Relocation Statement:",
-    "effect": "on_site"
-   },
-   {
-    "signal": "description (explicitly no office)",
-    "text": "This position is not eligible for relocation assistance.",
-    "effect": "remote"
-   },
-   {
-    "signal": "description",
-    "text": "In-Office Requirement Statement: Insert to clarify in-office requirement for the role.",
-    "effect": "on_site"
-   }
-  ],
-  "unresolved": [
-   "The listing contradicts itself about remote versus office work; needs review."
-  ],
-  "source": "Greenhouse"
- },
- {
-  "title": "Sr. Data Scientist, Performance Marketing",
-  "company": "Pinterest",
-  "url": "https://job-boards.greenhouse.io/pinterest/jobs/8280111",
-  "location": "San Francisco, CA, US; Remote, US",
-  "reason": "contradictory remote/office information",
-  "scores": {
-   "remote": 4.5,
-   "office": 5.0
-  },
-  "evidence": [
-   {
-    "signal": "location field",
-    "text": "San Francisco, CA, US; Remote, US",
-    "effect": "remote"
-   },
-   {
-    "signal": "description",
-    "text": "Relocation Statement:",
-    "effect": "on_site"
-   },
-   {
-    "signal": "description (explicitly no office)",
-    "text": "This position is not eligible for relocation assistance.",
-    "effect": "remote"
-   },
-   {
-    "signal": "description",
-    "text": "In-Office Requirement Statement:",
-    "effect": "on_site"
-   }
-  ],
-  "unresolved": [
-   "The listing contradicts itself about remote versus office work; needs review."
-  ],
-  "source": "Greenhouse"
- },
- {
-  "title": "Sr. Design Program Manager",
-  "company": "Pinterest",
-  "url": "https://job-boards.greenhouse.io/pinterest/jobs/8347997",
-  "location": "San Francisco, CA, US; Remote, US",
-  "reason": "contradictory remote/office information",
-  "scores": {
-   "remote": 4.5,
-   "office": 5.0
-  },
-  "evidence": [
-   {
-    "signal": "location field",
-    "text": "San Francisco, CA, US; Remote, US",
-    "effect": "remote"
-   },
-   {
-    "signal": "description",
-    "text": "Relocation Statement:",
-    "effect": "on_site"
-   },
-   {
-    "signal": "description (explicitly no office)",
-    "text": "This position is not eligible for relocation assistance.",
-    "effect": "remote"
-   },
-   {
-    "signal": "description",
-    "text": "In-Office Requirement Statement:",
-    "effect": "on_site"
-   }
-  ],
-  "unresolved": [
-   "The listing contradicts itself about remote versus office work; needs review."
-  ],
-  "source": "Greenhouse"
- },
- {
-  "title": "Sr. Lead Counsel, Privacy",
-  "company": "Pinterest",
-  "url": "https://job-boards.greenhouse.io/pinterest/jobs/8300884",
-  "location": "Remote, US",
-  "reason": "contradictory remote/office information",
-  "scores": {
-   "remote": 4.5,
-   "office": 5.0
-  },
-  "evidence": [
-   {
-    "signal": "location field",
-    "text": "Remote, US",
-    "effect": "remote"
-   },
-   {
-    "signal": "description",
-    "text": "Relocation Statement:",
-    "effect": "on_site"
-   },
-   {
-    "signal": "description (explicitly no office)",
-    "text": "This position is not eligible for relocation assistance.",
-    "effect": "remote"
-   },
-   {
-    "signal": "description",
-    "text": "In-Office Requirement Statement:",
-    "effect": "on_site"
-   }
-  ],
-  "unresolved": [
-   "The listing contradicts itself about remote versus office work; needs review."
-  ],
-  "source": "Greenhouse"
- },
- {
-  "title": "Sr. Product Designer - Measurement, Data, & AI",
-  "company": "Pinterest",
-  "url": "https://job-boards.greenhouse.io/pinterest/jobs/8249279",
-  "location": "San Francisco, CA, US; Remote, US",
-  "reason": "contradictory remote/office information",
-  "scores": {
-   "remote": 4.5,
-   "office": 5.0
-  },
-  "evidence": [
-   {
-    "signal": "location field",
-    "text": "San Francisco, CA, US; Remote, US",
-    "effect": "remote"
-   },
-   {
-    "signal": "description",
-    "text": "Relocation Statement:",
-    "effect": "on_site"
-   },
-   {
-    "signal": "description (explicitly no office)",
-    "text": "This position is not eligible for relocation assistance.",
-    "effect": "remote"
-   },
-   {
-    "signal": "description",
-    "text": "In-Office Requirement Statement:",
-    "effect": "on_site"
-   }
-  ],
-  "unresolved": [
-   "The listing contradicts itself about remote versus office work; needs review."
-  ],
-  "source": "Greenhouse"
- },
- {
-  "title": "Sr. Project & Program Manager, Quality - Trust & Safety",
-  "company": "Pinterest",
-  "url": "https://job-boards.greenhouse.io/pinterest/jobs/8115849",
-  "location": "San Francisco, CA, US; Remote, US",
-  "reason": "contradictory remote/office information",
-  "scores": {
-   "remote": 5.5,
-   "office": 5.0
-  },
-  "evidence": [
-   {
-    "signal": "location field",
-    "text": "San Francisco, CA, US; Remote, US",
-    "effect": "remote"
-   },
-   {
-    "signal": "description",
-    "text": "Relocation Statement:",
-    "effect": "on_site"
-   },
-   {
-    "signal": "description (explicitly no office)",
-    "text": "This position is not eligible for relocation assistance.",
-    "effect": "remote"
-   },
-   {
-    "signal": "description",
-    "text": "In-Office Requirement Statement",
-    "effect": "on_site"
-   }
-  ],
-  "unresolved": [
-   "The listing contradicts itself about remote versus office work; needs review."
-  ],
-  "source": "Greenhouse"
- },
- {
-  "title": "Sr. Qualitative Product Researcher, Search & Home Personalization",
-  "company": "Pinterest",
-  "url": "https://job-boards.greenhouse.io/pinterest/jobs/7683734",
-  "location": "San Francisco, CA, US; Remote, US",
-  "reason": "contradictory remote/office information",
-  "scores": {
-   "remote": 4.5,
-   "office": 5.0
-  },
-  "evidence": [
-   {
-    "signal": "location field",
-    "text": "San Francisco, CA, US; Remote, US",
-    "effect": "remote"
-   },
-   {
-    "signal": "description",
-    "text": "Relocation Statement:",
-    "effect": "on_site"
-   },
-   {
-    "signal": "description (explicitly no office)",
-    "text": "This position is not eligible for relocation assistance.",
-    "effect": "remote"
-   },
-   {
-    "signal": "description",
-    "text": "In-Office Requirement Statement:",
-    "effect": "on_site"
-   }
-  ],
-  "unresolved": [
-   "The listing contradicts itself about remote versus office work; needs review."
-  ],
-  "source": "Greenhouse"
- },
- {
-  "title": "Sr. Staff Qualitative Product Researcher, Ads",
-  "company": "Pinterest",
-  "url": "https://job-boards.greenhouse.io/pinterest/jobs/8247874",
-  "location": "Seattle, WA, USA; Remote, US",
-  "reason": "contradictory remote/office information",
-  "scores": {
-   "remote": 5.0,
-   "office": 9.0
-  },
-  "evidence": [
-   {
-    "signal": "location field",
-    "text": "Seattle, WA, USA; Remote, US",
-    "effect": "remote"
-   },
-   {
-    "signal": "description",
-    "text": "Relocation Statement:",
-    "effect": "on_site"
-   },
-   {
-    "signal": "description (explicitly no office)",
-    "text": "This position is not eligible for relocation assistance.",
-    "effect": "remote"
-   },
-   {
-    "signal": "description",
-    "text": "In-Office Requirement Statement :",
-    "effect": "on_site"
-   }
-  ],
-  "unresolved": [
-   "The listing contradicts itself about remote versus office work; needs review."
-  ],
-  "source": "Greenhouse"
- },
- {
-  "title": "Sr. Strategic Partner Manager, Content",
-  "company": "Pinterest",
-  "url": "https://job-boards.greenhouse.io/pinterest/jobs/8336035",
-  "location": "Tokyo, Japan",
-  "reason": "contradictory remote/office information",
-  "scores": {
-   "remote": 2.5,
-   "office": 3.5
-  },
-  "evidence": [
-   {
-    "signal": "description",
-    "text": "Relocation Statement:",
-    "effect": "on_site"
-   },
-   {
-    "signal": "description (explicitly no office)",
-    "text": "This position is not eligible for relocation assistance.",
-    "effect": "remote"
-   },
-   {
-    "signal": "description",
-    "text": "In-Office Requirement Statement:",
-    "effect": "on_site"
-   },
-   {
-    "signal": "description (explicitly no office)",
-    "text": "That means we're not always working in an office, but we continue to gather for key moments of collaboration and connection.",
-    "effect": "remote"
-   }
-  ],
-  "unresolved": [
-   "The listing contradicts itself about remote versus office work; needs review.",
-   "The location field names a place but does not say the role is remote there; confirm whether applicants elsewhere are accepted."
-  ],
-  "source": "Greenhouse"
- },
- {
-  "title": "Sr. UX Engineer",
-  "company": "Pinterest",
-  "url": "https://job-boards.greenhouse.io/pinterest/jobs/8015362",
-  "location": "San Francisco, CA, USA; Remote, US",
-  "reason": "contradictory remote/office information",
-  "scores": {
-   "remote": 4.5,
-   "office": 5.0
-  },
-  "evidence": [
-   {
-    "signal": "location field",
-    "text": "San Francisco, CA, USA; Remote, US",
-    "effect": "remote"
-   },
-   {
-    "signal": "description",
-    "text": "Relocation Statement:",
-    "effect": "on_site"
-   },
-   {
-    "signal": "description (explicitly no office)",
-    "text": "This position is not eligible for relocation assistance.",
-    "effect": "remote"
-   },
-   {
-    "signal": "description",
-    "text": "In-Office Requirement Statement:",
-    "effect": "on_site"
-   }
-  ],
-  "unresolved": [
-   "The listing contradicts itself about remote versus office work; needs review."
-  ],
-  "source": "Greenhouse"
- },
- {
-  "title": "Staff Machine Learning Engineer",
-  "company": "Pinterest",
-  "url": "https://job-boards.greenhouse.io/pinterest/jobs/8240355",
-  "location": "San Francisco, CA, US; Remote, US",
-  "reason": "contradictory remote/office information",
-  "scores": {
-   "remote": 4.5,
-   "office": 5.0
-  },
-  "evidence": [
-   {
-    "signal": "location field",
-    "text": "San Francisco, CA, US; Remote, US",
-    "effect": "remote"
-   },
-   {
-    "signal": "description",
-    "text": "In-Office Requirement Statement:",
-    "effect": "on_site"
-   },
-   {
-    "signal": "description",
-    "text": "This role will need to be in the office for in-person collaboration 1-2 times/quarter and therefore can be situated anywhere in the country.",
-    "effect": "on_site"
-   },
-   {
-    "signal": "description",
-    "text": "Relocation Statement:",
-    "effect": "on_site"
-   }
-  ],
-  "unresolved": [
-   "The listing contradicts itself about remote versus office work; needs review."
-  ],
-  "source": "Greenhouse"
- },
- {
-  "title": "Staff Machine Learning Engineer, Homefeed",
-  "company": "Pinterest",
-  "url": "https://job-boards.greenhouse.io/pinterest/jobs/8279563",
-  "location": "San Francisco, CA, US; Remote, US",
-  "reason": "contradictory remote/office information",
-  "scores": {
-   "remote": 5.5,
-   "office": 5.0
-  },
-  "evidence": [
-   {
-    "signal": "location field",
-    "text": "San Francisco, CA, US; Remote, US",
-    "effect": "remote"
-   },
-   {
-    "signal": "description",
-    "text": "Relocation Statement:",
-    "effect": "on_site"
-   },
-   {
-    "signal": "description (explicitly no office)",
-    "text": "This position is not eligible for relocation assistance.",
-    "effect": "remote"
-   },
-   {
-    "signal": "description",
-    "text": "In-Office Requirement Statement:",
-    "effect": "on_site"
-   }
-  ],
-  "unresolved": [
-   "The listing contradicts itself about remote versus office work; needs review."
-  ],
-  "source": "Greenhouse"
- },
- {
-  "title": "Staff Motion Designer, Design Innovation",
-  "company": "Pinterest",
-  "url": "https://job-boards.greenhouse.io/pinterest/jobs/8302281",
-  "location": "San Francisco, CA, US; Remote, US",
-  "reason": "contradictory remote/office information",
-  "scores": {
-   "remote": 4.5,
-   "office": 5.0
-  },
-  "evidence": [
-   {
-    "signal": "location field",
-    "text": "San Francisco, CA, US; Remote, US",
-    "effect": "remote"
-   },
-   {
-    "signal": "description",
-    "text": "In-Office Requirement Statement:",
-    "effect": "on_site"
-   },
-   {
-    "signal": "description",
-    "text": "This role will need to be in the office for in-person collaboration 1-2 times every 6-months, and therefore can be situated anywhere in the country.",
-    "effect": "on_site"
-   },
-   {
-    "signal": "description",
-    "text": "Relocation Statement:",
-    "effect": "on_site"
-   }
-  ],
-  "unresolved": [
-   "The listing contradicts itself about remote versus office work; needs review."
-  ],
-  "source": "Greenhouse"
- },
- {
-  "title": "Staff Product Manager, App Install",
-  "company": "Pinterest",
-  "url": "https://job-boards.greenhouse.io/pinterest/jobs/7940537",
-  "location": "San Francisco, CA, US; Seattle, WA, US; Remote, US",
-  "reason": "contradictory remote/office information",
-  "scores": {
-   "remote": 4.5,
-   "office": 3.5
-  },
-  "evidence": [
-   {
-    "signal": "location field",
-    "text": "San Francisco, CA, US; Seattle, WA, US; Remote, US",
-    "effect": "remote"
-   },
-   {
-    "signal": "description",
-    "text": "In-Office Requirement Statement:",
-    "effect": "on_site"
-   },
-   {
-    "signal": "description",
-    "text": "This role will need to be in the office for in-person collaboration 1-2 times/quarter and therefore can be situated anywhere in the country.",
-    "effect": "on_site"
-   },
-   {
-    "signal": "description (explicitly no office)",
-    "text": "This position is not eligible for relocation assistance.",
-    "effect": "remote"
-   }
-  ],
-  "unresolved": [
-   "The listing contradicts itself about remote versus office work; needs review."
-  ],
-  "source": "Greenhouse"
- },
- {
-  "title": "Staff Qualitative Product Researcher, Ads Integrity",
-  "company": "Pinterest",
-  "url": "https://job-boards.greenhouse.io/pinterest/jobs/8248057",
-  "location": "Chicago, IL, US; Remote, US",
-  "reason": "contradictory remote/office information",
-  "scores": {
-   "remote": 4.5,
-   "office": 5.0
-  },
-  "evidence": [
-   {
-    "signal": "location field",
-    "text": "Chicago, IL, US; Remote, US",
-    "effect": "remote"
-   },
-   {
-    "signal": "description",
-    "text": "Relocation Statement:",
-    "effect": "on_site"
-   },
-   {
-    "signal": "description (explicitly no office)",
-    "text": "This position is not eligible for relocation assistance.",
-    "effect": "remote"
-   },
-   {
-    "signal": "description",
-    "text": "In-Office Requirement Statement:",
-    "effect": "on_site"
-   }
-  ],
-  "unresolved": [
-   "The listing contradicts itself about remote versus office work; needs review."
-  ],
-  "source": "Greenhouse"
- },
- {
-  "title": "Staff Security Software Engineer, Detection & Response",
-  "company": "Pinterest",
-  "url": "https://job-boards.greenhouse.io/pinterest/jobs/8230775",
-  "location": "Seattle, WA, US; Remote, US",
-  "reason": "contradictory remote/office information",
-  "scores": {
-   "remote": 4.5,
-   "office": 5.0
-  },
-  "evidence": [
-   {
-    "signal": "location field",
-    "text": "Seattle, WA, US; Remote, US",
-    "effect": "remote"
-   },
-   {
-    "signal": "description",
-    "text": "In-Office Requirement Statement:",
-    "effect": "on_site"
-   },
-   {
-    "signal": "description",
-    "text": "This role will need to be in the office for in-person collaboration 1-2 times every 6 months, and therefore can be situated anywhere in the country.",
-    "effect": "on_site"
-   },
-   {
-    "signal": "description",
-    "text": "Relocation Statement:",
-    "effect": "on_site"
-   }
-  ],
-  "unresolved": [
-   "The listing contradicts itself about remote versus office work; needs review."
-  ],
-  "source": "Greenhouse"
- },
- {
-  "title": "Staff Software Engineer, Infrastructure Data Engineering",
-  "company": "Pinterest",
-  "url": "https://job-boards.greenhouse.io/pinterest/jobs/8162539",
-  "location": "New York, NY, US; Remote, US",
-  "reason": "contradictory remote/office information",
-  "scores": {
-   "remote": 4.5,
-   "office": 5.0
-  },
-  "evidence": [
-   {
-    "signal": "location field",
-    "text": "New York, NY, US; Remote, US",
-    "effect": "remote"
-   },
-   {
-    "signal": "description",
-    "text": "In-Office Requirement Statement:",
-    "effect": "on_site"
-   },
-   {
-    "signal": "description",
-    "text": "This role will need to be in the office for in-person collaboration 1-2 times/month and therefore can be situated anywhere in the country.",
-    "effect": "on_site"
-   },
-   {
-    "signal": "description",
-    "text": "Relocation Statement:",
-    "effect": "on_site"
-   }
-  ],
-  "unresolved": [
-   "The listing contradicts itself about remote versus office work; needs review."
-  ],
-  "source": "Greenhouse"
- },
- {
-  "title": "Staff Software Engineer, Service Configuration Deployments",
-  "company": "Pinterest",
-  "url": "https://job-boards.greenhouse.io/pinterest/jobs/8046838",
-  "location": "San Francisco, CA, US; Remote, US",
-  "reason": "contradictory remote/office information",
-  "scores": {
-   "remote": 4.5,
-   "office": 5.0
-  },
-  "evidence": [
-   {
-    "signal": "location field",
-    "text": "San Francisco, CA, US; Remote, US",
-    "effect": "remote"
-   },
-   {
-    "signal": "description",
-    "text": "In-Office Requirement Statement:",
-    "effect": "on_site"
-   },
-   {
-    "signal": "description",
-    "text": "This role will need to be in the office for in-person collaboration 1-2 times every 6 months and therefore can be situated anywhere in the country.",
-    "effect": "on_site"
-   },
-   {
-    "signal": "description",
-    "text": "Relocation Statement:",
-    "effect": "on_site"
-   }
-  ],
-  "unresolved": [
-   "The listing contradicts itself about remote versus office work; needs review."
-  ],
-  "source": "Greenhouse"
- },
- {
-  "title": "Staff Technical Program Manager",
-  "company": "Pinterest",
-  "url": "https://job-boards.greenhouse.io/pinterest/jobs/8328631",
-  "location": "San Francisco, CA, US; Remote, US",
-  "reason": "contradictory remote/office information",
-  "scores": {
-   "remote": 5.5,
-   "office": 5.0
-  },
-  "evidence": [
-   {
-    "signal": "location field",
-    "text": "San Francisco, CA, US; Remote, US",
-    "effect": "remote"
-   },
-   {
-    "signal": "description",
-    "text": "In-Office Requirement Statement:",
-    "effect": "on_site"
-   },
-   {
-    "signal": "description (explicitly no office)",
-    "text": "That means we're not always working in an office, but we continue to gather for key moments of collaboration and connection.",
-    "effect": "remote"
-   },
-   {
-    "signal": "description",
-    "text": "This role will need to be in the office for in-person collaboration 1-2 times/quarter and therefore can be situated anywhere in the country.",
-    "effect": "on_site"
-   }
-  ],
-  "unresolved": [
-   "The listing contradicts itself about remote versus office work; needs review."
-  ],
-  "source": "Greenhouse"
- },
- {
-  "title": "Staff Technical Program Manager, Advanced Technology Group",
-  "company": "Pinterest",
-  "url": "https://job-boards.greenhouse.io/pinterest/jobs/8263122",
-  "location": "San Francisco, CA, US; Remote, US",
-  "reason": "contradictory remote/office information",
-  "scores": {
-   "remote": 4.5,
-   "office": 5.0
-  },
-  "evidence": [
-   {
-    "signal": "location field",
-    "text": "San Francisco, CA, US; Remote, US",
-    "effect": "remote"
-   },
-   {
-    "signal": "description",
-    "text": "In-Office Requirement Statement:",
-    "effect": "on_site"
-   },
-   {
-    "signal": "description",
-    "text": "This role will need to be in the office for in-person collaboration 1-2 times/quarter and therefore can be situated anywhere in the country.",
-    "effect": "on_site"
-   },
-   {
-    "signal": "description",
-    "text": "Relocation Statement:",
-    "effect": "on_site"
-   }
-  ],
-  "unresolved": [
-   "The listing contradicts itself about remote versus office work; needs review."
-  ],
-  "source": "Greenhouse"
- },
- {
-  "title": "Technical Program Manager II",
-  "company": "Pinterest",
-  "url": "https://job-boards.greenhouse.io/pinterest/jobs/8369211",
-  "location": "San Francisco, CA, US; Remote, US",
-  "reason": "contradictory remote/office information",
-  "scores": {
-   "remote": 4.0,
-   "office": 5.0
-  },
-  "evidence": [
-   {
-    "signal": "location field",
-    "text": "San Francisco, CA, US; Remote, US",
-    "effect": "remote"
-   },
-   {
-    "signal": "description",
-    "text": "Relocation Statement:",
-    "effect": "on_site"
-   },
-   {
-    "signal": "description (explicitly no office)",
-    "text": "This position is not eligible for relocation assistance.",
-    "effect": "remote"
-   },
-   {
-    "signal": "description",
-    "text": "In-Office Requirement Statement:",
-    "effect": "on_site"
-   }
-  ],
-  "unresolved": [
-   "The listing contradicts itself about remote versus office work; needs review."
-  ],
-  "source": "Greenhouse"
- },
- {
-  "title": "Enterprise Account Executive, West",
-  "company": "Okta",
-  "url": "https://job-boards.greenhouse.io/okta/jobs/8354795",
-  "location": "California Remote",
-  "reason": "contradictory remote/office information",
-  "scores": {
-   "remote": 3.5,
-   "office": 2.0
-  },
-  "evidence": [
-   {
-    "signal": "location field",
-    "text": "California Remote",
-    "effect": "remote"
-   },
-   {
-    "signal": "description",
-    "text": "*This role requires in-person onboarding and travel to our San Francisco, CA HQ office during the first week of employment.",
-    "effect": "unclear"
+    "text": "Future models could potentially involve a hybrid presence at the hub office associated with your metro area.",
+    "effect": "hybrid"
    },
    {
     "signal": "description",
     "text": "#LI-Remote",
     "effect": "remote (weak)"
-   },
-   {
-    "signal": "description",
-    "text": "Your journey begins with an immersive, in-person onboarding experience designed to accelerate your impact and connect you to our mission and team from day one.",
-    "effect": "unclear"
-   }
-  ],
-  "unresolved": [
-   "Mentions in-person onboarding or training; confirm how long and whether the ongoing role is remote.",
-   "The listing contradicts itself about remote versus office work; needs review."
-  ],
-  "source": "Greenhouse"
- },
- {
-  "title": "Senior Software Engineer - Core Identity (Auth0)",
-  "company": "Okta",
-  "url": "https://job-boards.greenhouse.io/okta/jobs/8382952",
-  "location": "Dublin, Ireland",
-  "reason": "contradictory remote/office information",
-  "scores": {
-   "remote": 2.5,
-   "office": 2.0
-  },
-  "evidence": [
-   {
-    "signal": "description",
-    "text": "Join a fast paced and agile team spread remotely across Central Europe and US or Canada EST.",
-    "effect": "remote (weak)"
-   },
-   {
-    "signal": "description",
-    "text": "Experience working effectively in a distributed, remote-first team.",
-    "effect": "remote"
-   },
-   {
-    "signal": "description",
-    "text": "Some roles may require travel to one of our office locations for in-person onboarding.",
-    "effect": "unclear"
-   },
-   {
-    "signal": "description",
-    "text": "Your journey begins with an immersive, in-person onboarding experience designed to accelerate your impact and connect you to our mission and team from day one.",
-    "effect": "unclear"
-   }
-  ],
-  "unresolved": [
-   "Mentions in-person onboarding or training; confirm how long and whether the ongoing role is remote.",
-   "The listing contradicts itself about remote versus office work; needs review."
-  ],
-  "source": "Greenhouse"
- },
- {
-  "title": "Account Executive, Enterprise",
-  "company": "Sprout Social",
-  "url": "https://job-boards.greenhouse.io/sproutsocial/jobs/8335144",
-  "location": "Remote US",
-  "reason": "contradictory remote/office information",
-  "scores": {
-   "remote": 4.5,
-   "office": 3.0
-  },
-  "evidence": [
-   {
-    "signal": "location field",
-    "text": "Remote US",
-    "effect": "remote"
-   },
-   {
-    "signal": "description (mixed office and remote wording)",
-    "text": "Work From Home Support: A one-time $550 USD stipend to set up your home office, plus a monthly $50 USD stipend for internet.",
-    "effect": "remote (weak)"
-   },
-   {
-    "signal": "description",
-    "text": "Additional Financial Perks: Access to pre-tax commuter benefits, subsidized child/eldercare (Care.com), discounted pet insurance (Figo), and no-cost personalized financi…",
-    "effect": "on_site"
-   },
-   {
-    "signal": "description",
-    "text": "Sprout maintains a remote workforce in many places in the United States.",
-    "effect": "remote (weak)"
-   }
-  ],
-  "unresolved": [
-   "The listing contradicts itself about remote versus office work; needs review.",
-   "The location field lists Remote US, but the listing does not confirm the role is remote there."
-  ],
-  "source": "Greenhouse"
- },
- {
-  "title": "Account Executive, Large Enterprise",
-  "company": "Sprout Social",
-  "url": "https://job-boards.greenhouse.io/sproutsocial/jobs/8359923",
-  "location": "Remote US",
-  "reason": "contradictory remote/office information",
-  "scores": {
-   "remote": 4.5,
-   "office": 3.0
-  },
-  "evidence": [
-   {
-    "signal": "location field",
-    "text": "Remote US",
-    "effect": "remote"
-   },
-   {
-    "signal": "description (mixed office and remote wording)",
-    "text": "Work From Home Support: A one-time $550 USD stipend to set up your home office, plus a monthly $50 USD stipend for internet.",
-    "effect": "remote (weak)"
-   },
-   {
-    "signal": "description",
-    "text": "Additional Financial Perks: Access to pre-tax commuter benefits, subsidized child/eldercare (Care.com), discounted pet insurance (Figo), and no-cost personalized financi…",
-    "effect": "on_site"
-   },
-   {
-    "signal": "description",
-    "text": "Sprout maintains a remote workforce in many places in the United States.",
-    "effect": "remote (weak)"
-   }
-  ],
-  "unresolved": [
-   "The listing contradicts itself about remote versus office work; needs review.",
-   "The location field lists Remote US, but the listing does not confirm the role is remote there."
-  ],
-  "source": "Greenhouse"
- },
- {
-  "title": "Account Executive, Large Enterprise (Regulated Industries)",
-  "company": "Sprout Social",
-  "url": "https://job-boards.greenhouse.io/sproutsocial/jobs/8359936",
-  "location": "Remote US",
-  "reason": "contradictory remote/office information",
-  "scores": {
-   "remote": 4.5,
-   "office": 3.0
-  },
-  "evidence": [
-   {
-    "signal": "location field",
-    "text": "Remote US",
-    "effect": "remote"
-   },
-   {
-    "signal": "description (mixed office and remote wording)",
-    "text": "Work From Home Support: A one-time $550 USD stipend to set up your home office, plus a monthly $50 USD stipend for internet.",
-    "effect": "remote (weak)"
-   },
-   {
-    "signal": "description",
-    "text": "Additional Financial Perks: Access to pre-tax commuter benefits, subsidized child/eldercare (Care.com), discounted pet insurance (Figo), and no-cost personalized financi…",
-    "effect": "on_site"
-   },
-   {
-    "signal": "description",
-    "text": "Sprout maintains a remote workforce in many places in the United States.",
-    "effect": "remote (weak)"
-   }
-  ],
-  "unresolved": [
-   "The listing contradicts itself about remote versus office work; needs review.",
-   "The location field lists Remote US, but the listing does not confirm the role is remote there."
-  ],
-  "source": "Greenhouse"
- },
- {
-  "title": "Account Executive, Strategic Enterprise",
-  "company": "Sprout Social",
-  "url": "https://job-boards.greenhouse.io/sproutsocial/jobs/8359900",
-  "location": "Remote US",
-  "reason": "contradictory remote/office information",
-  "scores": {
-   "remote": 4.5,
-   "office": 3.0
-  },
-  "evidence": [
-   {
-    "signal": "location field",
-    "text": "Remote US",
-    "effect": "remote"
-   },
-   {
-    "signal": "description (mixed office and remote wording)",
-    "text": "Work From Home Support: A one-time $550 USD stipend to set up your home office, plus a monthly $50 USD stipend for internet.",
-    "effect": "remote (weak)"
-   },
-   {
-    "signal": "description",
-    "text": "Additional Financial Perks: Access to pre-tax commuter benefits, subsidized child/eldercare (Care.com), discounted pet insurance (Figo), and no-cost personalized financi…",
-    "effect": "on_site"
-   },
-   {
-    "signal": "description",
-    "text": "Sprout maintains a remote workforce in many places in the United States.",
-    "effect": "remote (weak)"
-   }
-  ],
-  "unresolved": [
-   "The listing contradicts itself about remote versus office work; needs review.",
-   "The location field lists Remote US, but the listing does not confirm the role is remote there."
-  ],
-  "source": "Greenhouse"
- },
- {
-  "title": "Senior Software Engineer, Platform (Java)",
-  "company": "Sprout Social",
-  "url": "https://job-boards.greenhouse.io/sproutsocial/jobs/8382345",
-  "location": "Remote Poland",
-  "reason": "contradictory remote/office information",
-  "scores": {
-   "remote": 6.5,
-   "office": 5.5
-  },
-  "evidence": [
-   {
-    "signal": "location field",
-    "text": "Remote Poland",
-    "effect": "remote"
-   },
-   {
-    "signal": "description",
-    "text": "Remote & Hybrid Work Support: A flexible, remote-first model supported by a one-time $550 USD home office setup stipend and a monthly internet reimbursement.",
-    "effect": "hybrid"
-   },
-   {
-    "signal": "description",
-    "text": "Kraków Office Perks: A daily 50 zł lunch stipend when you choose to work from our office.",
-    "effect": "on_site"
-   },
-   {
-    "signal": "description",
-    "text": "If you prefer to work remotely from another location within Poland, we will accommodate you as best as possible.",
-    "effect": "remote"
    }
   ],
   "unresolved": [
@@ -3849,461 +2570,43 @@
   "source": "Greenhouse"
  },
  {
-  "title": "Staff Site Reliability Engineer",
-  "company": "Sprout Social",
-  "url": "https://job-boards.greenhouse.io/sproutsocial/jobs/8384246",
-  "location": "Remote Poland",
+  "title": "Director of Marketing",
+  "company": "Parsley Health",
+  "url": "https://job-boards.greenhouse.io/parsleyhealth/jobs/8160104003",
+  "location": "New York, New York, United States; Remote",
   "reason": "contradictory remote/office information",
   "scores": {
-   "remote": 6.5,
-   "office": 2.5
-  },
-  "evidence": [
-   {
-    "signal": "location field",
-    "text": "Remote Poland",
-    "effect": "remote"
-   },
-   {
-    "signal": "description (occasional attendance)",
-    "text": "International Travel: Opportunities to travel to our Chicago HQ for team meetups and collaboration.",
-    "effect": "occasional"
-   },
-   {
-    "signal": "description",
-    "text": "Kraków Office Perks: A daily 50 zł lunch stipend when you choose to work from our office.",
-    "effect": "on_site"
-   },
-   {
-    "signal": "description",
-    "text": "If you prefer to work remotely from another location within Poland, we will accommodate you as best as possible.",
-    "effect": "remote"
-   }
-  ],
-  "unresolved": [
-   "The listing contradicts itself about remote versus office work; needs review.",
-   "Occasional office or in-person attendance is mentioned; confirm how often."
-  ],
-  "source": "Greenhouse"
- },
- {
-  "title": "Staff Software Engineer, Platform (Java)",
-  "company": "Sprout Social",
-  "url": "https://job-boards.greenhouse.io/sproutsocial/jobs/8336554",
-  "location": "Remote Poland",
-  "reason": "contradictory remote/office information",
-  "scores": {
-   "remote": 6.5,
-   "office": 5.5
-  },
-  "evidence": [
-   {
-    "signal": "location field",
-    "text": "Remote Poland",
-    "effect": "remote"
-   },
-   {
-    "signal": "description",
-    "text": "Remote & Hybrid Work Support: A flexible, remote-first model supported by a one-time $550 USD home office setup stipend and a monthly internet reimbursement.",
-    "effect": "hybrid"
-   },
-   {
-    "signal": "description (occasional attendance)",
-    "text": "International Travel: Opportunities to travel to our Chicago HQ for team meetups and collaboration.",
-    "effect": "occasional"
-   },
-   {
-    "signal": "description",
-    "text": "Kraków Office Perks: A daily 50 zł lunch stipend when you choose to work from our office.",
-    "effect": "on_site"
-   }
-  ],
-  "unresolved": [
-   "The listing contradicts itself about remote versus office work; needs review.",
-   "Occasional office or in-person attendance is mentioned; confirm how often."
-  ],
-  "source": "Greenhouse"
- },
- {
-  "title": "Senior Product Designer, Ads",
-  "company": "Reddit",
-  "url": "https://job-boards.greenhouse.io/reddit/jobs/8201913",
-  "location": "Remote - United States",
-  "reason": "contradictory remote/office information",
-  "scores": {
-   "remote": 3.0,
+   "remote": 3.5,
    "office": 3.0
   },
   "evidence": [
    {
     "signal": "location field",
-    "text": "Remote - United States",
+    "text": "New York, New York, United States; Remote",
     "effect": "remote"
    },
    {
     "signal": "description",
-    "text": "Don't live near one of our offices?",
-    "effect": "unclear"
-   },
-   {
-    "signal": "description",
-    "text": "No worries: You can apply to work remotely in any country in which we have a physical presence.",
-    "effect": "on_site"
-   }
-  ],
-  "unresolved": [
-   "Applicants must live near an office; confirm whether office attendance is expected.",
-   "The listing contradicts itself about remote versus office work; needs review.",
-   "The location field and the description disagree about where applicants can be; check the employer's wording.",
-   "Eligibility wording conflicts inside the listing."
-  ],
-  "source": "Greenhouse"
- },
- {
-  "title": "Senior Staff Applied Scientist, Science Platform",
-  "company": "Reddit",
-  "url": "https://job-boards.greenhouse.io/reddit/jobs/8282748",
-  "location": "Remote - United States",
-  "reason": "contradictory remote/office information",
-  "scores": {
-   "remote": 3.0,
-   "office": 3.0
-  },
-  "evidence": [
-   {
-    "signal": "location field",
-    "text": "Remote - United States",
-    "effect": "remote"
-   },
-   {
-    "signal": "description",
-    "text": "100% remote opportunity (we have four office locations for hybrid/onsite work preference in NY, SF, LA and Chicago)",
-    "effect": "hybrid"
-   }
-  ],
-  "unresolved": [
-   "The listing contradicts itself about remote versus office work; needs review."
-  ],
-  "source": "Greenhouse"
- },
- {
-  "title": "Software Engineer, Ad Signals",
-  "company": "Reddit",
-  "url": "https://job-boards.greenhouse.io/reddit/jobs/8319655",
-  "location": "Remote - United States",
-  "reason": "contradictory remote/office information",
-  "scores": {
-   "remote": 3.0,
-   "office": 3.0
-  },
-  "evidence": [
-   {
-    "signal": "location field",
-    "text": "Remote - United States",
-    "effect": "remote"
-   },
-   {
-    "signal": "description",
-    "text": "100% remote opportunity (we have 4 office locations for hybrid/onsite work preference in NY, SF, LA and Chicago)",
-    "effect": "hybrid"
-   }
-  ],
-  "unresolved": [
-   "The listing contradicts itself about remote versus office work; needs review."
-  ],
-  "source": "Greenhouse"
- },
- {
-  "title": "Staff Machine Learning Engineer, Retrieval & Targeting",
-  "company": "Reddit",
-  "url": "https://job-boards.greenhouse.io/reddit/jobs/8316086",
-  "location": "Remote - United States",
-  "reason": "contradictory remote/office information",
-  "scores": {
-   "remote": 3.0,
-   "office": 3.0
-  },
-  "evidence": [
-   {
-    "signal": "location field",
-    "text": "Remote - United States",
-    "effect": "remote"
-   },
-   {
-    "signal": "description",
-    "text": "100% remote opportunity (we have 4 office locations for hybrid/onsite work preference in NY, SF, LA and Chicago)",
-    "effect": "hybrid"
-   }
-  ],
-  "unresolved": [
-   "The listing contradicts itself about remote versus office work; needs review."
-  ],
-  "source": "Greenhouse"
- },
- {
-  "title": "CRM Specialist",
-  "company": "Thrive Market",
-  "url": "https://job-boards.greenhouse.io/thrivemarket/jobs/4457972009",
-  "location": "Remote",
-  "reason": "contradictory remote/office information",
-  "scores": {
-   "remote": 3.0,
-   "office": 2.5
-  },
-  "evidence": [
-   {
-    "signal": "location field",
-    "text": "Remote",
-    "effect": "remote"
-   },
-   {
-    "signal": "description",
-    "text": "Ability to work in our beautiful office in Playa Vista",
-    "effect": "on_site"
-   },
-   {
-    "signal": "description (occasional attendance)",
-    "text": "This position requires traveling to our HQ office in Los Angeles, California, twice a year for all-company summits",
-    "effect": "occasional"
-   }
-  ],
-  "unresolved": [
-   "The listing contradicts itself about remote versus office work; needs review.",
-   "Occasional office or in-person attendance is mentioned; confirm how often."
-  ],
-  "source": "Greenhouse"
- },
- {
-  "title": "Finance Manager – Merchandise",
-  "company": "Thrive Market",
-  "url": "https://job-boards.greenhouse.io/thrivemarket/jobs/4507420009",
-  "location": "Remote",
-  "reason": "contradictory remote/office information",
-  "scores": {
-   "remote": 3.0,
-   "office": 2.5
-  },
-  "evidence": [
-   {
-    "signal": "location field",
-    "text": "Remote",
-    "effect": "remote"
-   },
-   {
-    "signal": "description",
-    "text": "Ability to work in our beautiful office in Playa Vista",
-    "effect": "on_site"
-   },
-   {
-    "signal": "description (occasional attendance)",
-    "text": "This position requires traveling to our HQ office in Los Angeles, California, twice a year for all-company summits",
-    "effect": "occasional"
-   }
-  ],
-  "unresolved": [
-   "The listing contradicts itself about remote versus office work; needs review.",
-   "Occasional office or in-person attendance is mentioned; confirm how often."
-  ],
-  "source": "Greenhouse"
- },
- {
-  "title": "Finance Manager – Operations",
-  "company": "Thrive Market",
-  "url": "https://job-boards.greenhouse.io/thrivemarket/jobs/4489527009",
-  "location": "Remote",
-  "reason": "contradictory remote/office information",
-  "scores": {
-   "remote": 3.0,
-   "office": 2.5
-  },
-  "evidence": [
-   {
-    "signal": "location field",
-    "text": "Remote",
-    "effect": "remote"
-   },
-   {
-    "signal": "description",
-    "text": "Ability to work in our beautiful office in Playa Vista",
-    "effect": "on_site"
-   },
-   {
-    "signal": "description (occasional attendance)",
-    "text": "This position requires traveling to our HQ office in Los Angeles, California, twice a year for all-company summits",
-    "effect": "occasional"
-   }
-  ],
-  "unresolved": [
-   "The listing contradicts itself about remote versus office work; needs review.",
-   "Occasional office or in-person attendance is mentioned; confirm how often."
-  ],
-  "source": "Greenhouse"
- },
- {
-  "title": "Senior Data Analyst, Lifecycle Marketing",
-  "company": "Thrive Market",
-  "url": "https://job-boards.greenhouse.io/thrivemarket/jobs/4469298009",
-  "location": "Remote",
-  "reason": "contradictory remote/office information",
-  "scores": {
-   "remote": 3.0,
-   "office": 2.5
-  },
-  "evidence": [
-   {
-    "signal": "location field",
-    "text": "Remote",
-    "effect": "remote"
-   },
-   {
-    "signal": "description",
-    "text": "Ability to work in our beautiful office in Playa Vista",
-    "effect": "on_site"
-   }
-  ],
-  "unresolved": [
-   "The listing contradicts itself about remote versus office work; needs review.",
-   "The listing does not state where applicants must live or be authorised to work."
-  ],
-  "source": "Greenhouse"
- },
- {
-  "title": "Senior Director of Performance Creative",
-  "company": "Thrive Market",
-  "url": "https://job-boards.greenhouse.io/thrivemarket/jobs/4425026009",
-  "location": "Playa Vista, CA or Remote ",
-  "reason": "contradictory remote/office information",
-  "scores": {
-   "remote": 3.0,
-   "office": 2.5
-  },
-  "evidence": [
-   {
-    "signal": "location field",
-    "text": "Playa Vista, CA or Remote",
-    "effect": "remote"
-   },
-   {
-    "signal": "description",
-    "text": "Ability to work in our beautiful office in Playa Vista",
-    "effect": "on_site"
-   },
-   {
-    "signal": "description (occasional attendance)",
-    "text": "This position requires traveling to our HQ office in Los Angeles, California, twice a year for all-company summits",
-    "effect": "occasional"
-   }
-  ],
-  "unresolved": [
-   "The listing contradicts itself about remote versus office work; needs review.",
-   "Occasional office or in-person attendance is mentioned; confirm how often."
-  ],
-  "source": "Greenhouse"
- },
- {
-  "title": "Senior Product Manager, Consumer",
-  "company": "Thrive Market",
-  "url": "https://job-boards.greenhouse.io/thrivemarket/jobs/4436333009",
-  "location": "Playa Vista, CA or Remote ",
-  "reason": "contradictory remote/office information",
-  "scores": {
-   "remote": 3.0,
-   "office": 2.5
-  },
-  "evidence": [
-   {
-    "signal": "location field",
-    "text": "Playa Vista, CA or Remote",
-    "effect": "remote"
-   },
-   {
-    "signal": "description",
-    "text": "Ability to work in our beautiful office in Playa Vista",
-    "effect": "on_site"
-   }
-  ],
-  "unresolved": [
-   "The listing contradicts itself about remote versus office work; needs review.",
-   "The location field lists Playa Vista, CA or Remote, but the listing does not confirm the role is remote there."
-  ],
-  "source": "Greenhouse"
- },
- {
-  "title": "Site Reliability Engineer",
-  "company": "Thrive Market",
-  "url": "https://job-boards.greenhouse.io/thrivemarket/jobs/4458409009",
-  "location": "Playa Vista, CA or Remote ",
-  "reason": "contradictory remote/office information",
-  "scores": {
-   "remote": 3.0,
-   "office": 2.5
-  },
-  "evidence": [
-   {
-    "signal": "location field",
-    "text": "Playa Vista, CA or Remote",
-    "effect": "remote"
-   },
-   {
-    "signal": "description",
-    "text": "Ability to work in our beautiful office in Playa Vista",
-    "effect": "on_site"
-   },
-   {
-    "signal": "description (occasional attendance)",
-    "text": "This position requires traveling to our HQ office in Los Angeles, California, twice a year for all-company summits",
-    "effect": "occasional"
-   }
-  ],
-  "unresolved": [
-   "The listing contradicts itself about remote versus office work; needs review.",
-   "Occasional office or in-person attendance is mentioned; confirm how often."
-  ],
-  "source": "Greenhouse"
- },
- {
-  "title": "Business Development Representative, AI",
-  "company": "Talkspace",
-  "url": "https://job-boards.greenhouse.io/talkspace/jobs/6233369004",
-  "location": "New York, NY (Remote)",
-  "reason": "contradictory remote/office information",
-  "scores": {
-   "remote": 5.5,
-   "office": 3.0
-  },
-  "evidence": [
-   {
-    "signal": "location field",
-    "text": "New York, NY (Remote)",
-    "effect": "remote"
-   },
-   {
-    "signal": "description",
-    "text": "For candidates based in NYC, this role follows a 2-day-per-week hybrid schedule.",
-    "effect": "hybrid"
-   },
-   {
-    "signal": "description",
-    "text": "Candidates outside of NYC metropolitan area may work fully remotely based EST hours.",
+    "text": "Parsley Health · Marketing · Remote US, with a preference for Eastern or Central time zones and NYC metro · Full-time",
     "effect": "remote (weak)"
    },
    {
     "signal": "description",
-    "text": "Flexible PTO and Remote First Environment",
-    "effect": "remote"
+    "text": "Hybrid opportunity with remote work and time on site at our NYC HQ",
+    "effect": "hybrid"
    }
   ],
   "unresolved": [
    "The listing contradicts itself about remote versus office work; needs review.",
-   "The location field lists New York, NY (Remote), but the listing does not confirm the role is remote there."
+   "The location field lists New York, New York, United States; Remote, but the listing does not confirm the role is remote there."
   ],
   "source": "Greenhouse"
  },
  {
   "title": "Early Career - Family Medicine Physician - 4 days in clinic, 1 day remote",
   "company": "One Medical",
-  "url": "https://job-boards.greenhouse.io/onemedical/jobs/8352926",
-  "location": "Fort Worth, TX",
+  "url": "https://job-boards.greenhouse.io/onemedical/jobs/8350215",
+  "location": "Austin, TX",
   "reason": "contradictory remote/office information",
   "scores": {
    "remote": 2.0,
@@ -4339,8 +2642,8 @@
  {
   "title": "Early Career - Family Medicine Physician - 4 days in clinic, 1 day remote",
   "company": "One Medical",
-  "url": "https://job-boards.greenhouse.io/onemedical/jobs/8350215",
-  "location": "Austin, TX",
+  "url": "https://job-boards.greenhouse.io/onemedical/jobs/8352926",
+  "location": "Fort Worth, TX",
   "reason": "contradictory remote/office information",
   "scores": {
    "remote": 2.0,
@@ -4746,8 +3049,8 @@
  {
   "title": "Family Medicine Physician - 4 days in clinic, 1 day remote",
   "company": "One Medical",
-  "url": "https://job-boards.greenhouse.io/onemedical/jobs/8372438",
-  "location": "Wake Forest, NC",
+  "url": "https://job-boards.greenhouse.io/onemedical/jobs/8353875",
+  "location": "Bethesda, MD",
   "reason": "contradictory remote/office information",
   "scores": {
    "remote": 2.0,
@@ -4783,8 +3086,8 @@
  {
   "title": "Family Medicine Physician - 4 days in clinic, 1 day remote",
   "company": "One Medical",
-  "url": "https://job-boards.greenhouse.io/onemedical/jobs/8312749",
-  "location": "Atlanta, GA",
+  "url": "https://job-boards.greenhouse.io/onemedical/jobs/8372438",
+  "location": "Wake Forest, NC",
   "reason": "contradictory remote/office information",
   "scores": {
    "remote": 2.0,
@@ -4894,8 +3197,8 @@
  {
   "title": "Family Medicine Physician - 4 days in clinic, 1 day remote",
   "company": "One Medical",
-  "url": "https://job-boards.greenhouse.io/onemedical/jobs/8353875",
-  "location": "Bethesda, MD",
+  "url": "https://job-boards.greenhouse.io/onemedical/jobs/8312749",
+  "location": "Atlanta, GA",
   "reason": "contradictory remote/office information",
   "scores": {
    "remote": 2.0,
@@ -5127,6 +3430,1782 @@
    {
     "signal": "title",
     "text": "Family Medicine Physician (New Albany clinic) - 4 days in clinic, 1 day work from home",
+    "effect": "remote"
+   },
+   {
+    "signal": "description (occasional attendance)",
+    "text": "Treating patients in-office or in testing centers as well as conducting occasional tele-health visits",
+    "effect": "occasional"
+   },
+   {
+    "signal": "description",
+    "text": "Utilization of your specific clinical training and opportunities to perform in-office procedures",
+    "effect": "on_site"
+   },
+   {
+    "signal": "description",
+    "text": "Pre-Tax commuter benefits",
+    "effect": "on_site"
+   }
+  ],
+  "unresolved": [
+   "The listing contradicts itself about remote versus office work; needs review."
+  ],
+  "source": "Greenhouse"
+ },
+ {
+  "title": "Family Medicine Physician (Oak Brook Promenade) - Sign-On Bonus Available, 4 days in clinic, 1 day work from home",
+  "company": "One Medical",
+  "url": "https://job-boards.greenhouse.io/onemedical/jobs/8385917",
+  "location": "Chicago, IL",
+  "reason": "contradictory remote/office information",
+  "scores": {
+   "remote": 2.0,
+   "office": 3.0
+  },
+  "evidence": [
+   {
+    "signal": "title",
+    "text": "Family Medicine Physician (Oak Brook Promenade) - Sign-On Bonus Available, 4 days in clinic, 1 day work from home",
+    "effect": "remote"
+   },
+   {
+    "signal": "description (occasional attendance)",
+    "text": "Treating patients in-office or in testing centers as well as conducting occasional tele-health visits",
+    "effect": "occasional"
+   },
+   {
+    "signal": "description",
+    "text": "Utilization of your specific clinical training and opportunities to perform in-office procedures",
+    "effect": "on_site"
+   },
+   {
+    "signal": "description",
+    "text": "Pre-Tax commuter benefits",
+    "effect": "on_site"
+   }
+  ],
+  "unresolved": [
+   "The listing contradicts itself about remote versus office work; needs review."
+  ],
+  "source": "Greenhouse"
+ },
+ {
+  "title": "Family Medicine Physician (Shadow Creek Ranch clinic) - 4 days in clinic, 1 day work from home",
+  "company": "One Medical",
+  "url": "https://job-boards.greenhouse.io/onemedical/jobs/8386674",
+  "location": "Houston, TX",
+  "reason": "contradictory remote/office information",
+  "scores": {
+   "remote": 2.0,
+   "office": 3.0
+  },
+  "evidence": [
+   {
+    "signal": "title",
+    "text": "Family Medicine Physician (Shadow Creek Ranch clinic) - 4 days in clinic, 1 day work from home",
+    "effect": "remote"
+   },
+   {
+    "signal": "description (occasional attendance)",
+    "text": "Treating patients in-office or in testing centers as well as conducting occasional tele-health visits",
+    "effect": "occasional"
+   },
+   {
+    "signal": "description",
+    "text": "Utilization of your specific clinical training and opportunities to perform in-office procedures",
+    "effect": "on_site"
+   },
+   {
+    "signal": "description",
+    "text": "Pre-Tax commuter benefits",
+    "effect": "on_site"
+   }
+  ],
+  "unresolved": [
+   "The listing contradicts itself about remote versus office work; needs review."
+  ],
+  "source": "Greenhouse"
+ },
+ {
+  "title": "Family Medicine Physician - Sign-on Bonus Available, 4 days in clinic, 1 day remote",
+  "company": "One Medical",
+  "url": "https://job-boards.greenhouse.io/onemedical/jobs/8331556",
+  "location": "Kirkland, WA",
+  "reason": "contradictory remote/office information",
+  "scores": {
+   "remote": 2.0,
+   "office": 3.0
+  },
+  "evidence": [
+   {
+    "signal": "title",
+    "text": "Family Medicine Physician - Sign-on Bonus Available, 4 days in clinic, 1 day remote",
+    "effect": "remote"
+   },
+   {
+    "signal": "description (occasional attendance)",
+    "text": "Treating patients in-office or in testing centers as well as conducting occasional tele-health visits",
+    "effect": "occasional"
+   },
+   {
+    "signal": "description",
+    "text": "Utilization of your specific clinical training and opportunities to perform in-office procedures",
+    "effect": "on_site"
+   },
+   {
+    "signal": "description",
+    "text": "Pre-Tax commuter benefits",
+    "effect": "on_site"
+   }
+  ],
+  "unresolved": [
+   "The listing contradicts itself about remote versus office work; needs review."
+  ],
+  "source": "Greenhouse"
+ },
+ {
+  "title": "Family Medicine Physician - Sign-On Bonus Available - 4 days in clinic, 1 day remote",
+  "company": "One Medical",
+  "url": "https://job-boards.greenhouse.io/onemedical/jobs/8328593",
+  "location": "Oakland, CA",
+  "reason": "contradictory remote/office information",
+  "scores": {
+   "remote": 2.0,
+   "office": 4.5
+  },
+  "evidence": [
+   {
+    "signal": "title",
+    "text": "Family Medicine Physician - Sign-On Bonus Available - 4 days in clinic, 1 day remote",
+    "effect": "remote"
+   },
+   {
+    "signal": "description (occasional attendance)",
+    "text": "Treating patients in-office or in testing centers as well as conducting occasional tele-health visits",
+    "effect": "occasional"
+   },
+   {
+    "signal": "description",
+    "text": "Utilization of your specific clinical training and opportunities to perform in-office procedures",
+    "effect": "on_site"
+   },
+   {
+    "signal": "description",
+    "text": "Relocation assistance may be available for this role.",
+    "effect": "on_site"
+   }
+  ],
+  "unresolved": [
+   "The listing contradicts itself about remote versus office work; needs review."
+  ],
+  "source": "Greenhouse"
+ },
+ {
+  "title": "Family Medicine Physician -  Sign-On Bonus Available, 4 days in clinic, 1 day remote",
+  "company": "One Medical",
+  "url": "https://job-boards.greenhouse.io/onemedical/jobs/8312955",
+  "location": "Fairfield County, CT",
+  "reason": "contradictory remote/office information",
+  "scores": {
+   "remote": 2.0,
+   "office": 3.0
+  },
+  "evidence": [
+   {
+    "signal": "title",
+    "text": "Family Medicine Physician - Sign-On Bonus Available, 4 days in clinic, 1 day remote",
+    "effect": "remote"
+   },
+   {
+    "signal": "description (occasional attendance)",
+    "text": "Treating patients in-office or in testing centers as well as conducting occasional tele-health visits",
+    "effect": "occasional"
+   },
+   {
+    "signal": "description",
+    "text": "Utilization of your specific clinical training and opportunities to perform in-office procedures",
+    "effect": "on_site"
+   },
+   {
+    "signal": "description",
+    "text": "Pre-Tax commuter benefits",
+    "effect": "on_site"
+   }
+  ],
+  "unresolved": [
+   "The listing contradicts itself about remote versus office work; needs review."
+  ],
+  "source": "Greenhouse"
+ },
+ {
+  "title": "Family Medicine Physician - Sign-On Bonus Available - 4 days in clinic, 1 day remote",
+  "company": "One Medical",
+  "url": "https://job-boards.greenhouse.io/onemedical/jobs/8326061",
+  "location": "San Francisco, CA",
+  "reason": "contradictory remote/office information",
+  "scores": {
+   "remote": 2.0,
+   "office": 4.5
+  },
+  "evidence": [
+   {
+    "signal": "title",
+    "text": "Family Medicine Physician - Sign-On Bonus Available - 4 days in clinic, 1 day remote",
+    "effect": "remote"
+   },
+   {
+    "signal": "description (occasional attendance)",
+    "text": "Treating patients in-office or in testing centers as well as conducting occasional tele-health visits",
+    "effect": "occasional"
+   },
+   {
+    "signal": "description",
+    "text": "Utilization of your specific clinical training and opportunities to perform in-office procedures",
+    "effect": "on_site"
+   },
+   {
+    "signal": "description",
+    "text": "Relocation assistance may be available for this role.",
+    "effect": "on_site"
+   }
+  ],
+  "unresolved": [
+   "The listing contradicts itself about remote versus office work; needs review."
+  ],
+  "source": "Greenhouse"
+ },
+ {
+  "title": "Family Medicine Physician - Sign-On Bonus Available - 4 days in clinic, 1 day remote",
+  "company": "One Medical",
+  "url": "https://job-boards.greenhouse.io/onemedical/jobs/8328588",
+  "location": "Emeryville, CA",
+  "reason": "contradictory remote/office information",
+  "scores": {
+   "remote": 2.0,
+   "office": 4.5
+  },
+  "evidence": [
+   {
+    "signal": "title",
+    "text": "Family Medicine Physician - Sign-On Bonus Available - 4 days in clinic, 1 day remote",
+    "effect": "remote"
+   },
+   {
+    "signal": "description (occasional attendance)",
+    "text": "Treating patients in-office or in testing centers as well as conducting occasional tele-health visits",
+    "effect": "occasional"
+   },
+   {
+    "signal": "description",
+    "text": "Utilization of your specific clinical training and opportunities to perform in-office procedures",
+    "effect": "on_site"
+   },
+   {
+    "signal": "description",
+    "text": "Relocation assistance may be available for this role.",
+    "effect": "on_site"
+   }
+  ],
+  "unresolved": [
+   "The listing contradicts itself about remote versus office work; needs review."
+  ],
+  "source": "Greenhouse"
+ },
+ {
+  "title": "Family Medicine Physician - Sign-On Bonus Available - 4 days in clinic, 1 day remote",
+  "company": "One Medical",
+  "url": "https://job-boards.greenhouse.io/onemedical/jobs/8394708",
+  "location": "Berkeley, CA",
+  "reason": "contradictory remote/office information",
+  "scores": {
+   "remote": 2.0,
+   "office": 4.5
+  },
+  "evidence": [
+   {
+    "signal": "title",
+    "text": "Family Medicine Physician - Sign-On Bonus Available - 4 days in clinic, 1 day remote",
+    "effect": "remote"
+   },
+   {
+    "signal": "description (occasional attendance)",
+    "text": "Treating patients in-office or in testing centers as well as conducting occasional tele-health visits",
+    "effect": "occasional"
+   },
+   {
+    "signal": "description",
+    "text": "Utilization of your specific clinical training and opportunities to perform in-office procedures",
+    "effect": "on_site"
+   },
+   {
+    "signal": "description",
+    "text": "Relocation assistance may be available for this role.",
+    "effect": "on_site"
+   }
+  ],
+  "unresolved": [
+   "The listing contradicts itself about remote versus office work; needs review."
+  ],
+  "source": "Greenhouse"
+ },
+ {
+  "title": "Family Medicine Physician - Sign-On Bonus Available - 4 days in clinic, 1 day remote",
+  "company": "One Medical",
+  "url": "https://job-boards.greenhouse.io/onemedical/jobs/8325987",
+  "location": "Sunnyvale, CA",
+  "reason": "contradictory remote/office information",
+  "scores": {
+   "remote": 2.0,
+   "office": 4.5
+  },
+  "evidence": [
+   {
+    "signal": "title",
+    "text": "Family Medicine Physician - Sign-On Bonus Available - 4 days in clinic, 1 day remote",
+    "effect": "remote"
+   },
+   {
+    "signal": "description (occasional attendance)",
+    "text": "Treating patients in-office or in testing centers as well as conducting occasional tele-health visits",
+    "effect": "occasional"
+   },
+   {
+    "signal": "description",
+    "text": "Utilization of your specific clinical training and opportunities to perform in-office procedures",
+    "effect": "on_site"
+   },
+   {
+    "signal": "description",
+    "text": "Relocation assistance may be available for this role.",
+    "effect": "on_site"
+   }
+  ],
+  "unresolved": [
+   "The listing contradicts itself about remote versus office work; needs review."
+  ],
+  "source": "Greenhouse"
+ },
+ {
+  "title": "Family Medicine Physician - Sign-On Bonus Available - 4 days in clinic, 1 day remote",
+  "company": "One Medical",
+  "url": "https://job-boards.greenhouse.io/onemedical/jobs/8325986",
+  "location": "Palo Alto, CA",
+  "reason": "contradictory remote/office information",
+  "scores": {
+   "remote": 2.0,
+   "office": 4.5
+  },
+  "evidence": [
+   {
+    "signal": "title",
+    "text": "Family Medicine Physician - Sign-On Bonus Available - 4 days in clinic, 1 day remote",
+    "effect": "remote"
+   },
+   {
+    "signal": "description (occasional attendance)",
+    "text": "Treating patients in-office or in testing centers as well as conducting occasional tele-health visits",
+    "effect": "occasional"
+   },
+   {
+    "signal": "description",
+    "text": "Utilization of your specific clinical training and opportunities to perform in-office procedures",
+    "effect": "on_site"
+   },
+   {
+    "signal": "description",
+    "text": "Relocation assistance may be available for this role.",
+    "effect": "on_site"
+   }
+  ],
+  "unresolved": [
+   "The listing contradicts itself about remote versus office work; needs review."
+  ],
+  "source": "Greenhouse"
+ },
+ {
+  "title": "Family Medicine Physician- Sign On Bonus Available, 4 days in clinic, 1 day remote",
+  "company": "One Medical",
+  "url": "https://job-boards.greenhouse.io/onemedical/jobs/8328098",
+  "location": "Boston, MA",
+  "reason": "contradictory remote/office information",
+  "scores": {
+   "remote": 2.0,
+   "office": 3.0
+  },
+  "evidence": [
+   {
+    "signal": "title",
+    "text": "Family Medicine Physician- Sign On Bonus Available, 4 days in clinic, 1 day remote",
+    "effect": "remote"
+   },
+   {
+    "signal": "description (occasional attendance)",
+    "text": "Treating patients in-office or in testing centers as well as conducting occasional tele-health visits",
+    "effect": "occasional"
+   },
+   {
+    "signal": "description",
+    "text": "Utilization of your specific clinical training and opportunities to perform in-office procedures",
+    "effect": "on_site"
+   },
+   {
+    "signal": "description",
+    "text": "Pre-Tax commuter benefits",
+    "effect": "on_site"
+   }
+  ],
+  "unresolved": [
+   "The listing contradicts itself about remote versus office work; needs review."
+  ],
+  "source": "Greenhouse"
+ },
+ {
+  "title": "Family Medicine Physician - Sign-On Bonus Available, 4 days in clinic, 1 day work from home",
+  "company": "One Medical",
+  "url": "https://job-boards.greenhouse.io/onemedical/jobs/8315035",
+  "location": "Hoboken, NJ",
+  "reason": "contradictory remote/office information",
+  "scores": {
+   "remote": 2.0,
+   "office": 3.0
+  },
+  "evidence": [
+   {
+    "signal": "title",
+    "text": "Family Medicine Physician - Sign-On Bonus Available, 4 days in clinic, 1 day work from home",
+    "effect": "remote"
+   },
+   {
+    "signal": "description (occasional attendance)",
+    "text": "Treating patients in-office or in testing centers as well as conducting occasional tele-health visits",
+    "effect": "occasional"
+   },
+   {
+    "signal": "description",
+    "text": "Utilization of your specific clinical training and opportunities to perform in-office procedures",
+    "effect": "on_site"
+   },
+   {
+    "signal": "description",
+    "text": "Pre-Tax commuter benefits",
+    "effect": "on_site"
+   }
+  ],
+  "unresolved": [
+   "The listing contradicts itself about remote versus office work; needs review."
+  ],
+  "source": "Greenhouse"
+ },
+ {
+  "title": "Family Medicine Physician (South Austin clinic) - 4 days in clinic, 1 day work from home",
+  "company": "One Medical",
+  "url": "https://job-boards.greenhouse.io/onemedical/jobs/8386322",
+  "location": "Austin, TX",
+  "reason": "contradictory remote/office information",
+  "scores": {
+   "remote": 2.0,
+   "office": 3.0
+  },
+  "evidence": [
+   {
+    "signal": "title",
+    "text": "Family Medicine Physician (South Austin clinic) - 4 days in clinic, 1 day work from home",
+    "effect": "remote"
+   },
+   {
+    "signal": "description (occasional attendance)",
+    "text": "Treating patients in-office or in testing centers as well as conducting occasional tele-health visits",
+    "effect": "occasional"
+   },
+   {
+    "signal": "description",
+    "text": "Utilization of your specific clinical training and opportunities to perform in-office procedures",
+    "effect": "on_site"
+   },
+   {
+    "signal": "description",
+    "text": "Pre-Tax commuter benefits",
+    "effect": "on_site"
+   }
+  ],
+  "unresolved": [
+   "The listing contradicts itself about remote versus office work; needs review."
+  ],
+  "source": "Greenhouse"
+ },
+ {
+  "title": "Family Nurse Practitioner or Physician Assistant (Aldrich Street Mueller clinic) - 4 days in clinic, 1 day work from home",
+  "company": "One Medical",
+  "url": "https://job-boards.greenhouse.io/onemedical/jobs/8386370",
+  "location": "Austin, TX",
+  "reason": "contradictory remote/office information",
+  "scores": {
+   "remote": 2.0,
+   "office": 3.0
+  },
+  "evidence": [
+   {
+    "signal": "title",
+    "text": "Family Nurse Practitioner or Physician Assistant (Aldrich Street Mueller clinic) - 4 days in clinic, 1 day work from home",
+    "effect": "remote"
+   },
+   {
+    "signal": "description (occasional attendance)",
+    "text": "Treating patients in-office or in testing centers as well as conducting occasional tele-health visits",
+    "effect": "occasional"
+   },
+   {
+    "signal": "description",
+    "text": "Utilization of your specific clinical training and opportunities to perform in-office procedures",
+    "effect": "on_site"
+   },
+   {
+    "signal": "description",
+    "text": "Pre-Tax commuter benefits",
+    "effect": "on_site"
+   }
+  ],
+  "unresolved": [
+   "The listing contradicts itself about remote versus office work; needs review."
+  ],
+  "source": "Greenhouse"
+ },
+ {
+  "title": "Family Nurse Practitioner or Physician Assistant (Domain Northside clinic) - 4 days in clinic, 1 day work from home",
+  "company": "One Medical",
+  "url": "https://job-boards.greenhouse.io/onemedical/jobs/8386376",
+  "location": "Austin, TX",
+  "reason": "contradictory remote/office information",
+  "scores": {
+   "remote": 2.0,
+   "office": 3.0
+  },
+  "evidence": [
+   {
+    "signal": "title",
+    "text": "Family Nurse Practitioner or Physician Assistant (Domain Northside clinic) - 4 days in clinic, 1 day work from home",
+    "effect": "remote"
+   },
+   {
+    "signal": "description (occasional attendance)",
+    "text": "Treating patients in-office or in testing centers as well as conducting occasional tele-health visits",
+    "effect": "occasional"
+   },
+   {
+    "signal": "description",
+    "text": "Utilization of your specific clinical training and opportunities to perform in-office procedures",
+    "effect": "on_site"
+   },
+   {
+    "signal": "description",
+    "text": "Pre-Tax commuter benefits",
+    "effect": "on_site"
+   }
+  ],
+  "unresolved": [
+   "The listing contradicts itself about remote versus office work; needs review."
+  ],
+  "source": "Greenhouse"
+ },
+ {
+  "title": "Family Nurse Practitioner or Physician Assistant - Sign-On Bonus Available - 4 days in clinic, 1 day remote",
+  "company": "One Medical",
+  "url": "https://job-boards.greenhouse.io/onemedical/jobs/8329511",
+  "location": "Menlo Park, CA",
+  "reason": "contradictory remote/office information",
+  "scores": {
+   "remote": 2.0,
+   "office": 4.5
+  },
+  "evidence": [
+   {
+    "signal": "title",
+    "text": "Family Nurse Practitioner or Physician Assistant - Sign-On Bonus Available - 4 days in clinic, 1 day remote",
+    "effect": "remote"
+   },
+   {
+    "signal": "description (occasional attendance)",
+    "text": "Treating patients in-office or in testing centers as well as conducting occasional tele-health visits",
+    "effect": "occasional"
+   },
+   {
+    "signal": "description",
+    "text": "Utilization of your specific clinical training and opportunities to perform in-office procedures",
+    "effect": "on_site"
+   },
+   {
+    "signal": "description",
+    "text": "Relocation assistance may be available for this role.",
+    "effect": "on_site"
+   }
+  ],
+  "unresolved": [
+   "The listing contradicts itself about remote versus office work; needs review."
+  ],
+  "source": "Greenhouse"
+ },
+ {
+  "title": "Family Nurse Practitioner or Physician Assistant - Sign-On Bonus Available - 4 days in clinic, 1 day remote",
+  "company": "One Medical",
+  "url": "https://job-boards.greenhouse.io/onemedical/jobs/8329510",
+  "location": "Palo Alto, CA",
+  "reason": "contradictory remote/office information",
+  "scores": {
+   "remote": 2.0,
+   "office": 4.5
+  },
+  "evidence": [
+   {
+    "signal": "title",
+    "text": "Family Nurse Practitioner or Physician Assistant - Sign-On Bonus Available - 4 days in clinic, 1 day remote",
+    "effect": "remote"
+   },
+   {
+    "signal": "description (occasional attendance)",
+    "text": "Treating patients in-office or in testing centers as well as conducting occasional tele-health visits",
+    "effect": "occasional"
+   },
+   {
+    "signal": "description",
+    "text": "Utilization of your specific clinical training and opportunities to perform in-office procedures",
+    "effect": "on_site"
+   },
+   {
+    "signal": "description",
+    "text": "Relocation assistance may be available for this role.",
+    "effect": "on_site"
+   }
+  ],
+  "unresolved": [
+   "The listing contradicts itself about remote versus office work; needs review."
+  ],
+  "source": "Greenhouse"
+ },
+ {
+  "title": "Family Nurse Practitioner or Physician Assistant - Sign-On Bonus Available - 4 days in clinic, 1 day remote",
+  "company": "One Medical",
+  "url": "https://job-boards.greenhouse.io/onemedical/jobs/8394805",
+  "location": "Berkeley, CA",
+  "reason": "contradictory remote/office information",
+  "scores": {
+   "remote": 2.0,
+   "office": 4.5
+  },
+  "evidence": [
+   {
+    "signal": "title",
+    "text": "Family Nurse Practitioner or Physician Assistant - Sign-On Bonus Available - 4 days in clinic, 1 day remote",
+    "effect": "remote"
+   },
+   {
+    "signal": "description (occasional attendance)",
+    "text": "Treating patients in-office or in testing centers as well as conducting occasional tele-health visits",
+    "effect": "occasional"
+   },
+   {
+    "signal": "description",
+    "text": "Utilization of your specific clinical training and opportunities to perform in-office procedures",
+    "effect": "on_site"
+   },
+   {
+    "signal": "description",
+    "text": "Relocation assistance may be available for this role.",
+    "effect": "on_site"
+   }
+  ],
+  "unresolved": [
+   "The listing contradicts itself about remote versus office work; needs review."
+  ],
+  "source": "Greenhouse"
+ },
+ {
+  "title": "Family Nurse Practitioner or Physician Assistant - Sign-On Bonus Available - 4 days in clinic, 1 day remote",
+  "company": "One Medical",
+  "url": "https://job-boards.greenhouse.io/onemedical/jobs/8329503",
+  "location": "Sunnyvale, CA",
+  "reason": "contradictory remote/office information",
+  "scores": {
+   "remote": 2.0,
+   "office": 4.5
+  },
+  "evidence": [
+   {
+    "signal": "title",
+    "text": "Family Nurse Practitioner or Physician Assistant - Sign-On Bonus Available - 4 days in clinic, 1 day remote",
+    "effect": "remote"
+   },
+   {
+    "signal": "description (occasional attendance)",
+    "text": "Treating patients in-office or in testing centers as well as conducting occasional tele-health visits",
+    "effect": "occasional"
+   },
+   {
+    "signal": "description",
+    "text": "Utilization of your specific clinical training and opportunities to perform in-office procedures",
+    "effect": "on_site"
+   },
+   {
+    "signal": "description",
+    "text": "Relocation assistance may be available for this role.",
+    "effect": "on_site"
+   }
+  ],
+  "unresolved": [
+   "The listing contradicts itself about remote versus office work; needs review."
+  ],
+  "source": "Greenhouse"
+ },
+ {
+  "title": "Family Nurse Practitioner or Physician Assistant - Sign-On Bonus Available, 4 days in clinic, 1 day remote",
+  "company": "One Medical",
+  "url": "https://job-boards.greenhouse.io/onemedical/jobs/8325180",
+  "location": "Totem Lake, WA",
+  "reason": "contradictory remote/office information",
+  "scores": {
+   "remote": 2.0,
+   "office": 3.0
+  },
+  "evidence": [
+   {
+    "signal": "title",
+    "text": "Family Nurse Practitioner or Physician Assistant - Sign-On Bonus Available, 4 days in clinic, 1 day remote",
+    "effect": "remote"
+   },
+   {
+    "signal": "description (occasional attendance)",
+    "text": "Treating patients in-office or in testing centers as well as conducting occasional tele-health visits",
+    "effect": "occasional"
+   },
+   {
+    "signal": "description",
+    "text": "Utilization of your specific clinical training and opportunities to perform in-office procedures",
+    "effect": "on_site"
+   },
+   {
+    "signal": "description",
+    "text": "Pre-Tax commuter benefits",
+    "effect": "on_site"
+   }
+  ],
+  "unresolved": [
+   "The listing contradicts itself about remote versus office work; needs review."
+  ],
+  "source": "Greenhouse"
+ },
+ {
+  "title": "Family Nurse Practitioner or Physician Assistant - Sign-On Bonus Available, 4 days in clinic, 1 day remote",
+  "company": "One Medical",
+  "url": "https://job-boards.greenhouse.io/onemedical/jobs/8325179",
+  "location": "Kirkland, WA",
+  "reason": "contradictory remote/office information",
+  "scores": {
+   "remote": 2.0,
+   "office": 3.0
+  },
+  "evidence": [
+   {
+    "signal": "title",
+    "text": "Family Nurse Practitioner or Physician Assistant - Sign-On Bonus Available, 4 days in clinic, 1 day remote",
+    "effect": "remote"
+   },
+   {
+    "signal": "description (occasional attendance)",
+    "text": "Treating patients in-office or in testing centers as well as conducting occasional tele-health visits",
+    "effect": "occasional"
+   },
+   {
+    "signal": "description",
+    "text": "Utilization of your specific clinical training and opportunities to perform in-office procedures",
+    "effect": "on_site"
+   },
+   {
+    "signal": "description",
+    "text": "Pre-Tax commuter benefits",
+    "effect": "on_site"
+   }
+  ],
+  "unresolved": [
+   "The listing contradicts itself about remote versus office work; needs review."
+  ],
+  "source": "Greenhouse"
+ },
+ {
+  "title": "Family Nurse Practitioner or Physician Assistant -Sign-On Bonus Available, 4 days in clinic, 1 day remote",
+  "company": "One Medical",
+  "url": "https://job-boards.greenhouse.io/onemedical/jobs/8314062",
+  "location": "Fairfield County, CT",
+  "reason": "contradictory remote/office information",
+  "scores": {
+   "remote": 2.0,
+   "office": 3.0
+  },
+  "evidence": [
+   {
+    "signal": "title",
+    "text": "Family Nurse Practitioner or Physician Assistant -Sign-On Bonus Available, 4 days in clinic, 1 day remote",
+    "effect": "remote"
+   },
+   {
+    "signal": "description (occasional attendance)",
+    "text": "Treating patients in-office or in testing centers as well as conducting occasional tele-health visits",
+    "effect": "occasional"
+   },
+   {
+    "signal": "description",
+    "text": "Utilization of your specific clinical training and opportunities to perform in-office procedures",
+    "effect": "on_site"
+   },
+   {
+    "signal": "description",
+    "text": "Pre-Tax commuter benefits",
+    "effect": "on_site"
+   }
+  ],
+  "unresolved": [
+   "The listing contradicts itself about remote versus office work; needs review."
+  ],
+  "source": "Greenhouse"
+ },
+ {
+  "title": "Family Nurse Practitioner or Physician Assistant- Sign On Bonus Available, 4 days in clinic, 1 day remote",
+  "company": "One Medical",
+  "url": "https://job-boards.greenhouse.io/onemedical/jobs/8393642",
+  "location": "Boston, MA",
+  "reason": "contradictory remote/office information",
+  "scores": {
+   "remote": 2.0,
+   "office": 3.0
+  },
+  "evidence": [
+   {
+    "signal": "title",
+    "text": "Family Nurse Practitioner or Physician Assistant- Sign On Bonus Available, 4 days in clinic, 1 day remote",
+    "effect": "remote"
+   },
+   {
+    "signal": "description (occasional attendance)",
+    "text": "Treating patients in-office or in testing centers as well as conducting occasional tele-health visits",
+    "effect": "occasional"
+   },
+   {
+    "signal": "description",
+    "text": "Utilization of your specific clinical training and opportunities to perform in-office procedures",
+    "effect": "on_site"
+   },
+   {
+    "signal": "description",
+    "text": "Pre-Tax commuter benefits",
+    "effect": "on_site"
+   }
+  ],
+  "unresolved": [
+   "The listing contradicts itself about remote versus office work; needs review."
+  ],
+  "source": "Greenhouse"
+ },
+ {
+  "title": "Family Nurse Practitioner or Physician Assistant - Sign-On Bonus Available, 4 days in clinic, 1 day remote - Ballard",
+  "company": "One Medical",
+  "url": "https://job-boards.greenhouse.io/onemedical/jobs/8312584",
+  "location": "Seattle, WA",
+  "reason": "contradictory remote/office information",
+  "scores": {
+   "remote": 2.0,
+   "office": 3.0
+  },
+  "evidence": [
+   {
+    "signal": "title",
+    "text": "Family Nurse Practitioner or Physician Assistant - Sign-On Bonus Available, 4 days in clinic, 1 day remote - Ballard",
+    "effect": "remote"
+   },
+   {
+    "signal": "description (occasional attendance)",
+    "text": "Treating patients in-office or in testing centers as well as conducting occasional tele-health visits",
+    "effect": "occasional"
+   },
+   {
+    "signal": "description",
+    "text": "Utilization of your specific clinical training and opportunities to perform in-office procedures",
+    "effect": "on_site"
+   },
+   {
+    "signal": "description",
+    "text": "Pre-Tax commuter benefits",
+    "effect": "on_site"
+   }
+  ],
+  "unresolved": [
+   "The listing contradicts itself about remote versus office work; needs review."
+  ],
+  "source": "Greenhouse"
+ },
+ {
+  "title": "Family Nurse Practitioner or Physician Assistant - Sign-On Bonus Available, 4 days in clinic, 1 day remote- Fremont",
+  "company": "One Medical",
+  "url": "https://job-boards.greenhouse.io/onemedical/jobs/8314139",
+  "location": "Seattle, WA",
+  "reason": "contradictory remote/office information",
+  "scores": {
+   "remote": 2.0,
+   "office": 3.0
+  },
+  "evidence": [
+   {
+    "signal": "title",
+    "text": "Family Nurse Practitioner or Physician Assistant - Sign-On Bonus Available, 4 days in clinic, 1 day remote- Fremont",
+    "effect": "remote"
+   },
+   {
+    "signal": "description (occasional attendance)",
+    "text": "Treating patients in-office or in testing centers as well as conducting occasional tele-health visits",
+    "effect": "occasional"
+   },
+   {
+    "signal": "description",
+    "text": "Utilization of your specific clinical training and opportunities to perform in-office procedures",
+    "effect": "on_site"
+   },
+   {
+    "signal": "description",
+    "text": "Pre-Tax commuter benefits",
+    "effect": "on_site"
+   }
+  ],
+  "unresolved": [
+   "The listing contradicts itself about remote versus office work; needs review."
+  ],
+  "source": "Greenhouse"
+ },
+ {
+  "title": "Family Nurse Practitioner or Physician Assistant - Sign-On Bonus Available, 4 days in clinic, 1 day remote- Totem Lake",
+  "company": "One Medical",
+  "url": "https://job-boards.greenhouse.io/onemedical/jobs/8314208",
+  "location": "Kirkland, WA",
+  "reason": "contradictory remote/office information",
+  "scores": {
+   "remote": 2.0,
+   "office": 3.0
+  },
+  "evidence": [
+   {
+    "signal": "title",
+    "text": "Family Nurse Practitioner or Physician Assistant - Sign-On Bonus Available, 4 days in clinic, 1 day remote- Totem Lake",
+    "effect": "remote"
+   },
+   {
+    "signal": "description (occasional attendance)",
+    "text": "Treating patients in-office or in testing centers as well as conducting occasional tele-health visits",
+    "effect": "occasional"
+   },
+   {
+    "signal": "description",
+    "text": "Utilization of your specific clinical training and opportunities to perform in-office procedures",
+    "effect": "on_site"
+   },
+   {
+    "signal": "description",
+    "text": "Pre-Tax commuter benefits",
+    "effect": "on_site"
+   }
+  ],
+  "unresolved": [
+   "The listing contradicts itself about remote versus office work; needs review."
+  ],
+  "source": "Greenhouse"
+ },
+ {
+  "title": "Family Nurse Practitioner or Physician Assistant - Sign-On Bonus Available, 4 days in clinic, 1 day work from home",
+  "company": "One Medical",
+  "url": "https://job-boards.greenhouse.io/onemedical/jobs/8317684",
+  "location": "Hoboken, NJ",
+  "reason": "contradictory remote/office information",
+  "scores": {
+   "remote": 2.0,
+   "office": 3.0
+  },
+  "evidence": [
+   {
+    "signal": "title",
+    "text": "Family Nurse Practitioner or Physician Assistant - Sign-On Bonus Available, 4 days in clinic, 1 day work from home",
+    "effect": "remote"
+   },
+   {
+    "signal": "description (occasional attendance)",
+    "text": "Treating patients in-office or in testing centers as well as conducting occasional tele-health visits",
+    "effect": "occasional"
+   },
+   {
+    "signal": "description",
+    "text": "Utilization of your specific clinical training and opportunities to perform in-office procedures",
+    "effect": "on_site"
+   },
+   {
+    "signal": "description",
+    "text": "Pre-Tax commuter benefits",
+    "effect": "on_site"
+   }
+  ],
+  "unresolved": [
+   "The listing contradicts itself about remote versus office work; needs review."
+  ],
+  "source": "Greenhouse"
+ },
+ {
+  "title": "Family Nurse Practitioner or Physician Assistant (South Austin clinic) - 4 days in clinic, 1 day work from home",
+  "company": "One Medical",
+  "url": "https://job-boards.greenhouse.io/onemedical/jobs/8386385",
+  "location": "Austin, TX",
+  "reason": "contradictory remote/office information",
+  "scores": {
+   "remote": 2.0,
+   "office": 3.0
+  },
+  "evidence": [
+   {
+    "signal": "title",
+    "text": "Family Nurse Practitioner or Physician Assistant (South Austin clinic) - 4 days in clinic, 1 day work from home",
+    "effect": "remote"
+   },
+   {
+    "signal": "description (occasional attendance)",
+    "text": "Treating patients in-office or in testing centers as well as conducting occasional tele-health visits",
+    "effect": "occasional"
+   },
+   {
+    "signal": "description",
+    "text": "Utilization of your specific clinical training and opportunities to perform in-office procedures",
+    "effect": "on_site"
+   },
+   {
+    "signal": "description",
+    "text": "Pre-Tax commuter benefits",
+    "effect": "on_site"
+   }
+  ],
+  "unresolved": [
+   "The listing contradicts itself about remote versus office work; needs review."
+  ],
+  "source": "Greenhouse"
+ },
+ {
+  "title": "Family Physician - Sign-On Bonus Available, 4 days in clinic, 1 day remote",
+  "company": "One Medical",
+  "url": "https://job-boards.greenhouse.io/onemedical/jobs/8313211",
+  "location": "Phoenix. AZ",
+  "reason": "contradictory remote/office information",
+  "scores": {
+   "remote": 2.0,
+   "office": 3.0
+  },
+  "evidence": [
+   {
+    "signal": "title",
+    "text": "Family Physician - Sign-On Bonus Available, 4 days in clinic, 1 day remote",
+    "effect": "remote"
+   },
+   {
+    "signal": "description (occasional attendance)",
+    "text": "Treating patients in-office or in testing centers as well as conducting occasional tele-health visits",
+    "effect": "occasional"
+   },
+   {
+    "signal": "description",
+    "text": "Utilization of your specific clinical training and opportunities to perform in-office procedures",
+    "effect": "on_site"
+   },
+   {
+    "signal": "description",
+    "text": "Pre-Tax commuter benefits",
+    "effect": "on_site"
+   }
+  ],
+  "unresolved": [
+   "The listing contradicts itself about remote versus office work; needs review."
+  ],
+  "source": "Greenhouse"
+ },
+ {
+  "title": "Nurse Practitioner or Physician Assistant (Berkeley) - Sign-On Bonus Available - 4 days in clinic, 1 day remote",
+  "company": "One Medical",
+  "url": "https://job-boards.greenhouse.io/onemedical/jobs/8329526",
+  "location": "Berkeley, CA",
+  "reason": "contradictory remote/office information",
+  "scores": {
+   "remote": 2.0,
+   "office": 4.5
+  },
+  "evidence": [
+   {
+    "signal": "title",
+    "text": "Nurse Practitioner or Physician Assistant (Berkeley) - Sign-On Bonus Available - 4 days in clinic, 1 day remote",
+    "effect": "remote"
+   },
+   {
+    "signal": "description (occasional attendance)",
+    "text": "Treating patients in-office or in testing centers as well as conducting occasional tele-health visits",
+    "effect": "occasional"
+   },
+   {
+    "signal": "description",
+    "text": "Utilization of your specific clinical training and opportunities to perform in-office procedures",
+    "effect": "on_site"
+   },
+   {
+    "signal": "description",
+    "text": "Relocation assistance may be available for this role.",
+    "effect": "on_site"
+   }
+  ],
+  "unresolved": [
+   "The listing contradicts itself about remote versus office work; needs review."
+  ],
+  "source": "Greenhouse"
+ },
+ {
+  "title": "Nurse Practitioner or Physician Assistant - Capitol Hill - Sign-On Bonus Available, 4 days in clinic, 1 day remote",
+  "company": "One Medical",
+  "url": "https://job-boards.greenhouse.io/onemedical/jobs/8319880",
+  "location": "Seattle, WA",
+  "reason": "contradictory remote/office information",
+  "scores": {
+   "remote": 2.0,
+   "office": 3.0
+  },
+  "evidence": [
+   {
+    "signal": "title",
+    "text": "Nurse Practitioner or Physician Assistant - Capitol Hill - Sign-On Bonus Available, 4 days in clinic, 1 day remote",
+    "effect": "remote"
+   },
+   {
+    "signal": "description (occasional attendance)",
+    "text": "Treating patients in-office or in testing centers as well as conducting occasional tele-health visits",
+    "effect": "occasional"
+   },
+   {
+    "signal": "description",
+    "text": "Utilization of your specific clinical training and opportunities to perform in-office procedures",
+    "effect": "on_site"
+   },
+   {
+    "signal": "description",
+    "text": "Pre-Tax commuter benefits",
+    "effect": "on_site"
+   }
+  ],
+  "unresolved": [
+   "The listing contradicts itself about remote versus office work; needs review."
+  ],
+  "source": "Greenhouse"
+ },
+ {
+  "title": "Nurse Practitioner or Physician Assistant - Downtown Seattle - Sign-On Bonus Available, 4 days in clinic, 1 day remote",
+  "company": "One Medical",
+  "url": "https://job-boards.greenhouse.io/onemedical/jobs/8324757",
+  "location": "Seattle, WA",
+  "reason": "contradictory remote/office information",
+  "scores": {
+   "remote": 2.0,
+   "office": 3.0
+  },
+  "evidence": [
+   {
+    "signal": "title",
+    "text": "Nurse Practitioner or Physician Assistant - Downtown Seattle - Sign-On Bonus Available, 4 days in clinic, 1 day remote",
+    "effect": "remote"
+   },
+   {
+    "signal": "description (occasional attendance)",
+    "text": "Treating patients in-office or in testing centers as well as conducting occasional tele-health visits",
+    "effect": "occasional"
+   },
+   {
+    "signal": "description",
+    "text": "Utilization of your specific clinical training and opportunities to perform in-office procedures",
+    "effect": "on_site"
+   },
+   {
+    "signal": "description",
+    "text": "Pre-Tax commuter benefits",
+    "effect": "on_site"
+   }
+  ],
+  "unresolved": [
+   "The listing contradicts itself about remote versus office work; needs review."
+  ],
+  "source": "Greenhouse"
+ },
+ {
+  "title": "Nurse Practitioner or Physician Assistant (Oakland Uptown) - Sign-On Bonus Available - 4 days in clinic, 1 day remote",
+  "company": "One Medical",
+  "url": "https://job-boards.greenhouse.io/onemedical/jobs/8329533",
+  "location": "Berkeley, CA",
+  "reason": "contradictory remote/office information",
+  "scores": {
+   "remote": 2.0,
+   "office": 4.5
+  },
+  "evidence": [
+   {
+    "signal": "title",
+    "text": "Nurse Practitioner or Physician Assistant (Oakland Uptown) - Sign-On Bonus Available - 4 days in clinic, 1 day remote",
+    "effect": "remote"
+   },
+   {
+    "signal": "description (occasional attendance)",
+    "text": "Treating patients in-office or in testing centers as well as conducting occasional tele-health visits",
+    "effect": "occasional"
+   },
+   {
+    "signal": "description",
+    "text": "Utilization of your specific clinical training and opportunities to perform in-office procedures",
+    "effect": "on_site"
+   },
+   {
+    "signal": "description",
+    "text": "Relocation assistance may be available for this role.",
+    "effect": "on_site"
+   }
+  ],
+  "unresolved": [
+   "The listing contradicts itself about remote versus office work; needs review."
+  ],
+  "source": "Greenhouse"
+ },
+ {
+  "title": "Nurse Practitioner or Physician Assistant (Pacific Heights) - Sign-On Bonus Available, 4 days in clinic, 1 day remote",
+  "company": "One Medical",
+  "url": "https://job-boards.greenhouse.io/onemedical/jobs/8329539",
+  "location": "San Francisco, CA",
+  "reason": "contradictory remote/office information",
+  "scores": {
+   "remote": 2.0,
+   "office": 4.5
+  },
+  "evidence": [
+   {
+    "signal": "title",
+    "text": "Nurse Practitioner or Physician Assistant (Pacific Heights) - Sign-On Bonus Available, 4 days in clinic, 1 day remote",
+    "effect": "remote"
+   },
+   {
+    "signal": "description (occasional attendance)",
+    "text": "Treating patients in-office or in testing centers as well as conducting occasional tele-health visits",
+    "effect": "occasional"
+   },
+   {
+    "signal": "description",
+    "text": "Utilization of your specific clinical training and opportunities to perform in-office procedures",
+    "effect": "on_site"
+   },
+   {
+    "signal": "description",
+    "text": "Relocation assistance may be available for this role.",
+    "effect": "on_site"
+   }
+  ],
+  "unresolved": [
+   "The listing contradicts itself about remote versus office work; needs review."
+  ],
+  "source": "Greenhouse"
+ },
+ {
+  "title": "Nurse Practitioner or Physician Assistant -  Sign-On Bonus Available, 4 days in clinic, 1 day remote",
+  "company": "One Medical",
+  "url": "https://job-boards.greenhouse.io/onemedical/jobs/8319920",
+  "location": "Fairfield County, CT",
+  "reason": "contradictory remote/office information",
+  "scores": {
+   "remote": 2.0,
+   "office": 4.5
+  },
+  "evidence": [
+   {
+    "signal": "title",
+    "text": "Nurse Practitioner or Physician Assistant - Sign-On Bonus Available, 4 days in clinic, 1 day remote",
+    "effect": "remote"
+   },
+   {
+    "signal": "description (occasional attendance)",
+    "text": "Treating patients in-office or in testing centers as well as conducting occasional tele-health visits",
+    "effect": "occasional"
+   },
+   {
+    "signal": "description",
+    "text": "Utilization of your specific clinical training and opportunities to perform in-office procedures",
+    "effect": "on_site"
+   },
+   {
+    "signal": "description",
+    "text": "Relocation assistance may be available for this role.",
+    "effect": "on_site"
+   }
+  ],
+  "unresolved": [
+   "The listing contradicts itself about remote versus office work; needs review."
+  ],
+  "source": "Greenhouse"
+ },
+ {
+  "title": "Nurse Practitioner or Physician Assistant -  Sign-On Bonus Available, 4 days in clinic, 1 day remote",
+  "company": "One Medical",
+  "url": "https://job-boards.greenhouse.io/onemedical/jobs/8319163",
+  "location": "Glastonbury, CT",
+  "reason": "contradictory remote/office information",
+  "scores": {
+   "remote": 2.0,
+   "office": 4.5
+  },
+  "evidence": [
+   {
+    "signal": "title",
+    "text": "Nurse Practitioner or Physician Assistant - Sign-On Bonus Available, 4 days in clinic, 1 day remote",
+    "effect": "remote"
+   },
+   {
+    "signal": "description (occasional attendance)",
+    "text": "Treating patients in-office or in testing centers as well as conducting occasional tele-health visits",
+    "effect": "occasional"
+   },
+   {
+    "signal": "description",
+    "text": "Utilization of your specific clinical training and opportunities to perform in-office procedures",
+    "effect": "on_site"
+   },
+   {
+    "signal": "description",
+    "text": "Relocation assistance may be available for this role.",
+    "effect": "on_site"
+   }
+  ],
+  "unresolved": [
+   "The listing contradicts itself about remote versus office work; needs review."
+  ],
+  "source": "Greenhouse"
+ },
+ {
+  "title": "Nurse Practitioner or Physician Assistant - Sign-On Bonus Available - 4 days in clinic, 1 day remote",
+  "company": "One Medical",
+  "url": "https://job-boards.greenhouse.io/onemedical/jobs/8396987",
+  "location": "Palo Alto, CA ",
+  "reason": "contradictory remote/office information",
+  "scores": {
+   "remote": 2.0,
+   "office": 4.5
+  },
+  "evidence": [
+   {
+    "signal": "title",
+    "text": "Nurse Practitioner or Physician Assistant - Sign-On Bonus Available - 4 days in clinic, 1 day remote",
+    "effect": "remote"
+   },
+   {
+    "signal": "description (occasional attendance)",
+    "text": "Treating patients in-office or in testing centers as well as conducting occasional tele-health visits",
+    "effect": "occasional"
+   },
+   {
+    "signal": "description",
+    "text": "Utilization of your specific clinical training and opportunities to perform in-office procedures",
+    "effect": "on_site"
+   },
+   {
+    "signal": "description",
+    "text": "Relocation assistance may be available for this role.",
+    "effect": "on_site"
+   }
+  ],
+  "unresolved": [
+   "The listing contradicts itself about remote versus office work; needs review."
+  ],
+  "source": "Greenhouse"
+ },
+ {
+  "title": "Nurse Practitioner or Physician Assistant - Sign-On Bonus Available - 4 days in clinic, 1 day remote",
+  "company": "One Medical",
+  "url": "https://job-boards.greenhouse.io/onemedical/jobs/8396980",
+  "location": "Sunnyvale, CA ",
+  "reason": "contradictory remote/office information",
+  "scores": {
+   "remote": 2.0,
+   "office": 4.5
+  },
+  "evidence": [
+   {
+    "signal": "title",
+    "text": "Nurse Practitioner or Physician Assistant - Sign-On Bonus Available - 4 days in clinic, 1 day remote",
+    "effect": "remote"
+   },
+   {
+    "signal": "description (occasional attendance)",
+    "text": "Treating patients in-office or in testing centers as well as conducting occasional tele-health visits",
+    "effect": "occasional"
+   },
+   {
+    "signal": "description",
+    "text": "Utilization of your specific clinical training and opportunities to perform in-office procedures",
+    "effect": "on_site"
+   },
+   {
+    "signal": "description",
+    "text": "Relocation assistance may be available for this role.",
+    "effect": "on_site"
+   }
+  ],
+  "unresolved": [
+   "The listing contradicts itself about remote versus office work; needs review."
+  ],
+  "source": "Greenhouse"
+ },
+ {
+  "title": "Nurse Practitioner or Physician Assistant - Sign-On Bonus Available - 4 days in clinic, 1 day remote",
+  "company": "One Medical",
+  "url": "https://job-boards.greenhouse.io/onemedical/jobs/8397308",
+  "location": "Berkeley, CA",
+  "reason": "contradictory remote/office information",
+  "scores": {
+   "remote": 2.0,
+   "office": 4.5
+  },
+  "evidence": [
+   {
+    "signal": "title",
+    "text": "Nurse Practitioner or Physician Assistant - Sign-On Bonus Available - 4 days in clinic, 1 day remote",
+    "effect": "remote"
+   },
+   {
+    "signal": "description (occasional attendance)",
+    "text": "Treating patients in-office or in testing centers as well as conducting occasional tele-health visits",
+    "effect": "occasional"
+   },
+   {
+    "signal": "description",
+    "text": "Utilization of your specific clinical training and opportunities to perform in-office procedures",
+    "effect": "on_site"
+   },
+   {
+    "signal": "description",
+    "text": "Relocation assistance may be available for this role.",
+    "effect": "on_site"
+   }
+  ],
+  "unresolved": [
+   "The listing contradicts itself about remote versus office work; needs review."
+  ],
+  "source": "Greenhouse"
+ },
+ {
+  "title": "Nurse Practitioner or Physician Assistant - Sign-On Bonus Available - 4 days in clinic, 1 day remote",
+  "company": "One Medical",
+  "url": "https://job-boards.greenhouse.io/onemedical/jobs/8396991",
+  "location": "Burlingame, CA ",
+  "reason": "contradictory remote/office information",
+  "scores": {
+   "remote": 2.0,
+   "office": 4.5
+  },
+  "evidence": [
+   {
+    "signal": "title",
+    "text": "Nurse Practitioner or Physician Assistant - Sign-On Bonus Available - 4 days in clinic, 1 day remote",
+    "effect": "remote"
+   },
+   {
+    "signal": "description (occasional attendance)",
+    "text": "Treating patients in-office or in testing centers as well as conducting occasional tele-health visits",
+    "effect": "occasional"
+   },
+   {
+    "signal": "description",
+    "text": "Utilization of your specific clinical training and opportunities to perform in-office procedures",
+    "effect": "on_site"
+   },
+   {
+    "signal": "description",
+    "text": "Relocation assistance may be available for this role.",
+    "effect": "on_site"
+   }
+  ],
+  "unresolved": [
+   "The listing contradicts itself about remote versus office work; needs review."
+  ],
+  "source": "Greenhouse"
+ },
+ {
+  "title": "Nurse Practitioner or Physician Assistant- Sign On Bonus Available, 4 days in clinic, 1 day remote",
+  "company": "One Medical",
+  "url": "https://job-boards.greenhouse.io/onemedical/jobs/8328023",
+  "location": "Boston, MA",
+  "reason": "contradictory remote/office information",
+  "scores": {
+   "remote": 2.0,
+   "office": 4.5
+  },
+  "evidence": [
+   {
+    "signal": "title",
+    "text": "Nurse Practitioner or Physician Assistant- Sign On Bonus Available, 4 days in clinic, 1 day remote",
+    "effect": "remote"
+   },
+   {
+    "signal": "description",
+    "text": "In-person",
+    "effect": "on_site"
+   },
+   {
+    "signal": "description (occasional attendance)",
+    "text": "Treating patients in-office or in testing centers as well as conducting occasional tele-health visits",
+    "effect": "occasional"
+   },
+   {
+    "signal": "description",
+    "text": "Utilization of your specific clinical training and opportunities to perform in-office procedures",
+    "effect": "on_site"
+   }
+  ],
+  "unresolved": [
+   "The listing contradicts itself about remote versus office work; needs review."
+  ],
+  "source": "Greenhouse"
+ },
+ {
+  "title": "Nurse Practitioner or Physician Assistant - Sign-On Bonus Available, 4 days in clinic, 1 day work from home",
+  "company": "One Medical",
+  "url": "https://job-boards.greenhouse.io/onemedical/jobs/8319898",
+  "location": "Jersey City, NJ",
+  "reason": "contradictory remote/office information",
+  "scores": {
+   "remote": 2.0,
+   "office": 3.0
+  },
+  "evidence": [
+   {
+    "signal": "title",
+    "text": "Nurse Practitioner or Physician Assistant - Sign-On Bonus Available, 4 days in clinic, 1 day work from home",
+    "effect": "remote"
+   },
+   {
+    "signal": "description (occasional attendance)",
+    "text": "Treating patients in-office or in testing centers as well as conducting occasional tele-health visits",
+    "effect": "occasional"
+   },
+   {
+    "signal": "description",
+    "text": "Utilization of your specific clinical training and opportunities to perform in-office procedures",
+    "effect": "on_site"
+   },
+   {
+    "signal": "description",
+    "text": "Pre-Tax commuter benefits",
+    "effect": "on_site"
+   }
+  ],
+  "unresolved": [
+   "The listing contradicts itself about remote versus office work; needs review."
+  ],
+  "source": "Greenhouse"
+ },
+ {
+  "title": "Nurse Practitioner or Physician Assistant - Sign-On Bonus Available, 4 days in clinic, 1 day work from home",
+  "company": "One Medical",
+  "url": "https://job-boards.greenhouse.io/onemedical/jobs/8325480",
+  "location": "Englewood, NJ",
+  "reason": "contradictory remote/office information",
+  "scores": {
+   "remote": 2.0,
+   "office": 3.0
+  },
+  "evidence": [
+   {
+    "signal": "title",
+    "text": "Nurse Practitioner or Physician Assistant - Sign-On Bonus Available, 4 days in clinic, 1 day work from home",
+    "effect": "remote"
+   },
+   {
+    "signal": "description (occasional attendance)",
+    "text": "Treating patients in-office or in testing centers as well as conducting occasional tele-health visits",
+    "effect": "occasional"
+   },
+   {
+    "signal": "description",
+    "text": "Utilization of your specific clinical training and opportunities to perform in-office procedures",
+    "effect": "on_site"
+   },
+   {
+    "signal": "description",
+    "text": "Pre-Tax commuter benefits",
+    "effect": "on_site"
+   }
+  ],
+  "unresolved": [
+   "The listing contradicts itself about remote versus office work; needs review."
+  ],
+  "source": "Greenhouse"
+ },
+ {
+  "title": "Nurse Practitioner or Physician Assistant - Sign-On Bonus Available, 4 days in clinic, 1 day work from home",
+  "company": "One Medical",
+  "url": "https://job-boards.greenhouse.io/onemedical/jobs/8325482",
+  "location": "Edgewater, NJ",
+  "reason": "contradictory remote/office information",
+  "scores": {
+   "remote": 2.0,
+   "office": 3.0
+  },
+  "evidence": [
+   {
+    "signal": "title",
+    "text": "Nurse Practitioner or Physician Assistant - Sign-On Bonus Available, 4 days in clinic, 1 day work from home",
+    "effect": "remote"
+   },
+   {
+    "signal": "description (occasional attendance)",
+    "text": "Treating patients in-office or in testing centers as well as conducting occasional tele-health visits",
+    "effect": "occasional"
+   },
+   {
+    "signal": "description",
+    "text": "Utilization of your specific clinical training and opportunities to perform in-office procedures",
+    "effect": "on_site"
+   },
+   {
+    "signal": "description",
+    "text": "Pre-Tax commuter benefits",
+    "effect": "on_site"
+   }
+  ],
+  "unresolved": [
+   "The listing contradicts itself about remote versus office work; needs review."
+  ],
+  "source": "Greenhouse"
+ },
+ {
+  "title": "Nurse Practitioner or Physician Assistant (Spear Street) - Sign-On Bonus Available, 4 days in clinic, 1 day remote",
+  "company": "One Medical",
+  "url": "https://job-boards.greenhouse.io/onemedical/jobs/8329541",
+  "location": "San Francisco, CA",
+  "reason": "contradictory remote/office information",
+  "scores": {
+   "remote": 2.0,
+   "office": 4.5
+  },
+  "evidence": [
+   {
+    "signal": "title",
+    "text": "Nurse Practitioner or Physician Assistant (Spear Street) - Sign-On Bonus Available, 4 days in clinic, 1 day remote",
+    "effect": "remote"
+   },
+   {
+    "signal": "description (occasional attendance)",
+    "text": "Treating patients in-office or in testing centers as well as conducting occasional tele-health visits",
+    "effect": "occasional"
+   },
+   {
+    "signal": "description",
+    "text": "Utilization of your specific clinical training and opportunities to perform in-office procedures",
+    "effect": "on_site"
+   },
+   {
+    "signal": "description",
+    "text": "Relocation assistance may be available for this role.",
+    "effect": "on_site"
+   }
+  ],
+  "unresolved": [
+   "The listing contradicts itself about remote versus office work; needs review."
+  ],
+  "source": "Greenhouse"
+ },
+ {
+  "title": "Nurse Practitioner or Physician Assistant - Totem Lake - Sign-On Bonus Available, 4 days in clinic, 1 day remote",
+  "company": "One Medical",
+  "url": "https://job-boards.greenhouse.io/onemedical/jobs/8331645",
+  "location": "Kirkland, WA",
+  "reason": "contradictory remote/office information",
+  "scores": {
+   "remote": 2.0,
+   "office": 3.0
+  },
+  "evidence": [
+   {
+    "signal": "title",
+    "text": "Nurse Practitioner or Physician Assistant - Totem Lake - Sign-On Bonus Available, 4 days in clinic, 1 day remote",
+    "effect": "remote"
+   },
+   {
+    "signal": "description (occasional attendance)",
+    "text": "Treating patients in-office or in testing centers as well as conducting occasional tele-health visits",
+    "effect": "occasional"
+   },
+   {
+    "signal": "description",
+    "text": "Utilization of your specific clinical training and opportunities to perform in-office procedures",
+    "effect": "on_site"
+   },
+   {
+    "signal": "description",
+    "text": "Pre-Tax commuter benefits",
+    "effect": "on_site"
+   }
+  ],
+  "unresolved": [
+   "The listing contradicts itself about remote versus office work; needs review."
+  ],
+  "source": "Greenhouse"
+ },
+ {
+  "title": "Nurse Practitioner or Physician Assistant (Two Embarcadero Center) - Sign-On Bonus Available, 4 days in clinic, 1 day remote",
+  "company": "One Medical",
+  "url": "https://job-boards.greenhouse.io/onemedical/jobs/8329542",
+  "location": "San Francisco, CA",
+  "reason": "contradictory remote/office information",
+  "scores": {
+   "remote": 2.0,
+   "office": 4.5
+  },
+  "evidence": [
+   {
+    "signal": "title",
+    "text": "Nurse Practitioner or Physician Assistant (Two Embarcadero Center) - Sign-On Bonus Available, 4 days in clinic, 1 day remote",
+    "effect": "remote"
+   },
+   {
+    "signal": "description (occasional attendance)",
+    "text": "Treating patients in-office or in testing centers as well as conducting occasional tele-health visits",
+    "effect": "occasional"
+   },
+   {
+    "signal": "description",
+    "text": "Utilization of your specific clinical training and opportunities to perform in-office procedures",
+    "effect": "on_site"
+   },
+   {
+    "signal": "description",
+    "text": "Relocation assistance may be available for this role.",
+    "effect": "on_site"
+   }
+  ],
+  "unresolved": [
+   "The listing contradicts itself about remote versus office work; needs review."
+  ],
+  "source": "Greenhouse"
+ },
+ {
+  "title": "Nurse Practitioner or Physician Associate/Physician Assistant - North Williams - Sign-On Bonus Available, 4 days in clinic, 1 day remote",
+  "company": "One Medical",
+  "url": "https://job-boards.greenhouse.io/onemedical/jobs/8319888",
+  "location": "Portland, OR",
+  "reason": "contradictory remote/office information",
+  "scores": {
+   "remote": 2.0,
+   "office": 3.0
+  },
+  "evidence": [
+   {
+    "signal": "title",
+    "text": "Nurse Practitioner or Physician Associate/Physician Assistant - North Williams - Sign-On Bonus Available, 4 days in clinic, 1 day remote",
     "effect": "remote"
    },
    {
