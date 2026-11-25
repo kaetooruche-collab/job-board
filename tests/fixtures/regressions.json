@@ -200,5 +200,37 @@
   "expect": {
    "not_published": true
   }
+ },
+ {
+  "name": "Benefits for US based candidates is not a hiring restriction (Octopus Deploy, Western Australia, 25 Nov 2026)",
+  "title": "DevOps Support Specialist (Western AU)",
+  "location": "Australia",
+  "remote_feed": false,
+  "description": "To help our teams work together effectively, this remote position requires you to be located in Western Australia with unrestricted rights to work. This role is classified as a L2 role.\nBenefits include a minimum of 25 days annual leave, up to 10 days of paid sick and carers leave, 12 weeks of fully paid parental leave with flexible return options, generous health care including dental and vision for US based candidates, 401K matching/pension contributions depending on your location, and stock options. Learn more .",
+  "expect": {
+   "countries_exclude": [
+    "United States"
+   ]
+  }
+ },
+ {
+  "name": "A semicolon list of cities is one restriction, not just the first city (Oscar Health, 25 Nov 2026)",
+  "title": "Senior Analyst, Payment Integrity",
+  "location": "Remote",
+  "remote_feed": false,
+  "description": "Work Location: This is a remote position, open to candidates who reside in Atlanta, Georgia; Chicago, Illinois; Louisville, Kentucky; Minneapolis, Minnesota; Philadelphia, Pennsylvania; Dallas, Texas; Salt Lake City, Utah. While your daily work will be completed from your home office, occasional travel may be required for team meetings and company events. #LI-Remote \n Pay Transparency: The base pay for this role in Georgia, Illinois, Minnesota, Pennsylvania and Texas is: $66,777 - $87,645 per ye",
+  "expect": {
+   "label": "11 locations in United States"
+  }
+ },
+ {
+  "name": "A pay heading 'Canadian employees (any location)' is not worldwide wording (Mercury, 25 Nov 2026)",
+  "title": "Product Marketing Manager - Banking & Payments",
+  "location": "San Francisco, CA, New York, NY, Portland, OR, or Remote within Canada or United States",
+  "remote_feed": false,
+  "description": "rget new hire base salary ranges for this role are the following : \n US employees in New York City, Los Angeles, Seattle, or the San Francisco Bay Area:\n $142,900 - $160,700 USD \n US employees outside of New York City, Los Angeles, Seattle, or the San Francisco Bay Area: \n $128,600 - $144,600 USD \n Canadian employees (any location):\n $135,000 - $151,900 CAD",
+  "expect": {
+   "label": "Canada, United States"
+  }
  }
 ]

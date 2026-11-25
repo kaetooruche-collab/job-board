@@ -41,7 +41,9 @@ def clean_text(text):
 
 
 def split_sentences(text):
-    parts = re.split(r"(?<=[.!?])\s+|\n+|•|\s-\s|;\s", text)
+    # "; " splits, except inside a list of "City, State" places: "reside in Atlanta, Georgia; Chicago, Illinois; ..."
+    # (Oscar Health, card showed only Atlanta, found 25 Nov 2026)
+    parts = re.split(r"(?<=[.!?])\s+|\n+|•|\s-\s|;\s(?![A-Z][a-z]+(?:\s[A-Z][a-z]+)*,\s[A-Z][a-z])", text)
     return [p.strip()[:420] for p in parts if p and len(p.strip()) > 2]
 
 
@@ -516,6 +518,11 @@ NON_RESTRICTION_RE = re.compile(r"\b(?:discriminat\w*|equal[- ]opportunity|equal
 PAY_SENT_RE = re.compile(r"\b(?:salary|pay\s+(?:range|band|scale|transparency|information|zone)s?|compensation|base\s+pay|estimated\s+pay|on-target earnings)\b|\bOTE\b|[$\u20ac\u00a3]\s?\d|\b\d{2,3},\d{3}\b", re.I)
 PAY_TIER_LINE_RE = re.compile(r"\W*(?:based|residing|located|living)\s+in\b", re.I)
 # Company-level descriptions of where its people are ("our employees based in the UK, Germany ...") say nothing about this job.
+# A benefits line that names who gets a benefit is not a hiring restriction: "dental and vision for US based
+# candidates" (Octopus Deploy, Western Australia roles labelled United States, found 25 Nov 2026). Only that
+# clause is removed; the rest of the sentence is still read.
+BENEFIT_WORD_RE = re.compile(r"\b(?:benefits?|health ?care|healthcare|dental|vision|medical|insurance|401\s?\(?k\)?|pension|retirement|perks?|stipends?|parental leave|annual leave|PTO)\b", re.I)
+BENEFIT_FOR_PLACE_RE = re.compile(r"\bfor\s+(?:our\s+|all\s+)?(?:[A-Z][\w.]*\s?){1,3}[- ]?based\s+(?:candidates|employees|team members|staff|people|hires|colleagues|workers)\b")
 PRESENCE_RE = re.compile(r"\b(?:our|its|the)\s+(?:employees|team members|people|colleagues|staff|teams?|offices?)\b[^.]{0,60}\b(?:based|located|spread|across)\b|\b(?:offices?|employees|team members)\s+(?:are\s+)?(?:based\s+)?(?:in|across)\b|\bheadquartered\b|\bour global presence\b|\bwith (?:offices|employees|teams) in\b", re.I)
 # a work-authorisation sentence is a visa requirement, not a list of places the employer will not hire in
 AUTH_SENTENCE_RE = re.compile(r"\b(?:work authori[sz]ation|authori[sz]ed to work|right to work|employment authori[sz]ation|(?:visa )?sponsorship)\b", re.I)
@@ -612,12 +619,17 @@ def assess_eligibility(title, location, description, remote_evidence=False, remo
     excluded_places = []
     has_pay_ctx = bool(re.search(r"\b(?:salary|pay)\s+(?:range|information)|estimated pay|pay ranges?|compensation (?:range|band)|base (?:salary|pay)", text, re.I))
     for s in sents:
+        # a pay-table heading such as "Canadian employees (any location):" is not worldwide wording (Mercury, 25 Nov 2026)
+        if has_pay_ctx and re.search(r"\b(?:employees|candidates|hires|residents)\s*\((?:any|all)\s+locations?\)", s, re.I):
+            continue
         if WORLDWIDE_DESC.search(s) and APPLICANT_CONTEXT.search(s):
             m = WORLDWIDE_DESC.search(s)
             if not _negated(s, m) and not WW_COMPANY_LEVEL_RE.search(s) and not re.search(r"\b(?:customers?|users?|clients?|offices?|products?|brands?|companies|markets?|colleagues)\b[^.]{0,30}(?:worldwide|around the world|globally)|(?:worldwide|around the world|globally)\b[^.]{0,30}\b(?:customers?|users?|clients?)", s, re.I):
                 desc_ww.append(s)
         if PAY_SENT_RE.search(s) or PRESENCE_RE.search(s) or (has_pay_ctx and PAY_TIER_LINE_RE.match(s) and len(g.find_places(s)) >= 3):
             continue
+        if BENEFIT_WORD_RE.search(s):
+            s = BENEFIT_FOR_PLACE_RE.sub(" ", s)
         m_ex = EXCLUSION_RE.search(s)
         if m_ex and not NON_RESTRICTION_RE.search(s) and not AUTH_SENTENCE_RE.search(s) and re.search(r"\b(?:hire|hiring|employ|apply|applicants?|candidates?|work|available|eligible|sanction\w*|embargo\w*|countries)\b", s, re.I):
             tail = s[m_ex.start():]

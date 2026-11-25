@@ -16,6 +16,8 @@ Written 25 Nov 2026 after the board froze for 7 days (18 to 25 Nov) and nobody n
 
 Any GitHub workflow that fails opens one issue titled "Autopilot: <workflow> is failing" (`scripts/gh_alert.py`). GitHub emails KT once when it opens; it is updated, not duplicated, and closed automatically when the workflow passes again.
 
+GitHub runs scheduled workflows best-effort: measured 18-25 Nov 2026, the refresh really ran every 10-16 hours (about twice a day) and the monitor every 6-12. That is enough for listings up to 30 days old; `scripts/health_check.py` only alarms past 26 hours without fresh data.
+
 ## 2. The doctor's checklist (do it in this order, every day)
 
 1. Run `python3 scripts/health_check.py`. GREEN everywhere: go to step 6.

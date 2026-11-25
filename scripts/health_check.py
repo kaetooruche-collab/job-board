@@ -17,8 +17,10 @@ ROOT = Path(__file__).resolve().parent.parent
 REPO = os.environ.get("GITHUB_REPOSITORY", "kaetooruche-collab/job-board")
 SITE = "https://yirehcareers.vercel.app"
 WORKFLOWS = {  # file -> (plain name, hours after which the last run is overdue)
-    "fetch-jobs.yml": ("6-hourly refresh", 14),
-    "site-monitor.yml": ("3-hourly live-site check", 8),
+    # GitHub runs scheduled workflows best-effort and skips many: measured 18-25 Nov 2026, the "every 6 hours"
+    # refresh really ran every 10-16 hours and the "every 3 hours" monitor every 6-12. Thresholds sit above that.
+    "fetch-jobs.yml": ("6-hourly refresh", 26),
+    "site-monitor.yml": ("3-hourly live-site check", 18),
     "ci.yml": ("daily tests", 30),
     "discover-boards.yml": ("weekly board discovery", 8 * 24),
     "weekly-snapshot.yml": ("weekly analytics snapshot", 8 * 24),
@@ -43,9 +45,9 @@ def hours_since(ts, now):
 
 def check_freshness(metrics, now):
     h = hours_since(metrics["generatedAt"], now)
-    if h > 14:
-        return RED, f"listings last refreshed {h:.0f} hours ago (expected every 6)"
-    if h > 8:
+    if h > 26:
+        return RED, f"listings last refreshed {h:.0f} hours ago (GitHub normally manages every 10-16)"
+    if h > 18:
         return AMBER, f"listings last refreshed {h:.0f} hours ago"
     return GREEN, f"refreshed {h:.1f} hours ago, {metrics.get('activeListings')} listings"
 
