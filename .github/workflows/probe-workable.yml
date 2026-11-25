@@ -1,0 +1,35 @@
+name: Probe Workable from GitHub (manual)
+
+# One-off check (25 Nov 2026): every Workable request from the Claude environment got HTTP 429. This reads five
+# employer boards from GitHub's own runner, three seconds apart, and writes the status codes into the run summary.
+# It commits nothing and changes nothing. If the boards answer 200, a Workable reader is worth building.
+on:
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Read five Workable boards
+        run: |
+          python3 - <<'PY' | tee -a "$GITHUB_STEP_SUMMARY"
+          import json, time, urllib.request, urllib.error
+          print("| board | status | jobs | first job has published_on |")
+          print("|---|---|---|---|")
+          for slug in ("huzzle", "toggl", "doist", "remote", "deel"):
+              req = urllib.request.Request(f"https://apply.workable.com/api/v1/widget/accounts/{slug}",
+                                           headers={"User-Agent": "YirehCareersBot/1.0 (+https://yirehcareers.vercel.app/verify)"})
+              try:
+                  with urllib.request.urlopen(req, timeout=20) as r:
+                      d = json.loads(r.read()); jobs = d.get("jobs", [])
+                      print(f"| {slug} | {r.status} | {len(jobs)} | {bool(jobs and jobs[0].get('published_on'))} |")
+              except urllib.error.HTTPError as e:
+                  print(f"| {slug} | {e.code} | | |")
+              except Exception as e:
+                  print(f"| {slug} | {type(e).__name__} | | |")
+              time.sleep(3)
+          PY

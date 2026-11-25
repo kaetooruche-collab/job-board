@@ -1,0 +1,102 @@
+{
+ "workable": {
+  "robots_status": 200,
+  "allowed_for_generic_bot": true,
+  "robots_head": "User-agent: *\nContent-Signal: search=yes, ai-input=yes, ai-train=no\nDisallow: "
+ },
+ "recruitee": {
+  "robots_status": 200,
+  "allowed_for_generic_bot": true,
+  "robots_head": "User-agent: *\nAllow: /\n\nSitemap: https://careers.bunq.com/sitemap.xml"
+ },
+ "teamtailor": {
+  "robots_status": 200,
+  "allowed_for_generic_bot": false,
+  "robots_head": "User-Agent: *\nDisallow: /\nContent-Signal: search=no, ai-train=no, ai-input=no\n"
+ },
+ "bamboohr": {
+  "robots_status": 200,
+  "allowed_for_generic_bot": true,
+  "robots_head": "User-Agent: *\r\nDisallow:\r\n"
+ },
+ "breezy": {
+  "robots_status": 200,
+  "allowed_for_generic_bot": true,
+  "robots_head": "User-Agent: *\r\nDisallow: /css\r\nDisallow: /fonts\r\nDisallow: /stylesheets\r\nDisallow: /javascripts\r\n\r\nUser-Agent: AhrefsBot\r\nDisallow: /\r\n"
+ },
+ "personio": {
+  "robots_status": 200,
+  "allowed_for_generic_bot": true,
+  "robots_head": "User-agent: *\nAllow: /\n"
+ },
+ "rippling": {
+  "robots_status": 404,
+  "allowed_for_generic_bot": true,
+  "robots_head": ""
+ },
+ "smartrecruiters": {
+  "robots_status": 200,
+  "allowed_for_generic_bot": false,
+  "robots_head": "User-agent: LinkedInBot\nAllow: /v1/companies/\nUser-agent: *\nDisallow: /\n"
+ },
+ "jazzhr": {
+  "robots_status": 200,
+  "allowed_for_generic_bot": true,
+  "robots_head": "User-agent: SemrushBot\nUser-agent: dotbot\nDisallow: /\n\nUser-agent: *\nDisallow: /cb\n\nSitemap: http://app.jazz.co/feeds/google/xml/0\nSitemap: http://app.jazz.co/feeds/google/xml/1\nSitemap: http://app.jazz.co/feeds/google/xml/2\nSitemap: http://app.jazz.co/feeds/google/xml/3\nSitemap: http://app.jazz.co/feeds/google/xml/4\n"
+ },
+ "pinpoint": {
+  "robots_status": 200,
+  "allowed_for_generic_bot": false,
+  "robots_head": "User-Agent: *\nDisallow: /\n"
+ },
+ "workday": {
+  "robots_status": 200,
+  "allowed_for_generic_bot": true,
+  "robots_head": "Sitemap: https://nvidia.wd5.myworkdayjobs.com/NVIDIAExternalCareerSite/siteMap.xml\n\nUser-agent: *\nAllow: /NVIDIAExternalCareerSite/\nDisallow: /NVIDIAExternalCareerSiteResearch/\nDisallow: /talentcommunity/\nDisallow: /NVIDIARecruitAds/\nDisallow: /refreshFacet/"
+ },
+ "remoteok": {
+  "robots_status": 200,
+  "allowed_for_generic_bot": true,
+  "robots_head": "# As a condition of accessing this website, you agree to abide by the following\n# content signals:\n\n# (a)  If a Content-Signal = yes, you may collect content for the corresponding\n#      use.\n# (b)  If a Content-Signal = no, you may not collect content for the\n#      corresponding use.\n# (c)  If the website operator does not include a Content-Signal for a\n#      corresponding use, the website operator neither grants nor restricts\n#      permission via Content-Signal with respect to the corresponding use.\n\n# The content signals and their meanings are:\n\n# search:   building a search index and pr"
+ },
+ "wwr": {
+  "robots_status": 200,
+  "allowed_for_generic_bot": true,
+  "robots_head": "# robots.txt for https://weworkremotely.com/\n\nUser-agent: *\nAllow: /\nDisallow: /admin/\nDisallow: /account/\nDisallow: /job-seekers/account/\nDisallow: /job-seekers/profile/\nDisallow: /manage-company/\nDisallow: /*edit?token=/\nDisallow: /*cancel?token=/\nSitemap: https://weworkremotely.com/sitemap.xml"
+ },
+ "himalayas": {
+  "robots_status": 200,
+  "allowed_for_generic_bot": true,
+  "robots_head": "User-Agent: *\nAllow: /\nDisallow: /apply\nDisallow: /jobs?page=\nDisallow: /jobs*&page=\nDisallow: /jobs/*?page=\nDisallow: /companies?page=\nDisallow: /companies*&page=\nDisallow: /companies/*?page=\nDisallow: /talent?page=\nDisallow: /talent*&page=\nDisallow: /talent/*?page=\nDisallow: /interview-questions?page=\nDisallow: /interview-questions*&page=\nDisallow: /interview-questions/*?page=\nDisallow: /resumes?page=\nDisallow: /resumes*&page=\nDisallow: /resumes/*?page=\nDisallow: /career-guides?page=\nDisallow: /career-guides*&page=\nDisallow: /career-guides/*?page=\nDisallow: /cover-letters?page=\nDisallow: /co"
+ },
+ "workingnomads": {
+  "robots_status": 200,
+  "allowed_for_generic_bot": true,
+  "robots_head": "User-agent: *\nDisallow:"
+ },
+ "arbeitnow": {
+  "robots_status": 200,
+  "allowed_for_generic_bot": true,
+  "robots_head": "User-agent: *\nDisallow:\nDisallow: /*?__hstc\n"
+ },
+ "landingjobs": {
+  "robots_status": 200,
+  "allowed_for_generic_bot": false,
+  "robots_head": "User-agent: *\nDisallow: /job_closed.html\nDisallow: /backoffice/\nDisallow: /employers/request_info\nDisallow: /employers/request_source_access\nDisallow: /employers/search\nDisallow: /api/\nDisallow: /jobs/search\n\nSitemap: https://landing.jobs/sitemap.xml\nSitemap: https://campaign.landing.jobs/sitemap.xml\n"
+ },
+ "greenhouse": {
+  "robots_status": 200,
+  "allowed_for_generic_bot": true,
+  "robots_head": "# See http://www.robotstxt.org/robotstxt.html for documentation on how to use the robots.txt file\n\nUser-agent: *\nDisallow: /embed/\n"
+ },
+ "lever": {
+  "robots_status": 200,
+  "allowed_for_generic_bot": true,
+  "robots_head": "User-agent: *\nAllow: /\nCrawl-delay: 1\n"
+ },
+ "ashby": {
+  "robots_status": 401,
+  "allowed_for_generic_bot": true,
+  "robots_head": ""
+ }
+}

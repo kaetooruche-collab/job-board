@@ -1,0 +1,469 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <!-- Load Jquery first -->
+    <script defer
+            src="https://code.jquery.com/jquery-3.4.0.min.js"
+            integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg="
+            crossorigin="anonymous"></script>
+    <!-- <script defer src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>-->
+
+    <script defer
+            src="https://cdn.jsdelivr.net/combine/npm/semantic-ui@2.4.2/dist/components/accordion.min.js,npm/semantic-ui@2.4.2/dist/components/dimmer.min.js,npm/semantic-ui@2.4.2/dist/components/api.min.js,npm/semantic-ui@2.4.2/dist/components/checkbox.min.js,npm/semantic-ui@2.4.2/dist/components/dropdown.min.js,npm/semantic-ui@2.4.2/dist/components/form.min.js,npm/semantic-ui@2.4.2/dist/components/modal.min.js,npm/semantic-ui@2.4.2/dist/components/progress.min.js,npm/semantic-ui@2.4.2/dist/components/rating.min.js,npm/semantic-ui@2.4.2/dist/components/search.min.js,npm/semantic-ui@2.4.2/dist/components/sidebar.min.js,npm/semantic-ui@2.4.2/dist/components/site.min.js,npm/semantic-ui@2.4.2/dist/components/tab.min.js,npm/semantic-ui@2.4.2/dist/components/visibility.min.js,npm/semantic-ui@2.4.2/dist/components/transition.min.js"></script>
+
+    <!-- Google Tag Manager
+    <script>(function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({
+            'gtm.start':
+                new Date().getTime(), event: 'gtm.js'
+        });
+        var f = d.getElementsByTagName(s)[0],
+            j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src =
+            'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-P26SV22');</script>
+    End Google Tag Manager -->
+
+
+    <!-- Plausible analytics -->
+    <script defer data-domain="techjobsforgood.com"
+            src="https://plausible.io/js/script.outbound-links.tagged-events.js"></script>
+
+    <!-- / Plausible -->
+
+    <!-- Standard Meta -->
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+
+    <!--Favicon
+    <link rel="icon"
+          type="image/x-icon"
+          href="/static/jobs/favicon.ico">-->
+
+    <link rel="icon" href="/static/jobs/svG.svg" type="image/svg+xml">
+
+    
+    <!-- HTML Meta Tags -->
+    <title>Tech Jobs for Good | Social Impact Tech Job Board</title>
+    <meta name="description"
+          content="Use Tech Jobs for Good to find tech jobs at mission driven companies and nonprofits working on pressing social and environmental issues.">
+
+    <!-- Google / Search Engine Tags -->
+    <meta itemprop="name" content="Tech Jobs for Good">
+    <meta itemprop="description"
+          content="Use Tech Jobs for Good to find tech jobs at mission driven companies and nonprofits working on presssing social and environmental issues.">
+    <meta itemprop="image" content="https://techjobsforgood.com/static/jobs/Tech_Jobs_for_Good_Logo_Light_RGB.png">
+
+    <!-- Facebook Meta Tags -->
+    <meta property="og:url" content="https://techjobsforgood.com/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Tech Jobs for Good">
+    <meta property="og:description"
+          content="Use Tech Jobs for Good to find tech jobs at mission driven companies and nonprofits working on pressing social and environmental issues.">
+    <meta property="og:image" content="https://techjobsforgood.com/static/jobs/Tech_Jobs_for_Good_Logo_Light_RGB.png">
+
+    <!-- Twitter Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Tech Jobs for Good">
+    <meta name="twitter:description"
+          content="Use Tech Jobs for Good to find tech jobs at mission driven companies and nonprofits working on pressing social and environmental issues.">
+    <meta name="twitter:image" content="https://techjobsforgood.com/static/jobs/Tech_Jobs_for_Good_Logo_Light_RGB.png">
+
+    <!-- Meta Tags Generated via http://heymeta.com -->
+
+    <!-- Google SEO Search -->
+    <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          "url": "https://techjobsforgood.com/",
+          "potentialAction": {
+            "@type": "SearchAction",
+            "target": {
+                "@type": "EntryPoint",
+                "urlTemplate": "https://techjobsforgood.com/jobs/?q={search_term_string}"
+                },
+            "query-input": "required name=search_term_string"
+          }
+        }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "url": "https://techjobsforgood.com",
+      "logo": "https://techjobsforgood.com/static/jobs/Tech_Jobs_for_Good_Logo_Light_RGB.png"
+    }
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@700&family=Montserrat:wght@600&display=swap"
+          rel="stylesheet">
+
+
+    
+
+    
+
+    <!-- Site Properties -->
+    
+
+    <!--Custom Styles-->
+    <style>
+        body {
+            background-color: #F2F4F4;
+        }
+
+        .overview {
+            background-color: #ffffff;
+            padding: 8px 15px 8px 15px;
+        }
+
+        .values {
+            padding: 0px 6px 0px 6px;
+        }
+
+        .posted {
+            padding: 8px 15px 8px 15px;
+        }
+
+        .impact-areas {
+            padding: 0px 6px 0px 6px;
+        }
+
+        .tech-stack {
+            padding: 0px 6px 0px 6px;
+        }
+
+        .sidebar {
+            padding: 80px 20px 40px 20px;
+        }
+
+        /* Save Job CSS" */
+        #save-job {
+            text-align: right;
+            float: right;
+            background-color: #FFFFFF;
+            color: #1D252C;
+            border: 2px solid #1D252C;
+            width: 120px;
+        }
+
+        /* Save Job Hover" */
+        #save-job:hover {
+            text-align: right;
+            float: right;
+            background-color: #D0D0CE;
+            color: #1D252C;
+            border: 2px solid #1D252C;
+            width: 120px;
+        }
+
+        @media only screen and (max-width: 1432px) {
+            .sidebar {
+                display: none;
+            }
+        }
+
+        
+        
+
+    </style>
+
+    <!-- Scripts to load last -->
+    <link rel="preload"
+          href="https://cdn.jsdelivr.net/combine/npm/semantic-ui@2.4.2/dist/components/container.min.css,npm/semantic-ui@2.4.2/dist/components/button.min.css,npm/semantic-ui@2.4.2/dist/components/card.min.css"
+          as="style" onload="this.onload=null;this.rel='stylesheet'"
+          media="handheld"/>
+
+    <noscript>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+    </noscript>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css" media="screen"/>
+
+    <!-- Twitter universal website tag code
+    <script>
+        !function (e, t, n, s, u, a) {
+            e.twq || (s = e.twq = function () {
+                s.exe ? s.exe.apply(s, arguments) : s.queue.push(arguments);
+            }, s.version = '1.1', s.queue = [], u = t.createElement(n), u.async = !0, u.src = '//static.ads-twitter.com/uwt.js',
+                a = t.getElementsByTagName(n)[0], a.parentNode.insertBefore(u, a))
+        }(window, document, 'script');
+        // Insert Twitter Pixel ID and Standard Event data below
+        twq('init', 'o8j0b');
+        twq('track', 'PageView');
+    </script>
+    End Twitter universal website tag code -->
+
+    <!-- Tech Jobs for Good Branding Settings -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/jobs/TJFG_branding.css">
+
+    <script defer src="/static/jobs/js/base.js"></script>
+    
+    
+</head>
+
+<body>
+
+<!-- Google Tag Manager (noscript)
+<noscript>
+    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P26SV22"
+            height="0" width="0" style="display:none;visibility:hidden"></iframe>
+</noscript>
+ End Google Tag Manager (noscript) -->
+
+<div class="ui secondary container menu">
+    <a href="/" class="ui item" style="padding: 0px 0px 0px 0px;">
+        <img src="/static/jobs/Tech_Jobs_for_Good_Logo_Light_RGB.png" alt="Tech Jobs for Good Logo"
+             class="ui small image">
+    </a>
+    
+        <div class="ui dropdown item" id="job-seeker-header-menu">
+            For Job Seekers
+            <i class="dropdown icon"></i>
+            <div class="menu">
+                <a href="/jobs/" class="item">Browse Jobs</a>
+                <a href="/companies/" class="item">Browse Organizations</a>
+                <a href="/accounts/signup/" class="item">Get Matched to Companies</a>
+                <a href="/impact-areas/" class="item">About our Impact Areas</a>
+            </div>
+        </div>
+        <div class="ui dropdown item" id="employer-header-menu">
+            For Employers
+            <i class="dropdown icon"></i>
+            <div class="menu">
+                <a href="/jobs/new/" class="item" id="click-post-job-menu">Post a Job</a>
+                <a href="/jobs/companies/create" class="item">Create Employer Profile</a>
+                <a href="/pricing/" class="item">Pricing</a>
+            </div>
+        </div>
+        <div class="ui dropdown item" id="community-header-menu">
+            Community
+            <i class="dropdown icon"></i>
+            <div class="menu">
+                <a href="/events/" class="item">Events</a>
+                <a href="/blog/" class="item">Blog</a>
+                <a href="https://subscribe.page/s/937d3fc580" class="item">Subscribe to Newsletter</a>
+            </div>
+        </div>
+    
+
+
+    <div class="right menu">
+        <div class="item" id="login-header-menu">
+            
+                <a href="/accounts/login">Log In</a>
+            
+        </div>
+
+        
+
+        <div class="item">
+            
+                <a href="/pricing/" class="ui button" id="click-post-job-header">
+                    Post a Job
+                </a>
+            
+        </div>
+
+        <div class="ui dropdown right icon item">
+            <i class="bars icon"></i>
+            <div class="menu">
+                
+                    <div class="job-seeker-bars header" style="color: #0047BB;">
+                        For Job Seekers
+                    </div>
+                    <a href="/" class="job-seeker-bars item">Find a Job</a>
+                    <a href="/companies/" class="job-seeker-bars item">Browse Organizations</a>
+                    <a href="/users/profile/edit/" class="job-seeker-bars item">Get Matched to Companies</a>
+                    <a href="/impact-areas/" class="job-seeker-bars item">About our Impact Areas</a>
+
+                    <div class="job-seeker-bars divider"></div>
+
+
+                    <div class="employer-bars header" style="color: #0047BB;">
+                        For Employers
+                    </div>
+                    <a href="/jobs/new/" class="employer-bars item" id="click-post-job-burger-menu">Post a Job</a>
+                    <a href="/jobs/companies/create" class="employer-bars item">Create Employer Profile</a>
+                    <a href="/pricing/" class="employer-bars item">Pricing</a>
+
+                    <div class="employer-bars divider"></div>
+                
+
+                
+
+                
+
+
+                <div class="community-bars header" style="color: #0047BB;">
+                    Community
+                </div>
+                <a href="/events/" class="community-bars item">Events</a>
+                <a href="/blog/" class="community-bars item">Blog</a>
+
+                <div class="community-bars divider"></div>
+
+                <div class="header" style="color: #0047BB;">
+                    Account
+                </div>
+
+                
+                    <a href="/accounts/signup/" class="item">Create Account</a>
+                    <a href="/accounts/login/" class="item">Log In</a>
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+<div></div>
+
+<!--Load content here-->
+
+
+    <!--Container-->
+    <div class="ui container">
+        <div class="ui segments">
+            <div class="ui segment">
+
+                <div class="ui header centered headerText">
+                    Tech Jobs for
+
+                    <div class="rotate-wrap">
+                        <div class="rotatingText">fighting climate change.</div>
+                        <div class="rotatingText">ending homelessness.</div>
+                        <div class="rotatingText">improving healthcare.</div>
+                        <div class="rotatingText" style="color: #97D700;">Good.</div>
+                    </div>
+                </div>
+                <br>
+                <!--Search Bar-->
+                <form method="get" action="/jobs/">
+                    <div class="ui form">
+                        <div class="three fields">
+
+                            <div class="field">
+                                <label>Job Function</label>
+                                <select id="job_function" name="job_function" multiple=""
+                                        class="ui dropdown">
+                                    <option value="">Select Job Function</option>
+                                    
+                                        <option 
+                                            value="Software Engineering">Software Engineering</option>
+                                    
+                                        <option 
+                                            value="Data + Analytics">Data + Analytics</option>
+                                    
+                                        <option 
+                                            value="Design + UX">Design + UX</option>
+                                    
+                                        <option 
+                                            value="Product">Product</option>
+                                    
+                                        <option 
+                                            value="Information Technology">Information Technology</option>
+                                    
+                                        <option 
+                                            value="Hardware Engineering">Hardware Engineering</option>
+                                    
+                                        <option 
+                                            value="Digital Marketing">Digital Marketing</option>
+                                    
+                                        <option 
+                                            value="Other">Other</option>
+                                    
+                                </select>
+                            </div>
+
+                            <div class="field">
+                                <label>Location</label>
+                                <select name="locations" multiple="" class="ui fluid search dropdown">
+                                    <option value="">Select City or Remote</option>
+
+                                    <option value="remote" >Remote (US)
+                                    </option>
+                                    
+                                        <option value="Alameda, CA"
+                                                >Alameda, CA</option>
+                                    
+                                        <option value="Albuquerque, NM"
+                                                >Albuquerque, NM</option>
+                                    
+                                        <option value="Alexandria, VA"
+                                                >Alexandria, VA</option>
+                                    
+                                        <option value="Anchorage, AK"
+                                                >Anchorage, AK</option>
+                                    
+                                        <option value="Ankeny, IA"
+                                                >Ankeny, IA</option>
+                                    
+                                        <option value="Ann Arbor, MI"
+                                                >Ann Arbor, MI</option>
+                                    
+                                        <option value="Arlington, TX"
+                                                >Arlington, TX</option>
+                                    
+                                        <option value="Asbury Park, NJ"
+                                                >Asbury Park, NJ</option>
+                                    
+                                        <option value="Atlanta, GA"
+                                                >Atlanta, GA</option>
+                                    
+                                        <option value="Austin, TX"
+                                                >Austin, TX</option>
+                                    
+                                        <option value="Baltimore, MD"
+                                                >Baltimore, MD</option>
+                                    
+                                        <option value="Bar Harbor, ME"
+                                                >Bar Harbor, ME</option>
+                                    
+                                        <option value="Berkeley, CA"
+                                                >Berkeley, CA</option>
+                                    
+                                        <option value="Bethesda, MD"
+                                                >Bethesda, MD</option>
+                                    
+                                        <option value="Bloomington, MN"
+                                                >Bloomington, MN</option>
+                                    
+                                        <option value="Boston, MA"
+                                                >Boston, MA</option>
+                                    
+                                        <option value="Boulder, CO"
+                                                >Boulder, CO</option>
+                                    
+                                        <option value="Brisbane, CA"
+                                                >Brisbane, CA</option>
+                                    
+                                        <option value="Brooklyn, NY"
+                                                >Brooklyn, NY</option>
+                                    
+                                        <option value="Cambridge, MA"
+                                                >Cambridge, MA</option>
+                                    
+                                        <option value="Campbell, CA"
+                                                >Campbell, CA</option>
+                                    
+                                        <option value="Cary, NC"
+                                                >Cary, NC</option>
+                                    
+                                        <option value="Charlotte, NC"
+                                                >Charlotte, NC</option>
+                                    
+                                        <option value="Chicago, IL"
+                                                >Chicago, IL</option>
+                                    
+                                        <option value="Cincinnati, OH"
+                                 

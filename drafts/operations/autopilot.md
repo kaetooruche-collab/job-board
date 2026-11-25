@@ -9,9 +9,9 @@ Written 25 Nov 2026 after the board froze for 7 days (18 to 25 Nov) and nobody n
 | Refresh job listings (`fetch-jobs.yml`) | every 6 h at :15 | GitHub Actions | Read 285+ employer feeds, classify, QA, check links, publish `jobs.json`; Vercel redeploys on the commit |
 | Watch the live site (`site-monitor.yml`) | every 3 h at :40 | GitHub Actions | Pages load, data fresh, prices and contact details right, forbidden wording absent, sample of apply links open |
 | Tests (`ci.yml`) | daily 04:05, and on every code change | GitHub Actions | Full test suite, including tests that read live data |
-| Discover and prune boards (`discover-boards.yml`) | Sundays 02:35 | GitHub Actions | Retire dead or empty boards; add new Greenhouse, Lever or Ashby boards, worldwide-hiring companies first |
+| Discover and prune boards (`discover-boards.yml`) | Sundays 02:35 | GitHub Actions | Retire dead or empty boards; add up to 100 new Greenhouse, Lever or Ashby boards a week: worldwide-hiring companies (Remote In Tech directory) first, then employers from the SimplifyJobs early-career lists; stops adding while 2,500 or more listings are live |
 | Weekly analytics snapshot (`weekly-snapshot.yml`) | Tuesdays | GitHub Actions | GoatCounter numbers and funnel into `drafts/analytics/` |
-| Board doctor (Claude scheduled task) | daily | Claude, fresh session | This runbook: health check, diagnose, fix, verify, report |
+| Board doctor (Claude scheduled task) | daily 10:10 Istanbul | Claude, one persistent session with the repository attached (`session_01Q41EjsB4isNkvh3EEkLuzg`) | This runbook: health check, diagnose, fix, verify, report |
 | Tuesday weekly job email (Claude scheduled task) | Tuesdays 08:20 Istanbul | Claude, fresh session | Build the digest, safety checks, schedule for 09:30 Istanbul |
 
 Any GitHub workflow that fails opens one issue titled "Autopilot: <workflow> is failing" (`scripts/gh_alert.py`). GitHub emails KT once when it opens; it is updated, not duplicated, and closed automatically when the workflow passes again.
@@ -43,6 +43,8 @@ Must stop and ask KT: any change to public copy (CLAUDE.md copy-change rule), pr
 | Live site stale but refresh green | Vercel deploy failed | Vercel connector `list_deployments` for project `north_cyprus_remote_job_board` |
 | A workflow shows `disabled_inactivity` | GitHub stops schedules after 60 days without repository activity | `gh api -X PUT repos/kaetooruche-collab/job-board/actions/workflows/<file>/enable` |
 | Discovery adds a wrong company | a guessed board passed the identity check | remove it from `data/boards.json`, add it to `data/board_blocklist.json`, add a test |
+| `jobs.json` above 4 MB (health check amber) | the board grew past what phones load quickly | lower `MAX_LIVE_LISTINGS` in `scripts/discover_boards.py` or `MAX_PER_COMPANY` in `scripts/fetch_jobs.py` |
+| The doctor's session is gone or archived | sessions can be archived | create a new session with the repository attached (create_session with source_url) and point a new daily task at it with `persistent_session_id`; delete the old task |
 | A company asks to be removed | removal request (CLAUDE.md) | delete it from `data/boards.json` and add it to `data/board_blocklist.json` in one commit; reply within a day |
 
 ## 5. Quality layers (unchanged, now watched)
@@ -51,7 +53,6 @@ Must stop and ask KT: any change to public copy (CLAUDE.md copy-change rule), pr
 
 ## 6. What only KT can do
 
-- Once: add the repository kaetooruche-collab/job-board to the two Claude scheduled tasks in claude.ai (tested 25 Nov 2026: without it they can read but not push; `add_repo` is not available inside a scheduled task). Until then the doctor diagnoses and writes the exact fix in its report instead of merging it.
 - Logins and approvals: re-authorise a Claude connector when a scheduled task reports ACCESS_DENIED (claude.ai, Settings, Connectors), the GoatCounter and Vercel dashboards.
 - Decisions listed in section 3.
 - Nothing else. If KT is asked for anything not on this list, the system failed.

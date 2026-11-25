@@ -85,7 +85,10 @@ def parse_dt(value):
     if not value:
         return None
     try:
-        dt = datetime.fromisoformat(str(value).replace("Z", "+00:00"))
+        v = str(value).strip()
+        if v.endswith(" UTC"):  # Recruitee: "2026-11-24 10:10:44 UTC"
+            v = v[:-4] + "+00:00"
+        dt = datetime.fromisoformat(v.replace("Z", "+00:00"))
     except ValueError:
         return None
     return dt if dt.tzinfo else dt.replace(tzinfo=timezone.utc)
@@ -234,6 +237,73 @@ def fetch_ashby_board(board):
     return out
 
 
+# ── Hiring systems beyond the first three (built 25 Nov 2026, switched OFF) ──────────
+# Terms and data checks: research/sources-2026-11/terms_findings.md. They stay off until KT approves the
+# new /verify wording (the page says listings come from Greenhouse, Lever and Ashby), per the copy-change rule.
+# To switch one on: add it here AND update verify.html, tests/test_source_claims.py and CLAUDE.md in one change.
+ENABLED_EXTRA_SYSTEMS = set()   # e.g. {"recruitee", "personio"}
+
+
+def _recruitee_hint(j):
+    if j.get("remote"):
+        return "remote"
+    if j.get("hybrid"):
+        return "hybrid"
+    if j.get("on_site"):
+        return "onsite"
+    return None
+
+
+def fetch_recruitee_board(board):
+    """{slug}.recruitee.com/api/offers/ — Recruitee's public Careers Site API (no key)."""
+    data = get_json(f"https://{board['slug']}.recruitee.com/api/offers/", timeout=40)
+    out = []
+    for j in (data or {}).get("offers", []):
+        loc = j.get("location") or ", ".join(x for x in (j.get("city"), j.get("country")) if x)
+        out.append({
+            "title": j.get("title", ""), "company": board["company"], "url": j.get("careers_url", ""),
+            "location": loc, "description": "\n".join(x for x in (j.get("description"), j.get("requirements")) if x),
+            "hint": _recruitee_hint(j), "posted": parse_dt(j.get("published_at")),
+            "source": "Recruitee", "employment": j.get("employment_type_code"),
+            "salary": None, "remote_feed": False,
+        })
+    return out
+
+
+def _xml_text(block, tag):
+    m = re.search(rf"<{tag}>\s*(?:<!\[CDATA\[)?(.*?)(?:\]\]>)?\s*</{tag}>", block, re.S)
+    return html.unescape(m.group(1)).strip() if m else ""
+
+
+def fetch_personio_board(board):
+    """{slug}.jobs.personio.de/xml — Personio's documented public XML feed (no key), in English where offered."""
+    try:
+        r = S.get(f"https://{board['slug']}.jobs.personio.de/xml", params={"language": "en"}, timeout=40)
+    except requests.RequestException:
+        return []
+    if r.status_code != 200:
+        return []
+    out = []
+    for pos in re.findall(r"<position>(.*?)</position>", r.text, re.S):
+        own = re.sub(r"<jobDescriptions>.*?</jobDescriptions>|<additionalOffices>.*?</additionalOffices>", "", pos, flags=re.S)
+        pid = _xml_text(own, "id")
+        offices = [_xml_text(o, "office") for o in re.findall(r"<office>.*?</office>", pos, re.S)]
+        desc = "\n".join(_xml_text(d, "name") + "\n" + _xml_text(d, "value")
+                         for d in re.findall(r"<jobDescription>(.*?)</jobDescription>", pos, re.S))
+        out.append({
+            "title": _xml_text(own, "name"), "company": board["company"],
+            "url": f"https://{board['slug']}.jobs.personio.de/job/{pid}" if pid else "",
+            "location": "; ".join(dict.fromkeys(o for o in offices if o)), "description": desc,
+            "hint": None, "posted": parse_dt(_xml_text(own, "createdAt")),
+            "source": "Personio", "employment": _xml_text(own, "employmentType") or None,
+            "salary": None, "remote_feed": False,
+        })
+    return out
+
+
+EXTRA_READERS = {"recruitee": fetch_recruitee_board, "personio": fetch_personio_board}
+
+
 JOBICY_INDUSTRIES = ["", "supporting", "admin-support", "accounting-finance", "marketing", "copywriting",
                      "business", "hr", "data-science", "design-multimedia", "management"]
 
@@ -285,6 +355,7 @@ def fetch_all(boards):
     jobs = [("greenhouse", b, fetch_greenhouse_board) for b in boards.get("greenhouse", [])]
     jobs += [("lever", b, fetch_lever_board) for b in boards.get("lever", [])]
     jobs += [("ashby", b, fetch_ashby_board) for b in boards.get("ashby", [])]
+    jobs += [(k, b, EXTRA_READERS[k]) for k in sorted(ENABLED_EXTRA_SYSTEMS) for b in boards.get(k, [])]
     with ThreadPoolExecutor(max_workers=12) as ex:
         futs = {ex.submit(fn, b): (kind, b) for kind, b, fn in jobs}
         for f in as_completed(futs):
@@ -317,8 +388,8 @@ ARRANGEMENT_LABEL = {
 }
 
 
-def process(raw, removed, review):
-    """Apply gates and classification. Returns publishable records."""
+def process(raw, removed, review, quiet=False):
+    """Apply gates and classification. Returns publishable records. quiet=True prints nothing (safe in threads)."""
     keep, seen_urls = [], set()
     drops = Counter()
     for j in raw:
@@ -367,9 +438,10 @@ def process(raw, removed, review):
             continue
         j["result"] = res
         keep.append(j)
-    print("  Gate summary:")
-    for k, v in drops.most_common():
-        print(f"    {k}: {v}")
+    if not quiet:
+        print("  Gate summary:")
+        for k, v in drops.most_common():
+            print(f"    {k}: {v}")
     return keep
 
 
@@ -395,8 +467,18 @@ def dedupe(items, removed):
 capped_out = [0]
 
 
+EARLY_CAREER = ("entry", "junior", "internship")
+
+
+def _cap_order(j):
+    """Within one employer's limit, early-career roles are kept first, then the newest (25 Nov 2026: the old
+    newest-only rule dropped publishable junior roles at employers with many senior openings)."""
+    level = ((j.get("result") or {}).get("experience") or {}).get("level")
+    return (0 if level in EARLY_CAREER else 1, -j["posted"].timestamp())
+
+
 def cap_per_company(items, removed):
-    items.sort(key=lambda x: x["posted"], reverse=True)
+    items.sort(key=_cap_order)
     counts, out = Counter(), []
     for j in items:
         c = norm_key(j["company"])

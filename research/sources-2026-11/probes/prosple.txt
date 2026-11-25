@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Checking your connection</title>
+
+  <!-- Save the original referrer before the challenge replaces it -->
+  <script>
+    (function () {
+      try {
+        var ref = document.referrer;
+        var isExternal = ref && ref.indexOf(location.hostname) === -1;
+        var alreadySaved = document.cookie.indexOf('orig_ref=') !== -1;
+        if (isExternal && !alreadySaved) {
+          document.cookie = 'orig_ref=' + encodeURIComponent(ref) +
+            '; path=/; max-age=2592000; SameSite=Lax; Secure';
+          // For several subdomains, add: + '; domain=.yourdomain.com'
+        }
+      } catch (e) {}
+    })();
+  </script>
+
+  <style>
+    :root {
+      --bg: #ffffff;
+      --text: #1c1f24;
+      --muted: #5b6270;
+      color-scheme: light;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #15171b;
+        --text: #eceef1;
+        --muted: #a3a9b4;
+        color-scheme: dark;
+      }
+    }
+    html, body { height: 100%; margin: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      box-sizing: border-box;
+    }
+    main { max-width: 32rem; width: 100%; }
+    h1 { font-size: 1.5rem; font-weight: 600; margin: 0 0 0.5rem; }
+    p { color: var(--muted); line-height: 1.5; margin: 0 0 2rem; }
+    .widget { min-height: 80px; }
+  </style>
+<meta http-equiv="refresh" content="360"></head>
+<body>
+  <main>
+    <h1>Checking your connection</h1>
+    <p>This takes a few seconds. You’ll be taken to the page automatically.</p>
+
+    <div class="widget">
+      <div class="main-wrapper" role="main"><div class="main-content"><noscript><div class="h2"><span id="challenge-error-text">Enable JavaScript and cookies to continue</span></div></noscript></div></div><script>(function(){window._cf_chl_opt = {cFPWv: 'b',cH: 'mMtyvrQaF1UwDNQhuaUFeQeOvdCVvoKPxFkAvMIbuUM-1795594316-1.2.1.1-.ZrY9B8tXaqTlgRkIKxHdDEuKJiFhb3q_kYnWWc4qfxOfkquitEBd3kFt37ZkplG',cITimeS: '1795594316',cRay: 'a5ff2f7d6cbfca5f',cTplC:1,cTplO:0,cTplV:5,cType: 'managed',cUPMDTk:"/?__cf_chl_tk=xnn4w9sOcLVy7LEsvJBf6k_J8yAzSfyORAHLMMvwVdw-1795594316-1.0.1.1-Wy1544glT.B6GfXNYibmyJMMs2naD9i9UkS427ubkAk",cvId: '3',cZone: 'prosple.com',fa:"/?__cf_chl_f_tk=xnn4w9sOcLVy7LEsvJBf6k_J8yAzSfyORAHLMMvwVdw-1795594316-1.0.1.1-Wy1544glT.B6GfXNYibmyJMMs2naD9i9UkS427ubkAk",md: 'vuKvi.fUYDbLKa5B1o7DxVy5X7TQh.TYcqTSa39KAaU-1795594316-1.2.1.1-C8evvG9UTfr8m0FziTvm.4GBgokT_Q3mlaZXoww1bwskVFSxqgfthSTRbbMgyltKB2s0j8hI7QkcIc7yMiaVw9ZCTqI0VaHYg6elWPpr.J9rH3yt_pwk6dlMEGMebMY9KYysmzaMPecwxUpnyHV.mf02jsYuQydKAqQyEZzdCrSrY5V85E9rpbeNyNE9qe38O7x7W1cq3f6fO0Vq5f.eQJKdjPVgCc2C5KhE6_pj7je2k.qaC8T0vV_RdNqBLp1cDc6mismPB3f0tym0P.t.G0uJDwVYMQXz6ypNHChErbkb.Tp4CZgyvncfN0_K4ZdTJIuiFrBhFhy3HtgQBwy1elcUKK9S7U1CxN55pjyCMgOQK9YiOG4FmB9uR91zTPY0EFdo7nO8spmP.JaedPwwm8xRgDRbRLmTkBWnw1nVMpowx0HZhfh0H6jq9ga4KIS1wHAvh9Y41BEECPrjezIszrM1MQnSlSkDN2FzWy9tBL.96S0YXo7ttaxdpCh1MY.EO3v3mBz6Bnvy5W2vJ3RjfeFLDFZsxKU2Uy4BqCtnWETWvVX43upQtYzzgTyNbtgQA1U1riyah7Fu_dF0v1kqutWBFUaN76TGLn8cdetDl8vMARP5Dvt7wkJQJqkv3eubqr_5sHzyqdBVq9ANBUtBQOZdwF47ZNaZr2aNrGVrdbN7b_C.jYbc8WdDYk7mNd.m9pc24iIcWN0PyxhYd04YRX2OpXOYGI8_72ySfWh2tmVlRDUNvTwWOECichZSSXUxxg9RJExDx3n1eHCCGunYfoysxvm1QG27LuJ.XjlobTa70971XMXO7dEpn7phRyB1WxzrKHl9NDoorPcIip3SCOrFOsvwLUs7BL5GHHc1vramjd2dKB8537s434Xf55bP3Mmz5uJ78WrFuUj9vqNKUB3cJ1kQ06qJrg7i4MZRHxmt3itf2Nyg7AEHEaKy9njX3wF5ZibZy1cp9KfVjMJyOct05dbedI_m1VM0T5B_X41Rj0nS9NcmXSIwHodK4ElMu.Cprnud43PIV4SRK310uK0sOdZGNYgXtyyXWSa1rJHe80.oP5iexZGg3JCHW1OFHFlwnwQVqJLAe0_Q7RHmic0anGO2Ocin_UxAVVMVCYQ',mdrd: '0d9.jtFGicI4_plZtHlIChNWKfUw2MCxO9w5KUuh_oM-1795594316-1.2.1.1-Jxg8Y.yMo5AoTxCck3pmNojs7_eDhTTzY1LaKh6jCuukCJMrv.4kxHiZhIVwkDzeLNI1ZHdGV2vQuKGNNsLV9Gz9kEZCymhj0RvcuPiBKVh7K_.IU3KPNCsUrD3g4T0MoaV.DdVuA5QusPZXK8nyhEYDwV_HRuP58CvNct_BYIHzxY8B_fj0kGsRaJUlYhf4EDHV5e2r_uK54LhWTO0bLiof.dRJsPWyWrGSi29..awXJZMZr6NvzutIk9SzKT7u8vmhqdWSvCSUr05KD15JSAQ0jRUtiph_o09._DRO5j4yXMRcEzzIcN_3Wanch9AZoBxApSQLrcexvhNoZv02dWM9jGcDBChCygu_RDXAACE',};var a = document.createElement('script');a.src = '/cdn-cgi/challenge-platform/h/b/orchestrate/chl_page/v1?ray=a5ff2f7d6cbfca5f';window._cf_chl_opt.cOgUHash = location.hash === '' && location.href.indexOf('#') !== -1 ? '#' : location.hash;window._cf_chl_opt.cOgUQuery = location.search === '' && location.href.slice(0, location.href.length - window._cf_chl_opt.cOgUHash.length).indexOf('?') !== -1 ? '?' : location.search;if (window.history && window.history.replaceState) {var ogU = location.pathname + window._cf_chl_opt.cOgUQuery + window._cf_chl_opt.cOgUHash;history.replaceState(null, null,"/?__cf_chl_rt_tk=xnn4w9sOcLVy7LEsvJBf6k_J8yAzSfyORAHLMMvwVdw-1795594316-1.0.1.1-Wy1544glT.B6GfXNYibmyJMMs2naD9i9UkS427ubkAk"+ window._cf_chl_opt.cOgUHash);a.onload = function() {history.replaceState(null, null, ogU);}}document.getElementsByTagName('head')[0].appendChild(a);}());</script>
+    </div>
+
+    <noscript>
+      <p>Turn on JavaScript and cookies to continue.</p>
+    </noscript>
+  </main>
+</body>
+</html>
+

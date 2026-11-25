@@ -96,6 +96,16 @@ def check_repo_activity(last_commit_at, now):
     return GREEN, f"last commit {days:.1f} days ago"
 
 
+def check_feed_size(nbytes):
+    """The home page downloads all of jobs.json; past a few MB it gets slow on phones."""
+    mb = nbytes / 1e6
+    if mb > 6:
+        return RED, f"jobs.json is {mb:.1f} MB: too heavy for phones, lower the discovery limits"
+    if mb > 4:
+        return AMBER, f"jobs.json is {mb:.1f} MB: approaching the limit"
+    return GREEN, f"jobs.json is {mb:.1f} MB"
+
+
 def overall(results):
     return max((r[1] for r in results), key=RANK.get, default=GREEN)
 
@@ -108,6 +118,7 @@ def gather(now=None):
     out = []
     metrics = json.loads((ROOT / "data" / "metrics.json").read_text(encoding="utf-8"))
     out.append(("Fresh listings", *check_freshness(metrics, now)))
+    out.append(("Listings file size", *check_feed_size((ROOT / "jobs.json").stat().st_size)))
     try:
         hist = json.loads((ROOT / "data" / "qa_history.json").read_text(encoding="utf-8"))
         counts = [(h.get("summary") or {}).get("count") for h in (hist if isinstance(hist, list) else []) if isinstance(h, dict)]

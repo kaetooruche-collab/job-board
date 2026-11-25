@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Homerun</title>
+    <link href="https://static.homerun.co/employers/fonts/82.css" rel="stylesheet" type="text/css">
+    <style>
+    body {
+      background-color: #000000;
+      margin: 0;
+    }
+    .container {
+      align-items: center;
+      box-sizing: border-box;
+      color: #FFFFFF;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      margin: auto;
+      max-width: 600px;
+      min-height: 100vh;
+      padding: 40px;
+      text-align: center;
+      -webkit-font-smoothing: antialiased;
+    }
+    .logo-link:focus {
+      outline: 0;
+    }
+    .logo {
+      height: 32px;
+      width: 150px;
+    }
+    .title {
+      font-family: 'GT-Walsheim-Bold';
+      font-size: 58px;
+      line-height: 68px;
+      margin-bottom: 5px;
+      margin-top: 100px;
+    }
+    @media screen and (max-width: 640px) {
+      .title {
+        margin-top: 50px;
+      }
+    }
+    .text {
+      font-family: 'GTAmerica-Regular';
+      font-size: 22px;
+      line-height: 30px;
+    }
+    .button {
+      background-color: #029EFF;
+      border-radius: 4px;
+      color: #FFFFFF;
+      font-family: 'GTAmerica-Regular';
+      font-size: 20px;
+      line-height: 19px;
+      margin-top: 45px;
+      padding: 15px 25px;
+      text-decoration: none;
+      transition: background-color 0.2s ease;
+    }
+    .button:hover {
+      background-color: #178fda;
+    }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <a href="https://www.homerun.co?utm_source=hrc404&utm_medium=org&utm_campaign=api.homerun.co&utm_content=acq" class="logo-link">
+        <img src="https://static.homerun.co/images/logo-white.png" alt="" class="logo" />
+      </a>
+      <h1 class="title">Hmm, this page does not exist.</h1>
+      <p class="text">Head to Homerun’s homepage, which does exist, and
+        see how you can create your own career page.</p>
+      <a href="https://www.homerun.co?utm_source=hrc404&utm_medium=org&utm_campaign=api.homerun.co&utm_content=acq" class="button">Go to homerun.co</a>
+    </div>
+  </body>
+</html>
