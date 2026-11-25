@@ -51,6 +51,7 @@ Must stop and ask KT: any change to public copy (CLAUDE.md copy-change rule), pr
 
 ## 6. What only KT can do
 
+- Once: add the repository kaetooruche-collab/job-board to the two Claude scheduled tasks in claude.ai (tested 25 Nov 2026: without it they can read but not push; `add_repo` is not available inside a scheduled task). Until then the doctor diagnoses and writes the exact fix in its report instead of merging it.
 - Logins and approvals: re-authorise a Claude connector when a scheduled task reports ACCESS_DENIED (claude.ai, Settings, Connectors), the GoatCounter and Vercel dashboards.
 - Decisions listed in section 3.
 - Nothing else. If KT is asked for anything not on this list, the system failed.
