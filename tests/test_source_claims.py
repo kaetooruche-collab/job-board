@@ -22,6 +22,12 @@ class SourceClaims(unittest.TestCase):
             m = OVERSTATES.search(text)
             self.assertIsNone(m, f"{f}: {m.group(0) if m else ''}")
 
+    def test_no_public_surface_promises_a_6_hourly_update(self):
+        """Measured 18-25 Nov 2026: GitHub runs the "6-hourly" refresh every 10-16 hours. The site says "daily"."""
+        for f in LIVE:
+            text = (ROOT / f).read_text(encoding="utf-8")
+            self.assertNotRegex(text, r"(?i)every 6 hours|every six hours", f)
+
     def test_no_public_surface_names_a_hiring_system(self):
         """KT, 25 Nov 2026: "don't mention greenhouse, lever, ashby, recruitee or personio. there is no reason to mention
         any of them or include any of them." Cards say "Source: the company's hiring page" instead."""

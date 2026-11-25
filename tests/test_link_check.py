@@ -1,6 +1,8 @@
-"""Link checking must tell "gone" from "could not check", and a blocked checker must not empty the board.
-Regression: 31 Oct 2026, one refresh saw 229 failing links (normal 34-50) and removed 208 open jobs for about four hours."""
+"""Is a listing still open? Since 25 Nov 2026 the employer's live feed decides and a page sample is a second opinion.
+Regressions: 31 Oct 2026 a throttled checker removed 208 open jobs; 25 Nov 2026 it held back 375 new jobs and went red,
+while 149 of 150 in-feed pages opened normally when sampled by hand."""
 import pathlib, sys, tempfile, unittest
+from datetime import datetime, timezone
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "scripts"))
@@ -42,160 +44,108 @@ class Verdicts(unittest.TestCase):
 
     def test_a_403_on_head_is_retried_with_get(self):
         self.assertEqual(verdict(Resp(403), Resp(200)), L.ALIVE)
-        self.assertEqual(verdict(Resp(403), Resp(403)), L.UNKNOWN)      # blocked, not gone
-        self.assertEqual(verdict(Resp(403), Resp(404)), L.DEAD)
+        self.assertEqual(verdict(Resp(403), Resp(403)), L.UNKNOWN)      # blockfrom datetime import datetime, timezone
+
+NOW = datetime(2026, 11, 25, 20, 0, tzinfo=timezone.utc)
 
 
-def listings(n):
-    return [{"url": f"https://job-boards.greenhouse.io/co{i % 40}/jobs/{i}", "title": f"Role {i}", "company": f"Co{i % 40}"} for i in range(n)]
+def listings(n, start=0):
+    return [{"url": f"https://job-boards.greenhouse.io/co{i % 40}/jobs/{i}", "title": f"Role {i}", "company": f"Co{i % 40}"} for i in range(start, start + n)]
 
 
-def run(items, bad, state=None, published=True, bad_verdict=L.UNKNOWN):
-    bad_urls = {j["url"] for j in items[:bad]}
-    pub = {j["url"]: "2026-10-31T12:00:00+00:00" for j in items} if published is True else (published or {})
-    removed = []
-    ok, stats, ns = L.check_links(items, None, state or L.load_state(pathlib.Path("/nonexistent")), pub, removed,
-                                  verdict_fn=lambda u: bad_verdict if u in bad_urls else L.ALIVE, retry_delay=0, sleep=lambda s: None)
-    return ok, stats, ns, removed
+def run(items, verdicts=None, state=None, published=True, sample=60, now=NOW):
+    verdicts = verdicts or {}
+    pub = {j["url"]: "2026-11-24T12:00:00+00:00" for j in items} if published is True else (published or {})
+    removed, asked = [], []
+    def fn(u):
+        asked.append(u)
+        return verdicts.get(u, L.ALIVE)
+    ok, stats, ns = L.check_links(items, None, state or {}, pub, removed, verdict_fn=fn, retry_delay=0,
+                                  sleep=lambda s: None, now=now, sample_size=sample)
+    return ok, stats, ns, removed, asked
 
 
-class CheckLinks(unittest.TestCase):
-    def test_normal_run_drops_only_dead_and_carries_unknown_with_old_time(self):
-        items = listings(200)
-        verdicts = {items[0]["url"]: L.DEAD, items[1]["url"]: L.DEAD, items[2]["url"]: L.UNKNOWN, items[3]["url"]: L.UNKNOWN}
-        removed = []
-        ok, st, ns = L.check_links(items, None, L.load_state(pathlib.Path("/nonexistent")),
-                                   {j["url"]: "2026-10-31T12:00:00+00:00" for j in items[1:]}, removed,
-                                   verdict_fn=lambda u: verdicts.get(u, L.ALIVE), retry_delay=0, sleep=lambda s: None)
-        urls = {j["url"] for j in ok}
-        self.assertNotIn(items[0]["url"], urls)                        # gone, and also not published before: simply dropped
-        self.assertNotIn(items[1]["url"], urls)                        # gone: dropped even though it was published
-        self.assertIn(items[2]["url"], urls)                           # could not check, was published: kept
-        self.assertIn(items[3]["url"], urls)
-        kept = next(j for j in ok if j["url"] == items[2]["url"])
-        self.assertEqual(kept["verifiedAt"], "2026-10-31T12:00:00+00:00")   # the card shows the real last check
-        self.assertEqual(ns["unknown"][items[2]["url"]], 1)
-        self.assertEqual((st["dead"], st["unknown"], st["droppedDead"], st["carriedOnOldCheck"]), (2, 2, 2, 2))
-        self.assertFalse(st["degraded"])
-        self.assertEqual(len([r for r in removed if r.startswith("link-dead")]), 2)
-
-    def test_new_listing_that_cannot_be_checked_is_not_published_yet(self):
-        items = listings(100)
-        ok, st, ns, removed = run(items, 1, published={})              # nothing published before
-        self.assertEqual(len(ok), 99)
-        self.assertEqual(st["newHeldUntilChecked"], 1)
-        self.assertEqual(removed, [])                                  # not removed forever, just not yet shown
-
-    def test_unknown_four_runs_in_a_row_is_dropped(self):
-        items = listings(100)
-        state = L.load_state(pathlib.Path("/nonexistent"))
-        state["unknown"] = {items[0]["url"]: L.MAX_UNKNOWN_RUNS}
-        ok, st, ns, removed = run(items, 1, state=state)
-        self.assertNotIn(items[0]["url"], {j["url"] for j in ok})
-        self.assertEqual(st["droppedUnverifiable"], 1)
-        self.assertTrue(removed[0].startswith("link-unverifiable"))
-
-    def test_incident_replay_229_of_1038_failing_could_not_check(self):
-        items = listings(1038)
-        state = {"unknown": {}, "failRates": [0.032, 0.033, 0.046, 0.048, 0.033], "degradedStreak": 0, "driftAborts": 0}
-        ok, st, ns, removed = run(items, 229, state=state)
-        self.assertTrue(st["degraded"])
-        self.assertEqual(len(ok), 1038, "a blocked checker must not remove a single open job")
-        self.assertEqual(removed, [])
-        self.assertEqual(ns["degradedStreak"], 1)
-        self.assertEqual(ns["failRates"], state["failRates"], "a degraded run must not poison the baseline")
-
-    def test_incident_replay_even_if_the_failures_look_like_404s(self):
-        items = listings(1038)
-        state = {"unknown": {}, "failRates": [0.04] * 5, "degradedStreak": 0, "driftAborts": 0}
-        ok, st, ns, removed = run(items, 229, state=state, bad_verdict=L.DEAD)
-        self.assertTrue(st["degraded"])
-        self.assertEqual(len(ok), 1038)
-
-    def test_normal_failure_rate_is_not_degraded(self):
+class FeedDecides(unittest.TestCase):
+    def test_the_25_nov_day_a_throttled_checker_no_longer_holds_anything_back(self):
         items = listings(1000)
-        state = {"unknown": {}, "failRates": [0.04] * 5, "degradedStreak": 0, "driftAborts": 0}
-        ok, st, ns, removed = run(items, 45, state=state, bad_verdict=L.DEAD)   # 4.5%: real closures
-        self.assertFalse(st["degraded"])
-        self.assertEqual(len(ok), 955)
-        self.assertEqual(ns["degradedStreak"], 0)
-        self.assertEqual(ns["failRates"][-1], 0.045)
+        blocked = {j["url"]: L.UNKNOWN for j in items}          # every page answers 403
+        ok, stats, ns, removed, asked = run(items, blocked)
+        self.assertEqual(len(ok), 1000, "every in-feed listing is published")
+        self.assertEqual(stats["newHeldUntilChecked"], 0)
+        self.assertFalse(stats["mismatch"], "being blocked is not an alarm")
+        self.assertEqual(ns["mismatchStreak"], 0)
 
-    def test_threshold_follows_a_noisier_baseline(self):
-        items = listings(1000)
-        state = {"unknown": {}, "failRates": [0.10] * 5, "degradedStreak": 0, "driftAborts": 0}   # baseline 10% -> threshold 25%
-        _, st, _, _ = run(items, 200, state=state)
-        self.assertFalse(st["degraded"])
-        _, st, _, _ = run(items, 300, state=state)
-        self.assertTrue(st["degraded"])
+    def test_only_a_sample_of_pages_is_opened_and_new_listings_come_first(self):
+        old, new = listings(200), listings(30, start=500)
+        pub = {j["url"]: "2026-11-24T12:00:00+00:00" for j in old}
+        ok, stats, ns, removed, asked = run(old + new, published=pub, sample=60)
+        self.assertEqual(len(asked), 60)
+        self.assertTrue({j["url"] for j in new} <= set(asked), "all 30 new listings are in the sample")
 
-    def test_small_runs_are_never_degraded(self):
-        _, st, _, _ = run(listings(30), 20)
-        self.assertFalse(st["degraded"])
+    def test_the_longest_unchecked_pages_are_opened_next(self):
+        items = listings(100)
+        state = {"pageChecked": {j["url"]: "2026-11-25T10:00:00Z" for j in items[:90]}}   # 90 checked today, 10 never
+        ok, stats, ns, removed, asked = run(items, state=state, sample=10)
+        self.assertEqual(set(asked), {j["url"] for j in items[90:]})
 
-    def test_degraded_streak_counts_up_and_resets(self):
-        items = listings(300)
-        state = {"unknown": {}, "failRates": [0.04] * 5, "degradedStreak": 2, "driftAborts": 0}
-        _, st, ns, _ = run(items, 120, state=state)
-        self.assertEqual(ns["degradedStreak"], 3)
-        _, st, ns2, _ = run(items, 5, state=ns)
-        self.assertEqual(ns2["degradedStreak"], 0)
+    def test_a_page_that_is_gone_removes_the_listing_and_keeps_it_off_for_a_week(self):
+        items = listings(50)
+        gone = items[0]["url"]
+        ok, stats, ns, removed, asked = run(items, {gone: L.DEAD})
+        self.assertNotIn(gone, {j["url"] for j in ok})
+        self.assertIn(gone, ns["dead"])
+        self.assertTrue(any(r.startswith("link-dead") for r in removed))
+        # next run, still in the feed, not due for a re-check: stays off without being opened again
+        ok2, _, ns2, _, asked2 = run(items, state=ns, sample=5, now=datetime(2026, 11, 27, tzinfo=timezone.utc))
+        self.assertNotIn(gone, {j["url"] for j in ok2})
+        self.assertNotIn(gone, asked2)
+        # a week later it is opened again first, and comes back if it opens
+        ok3, _, ns3, _, asked3 = run(items, state=ns2, sample=5, now=datetime(2026, 12, 3, tzinfo=timezone.utc))
+        self.assertEqual(asked3[0], gone)
+        self.assertIn(gone, {j["url"] for j in ok3})
+        self.assertNotIn(gone, ns3["dead"])
 
-    def test_state_round_trip_keeps_only_recent_rates(self):
-        with tempfile.TemporaryDirectory() as d:
-            p = pathlib.Path(d) / "state.json"
-            L.save_state(p, {"unknown": {"u": 1}, "failRates": list(range(30)), "degradedStreak": 1, "driftAborts": 2})
-            s = L.load_state(p)
-            self.assertEqual(len(s["failRates"]), L.RATE_HISTORY)
-            self.assertEqual((s["unknown"], s["degradedStreak"], s["driftAborts"]), ({"u": 1}, 1, 2))
-        self.assertEqual(L.load_state(pathlib.Path("/nonexistent"))["failRates"], [])
+    def test_a_role_that_leaves_the_feed_leaves_the_board_and_the_state(self):
+        items = listings(20)
+        ok, stats, ns, removed, asked = run(items, {items[0]["url"]: L.DEAD})
+        ok2, _, ns2, _, _ = run(items[1:], state=ns)              # the employer took it down
+        self.assertNotIn(items[0]["url"], ns2["dead"])
+        self.assertEqual(len(ok2), 19)
 
+    def test_many_gone_pages_in_the_sample_raise_the_alarm_after_two_runs(self):
+        items = listings(100)
+        gone = {j["url"]: L.DEAD for j in items[:15]}            # 15 of 60 answered = 25%
+        _, s1, ns1, _, _ = run(items, gone, sample=60)
+        self.assertTrue(s1["mismatch"])
+        self.assertEqual(ns1["mismatchStreak"], 1)
+        fresh = listings(100, start=1000)
+        _, s2, ns2, _, _ = run(fresh, {j["url"]: L.DEAD for j in fresh[:15]}, state=ns1, sample=60)
+        self.assertEqual(ns2["mismatchStreak"], 2)
+        _, s3, ns3, _, _ = run(listings(100, start=2000), state=ns2, sample=60)
+        self.assertEqual(ns3["mismatchStreak"], 0, "a clean run resets it")
 
-class Reasons(unittest.TestCase):
-    def test_unknown_links_record_why(self):
-        from collections import Counter
-        c = Counter()
-        for head in (Resp(403), Resp(429), Resp(503), requests.Timeout(), requests.ConnectionError(), Resp(200), Resp(404)):
-            L.link_verdict("https://x.test/job", FakeSession(head), sleep=lambda s: None, reasons=c)
-        self.assertEqual(dict(c), {"http-403": 1, "http-429": 1, "http-503": 1, "timeout": 1, "connection-error": 1})
+    def test_a_small_sample_never_raises_the_alarm(self):
+        items = listings(10)
+        _, s, ns, _, _ = run(items, {j["url"]: L.DEAD for j in items[:5]}, sample=10)
+        self.assertFalse(s["mismatch"])
 
-    def test_stats_carry_the_reasons(self):
-        items = listings(60)
-        ok, st, ns = L.check_links(items, FakeSession(Resp(403)), L.load_state(pathlib.Path("/nonexistent")), {}, [],
-                                   retry_delay=0, sleep=lambda s: None)
-        self.assertEqual(st["unknownReasons"], {"http-403": 120})     # 60 links, counted once in the first pass and once in the second
+    def test_old_state_keys_are_dropped_and_other_keys_kept(self):
+        _, _, ns, _, _ = run(listings(5), state={"unknown": {"x": 1}, "failRates": [0.1], "degradedStreak": 3, "driftAborts": 1})
+        self.assertNotIn("unknown", ns); self.assertNotIn("failRates", ns); self.assertNotIn("degradedStreak", ns)
+        self.assertEqual(ns["driftAborts"], 1, "the drift guard's own counter survives")
 
 
 class SecondPass(unittest.TestCase):
-    def test_throttled_links_that_open_on_the_second_try_are_published_normally(self):
-        """1 Nov: all 46 unreachable links were on one host and opened fine minutes later (burst throttling)."""
-        items = listings(300)
-        seen = {}
-        def flaky(u):
-            seen[u] = seen.get(u, 0) + 1
-            return L.UNKNOWN if (u in {j["url"] for j in items[:40]} and seen[u] == 1) else L.ALIVE
-        ok, st, ns = L.check_links(items, None, L.load_state(pathlib.Path("/nonexistent")), {}, [], verdict_fn=flaky,
-                                   retry_delay=0, sleep=lambda s: None)
-        self.assertEqual(len(ok), 300)
-        self.assertEqual((st["firstPassUnknown"], st["recoveredOnRetry"], st["unknown"]), (40, 40, 0))
-        self.assertEqual(ns["failRates"][-1], 0.0)                      # the baseline records the real, post-retry failure rate
-
-    def test_only_unknown_links_are_retried_and_dead_ones_are_not(self):
-        items = listings(120)
+    def test_sampled_pages_that_open_on_the_second_try_count_as_open(self):
+        items = listings(10)
         calls = {}
-        def v(u):
+        def fn(u):
             calls[u] = calls.get(u, 0) + 1
-            return {items[0]["url"]: L.DEAD, items[1]["url"]: L.UNKNOWN}.get(u, L.ALIVE)
-        L.check_links(items, None, L.load_state(pathlib.Path("/nonexistent")), {}, [], verdict_fn=v, retry_delay=0, sleep=lambda s: None)
-        self.assertEqual(calls[items[0]["url"]], 1)
-        self.assertEqual(calls[items[1]["url"]], 2)
-        self.assertEqual(calls[items[2]["url"]], 1)
+            return L.UNKNOWN if calls[u] == 1 else L.ALIVE
+        ok, stats, ns = L.check_links(items, None, {}, {}, [], verdict_fn=fn, retry_delay=0, sleep=lambda s: None, now=NOW)
+        self.assertEqual(stats["recoveredOnRetry"], 10)
+        self.assertEqual(stats["unknown"], 0)
 
-    def test_the_pause_before_the_second_pass_is_used(self):
-        slept = []
-        L.check_links(listings(80), None, L.load_state(pathlib.Path("/nonexistent")), {}, [],
-                      verdict_fn=lambda u: L.UNKNOWN, retry_delay=8, sleep=slept.append)
-        self.assertEqual(slept, [8])
 
 
 class DriftGuard(unittest.TestCase):

@@ -69,9 +69,9 @@ jobs:
             git status -sb | head -1
           fi
 
-      # The feed is the source of truth for which roles are open; the link checker is only a second opinion.
-      # If the checker has been blocked for several runs in a row, the board is running on old checks: go red so it is noticed.
-      - name: Fail loudly if the link checker has been blocked too long
+      # The employer's live feed decides which roles are open (since 25 Nov 2026); a sample of pages is opened as a second
+      # opinion. If many sampled pages are gone although the feed lists them, two runs in a row, go red so someone looks.
+      - name: Fail loudly if the feed and the pages disagree
         if: always()
         run: |
           python -I - <<'PY'
@@ -80,11 +80,11 @@ jobs:
               s = json.load(open("data/link_state.json"))
           except (OSError, ValueError):
               s = {}
-          streak = s.get("degradedStreak", 0)
-          if streak >= 4:
-              print(f"::error::The link checker has been blocked for {streak} refreshes in a row (about {streak * 6} hours). Listings are being kept on older checks. Look at data/metrics.json linkCheck.")
+          streak = s.get("mismatchStreak", 0)
+          if streak >= 2:
+              print(f"::error::For {streak} refreshes in a row, more than 10% of the sampled job pages were gone although the employers' feeds still list them. Look at data/metrics.json linkCheck and data/removed.log.")
               sys.exit(1)
-          print(f"link checker blocked-streak: {streak}")
+          print(f"feed/page mismatch streak: {streak}")
           PY
 
       - name: Alert (open or update the autopilot issue)

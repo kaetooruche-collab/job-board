@@ -43,6 +43,13 @@ class Health(unittest.TestCase):
         self.assertEqual(H.check_feed_size(4_500_000)[0], H.AMBER)
         self.assertEqual(H.check_feed_size(6_500_000)[0], H.RED)
 
+    def test_link_check_alarms_only_on_pages_gone_from_a_live_feed(self):
+        self.assertEqual(H.check_link_state({"mismatchStreak": 0}, {"linkCheck": {"deadShare": 0.0}})[0], H.GREEN)
+        self.assertEqual(H.check_link_state({"mismatchStreak": 1}, {"linkCheck": {"deadShare": 0.2}})[0], H.AMBER)
+        self.assertEqual(H.check_link_state({"mismatchStreak": 2}, {"linkCheck": {"deadShare": 0.2}})[0], H.RED)
+        # the old "blocked" counter no longer matters
+        self.assertEqual(H.check_link_state({"degradedStreak": 6}, {"linkCheck": {"failRate": 0.4}})[0], H.GREEN)
+
     def test_overall_is_the_worst_check(self):
         self.assertEqual(H.overall([("a", H.GREEN, ""), ("b", H.AMBER, ""), ("c", H.RED, "")]), H.RED)
         self.assertEqual(H.overall([]), H.GREEN)

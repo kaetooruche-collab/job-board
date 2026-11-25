@@ -42,7 +42,7 @@ h1{{position:absolute;left:84px;top:262px;width:860px;margin:0;font-size:58px;li
 </style>
 <div class="logo">{EMAIL_SVG}<div>Yireh <b>Careers</b></div></div>
 <h1>Verified remote jobs. Every link goes to the original posting.</h1>
-<div class="pills"><span>Updated every 6 hours</span><span>CV &amp; LinkedIn help</span></div>
+<div class="pills"><span>Updated daily</span><span>CV &amp; LinkedIn help</span></div>
 """
 
 js = textwrap.dedent(f"""

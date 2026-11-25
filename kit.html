@@ -86,7 +86,7 @@
         <span class="note" id="poolnote" style="font-size:0.8rem;color:var(--text-secondary)"></span>
       </div>
     </div>
-    <div id="empty">Not enough matching roles for a post right now. Try All levels, another category or country, or come back after the next refresh (every 6 hours).</div>
+    <div id="empty">Not enough matching roles for a post right now. Try All levels, another category or country, or come back after the next update (the board updates daily).</div>
 
     <p class="section-title">Job posts</p>
     <div id="jobposts"></div>
@@ -207,7 +207,7 @@
     var L = [(audience() === 'early' ? 'Starting out? ' + items.length + ' verified entry-level and junior remote roles posted ' + span(items) + ':' : 'Looking for remote work? ' + items.length + ' verified remote roles posted ' + span(items) + ':'), ''];
     items.forEach(function (r) { L.push('• ' + r.title + ' at ' + r.company + ' (' + elig(r) + ')'); });
     L.push('');
-    L.push('Every job links to its original posting, shows who can apply and when it was posted, and is refreshed every 6 hours.');
+    L.push('Every job links to its original posting, shows who can apply and when it was posted, and is updated daily.');
     L.push('See them all and filter by field: ' + tag('facebook', 'jobs'));
     L.push('');
     L.push('Please check each employer\'s eligibility rules before you apply. We never charge you to apply or to see a listing\'s apply link.');
@@ -225,7 +225,7 @@
     L.push('');
     L.push('CLOSE: "Every link goes to the original posting. Check each employer\'s eligibility before you apply. Link in my bio."');
     L.push('');
-    L.push('CAPTION: ' + items.length + ' verified remote jobs, updated every 6 hours. Link in bio. #remotejobs #remotework #jobsearch #hiring #workfromhome');
+    L.push('CAPTION: ' + items.length + ' verified remote jobs, updated daily. Link in bio. #remotejobs #remotework #jobsearch #hiring #workfromhome');
     L.push('');
     L.push('BIO LINK (TikTok does not make caption links clickable; put this in your profile bio): ' + tag('tiktok', 'jobs'));
     return L.join('\n');
@@ -233,7 +233,7 @@
   function snapchat(items) {
     var L = ['STORY / SPOTLIGHT (on-screen text, one job per snap):', ''];
     items.forEach(function (r, i) { L.push('Snap ' + (i + 1) + ': ' + r.title + ' · ' + r.company + ' · ' + elig(r)); });
-    L.push('Last snap: "Verified remote jobs, updated every 6 hours. Link in my profile."');
+    L.push('Last snap: "Verified remote jobs, updated daily. Link in my profile."');
     L.push('');
     L.push('CAPTION: ' + items.length + ' verified remote jobs. Check each employer\'s eligibility before you apply.');
     L.push('');
