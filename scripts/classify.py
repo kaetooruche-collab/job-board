@@ -228,7 +228,8 @@ HYBRID_PATTERNS = [
     (re.compile(r"\bhybrid\b", re.I), 3.0, "hybrid wording"),
     (re.compile(r"\b(?:partially|partly) remote\b", re.I), 3.0, "partially remote"),
     (re.compile(r"\b(?:\d|one|two|three|four|1-2|2-3|3-4)\s*(?:days?)\s*(?:a|per|each|/)\s*week\s*(?:in|at|on)[- ]?(?:the\s*)?(?:office|site)", re.I), 3.0, "set office days"),
-    (re.compile(r"\b(?:in|at) the office\s+(?:\d|one|two|three|four)\b|\b(?:\d|one|two|three|four)\s*days?\s*(?:in|at) the office", re.I), 3.0, "set office days"),
+    # one optional word between the number and "days": "three coordinated days in the office" (Brex, 25 Nov 2026)
+    (re.compile(r"\b(?:in|at) the office\s+(?:\d|one|two|three|four)\b|\b(?:\d|one|two|three|four|five)\s+(?:[a-z]+\s+)?days?\s*(?:in|at) (?:the|our|an?) (?:[\w-]+\s)?office", re.I), 3.0, "set office days"),
     (re.compile(r"\b(?:every|each)\s+(?:monday|tuesday|wednesday|thursday|friday|week|other week)\b[^.]{0,50}\b(?:office|on-?site|in person)", re.I), 3.0, "recurring office day"),
     (re.compile(r"\b(?:office|on-?site|in person)\b[^.]{0,40}\b(?:every|each)\s+(?:monday|tuesday|wednesday|thursday|friday|week)\b", re.I), 3.0, "recurring office day"),
     (re.compile(r"\bmust (?:attend|come|be present|report|be (?:in|at|on))[^.]{0,40}\b(?:office|on-?site|in person|headquarters|hq)\b", re.I), 2.5, "must attend office"),

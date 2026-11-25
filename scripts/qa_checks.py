@@ -42,7 +42,15 @@ NOT_REMOTE_RE = [
     re.compile(r"#\s*LI\s*[-_]?\s*hybrid\b", re.I),
     re.compile(r"\b(?:required|expected|must)\b[^.]{0,30}\bwork(?:ing)? (?:from|at|in) (?:a |an |our |the )?(?:[\w-]+\s){0,3}?(?:office|hq|headquarters)\b[^.]{0,40}\b(?:\d|one|two|three|four|five)\s*days?\s*(?:a|per|each|every)\s*(?:week|month)", re.I),
     re.compile(r"\bmust\s+(?:be\s+able\s+to\s+)?(?:work|be)\s+(?:on-?site|in\s+the\s+office)\b", re.I),
+    # "a minimum of three coordinated days in the office per week" (Brex, 15 listings published as remote, found 16 Nov 2026)
+    re.compile(r"\b(?:one|two|three|four|five|[1-5])\s+(?:[a-z]+\s+)?days?\s+(?:in|at)\s+(?:the|our|an?)\s+(?:[\w-]+\s)?(?:office|hq|headquarters)\s+(?:per|a|each|every)\s+week\b", re.I),
+    # "This role will be based in our Vancouver office" (same postings)
+    re.compile(r"\b(?:this|the)\s+(?:role|position|job)\s+(?:will\s+be|is)\s+based\s+(?:in|at|out\s+of)\s+(?:our|the|one\s+of\s+our)\s+(?:[\w.-]+\s+){0,3}?offices?\b", re.I),
 ]
+# The two patterns added on 25 Nov 2026 also need wording nearby that makes office time optional or one choice among
+# several ("up to two days", "... or remotely within the UK"); the older patterns keep their original behaviour.
+GUARDED_NOT_REMOTE = NOT_REMOTE_RE[-2:]
+OPTIONAL_OFFICE_RE = re.compile(r"\bup to\s*$|\boptional(?:ly)?\b|\bif you (?:wish|prefer|choose|live)\b|\bor (?:fully )?remote(?:ly)?\b|\bor work remotely\b", re.I)
 PAY_RANGE_RE = re.compile(r"(?:[$\u20ac\u00a3]\s?\d{2,3}(?:,\d{3})+(?:\.\d+)?|\b\d{2,3}(?:,\d{3})+\s*(?:USD|EUR|GBP))\s*(?:-|\u2013|\u2014|to)\s*(?:[$\u20ac\u00a3]\s?)?\d{2,3}(?:,\d{3})+", re.I)
 ESTIMATE_RE = re.compile(r"\b(?:estimat\w+|approx\w*|about|around|roughly)\b|~", re.I)
 EXCL_NOTE_RE = re.compile(r"cannot hire in:\s*(.+?)(?: and others)?\.?$", re.I)
@@ -137,7 +145,10 @@ def check_listing(rec, raw=None, now=None):
     if raw is not None and rec.get("workArrangement") in (C.FULLY_REMOTE, C.REMOTE_RESTRICTED):
         text = C.clean_text(raw.get("description", ""))
         for rx in NOT_REMOTE_RE:
-            m = rx.search(text)
+            m = next((m for m in rx.finditer(text)
+                      if rx not in GUARDED_NOT_REMOTE
+                      or not OPTIONAL_OFFICE_RE.search(text[max(0, m.start() - 12): m.start()])
+                      and not OPTIONAL_OFFICE_RE.search(re.split(r"\n|\.\s", text[m.end(): m.end() + 220], maxsplit=1)[0])), None)
             if m:
                 issues.append(_issue("says-not-remote-but-published-as-remote", BLOCK, text[max(0, m.start() - 60): m.end() + 60].replace("\n", " ")))
                 break
