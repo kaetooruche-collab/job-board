@@ -72,6 +72,29 @@ class ListingChecks(unittest.TestCase):
         raw = {"description": "We are a remote-first company with an optional office in Austin for team meetups.", "result": {}}
         self.assertNotIn("says-not-remote-but-published-as-remote", rules(Q.check_listing(rec(), raw, NOW)))
 
+    def test_office_days_per_week_with_a_word_between_is_held(self):
+        # Brex, 15 listings published as remote (found 16 Nov 2026)
+        raw = {"description": "We currently require a minimum of three coordinated days in the office per week, Monday, Wednesday and Thursday. As a perk, we also have up to four weeks per year of fully remote work!", "result": {}}
+        self.assertIn("says-not-remote-but-published-as-remote", rules(Q.check_listing(rec(), raw, NOW), Q.BLOCK))
+
+    def test_role_based_in_an_office_is_held_even_when_the_next_sentence_mentions_remote(self):
+        raw = {"description": "\U0001F4CD This role is based in our London office\n \u23F0 We offer flexible working hours. Fully remote teams elsewhere.", "result": {}}
+        self.assertIn("says-not-remote-but-published-as-remote", rules(Q.check_listing(rec(), raw, NOW), Q.BLOCK))
+
+    def test_role_based_in_an_office_is_held(self):
+        raw = {"description": "Where you'll work: This role will be based in our Vancouver office.", "result": {}}
+        self.assertIn("says-not-remote-but-published-as-remote", rules(Q.check_listing(rec(), raw, NOW), Q.BLOCK))
+
+    def test_optional_office_wording_is_not_flagged(self):
+        for d in ("You can come in up to two days in the office per week if you like.",
+                  "This role will be based in our London office or remotely anywhere in the UK.",
+                  "This role can be based in our Berlin office, optionally.",
+                  # Monzo, 25 Nov 2026: the remote option comes late in the same sentence
+                  "This role will be based out of our London office next to Liverpool Street station in a hybrid approach of office based and home working, or remotely within the UK \n We offer flexible hours."):
+            with self.subTest(d):
+                raw = {"description": d, "result": {}}
+                self.assertNotIn("says-not-remote-but-published-as-remote", rules(Q.check_listing(rec(), raw, NOW)))
+
     def test_estimated_pay_is_held(self):
         self.assertIn("salary-looks-estimated", rules(Q.check_listing(rec(salaryText="approx. USD 50,000"), None, NOW), Q.BLOCK))
 

@@ -1,0 +1,58 @@
+name: Discover and prune employer boards
+
+# Weekly: retire dead or empty boards and add new Greenhouse, Lever and Ashby boards from the Remote In Tech
+# directory (ISC licence), worldwide-hiring companies first. Rules and safety caps: scripts/discover_boards.py.
+# The next 6-hourly refresh picks up the new list; every listing still passes the classifier and QA.
+on:
+  schedule:
+    - cron: '35 2 * * 0'   # Sundays 02:35 UTC
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+  issues: write
+
+concurrency:
+  group: refresh-jobs        # never at the same time as a refresh (both write to main)
+  cancel-in-progress: false
+
+jobs:
+  discover:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+          cache: pip
+          cache-dependency-path: scripts/requirements.txt
+      - run: pip install -r scripts/requirements.txt
+      - name: Tests for the discovery rules
+        run: python -I -m unittest tests.test_discover_boards
+      - name: Get the Remote In Tech company directory
+        run: git clone --depth 1 https://github.com/remoteintech/remote-jobs "$RUNNER_TEMP/remote-jobs"
+      - name: Prune and discover
+        run: python -I scripts/discover_boards.py --remoteintech "$RUNNER_TEMP/remote-jobs" --max-probes 200 --max-adds 40
+      - name: Show the report
+        if: always()
+        run: cat data/discovery_report.md >> "$GITHUB_STEP_SUMMARY" || true
+      - name: Commit if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/boards.json data/board_discovery.json data/discovery_report.md
+          if git diff --cached --quiet; then echo "No changes"; else
+            git commit -m "chore: weekly board discovery $(date -u +%Y-%m-%d)"
+            for i in 1 2 3; do git pull --rebase origin main && git push && break; sleep 5; done
+          fi
+      - name: Alert (open or update the autopilot issue)
+        if: failure()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python -I scripts/gh_alert.py fail "${{ github.workflow }}" "discovery failed, open the run log"
+      - name: All clear
+        if: success()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python -I scripts/gh_alert.py ok "${{ github.workflow }}"
