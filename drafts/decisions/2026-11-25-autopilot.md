@@ -21,4 +21,7 @@ Status: DONE by Claude on KT's instruction of 25 Nov 2026 ("I want everything to
 ## How we know it works
 - 25 Nov: refresh dispatched after the fix and green; 1,036 listings published, 3.1% of links unreachable.
 - Tests: 220+ pass in full mode and in refresh mode. The health check reads the 18-25 Nov outage as RED in its tests.
-- Brex fix: regression fixture plus a QA rule; old versus new compared on every posting in the feeds (numbers in the pull request).
+- Brex fix: old versus new on all 20,251 postings in the feeds (0 errors): 173 Brex postings move from publish to review and nothing else in the classifier changes; QA newly holds 3 office-based roles (2 Monzo, 1 Spotify) and releases none. After the refresh, 2 Brex listings remain, both saying "This role will be fully remote".
+- Alerting proved itself on day one: the first discovery run failed (a test-step bug of mine), issue #66 opened automatically, the fix merged, the rerun passed, and the issue closed itself.
+- First discovery run: 200 candidates probed, 34 boards found, 15 added (all worldwide in the directory); after the next refresh 1,067 listings were live, 47 of them from the new employers.
+- Doctor test-fire: the scheduled session read the repository and ran the health check (data and live site green), but has no push or GitHub API access (`add_repo` unavailable in scheduled tasks). One-time KT action recorded in `drafts/kt-todo.md`.
