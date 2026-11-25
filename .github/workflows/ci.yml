@@ -1,0 +1,41 @@
+name: Tests
+
+# The full test suite, including the tests that read the live jobs.json. It runs on every code change and
+# once a day, so a test that new data breaks is caught within a day WITHOUT stopping the 6-hourly refresh
+# (which skips those tests; see fetch-jobs.yml). A failure opens the "Autopilot: Tests is failing" issue.
+on:
+  push:
+    branches: [main]
+  pull_request:
+  schedule:
+    - cron: '5 4 * * *'   # daily, 04:05 UTC
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+          cache: pip
+          cache-dependency-path: scripts/requirements.txt
+      - run: pip install -r scripts/requirements.txt
+      - name: Full test suite (Python, plus the Node tests it runs)
+        run: python -I -m unittest discover -s tests
+      - name: Alert (open or update the autopilot issue)
+        if: failure() && github.event_name != 'pull_request'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python -I scripts/gh_alert.py fail "${{ github.workflow }}" "a test failed, open the run log"
+      - name: All clear
+        if: success() && github.event_name != 'pull_request'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python -I scripts/gh_alert.py ok "${{ github.workflow }}"

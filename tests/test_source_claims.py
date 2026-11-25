@@ -30,7 +30,7 @@ class SourceClaims(unittest.TestCase):
         self.assertIn("original posting", (ROOT / "index.html").read_text(encoding="utf-8"))
         self.assertIn("id=\"where-from\"", (ROOT / "verify.html").read_text(encoding="utf-8"))
 
-    @unittest.skipIf(os.environ.get("GITHUB_WORKFLOW") == "Refresh job listings",
+    @unittest.skipIf(os.environ.get("YC_SKIP_LIVE_DATA") == "1",
                      "data-dependent: must never block a refresh; it is a tripwire for people changing sources")
     def test_the_sourcing_claim_matches_the_data(self):
         """If this fails, a source other than the three hiring systems was added: update the wording before shipping."""

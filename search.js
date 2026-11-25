@@ -75,9 +75,15 @@
     if (word.indexOf(term) === 0) return 1;
     var rt = cachedRoot(term), rw = cachedRoot(word);
     if (rt === rw) return 1;
-    if (rw.indexOf(rt) === 0 && rt.length >= 3) return 0.5;
+    if (rw.indexOf(rt) === 0 && rt.length >= 3 && ENDING.test(rw.slice(rt.length))) return 0.5;
     return 0;
   }
+
+  /* What may follow the shared root for a word to count as a longer form of the term: a real
+     English ending, nothing else. "manag" + "ement" is a form of "manager"; "market" + "place" is
+     a different word, not a form of "marketing" (regression 25 Nov 2026: "Product Manager
+     (marketplace)" was treated as half a marketing title). */
+  var ENDING = /^(e|ed|es|s|y|er|ers|or|ors|ing|ings|ment|ments|ement|ements|ion|ions|ation|ations|ance|ence|al|ally|ly|ity|ive|ist|ists)$/;
 
   function bestWeight(term, wordList) {
     var best = 0;
@@ -145,13 +151,24 @@
     return hits;
   }
 
-  /* Stable rank: higher score first, feed order (newest first) preserved on ties. */
+  /* Does the title alone answer every term? Those listings name the role the person typed. */
+  function titleAnswers(job, termList) {
+    var t = words(job.title);
+    for (var k = 0; k < termList.length; k++) if (!bestWeight(termList[k], t)) return false;
+    return true;
+  }
+
+  /* Stable rank in two tiers: listings whose title answers every term come first, always, so a
+     strong description or category can never push a real title match down the page (that rule
+     used to hold only as long as the scores happened to line up, and new data broke it on
+     18 Nov 2026). Within a tier: higher score first, feed order (newest first) on ties. */
   function rank(list, query) {
-    if (!termsOf(query).length) return list.slice();
+    var termList = termsOf(query);
+    if (!termList.length) return list.slice();
     var keyed = list.map(function (job, i) {
-      return { job: job, i: i, s: score(job, query) };
+      return { job: job, i: i, t: titleAnswers(job, termList) ? 1 : 0, s: score(job, query) };
     });
-    keyed.sort(function (a, b) { return b.s - a.s || a.i - b.i; });
+    keyed.sort(function (a, b) { return b.t - a.t || b.s - a.s || a.i - b.i; });
     return keyed.map(function (k) { return k.job; });
   }
 
