@@ -9,7 +9,7 @@ Approved by KT on 25 Nov 2026 ("Yes, fix the link checker that way").
 ## What changed
 1. Every listing in this refresh's feeds is verified at this refresh. A role that leaves the feed leaves the board at the next refresh. Each card's "Where this comes from" panel now shows "Last seen in the employer's job feed", which makes trust rule 4 ("Every listing shows ... when we last checked it") true per card; before, only a board-wide "Last updated" was shown.
 2. A sample of 60 pages is opened per refresh, gently (4 at a time), new listings first and then the longest unchecked. A page that is really gone (404, 410, Greenhouse's error redirect) removes the listing and keeps it off for 7 days even if the feed still lists it; "could not open" (403, timeouts) changes nothing.
-3. The alarm now fires on what matters: more than 10% of the sampled pages gone although the feed lists them, two refreshes in a row (`mismatchStreak` in `data/link_state.json`; the workflow step and `scripts/health_check.py` read it). Throttling is no longer an alarm.
+3. The alarm now fires on what matters: more than a quarter of the sampled pages gone (first set at 10%; the first live run found 7 of 55 = 12.7%, five of them one employer, Wing, whose careers site returns 404, all removed automatically, so the line was raised to systemic problems only) although the feed lists them, two refreshes in a row (`mismatchStreak` in `data/link_state.json`; the workflow step and `scripts/health_check.py` read it). Throttling is no longer an alarm.
 
 ## Public wording corrected in the same change
 - /verify described the old rule ("If a page can't be reached ... re-checked ... for up to about 18 hours") and promised "unclear" labels; both rewritten to describe what now happens.

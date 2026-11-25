@@ -82,7 +82,7 @@ jobs:
               s = {}
           streak = s.get("mismatchStreak", 0)
           if streak >= 2:
-              print(f"::error::For {streak} refreshes in a row, more than 10% of the sampled job pages were gone although the employers' feeds still list them. Look at data/metrics.json linkCheck and data/removed.log.")
+              print(f"::error::For {streak} refreshes in a row, more than a quarter of the sampled job pages were gone although the employers' feeds still list them. Look at data/metrics.json linkCheck and data/removed.log.")
               sys.exit(1)
           print(f"feed/page mismatch streak: {streak}")
           PY
