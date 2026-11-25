@@ -346,6 +346,10 @@ def fetch_jobicy():
 # the employer's own Greenhouse board said 23 Oct while the employer said 8 Oct (LaunchDarkly, "Director, People
 # Operations"). Our listing standard needs the original posting date. Turn back on only if a source of
 # truth for the date is found. Evidence: tests/fixtures/jobicy_dates.json. Backstop: qa_checks "source-date-not-original".
+# KT, 25 Nov 2026 ("Remote: not confirmed ... that's not what people want"): only jobs whose posting confirms they are
+# remote are published. Postings that mention remote only in general terms are held back (logged in data/removed.log).
+PUBLISH_REMOTE_UNCLEAR = False
+
 USE_JOBICY = False
 
 
@@ -434,6 +438,10 @@ def process(raw, removed, review, quiet=False):
                 "reason": why, "scores": res["scores"], "evidence": res["evidence"][:4],
                 "unresolved": res["unresolvedQuestions"], "source": j["source"],
             })
+            continue
+        if res["workArrangement"] == C.REMOTE_UNCLEAR and not PUBLISH_REMOTE_UNCLEAR:
+            drops["held: remote not confirmed by the posting"] += 1
+            removed.append(f"remote not confirmed | {tag}")
             continue
         j["result"] = res
         keep.append(j)

@@ -566,6 +566,9 @@
     .pill-world { background: var(--green-light); color: var(--green); }
     .pill-region { background: var(--accent-light); color: var(--accent); }
     .pill-unsure { background: var(--new-bg); color: var(--new-text); }
+    .pill-quiet { background: var(--tag-bg); color: var(--text-secondary); font-weight: 500; }
+    .job-heads { font-size: 0.8rem; line-height: 1.5; color: var(--text-secondary); margin-bottom: var(--block-gap); }
+    .link-btn { background: none; border: 0; padding: 0; color: var(--accent); font: inherit; text-decoration: underline; cursor: pointer; }
     .job-card .job-title a { color: inherit; text-decoration: none; }
     .job-card .job-title a:hover { color: var(--accent); text-decoration: underline; }
     .job-card .job-title a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 3px; }
@@ -591,6 +594,7 @@
     .job-why summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 3px; }
     .job-why ul { margin: 0.4rem 0 0 1.1rem; display: grid; gap: 0.3rem; line-height: 1.5; }
     .job-why .why-head { font-weight: 700; color: var(--text); margin-top: 0.6rem; }
+    .job-why .why-foot { margin-top: 0.6rem; color: var(--text-secondary); }
     /* Compact explanatory note: kept visible, but no longer the loudest thing on the card */
     .job-unsure {
       font-size: 0.8rem; line-height: 1.55; color: var(--note-text);
@@ -973,6 +977,7 @@
   </style>
   <script src="site-config.js"></script>
   <script src="search.js"></script>
+  <script src="card-text.js"></script>
   <script src="site-forms.js"></script>
 </head>
 <body>
@@ -1012,7 +1017,7 @@
     <!-- DISCLAIMER -->
     <details class="disclaimer">
       <summary><strong>How these listings work</strong> &mdash; always check the employer&rsquo;s eligibility rules for your location before applying.</summary>
-      <p class="disclaimer-body">Every card links to the original posting on the company&rsquo;s hiring page, shows its real posting date, and says where applicants can be based &mdash; or &ldquo;unclear&rdquo; when the employer doesn&rsquo;t. The &ldquo;Get a CV for this role&rdquo; button is our own paid CV service, not part of the employer&rsquo;s application.</p>
+      <p class="disclaimer-body">Every card links to the original posting on the company&rsquo;s hiring page, shows its real posting date, and says where applicants can be based &mdash; or &ldquo;not specified&rdquo; when the employer doesn&rsquo;t. The &ldquo;Get a CV for this role&rdquo; button is our own paid CV service, not part of the employer&rsquo;s application.</p>
     </details>
 
     <!-- SERVICES: above the listings, so the paid offer is reachable without scrolling past every job -->
@@ -1107,8 +1112,7 @@
           </div>
         </div>
         <div class="check-row">
-          <label><input type="checkbox" id="f-confirmed"> Confirmed remote only</label>
-          <label><input type="checkbox" id="f-stated"> Only listings that say who can apply</label>
+          <label><input type="checkbox" id="f-stated"> Only jobs that say where you can apply from</label>
           <button type="button" class="link-btn" id="f-reset">Clear filters</button>
         </div>
       </details>
@@ -1263,7 +1267,7 @@
     var geoLexicon = null;
     var loadFailed = false;
     var baseQuery = null; /* campaign/foreign params preserved when filters rewrite the URL */
-    var state = { category: 'all', query: '', level: '', country: '', type: '', posted: '', confirmed: false, stated: false, years: '', salary: '', minsal: '', currency: 'USD', shown: 40 };
+    var state = { unspec: '', category: 'all', query: '', level: '', country: '', type: '', posted: '', confirmed: false, stated: false, years: '', salary: '', minsal: '', currency: 'USD', shown: 40 };
     var PAGE_SIZE = 40;
 
     /* The nine fields the guided finder offers first, plus anything else in the data */
@@ -1335,7 +1339,7 @@
       try {
         var res = await fetch('./jobs.json');
         if (!res.ok) throw new Error('HTTP ' + res.status);
-        allJobs = await res.json();
+        allJobs = (await res.json()).filter(function (j) { return j.workArrangement !== 'remote_unclear'; });
       } catch (err) { allJobs = []; loadFailed = true; }
       document.getElementById('total-jobs').textContent = loadFailed ? '\u2014' : allJobs.length;
       document.getElementById('total-companies').textContent = loadFailed ? '\u2014' : new Set(allJobs.map(function(j) { return j.company; })).size;
@@ -1425,7 +1429,6 @@
       document.getElementById('f-salary').value = state.salary;
       document.getElementById('f-minsal').value = state.minsal;
       document.getElementById('f-currency').value = state.currency;
-      document.getElementById('f-confirmed').checked = state.confirmed;
       document.getElementById('f-stated').checked = state.stated;
       syncLevelUI();
       syncCategoryUI();
@@ -1548,8 +1551,12 @@
         });
       });
       document.getElementById('f-level').addEventListener('change', syncLevelUI);
-      document.getElementById('f-confirmed').addEventListener('change', function(e) { state.confirmed = e.target.checked; resetAndRender(); });
       document.getElementById('f-stated').addEventListener('change', function(e) { state.stated = e.target.checked; resetAndRender(); });
+      /* "Show N more that don't say where you can apply from" under a country filter */
+      document.getElementById('job-count').addEventListener('click', function (e) {
+        var id = e.target && e.target.id;
+        if (id === 'show-unspec' || id === 'hide-unspec') { state.unspec = id === 'show-unspec' ? state.country : ''; resetAndRender(); }
+      });
       document.getElementById('f-reset').addEventListener('click', resetAll);      document.getElementById('active-filters').addEventListener('click', function (e) {
         var btn = e.target.closest('[data-clear]');
         if (btn) clearFilter(btn.getAttribute('data-clear'));
@@ -1615,7 +1622,7 @@
 
     function resetAll() {
       trackEvent('filters-cleared', 'clear all');
-      state = { category: 'all', query: '', level: '', country: '', type: '', posted: '', confirmed: false, stated: false, years: '', salary: '', minsal: '', currency: 'USD', shown: PAGE_SIZE };
+      state = { unspec: '', category: 'all', query: '', level: '', country: '', type: '', posted: '', confirmed: false, stated: false, years: '', salary: '', minsal: '', currency: 'USD', shown: PAGE_SIZE };
       document.getElementById('search-input').value = '';
       ['f-level', 'f-country', 'f-type', 'f-posted', 'f-years', 'f-salary', 'f-minsal'].forEach(function (id) { document.getElementById(id).value = ''; });
       document.getElementById('f-currency').value = 'USD';
@@ -1637,7 +1644,7 @@
       if (state.type) out.push({ key: 'type', label: 'Type: ' + state.type });
       if (state.posted) out.push({ key: 'posted', label: 'Posted: last ' + state.posted + ' days' });
       if (state.confirmed) out.push({ key: 'confirmed', label: 'Confirmed remote only' });
-      if (state.stated) out.push({ key: 'stated', label: 'Says who can apply' });
+      if (state.stated) out.push({ key: 'stated', label: 'Says where you can apply from' });
       if (state.years) out.push({ key: 'years', label: 'Experience asked: ' + YEARS_FILTER_NAME[state.years] });
       if (state.salary === 'yes') out.push({ key: 'salary', label: 'Pay stated' });
       if (state.minsal) out.push({ key: 'minsal', label: 'Min ~' + state.currency + ' ' + Number(state.minsal).toLocaleString() });
@@ -1666,7 +1673,7 @@
       else if (key === 'level') { state.level = ''; syncLevelUI(); trackEvent('filter-level', 'any'); }
       else if (key === 'country') { state.country = ''; document.getElementById('f-country').value = ''; trackEvent('filter-country', 'any'); }
       else if (key === 'query') { state.query = ''; document.getElementById('search-input').value = ''; }
-      else if (key === 'confirmed') { state.confirmed = false; document.getElementById('f-confirmed').checked = false; }
+      else if (key === 'confirmed') { state.confirmed = false; }
       else if (key === 'stated') { state.stated = false; document.getElementById('f-stated').checked = false; }
       else if (key === 'years') { state.years = ''; document.getElementById('f-years').value = ''; }
       else if (key === 'salary') { state.salary = ''; document.getElementById('f-salary').value = ''; }
@@ -1691,7 +1698,7 @@
           return reg ? reg.members.indexOf(country) !== -1 : true;
         });
       }
-      return true;
+      return state.unspec === country;   /* the employer does not say: shown only when the reader asks, for this country (KT, 25 Nov 2026) */
     }
 
     function levelMatch(j) {
@@ -1774,7 +1781,9 @@
       return hi >= Number(state.minsal);
     }
 
+    var hiddenUnspecified = 0;
     function applyFilters() {
+      hiddenUnspecified = 0;
       var cutoff = state.posted ? Date.now() - Number(state.posted) * 86400000 : 0;
       var out = allJobs.filter(function (j) {
         if (state.category !== 'all' && (j.categories || [j.category]).indexOf(state.category) === -1) return false;
@@ -1785,8 +1794,11 @@
         if (state.stated && (j.eligibility || {}).type === 'unclear') return false;
         if (!yearsMatch(j)) return false;
         if (!salaryMatch(j)) return false;
-        if (state.country && !matchesCountry(j, state.country)) return false;
         if (state.query && !YCSearch.matches(j, state.query)) return false;
+        if (state.country && !matchesCountry(j, state.country)) {
+          if ((j.eligibility || {}).type === 'unclear' && state.country !== '__worldwide') hiddenUnspecified++;
+          return false;
+        }
         return true;
       });
       /* Search results are ranked by relevance (title first), instead of raw feed order, so
@@ -1796,32 +1808,26 @@
     }
 
     function arrangementPill(job) {
-      if (job.workArrangement === 'remote_unclear' || job.classificationConfidence === 'low') {
-        return '<span class="pill pill-unsure" title="The listing does not clearly confirm the role is fully remote">' + ICONS.help + 'Remote: not confirmed</span>';
-      }
       return '<span class="pill pill-remote">' + ICONS.check + 'Remote</span>';
     }
 
     function eligibilityPill(job) {
       var el = job.eligibility || {};
-      var label = esc(el.label || 'Eligibility unclear');
+      var where = YCCard.applyFrom(job);
       if (el.type === 'worldwide') return '<span class="pill pill-world">' + ICONS.globe + 'Worldwide</span>';
-      if (el.type === 'unclear') return '<span class="pill pill-unsure" title="The employer does not say where applicants must live">' + ICONS.help + 'Eligibility unclear</span>';
+      if (!where) return '<span class="pill pill-quiet" title="The employer doesn\u2019t say where you can apply from. The posting may tell you more.">Location not specified</span>';
       var lead = (el.type === 'countries' || el.type === 'region') ? 'Apply from: ' : '';
-      return '<span class="pill pill-region" title="Applicants must meet this location requirement">' + ICONS.pin + lead + label + '</span>';
+      return '<span class="pill pill-region" title="Where the employer says you can apply from">' + ICONS.pin + lead + esc(where) + '</span>';
     }
 
     function whyBlock(job) {
-      var items = [];
-      (job.evidence || []).forEach(function(e) { items.push('<li><em>' + esc(e.signal) + ':</em> &ldquo;' + esc(e.text) + '&rdquo;</li>'); });
       var html = '';
-      if (job.regionAsStated) html += '<div class="why-head">Location as the employer states it</div><ul><li>' + esc(job.regionAsStated) + '</li></ul>';
-      if (items.length) html += '<div class="why-head">Why we labelled it this way</div><ul>' + items.join('') + '</ul>';
-      var notes = ((job.unresolvedQuestions || []).concat((job.eligibility || {}).notes || [])).filter(function(n, i, a) { return a.indexOf(n) === i; });
-      if (notes.length) html += '<div class="why-head">What we could not confirm</div><ul>' + notes.slice(0, 3).map(function(n) { return '<li>' + esc(n) + '</li>'; }).join('') + '</ul>';
-      if ((job.eligibility || {}).authorizationRequired) html += '<div class="why-head">Work authorisation</div><ul><li>The posting mentions work authorisation or visa rules. Check it before applying.</li></ul>';
+      if (job.regionAsStated) html += '<div class="why-head">The employer lists the location as</div><ul><li>' + esc(job.regionAsStated) + '</li></ul>';
+      var q = YCCard.quotes(job);
+      if (q.length) html += '<div class="why-head">From the posting</div><ul>' + q.map(function (t) { return '<li>&ldquo;' + esc(t) + '&rdquo;</li>'; }).join('') + '</ul>';
+      if (!YCCard.applyFrom(job)) html += '<p class="why-foot">The employer doesn&rsquo;t say where you can apply from. Check the posting before you apply.</p>';
       if (!html) return '';
-      return '<details class="job-why"><summary>Why this label?</summary>' + html + '</details>';
+      return '<details class="job-why"><summary>Where this comes from</summary>' + html + '</details>';
     }
 
     /* Three questions, applied as the ordinary filters afterwards: same state, same chips, same clearing */
@@ -1886,7 +1892,9 @@
     function renderJobs() {
       var filtered = applyFilters();
       var countEl = document.getElementById('job-count');        var totalNote = filtered.length < allJobs.length ? ' (' + allJobs.length.toLocaleString() + ' on the board)' : '';
-        countEl.innerHTML = 'Showing <strong>' + Math.min(state.shown, filtered.length).toLocaleString() + '</strong> of <strong>' + filtered.length.toLocaleString() + '</strong> matching jobs' + totalNote;
+        countEl.innerHTML = 'Showing <strong>' + Math.min(state.shown, filtered.length).toLocaleString() + '</strong> of <strong>' + filtered.length.toLocaleString() + '</strong> matching jobs' + totalNote
+          + (hiddenUnspecified ? ' <button type="button" class="link-btn" id="show-unspec">Show ' + hiddenUnspecified + ' more that don\u2019t say where you can apply from</button>' : '')
+          + (state.country && state.unspec === state.country ? ' <button type="button" class="link-btn" id="hide-unspec">Hide jobs that don\u2019t say where you can apply from</button>' : '');
       renderActiveFilters();
       var list = document.getElementById('job-list');
 
@@ -1903,8 +1911,8 @@
         var absolute = formatDate(posted);
         var salary = job.salaryText ? '<span class="job-salary">' + esc(job.salaryText) + '</span>' : '';
         var newBadge = isNew(job.firstSeenAt || job.postedAt) ? '<span class="badge-new">New</span>' : '';
-        var unsure = (job.workArrangement === 'remote_unclear' || job.classificationConfidence === 'low') && (job.unresolvedQuestions || []).length
-          ? '<div class="job-unsure">' + esc(job.unresolvedQuestions[0]) + '</div>' : '';
+        var heads = YCCard.heads(job);
+        var unsure = heads.length ? '<div class="job-heads">' + heads.map(esc).join(' &middot; ') + '</div>' : '';
         var postedRow = posted || newBadge
           ? '<div class="job-posted">' + newBadge + (posted
               ? '<span class="job-date">Posted <time datetime="' + esc(posted) + '" title="' + esc(absolute) + '">' + esc(timeAgo(posted)) + '</time></span>'
