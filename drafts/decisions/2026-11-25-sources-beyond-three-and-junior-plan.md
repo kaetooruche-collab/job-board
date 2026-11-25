@@ -29,16 +29,16 @@ Full table with quotes: `research/sources-2026-11/terms_findings.md`.
 - **New risk from growth (Established):** `jobs.json` is 1.9 MB for 1,067 listings and the home page loads all of it. About 3,000 listings would be about 5.5 MB. Growth needs a ceiling and a size alarm.
 
 ## 5. Plan and checklist (in order; each item has its acceptance test)
-- [ ] **A1. Doctor push access without KT.** Session with the repository attached; doctor schedule points at it; test-fire. *Accept:* `git push --dry-run` succeeds from the scheduled run. *Else:* keep KT's step in the to-do list.
-- [ ] **A2. Size alarm.** `health_check.py`: amber above 4 MB, red above 6 MB for `jobs.json`. *Accept:* tests.
-- [ ] **B1. Fix the thread-unsafe print silencing in `discover_boards.py`** (found during research: it can swallow output). *Accept:* a quiet flag on `fetch_jobs.process`; tests pass.
-- [ ] **B2. Early-career seeds in discovery.** The weekly workflow reads the SimplifyJobs lists, keeps only each link's hiring system and board name, and offers those boards first; the board name comes from the employer's own posting link, so it is the right company. The lists' content is never stored or shown. *Accept:* unit tests; a dry run finds boards.
-- [ ] **B3. Growth limits.** Weekly adds 40 → 100; discovery stops adding while 2,500 or more listings are live. *Accept:* tests.
-- [ ] **B4. Junior roles keep their place under the per-company limit.** Within an employer's 15, entry, junior and internship roles are kept first, then the newest. *Accept:* old versus new on the real feed: more junior roles live, total unchanged, nothing else lost.
-- [ ] **B5. One-time backfill run** (dispatch with larger limits), then a refresh. *Accept:* junior, entry and internship listings live rise from 86; QA report normal; `jobs.json` under 4 MB.
-- [ ] **C1. Recruitee and Personio readers, switched OFF.** Built, tested on real boards, held behind `ENABLED_SYSTEMS` until KT approves the `/verify` wording. *Accept:* unit tests; old versus new shows zero change while off.
-- [ ] **C2. Workable test from GitHub's servers** (a manual workflow that reads 5 boards and reports the status codes). *Accept:* the report decides whether a Workable reader is worth building.
-- [ ] **D. Records.** Update `drafts/operations/autopilot.md`, `drafts/kt-todo.md` and CLAUDE.md's sourcing facts.
+- [x] **A1. Doctor push access without KT.** Session with the repository attached; doctor schedule points at it; test-fire. *Accept:* `git push --dry-run` succeeds from the scheduled run. *Else:* keep KT's step in the to-do list.
+- [x] **A2. Size alarm.** `health_check.py`: amber above 4 MB, red above 6 MB for `jobs.json`. *Accept:* tests.
+- [x] **B1. Fix the thread-unsafe print silencing in `discover_boards.py`** (found during research: it can swallow output). *Accept:* a quiet flag on `fetch_jobs.process`; tests pass.
+- [x] **B2. Early-career seeds in discovery.** The weekly workflow reads the SimplifyJobs lists, keeps only each link's hiring system and board name, and offers those boards first; the board name comes from the employer's own posting link, so it is the right company. The lists' content is never stored or shown. *Accept:* unit tests; a dry run finds boards.
+- [x] **B3. Growth limits.** Weekly adds 40 → 100; discovery stops adding while 2,500 or more listings are live. *Accept:* tests.
+- [x] **B4. Junior roles keep their place under the per-company limit.** Within an employer's 15, entry, junior and internship roles are kept first, then the newest. *Accept:* old versus new on the real feed: more junior roles live, total unchanged, nothing else lost.
+- [x] **B5. One-time backfill run** (dispatch with larger limits), then a refresh. *Accept:* junior, entry and internship listings live rise from 86; QA report normal; `jobs.json` under 4 MB.
+- [x] **C1. Recruitee and Personio readers, switched OFF.** Built, tested on real boards, held behind `ENABLED_SYSTEMS` until KT approves the `/verify` wording. *Accept:* unit tests; old versus new shows zero change while off.
+- [x] **C2. Workable test from GitHub's servers** (a manual workflow that reads 5 boards and reports the status codes). *Accept:* the report decides whether a Workable reader is worth building.
+- [x] **D. Records.** Update `drafts/operations/autopilot.md`, `drafts/kt-todo.md` and CLAUDE.md's sourcing facts.
 
 ## 6. Needs KT (nothing below is done without a yes)
 1. **Switch on Recruitee and Personio** (and Workable if C2 passes). The `/verify` sentence would change. Options:
@@ -47,3 +47,10 @@ Full table with quotes: `research/sources-2026-11/terms_findings.md`.
    - (c) Keep today's sentence and stay on three systems.
    Recommendation: (b). It stays true as systems are added, names the main ones, and keeps "we don't copy from other job boards", which is still true. The home page's "(usually Greenhouse, Lever or Ashby)" stays true either way.
 2. **ReliefWeb app name** (humanitarian jobs, some home-based): only worth it if KT wants that niche.
+
+## 7. Results (25 Nov 2026, measured)
+- **A1 done:** the daily doctor now fires into a session created with the repository attached (`session_01Q41EjsB4isNkvh3EEkLuzg`, task `trig_011hHpCZybQaZ36opVhTANdF`); its test push (dry run) and `gh api` both worked. The KT step is no longer needed. The old task was deleted.
+- **B4 old vs new (real feed):** early-career listings kept 87 → 144, total unchanged at 1,131; 57 swaps at 21 employers.
+- **B5 backfill:** 600 candidates probed, 447 boards found, 150 added (131 from the early-career lists, 19 worldwide-hiring directory companies). After the next refresh: **junior, entry and internship listings live 86 → 158**; listings 1,076 → 1,190; employers 176 → 270; `jobs.json` 2.15 MB; QA held 10, warnings 9; no autopilot issue open. 183 new listings were held until their links pass the check (link checker 20.8% unreachable after many runs today), so more appear over the next refreshes.
+- **Not improved:** worldwide listings (16 → 15). Early-career employers hire mostly within one country. The worldwide gap needs employers who hire worldwide, which the directory route keeps adding at about 1 in 15 probes.
+- **C2 Workable from GitHub's runner:** HTTP 200 on 5 of 5 boards, with `published_on` dates. A Workable reader is feasible. One caution from the test: the busiest board ("huzzle", 2,124 jobs) is a talent marketplace relaying other companies' jobs. A Workable reader needs a check that rejects agencies and marketplaces before it ships. Next step after KT's decision in section 6.

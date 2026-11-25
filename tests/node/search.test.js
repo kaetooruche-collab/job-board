@@ -129,7 +129,9 @@ test('a query with no real roles never shows a listing that claims that role', L
   // match, not a fabricated one.
   const inTitle = (x, q) => S.matches({ title: x.title, categories: [], eligibility: {} }, q);
   // a real inflection of the same word is an honest match too ("Nurse" for "nursing")
-  const FORMS = { nursing: 'nurs(?:e|es|ing)' };
+  // (25 Nov 2026: a "Translation & Localization Specialist" arrived with new employers; translation is the
+  // same word family as translator, the way nurse is for nursing. "booking" for "bookkeeper" stays forbidden.)
+  const FORMS = { nursing: 'nurs(?:e|es|ing)', translator: 'translat(?:or|ors|ion|ions|ing)' };
   const literal = (x, q) => new RegExp('\\b' + (FORMS[q] || q.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + 's?') + '\\b', 'i').test(x.title);
   for (const q of ['translator', 'nursing', 'bookkeeper']) {
     const hits = jobs.filter((x) => S.matches(x, q));
@@ -161,4 +163,9 @@ test('a title that answers every term always outranks one that does not, whateve
     categories: ['Marketing & Communications'], description: 'marketing manager marketing manager' });
   const ranked = S.rank([loaded, titled], 'marketing manager');
   assert.strictEqual(ranked[0], titled);
+});
+
+test('word families are honest matches, unrelated words are not (fixture)', () => {
+  assert.ok(S.matches(j({ title: 'Translation & Localization Specialist' }), 'translator'));
+  assert.ok(!S.matches(j({ title: 'Booking Coordinator' }), 'bookkeeper'));
 });
