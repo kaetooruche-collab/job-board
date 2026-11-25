@@ -29,7 +29,7 @@ jobs:
           cache-dependency-path: scripts/requirements.txt
       - run: pip install -r scripts/requirements.txt
       - name: Tests for the discovery rules
-        run: python -I -m unittest tests.test_discover_boards
+        run: python -I -m unittest discover -s tests -p test_discover_boards.py
       - name: Get the Remote In Tech company directory
         run: git clone --depth 1 https://github.com/remoteintech/remote-jobs "$RUNNER_TEMP/remote-jobs"
       - name: Prune and discover
