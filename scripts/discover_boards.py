@@ -25,8 +25,6 @@ are never added back. Every listing from a new board still passes the classifier
     python3 scripts/discover_boards.py --remoteintech /path/to/remote-jobs [--max-probes 200] [--max-adds 40] [--dry-run]
 """
 import argparse
-import contextlib
-import io
 import json
 import re
 import sys
@@ -50,6 +48,11 @@ MAX_RETIRE_PER_RUN = 15
 OUTAGE_SHARE = 0.30
 REPROBE_DAYS = 90
 MIN_PUBLISHABLE = 1
+MAX_LIVE_LISTINGS = 2500   # stop adding boards while this many listings are live (jobs.json size on phones)
+EARLY_CAREER_LISTS = [     # SimplifyJobs public lists: used ONLY to learn which employer boards hire early-career people
+    "https://raw.githubusercontent.com/SimplifyJobs/New-Grad-Positions/dev/.github/scripts/listings.json",
+    "https://raw.githubusercontent.com/SimplifyJobs/Summer2026-Internships/dev/.github/scripts/listings.json",
+]
 
 ATS_URL_RE = [
     ("greenhouse", re.compile(r"(?:boards|job-boards)(?:\.eu)?\.greenhouse\.io/(?:embed/job_board\?for=)?([A-Za-z0-9_-]+)", re.I)),
@@ -121,10 +124,34 @@ def same_company(a, b):
 
 
 def priority(entry):
-    """Lower sorts first: worldwide before regional, fully remote before remote-friendly."""
+    """Lower sorts first: worldwide directory companies (the board's biggest gap), then early-career employers
+    (the best yield per probe: 38 of 138 sampled boards had a publishable listing, 25 Nov 2026), then the rest;
+    within a group, fully remote before remote-friendly."""
     region = (entry.get("region") or "").lower()
     policy = (entry.get("remote_policy") or "").lower()
-    return (0 if "worldwide" in region else 1, 0 if "fully" in policy else 1, norm(entry.get("title")))
+    group = 0 if "worldwide" in region else 1 if entry.get("origin") == "early-career list" else 2
+    return (group, 0 if "fully" in policy else 1, norm(entry.get("title")))
+
+
+def probe_key(entry):
+    known = entry.get("known")
+    return f"{known[0]}/{known[1].lower()}" if known else norm(entry.get("title"))
+
+
+def early_career_seeds(lists):
+    """(company, hiring system, board name) from each listing's own link. Nothing else from the lists is kept,
+    stored or shown: they are a pointer to employers, and every listing comes from the employer's own feed."""
+    out, seen = [], set()
+    for rows in lists:
+        for x in rows or []:
+            found = ats_from_url(x.get("url"))
+            if not found or found[0] not in KINDS or not x.get("company_name"):
+                continue
+            key = (found[0], found[1].lower())
+            if key not in seen:
+                seen.add(key)
+                out.append({"title": x["company_name"], "known": key, "origin": "early-career list"})
+    return out
 
 
 def update_health(rec, status, publishable):
@@ -195,8 +222,9 @@ def board_items(kind, board):
 def publishable_count(items):
     """How many of these raw postings the real pipeline would publish today (before the per-company cap)."""
     import fetch_jobs as F
-    with contextlib.redirect_stdout(io.StringIO()):
-        return len(F.process(list(items), [], []))
+    # quiet=True, not contextlib.redirect_stdout: redirecting swaps sys.stdout for the whole process, so inside
+    # the thread pool it raced and swallowed other threads' output (found 25 Nov 2026)
+    return len(F.process(list(items), [], [], quiet=True))
 
 
 def read_board(kind, board, get=http_get):
@@ -238,6 +266,10 @@ def load_json(path, default):
 
 def identify(entry, get=http_get, items_fn=board_items):
     """Find the entry's board. Returns (kind, slug, company_name, how) or None."""
+    if entry.get("known"):  # the board name came from one of the employer's own posting links
+        kind, slug = entry["known"]
+        status, name = probe(kind, slug, get)
+        return (kind, slug, name or entry["title"], "early-career list link") if status == "ok" else None
     stated = ats_from_url(entry.get("careers_url")) or ats_from_url(entry.get("website"))
     if stated:
         kind, slug = stated
@@ -270,7 +302,9 @@ def main(argv=None):
     ap = argparse.ArgumentParser()
     ap.add_argument("--remoteintech", help="path to a clone of remoteintech/remote-jobs")
     ap.add_argument("--max-probes", type=int, default=200)
-    ap.add_argument("--max-adds", type=int, default=40)
+    ap.add_argument("--max-adds", type=int, default=100)
+    ap.add_argument("--max-live", type=int, default=MAX_LIVE_LISTINGS)
+    ap.add_argument("--early-career", action="store_true", help="also take employers from the early-career lists")
     ap.add_argument("--skip-prune", action="store_true")
     ap.add_argument("--dry-run", action="store_true")
     a = ap.parse_args(argv)
@@ -317,9 +351,26 @@ def main(argv=None):
     retired_keys = {f"{r['kind']}/{r['slug'].lower()}" for r in state["retired"]
                     if (today - datetime.fromisoformat(r["at"]).date()).days < REPROBE_DAYS}
     cands = load_remoteintech(a.remoteintech) + [dict(c, origin="board_candidates.json") for c in load_json(CANDIDATES, {"companies": []}).get("companies", [])]
-    cands = [c for c in cands if norm(c["title"]) not in have_names and norm(c["title"]) not in blocked_names]
+    if a.early_career:
+        lists = []
+        for u in EARLY_CAREER_LISTS:
+            try:
+                lists.append(http_get(u, timeout=60).json())
+            except Exception as e:  # a missing list must not stop the run
+                lines.append(f"- Early-career list unavailable ({u.rsplit('/', 5)[1]}): {type(e).__name__}")
+        cands += early_career_seeds(lists)
+    cands = [c for c in cands if norm(c["title"]) not in have_names and norm(c["title"]) not in blocked_names
+             and not (c.get("known") and f"{c['known'][0]}/{c['known'][1]}" in have_boards)]
     cands.sort(key=priority)
-    todo = [c for c in cands if due_for_probe(state, norm(c["title"]), today)][: a.max_probes]
+    todo = [c for c in cands if due_for_probe(state, probe_key(c), today)][: a.max_probes]
+    try:
+        live = len(json.loads((ROOT / "jobs.json").read_text(encoding="utf-8")))
+    except (OSError, ValueError):
+        live = 0
+    room = a.max_adds if live < a.max_live else 0
+    if not room:
+        todo = []
+        lines.append(f"- {live} listings are live (limit {a.max_live}): no boards added this run, only pruning.")
 
     def check(c):
         found = identify(c)
@@ -336,8 +387,8 @@ def main(argv=None):
         checked = list(ex.map(check, todo))
     added = []
     for c, found, pub in checked:
-        state["probed"][norm(c["title"])] = {"at": today.isoformat(), "found": f"{found[0]}/{found[1]}" if found else None, "publishable": pub}
-        if found and pub >= MIN_PUBLISHABLE and len(added) < a.max_adds:
+        state["probed"][probe_key(c)] = {"at": today.isoformat(), "found": f"{found[0]}/{found[1]}" if found else None, "publishable": pub}
+        if found and pub >= MIN_PUBLISHABLE and len(added) < room:
             kind, slug, name, how = found
             if f"{kind}/{slug.lower()}" in have_boards:
                 continue
@@ -347,7 +398,7 @@ def main(argv=None):
             state["added"].append({"kind": kind, "slug": slug, "company": name, "at": today.isoformat(), "how": how, "publishable": pub, "origin": c["origin"]})
     found_n = sum(1 for _, f, _ in checked if f)
     lines += [f"## Discovery", f"- Candidates not yet on the board: {len(cands)}; probed this run: {len(todo)}; board found: {found_n}; added: {len(added)}."]
-    lines += [f"  - {n} ({k}/{s}): {p} publishable now, found by {h}, region in directory: {r or 'not stated'}" for k, s, n, h, p, r, _ in added]
+    lines += [f"  - {n} ({k}/{s}): {p} publishable now, found by {h}" + (f", region in directory: {r}" if r else "") for k, s, n, h, p, r, _ in added]
     lines.append("")
     lines.append("Every listing from an added board still passes the classifier and the QA rules before it is shown. "
                  "To remove a company for good, add it to data/board_blocklist.json.")

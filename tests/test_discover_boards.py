@@ -95,6 +95,27 @@ class Discovery(unittest.TestCase):
         self.assertIsNone(D.identify(entry, get=lever_only, items_fn=lambda k, b: [{"description": "Join Acme"}]))
         self.assertEqual(D.identify(entry, get=lever_only, items_fn=lambda k, b: [{"description": "<p>At Doist we</p>"}])[0], "lever")
 
+    def test_early_career_seeds_keep_only_the_employer_board(self):
+        rows = [{"company_name": "RainFocus", "title": "Junior UI Developer", "locations": ["Remote in USA"],
+                 "url": "https://jobs.lever.co/rainfocus/ae4ee26f-6b97-4e15-9072-433d92a82798/apply"},
+                {"company_name": "RainFocus", "title": "Intern", "url": "https://jobs.lever.co/rainfocus/123/apply"},
+                {"company_name": "Lumerate", "title": "Intern", "url": "https://lumerate.breezy.hr/p/baf2283496ad/apply"},
+                {"company_name": "Acme", "title": "Grad", "url": "https://acme.com/careers/1"}]
+        seeds = D.early_career_seeds([rows])
+        self.assertEqual(seeds, [{"title": "RainFocus", "known": ("lever", "rainfocus"), "origin": "early-career list"}],
+                         "one entry per board, systems that are off are ignored, and nothing else from the list is kept")
+
+    def test_a_known_board_is_used_as_is(self):
+        entry = {"title": "RainFocus", "known": ("lever", "rainfocus"), "origin": "early-career list"}
+        found = D.identify(entry, get=lambda u: Resp(200, []) if "lever" in u else Resp(404))
+        self.assertEqual(found, ("lever", "rainfocus", "RainFocus", "early-career list link"))
+        self.assertIsNone(D.identify(entry, get=lambda u: Resp(404)))
+        self.assertEqual(D.probe_key(entry), "lever/rainfocus")
+
+    def test_order_worldwide_then_early_career_then_rest(self):
+        es = [{"title": "C", "region": "europe"}, {"title": "B", "origin": "early-career list"}, {"title": "A", "region": "worldwide"}]
+        self.assertEqual([e["title"] for e in sorted(es, key=D.priority)], ["A", "B", "C"])
+
     def test_probe_window(self):
         st = {"probed": {"doist": {"at": "2026-10-01"}}}
         self.assertFalse(D.due_for_probe(st, "doist", date(2026, 11, 25)))

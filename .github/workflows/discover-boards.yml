@@ -6,7 +6,14 @@ name: Discover and prune employer boards
 on:
   schedule:
     - cron: '35 2 * * 0'   # Sundays 02:35 UTC
-  workflow_dispatch: {}
+  workflow_dispatch:
+    inputs:
+      max_probes:
+        description: 'Candidates to probe this run (weekly default 300)'
+        default: '300'
+      max_adds:
+        description: 'Boards to add at most (weekly default 100)'
+        default: '100'
 
 permissions:
   contents: write
@@ -33,7 +40,8 @@ jobs:
       - name: Get the Remote In Tech company directory
         run: git clone --depth 1 https://github.com/remoteintech/remote-jobs "$RUNNER_TEMP/remote-jobs"
       - name: Prune and discover
-        run: python -I scripts/discover_boards.py --remoteintech "$RUNNER_TEMP/remote-jobs" --max-probes 200 --max-adds 40
+        # early-career employers come from the SimplifyJobs lists (only the employer board in each link is used)
+        run: python -I scripts/discover_boards.py --remoteintech "$RUNNER_TEMP/remote-jobs" --early-career --max-probes "${{ inputs.max_probes || '300' }}" --max-adds "${{ inputs.max_adds || '100' }}"
       - name: Show the report
         if: always()
         run: cat data/discovery_report.md >> "$GITHUB_STEP_SUMMARY" || true

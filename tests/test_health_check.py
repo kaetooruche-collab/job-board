@@ -33,6 +33,11 @@ class Health(unittest.TestCase):
         self.assertEqual(H.check_repo_activity("2026-10-20T00:00:00Z", NOW)[0], H.AMBER)
         self.assertEqual(H.check_repo_activity("2026-09-01T00:00:00Z", NOW)[0], H.RED)
 
+    def test_listings_file_size(self):
+        self.assertEqual(H.check_feed_size(1_947_517)[0], H.GREEN)
+        self.assertEqual(H.check_feed_size(4_500_000)[0], H.AMBER)
+        self.assertEqual(H.check_feed_size(6_500_000)[0], H.RED)
+
     def test_overall_is_the_worst_check(self):
         self.assertEqual(H.overall([("a", H.GREEN, ""), ("b", H.AMBER, ""), ("c", H.RED, "")]), H.RED)
         self.assertEqual(H.overall([]), H.GREEN)
