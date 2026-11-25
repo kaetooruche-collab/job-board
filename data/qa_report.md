@@ -1,8 +1,8 @@
-# Quality report, 2026-11-25T19:43+00:00
+# Quality report, 2026-11-25T21:37+00:00
 
-- Published: **1769**
+- Published: **1765**
 - Held back by a quality rule (not published): **13**
-- Warnings (published, but look): **14**
+- Warnings (published, but look): **12**
 
 ## Held back
 
@@ -20,7 +20,7 @@
 
 ## Warnings
 
-### pay-in-posting-but-card-says-not-stated (13)
+### pay-in-posting-but-card-says-not-stated (11)
 - Demand Generation & Campaign Operations Manager at Spotify: $102,981.00-$147,116
 - Senior Software Engineer, Back-end (Fraud) at Affirm: $32,000-$48,000
 - Manager, Business Technology at Webflow: 170,800 USD - 205,000
@@ -33,9 +33,9 @@
 ## Shape of the feed
 
 ```
-count: 1769
-bySource: {'Greenhouse': 844, 'Ashby': 699, 'Lever': 225, 'Recruitee': 1}
-pctEligibilityUnclear: 14.2
+count: 1765
+bySource: {'Ashby': 699, 'Greenhouse': 839, 'Lever': 226, 'Recruitee': 1}
+pctEligibilityUnclear: 14.3
 pctRemoteUnclear: 0.0
 pctWorldwide: 1.1
 pctEarlyCareer: 10.9
