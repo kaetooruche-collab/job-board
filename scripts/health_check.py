@@ -66,13 +66,15 @@ def check_volume(history, current):
 
 
 def check_link_state(state, metrics):
-    streak = state.get("degradedStreak", 0)
-    rate = (metrics.get("linkCheck") or {}).get("failRate")
-    if streak >= 4:
-        return RED, f"link checker blocked {streak} refreshes in a row"
-    if streak >= 2 or (rate is not None and rate > 0.12):
-        return AMBER, f"link checker: blocked streak {streak}, unreachable share {rate}"
-    return GREEN, f"link checker fine (unreachable share {rate})"
+    """Since 25 Nov 2026 the feed decides; only sampled pages that are really gone matter, not throttling."""
+    lc = metrics.get("linkCheck") or {}
+    streak = state.get("mismatchStreak", 0)
+    share = lc.get("deadShare")
+    if streak >= 2:
+        return RED, f"sampled pages gone although the feed lists them, {streak} runs in a row (share {share})"
+    if streak == 1:
+        return AMBER, f"one run with many sampled pages gone (share {share})"
+    return GREEN, f"feed-checked; sampled pages gone: {share if share is not None else 'n/a'}"
 
 
 def check_workflow(name, overdue_h, wf_state, last_run, now):

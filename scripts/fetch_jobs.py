@@ -601,13 +601,13 @@ def main():
     before = len(keep)
     keep, link_stats, link_state = L.check_links(keep, S, link_state, load_published(), removed)
     dead = before - len(keep)
-    print(f"  Links: {link_stats['alive']} open, {link_stats['dead']} gone, {link_stats['unknown']} could not be checked "
-          f"(fail rate {link_stats['failRate']:.1%}, normal about {(link_stats['baselineRate'] or 0):.1%}); "
-          f"{link_stats['firstPassUnknown']} were unreachable on the first pass, {link_stats['recoveredOnRetry']} opened on the gentle second pass")
-    print(f"  Published {len(keep)}; removed {dead}; kept on an older check {link_stats['carriedOnOldCheck']}; new but unchecked, held {link_stats['newHeldUntilChecked']}")
-    if link_stats["degraded"]:
-        print(f"::warning::Link checker looks blocked this run ({link_stats['failRate']:.0%} of links failed, normal is about {(link_stats['baselineRate'] or 0):.0%}). "
-              f"Nothing was dropped for a failed check. Run {link_stats['degradedStreak']} of {L.MAX_DEGRADED_RUNS} before the workflow fails.")
+    print(f"  Links: all {link_stats['inFeed']} listings are in their employers' live feeds; pages opened as a sample: "
+          f"{link_stats['checked']} ({link_stats['alive']} open, {link_stats['dead']} gone, {link_stats['unknown']} could not be opened); "
+          f"{link_stats['droppedDead']} listings off the board because their page is gone")
+    print(f"  Published {len(keep)}")
+    if link_stats["mismatch"]:
+        print(f"::warning::{link_stats['dead']} of {link_stats['checked'] - link_stats['unknown']} sampled pages are gone although the feed lists them "
+              f"(run {link_stats['mismatchStreak']} of {L.MAX_MISMATCH_RUNS} before the workflow fails).")
 
     keep.sort(key=lambda x: x["posted"], reverse=True)
     keep = keep[:MAX_LISTINGS]

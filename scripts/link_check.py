@@ -1,24 +1,21 @@
-"""Link checking that tells "the page is gone" from "we could not check".
+"""Is each listing still open? The employer's live feed decides; a sample of pages is a second opinion.
 
-Why this exists (31 Oct 2026): one refresh run saw 229 apply links fail, against a normal 34 to 50, and removed
-208 open Greenhouse jobs from the board for about four hours. The old checker treated every timeout, 403, 429 and 5xx
-as a dead link, and the only safety net (stop the run if listings fall by more than 40%) did not fire at 20%.
-The raw feed was unchanged (about 21,000 candidates), so the jobs were open; only our checker was being blocked.
+History. Until 25 Nov 2026 every apply page was opened at every refresh. Hiring-system pages throttle automated
+visitors (HTTP 403), so on busy days a quarter to a third of pages "could not be checked": on 25 Nov 375 new jobs
+were held back and 120 were kept on old checks, and the workflow went red. Yet a sample of 150 in-feed jobs opened
+by hand that day: 149 opened normally, 0 were gone, 0 said "closed" (the one exception blocks all automated visitors).
+Employers' hiring systems remove a role from the public feed when it closes, so the feed is the source of truth.
+KT approved checking this way on 25 Nov 2026 (decision: drafts/decisions/2026-11-25-feed-based-link-check.md).
 
 Rules now:
-1. Three verdicts. ALIVE (opens). DEAD (the page is definitely gone: 404, 410, or the "error=true" redirect Greenhouse
-   uses for a closed role). UNKNOWN (timeout, connection error, 401/403/429/5xx: we could not tell).
-2. Only DEAD removes a listing straight away. A listing that was published last run and comes back UNKNOWN is kept
-   for up to MAX_UNKNOWN_RUNS refreshes in a row (about 18 hours) and shows its real last-checked time.
-   A NEW listing that comes back UNKNOWN is simply not published yet; it is retried next run.
-3. Gentle second pass. Links that came back UNKNOWN are re-checked once, after a pause and with only a few at a time. On 1 Nov
-   every one of 46 "could not check" links sat on one host (job-boards.greenhouse.io) and 27 of 30 opened normally minutes later,
-   which points to a burst of 24 simultaneous requests being throttled, not to dead postings.
-4. Circuit breaker: if the share of failing links is far above normal (above DEGRADED_MIN_RATE and above
-   DEGRADED_MULTIPLE times the recent median), the checker is assumed blocked. Nothing published last run is dropped
-   for a failed check, and nobody's unknown count goes up. After MAX_DEGRADED_RUNS such runs in a row the workflow
-   fails loudly (the feed is still the source of truth for open roles; the checker is what is broken).
-The state lives in data/link_state.json so these rules survive between runs.
+1. Every listing in this run's feed is verified at this run (its card shows when we last saw it in the feed).
+   A role that leaves the feed leaves the board at the next refresh.
+2. A sample of pages is opened each run (PAGE_SAMPLE, new listings first, then the longest unchecked), gently.
+   DEAD (404, 410, or the "error=true" redirect Greenhouse uses for a closed role) removes that listing and keeps it
+   off for DEAD_RECHECK_DAYS even if the feed still lists it. UNKNOWN (403, timeouts) changes nothing.
+3. Alarm: if more than MISMATCH_SHARE of the sampled pages are dead, the feed and the pages disagree; after
+   MAX_MISMATCH_RUNS such runs in a row the workflow fails loudly so someone looks.
+The state lives in data/link_state.json.
 """
 import json
 import statistics
@@ -30,10 +27,12 @@ import requests
 
 ALIVE, DEAD, UNKNOWN = "alive", "dead", "unknown"
 DEAD_STATUSES = (404, 410)
-MAX_UNKNOWN_RUNS = 3
-DEGRADED_MIN_RATE = 0.12      # a normal run fails 3% to 5% of links
-DEGRADED_MULTIPLE = 2.5
-MAX_DEGRADED_RUNS = 4
+PAGE_SAMPLE = 60              # pages opened per run
+PAGE_WORKERS = 4              # gently: a few at a time
+DEAD_RECHECK_DAYS = 7         # a page found gone stays off this long, then is opened again
+MISMATCH_SHARE = 0.10         # dead share of the sample above which the feed and pages disagree
+MIN_SAMPLE_FOR_ALARM = 20
+MAX_MISMATCH_RUNS = 2
 MAX_DRIFT_ABORTS = 3          # the "listings fell sharply" guard may hold the data for at most this many runs in a row
 RATE_HISTORY = 10
 RETRY_DELAY_SECONDS = 8       # pause before the second pass
@@ -87,23 +86,47 @@ def save_state(path, state):
     path.write_text(json.dumps(state, indent=1, sort_keys=True), encoding="utf-8")
 
 
-def check_links(items, session, state, published_before, removed, verdict_fn=None, workers=16,
-                retry_delay=RETRY_DELAY_SECONDS, retry_workers=RETRY_WORKERS, sleep=time.sleep):
-    """items: listing dicts with "url". published_before: {url: lastVerifiedAt} from the previous jobs.json.
-    Returns (listings to publish, stats, new state). Carried listings get j["verifiedAt"] = their old check time."""
+def _days_since(iso, now):
+    from datetime import datetime
+    try:
+        return (now - datetime.fromisoformat(iso.replace("Z", "+00:00"))).total_seconds() / 86400
+    except (AttributeError, ValueError):
+        return 1e9
+
+
+def check_links(items, session, state, published_before, removed, verdict_fn=None, workers=PAGE_WORKERS,
+                retry_delay=RETRY_DELAY_SECONDS, retry_workers=RETRY_WORKERS, sleep=time.sleep, now=None, sample_size=PAGE_SAMPLE):
+    """items: listing dicts with "url", all read from this run's live feeds. published_before: {url: lastVerifiedAt}.
+    Returns (listings to publish, stats, new state). Every returned listing is verified now (seen in the live feed)."""
+    from datetime import datetime, timezone
+    now = now or datetime.now(timezone.utc)
     reasons = Counter()
     verdict_fn = verdict_fn or (lambda u: link_verdict(u, session, sleep=sleep, reasons=reasons))
+    urls = {j["url"] for j in items}
+    dead_before = {u: t for u, t in (state.get("dead") or {}).items() if u in urls}
+    checked_at = {u: t for u, t in (state.get("pageChecked") or {}).items() if u in urls}
+
+    # the sample: dead pages due a re-check, then new listings, then the ones whose page was opened longest ago
+    due_dead = [j for j in items if j["url"] in dead_before and _days_since(dead_before[j["url"]], now) >= DEAD_RECHECK_DAYS]
+    fresh = [j for j in items if j["url"] not in published_before and j["url"] not in dead_before]
+    rest = sorted((j for j in items if j["url"] in published_before and j["url"] not in dead_before),
+                  key=lambda j: checked_at.get(j["url"], ""))
+    sample, seen = [], set()
+    for j in due_dead + fresh + rest:
+        if len(sample) >= sample_size:
+            break
+        if j["url"] not in seen:
+            seen.add(j["url"]); sample.append(j)
+
     verdicts = {}
-    with ThreadPoolExecutor(max_workers=workers) as ex:
-        fmap = {ex.submit(verdict_fn, j["url"]): j for j in items}
+    with ThreadPoolExecutor(max_workers=max(1, workers)) as ex:
+        fmap = {ex.submit(verdict_fn, j["url"]): j for j in sample}
         for f in as_completed(fmap):
             try:
                 verdicts[fmap[f]["url"]] = f.result()
             except Exception:
                 verdicts[fmap[f]["url"]] = UNKNOWN
-
-    # second pass: slowly, a few at a time, for everything we could not tell on the first pass
-    first_pass_unknown = [j for j in items if verdicts.get(j["url"]) == UNKNOWN]
+    first_pass_unknown = [j for j in sample if verdicts.get(j["url"]) == UNKNOWN]
     recovered = 0
     if first_pass_unknown and retry_workers:
         sleep(retry_delay)
@@ -118,51 +141,36 @@ def check_links(items, session, state, published_before, removed, verdict_fn=Non
                     verdicts[fmap[f]["url"]] = v
                     recovered += 1
 
-    n = len(items)
-    dead = sum(1 for v in verdicts.values() if v == DEAD)
-    unknown = sum(1 for v in verdicts.values() if v == UNKNOWN)
-    fail_rate = (dead + unknown) / n if n else 0.0
-    rates = [r for r in state.get("failRates", []) if isinstance(r, (int, float))]
-    baseline = statistics.median(rates[-5:]) if rates else None
-    threshold = max(DEGRADED_MIN_RATE, DEGRADED_MULTIPLE * baseline) if baseline is not None else DEGRADED_MIN_RATE
-    degraded = n >= 50 and fail_rate > threshold
-
-    ok, new_unknown = [], {}
-    carried = held_new = dropped_dead = dropped_unverifiable = 0
+    stamp = now.strftime("%Y-%m-%dT%H:%M:%SZ")
+    new_dead = dict(dead_before)
+    ok, dropped_dead = [], 0
     for j in items:
-        url, v = j["url"], verdicts.get(j["url"], UNKNOWN)
-        if v == ALIVE:
-            ok.append(j)
-            continue
-        was_published = url in published_before
-        count = state.get("unknown", {}).get(url, 0)
-        if degraded:
-            if was_published:
-                j["verifiedAt"] = published_before[url]; ok.append(j); carried += 1
-                new_unknown[url] = count                      # a blocked checker does not age anything
-            else:
-                held_new += 1
-            continue
+        url, v = j["url"], verdicts.get(j["url"])
+        if v is not None and v != UNKNOWN:
+            checked_at[url] = stamp
         if v == DEAD:
+            new_dead[url] = stamp
+        elif v == ALIVE:
+            new_dead.pop(url, None)
+        if url in new_dead:
             dropped_dead += 1
             removed.append(f"link-dead | {j['title']} | {j['company']} | {url}")
-        elif was_published and count + 1 <= MAX_UNKNOWN_RUNS:
-            j["verifiedAt"] = published_before[url]; ok.append(j); carried += 1
-            new_unknown[url] = count + 1
-        elif was_published:
-            dropped_unverifiable += 1
-            removed.append(f"link-unverifiable-{MAX_UNKNOWN_RUNS}-runs | {j['title']} | {j['company']} | {url}")
-        else:
-            held_new += 1                                     # new listing we could not check: try again next run
+            continue
+        ok.append(j)
 
-    streak = state.get("degradedStreak", 0) + 1 if degraded else 0
-    new_state = dict(state)
-    new_state.update({"unknown": new_unknown, "degradedStreak": streak,
-                      "failRates": state.get("failRates", []) if degraded else (rates + [round(fail_rate, 4)])})
-    stats = {"checked": n, "alive": n - dead - unknown, "dead": dead, "unknown": unknown, "failRate": round(fail_rate, 4),
-             "baselineRate": None if baseline is None else round(baseline, 4), "degraded": degraded, "degradedStreak": streak,
-             "carriedOnOldCheck": carried, "newHeldUntilChecked": held_new,
-             "droppedDead": dropped_dead, "droppedUnverifiable": dropped_unverifiable,
+    n = len(sample)
+    dead = sum(1 for v in verdicts.values() if v == DEAD)
+    unknown = sum(1 for v in verdicts.values() if v == UNKNOWN)
+    answered = n - unknown
+    dead_share = dead / answered if answered else 0.0
+    mismatch = answered >= MIN_SAMPLE_FOR_ALARM and dead_share > MISMATCH_SHARE
+    streak = state.get("mismatchStreak", 0) + 1 if mismatch else 0
+    new_state = {k: v for k, v in state.items() if k not in ("unknown", "failRates", "degradedStreak")}
+    new_state.update({"dead": new_dead, "pageChecked": checked_at, "mismatchStreak": streak})
+    stats = {"verifiedBy": "employer feed", "inFeed": len(items), "checked": n, "alive": n - dead - unknown, "dead": dead,
+             "unknown": unknown, "deadShare": round(dead_share, 4), "failRate": round((dead + unknown) / n, 4) if n else 0.0,
+             "baselineRate": None, "degraded": False, "degradedStreak": 0, "mismatch": mismatch, "mismatchStreak": streak,
+             "carriedOnOldCheck": 0, "newHeldUntilChecked": 0, "droppedDead": dropped_dead, "droppedUnverifiable": 0,
              "firstPassUnknown": len(first_pass_unknown), "recoveredOnRetry": recovered,
              "unknownReasons": dict(reasons.most_common())}
     return ok, stats, new_state

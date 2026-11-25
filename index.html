@@ -8,14 +8,14 @@
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Yireh Careers">
   <meta property="og:title" content="Yireh Careers — Verified Remote Jobs">
-  <meta property="og:description" content="Verified remote jobs, updated every 6 hours. Every listing links to its original posting, with the original posting date, source and who can apply.">
+  <meta property="og:description" content="Verified remote jobs, updated daily. Every listing links to its original posting, with the original posting date, source and who can apply.">
   <meta property="og:url" content="https://yirehcareers.vercel.app/">
   <meta property="og:image" content="https://yirehcareers.vercel.app/og-image.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Yireh Careers — Verified Remote Jobs">
-  <meta name="twitter:description" content="Verified remote jobs, updated every 6 hours. Every listing links to its original posting, with the original posting date, source and who can apply.">
+  <meta name="twitter:description" content="Verified remote jobs, updated daily. Every listing links to its original posting, with the original posting date, source and who can apply.">
   <meta name="twitter:image" content="https://yirehcareers.vercel.app/og-image.png">
   <meta name="description" content="Free job board of verified remote jobs for job seekers at every level, across every field. Every listing links to the real posting, shows who can apply, and says plainly what we could not confirm.">
   <!-- One page, many filter states: keep filtered URLs out of the index (GoatCounter reads this too, so
@@ -1202,7 +1202,7 @@
         <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" class="hp">
         <p id="signup-msg" data-msg role="status" aria-live="polite" hidden></p>
       </form>
-      <p class="cta-social-proof">The board is refreshed every 6 hours; the email comes once a week.</p>
+      <p class="cta-social-proof">The board is updated daily; the email comes once a week.</p>
       <p style="margin-top:0.5rem; font-size:0.8rem; opacity:0.85;">One tap to unsubscribe whenever you like. See our <a href="/privacy" style="color:inherit; text-decoration:underline;">privacy policy</a>.</p>
     </section>
 
@@ -1825,6 +1825,7 @@
       if (job.regionAsStated) html += '<div class="why-head">The employer lists the location as</div><ul><li>' + esc(job.regionAsStated) + '</li></ul>';
       var q = YCCard.quotes(job);
       if (q.length) html += '<div class="why-head">From the posting</div><ul>' + q.map(function (t) { return '<li>&ldquo;' + esc(t) + '&rdquo;</li>'; }).join('') + '</ul>';
+      if (job.lastVerifiedAt) html += '<div class="why-head">Last seen in the employer&rsquo;s job feed</div><ul><li>' + esc(timeAgo(job.lastVerifiedAt)) + '</li></ul>';
       if (!YCCard.applyFrom(job)) html += '<p class="why-foot">The employer doesn&rsquo;t say where you can apply from. Check the posting before you apply.</p>';
       if (!html) return '';
       return '<details class="job-why"><summary>Where this comes from</summary>' + html + '</details>';
