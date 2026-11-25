@@ -1,8 +1,8 @@
-# Quality report, 2026-11-25T11:58+00:00
+# Quality report, 2026-11-25T18:14+00:00
 
 - Published: **1197**
 - Held back by a quality rule (not published): **3**
-- Warnings (published, but look): **8**
+- Warnings (published, but look): **6**
 
 ## Held back
 
@@ -20,18 +20,14 @@
 - Manager DevOps at AEG Worldwide: $150,000 - $190,000
 - Senior Power Procurement Manager  at Antora Energy: 158,000 USD - $225,000
 
-### eligibility-label-partly-unsupported (2)
-- DevOps Support Specialist (Western AU) at Octopus Deploy: not found in evidence: ['United States']
-- DevOps Support Engineer (Western AU) at Octopus Deploy: not found in evidence: ['United States']
-
 ## Shape of the feed
 
 ```
 count: 1197
-bySource: {'Lever': 158, 'Greenhouse': 549, 'Ashby': 490}
-pctEligibilityUnclear: 25.1
-pctRemoteUnclear: 10.3
+bySource: {'Greenhouse': 552, 'Ashby': 490, 'Lever': 155}
+pctEligibilityUnclear: 24.5
+pctRemoteUnclear: 10.4
 pctWorldwide: 1.3
-pctEarlyCareer: 14.7
+pctEarlyCareer: 13.9
 pctSeniorPlus: 38.8
 ```

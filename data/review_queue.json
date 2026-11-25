@@ -27,6 +27,43 @@
   "source": "Greenhouse"
  },
  {
+  "title": "Office Manager",
+  "company": "AcuityMD",
+  "url": "https://job-boards.greenhouse.io/acuitymd/jobs/6262789004",
+  "location": "Boston",
+  "reason": "contradictory remote/office information",
+  "scores": {
+   "remote": 3.5,
+   "office": 5.5
+  },
+  "evidence": [
+   {
+    "signal": "description",
+    "text": "This is a highly visible, in-person role for someone who is proactive, organized, and genuinely energized by making people and places work better.",
+    "effect": "on_site"
+   },
+   {
+    "signal": "description",
+    "text": "Location: Boston, MA (In-office 5 days/week)",
+    "effect": "on_site"
+   },
+   {
+    "signal": "description (occasional attendance)",
+    "text": "Plan and coordinate logistics for in-office meetings, events, and visiting team gatherings",
+    "effect": "occasional"
+   },
+   {
+    "signal": "description",
+    "text": "3-6+ years of experience in office management, executive administration, or a combined operations/EA role ideally in a high-growth startup or technology company",
+    "effect": "on_site"
+   }
+  ],
+  "unresolved": [
+   "The listing contradicts itself about remote versus office work; needs review."
+  ],
+  "source": "Greenhouse"
+ },
+ {
   "title": "Senior Counsel",
   "company": "2U",
   "url": "https://job-boards.greenhouse.io/2u/jobs/8933549002",
@@ -357,35 +394,101 @@
   "source": "Greenhouse"
  },
  {
-  "title": "Office Manager",
-  "company": "AcuityMD",
-  "url": "https://job-boards.greenhouse.io/acuitymd/jobs/6262789004",
-  "location": "Boston",
+  "title": "Revenue Enablement Manager, Post Sales",
+  "company": "Algolia",
+  "url": "https://job-boards.greenhouse.io/algolia/jobs/6224256004",
+  "location": "United States Remote",
   "reason": "contradictory remote/office information",
   "scores": {
-   "remote": 3.5,
-   "office": 5.5
+   "remote": 4.5,
+   "office": 3.8
   },
   "evidence": [
    {
-    "signal": "description",
-    "text": "This is a highly visible, in-person role for someone who is proactive, organized, and genuinely energized by making people and places work better.",
-    "effect": "on_site"
+    "signal": "location field",
+    "text": "United States Remote",
+    "effect": "remote"
    },
    {
     "signal": "description",
-    "text": "Location: Boston, MA (In-office 5 days/week)",
-    "effect": "on_site"
+    "text": "#LI-Remote",
+    "effect": "remote (weak)"
    },
    {
-    "signal": "description (occasional attendance)",
-    "text": "Plan and coordinate logistics for in-office meetings, events, and visiting team gatherings",
-    "effect": "occasional"
+    "signal": "description (company-level wording)",
+    "text": "We have a global presence with offices in Paris, NYC, London, Sydney and Bucharest, however we also offer many of our team members the option to work remotely either as …",
+    "effect": "unclear"
    },
    {
     "signal": "description",
-    "text": "3-6+ years of experience in office management, executive administration, or a combined operations/EA role ideally in a high-growth startup or technology company",
-    "effect": "on_site"
+    "text": "Positions listed as \"Remote\" are only available for remote work within the specified country.",
+    "effect": "remote"
+   }
+  ],
+  "unresolved": [
+   "The listing mentions hybrid arrangements in general terms; confirm what applies to this role.",
+   "The listing contradicts itself about remote versus office work; needs review.",
+   "The location field lists United States Remote, but the listing does not confirm the role is remote there."
+  ],
+  "source": "Greenhouse"
+ },
+ {
+  "title": "Enterprise Account Executive, Corporate",
+  "company": "AlphaSense",
+  "url": "https://job-boards.greenhouse.io/alphasense/jobs/8929518002",
+  "location": "New York, New York, United States; Remote - United States; United States",
+  "reason": "contradictory remote/office information",
+  "scores": {
+   "remote": 3.5,
+   "office": 4.0
+  },
+  "evidence": [
+   {
+    "signal": "location field",
+    "text": "New York, New York, United States; Remote - United States; United States",
+    "effect": "remote"
+   },
+   {
+    "signal": "description",
+    "text": "Location: Eastern or Central Time Zone (Remote)",
+    "effect": "remote (weak)"
+   },
+   {
+    "signal": "description",
+    "text": "NYC preferred (Hybrid)",
+    "effect": "hybrid"
+   }
+  ],
+  "unresolved": [
+   "The listing contradicts itself about remote versus office work; needs review."
+  ],
+  "source": "Greenhouse"
+ },
+ {
+  "title": "Enterprise Account Executive, Corporate Global Sales",
+  "company": "AlphaSense",
+  "url": "https://job-boards.greenhouse.io/alphasense/jobs/8940504002",
+  "location": "New York, New York, United States; Remote - United States",
+  "reason": "contradictory remote/office information",
+  "scores": {
+   "remote": 3.5,
+   "office": 4.0
+  },
+  "evidence": [
+   {
+    "signal": "location field",
+    "text": "New York, New York, United States; Remote - United States",
+    "effect": "remote"
+   },
+   {
+    "signal": "description",
+    "text": "Location: Eastern or Central Time Zone (Remote)",
+    "effect": "remote (weak)"
+   },
+   {
+    "signal": "description",
+    "text": "NYC preferred (Hybrid)",
+    "effect": "hybrid"
    }
   ],
   "unresolved": [
@@ -553,47 +656,6 @@
   "source": "Greenhouse"
  },
  {
-  "title": "Security Risk Management Lead",
-  "company": "Affirm",
-  "url": "https://job-boards.greenhouse.io/affirm/jobs/8036613003",
-  "location": "Remote Canada",
-  "reason": "contradictory remote/office information",
-  "scores": {
-   "remote": 8.0,
-   "office": 4.0
-  },
-  "evidence": [
-   {
-    "signal": "location field",
-    "text": "Remote Canada",
-    "effect": "remote"
-   },
-   {
-    "signal": "description",
-    "text": "Remote Poland",
-    "effect": "remote (weak)"
-   },
-   {
-    "signal": "description",
-    "text": "[REMOVE IF POSTING IS NOT REMOTE] LI-Remote",
-    "effect": "on_site"
-   },
-   {
-    "signal": "description",
-    "text": "Remote-first with flexibility built in",
-    "effect": "remote"
-   }
-  ],
-  "unresolved": [
-   "Mentions in-person onboarding or training; confirm how long and whether the ongoing role is remote.",
-   "The listing contradicts itself about remote versus office work; needs review.",
-   "Occasional office or in-person attendance is mentioned; confirm how often.",
-   "Applicants may need existing work authorisation; check the posting.",
-   "The location field lists Remote Canada, but the listing does not confirm the role is remote there."
-  ],
-  "source": "Greenhouse"
- },
- {
   "title": "Senior Manager, Policy & Communications Campaigns",
   "company": "Affirm",
   "url": "https://job-boards.greenhouse.io/affirm/jobs/8045293003",
@@ -633,100 +695,24 @@
   "source": "Greenhouse"
  },
  {
-  "title": "Revenue Enablement Manager, Post Sales",
-  "company": "Algolia",
-  "url": "https://job-boards.greenhouse.io/algolia/jobs/6224256004",
-  "location": "United States Remote",
+  "title": "Senior Counsel",
+  "company": "Arevon",
+  "url": "https://job-boards.greenhouse.io/arevonenergyimpltest/jobs/5287775007",
+  "location": "Scottsdale, AZ, New York, NY and Remote",
   "reason": "contradictory remote/office information",
   "scores": {
-   "remote": 4.5,
-   "office": 3.8
+   "remote": 3.0,
+   "office": 3.0
   },
   "evidence": [
    {
     "signal": "location field",
-    "text": "United States Remote",
+    "text": "Scottsdale, AZ, New York, NY and Remote",
     "effect": "remote"
    },
    {
     "signal": "description",
-    "text": "#LI-Remote",
-    "effect": "remote (weak)"
-   },
-   {
-    "signal": "description (company-level wording)",
-    "text": "We have a global presence with offices in Paris, NYC, London, Sydney and Bucharest, however we also offer many of our team members the option to work remotely either as …",
-    "effect": "unclear"
-   },
-   {
-    "signal": "description",
-    "text": "Positions listed as \"Remote\" are only available for remote work within the specified country.",
-    "effect": "remote"
-   }
-  ],
-  "unresolved": [
-   "The listing mentions hybrid arrangements in general terms; confirm what applies to this role.",
-   "The listing contradicts itself about remote versus office work; needs review.",
-   "The location field lists United States Remote, but the listing does not confirm the role is remote there."
-  ],
-  "source": "Greenhouse"
- },
- {
-  "title": "Enterprise Account Executive, Corporate",
-  "company": "AlphaSense",
-  "url": "https://job-boards.greenhouse.io/alphasense/jobs/8929518002",
-  "location": "New York, New York, United States; Remote - United States; United States",
-  "reason": "contradictory remote/office information",
-  "scores": {
-   "remote": 3.5,
-   "office": 4.0
-  },
-  "evidence": [
-   {
-    "signal": "location field",
-    "text": "New York, New York, United States; Remote - United States; United States",
-    "effect": "remote"
-   },
-   {
-    "signal": "description",
-    "text": "Location: Eastern or Central Time Zone (Remote)",
-    "effect": "remote (weak)"
-   },
-   {
-    "signal": "description",
-    "text": "NYC preferred (Hybrid)",
-    "effect": "hybrid"
-   }
-  ],
-  "unresolved": [
-   "The listing contradicts itself about remote versus office work; needs review."
-  ],
-  "source": "Greenhouse"
- },
- {
-  "title": "Enterprise Account Executive, Corporate Global Sales",
-  "company": "AlphaSense",
-  "url": "https://job-boards.greenhouse.io/alphasense/jobs/8940504002",
-  "location": "New York, New York, United States; Remote - United States",
-  "reason": "contradictory remote/office information",
-  "scores": {
-   "remote": 3.5,
-   "office": 4.0
-  },
-  "evidence": [
-   {
-    "signal": "location field",
-    "text": "New York, New York, United States; Remote - United States",
-    "effect": "remote"
-   },
-   {
-    "signal": "description",
-    "text": "Location: Eastern or Central Time Zone (Remote)",
-    "effect": "remote (weak)"
-   },
-   {
-    "signal": "description",
-    "text": "NYC preferred (Hybrid)",
+    "text": "This role will ideally be based in New York or in Scottsdale (in each case, with a hybrid in-office policy), but remote candidates will also be considered.",
     "effect": "hybrid"
    }
   ],
@@ -843,33 +829,6 @@
   "source": "Greenhouse"
  },
  {
-  "title": "Senior Counsel",
-  "company": "Arevon",
-  "url": "https://job-boards.greenhouse.io/arevonenergyimpltest/jobs/5287775007",
-  "location": "Scottsdale, AZ, New York, NY and Remote",
-  "reason": "contradictory remote/office information",
-  "scores": {
-   "remote": 3.0,
-   "office": 3.0
-  },
-  "evidence": [
-   {
-    "signal": "location field",
-    "text": "Scottsdale, AZ, New York, NY and Remote",
-    "effect": "remote"
-   },
-   {
-    "signal": "description",
-    "text": "This role will ideally be based in New York or in Scottsdale (in each case, with a hybrid in-office policy), but remote candidates will also be considered.",
-    "effect": "hybrid"
-   }
-  ],
-  "unresolved": [
-   "The listing contradicts itself about remote versus office work; needs review."
-  ],
-  "source": "Greenhouse"
- },
- {
   "title": "Marketing Programs Associate (Remote)",
   "company": "Axiom",
   "url": "https://job-boards.greenhouse.io/axiom/jobs/8948068002",
@@ -893,44 +852,6 @@
    {
     "signal": "description",
     "text": "The salary range for this Associate-level U.S.-based remote role is $ 63,250-$80,500 OTE.",
-    "effect": "remote"
-   }
-  ],
-  "unresolved": [
-   "The listing contradicts itself about remote versus office work; needs review.",
-   "The location field names a place but does not say the role is remote there; confirm whether applicants elsewhere are accepted."
-  ],
-  "source": "Greenhouse"
- },
- {
-  "title": "Community & Events Manager (SEA)",
-  "company": "Binance",
-  "url": "https://job-boards.eu.greenhouse.io/binance/jobs/5025838101",
-  "location": "Vietnam",
-  "reason": "contradictory remote/office information",
-  "scores": {
-   "remote": 2.0,
-   "office": 2.0
-  },
-  "evidence": [
-   {
-    "signal": "description (occasional attendance)",
-    "text": "and the person who makes our meetups, workshops and activations actually happen.",
-    "effect": "occasional"
-   },
-   {
-    "signal": "description (occasional attendance)",
-    "text": "meetups, workshops, conferences and community activations",
-    "effect": "occasional"
-   },
-   {
-    "signal": "description",
-    "text": "covering concept, budgeting, logistics, vendor negotiation and on-site operations.",
-    "effect": "on_site"
-   },
-   {
-    "signal": "description",
-    "text": "Remote-first, work-from-home arrangement (may vary depending on the nature of the role and team)",
     "effect": "remote"
    }
   ],
@@ -973,6 +894,44 @@
   "source": "Greenhouse"
  },
  {
+  "title": "Community & Events Manager (SEA)",
+  "company": "Binance",
+  "url": "https://job-boards.eu.greenhouse.io/binance/jobs/5025838101",
+  "location": "Vietnam",
+  "reason": "contradictory remote/office information",
+  "scores": {
+   "remote": 2.0,
+   "office": 2.0
+  },
+  "evidence": [
+   {
+    "signal": "description (occasional attendance)",
+    "text": "and the person who makes our meetups, workshops and activations actually happen.",
+    "effect": "occasional"
+   },
+   {
+    "signal": "description (occasional attendance)",
+    "text": "meetups, workshops, conferences and community activations",
+    "effect": "occasional"
+   },
+   {
+    "signal": "description",
+    "text": "covering concept, budgeting, logistics, vendor negotiation and on-site operations.",
+    "effect": "on_site"
+   },
+   {
+    "signal": "description",
+    "text": "Remote-first, work-from-home arrangement (may vary depending on the nature of the role and team)",
+    "effect": "remote"
+   }
+  ],
+  "unresolved": [
+   "The listing contradicts itself about remote versus office work; needs review.",
+   "The location field names a place but does not say the role is remote there; confirm whether applicants elsewhere are accepted."
+  ],
+  "source": "Greenhouse"
+ },
+ {
   "title": "Commercial Account Executive",
   "company": "Boomi ",
   "url": "https://job-boards.greenhouse.io/boomilp/jobs/6266087004",
@@ -1007,8 +966,8 @@
  {
   "title": "Accounting Partnerships Manager",
   "company": "Brex",
-  "url": "https://job-boards.greenhouse.io/brex/jobs/8950778002",
-  "location": "New York, New York, United States",
+  "url": "https://job-boards.greenhouse.io/brex/jobs/8950781002",
+  "location": "San Francisco, California, United States",
   "reason": "contradictory remote/office information",
   "scores": {
    "remote": 3.5,
@@ -1039,8 +998,8 @@
  {
   "title": "Accounting Partnerships Manager",
   "company": "Brex",
-  "url": "https://job-boards.greenhouse.io/brex/jobs/8950781002",
-  "location": "San Francisco, California, United States",
+  "url": "https://job-boards.greenhouse.io/brex/jobs/8950778002",
+  "location": "New York, New York, United States",
   "reason": "contradictory remote/office information",
   "scores": {
    "remote": 3.5,
@@ -1136,38 +1095,6 @@
  {
   "title": "Brand Design Manager, Growth",
   "company": "Brex",
-  "url": "https://job-boards.greenhouse.io/brex/jobs/8932572002",
-  "location": "New York, New York, United States",
-  "reason": "contradictory remote/office information",
-  "scores": {
-   "remote": 3.5,
-   "office": 3.0
-  },
-  "evidence": [
-   {
-    "signal": "description (mixed office and remote wording)",
-    "text": "We are a hybrid environment that combines the energy and connections of being in the office with the benefits and flexibility of working from home.",
-    "effect": "remote (weak)"
-   },
-   {
-    "signal": "description",
-    "text": "We currently require three days per week in office",
-    "effect": "hybrid"
-   },
-   {
-    "signal": "description",
-    "text": "As a perk, we also have up to four weeks per year of fully remote work!",
-    "effect": "remote"
-   }
-  ],
-  "unresolved": [
-   "The listing contradicts itself about remote versus office work; needs review."
-  ],
-  "source": "Greenhouse"
- },
- {
-  "title": "Brand Design Manager, Growth",
-  "company": "Brex",
   "url": "https://job-boards.greenhouse.io/brex/jobs/8920564002",
   "location": "San Francisco, California, United States",
   "reason": "contradictory remote/office information",
@@ -1230,163 +1157,14 @@
   "source": "Greenhouse"
  },
  {
-  "title": "Business Recruiter",
+  "title": "Brand Design Manager, Growth",
   "company": "Brex",
-  "url": "https://job-boards.greenhouse.io/brex/jobs/8928181002",
-  "location": "Salt Lake City, Utah, United States",
-  "reason": "contradictory remote/office information",
-  "scores": {
-   "remote": 3.5,
-   "office": 6.5
-  },
-  "evidence": [
-   {
-    "signal": "description (mixed office and remote wording)",
-    "text": "We are a hybrid environment that combines the energy and connections of being in the office with the benefits and flexibility of working from home.",
-    "effect": "remote (weak)"
-   },
-   {
-    "signal": "description",
-    "text": "We currently require a minimum of three coordinated days in the office per week, Monday, Wednesday and Thursday.",
-    "effect": "hybrid"
-   },
-   {
-    "signal": "description",
-    "text": "As a perk, we also have up to four weeks per year of fully remote work!",
-    "effect": "remote"
-   },
-   {
-    "signal": "description",
-    "text": "Must be willing to work in office 3 days per week on Monday, Wednesday and Thursday",
-    "effect": "hybrid"
-   }
-  ],
-  "unresolved": [
-   "The listing contradicts itself about remote versus office work; needs review.",
-   "The location field names a place but does not say the role is remote there; confirm whether applicants elsewhere are accepted."
-  ],
-  "source": "Greenhouse"
- },
- {
-  "title": "Business Recruiter",
-  "company": "Brex",
-  "url": "https://job-boards.greenhouse.io/brex/jobs/8928184002",
-  "location": "Vancouver, British Columbia, Canada",
-  "reason": "contradictory remote/office information",
-  "scores": {
-   "remote": 3.5,
-   "office": 6.5
-  },
-  "evidence": [
-   {
-    "signal": "description (mixed office and remote wording)",
-    "text": "We are a hybrid environment that combines the energy and connections of being in the office with the benefits and flexibility of working from home.",
-    "effect": "remote (weak)"
-   },
-   {
-    "signal": "description",
-    "text": "We currently require a minimum of three coordinated days in the office per week, Monday, Wednesday and Thursday.",
-    "effect": "hybrid"
-   },
-   {
-    "signal": "description",
-    "text": "As a perk, we also have up to four weeks per year of fully remote work!",
-    "effect": "remote"
-   },
-   {
-    "signal": "description",
-    "text": "Must be willing to work in office 3 days per week on Monday, Wednesday and Thursday",
-    "effect": "hybrid"
-   }
-  ],
-  "unresolved": [
-   "The listing contradicts itself about remote versus office work; needs review."
-  ],
-  "source": "Greenhouse"
- },
- {
-  "title": "Business Recruiter",
-  "company": "Brex",
-  "url": "https://job-boards.greenhouse.io/brex/jobs/8928177002",
-  "location": "Seattle, Washington, United States",
-  "reason": "contradictory remote/office information",
-  "scores": {
-   "remote": 3.5,
-   "office": 6.5
-  },
-  "evidence": [
-   {
-    "signal": "description (mixed office and remote wording)",
-    "text": "We are a hybrid environment that combines the energy and connections of being in the office with the benefits and flexibility of working from home.",
-    "effect": "remote (weak)"
-   },
-   {
-    "signal": "description",
-    "text": "We currently require a minimum of three coordinated days in the office per week, Monday, Wednesday and Thursday.",
-    "effect": "hybrid"
-   },
-   {
-    "signal": "description",
-    "text": "As a perk, we also have up to four weeks per year of fully remote work!",
-    "effect": "remote"
-   },
-   {
-    "signal": "description",
-    "text": "Must be willing to work in office 3 days per week on Monday, Wednesday and Thursday",
-    "effect": "hybrid"
-   }
-  ],
-  "unresolved": [
-   "The listing contradicts itself about remote versus office work; needs review."
-  ],
-  "source": "Greenhouse"
- },
- {
-  "title": "Business Recruiter",
-  "company": "Brex",
-  "url": "https://job-boards.greenhouse.io/brex/jobs/8928174002",
-  "location": "San Francisco, California, United States",
-  "reason": "contradictory remote/office information",
-  "scores": {
-   "remote": 3.5,
-   "office": 6.5
-  },
-  "evidence": [
-   {
-    "signal": "description (mixed office and remote wording)",
-    "text": "We are a hybrid environment that combines the energy and connections of being in the office with the benefits and flexibility of working from home.",
-    "effect": "remote (weak)"
-   },
-   {
-    "signal": "description",
-    "text": "We currently require a minimum of three coordinated days in the office per week, Monday, Wednesday and Thursday.",
-    "effect": "hybrid"
-   },
-   {
-    "signal": "description",
-    "text": "As a perk, we also have up to four weeks per year of fully remote work!",
-    "effect": "remote"
-   },
-   {
-    "signal": "description",
-    "text": "Must be willing to work in office 3 days per week on Monday, Wednesday and Thursday",
-    "effect": "hybrid"
-   }
-  ],
-  "unresolved": [
-   "The listing contradicts itself about remote versus office work; needs review."
-  ],
-  "source": "Greenhouse"
- },
- {
-  "title": "Business Recruiter",
-  "company": "Brex",
-  "url": "https://job-boards.greenhouse.io/brex/jobs/8928173002",
+  "url": "https://job-boards.greenhouse.io/brex/jobs/8932572002",
   "location": "New York, New York, United States",
   "reason": "contradictory remote/office information",
   "scores": {
    "remote": 3.5,
-   "office": 6.5
+   "office": 3.0
   },
   "evidence": [
    {
@@ -1396,18 +1174,13 @@
    },
    {
     "signal": "description",
-    "text": "We currently require a minimum of three coordinated days in the office per week, Monday, Wednesday and Thursday.",
+    "text": "We currently require three days per week in office",
     "effect": "hybrid"
    },
    {
     "signal": "description",
     "text": "As a perk, we also have up to four weeks per year of fully remote work!",
     "effect": "remote"
-   },
-   {
-    "signal": "description",
-    "text": "Must be willing to work in office 3 days per week on Monday, Wednesday and Thursday",
-    "effect": "hybrid"
    }
   ],
   "unresolved": [
@@ -1418,8 +1191,8 @@
  {
   "title": "Commercial Account Executive",
   "company": "Brex",
-  "url": "https://job-boards.greenhouse.io/brex/jobs/8918261002",
-  "location": "Salt Lake City, Utah, United States",
+  "url": "https://job-boards.greenhouse.io/brex/jobs/8918262002",
+  "location": "Seattle, Washington, United States",
   "reason": "contradictory remote/office information",
   "scores": {
    "remote": 3.5,
@@ -1484,8 +1257,8 @@
  {
   "title": "Commercial Account Executive",
   "company": "Brex",
-  "url": "https://job-boards.greenhouse.io/brex/jobs/8918260002",
-  "location": "New York, New York, United States",
+  "url": "https://job-boards.greenhouse.io/brex/jobs/8918261002",
+  "location": "Salt Lake City, Utah, United States",
   "reason": "contradictory remote/office information",
   "scores": {
    "remote": 3.5,
@@ -1517,8 +1290,8 @@
  {
   "title": "Commercial Account Executive",
   "company": "Brex",
-  "url": "https://job-boards.greenhouse.io/brex/jobs/8918262002",
-  "location": "Seattle, Washington, United States",
+  "url": "https://job-boards.greenhouse.io/brex/jobs/8918260002",
+  "location": "New York, New York, United States",
   "reason": "contradictory remote/office information",
   "scores": {
    "remote": 3.5,
@@ -1583,43 +1356,6 @@
  {
   "title": "Corporate Paralegal",
   "company": "Brex",
-  "url": "https://job-boards.greenhouse.io/brex/jobs/8957150002",
-  "location": "San Francisco, California, United States",
-  "reason": "contradictory remote/office information",
-  "scores": {
-   "remote": 4.0,
-   "office": 3.0
-  },
-  "evidence": [
-   {
-    "signal": "description (mixed office and remote wording)",
-    "text": "We are a hybrid environment that combines the energy and connections of being in the office with the benefits and flexibility of working from home.",
-    "effect": "remote (weak)"
-   },
-   {
-    "signal": "description",
-    "text": "We currently require a minimum of three coordinated days in the office per week, Monday, Wednesday and Thursday.",
-    "effect": "hybrid"
-   },
-   {
-    "signal": "description",
-    "text": "As a perk, we also have up to four weeks per year of fully remote work!",
-    "effect": "remote"
-   },
-   {
-    "signal": "description",
-    "text": "Ability to effectively communicate and collaborate with diverse teams, including remote and cross-functional groups",
-    "effect": "remote (weak)"
-   }
-  ],
-  "unresolved": [
-   "The listing contradicts itself about remote versus office work; needs review."
-  ],
-  "source": "Greenhouse"
- },
- {
-  "title": "Corporate Paralegal",
-  "company": "Brex",
   "url": "https://job-boards.greenhouse.io/brex/jobs/8957206002",
   "location": "New York, New York, United States",
   "reason": "contradictory remote/office information",
@@ -1655,10 +1391,111 @@
   "source": "Greenhouse"
  },
  {
+  "title": "Corporate Paralegal",
+  "company": "Brex",
+  "url": "https://job-boards.greenhouse.io/brex/jobs/8957150002",
+  "location": "San Francisco, California, United States",
+  "reason": "contradictory remote/office information",
+  "scores": {
+   "remote": 4.0,
+   "office": 3.0
+  },
+  "evidence": [
+   {
+    "signal": "description (mixed office and remote wording)",
+    "text": "We are a hybrid environment that combines the energy and connections of being in the office with the benefits and flexibility of working from home.",
+    "effect": "remote (weak)"
+   },
+   {
+    "signal": "description",
+    "text": "We currently require a minimum of three coordinated days in the office per week, Monday, Wednesday and Thursday.",
+    "effect": "hybrid"
+   },
+   {
+    "signal": "description",
+    "text": "As a perk, we also have up to four weeks per year of fully remote work!",
+    "effect": "remote"
+   },
+   {
+    "signal": "description",
+    "text": "Ability to effectively communicate and collaborate with diverse teams, including remote and cross-functional groups",
+    "effect": "remote (weak)"
+   }
+  ],
+  "unresolved": [
+   "The listing contradicts itself about remote versus office work; needs review."
+  ],
+  "source": "Greenhouse"
+ },
+ {
+  "title": "Credit Policy & Governance Associate",
+  "company": "Brex",
+  "url": "https://job-boards.greenhouse.io/brex/jobs/8957629002",
+  "location": "São Paulo, São Paulo, Brazil",
+  "reason": "contradictory remote/office information",
+  "scores": {
+   "remote": 3.5,
+   "office": 3.0
+  },
+  "evidence": [
+   {
+    "signal": "description (mixed office and remote wording)",
+    "text": "We are a hybrid environment that combines the energy and connections of being in the office with the benefits and flexibility of working from home.",
+    "effect": "remote (weak)"
+   },
+   {
+    "signal": "description",
+    "text": "We currently require a minimum of three coordinated days in the office per week, Monday, Wednesday and Thursday.",
+    "effect": "hybrid"
+   },
+   {
+    "signal": "description",
+    "text": "As a perk, we also have up to four weeks per year of fully remote work!",
+    "effect": "remote"
+   }
+  ],
+  "unresolved": [
+   "The listing contradicts itself about remote versus office work; needs review."
+  ],
+  "source": "Greenhouse"
+ },
+ {
   "title": "Credit Policy & Governance Associate",
   "company": "Brex",
   "url": "https://job-boards.greenhouse.io/brex/jobs/8957627002",
   "location": "Vancouver, British Columbia, Canada",
+  "reason": "contradictory remote/office information",
+  "scores": {
+   "remote": 3.5,
+   "office": 3.0
+  },
+  "evidence": [
+   {
+    "signal": "description (mixed office and remote wording)",
+    "text": "We are a hybrid environment that combines the energy and connections of being in the office with the benefits and flexibility of working from home.",
+    "effect": "remote (weak)"
+   },
+   {
+    "signal": "description",
+    "text": "We currently require a minimum of three coordinated days in the office per week, Monday, Wednesday and Thursday.",
+    "effect": "hybrid"
+   },
+   {
+    "signal": "description",
+    "text": "As a perk, we also have up to four weeks per year of fully remote work!",
+    "effect": "remote"
+   }
+  ],
+  "unresolved": [
+   "The listing contradicts itself about remote versus office work; needs review."
+  ],
+  "source": "Greenhouse"
+ },
+ {
+  "title": "Credit Policy & Governance Associate",
+  "company": "Brex",
+  "url": "https://job-boards.greenhouse.io/brex/jobs/8957626002",
+  "location": "Seattle, Washington, United States",
   "reason": "contradictory remote/office information",
   "scores": {
    "remote": 3.5,
@@ -1723,70 +1560,6 @@
   "company": "Brex",
   "url": "https://job-boards.greenhouse.io/brex/jobs/8957623002",
   "location": "New York, New York, United States",
-  "reason": "contradictory remote/office information",
-  "scores": {
-   "remote": 3.5,
-   "office": 3.0
-  },
-  "evidence": [
-   {
-    "signal": "description (mixed office and remote wording)",
-    "text": "We are a hybrid environment that combines the energy and connections of being in the office with the benefits and flexibility of working from home.",
-    "effect": "remote (weak)"
-   },
-   {
-    "signal": "description",
-    "text": "We currently require a minimum of three coordinated days in the office per week, Monday, Wednesday and Thursday.",
-    "effect": "hybrid"
-   },
-   {
-    "signal": "description",
-    "text": "As a perk, we also have up to four weeks per year of fully remote work!",
-    "effect": "remote"
-   }
-  ],
-  "unresolved": [
-   "The listing contradicts itself about remote versus office work; needs review."
-  ],
-  "source": "Greenhouse"
- },
- {
-  "title": "Credit Policy & Governance Associate",
-  "company": "Brex",
-  "url": "https://job-boards.greenhouse.io/brex/jobs/8957629002",
-  "location": "São Paulo, São Paulo, Brazil",
-  "reason": "contradictory remote/office information",
-  "scores": {
-   "remote": 3.5,
-   "office": 3.0
-  },
-  "evidence": [
-   {
-    "signal": "description (mixed office and remote wording)",
-    "text": "We are a hybrid environment that combines the energy and connections of being in the office with the benefits and flexibility of working from home.",
-    "effect": "remote (weak)"
-   },
-   {
-    "signal": "description",
-    "text": "We currently require a minimum of three coordinated days in the office per week, Monday, Wednesday and Thursday.",
-    "effect": "hybrid"
-   },
-   {
-    "signal": "description",
-    "text": "As a perk, we also have up to four weeks per year of fully remote work!",
-    "effect": "remote"
-   }
-  ],
-  "unresolved": [
-   "The listing contradicts itself about remote versus office work; needs review."
-  ],
-  "source": "Greenhouse"
- },
- {
-  "title": "Credit Policy & Governance Associate",
-  "company": "Brex",
-  "url": "https://job-boards.greenhouse.io/brex/jobs/8957626002",
-  "location": "Seattle, Washington, United States",
   "reason": "contradictory remote/office information",
   "scores": {
    "remote": 3.5,
@@ -1913,8 +1686,8 @@
  {
   "title": "Director, Enterprise Sales",
   "company": "Brex",
-  "url": "https://job-boards.greenhouse.io/brex/jobs/8938896002",
-  "location": "Salt Lake City, Utah, United States",
+  "url": "https://job-boards.greenhouse.io/brex/jobs/8938894002",
+  "location": "New York, New York, United States",
   "reason": "contradictory remote/office information",
   "scores": {
    "remote": 3.5,
@@ -1977,8 +1750,8 @@
  {
   "title": "Director, Enterprise Sales",
   "company": "Brex",
-  "url": "https://job-boards.greenhouse.io/brex/jobs/8938894002",
-  "location": "New York, New York, United States",
+  "url": "https://job-boards.greenhouse.io/brex/jobs/8938896002",
+  "location": "Salt Lake City, Utah, United States",
   "reason": "contradictory remote/office information",
   "scores": {
    "remote": 3.5,
@@ -2071,10 +1844,171 @@
   "source": "Greenhouse"
  },
  {
+  "title": "Embedded Implementation Consultant",
+  "company": "Brex",
+  "url": "https://job-boards.greenhouse.io/brex/jobs/8962367002",
+  "location": "Salt Lake City, Utah, United States",
+  "reason": "contradictory remote/office information",
+  "scores": {
+   "remote": 3.5,
+   "office": 3.0
+  },
+  "evidence": [
+   {
+    "signal": "description (mixed office and remote wording)",
+    "text": "We are a hybrid environment that combines the energy and connections of being in the office with the benefits and flexibility of working from home.",
+    "effect": "remote (weak)"
+   },
+   {
+    "signal": "description",
+    "text": "We currently require a minimum of three coordinated days in the office per week, Monday, Wednesday and Thursday.",
+    "effect": "hybrid"
+   },
+   {
+    "signal": "description",
+    "text": "As a perk, we also have up to four weeks per year of fully remote work!",
+    "effect": "remote"
+   }
+  ],
+  "unresolved": [
+   "The listing contradicts itself about remote versus office work; needs review.",
+   "The location field names a place but does not say the role is remote there; confirm whether applicants elsewhere are accepted."
+  ],
+  "source": "Greenhouse"
+ },
+ {
+  "title": "Embedded Implementation Consultant",
+  "company": "Brex",
+  "url": "https://job-boards.greenhouse.io/brex/jobs/8962370002",
+  "location": "Seattle, Washington, United States",
+  "reason": "contradictory remote/office information",
+  "scores": {
+   "remote": 3.5,
+   "office": 3.0
+  },
+  "evidence": [
+   {
+    "signal": "description (mixed office and remote wording)",
+    "text": "We are a hybrid environment that combines the energy and connections of being in the office with the benefits and flexibility of working from home.",
+    "effect": "remote (weak)"
+   },
+   {
+    "signal": "description",
+    "text": "We currently require a minimum of three coordinated days in the office per week, Monday, Wednesday and Thursday.",
+    "effect": "hybrid"
+   },
+   {
+    "signal": "description",
+    "text": "As a perk, we also have up to four weeks per year of fully remote work!",
+    "effect": "remote"
+   }
+  ],
+  "unresolved": [
+   "The listing contradicts itself about remote versus office work; needs review."
+  ],
+  "source": "Greenhouse"
+ },
+ {
+  "title": "Embedded Implementation Consultant",
+  "company": "Brex",
+  "url": "https://job-boards.greenhouse.io/brex/jobs/8962401002",
+  "location": "Vancouver, British Columbia, Canada",
+  "reason": "contradictory remote/office information",
+  "scores": {
+   "remote": 3.5,
+   "office": 3.0
+  },
+  "evidence": [
+   {
+    "signal": "description (mixed office and remote wording)",
+    "text": "We are a hybrid environment that combines the energy and connections of being in the office with the benefits and flexibility of working from home.",
+    "effect": "remote (weak)"
+   },
+   {
+    "signal": "description",
+    "text": "We currently require a minimum of three coordinated days in the office per week, Monday, Wednesday and Thursday.",
+    "effect": "hybrid"
+   },
+   {
+    "signal": "description",
+    "text": "As a perk, we also have up to four weeks per year of fully remote work!",
+    "effect": "remote"
+   }
+  ],
+  "unresolved": [
+   "The listing contradicts itself about remote versus office work; needs review."
+  ],
+  "source": "Greenhouse"
+ },
+ {
+  "title": "Embedded Implementation Consultant",
+  "company": "Brex",
+  "url": "https://job-boards.greenhouse.io/brex/jobs/8962363002",
+  "location": "San Francisco, California, United States",
+  "reason": "contradictory remote/office information",
+  "scores": {
+   "remote": 3.5,
+   "office": 3.0
+  },
+  "evidence": [
+   {
+    "signal": "description (mixed office and remote wording)",
+    "text": "We are a hybrid environment that combines the energy and connections of being in the office with the benefits and flexibility of working from home.",
+    "effect": "remote (weak)"
+   },
+   {
+    "signal": "description",
+    "text": "We currently require a minimum of three coordinated days in the office per week, Monday, Wednesday and Thursday.",
+    "effect": "hybrid"
+   },
+   {
+    "signal": "description",
+    "text": "As a perk, we also have up to four weeks per year of fully remote work!",
+    "effect": "remote"
+   }
+  ],
+  "unresolved": [
+   "The listing contradicts itself about remote versus office work; needs review."
+  ],
+  "source": "Greenhouse"
+ },
+ {
+  "title": "Embedded Implementation Consultant",
+  "company": "Brex",
+  "url": "https://job-boards.greenhouse.io/brex/jobs/8958834002",
+  "location": "New York, New York, United States",
+  "reason": "contradictory remote/office information",
+  "scores": {
+   "remote": 3.5,
+   "office": 3.0
+  },
+  "evidence": [
+   {
+    "signal": "description (mixed office and remote wording)",
+    "text": "We are a hybrid environment that combines the energy and connections of being in the office with the benefits and flexibility of working from home.",
+    "effect": "remote (weak)"
+   },
+   {
+    "signal": "description",
+    "text": "We currently require a minimum of three coordinated days in the office per week, Monday, Wednesday and Thursday.",
+    "effect": "hybrid"
+   },
+   {
+    "signal": "description",
+    "text": "As a perk, we also have up to four weeks per year of fully remote work!",
+    "effect": "remote"
+   }
+  ],
+  "unresolved": [
+   "The listing contradicts itself about remote versus office work; needs review."
+  ],
+  "source": "Greenhouse"
+ },
+ {
   "title": "Manager, Technical Recruiting (Engineering)",
   "company": "Brex",
-  "url": "https://job-boards.greenhouse.io/brex/jobs/8937150002",
-  "location": "Seattle, Washington, United States",
+  "url": "https://job-boards.greenhouse.io/brex/jobs/8937133002",
+  "location": "San Francisco, California, United States",
   "reason": "contradictory remote/office information",
   "scores": {
    "remote": 3.5,
@@ -2137,8 +2071,8 @@
  {
   "title": "Manager, Technical Recruiting (Engineering)",
   "company": "Brex",
-  "url": "https://job-boards.greenhouse.io/brex/jobs/8937133002",
-  "location": "San Francisco, California, United States",
+  "url": "https://job-boards.greenhouse.io/brex/jobs/8937150002",
+  "location": "Seattle, Washington, United States",
   "reason": "contradictory remote/office information",
   "scores": {
    "remote": 3.5,
@@ -2233,8 +2167,8 @@
  {
   "title": "Screening & Transaction Monitoring Associate",
   "company": "Brex",
-  "url": "https://job-boards.greenhouse.io/brex/jobs/8950656002",
-  "location": "San Francisco, California, United States",
+  "url": "https://job-boards.greenhouse.io/brex/jobs/8950668002",
+  "location": "Seattle, Washington, United States",
   "reason": "contradictory remote/office information",
   "scores": {
    "remote": 3.5,
@@ -2297,8 +2231,8 @@
  {
   "title": "Screening & Transaction Monitoring Associate",
   "company": "Brex",
-  "url": "https://job-boards.greenhouse.io/brex/jobs/8950668002",
-  "location": "Seattle, Washington, United States",
+  "url": "https://job-boards.greenhouse.io/brex/jobs/8950667002",
+  "location": "New York, New York, United States",
   "reason": "contradictory remote/office information",
   "scores": {
    "remote": 3.5,
@@ -2329,8 +2263,8 @@
  {
   "title": "Screening & Transaction Monitoring Associate",
   "company": "Brex",
-  "url": "https://job-boards.greenhouse.io/brex/jobs/8950667002",
-  "location": "New York, New York, United States",
+  "url": "https://job-boards.greenhouse.io/brex/jobs/8950656002",
+  "location": "San Francisco, California, United States",
   "reason": "contradictory remote/office information",
   "scores": {
    "remote": 3.5,
@@ -2522,39 +2456,6 @@
  {
   "title": "Senior Director, Client Sales",
   "company": "Brex",
-  "url": "https://job-boards.greenhouse.io/brex/jobs/8928812002",
-  "location": "New York, New York, United States",
-  "reason": "contradictory remote/office information",
-  "scores": {
-   "remote": 3.5,
-   "office": 3.0
-  },
-  "evidence": [
-   {
-    "signal": "description (mixed office and remote wording)",
-    "text": "Our hybrid environment combines the energy and connections of being in the office with the benefits and flexibility of working from home.",
-    "effect": "remote (weak)"
-   },
-   {
-    "signal": "description",
-    "text": "We currently require a minimum of three days per week in the office-Monday, Wednesday, and Thursday.",
-    "effect": "hybrid"
-   },
-   {
-    "signal": "description",
-    "text": "As a perk, we also offer up to four weeks per year of fully remote work.",
-    "effect": "remote"
-   }
-  ],
-  "unresolved": [
-   "The listing contradicts itself about remote versus office work; needs review.",
-   "The location field names a place but does not say the role is remote there; confirm whether applicants elsewhere are accepted."
-  ],
-  "source": "Greenhouse"
- },
- {
-  "title": "Senior Director, Client Sales",
-  "company": "Brex",
   "url": "https://job-boards.greenhouse.io/brex/jobs/8928814002",
   "location": "Seattle, Washington, United States",
   "reason": "contradictory remote/office information",
@@ -2586,10 +2487,10 @@
   "source": "Greenhouse"
  },
  {
-  "title": "Senior GRC Engineer",
+  "title": "Senior Director, Client Sales",
   "company": "Brex",
-  "url": "https://job-boards.greenhouse.io/brex/jobs/8943780002",
-  "location": "Seattle, Washington, United States",
+  "url": "https://job-boards.greenhouse.io/brex/jobs/8928812002",
+  "location": "New York, New York, United States",
   "reason": "contradictory remote/office information",
   "scores": {
    "remote": 3.5,
@@ -2598,54 +2499,23 @@
   "evidence": [
    {
     "signal": "description (mixed office and remote wording)",
-    "text": "We are a hybrid environment that combines the energy and connections of being in the office with the benefits and flexibility of working from home.",
+    "text": "Our hybrid environment combines the energy and connections of being in the office with the benefits and flexibility of working from home.",
     "effect": "remote (weak)"
    },
    {
     "signal": "description",
-    "text": "We currently require a minimum of three coordinated days in the office per week, Monday, Wednesday and Thursday.",
+    "text": "We currently require a minimum of three days per week in the office-Monday, Wednesday, and Thursday.",
     "effect": "hybrid"
    },
    {
     "signal": "description",
-    "text": "As a perk, we also have up to four weeks per year of fully remote work!",
+    "text": "As a perk, we also offer up to four weeks per year of fully remote work.",
     "effect": "remote"
    }
   ],
   "unresolved": [
-   "The listing contradicts itself about remote versus office work; needs review."
-  ],
-  "source": "Greenhouse"
- },
- {
-  "title": "Senior GRC Engineer",
-  "company": "Brex",
-  "url": "https://job-boards.greenhouse.io/brex/jobs/8943783002",
-  "location": "Vancouver, British Columbia, Canada",
-  "reason": "contradictory remote/office information",
-  "scores": {
-   "remote": 3.5,
-   "office": 3.0
-  },
-  "evidence": [
-   {
-    "signal": "description (mixed office and remote wording)",
-    "text": "We are a hybrid environment that combines the energy and connections of being in the office with the benefits and flexibility of working from home.",
-    "effect": "remote (weak)"
-   },
-   {
-    "signal": "description",
-    "text": "We currently require a minimum of three coordinated days in the office per week, Monday, Wednesday and Thursday.",
-    "effect": "hybrid"
-   },
-   {
-    "signal": "description",
-    "text": "As a perk, we also have up to four weeks per year of fully remote work!",
-    "effect": "remote"
-   }
-  ],
-  "unresolved": [
-   "The listing contradicts itself about remote versus office work; needs review."
+   "The listing contradicts itself about remote versus office work; needs review.",
+   "The location field names a place but does not say the role is remote there; confirm whether applicants elsewhere are accepted."
   ],
   "source": "Greenhouse"
  },
@@ -2714,9 +2584,41 @@
   "source": "Greenhouse"
  },
  {
-  "title": "Senior Lifecycle Marketing Manager, Customer",
+  "title": "Senior GRC Engineer",
   "company": "Brex",
-  "url": "https://job-boards.greenhouse.io/brex/jobs/8959354002",
+  "url": "https://job-boards.greenhouse.io/brex/jobs/8943783002",
+  "location": "Vancouver, British Columbia, Canada",
+  "reason": "contradictory remote/office information",
+  "scores": {
+   "remote": 3.5,
+   "office": 3.0
+  },
+  "evidence": [
+   {
+    "signal": "description (mixed office and remote wording)",
+    "text": "We are a hybrid environment that combines the energy and connections of being in the office with the benefits and flexibility of working from home.",
+    "effect": "remote (weak)"
+   },
+   {
+    "signal": "description",
+    "text": "We currently require a minimum of three coordinated days in the office per week, Monday, Wednesday and Thursday.",
+    "effect": "hybrid"
+   },
+   {
+    "signal": "description",
+    "text": "As a perk, we also have up to four weeks per year of fully remote work!",
+    "effect": "remote"
+   }
+  ],
+  "unresolved": [
+   "The listing contradicts itself about remote versus office work; needs review."
+  ],
+  "source": "Greenhouse"
+ },
+ {
+  "title": "Senior GRC Engineer",
+  "company": "Brex",
+  "url": "https://job-boards.greenhouse.io/brex/jobs/8943780002",
   "location": "Seattle, Washington, United States",
   "reason": "contradictory remote/office information",
   "scores": {
@@ -2782,6 +2684,38 @@
   "company": "Brex",
   "url": "https://job-boards.greenhouse.io/brex/jobs/8959110002",
   "location": "San Francisco, California, United States",
+  "reason": "contradictory remote/office information",
+  "scores": {
+   "remote": 3.5,
+   "office": 3.0
+  },
+  "evidence": [
+   {
+    "signal": "description (mixed office and remote wording)",
+    "text": "We are a hybrid environment that combines the energy and connections of being in the office with the benefits and flexibility of working from home.",
+    "effect": "remote (weak)"
+   },
+   {
+    "signal": "description",
+    "text": "We currently require a minimum of three coordinated days in the office per week, Monday, Wednesday and Thursday.",
+    "effect": "hybrid"
+   },
+   {
+    "signal": "description",
+    "text": "As a perk, we also have up to four weeks per year of fully remote work!",
+    "effect": "remote"
+   }
+  ],
+  "unresolved": [
+   "The listing contradicts itself about remote versus office work; needs review."
+  ],
+  "source": "Greenhouse"
+ },
+ {
+  "title": "Senior Lifecycle Marketing Manager, Customer",
+  "company": "Brex",
+  "url": "https://job-boards.greenhouse.io/brex/jobs/8959354002",
+  "location": "Seattle, Washington, United States",
   "reason": "contradictory remote/office information",
   "scores": {
    "remote": 3.5,
@@ -2876,38 +2810,6 @@
  {
   "title": "Senior Product Manager, Expenses",
   "company": "Brex",
-  "url": "https://job-boards.greenhouse.io/brex/jobs/8959594002",
-  "location": "Seattle, Washington, United States",
-  "reason": "contradictory remote/office information",
-  "scores": {
-   "remote": 3.5,
-   "office": 3.0
-  },
-  "evidence": [
-   {
-    "signal": "description (mixed office and remote wording)",
-    "text": "We are a hybrid environment that combines the energy and connections of being in the office with the benefits and flexibility of working from home.",
-    "effect": "remote (weak)"
-   },
-   {
-    "signal": "description",
-    "text": "We currently require a minimum of three coordinated days in the office per week, Monday, Wednesday and Thursday.",
-    "effect": "hybrid"
-   },
-   {
-    "signal": "description",
-    "text": "As a perk, we also have up to four weeks per year of fully remote work!",
-    "effect": "remote"
-   }
-  ],
-  "unresolved": [
-   "The listing contradicts itself about remote versus office work; needs review."
-  ],
-  "source": "Greenhouse"
- },
- {
-  "title": "Senior Product Manager, Expenses",
-  "company": "Brex",
   "url": "https://job-boards.greenhouse.io/brex/jobs/8959593002",
   "location": "San Francisco, California, United States",
   "reason": "contradictory remote/office information",
@@ -2970,6 +2872,70 @@
   "source": "Greenhouse"
  },
  {
+  "title": "Senior Product Manager, Expenses",
+  "company": "Brex",
+  "url": "https://job-boards.greenhouse.io/brex/jobs/8959594002",
+  "location": "Seattle, Washington, United States",
+  "reason": "contradictory remote/office information",
+  "scores": {
+   "remote": 3.5,
+   "office": 3.0
+  },
+  "evidence": [
+   {
+    "signal": "description (mixed office and remote wording)",
+    "text": "We are a hybrid environment that combines the energy and connections of being in the office with the benefits and flexibility of working from home.",
+    "effect": "remote (weak)"
+   },
+   {
+    "signal": "description",
+    "text": "We currently require a minimum of three coordinated days in the office per week, Monday, Wednesday and Thursday.",
+    "effect": "hybrid"
+   },
+   {
+    "signal": "description",
+    "text": "As a perk, we also have up to four weeks per year of fully remote work!",
+    "effect": "remote"
+   }
+  ],
+  "unresolved": [
+   "The listing contradicts itself about remote versus office work; needs review."
+  ],
+  "source": "Greenhouse"
+ },
+ {
+  "title": "Senior Product Recruiter",
+  "company": "Brex",
+  "url": "https://job-boards.greenhouse.io/brex/jobs/8935961002",
+  "location": "Vancouver, British Columbia, Canada",
+  "reason": "contradictory remote/office information",
+  "scores": {
+   "remote": 3.5,
+   "office": 3.0
+  },
+  "evidence": [
+   {
+    "signal": "description (mixed office and remote wording)",
+    "text": "We are a hybrid environment that combines the energy and connections of being in the office with the benefits and flexibility of working from home.",
+    "effect": "remote (weak)"
+   },
+   {
+    "signal": "description",
+    "text": "We currently require a minimum of three coordinated days in the office per week, Monday, Wednesday, and Thursday.",
+    "effect": "hybrid"
+   },
+   {
+    "signal": "description",
+    "text": "As a perk, we also have up to four weeks per year of fully remote work.",
+    "effect": "remote"
+   }
+  ],
+  "unresolved": [
+   "The listing contradicts itself about remote versus office work; needs review."
+  ],
+  "source": "Greenhouse"
+ },
+ {
   "title": "Senior Product Recruiter",
   "company": "Brex",
   "url": "https://job-boards.greenhouse.io/brex/jobs/8935959002",
@@ -3006,38 +2972,6 @@
   "company": "Brex",
   "url": "https://job-boards.greenhouse.io/brex/jobs/8935955002",
   "location": "San Francisco, California, United States",
-  "reason": "contradictory remote/office information",
-  "scores": {
-   "remote": 3.5,
-   "office": 3.0
-  },
-  "evidence": [
-   {
-    "signal": "description (mixed office and remote wording)",
-    "text": "We are a hybrid environment that combines the energy and connections of being in the office with the benefits and flexibility of working from home.",
-    "effect": "remote (weak)"
-   },
-   {
-    "signal": "description",
-    "text": "We currently require a minimum of three coordinated days in the office per week, Monday, Wednesday, and Thursday.",
-    "effect": "hybrid"
-   },
-   {
-    "signal": "description",
-    "text": "As a perk, we also have up to four weeks per year of fully remote work.",
-    "effect": "remote"
-   }
-  ],
-  "unresolved": [
-   "The listing contradicts itself about remote versus office work; needs review."
-  ],
-  "source": "Greenhouse"
- },
- {
-  "title": "Senior Product Recruiter",
-  "company": "Brex",
-  "url": "https://job-boards.greenhouse.io/brex/jobs/8935961002",
-  "location": "Vancouver, British Columbia, Canada",
   "reason": "contradictory remote/office information",
   "scores": {
    "remote": 3.5,
@@ -3164,8 +3098,8 @@
  {
   "title": "Software Engineer II, Frontend (Banking)",
   "company": "Brex",
-  "url": "https://job-boards.greenhouse.io/brex/jobs/8939939002",
-  "location": "Seattle, Washington, United States",
+  "url": "https://job-boards.greenhouse.io/brex/jobs/8939938002",
+  "location": "San Francisco, California, United States",
   "reason": "contradictory remote/office information",
   "scores": {
    "remote": 3.5,
@@ -3196,8 +3130,8 @@
  {
   "title": "Software Engineer II, Frontend (Banking)",
   "company": "Brex",
-  "url": "https://job-boards.greenhouse.io/brex/jobs/8939938002",
-  "location": "San Francisco, California, United States",
+  "url": "https://job-boards.greenhouse.io/brex/jobs/8939939002",
+  "location": "Seattle, Washington, United States",
   "reason": "contradictory remote/office information",
   "scores": {
    "remote": 3.5,
@@ -3260,8 +3194,8 @@
  {
   "title": "Sr. Manager, Technical Recruiting (Product & Design)",
   "company": "Brex",
-  "url": "https://job-boards.greenhouse.io/brex/jobs/8937146002",
-  "location": "New York, New York, United States",
+  "url": "https://job-boards.greenhouse.io/brex/jobs/8937128002",
+  "location": "San Francisco, California, United States",
   "reason": "contradictory remote/office information",
   "scores": {
    "remote": 3.5,
@@ -3292,8 +3226,8 @@
  {
   "title": "Sr. Manager, Technical Recruiting (Product & Design)",
   "company": "Brex",
-  "url": "https://job-boards.greenhouse.io/brex/jobs/8937128002",
-  "location": "San Francisco, California, United States",
+  "url": "https://job-boards.greenhouse.io/brex/jobs/8937146002",
+  "location": "New York, New York, United States",
   "reason": "contradictory remote/office information",
   "scores": {
    "remote": 3.5,
@@ -3550,41 +3484,39 @@
   "source": "Greenhouse"
  },
  {
-  "title": "Enterprise Account Executive",
-  "company": "Cision",
-  "url": "https://job-boards.eu.greenhouse.io/cision/jobs/5000778101",
-  "location": "Remote - USA",
+  "title": "Senior Training Lead",
+  "company": "Chime",
+  "url": "https://boards.greenhouse.io/chime/jobs/8928783002?gh_jid=8928783002",
+  "location": "Remote, USA",
   "reason": "contradictory remote/office information",
   "scores": {
-   "remote": 3.5,
-   "office": 3.0
+   "remote": 4.0,
+   "office": 6.0
   },
   "evidence": [
    {
     "signal": "location field",
-    "text": "Remote - USA",
+    "text": "Remote, USA",
     "effect": "remote"
    },
    {
-    "signal": "description (occasional attendance)",
-    "text": "It also requires effective communication in person and through digital channels, occasional movement within the workspace, and handling of light materials (typically und…",
-    "effect": "occasional"
-   },
-   {
     "signal": "description",
-    "text": "It may be performed in an office, remote, or hybrid work environment, depending on business needs and applicable work arrangements.",
-    "effect": "hybrid"
-   },
-   {
-    "signal": "description",
-    "text": "Remote USA Pay Range",
+    "text": "It's remote, with approximately 30% domestic and international travel to our BPO partner sites.",
     "effect": "remote (weak)"
+   },
+   {
+    "signal": "description",
+    "text": "🏢 Our in-office work policy is designed to keep you connected",
+    "effect": "on_site"
+   },
+   {
+    "signal": "description",
+    "text": "with four days a week in the office and Fridays from home for those near one of our offices, plus team and company-wide events depending on location.",
+    "effect": "hybrid"
    }
   ],
   "unresolved": [
-   "The listing contradicts itself about remote versus office work; needs review.",
-   "Occasional office or in-person attendance is mentioned; confirm how often.",
-   "The location field lists Remote - USA, but the listing does not confirm the role is remote there."
+   "The listing contradicts itself about remote versus office work; needs review."
   ],
   "source": "Greenhouse"
  },
@@ -3617,6 +3549,45 @@
   ],
   "unresolved": [
    "The listing contradicts itself about remote versus office work; needs review."
+  ],
+  "source": "Greenhouse"
+ },
+ {
+  "title": "Manager, Platform Engineering",
+  "company": "Clarity Innovations",
+  "url": "https://job-boards.greenhouse.io/clarityinnovates/jobs/5274843007",
+  "location": "Herndon, VA",
+  "reason": "contradictory remote/office information",
+  "scores": {
+   "remote": 2.3,
+   "office": 2.8
+  },
+  "evidence": [
+   {
+    "signal": "description (company-level wording)",
+    "text": "Location : On-site Herndon / Hybrid / Remote with travel to edge locations",
+    "effect": "unclear"
+   },
+   {
+    "signal": "description",
+    "text": "This role focuses on deploying, automating, and scaling distributed infrastructure at remote edge locations, ensuring reliable performance close to end users and devices.",
+    "effect": "remote (weak)"
+   },
+   {
+    "signal": "description",
+    "text": "Comfortable working onsite in Herndon 3-4 days per week.",
+    "effect": "on_site"
+   },
+   {
+    "signal": "description",
+    "text": "Our Total Rewards package includes performance-based bonuses, extensive medical, dental, and vision coverage, a 401(k) plan with company match, substantial paid time off…",
+    "effect": "remote (weak)"
+   }
+  ],
+  "unresolved": [
+   "The listing mentions hybrid arrangements in general terms; confirm what applies to this role.",
+   "The listing contradicts itself about remote versus office work; needs review.",
+   "The location field names a place but does not say the role is remote there; confirm whether applicants elsewhere are accepted."
   ],
   "source": "Greenhouse"
  },
@@ -3752,121 +3723,6 @@
   "source": "Greenhouse"
  },
  {
-  "title": "Manager, Platform Engineering",
-  "company": "Clarity Innovations",
-  "url": "https://job-boards.greenhouse.io/clarityinnovates/jobs/5274843007",
-  "location": "Herndon, VA",
-  "reason": "contradictory remote/office information",
-  "scores": {
-   "remote": 2.3,
-   "office": 2.8
-  },
-  "evidence": [
-   {
-    "signal": "description (company-level wording)",
-    "text": "Location : On-site Herndon / Hybrid / Remote with travel to edge locations",
-    "effect": "unclear"
-   },
-   {
-    "signal": "description",
-    "text": "This role focuses on deploying, automating, and scaling distributed infrastructure at remote edge locations, ensuring reliable performance close to end users and devices.",
-    "effect": "remote (weak)"
-   },
-   {
-    "signal": "description",
-    "text": "Comfortable working onsite in Herndon 3-4 days per week.",
-    "effect": "on_site"
-   },
-   {
-    "signal": "description",
-    "text": "Our Total Rewards package includes performance-based bonuses, extensive medical, dental, and vision coverage, a 401(k) plan with company match, substantial paid time off…",
-    "effect": "remote (weak)"
-   }
-  ],
-  "unresolved": [
-   "The listing mentions hybrid arrangements in general terms; confirm what applies to this role.",
-   "The listing contradicts itself about remote versus office work; needs review.",
-   "The location field names a place but does not say the role is remote there; confirm whether applicants elsewhere are accepted."
-  ],
-  "source": "Greenhouse"
- },
- {
-  "title": "Senior Training Lead",
-  "company": "Chime",
-  "url": "https://boards.greenhouse.io/chime/jobs/8928783002?gh_jid=8928783002",
-  "location": "Remote, USA",
-  "reason": "contradictory remote/office information",
-  "scores": {
-   "remote": 4.0,
-   "office": 6.0
-  },
-  "evidence": [
-   {
-    "signal": "location field",
-    "text": "Remote, USA",
-    "effect": "remote"
-   },
-   {
-    "signal": "description",
-    "text": "It's remote, with approximately 30% domestic and international travel to our BPO partner sites.",
-    "effect": "remote (weak)"
-   },
-   {
-    "signal": "description",
-    "text": "🏢 Our in-office work policy is designed to keep you connected",
-    "effect": "on_site"
-   },
-   {
-    "signal": "description",
-    "text": "with four days a week in the office and Fridays from home for those near one of our offices, plus team and company-wide events depending on location.",
-    "effect": "hybrid"
-   }
-  ],
-  "unresolved": [
-   "The listing contradicts itself about remote versus office work; needs review."
-  ],
-  "source": "Greenhouse"
- },
- {
-  "title": "Business Development Representative, UK",
-  "company": "Chainguard",
-  "url": "https://job-boards.greenhouse.io/chainguard/jobs/4727783006",
-  "location": "United Kingdom - Remote",
-  "reason": "contradictory remote/office information",
-  "scores": {
-   "remote": 6.0,
-   "office": 3.0
-  },
-  "evidence": [
-   {
-    "signal": "location field",
-    "text": "United Kingdom - Remote",
-    "effect": "remote"
-   },
-   {
-    "signal": "description",
-    "text": "Please note, while we are a remote first company, for the UK roles specifically we are asking candidates to be open to 2 days in the office/week.",
-    "effect": "hybrid"
-   },
-   {
-    "signal": "description",
-    "text": "Flexible & Remote-First Culture: Work remotely with team meetup opportunities, bi-annual destination summits, and a monthly stipend for coworking spaces, phone and inter…",
-    "effect": "remote"
-   },
-   {
-    "signal": "description (occasional attendance)",
-    "text": "Flexible & Remote-First Culture: Work remotely with team meetup opportunities, bi-annual destination summits, and a monthly stipend for coworking spaces, phone and inter…",
-    "effect": "occasional"
-   }
-  ],
-  "unresolved": [
-   "The listing contradicts itself about remote versus office work; needs review.",
-   "Occasional office or in-person attendance is mentioned; confirm how often.",
-   "The location field lists United Kingdom - Remote, but the listing does not confirm the role is remote there."
-  ],
-  "source": "Greenhouse"
- },
- {
   "title": "Managing Medical Director, Orthopedic Surgery",
   "company": "Cohere Health",
   "url": "https://job-boards.greenhouse.io/coherehealth/jobs/8210953003",
@@ -3902,39 +3758,6 @@
    "The listing contradicts itself about remote versus office work; needs review.",
    "The listing only mentions remote work in general company terms; it does not confirm this role.",
    "The location field lists United States, but the listing does not confirm the role is remote there."
-  ],
-  "source": "Greenhouse"
- },
- {
-  "title": "Finance Assistant (REMOTE)",
-  "company": "Concentric",
-  "url": "https://job-boards.greenhouse.io/concentric/jobs/4729549006",
-  "location": "Seattle",
-  "reason": "contradictory remote/office information",
-  "scores": {
-   "remote": 2.5,
-   "office": 3.0
-  },
-  "evidence": [
-   {
-    "signal": "title",
-    "text": "Finance Assistant (REMOTE)",
-    "effect": "remote"
-   },
-   {
-    "signal": "description",
-    "text": "This is a full-time position that allows for a hybrid work arrangement from our Corporate Headquarters in Kirkland, WA.",
-    "effect": "hybrid"
-   },
-   {
-    "signal": "description",
-    "text": "Providing 24/7 access to trusted risk intelligence and remote support, helping you stay informed, prepared, and protected wherever you operate.",
-    "effect": "remote (weak)"
-   }
-  ],
-  "unresolved": [
-   "The listing contradicts itself about remote versus office work; needs review.",
-   "The location field names a place but does not say the role is remote there; confirm whether applicants elsewhere are accepted."
   ],
   "source": "Greenhouse"
  },
@@ -4155,33 +3978,6 @@
   "source": "Greenhouse"
  },
  {
-  "title": "Principal AI Platform Engineer",
-  "company": "Compeer Financial",
-  "url": "https://job-boards.greenhouse.io/compeerfinancial/jobs/5463439008",
-  "location": "MN-Mankato; IL-Bloomington; MN-Lakeville; WI-Sun Prairie; IL-Naperville; MN-Rochester; Open to any Compeer location",
-  "reason": "contradictory remote/office information",
-  "scores": {
-   "remote": 3.0,
-   "office": 3.0
-  },
-  "evidence": [
-   {
-    "signal": "description",
-    "text": "up to 50% work from home",
-    "effect": "remote"
-   },
-   {
-    "signal": "description",
-    "text": "Where you will work: This position offers a hybrid work option up to 50% and is open to any Compeer office location in Illinois, Minnesota and Wisconsin .",
-    "effect": "hybrid"
-   }
-  ],
-  "unresolved": [
-   "The listing contradicts itself about remote versus office work; needs review."
-  ],
-  "source": "Greenhouse"
- },
- {
   "title": "Principal Product Manager",
   "company": "Compeer Financial",
   "url": "https://job-boards.greenhouse.io/compeerfinancial/jobs/5471276008",
@@ -4317,181 +4113,74 @@
   "source": "Greenhouse"
  },
  {
-  "title": "Brand Partnership Associate, Sports",
-  "company": "Coinbase",
-  "url": "https://job-boards.greenhouse.io/coinbase/jobs/8268156",
-  "location": "Remote - USA",
+  "title": "Business Development Representative, UK",
+  "company": "Chainguard",
+  "url": "https://job-boards.greenhouse.io/chainguard/jobs/4727783006",
+  "location": "United Kingdom - Remote",
   "reason": "contradictory remote/office information",
   "scores": {
-   "remote": 5.0,
-   "office": 2.0
-  },
-  "evidence": [
-   {
-    "signal": "location field",
-    "text": "Remote - USA",
-    "effect": "remote"
-   },
-   {
-    "signal": "description",
-    "text": "Coinbase is a remote-first, but not remote-only company.",
-    "effect": "remote"
-   },
-   {
-    "signal": "description (occasional attendance)",
-    "text": "Expect to get together quarterly for in-person working sessions",
-    "effect": "occasional"
-   },
-   {
-    "signal": "description",
-    "text": "Manage hospitality operations for Warriors, Valkyries, and Liberty: ticket inventory, guest lists, internal distribution, and on-site hosting.",
-    "effect": "on_site"
-   }
-  ],
-  "unresolved": [
-   "The listing contradicts itself about remote versus office work; needs review.",
-   "Occasional office or in-person attendance is mentioned; confirm how often.",
-   "The location field lists Remote - USA, but the listing does not confirm the role is remote there."
-  ],
-  "source": "Greenhouse"
- },
- {
-  "title": "Customer Support Specialist ll",
-  "company": "Coinbase",
-  "url": "https://job-boards.greenhouse.io/coinbase/jobs/8337209",
-  "location": "Manila, Philippines",
-  "reason": "contradictory remote/office information",
-  "scores": {
-   "remote": 2.0,
-   "office": 2.0
-  },
-  "evidence": [
-   {
-    "signal": "description",
-    "text": "Coinbase is a remote-first, but not remote-only company.",
-    "effect": "remote"
-   },
-   {
-    "signal": "description (occasional attendance)",
-    "text": "Expect to get together quarterly for in-person working sessions",
-    "effect": "occasional"
-   },
-   {
-    "signal": "description",
-    "text": "This role requires full-time, in-office presence, five days a week.",
-    "effect": "on_site"
-   }
-  ],
-  "unresolved": [
-   "The listing contradicts itself about remote versus office work; needs review.",
-   "The location field names a place but does not say the role is remote there; confirm whether applicants elsewhere are accepted."
-  ],
-  "source": "Greenhouse"
- },
- {
-  "title": "Regional Security Manager, APAC",
-  "company": "Coinbase",
-  "url": "https://job-boards.greenhouse.io/coinbase/jobs/8312623",
-  "location": "Remote - Singapore",
-  "reason": "contradictory remote/office information",
-  "scores": {
-   "remote": 5.0,
-   "office": 5.5
-  },
-  "evidence": [
-   {
-    "signal": "location field",
-    "text": "Remote - Singapore",
-    "effect": "remote"
-   },
-   {
-    "signal": "description",
-    "text": "Coinbase is a remote-first, but not remote-only company.",
-    "effect": "remote"
-   },
-   {
-    "signal": "description (occasional attendance)",
-    "text": "Expect to get together quarterly for in-person working sessions",
-    "effect": "occasional"
-   },
-   {
-    "signal": "description",
-    "text": "Lead site assessments, vulnerability reviews, security hardening projects, new office openings, relocations, and security system deployments across the region.",
-    "effect": "on_site"
-   }
-  ],
-  "unresolved": [
-   "The listing contradicts itself about remote versus office work; needs review."
-  ],
-  "source": "Greenhouse"
- },
- {
-  "title": "Strategic Sourcing Intern",
-  "company": "Coinbase",
-  "url": "https://job-boards.greenhouse.io/coinbase/jobs/8376084",
-  "location": "Hybrid - New York, NY",
-  "reason": "contradictory remote/office information",
-  "scores": {
-   "remote": 2.0,
+   "remote": 6.0,
    "office": 3.0
   },
   "evidence": [
    {
     "signal": "location field",
-    "text": "Hybrid - New York, NY",
+    "text": "United Kingdom - Remote",
+    "effect": "remote"
+   },
+   {
+    "signal": "description",
+    "text": "Please note, while we are a remote first company, for the UK roles specifically we are asking candidates to be open to 2 days in the office/week.",
     "effect": "hybrid"
    },
    {
     "signal": "description",
-    "text": "Coinbase is a remote-first, but not remote-only company.",
+    "text": "Flexible & Remote-First Culture: Work remotely with team meetup opportunities, bi-annual destination summits, and a monthly stipend for coworking spaces, phone and inter…",
     "effect": "remote"
    },
    {
     "signal": "description (occasional attendance)",
-    "text": "Expect to get together quarterly for in-person working sessions",
+    "text": "Flexible & Remote-First Culture: Work remotely with team meetup opportunities, bi-annual destination summits, and a monthly stipend for coworking spaces, phone and inter…",
     "effect": "occasional"
    }
   ],
   "unresolved": [
    "The listing contradicts itself about remote versus office work; needs review.",
-   "The location field names a place but does not say the role is remote there; confirm whether applicants elsewhere are accepted."
+   "Occasional office or in-person attendance is mentioned; confirm how often.",
+   "The location field lists United Kingdom - Remote, but the listing does not confirm the role is remote there."
   ],
   "source": "Greenhouse"
  },
  {
-  "title": "AI Growth Specialist (BDR)",
-  "company": "Descript",
-  "url": "https://boards.greenhouse.io/descript/jobs/8109681003?gh_jid=8109681003",
-  "location": "San Francisco, CA or Remote, US ",
+  "title": "Finance Assistant (REMOTE)",
+  "company": "Concentric",
+  "url": "https://job-boards.greenhouse.io/concentric/jobs/4729549006",
+  "location": "Seattle",
   "reason": "contradictory remote/office information",
   "scores": {
-   "remote": 4.5,
-   "office": 6.0
+   "remote": 2.5,
+   "office": 3.0
   },
   "evidence": [
    {
-    "signal": "location field",
-    "text": "San Francisco, CA or Remote, US",
+    "signal": "title",
+    "text": "Finance Assistant (REMOTE)",
     "effect": "remote"
    },
    {
     "signal": "description",
-    "text": "#LI-Remote",
-    "effect": "remote (weak)"
-   },
-   {
-    "signal": "description",
-    "text": "For those who are remote, we have a handful of opportunities throughout the year for in person collaboration.",
-    "effect": "on_site"
-   },
-   {
-    "signal": "description",
-    "text": "For our hybrid roles, we're flexible, and you're an adult-we don't expect or mandate that you're in the office every day.",
+    "text": "This is a full-time position that allows for a hybrid work arrangement from our Corporate Headquarters in Kirkland, WA.",
     "effect": "hybrid"
+   },
+   {
+    "signal": "description",
+    "text": "Providing 24/7 access to trusted risk intelligence and remote support, helping you stay informed, prepared, and protected wherever you operate.",
+    "effect": "remote (weak)"
    }
   ],
   "unresolved": [
-   "The listing contradicts itself about remote versus office work; needs review."
+   "The listing contradicts itself about remote versus office work; needs review.",
+   "The location field names a place but does not say the role is remote there; confirm whether applicants elsewhere are accepted."
   ],
   "source": "Greenhouse"
  },
@@ -4765,35 +4454,177 @@
   "source": "Greenhouse"
  },
  {
-  "title": "Commercial Counsel, Advertising and Partnerships",
-  "company": "Doximity",
-  "url": "https://job-boards.greenhouse.io/doximity/jobs/8379024",
-  "location": "San Francisco, CA ",
+  "title": "Brand Partnership Associate, Sports",
+  "company": "Coinbase",
+  "url": "https://job-boards.greenhouse.io/coinbase/jobs/8268156",
+  "location": "Remote - USA",
   "reason": "contradictory remote/office information",
   "scores": {
-   "remote": 4.0,
-   "office": 7.5
+   "remote": 5.0,
+   "office": 2.0
   },
   "evidence": [
    {
-    "signal": "description",
-    "text": "This is an onsite role based in our San Francisco office.",
-    "effect": "on_site"
-   },
-   {
-    "signal": "description",
-    "text": "The team is in the office on a regular basis (minimally 3 days per week) for collaboration, and this position is expected to be present in person accordingly.",
-    "effect": "on_site"
-   },
-   {
-    "signal": "description",
-    "text": "We recognize that many talented attorneys are seeking fully remote roles.",
+    "signal": "location field",
+    "text": "Remote - USA",
     "effect": "remote"
    },
    {
     "signal": "description",
-    "text": "For this position, however, we are only considering candidates who are able to work onsite in San Francisco and who do not require a fully remote arrangement.",
+    "text": "Coinbase is a remote-first, but not remote-only company.",
+    "effect": "remote"
+   },
+   {
+    "signal": "description (occasional attendance)",
+    "text": "Expect to get together quarterly for in-person working sessions",
+    "effect": "occasional"
+   },
+   {
+    "signal": "description",
+    "text": "Manage hospitality operations for Warriors, Valkyries, and Liberty: ticket inventory, guest lists, internal distribution, and on-site hosting.",
     "effect": "on_site"
+   }
+  ],
+  "unresolved": [
+   "The listing contradicts itself about remote versus office work; needs review.",
+   "Occasional office or in-person attendance is mentioned; confirm how often.",
+   "The location field lists Remote - USA, but the listing does not confirm the role is remote there."
+  ],
+  "source": "Greenhouse"
+ },
+ {
+  "title": "Customer Support Specialist ll",
+  "company": "Coinbase",
+  "url": "https://job-boards.greenhouse.io/coinbase/jobs/8337209",
+  "location": "Manila, Philippines",
+  "reason": "contradictory remote/office information",
+  "scores": {
+   "remote": 2.0,
+   "office": 2.0
+  },
+  "evidence": [
+   {
+    "signal": "description",
+    "text": "Coinbase is a remote-first, but not remote-only company.",
+    "effect": "remote"
+   },
+   {
+    "signal": "description (occasional attendance)",
+    "text": "Expect to get together quarterly for in-person working sessions",
+    "effect": "occasional"
+   },
+   {
+    "signal": "description",
+    "text": "This role requires full-time, in-office presence, five days a week.",
+    "effect": "on_site"
+   }
+  ],
+  "unresolved": [
+   "The listing contradicts itself about remote versus office work; needs review.",
+   "The location field names a place but does not say the role is remote there; confirm whether applicants elsewhere are accepted."
+  ],
+  "source": "Greenhouse"
+ },
+ {
+  "title": "Regional Security Manager, APAC",
+  "company": "Coinbase",
+  "url": "https://job-boards.greenhouse.io/coinbase/jobs/8312623",
+  "location": "Remote - Singapore",
+  "reason": "contradictory remote/office information",
+  "scores": {
+   "remote": 5.0,
+   "office": 5.5
+  },
+  "evidence": [
+   {
+    "signal": "location field",
+    "text": "Remote - Singapore",
+    "effect": "remote"
+   },
+   {
+    "signal": "description",
+    "text": "Coinbase is a remote-first, but not remote-only company.",
+    "effect": "remote"
+   },
+   {
+    "signal": "description (occasional attendance)",
+    "text": "Expect to get together quarterly for in-person working sessions",
+    "effect": "occasional"
+   },
+   {
+    "signal": "description",
+    "text": "Lead site assessments, vulnerability reviews, security hardening projects, new office openings, relocations, and security system deployments across the region.",
+    "effect": "on_site"
+   }
+  ],
+  "unresolved": [
+   "The listing contradicts itself about remote versus office work; needs review."
+  ],
+  "source": "Greenhouse"
+ },
+ {
+  "title": "Strategic Sourcing Intern",
+  "company": "Coinbase",
+  "url": "https://job-boards.greenhouse.io/coinbase/jobs/8376084",
+  "location": "Hybrid - New York, NY",
+  "reason": "contradictory remote/office information",
+  "scores": {
+   "remote": 2.0,
+   "office": 3.0
+  },
+  "evidence": [
+   {
+    "signal": "location field",
+    "text": "Hybrid - New York, NY",
+    "effect": "hybrid"
+   },
+   {
+    "signal": "description",
+    "text": "Coinbase is a remote-first, but not remote-only company.",
+    "effect": "remote"
+   },
+   {
+    "signal": "description (occasional attendance)",
+    "text": "Expect to get together quarterly for in-person working sessions",
+    "effect": "occasional"
+   }
+  ],
+  "unresolved": [
+   "The listing contradicts itself about remote versus office work; needs review.",
+   "The location field names a place but does not say the role is remote there; confirm whether applicants elsewhere are accepted."
+  ],
+  "source": "Greenhouse"
+ },
+ {
+  "title": "AI Growth Specialist (BDR)",
+  "company": "Descript",
+  "url": "https://boards.greenhouse.io/descript/jobs/8109681003?gh_jid=8109681003",
+  "location": "San Francisco, CA or Remote, US ",
+  "reason": "contradictory remote/office information",
+  "scores": {
+   "remote": 4.5,
+   "office": 6.0
+  },
+  "evidence": [
+   {
+    "signal": "location field",
+    "text": "San Francisco, CA or Remote, US",
+    "effect": "remote"
+   },
+   {
+    "signal": "description",
+    "text": "#LI-Remote",
+    "effect": "remote (weak)"
+   },
+   {
+    "signal": "description",
+    "text": "For those who are remote, we have a handful of opportunities throughout the year for in person collaboration.",
+    "effect": "on_site"
+   },
+   {
+    "signal": "description",
+    "text": "For our hybrid roles, we're flexible, and you're an adult-we don't expect or mandate that you're in the office every day.",
+    "effect": "hybrid"
    }
   ],
   "unresolved": [
@@ -4839,79 +4670,203 @@
   "source": "Greenhouse"
  },
  {
-  "title": "Principal, GTM Business Operations Manager",
-  "company": "Cloudflare",
-  "url": "https://boards.greenhouse.io/cloudflare/jobs/8328820?gh_jid=8328820",
-  "location": "Distributed; Hybrid",
+  "title": "Commercial Counsel, Advertising and Partnerships",
+  "company": "Doximity",
+  "url": "https://job-boards.greenhouse.io/doximity/jobs/8379024",
+  "location": "San Francisco, CA ",
   "reason": "contradictory remote/office information",
   "scores": {
-   "remote": 4.5,
-   "office": 4.0
+   "remote": 4.0,
+   "office": 7.5
   },
   "evidence": [
    {
-    "signal": "location field",
-    "text": "Distributed; Hybrid",
-    "effect": "hybrid"
+    "signal": "description",
+    "text": "This is an onsite role based in our San Francisco office.",
+    "effect": "on_site"
    },
    {
-    "signal": "location field",
-    "text": "Distributed; Hybrid",
+    "signal": "description",
+    "text": "The team is in the office on a regular basis (minimally 3 days per week) for collaboration, and this position is expected to be present in person accordingly.",
+    "effect": "on_site"
+   },
+   {
+    "signal": "description",
+    "text": "We recognize that many talented attorneys are seeking fully remote roles.",
     "effect": "remote"
    },
    {
     "signal": "description",
-    "text": "Available Locations: Austin, TX, San Francisco CA, NYC, Denver, OR Remote US",
-    "effect": "remote (weak)"
-   },
-   {
-    "signal": "description",
-    "text": "Commuter Spending Accounts",
+    "text": "For this position, however, we are only considering candidates who are able to work onsite in San Francisco and who do not require a fully remote arrangement.",
     "effect": "on_site"
    }
   ],
   "unresolved": [
-   "The listing contradicts itself about remote versus office work; needs review.",
-   "Occasional office or in-person attendance is mentioned; confirm how often.",
-   "The listing does not state where applicants must live or be authorised to work."
+   "The listing contradicts itself about remote versus office work; needs review."
   ],
   "source": "Greenhouse"
  },
  {
-  "title": "Senior Regional Sales Director, Startups – AI & Digital Natives (East)",
-  "company": "Cloudflare",
-  "url": "https://boards.greenhouse.io/cloudflare/jobs/8372387?gh_jid=8372387",
-  "location": "Distributed; Hybrid",
+  "title": "Software Developer",
+  "company": "DRW ",
+  "url": "https://job-boards.greenhouse.io/drweng/jobs/8357329",
+  "location": "Montreal",
   "reason": "contradictory remote/office information",
   "scores": {
    "remote": 3.0,
+   "office": 2.0
+  },
+  "evidence": [
+   {
+    "signal": "description",
+    "text": "Bi-weekly social activities, monthly wellness plan, on-site weekly massages, and games room",
+    "effect": "on_site"
+   },
+   {
+    "signal": "description",
+    "text": "Competitive salary, matching RRSP, paid company phone, laptop, and work from home set-up",
+    "effect": "remote"
+   }
+  ],
+  "unresolved": [
+   "The listing contradicts itself about remote versus office work; needs review.",
+   "The location field names a place but does not say the role is remote there; confirm whether applicants elsewhere are accepted.",
+   "Applicants may need existing work authorisation; check the posting."
+  ],
+  "source": "Greenhouse"
+ },
+ {
+  "title": "Conference and Educator Events Coordinator",
+  "company": "Epic Kids Inc.",
+  "url": "https://job-boards.greenhouse.io/epickids/jobs/8164746003",
+  "location": "Remote, US",
+  "reason": "contradictory remote/office information",
+  "scores": {
+   "remote": 3.5,
    "office": 4.0
   },
   "evidence": [
    {
     "signal": "location field",
-    "text": "Distributed; Hybrid",
-    "effect": "hybrid"
-   },
-   {
-    "signal": "location field",
-    "text": "Distributed; Hybrid",
+    "text": "Remote, US",
     "effect": "remote"
    },
    {
-    "signal": "description (occasional attendance)",
-    "text": "Represent Cloudflare in the East Coast startup scene at founder events, AI meetups, investor portfolio sessions and developer communities.",
-    "effect": "occasional"
+    "signal": "description",
+    "text": "You have owned exhibitor kits, decorator orders, shipping and on-site logistics yourself, not just supported someone who did.",
+    "effect": "on_site"
    },
    {
     "signal": "description",
-    "text": "Commuter Spending Accounts",
+    "text": "Remote and self-directed, with reliable overlap with Eastern and Pacific time.",
+    "effect": "remote (weak)"
+   },
+   {
+    "signal": "description",
+    "text": "Able to travel to 2 to 4 shows a year for on-site support (about 10 to 15 percent).",
+    "effect": "on_site"
+   }
+  ],
+  "unresolved": [
+   "The listing contradicts itself about remote versus office work; needs review."
+  ],
+  "source": "Greenhouse"
+ },
+ {
+  "title": "Partnership Manager, SMB - Hybrid (Indiana)",
+  "company": "Edmentum",
+  "url": "https://job-boards.greenhouse.io/edmentum/jobs/6238503004",
+  "location": "Indiana",
+  "reason": "contradictory remote/office information",
+  "scores": {
+   "remote": 2.0,
+   "office": 2.0
+  },
+  "evidence": [
+   {
+    "signal": "title",
+    "text": "Partnership Manager, SMB - Hybrid (Indiana)",
+    "effect": "hybrid"
+   },
+   {
+    "signal": "description",
+    "text": "We are a Remote First organization with a strong commitment to excellence, innovation, and customer satisfaction.",
+    "effect": "remote"
+   }
+  ],
+  "unresolved": [
+   "The listing contradicts itself about remote versus office work; needs review.",
+   "The location field names a place but does not say the role is remote there; confirm whether applicants elsewhere are accepted."
+  ],
+  "source": "Greenhouse"
+ },
+ {
+  "title": "IT Support Technician - AV & Workplace Technology",
+  "company": "Engine",
+  "url": "https://job-boards.greenhouse.io/engine/jobs/8205852003",
+  "location": "Remote - US",
+  "reason": "contradictory remote/office information",
+  "scores": {
+   "remote": 9.5,
+   "office": 2.0
+  },
+  "evidence": [
+   {
+    "signal": "location field",
+    "text": "Remote - US",
+    "effect": "remote"
+   },
+   {
+    "signal": "description",
+    "text": "This role is vital for delivering polished Town Halls and major company events, keeping Zoom and our meeting tools running smoothly, and making sure our offices have the…",
+    "effect": "remote (weak)"
+   },
+   {
+    "signal": "description",
+    "text": "This role is fully remote within the US but requires about 25% travel to visit Engine offices, manage hardware logistics, and support onsites, Town Halls, and other comp…",
+    "effect": "remote"
+   },
+   {
+    "signal": "description",
+    "text": "Vendor Coordination and Onsite Support: Manage relationships with AV and hardware vendors, coordinate installs, repairs and venue requirements, and provide hands-on onsi…",
     "effect": "on_site"
    }
   ],
   "unresolved": [
    "The listing contradicts itself about remote versus office work; needs review.",
-   "The listing does not state where applicants must live or be authorised to work."
+   "The location field lists Remote - US, but the listing does not confirm the role is remote there."
+  ],
+  "source": "Greenhouse"
+ },
+ {
+  "title": "Senior Field Marketing Manager - Public Sector, Federal & Defense",
+  "company": "Datadog",
+  "url": "https://job-boards.greenhouse.io/datadog/jobs/8324702",
+  "location": "District of Columbia, USA, Remote",
+  "reason": "contradictory remote/office information",
+  "scores": {
+   "remote": 3.0,
+   "office": 5.5
+  },
+  "evidence": [
+   {
+    "signal": "location field",
+    "text": "District of Columbia, USA, Remote",
+    "effect": "remote"
+   },
+   {
+    "signal": "description",
+    "text": "Based in or willing to relocate to the Washington, D.C.",
+    "effect": "on_site"
+   },
+   {
+    "signal": "description",
+    "text": "#LI-Hybrid",
+    "effect": "hybrid"
+   }
+  ],
+  "unresolved": [
+   "The listing contradicts itself about remote versus office work; needs review."
   ],
   "source": "Greenhouse"
  }
