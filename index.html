@@ -1012,7 +1012,7 @@
     <!-- DISCLAIMER -->
     <details class="disclaimer">
       <summary><strong>How these listings work</strong> &mdash; always check the employer&rsquo;s eligibility rules for your location before applying.</summary>
-      <p class="disclaimer-body">Every card links to the original posting on the company&rsquo;s hiring page (usually Greenhouse, Lever or Ashby), shows its real posting date, and says where applicants can be based &mdash; or &ldquo;unclear&rdquo; when the employer doesn&rsquo;t. The &ldquo;Get a CV for this role&rdquo; button is our own paid CV service, not part of the employer&rsquo;s application.</p>
+      <p class="disclaimer-body">Every card links to the original posting on the company&rsquo;s hiring page, shows its real posting date, and says where applicants can be based &mdash; or &ldquo;unclear&rdquo; when the employer doesn&rsquo;t. The &ldquo;Get a CV for this role&rdquo; button is our own paid CV service, not part of the employer&rsquo;s application.</p>
     </details>
 
     <!-- SERVICES: above the listings, so the paid offer is reachable without scrolling past every job -->
@@ -1915,7 +1915,7 @@
         if (posted) meta.push('<span class="m">' + ICONS.cal + '<span>' + esc(absolute) + '</span></span>');
         if (job.jobType) meta.push('<span class="m">' + ICONS.case + '<span>' + esc(job.jobType) + '</span></span>');
         if (job.level && job.level !== 'unspecified') meta.push('<span class="m">' + ICONS.lvl + '<span>' + esc(LEVEL_LABEL[job.level] || job.level) + '</span></span>');
-        meta.push('<span class="m"><span>Source: ' + esc(job.sourceName || '') + '</span></span>');
+        meta.push('<span class="m"><span>Source: the company\u2019s hiring page</span></span>');  /* KT, 25 Nov 2026: no hiring-system names */
         var url = safeUrl(job.sourceUrl);
         return '<article class="job-card">'
           + '<div class="job-card-header"><div class="job-headings">'
