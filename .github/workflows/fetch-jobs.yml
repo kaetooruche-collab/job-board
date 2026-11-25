@@ -7,6 +7,7 @@ on:
 
 permissions:
   contents: write
+  issues: write      # scripts/gh_alert.py opens one issue when the refresh fails, closes it when it recovers
 
 # one refresh at a time: a second run waits instead of colliding on the push
 concurrency:
@@ -19,9 +20,9 @@ jobs:
     timeout-minutes: 20
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v6
         with:
           python-version: '3.12'
           cache: pip
@@ -30,7 +31,12 @@ jobs:
       - name: Install dependencies
         run: pip install -r scripts/requirements.txt
 
+      # Tests that read the live jobs.json are skipped HERE (YC_SKIP_LIVE_DATA=1): new data must never be able
+      # to block the refresh that would replace it. That deadlock froze the board from 18 to 25 Nov 2026.
+      # The daily CI workflow (ci.yml) still runs them and opens an issue if one fails.
       - name: Run classifier tests
+        env:
+          YC_SKIP_LIVE_DATA: '1'
         run: python -I -m unittest discover -s tests
 
       - name: Fetch and verify listings
@@ -80,3 +86,15 @@ jobs:
               sys.exit(1)
           print(f"link checker blocked-streak: {streak}")
           PY
+
+      - name: Alert (open or update the autopilot issue)
+        if: failure()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python -I scripts/gh_alert.py fail "${{ github.workflow }}" "a step failed, open the run log"
+
+      - name: All clear (close the autopilot issue if one is open)
+        if: success()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python -I scripts/gh_alert.py ok "${{ github.workflow }}"

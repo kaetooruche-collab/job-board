@@ -10,6 +10,11 @@ const jobs = JSON.parse(fs.readFileSync(path.join(__dirname, '..', '..', 'jobs.j
 
 const j = (o) => Object.assign({ categories: [], eligibility: {} }, o);
 
+/* Tests marked LIVE read the real jobs.json. The 6-hourly refresh sets YC_SKIP_LIVE_DATA=1 so new
+ * data can never block the refresh that would fix it (outage 18-25 Nov 2026); the daily CI run
+ * (.github/workflows/ci.yml) still runs them and opens an issue when one fails. */
+const LIVE = { skip: process.env.YC_SKIP_LIVE_DATA === '1' && 'live-data test: skipped inside the refresh' };
+
 test('query normalisation turns punctuation and case into one query', () => {
   assert.strictEqual(S.normalise('Customer-Support'), 'customer support');
   assert.strictEqual(S.normalise('  project   manager!! '), 'project manager');
@@ -68,7 +73,7 @@ test('an empty query returns everything, unchanged', () => {
   assert.deepStrictEqual(S.rank(list, '   '), list);
 });
 
-test('no listing that matched at a word start before is lost now (recall guard, real data)', () => {
+test('no listing that matched at a word start before is lost now (recall guard, real data)', LIVE, () => {
   const queries = ['customer support', 'customer service', 'no experience', 'project manager',
     'software engineer', 'accountant', 'recruiter', 'sales', 'analyst', 'marketing manager', 'hr'];
   const oldMatch = (job, q) => {
@@ -92,7 +97,7 @@ test('no listing that matched at a word start before is lost now (recall guard, 
   }
 });
 
-test('every title match outranks every description-only match (real data)', () => {
+test('every title match outranks every description-only match (real data)', LIVE, () => {
   const queries = ['software engineer', 'recruiter', 'account executive', 'customer support',
     'marketing manager', 'sales', 'analyst', 'project manager'];
   /* "the title alone satisfies the query" — the same shipped matcher, pointed at the title only */
@@ -116,7 +121,7 @@ test('every title match outranks every description-only match (real data)', () =
   }
 });
 
-test('a query with no real roles never shows a listing that claims that role', () => {
+test('a query with no real roles never shows a listing that claims that role', LIVE, () => {
   // Stemming may surface listings whose *description* uses the verb ("translating customer needs
   // into products"), which is honest — but a card may only claim a role in its title when the word
   // is really there. This guards against stemming inventing a claim, and it stays true as the feed
@@ -141,4 +146,19 @@ test('a stray initial in a listing cannot satisfy a long query', () => {
   const job = j({ title: 'Care Navigator', description: 'Team of three. T tickets handled daily.' });
   assert.ok(!S.matches(job, 'translator'));
   assert.ok(!S.matches(job, 'recruiter'), 'and "r" does not match "recruiter" either');
+});
+test('regression 25 Nov 2026: "marketplace" is not a form of "marketing"', () => {
+  const pm = j({ title: 'Product Manager (marketplace - order flow)' });
+  assert.ok(!S.matches({ title: pm.title, categories: [], eligibility: {} }, 'marketing manager'),
+    'the title alone must not answer "marketing manager"');
+  assert.ok(S.matches(j({ title: 'Project Management Lead' }), 'project manager'), 'real endings still count');
+});
+
+test('a title that answers every term always outranks one that does not, whatever the scores', () => {
+  // fixture version of the live-data rule, so it holds even when the feed changes
+  const titled = j({ title: 'Marketing Manager' });
+  const loaded = j({ title: 'Mid-Market Specialist', company: 'Marketing Manager Inc',
+    categories: ['Marketing & Communications'], description: 'marketing manager marketing manager' });
+  const ranked = S.rank([loaded, titled], 'marketing manager');
+  assert.strictEqual(ranked[0], titled);
 });
