@@ -47,7 +47,8 @@ BOARDS_FILE = REPO_ROOT / "data" / "boards.json"
 
 MAX_AGE_DAYS = 30
 MAX_PER_COMPANY = 15
-MAX_LISTINGS = 1200
+MAX_LISTINGS = 2000   # 25 Nov 2026: was 1200, which silently cut 594 checked jobs (oldest first, early-career included).
+                      # The site serves jobs.json compressed: about 0.5 MB at 2000 listings. Matches discover_boards.MAX_LIVE_LISTINGS.
 LOG_SAMPLE = 40
 REVIEW_LIMIT = 150
 
@@ -484,6 +485,17 @@ def _cap_order(j):
     return (0 if level in EARLY_CAREER else 1, -j["posted"].timestamp())
 
 
+def cap_total(items, limit=None):
+    """At most `limit` listings, newest first; when cutting, early-career roles are kept before older others."""
+    limit = MAX_LISTINGS if limit is None else limit
+    items = sorted(items, key=lambda x: x["posted"], reverse=True)
+    if len(items) <= limit:
+        return items
+    early = [j for j in items if ((j.get("result") or {}).get("experience") or {}).get("level") in EARLY_CAREER][:limit]
+    rest = [j for j in items if j not in early][: limit - len(early)]
+    return sorted(early + rest, key=lambda x: x["posted"], reverse=True)
+
+
 def cap_per_company(items, removed):
     items.sort(key=_cap_order)
     counts, out = Counter(), []
@@ -609,8 +621,7 @@ def main():
         print(f"::warning::{link_stats['dead']} of {link_stats['checked'] - link_stats['unknown']} sampled pages are gone although the feed lists them "
               f"(run {link_stats['mismatchStreak']} of {L.MAX_MISMATCH_RUNS} before the workflow fails).")
 
-    keep.sort(key=lambda x: x["posted"], reverse=True)
-    keep = keep[:MAX_LISTINGS]
+    keep = cap_total(keep)
     prev = load_previous()
     records, held, warnings, held_review = [], [], {}, []
     for j in keep:

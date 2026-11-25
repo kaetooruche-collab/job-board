@@ -48,7 +48,7 @@ MAX_RETIRE_PER_RUN = 15
 OUTAGE_SHARE = 0.30
 REPROBE_DAYS = 90
 MIN_PUBLISHABLE = 1
-MAX_LIVE_LISTINGS = 2500   # stop adding boards while this many listings are live (jobs.json size on phones)
+MAX_LIVE_LISTINGS = 2000   # stop adding boards while this many listings are live; equals fetch_jobs.MAX_LISTINGS
 EARLY_CAREER_LISTS = [     # SimplifyJobs public lists: used ONLY to learn which employer boards hire early-career people
     "https://raw.githubusercontent.com/SimplifyJobs/New-Grad-Positions/dev/.github/scripts/listings.json",
     "https://raw.githubusercontent.com/SimplifyJobs/Summer2026-Internships/dev/.github/scripts/listings.json",

@@ -35,6 +35,27 @@ if __name__ == "__main__":
     unittest.main()
 
 
+class TotalCap(unittest.TestCase):
+    def test_under_the_limit_nothing_is_cut(self):
+        items = [job(i, "senior", f"C{i}") for i in range(10)]
+        self.assertEqual(len(F.cap_total(items, limit=20)), 10)
+
+    def test_over_the_limit_old_early_career_roles_survive_and_the_oldest_others_go(self):
+        # 25 Nov 2026: a 1,200 cap cut 594 checked jobs by age, 21 of them early-career roles still open
+        items = [job(i, "senior", f"S{i}") for i in range(10)] + [job(20 + i, "junior", f"J{i}") for i in range(3)]
+        out = F.cap_total(items, limit=8)
+        titles = [j["title"] for j in out]
+        self.assertEqual(len(out), 8)
+        self.assertTrue(all(f"junior {20 + i}" in titles for i in range(3)))
+        self.assertIn("senior 0", titles)
+        self.assertNotIn("senior 9", titles)
+        self.assertEqual([j["posted"] for j in out], sorted((j["posted"] for j in out), reverse=True), "newest first")
+
+    def test_the_two_limits_agree(self):
+        import discover_boards as D
+        self.assertEqual(F.MAX_LISTINGS, D.MAX_LIVE_LISTINGS)
+
+
 class Dates(unittest.TestCase):
     def test_recruitee_and_iso_dates(self):
         self.assertEqual(F.parse_dt("2026-11-24 10:10:44 UTC"), datetime(2026, 11, 24, 10, 10, 44, tzinfo=timezone.utc))
