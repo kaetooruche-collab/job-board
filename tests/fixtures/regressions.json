@@ -232,5 +232,69 @@
   "expect": {
    "label": "Canada, United States"
   }
+ },
+ {
+  "name": "'50% Telecommuting permitted' is hybrid, not remote (Stripe, 25 Nov 2026)",
+  "title": "Software Engineer, Core Technology",
+  "location": "South San Francisco, CA",
+  "remote_feed": false,
+  "description": "50% Telecommuting permitted.",
+  "expect": {
+   "not_published": true
+  }
+ },
+ {
+  "name": "'not limited to office location' in a pay sentence is not 'no office' (Accenture Federal Services, 34 cards, 25 Nov 2026)",
+  "title": "SAP Data Conversion Consultant",
+  "location": "Washington, DC",
+  "remote_feed": false,
+  "description": "Compensation for roles at Accenture Federal Services varies depending on a wide array of factors, including but not limited to office location, role, skill set, and level of experience.",
+  "expect": {
+   "not_published": true
+  }
+ },
+ {
+  "name": "A company line 'we hire globally' does not overrule the job's own location (Certa, 25 Nov 2026)",
+  "title": "Senior Manager, Global Production Support (North America)",
+  "location": "Canada; United States",
+  "remote_feed": false,
+  "description": "Certa is a remote-first company and we hire globally. This role is remote based in North America.",
+  "expect": {
+   "countries_exclude": [],
+   "note_absent": [
+    "disagree"
+   ]
+  }
+ },
+ {
+  "name": "A level number in the title is not early career (Content Support Analyst II, AlphaSense, 25 Nov 2026)",
+  "title": "Content Support Analyst II",
+  "location": "Remote",
+  "remote_feed": false,
+  "description": "Fully remote. 2+ years of experience in content support.",
+  "expect": {
+   "level": "mid"
+  }
+ },
+ {
+  "name": "'Fully remote in the United States' names where you can apply from (Clera, 25 Nov 2026)",
+  "title": "Account Executive",
+  "location": "remote",
+  "remote_feed": false,
+  "description": "Fully remote in the United States.",
+  "expect": {
+   "label": "United States only"
+  }
+ },
+ {
+  "name": "'remote work from anywhere in the US' is the US, not worldwide and not just the office city (Clera, 25 Nov 2026)",
+  "title": "B2C Marketing (part-time) Intern",
+  "location": "Los Angeles",
+  "remote_feed": false,
+  "description": "WHAT WE OFFER\n- Flexible remote work from anywhere in the US\n- Direct mentorship from the founding team",
+  "expect": {
+   "countries_exclude": [],
+   "label": "United States only"
+  }
  }
 ]

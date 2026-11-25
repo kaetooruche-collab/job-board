@@ -137,7 +137,8 @@
     if (h < 24) return Math.round(h) + 'h ago';
     return Math.round(h / 24) + ' day' + (Math.round(h / 24) === 1 ? '' : 's') + ' ago';
   }
-  function elig(r) { return (r.eligibility && r.eligibility.label) || 'Eligibility unclear'; }
+  function unspecified(r) { return !r.eligibility || r.eligibility.type === 'unclear' || !r.eligibility.label; }
+  function elig(r) { return unspecified(r) ? 'not specified, check the posting' : r.eligibility.label; }
   function pay(r) { return r.salaryText ? 'Pay: ' + r.salaryText : 'Pay: not stated'; }
   function lvl(r) { return LEVEL[r.level] || 'Level not stated'; }
 
@@ -161,7 +162,7 @@
     var rotated = fresh.slice(offset % fresh.length).concat(fresh.slice(0, offset % fresh.length));
     var order = rotated;
     if (document.getElementById('clear').checked) {
-      var isClear = function (r) { return elig(r) !== 'Eligibility unclear'; };
+      var isClear = function (r) { return !unspecified(r); };
       order = rotated.filter(isClear).concat(rotated.filter(function (r) { return !isClear(r); }));
       rotated = order;
     }

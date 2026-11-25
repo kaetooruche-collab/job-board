@@ -149,6 +149,26 @@ class Eligibility(unittest.TestCase):
         self.assertTrue(r["eligibility"]["conflict"])
         self.assertEqual(r["eligibility"]["label"], "Eligibility unclear")
 
+    def test_company_level_worldwide_line_does_not_overrule_the_location_field(self):
+        # Certa, 25 Nov 2026: location "Canada; United States", blurb "we hire globally" -> the job's own field wins
+        r, _ = run("Senior Manager, Production Support", "Canada; United States",
+                   "Certa is a remote-first company and we hire globally. This role is remote based in North America.")
+        self.assertFalse(r["eligibility"]["conflict"])
+        self.assertIn("United States", r["eligibility"]["countries"])
+
+    def test_level_numbers_and_senior_words_outrank_low_years(self):
+        from classify import assess_experience as A
+        for title in ("Content Support Analyst II", "Senior Sales Associate", "Lead Tax Associate", "Technical Support Engineer 2"):
+            self.assertEqual(A(title, "Requires 2 years of experience.")["level"], "mid", title)
+        for title in ("Junior Delivery Lead", "Analyst I/II/III/IV", "Lead Generation Specialist", "Customer Support Associate"):
+            self.assertEqual(A(title, "Requires 2 years of experience.")["level"], "junior", title)
+
+    def test_part_time_telecommuting_and_not_limited_to_office(self):
+        r, d = run("Software Engineer", "South San Francisco, CA", "50% Telecommuting permitted.")
+        self.assertEqual(d, "exclude")
+        r, d = run("SAP Consultant", "Washington, DC", "Pay varies depending on factors including but not limited to office location.")
+        self.assertNotEqual(r["workArrangement"], REMOTE_UNCLEAR)
+
     def test_description_restriction_with_generic_location(self):
         r, _ = run("Paralegal", "Remote",
                    "Fully remote. Applicants must be legally authorised to work in Canada.")

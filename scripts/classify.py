@@ -229,6 +229,7 @@ HYBRID_PATTERNS = [
     (re.compile(r"\(\s*hybrid\s*\)", re.I), 4.0, "(Hybrid) given as the location"),
     (re.compile(r"\bhybrid\b", re.I), 3.0, "hybrid wording"),
     (re.compile(r"\b(?:partially|partly) remote\b", re.I), 3.0, "partially remote"),
+    (re.compile(r"(?<!\d)\d{1,2}\s?%\s*(?:of (?:the|your) time\s*)?(?:telecommut\w*|remote(?:ly)?|work(?:ing)? from home|wfh)\b", re.I), 3.5, "part-time telecommuting"),
     (re.compile(r"\b(?:\d|one|two|three|four|1-2|2-3|3-4)\s*(?:days?)\s*(?:a|per|each|/)\s*week\s*(?:in|at|on)[- ]?(?:the\s*)?(?:office|site)", re.I), 3.0, "set office days"),
     # one optional word between the number and "days": "three coordinated days in the office" (Brex, 25 Nov 2026)
     (re.compile(r"\b(?:in|at) the office\s+(?:\d|one|two|three|four)\b|\b(?:\d|one|two|three|four|five)\s+(?:[a-z]+\s+)?days?\s*(?:in|at) (?:the|our|an?) (?:[\w-]+\s)?office", re.I), 3.0, "set office days"),
@@ -253,7 +254,7 @@ OCCASIONAL_RE = re.compile(
     r"|\b(?:company|team)[- ](?:retreat|offsite|off-site|meetup|summit|get-together|gathering)s?\b|\b(?:retreat|offsite|off-site|meetup)s?\b|\bas needed\b|\bwhen needed\b|\bad[- ]?hoc\b|\bon occasion\b|\brarely\b|\b(?:team )?gatherings?\b|\bmay be (?:asked|required|invited|expected) to (?:report|attend|travel|come|meet)", re.I)
 OFFICE_WORD_RE = re.compile(r"\b(?:office|on-?site|in[- ]person|headquarters|hq|retreat|offsite|off-site|meetups?)\b", re.I)
 NO_OFFICE_RE = re.compile(
-    r"\b(?:no|not|never|without|zero)\b[^.]{0,45}\b(?:office|on-?site|commut\w*|in[- ]person|headquarters)\b"
+    r"\b(?:no|not(?!\s+(?:limited|only|just|necessarily|restricted)\b)|never|without|zero)\b[^.]{0,45}\b(?:office|on-?site|commut\w*|in[- ]person|headquarters)\b"
     r"|\b(?:office|on-?site|commut\w*|in[- ]person)\b[^.]{0,35}\b(?:not|never)\s+(?:required|needed|necessary|expected)\b", re.I)
 RESIDENCY_NEAR_RE = re.compile(r"\b(?:live|reside|located|be based|residing|living)\s+(?:within|near|in commuting distance|close to|no more than)\b[^.]{0,40}\b(?:\d+\s*(?:miles|mi|km|kilometers|kilometres|minutes|hours)|commut\w+|the office|our office|an office)", re.I)
 REMOTE_AFTER_RE = re.compile(r"\bremote\s+(?:after|following|upon|once)\b[^.]{0,50}\b(?:training|onboarding|probation|ramp|period|months?|weeks?)\b|\b(?:training|onboarding)\b[^.]{0,40}\b(?:is|will be|are)?\s*(?:held\s+)?(?:on-?site|in[- ]person|at (?:our|the) office)\b", re.I)
@@ -539,6 +540,10 @@ RESTRICTION_CUES = [
     re.compile(r"[A-Za-z.]+[- ]based\s+(?:candidates|applicants|employees|only|position|role)", re.I),
     re.compile(r"\bwe (?:currently )?(?:hire|employ|have (?:entities|employees))\b[^.]{0,40}\b(?:in|from)\s+the following\b", re.I),
     re.compile(r"\b(?:hiring|recruiting) (?:in|from)\b", re.I),
+    # "Flexible remote work from anywhere in the US" is a restriction to the US, not worldwide (Clera, 25 Nov 2026)
+    re.compile(r"\banywhere\s+(?:in|within|across)\s+(?:the\s+)?(?-i:[A-Z])", re.I),
+    # "Fully remote in the United States." / "remote within Canada" (Clera card showed "not specified", 25 Nov 2026)
+    re.compile(r"\b(?:fully\s+|100%\s+)?remote\s+(?:in|within|from|across)\s+(?:the\s+)?(?-i:[A-Z])", re.I),
 ]
 TIMEZONE_RE = re.compile(
     r"\b(?:overlap(?:ping)? (?:with|of)|within|in the|aligned with|working hours (?:in|of)?|available during)\b[^.]{0,40}\b(?:time ?zones?|UTC|GMT|EST|PST|CST|MST|EDT|PDT|CET|IST)\b"
@@ -622,7 +627,7 @@ def assess_eligibility(title, location, description, remote_evidence=False, remo
         # a pay-table heading such as "Canadian employees (any location):" is not worldwide wording (Mercury, 25 Nov 2026)
         if has_pay_ctx and re.search(r"\b(?:employees|candidates|hires|residents)\s*\((?:any|all)\s+locations?\)", s, re.I):
             continue
-        if WORLDWIDE_DESC.search(s) and APPLICANT_CONTEXT.search(s):
+        if WORLDWIDE_DESC.search(s) and APPLICANT_CONTEXT.search(s) and not ANYWHERE_IN_PLACE_RE.search(s):
             m = WORLDWIDE_DESC.search(s)
             if not _negated(s, m) and not WW_COMPANY_LEVEL_RE.search(s) and not re.search(r"\b(?:customers?|users?|clients?|offices?|products?|brands?|companies|markets?|colleagues)\b[^.]{0,30}(?:worldwide|around the world|globally)|(?:worldwide|around the world|globally)\b[^.]{0,30}\b(?:customers?|users?|clients?)", s, re.I):
                 desc_ww.append(s)
@@ -701,6 +706,14 @@ def assess_eligibility(title, location, description, remote_evidence=False, remo
         notes.append("The listing text mentions worldwide wording, but the job feed's location field limits applicants; the feed's field is shown.")
         for src, t in restricted_from[:2]:
             ev.append({"signal": src, "text": _snip(t), "effect": "restricted"})
+    elif (worldwide_from and restricted_places and any(src == "location field" for src, _ in restricted_from)
+          and all(src == "description" and not ROLE_OR_APPLICANT_RE.search(t) for src, t in worldwide_from)):
+        # "Canada; United States" in the location field vs "we hire globally" in the company blurb (Certa, Oyster,
+        # Alan and others, 106 cards on 25 Nov 2026): the job's own location field is the specific statement.
+        etype = "region" if (regions and not explicit) else "countries"
+        confidence = "medium"
+        for src, t in restricted_from[:2]:
+            ev.append({"signal": src, "text": _snip(t), "effect": "restricted"})
     elif worldwide_from and restricted_places:
         conflict = True
         etype = "unclear"
@@ -777,6 +790,14 @@ EQUIV_RE = re.compile(r"\b(?:or )?equivalent (?:practical |relevant |work |profe
 DEGREE_RE = re.compile(r"\b(bachelor'?s?|master'?s?|phd|doctorate|associate'?s? degree|degree|diploma|certification|licen[sc]e[ds]?|registered nurse|\bRN\b|CPA|CFA|ACCA|\bCA\b|bar (?:admission|exam))\b", re.I)
 
 
+# A worldwide line about the company ("we hire globally", "no borders or HQ") is not a statement about this role;
+# one that names the role, candidates, applicants or "you" is, and stays a genuine conflict.
+ANYWHERE_IN_PLACE_RE = re.compile(r"\banywhere\s+(?:in|within|across)\s+(?:the\s+)?(?-i:[A-Z])", re.I)
+ROLE_OR_APPLICANT_RE = re.compile(r"\b(?:this|the)\s+(?:role|position|job|opening)\b|\bcandidates?\b|\bapplicants?\b|\byou(?:'re|r)?\b", re.I)
+EXPLICIT_EARLY_RE = re.compile(r"\b(?:intern(?:ship)?|junior|jr\.?|entry[- ]level|graduate|new grad|trainee|apprentice(?:ship)?)\b", re.I)
+TITLE_LEVEL_NUM_RE = re.compile(r"\b(?:II|III|IV)\b|\b(?:engineer|analyst|specialist|scientist|developer|associate|representative|consultant)\s+[2-5]\b|\bSDE[- ]?[2-5]\b", re.I)
+
+
 def assess_experience(title, description):
     t = title or ""
     text = clean_text(description)
@@ -825,6 +846,13 @@ def assess_experience(title, description):
             elif MANAGER_TITLE.search(t):
                 level, basis = "mid", "title (individual-contributor manager or lead)"
                 notes.append("Title says manager or lead; the years figure in the description was not used for the level.")
+    # "Analyst II", "Engineer 2", "SDE-2", "Senior Sales Associate", "Lead Tax Associate" are not early-career
+    # (16 cards labelled junior or entry on 25 Nov 2026). An explicit junior/intern/entry/graduate word keeps the level,
+    # and a range such as "Analyst I/II/III" still includes the first step.
+    if level in ("entry", "junior") and not EXPLICIT_EARLY_RE.search(t) and not re.search(r"\bI\s*/\s*II\b", t):
+        if TITLE_LEVEL_NUM_RE.search(t) or re.search(r"\b(?:senior|sr\.?|lead(?!\s+gen)|staff|principal)\b", t, re.I):
+            level, basis = "mid", "title (level number or seniority word)"
+            notes.append("The title shows a level above early career; the years figure was not used.")
     if years is not None and level in ("entry", "junior") and ENTRY_TITLE.search(t) is None and JUNIOR_TITLE.search(t) and years >= 3:
         level = "mid"; basis = f"{years}+ years stated"; notes.append("Title says junior or associate but the description asks for more experience.")
     if years is not None and SENIOR_TITLE.search(t) and level in ("junior", "entry"):

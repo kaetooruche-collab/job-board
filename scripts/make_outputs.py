@@ -69,7 +69,8 @@ def render(items, now=None):
     lines = [f"*Remote jobs this week* ({now.strftime('%d %b %Y')})", ""]
     for i, r in enumerate(items, 1):
         posted = _parse(r["postedAt"]).astimezone(timezone.utc).strftime("%d %b")
-        elig = (r.get("eligibility") or {}).get("label") or "Eligibility unclear"
+        el = r.get("eligibility") or {}
+        elig = "not specified, check the posting" if el.get("type") == "unclear" or not el.get("label") else el["label"]
         pay = r.get("salaryText")
         lines.append(f"{i}. *{r['title']}* at {r['company']}")
         lines.append(f"   Who can apply: {elig}")

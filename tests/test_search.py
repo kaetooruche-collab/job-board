@@ -12,5 +12,13 @@ class BoardSearch(unittest.TestCase):
         self.assertEqual(r.returncode, 0, r.stdout[-3000:] + r.stderr[-1500:])
 
 
+@unittest.skipUnless(shutil.which("node"), "node not installed")
+class CardText(unittest.TestCase):
+    def test_node_suite(self):
+        r = subprocess.run(["node", "--test", os.path.join(ROOT, "tests", "node", "card-text.test.js")],
+                           capture_output=True, text=True, cwd=ROOT, env=dict(os.environ))
+        self.assertEqual(r.returncode, 0, r.stdout[-3000:] + r.stderr[-1500:])
+
+
 if __name__ == "__main__":
     unittest.main()

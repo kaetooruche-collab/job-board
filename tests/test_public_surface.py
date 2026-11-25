@@ -12,7 +12,7 @@ class PublicSurface(unittest.TestCase):
             self.assertIn(item, IGNORED, item)
 
     def test_everything_the_site_loads_is_still_deployed(self):
-        for needed in ("jobs.json", "data/geo_lexicon.json", "api", "fonts", "images", "index.html", "services.html", "search.js", "site-forms.js", "site-config.js", "yc-logo.png"):
+        for needed in ("jobs.json", "data/geo_lexicon.json", "api", "fonts", "images", "index.html", "services.html", "search.js", "card-text.js", "site-forms.js", "site-config.js", "yc-logo.png"):
             self.assertNotIn(needed, IGNORED, needed)
             self.assertFalse(any(needed.startswith(i + "/") for i in IGNORED), needed)
 
