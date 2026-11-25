@@ -41,7 +41,7 @@ BLOCKLIST = ROOT / "data" / "board_blocklist.json"
 CANDIDATES = ROOT / "data" / "board_candidates.json"
 REPORT = ROOT / "data" / "discovery_report.md"
 
-KINDS = ("greenhouse", "lever", "ashby")
+KINDS = ("greenhouse", "lever", "ashby", "recruitee", "personio")  # the last two switched on 25 Nov 2026
 DEAD_WEEKS_TO_RETIRE = 3
 EMPTY_WEEKS_TO_RETIRE = 8
 MAX_RETIRE_PER_RUN = 15
@@ -60,8 +60,10 @@ ATS_URL_RE = [
     ("lever", re.compile(r"jobs(?:\.eu)?\.lever\.co/([A-Za-z0-9_.-]+)", re.I)),
     ("ashby", re.compile(r"jobs\.ashbyhq\.com/([A-Za-z0-9_.%-]+)", re.I)),
     ("ashby", re.compile(r"api\.ashbyhq\.com/posting-api/job-board/([A-Za-z0-9_.%-]+)", re.I)),
+    ("recruitee", re.compile(r"//([a-z0-9][a-z0-9-]+)\.recruitee\.com", re.I)),
+    ("personio", re.compile(r"//([a-z0-9][a-z0-9-]+)\.jobs\.personio\.(?:de|com)", re.I)),
 ]
-NOT_SLUGS = {"embed", "jobs", "job_board", "v1", "api", "careers", "search"}
+NOT_SLUGS = {"www", "app", "embed", "jobs", "job_board", "v1", "api", "careers", "search"}
 
 
 # ---------- pure helpers (tested in tests/test_discover_boards.py) ----------
@@ -197,7 +199,9 @@ def probe(kind, slug, get=http_get):
     """Returns (status, name_or_None). status: 'ok' | 'dead' | 'error'."""
     url = {"greenhouse": f"https://boards-api.greenhouse.io/v1/boards/{slug}",
            "lever": f"https://api.lever.co/v0/postings/{slug}?mode=json&limit=1",
-           "ashby": f"https://api.ashbyhq.com/posting-api/job-board/{slug}"}[kind]
+           "ashby": f"https://api.ashbyhq.com/posting-api/job-board/{slug}",
+           "recruitee": f"https://{slug}.recruitee.com/api/offers/",
+           "personio": f"https://{slug}.jobs.personio.de/xml"}[kind]
     try:
         r = get(url)
     except Exception:
@@ -206,6 +210,8 @@ def probe(kind, slug, get=http_get):
         return "dead", None
     if r.status_code != 200:
         return "error", None
+    if kind == "personio":  # an XML feed, not JSON
+        return ("ok", None) if "<workzag-jobs" in r.text else ("error", None)
     try:
         data = r.json()
     except ValueError:
@@ -215,7 +221,7 @@ def probe(kind, slug, get=http_get):
 
 def board_items(kind, board):
     import fetch_jobs as F
-    fn = {"greenhouse": F.fetch_greenhouse_board, "lever": F.fetch_lever_board, "ashby": F.fetch_ashby_board}[kind]
+    fn = {"greenhouse": F.fetch_greenhouse_board, "lever": F.fetch_lever_board, "ashby": F.fetch_ashby_board, **F.EXTRA_READERS}[kind]
     return fn(board)
 
 

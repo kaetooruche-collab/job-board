@@ -12,7 +12,7 @@ LIVE = ["index.html", "services.html", "verify.html", "privacy.html", "thanks.ht
         "kit.html", "site-config.js", "scripts/email_data.py", "scripts/make_outputs.py", "scripts/build_brand_assets.py", "data/whatsapp_post.txt"]
 OVERSTATES = re.compile(r"employer.{0,8}s own (?:posting|page|site)|direct(?:ly)? (?:link )?to the employer|straight to the employer|"
                         r"links? straight to the employer|employer.{0,8}s own link", re.I)
-ATS_HOSTS = ("greenhouse.io", "lever.co", "ashbyhq.com")
+ATS_HOSTS = ("greenhouse.io", "lever.co", "ashbyhq.com", "jobs.personio.de", "jobs.personio.com")
 
 
 class SourceClaims(unittest.TestCase):
@@ -22,22 +22,30 @@ class SourceClaims(unittest.TestCase):
             m = OVERSTATES.search(text)
             self.assertIsNone(m, f"{f}: {m.group(0) if m else ''}")
 
-    def test_the_hiring_systems_are_named_where_sources_are_disclosed_not_in_the_hero(self):
-        for f in ("index.html", "verify.html"):
-            t = (ROOT / f).read_text(encoding="utf-8")
-            for name in ("Greenhouse", "Lever", "Ashby"):
-                self.assertIn(name, t, f)
+    def test_no_public_surface_names_a_hiring_system(self):
+        """KT, 25 Nov 2026: "don't mention greenhouse, lever, ashby, recruitee or personio. there is no reason to mention
+        any of them or include any of them." Cards say "Source: the company's hiring page" instead."""
+        names = re.compile(r"\b(?:Greenhouse|Lever|Ashby|Recruitee|Personio|Workable)\b")
+        for f in LIVE:
+            text = (ROOT / f).read_text(encoding="utf-8")
+            if f.endswith(".py"):  # scripts: only the strings they write for readers count
+                text = "\n".join(re.findall(r"f?\"[^\"\n]*\"|f?'[^'\n]*'", text))
+            m = names.search(text)
+            self.assertIsNone(m, f"{f}: names {m.group(0) if m else ''}")
         self.assertIn("original posting", (ROOT / "index.html").read_text(encoding="utf-8"))
         self.assertIn("id=\"where-from\"", (ROOT / "verify.html").read_text(encoding="utf-8"))
+        self.assertIn("Source: the company\\u2019s hiring page", (ROOT / "index.html").read_text(encoding="utf-8"))
 
     @unittest.skipIf(os.environ.get("YC_SKIP_LIVE_DATA") == "1",
                      "data-dependent: must never block a refresh; it is a tripwire for people changing sources")
     def test_the_sourcing_claim_matches_the_data(self):
         """If this fails, a source other than the three hiring systems was added: update the wording before shipping."""
         rows = json.loads((ROOT / "jobs.json").read_text(encoding="utf-8"))
-        off = [r["sourceUrl"] for r in rows if not any(h in urllib.parse.urlparse(r["sourceUrl"]).netloc for h in ATS_HOSTS)]
-        self.assertEqual(off, [], f"{len(off)} listings link somewhere other than Greenhouse, Lever or Ashby, e.g. {off[:2]}")
-        self.assertLessEqual({r["sourceName"] for r in rows}, {"Greenhouse", "Lever", "Ashby"})
+        # Recruitee careers pages may sit on the company's own domain, so only the other systems are checked by host
+        off = [r["sourceUrl"] for r in rows if r["sourceName"] != "Recruitee"
+               and not any(h in urllib.parse.urlparse(r["sourceUrl"]).netloc for h in ATS_HOSTS)]
+        self.assertEqual(off, [], f"{len(off)} listings link somewhere other than a hiring-system page, e.g. {off[:2]}")
+        self.assertLessEqual({r["sourceName"] for r in rows}, {"Greenhouse", "Lever", "Ashby", "Recruitee", "Personio"})
 
 
 if __name__ == "__main__":

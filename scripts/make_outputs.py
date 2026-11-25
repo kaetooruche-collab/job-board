@@ -75,7 +75,7 @@ def render(items, now=None):
         lines.append(f"   Who can apply: {elig}")
         lines.append(f"   {LEVEL_LABEL.get(r.get('level'), 'Level not stated')} · {r.get('jobType') or 'Type not stated'}"
                      + (f" · Pay: {pay}" if pay else " · Pay: not stated"))
-        lines.append(f"   Posted {posted} on {r['sourceName']}")
+        lines.append(f"   Posted {posted}")
         lines.append(f"   {r['sourceUrl']}")
         lines.append("")
     lines.append(f"More jobs, with filters: {SITE_URL}?utm_source=whatsapp&utm_medium=channel&utm_campaign=weekly")

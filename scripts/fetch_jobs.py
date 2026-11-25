@@ -238,10 +238,9 @@ def fetch_ashby_board(board):
 
 
 # ── Hiring systems beyond the first three (built 25 Nov 2026, switched OFF) ──────────
-# Terms and data checks: research/sources-2026-11/terms_findings.md. They stay off until KT approves the
-# new /verify wording (the page says listings come from Greenhouse, Lever and Ashby), per the copy-change rule.
-# To switch one on: add it here AND update verify.html, tests/test_source_claims.py and CLAUDE.md in one change.
-ENABLED_EXTRA_SYSTEMS = set()   # e.g. {"recruitee", "personio"}
+# Terms and data checks: research/sources-2026-11/terms_findings.md. Public copy names no hiring system (KT,
+# 25 Nov 2026), so adding one needs no copy change; it does need the terms check first (CLAUDE.md).
+ENABLED_EXTRA_SYSTEMS = {"recruitee", "personio"}   # switched on 25 Nov 2026 with KT's name-free /verify wording
 
 
 def _recruitee_hint(j):

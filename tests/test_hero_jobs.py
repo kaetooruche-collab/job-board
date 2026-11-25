@@ -20,7 +20,6 @@ class FirstScreen(unittest.TestCase):
         hero = INDEX[INDEX.index('<section class="hero"'):INDEX.index("</section>", INDEX.index('<section class="hero"'))]
         for name in ("Greenhouse", "Lever", "Ashby"):
             self.assertNotIn(name, hero)
-        self.assertIn("(usually Greenhouse, Lever or Ashby)", INDEX)
         self.assertIn('id="f-country"', INDEX)       # the country control that the headline points to sits right under the hero
         self.assertIn('class="hero-facts"', INDEX)
         self.assertIn('id="total-jobs"', INDEX)

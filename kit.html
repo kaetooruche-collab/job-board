@@ -193,7 +193,7 @@
       L.push((i + 1) + '. *' + r.title + '* at ' + r.company);
       L.push('   Who can apply: ' + elig(r));
       L.push('   ' + lvl(r) + ' · ' + (r.jobType || 'Type not stated') + ' · ' + pay(r));
-      L.push('   Posted ' + rel(r.postedAt) + ' · Source: ' + r.sourceName);
+      L.push('   Posted ' + rel(r.postedAt));
       if (direct) L.push('   ' + r.sourceUrl);
       L.push('');
     });
