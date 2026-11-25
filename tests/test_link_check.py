@@ -114,15 +114,22 @@ class FeedDecides(unittest.TestCase):
 
     def test_many_gone_pages_in_the_sample_raise_the_alarm_after_two_runs(self):
         items = listings(100)
-        gone = {j["url"]: L.DEAD for j in items[:15]}            # 15 of 60 answered = 25%
+        gone = {j["url"]: L.DEAD for j in items[:20]}            # 20 of 60 answered = 33%
         _, s1, ns1, _, _ = run(items, gone, sample=60)
         self.assertTrue(s1["mismatch"])
         self.assertEqual(ns1["mismatchStreak"], 1)
         fresh = listings(100, start=1000)
-        _, s2, ns2, _, _ = run(fresh, {j["url"]: L.DEAD for j in fresh[:15]}, state=ns1, sample=60)
+        _, s2, ns2, _, _ = run(fresh, {j["url"]: L.DEAD for j in fresh[:20]}, state=ns1, sample=60)
         self.assertEqual(ns2["mismatchStreak"], 2)
         _, s3, ns3, _, _ = run(listings(100, start=2000), state=ns2, sample=60)
         self.assertEqual(ns3["mismatchStreak"], 0, "a clean run resets it")
+
+    def test_one_employer_with_a_broken_careers_site_is_not_an_alarm(self):
+        # 25 Nov 2026: 7 of 55 sampled pages gone, 5 of them one employer's careers site (Wing): removed, no alarm
+        items = listings(100)
+        _, s, ns, removed, _ = run(items, {j["url"]: L.DEAD for j in items[:7]}, sample=60)
+        self.assertFalse(s["mismatch"])
+        self.assertEqual(s["droppedDead"], 7)
 
     def test_a_small_sample_never_raises_the_alarm(self):
         items = listings(10)

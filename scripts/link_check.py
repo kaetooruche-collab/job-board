@@ -13,7 +13,7 @@ Rules now:
 2. A sample of pages is opened each run (PAGE_SAMPLE, new listings first, then the longest unchecked), gently.
    DEAD (404, 410, or the "error=true" redirect Greenhouse uses for a closed role) removes that listing and keeps it
    off for DEAD_RECHECK_DAYS even if the feed still lists it. UNKNOWN (403, timeouts) changes nothing.
-3. Alarm: if more than MISMATCH_SHARE of the sampled pages are dead, the feed and the pages disagree; after
+3. Alarm: if more than MISMATCH_SHARE (a quarter) of the sampled pages are dead, the feed and the pages disagree; after
    MAX_MISMATCH_RUNS such runs in a row the workflow fails loudly so someone looks.
 The state lives in data/link_state.json.
 """
@@ -30,7 +30,8 @@ DEAD_STATUSES = (404, 410)
 PAGE_SAMPLE = 60              # pages opened per run
 PAGE_WORKERS = 4              # gently: a few at a time
 DEAD_RECHECK_DAYS = 7         # a page found gone stays off this long, then is opened again
-MISMATCH_SHARE = 0.10         # dead share of the sample above which the feed and pages disagree
+MISMATCH_SHARE = 0.25         # systemic only: on 25 Nov one employer (Wing, careers site returning 404) alone made 7 of 55 = 12.7%,
+                              # and those listings are removed automatically anyway; an alarm should mean a person is needed
 MIN_SAMPLE_FOR_ALARM = 20
 MAX_MISMATCH_RUNS = 2
 MAX_DRIFT_ABORTS = 3          # the "listings fell sharply" guard may hold the data for at most this many runs in a row

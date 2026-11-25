@@ -41,7 +41,7 @@ Must stop and ask KT: any change to public copy (CLAUDE.md copy-change rule), pr
 | Refresh red at "Run classifier tests" | a code change broke a test | fix the code or the test; never skip or delete a test to get green |
 | Refresh red at "Fetch and verify listings", drift abort | a big source returned far fewer jobs | the guard holds for up to 3 runs, then accepts; check the source in the run log |
 | "Tests" red, refresh green | new data broke a live-data test (the 18 Nov case) | fix the code so the rule holds by construction, add a fixture test |
-| "Feed and pages disagree" alarm (refresh red) | more than 10% of sampled pages gone although the feed lists them, 2 runs in a row | read `data/removed.log` (`link-dead` lines) for the hosts involved; usually one employer changed its careers site; retire or fix that board. Throttling (403) is normal and is NOT an alarm since 25 Nov 2026 |
+| "Feed and pages disagree" alarm (refresh red) | more than a quarter of sampled pages gone although the feed lists them, 2 runs in a row | read `data/removed.log` (`link-dead` lines) for the hosts involved; usually one employer changed its careers site; retire or fix that board. Throttling (403) is normal and is NOT an alarm since 25 Nov 2026 |
 | Live site stale but refresh green | Vercel deploy failed | Vercel connector `list_deployments` for project `north_cyprus_remote_job_board` |
 | A workflow shows `disabled_inactivity` | GitHub stops schedules after 60 days without repository activity | `gh api -X PUT repos/kaetooruche-collab/job-board/actions/workflows/<file>/enable` |
 | Discovery adds a wrong company | a guessed board passed the identity check | remove it from `data/boards.json`, add it to `data/board_blocklist.json`, add a test |
