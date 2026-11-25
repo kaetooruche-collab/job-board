@@ -18,6 +18,11 @@ class Health(unittest.TestCase):
         s, _ = H.check_workflow("refresh", 14, "active", {"created_at": "2026-11-25T10:00:00Z", "conclusion": "failure"}, NOW)
         self.assertEqual(s, H.RED)
 
+    def test_githubs_usual_skipped_runs_are_not_an_alarm(self):
+        # a 16-hour gap happened on 23 Nov 2026 with nothing wrong
+        self.assertEqual(H.check_freshness({"generatedAt": "2026-11-24T20:00:00+00:00"}, NOW)[0], H.GREEN)
+        self.assertEqual(H.check_freshness({"generatedAt": "2026-11-24T15:00:00+00:00"}, NOW)[0], H.AMBER)
+
     def test_a_normal_day_is_green(self):
         self.assertEqual(H.check_freshness({"generatedAt": "2026-11-25T08:00:00+00:00"}, NOW)[0], H.GREEN)
         self.assertEqual(H.check_volume([1000, 1010, 990, 1020, 1005], 1036)[0], H.GREEN)
