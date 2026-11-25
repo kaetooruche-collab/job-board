@@ -1,25 +1,160 @@
-# Board discovery report, 2026-11-25 07:53 UTC
+# Board discovery report, 2026-11-25 08:37 UTC
 
-## Health of the 285 current boards
-- 169 boards have at least one publishable listing today; 6 could not be read.
+## Health of the 300 current boards
+- 184 boards have at least one publishable listing today; 6 could not be read.
 - Retired this run: 0
 
 ## Discovery
-- Candidates not yet on the board: 810; probed this run: 200; board found: 34; added: 15.
-  - Articulate (lever/articulate): 1 publishable now, found by company named in its own postings, region in directory: worldwide
-  - Brave (greenhouse/brave): 3 publishable now, found by board name matches, region in directory: worldwide
-  - Canonical (greenhouse/canonical): 2 publishable now, found by board name matches, region in directory: worldwide
-  - Chainguard (greenhouse/chainguard): 60 publishable now, found by board name matches, region in directory: worldwide
-  - Ergeon (greenhouse/ergeon): 1 publishable now, found by board name matches, region in directory: worldwide
-  - Fingerprint (greenhouse/fingerprint): 5 publishable now, found by board name matches, region in directory: worldwide
-  - Fleetio (greenhouse/fleetio): 6 publishable now, found by board name matches, region in directory: worldwide
-  - Karat (greenhouse/karat): 5 publishable now, found by board name matches, region in directory: worldwide
-  - Kestra (ashby/kestra): 2 publishable now, found by company named in its own postings, region in directory: worldwide
-  - MetaMask (greenhouse/consensys): 5 publishable now, found by careers link, region in directory: worldwide
-  - OpenZeppelin (greenhouse/openzeppelin): 1 publishable now, found by board name matches, region in directory: worldwide
-  - Primer (ashby/primer): 3 publishable now, found by company named in its own postings, region in directory: worldwide
-  - RevenueCat (ashby/revenuecat): 3 publishable now, found by company named in its own postings, region in directory: worldwide
-  - Sardine.ai (ashby/sardine): 9 publishable now, found by company named in its own postings, region in directory: worldwide
-  - SeatGeek (greenhouse/seatgeek): 10 publishable now, found by board name matches, region in directory: worldwide
+- Candidates not yet on the board: 2644; probed this run: 600; board found: 447; added: 150.
+  - StreamNative (greenhouse/streamnative): 2 publishable now, found by board name matches, region in directory: worldwide
+  - VGS (lever/verygoodsecurity): 2 publishable now, found by company named in its own postings, region in directory: worldwide
+  - WebFX (ashby/webfx): 2 publishable now, found by company named in its own postings, region in directory: worldwide
+  - Acquia (greenhouse/acquia): 4 publishable now, found by board name matches, region in directory: worldwide
+  - Bounteous (lever/bounteous): 12 publishable now, found by company named in its own postings, region in directory: worldwide
+  - CareMessage (ashby/caremessage): 1 publishable now, found by company named in its own postings, region in directory: worldwide
+  - Fastly (greenhouse/fastly): 1 publishable now, found by board name matches, region in directory: worldwide
+  - Glitch (ashby/glitch): 2 publishable now, found by company named in its own postings, region in directory: worldwide
+  - Locus Robotics (greenhouse/locusrobotics): 1 publishable now, found by board name matches, region in directory: worldwide
+  - Mattermost (greenhouse/mattermost): 2 publishable now, found by board name matches, region in directory: worldwide
+  - MongoDB (greenhouse/mongodb): 2 publishable now, found by board name matches, region in directory: worldwide
+  -  Nearform (greenhouse/nearform): 1 publishable now, found by board name matches, region in directory: worldwide
+  - Octopus Deploy (greenhouse/octopusdeploy): 2 publishable now, found by board name matches, region in directory: worldwide
+  - Quora (ashby/quora): 1 publishable now, found by company named in its own postings, region in directory: worldwide
+  - Scandit (greenhouse/scandit): 1 publishable now, found by board name matches, region in directory: worldwide
+  - Sonatype (lever/sonatype): 2 publishable now, found by company named in its own postings, region in directory: worldwide
+  - Temporal (ashby/temporal): 40 publishable now, found by company named in its own postings, region in directory: worldwide
+  - WIZELINE (greenhouse/wizeline): 2 publishable now, found by board name matches, region in directory: worldwide
+  - Zenrows (greenhouse/zenrows): 2 publishable now, found by board name matches, region in directory: worldwide
+  - 2K (greenhouse/2k): 1 publishable now, found by early-career list link
+  - 66degrees (greenhouse/66degrees): 1 publishable now, found by early-career list link
+  - 9th Way Insignia (greenhouse/9thwayinsignia): 2 publishable now, found by early-career list link
+  - Abacus Insights (greenhouse/abacusinsights): 3 publishable now, found by early-career list link
+  - Abby Care (ashby/abby-care): 2 publishable now, found by early-career list link
+  - Acceldata (lever/acceldata): 1 publishable now, found by early-career list link
+  - Accenture Federal Services (greenhouse/accenturefederalservices): 162 publishable now, found by early-career list link
+  - AccuWeather Careers (greenhouse/accuweather): 1 publishable now, found by early-career list link
+  - ACLU - Internships (greenhouse/acluinternships): 4 publishable now, found by early-career list link
+  - Actian (lever/actian): 3 publishable now, found by early-career list link
+  - AcuityMD (greenhouse/acuitymd): 4 publishable now, found by early-career list link
+  - Adaption Labs (ashby/adaption): 7 publishable now, found by early-career list link
+  - Adaptive Security (ashby/adaptivesecurity): 3 publishable now, found by early-career list link
+  - Adswerve, Inc (greenhouse/adswerveinc): 1 publishable now, found by early-career list link
+  - AEG Worldwide (greenhouse/aegworldwide): 1 publishable now, found by early-career list link
+  - Aera Technology (lever/aeratechnology): 1 publishable now, found by early-career list link
+  - AeroVect (ashby/aerovect): 8 publishable now, found by early-career list link
+  - Aeva (lever/aeva): 1 publishable now, found by early-career list link
+  - AEVEX (greenhouse/aevexaerospace): 1 publishable now, found by early-career list link
+  - AffirmedRx, PBC (greenhouse/affirmedrxpbc): 4 publishable now, found by early-career list link
+  - Agile Defense (lever/agile-defense): 7 publishable now, found by early-career list link
+  - AHEAD (lever/thinkahead): 28 publishable now, found by early-career list link
+  - AiDASH, Inc. (greenhouse/aidashinc): 2 publishable now, found by early-career list link
+  - Alchemi (ashby/alchemi): 3 publishable now, found by early-career list link
+  - algo1 (ashby/algo1): 1 publishable now, found by early-career list link
+  - Allica Bank (ashby/allica-bank): 8 publishable now, found by early-career list link
+  - AllTrails (lever/alltrails): 1 publishable now, found by early-career list link
+  - Alpaca  (greenhouse/alpaca): 27 publishable now, found by early-career list link
+  - Alpha Financial Markets Consulting (greenhouse/alphafmcroles): 2 publishable now, found by early-career list link
+  - AlphaSense (greenhouse/alphasense): 15 publishable now, found by early-career list link
+  - AltaML (lever/altaml): 1 publishable now, found by early-career list link
+  - ALTEN Technology USA (greenhouse/altentechnologyusa): 3 publishable now, found by early-career list link
+  - AMAROK (greenhouse/amarok): 3 publishable now, found by early-career list link
+  - American Institutes for Research (greenhouse/americaninstitutesforresearch): 9 publishable now, found by early-career list link
+  - Anaplan (greenhouse/anaplan): 3 publishable now, found by early-career list link
+  - AnaVation (lever/anavationllc): 1 publishable now, found by early-career list link
+  - Ande (ashby/ande): 1 publishable now, found by early-career list link
+  - Anduril Industries (greenhouse/andurilindustries): 35 publishable now, found by early-career list link
+  - Antora Energy (greenhouse/antora): 1 publishable now, found by early-career list link
+  - Anysphere (ashby/cursor): 34 publishable now, found by early-career list link
+  - Aperia Technologies, Inc (greenhouse/aperiatechnologies): 2 publishable now, found by early-career list link
+  - Apex (ashby/apex-technology-inc): 3 publishable now, found by early-career list link
+  - Appian Corporation  (greenhouse/appian): 5 publishable now, found by early-career list link
+  - Aptura (ashby/aptura): 2 publishable now, found by early-career list link
+  - Archy (ashby/archy): 5 publishable now, found by early-career list link
+  - Arc'teryx Equipment (lever/arcteryx.com): 2 publishable now, found by early-career list link
+  - Arevon (greenhouse/arevonenergyimpltest): 1 publishable now, found by early-career list link
+  - Arize AI (greenhouse/arizeai): 3 publishable now, found by early-career list link
+  - Armada (greenhouse/armada): 6 publishable now, found by early-career list link
+  - Arrive Logistics (lever/arrivelogistics): 1 publishable now, found by early-career list link
+  - Astera (ashby/astera): 2 publishable now, found by early-career list link
+  - Astro Mechanica (ashby/astro-mechanica): 1 publishable now, found by early-career list link
+  - Astronomer (ashby/astronomer): 5 publishable now, found by early-career list link
+  - Atomic Invest (AtomicVest) (ashby/atomic-invest): 6 publishable now, found by early-career list link
+  - Atominvest (ashby/atominvest): 1 publishable now, found by early-career list link
+  - Attain Partners (greenhouse/attainpartners): 6 publishable now, found by early-career list link
+  - Attentive (greenhouse/attentive): 2 publishable now, found by early-career list link
+  - AttoTude (greenhouse/attotude): 1 publishable now, found by early-career list link
+  - Aurelius Systems (ashby/aureliussystems): 1 publishable now, found by early-career list link
+  - Avante (greenhouse/avante): 1 publishable now, found by early-career list link
+  - Avride (greenhouse/avride): 11 publishable now, found by early-career list link
+  - Axle (greenhouse/axle): 2 publishable now, found by early-career list link
+  - Azul Systems (lever/azul): 1 publishable now, found by early-career list link
+  - Babel Street (greenhouse/babelstreet): 1 publishable now, found by early-career list link
+  - Bandwidth (greenhouse/bandwidth): 1 publishable now, found by early-career list link
+  - Barnes & Thornburg (ashby/barnes): 9 publishable now, found by early-career list link
+  - Bellese (lever/bellese): 3 publishable now, found by early-career list link
+  - Bertram Capital Management (greenhouse/bertramcapitalmanagement): 1 publishable now, found by early-career list link
+  - BeyondTrust (greenhouse/beyondtrust): 16 publishable now, found by early-career list link
+  - BGE, Inc (greenhouse/bgeinc): 2 publishable now, found by early-career list link
+  - BillionToOne (greenhouse/billiontoone): 9 publishable now, found by early-career list link
+  - Birdy Grey (greenhouse/birdygrey): 2 publishable now, found by early-career list link
+  - BlackSky (greenhouse/blacksky): 4 publishable now, found by early-career list link
+  - Blend (greenhouse/blend): 1 publishable now, found by early-career list link
+  - Blitzy (ashby/blitzy): 7 publishable now, found by early-career list link
+  - blp (ashby/blp-digital): 1 publishable now, found by early-career list link
+  - Blueprint Technologies (greenhouse/bpcs): 7 publishable now, found by early-career list link
+  - Bluesight (lever/bluesight): 5 publishable now, found by early-career list link
+  - Boomi  (greenhouse/boomilp): 1 publishable now, found by early-career list link
+  - Box (greenhouse/boxinc): 3 publishable now, found by early-career list link
+  - Brain Co. (ashby/brainco): 4 publishable now, found by early-career list link
+  - Brillio (lever/brillio-2): 6 publishable now, found by early-career list link
+  - Bugcrowd (greenhouse/bugcrowd): 8 publishable now, found by early-career list link
+  - Businessolver - Invitation Only Job Board (greenhouse/businessolverinvitationonly): 1 publishable now, found by early-career list link
+  - CMTelematics (greenhouse/cmt): 1 publishable now, found by early-career list link
+  - candidate fyi (ashby/candidate.fyi): 1 publishable now, found by early-career list link
+  - CarbonChain (greenhouse/carbonchain): 3 publishable now, found by early-career list link
+  - CaseGuard (greenhouse/caseguard): 1 publishable now, found by early-career list link
+  - Castelion Corporation (greenhouse/castelioncorporation): 1 publishable now, found by early-career list link
+  - Celigo (greenhouse/celigo): 2 publishable now, found by early-career list link
+  - Censys (greenhouse/censys): 10 publishable now, found by early-career list link
+  - Centerfield (ashby/centerfield): 2 publishable now, found by early-career list link
+  - Cerebras (ashby/cerebras): 6 publishable now, found by early-career list link
+  - Certa (ashby/certa): 7 publishable now, found by early-career list link
+  - CGS Immersive (greenhouse/immersive): 1 publishable now, found by early-career list link
+  - Chamber Cardio (ashby/chambercardio): 3 publishable now, found by early-career list link
+  - Charles River Associates (greenhouse/charlesriverassociates): 6 publishable now, found by early-career list link
+  - Chowbus (greenhouse/chowbus): 2 publishable now, found by early-career list link
+  - CircuitHub (ashby/circuithub): 2 publishable now, found by early-career list link
+  - Cision (greenhouse/cision): 2 publishable now, found by early-career list link
+  - Civis Analytics (greenhouse/civisanalytics): 1 publishable now, found by early-career list link
+  - ClaimSorted (ashby/claimsorted): 1 publishable now, found by early-career list link
+  - Clarity Innovations (greenhouse/clarityinnovates): 3 publishable now, found by early-career list link
+  - Clarium (ashby/clarium): 1 publishable now, found by early-career list link
+  - Clasp (ashby/clasp-group): 9 publishable now, found by early-career list link
+  - Clera (ashby/clera): 47 publishable now, found by early-career list link
+  - ClickHouse (ashby/clickhouse): 65 publishable now, found by early-career list link
+  - Climate Corps (greenhouse/cc): 1 publishable now, found by early-career list link
+  - Clipboard Health (ashby/clipboard): 13 publishable now, found by early-career list link
+  - Clēnera, LLC (greenhouse/clenera): 1 publishable now, found by early-career list link
+  - Cobalt (greenhouse/cobaltio): 5 publishable now, found by early-career list link
+  - Coder (ashby/coder): 18 publishable now, found by early-career list link
+  - Cogent Security (ashby/cogent-security): 6 publishable now, found by early-career list link
+  - Cohere Health (greenhouse/coherehealth): 11 publishable now, found by early-career list link
+  - Collective (ashby/collective): 5 publishable now, found by early-career list link
+  - Cologix (lever/cologix): 4 publishable now, found by early-career list link
+  - Color (ashby/color-health): 4 publishable now, found by early-career list link
+  - Commvault (greenhouse/commvault): 3 publishable now, found by early-career list link
+  - Compeer Financial (greenhouse/compeerfinancial): 1 publishable now, found by early-career list link
+  - Concentric (greenhouse/concentric): 4 publishable now, found by early-career list link
+  - Consumer Reports (greenhouse/consumerreports): 1 publishable now, found by early-career list link
+  - Conversica (lever/conversica): 2 publishable now, found by early-career list link
+  - Coram AI (ashby/coram-ai): 2 publishable now, found by early-career list link
+  - Corvus Robotics (ashby/corvus-robotics): 1 publishable now, found by early-career list link
+  - Coupa Software (lever/coupa): 5 publishable now, found by early-career list link
+  - Cresta (greenhouse/cresta): 3 publishable now, found by early-career list link
+  - Crosby (ashby/crosby): 3 publishable now, found by early-career list link
+  - CrossCountry Consulting (lever/crosscountry-consulting): 3 publishable now, found by early-career list link
+  - Cybernetic Labs (ashby/netic): 1 publishable now, found by early-career list link
+  - DailyPay (ashby/dailypay): 4 publishable now, found by early-career list link
+  - Dandy (ashby/dandy): 9 publishable now, found by early-career list link
 
 Every listing from an added board still passes the classifier and the QA rules before it is shown. To remove a company for good, add it to data/board_blocklist.json.
