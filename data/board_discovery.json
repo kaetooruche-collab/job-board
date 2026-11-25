@@ -1,0 +1,2558 @@
+{
+ "note": "Written by scripts/discover_boards.py. health: weekly counters per board; probed: last probe per candidate; retired and added: history.",
+ "health": {
+  "greenhouse/2u": {
+   "deadWeeks": 0,
+   "emptyWeeks": 0,
+   "lastPublishable": 4
+  },
+  "greenhouse/affirm": {
+   "deadWeeks": 0,
+   "emptyWeeks": 0,
+   "lastPublishable": 91
+  },
+  "greenhouse/airbnb": {
+   "deadWeeks": 0,
+   "emptyWeeks": 1,
+   "lastPublishable": 0
+  },
+  "greenhouse/airtable": {
+   "deadWeeks": 0,
+   "emptyWeeks": 0,
+   "lastPublishable": 2
+  },
+  "greenhouse/algolia": {
+   "deadWeeks": 0,
+   "emptyWeeks": 1,
+   "lastPublishable": 0
+  },
+  "greenhouse/amwell": {
+   "deadWeeks": 0,
+   "emptyWeeks": 0,
+   "lastPublishable": 1
+  },
+  "greenhouse/asana": {
+   "deadWeeks": 0,
+   "emptyWeeks": 1,
+   "lastPublishable": 0
+  },
+  "greenhouse/assemblyai": {
+   "deadWeeks": 0,
+   "emptyWeeks": 1,
+   "lastPublishable": 0
+  },
+  "greenhouse/automatticcareers": {
+   "deadWeeks": 0,
+   "emptyWeeks": 1,
+   "lastPublishable": 0
+  },
+  "greenhouse/axiom": {
+   "deadWeeks": 0,
+   "emptyWeeks": 0,
+   "lastPublishable": 3
+  },
+  "greenhouse/betterhelp": {
+   "deadWeeks": 0,
+   "emptyWeeks": 0,
+   "lastPublishable": 15
+  },
+  "greenhouse/billtrust": {
+   "deadWeeks": 0,
+   "emptyWeeks": 0,
+   "lastPublishable": 2
+  },
+  "greenhouse/binance": {
+   "deadWeeks": 0,
+   "emptyWeeks": 0,
+   "lastPublishable": 95
+  },
+  "greenhouse/bitwarden": {
+   "deadWeeks": 0,
+   "emptyWeeks": 0,
+   "lastPublishable": 16
+  },
+  "greenhouse/block": {
+   "deadWeeks": 0,
+   "emptyWeeks": 0,
+   "lastPublishable": 13
+  },
+  "greenhouse/boldly": {
+   "deadWeeks": 0,
+   "emptyWeeks": 1,
+   "lastPublishable": 0
+  },
+  "greenhouse/branch": {
+   "deadWeeks": 0,
+   "emptyWeeks": 0,
+   "lastPublishable": 7
+  },
+  "greenhouse/brex": {
+   "deadWeeks": 0,
+   "emptyWeeks": 0,
+   "lastPublishable": 2
+  },
+  "greenhouse/buildkite": {
+   "deadWeeks": 0,
+   "emptyWeeks": 0,
+   "lastPublishable": 6
+  },
+  "greenhouse/calendly": {
+   "deadWeeks": 0,
+   "emptyWeeks": 1,
+   "lastPublishable": 0
+  },
+  "greenhouse/calm": {
+   "deadWeeks": 0,
+   "emptyWeeks": 0,
+   "lastPublishable": 1
+  },
+  "greenhouse/carvana": {
+   "deadWeeks": 0,
+   "emptyWeeks": 0,
+   "lastPublishable": 9
+  },
+  "greenhouse/chime": {
+   "deadWeeks": 0,
+   "emptyWeeks": 1,
+   "lastPublishable": 0
+  },
+  "greenhouse/circleci": {
+   "deadWeeks": 0,
+   "emptyWeeks": 0,
+   "lastPublishable": 3
+  },
+  "greenhouse/cloudflare": {
+   "deadWeeks": 0,
+   "emptyWeeks": 0,
+   "lastPublishable": 20
+  },
+  "greenhouse/codeforamerica": {
+   "deadWeeks": 0,
+   "emptyWeeks": 0,
+   "lastPublishable": 3
+  },
+  "greenhouse/coinbase": {
+   "deadWeeks": 0,
+   "emptyWeeks": 0,
+   "lastPublishable": 68
+  },
+  "greenhouse/contentful": {
+   "deadWeeks": 0,
+   "emptyWeeks": 1,
+   "lastPublishable": 0
+  },
+  "greenhouse/current": {
+   "deadWeeks": 0,
+   "emptyWeeks": 0,
+   "lastPublishable": 1
+  },
+  "greenhouse/customerio": {
+   "deadWeeks": 0,
+   "emptyWeeks": 0,
+   "lastPublishable": 10
+  },
+  "greenhouse/datadog": {
+   "deadWeeks": 0,
+   "emptyWeeks": 0,
+   "lastPublishable": 6
+  },
+  "greenhouse/descript": {
+   "deadWeeks": 0,
+   "emptyWeeks": 1,
+   "lastPublishable": 0
+  },
+  "greenhouse/dialpad": {
+   "deadWeeks": 0,
+   "emptyWeeks": 0,
+   "lastPublishable": 1
+  },
+  "greenhouse/discord": {
+   "deadWeeks": 0,
+   "emptyWeeks": 0,
+   "lastPublishable": 3
+  },
+  "greenhouse/donorschoose": {
+   "deadWeeks": 0,
+   "emptyWeeks": 1,
+   "lastPublishable": 0
+  },
+  "greenhouse/doximity": {
+   "deadWeeks": 0,
+   "emptyWeeks": 0,
+   "lastPublishable": 5
+  },
+  "greenhouse/dropbox": {
+   "deadWeeks": 0,
+   "emptyWeeks": 0,
+   "lastPublishable": 37
+  },
+  "greenhouse/dscout": {
+   "deadWeeks": 0,
+   "emptyWeeks": 0,
+   "lastPublishable": 6
+  },
+  "greenhouse/duolingo": {
+   "deadWeeks": 0,
+   "emptyWeeks": 1,
+   "lastPublishable": 0
+  },
+  "greenhouse/earnin": {
+   "deadWeeks": 0,
+   "emptyWeeks": 0,
+   "lastPublishable": 1
+  },
+  "greenhouse/elastic": {
+   "deadWeeks": 0,
+   "emptyWeeks": 0,
+   "lastPublishable": 157
+  },
+  "greenhouse/elationhealth": {
+   "deadWeeks": 0,
+   "emptyWeeks": 0,
+   "lastPublishable": 3
+  },
+  "greenhouse/faire": {
+   "deadWeeks": 0,
+   "emptyWeeks": 1,
+   "lastPublishable": 0
+  },
+  "greenhouse/figma": {
+   "deadWeeks": 0,
+   "emptyWeeks": 1,
+   "lastPublishable": 0
+  },
+  "greenhouse/firsthand": {
+   "deadWeeks": 0,
+   "emptyWeeks": 1,
+   "lastPublishable": 0
+  },
+  "greenhouse/five9": {
+   "deadWeeks": 0,
+   "emptyWeeks": 1,
+   "lastPublishable": 0
+  },
+  "greenhouse/fivetran": {
+   "deadWeeks": 0,
+   "emptyWeeks": 0,
+   "lastPublishable": 30
+  },
+  "greenhouse/found": {
+   "deadWeeks": 0,
+   "emptyWeeks": 1,
+   "lastPublishable": 0
+  },
+  "greenhouse/gemini": {
+   "deadWeeks": 0,
+   "emptyWeeks": 1,
+   "lastPublishable": 0
+  },
+  "greenhouse/ghost": {
+   "deadWeeks": 0,
+   "emptyWeeks": 1,
+   "lastPublishable": 0
+  },
+  "greenhouse/gitlab": {
+   "deadWeeks": 0,
+   "emptyWeeks": 0,
+   "lastPublishable": 105
+  },
+  "greenhouse/givedirectly": {
+   "deadWeeks": 0,
+   "emptyWeeks": 0,
+   "lastPublishable": 1
+  },
+  "greenhouse/givewell": {
+   "deadWeeks": 0,
+   "emptyWeeks": 1,
+   "lastPublishable": 0
+  },
+  "greenhouse/greenhouse": {
+   "deadWeeks": 0,
+   "emptyWeeks": 0,
+   "lastPublishable": 7
+  },
+  "greenhouse/gusto": {
+   "deadWeeks": 0,
+   "emptyWeeks": 1,
+   "lastPublishable": 0
+  },
+  "greenhouse/healthjoy": {
+   "deadWeeks": 0,
+   "emptyWeeks": 0,
+   "lastPublishable": 1
+  },
+  "greenhouse/highradius": {
+   "deadWeeks": 0,
+   "emptyWeeks": 1,
+   "lastPublishable": 0
+  },
+  "greenhouse/instacart": {
+   "deadWeeks": 0,
+   "emptyWeeks": 0,
+   "lastPublishable": 41
+  },
+  "greenhouse/intercom": {
+   "deadWeeks": 0,
+   "emptyWeeks": 1,
+   "lastPublishable": 0
+  },
+  "greenhouse/invisibletech": {
+   "deadWeeks": 0,
+   "emptyWeeks": 1,
+   "lastPublishable": 0
+  },
+  "greenhouse/jetbrains": {
+   "deadWeeks": 0,
+   "emptyWeeks": 1,
+   "lastPublishable": 0
+  },
+  "greenhouse/justworks": {
+   "deadWeeks": 0,
+   "emptyWeeks": 0,
+   "lastPublishable": 1
+  },
+  "greenhouse/kayak": {
+   "deadWeeks": 1
+  },
+  "greenhouse/khanacademy": {
+   "deadWeeks": 0,
+   "emptyWeeks": 0,
+   "lastPublishable": 3
+  },
+  "greenhouse/klaviyo": {
+   "deadWeeks": 0,
+   "emptyWeeks": 0,
+   "lastPublishable": 1
+  },
+  "greenhouse/labelbox": {
+   "deadWeeks": 0,
+   "emptyWeeks": 0,
+   "lastPublishable": 1
+  },
+  "greenhouse/later": {
+   "deadWeeks": 0,
+   "emptyWeeks": 0,
+   "lastPublishable": 1
+  },
+  "greenhouse/lattice": {
+   "deadWeeks": 0,
+   "emptyWeeks": 0,
+   "lastPublishable": 2
+  },
+  "greenhouse/launchdarkly": {
+   "deadWeeks": 0,
+   "emptyWeeks": 0,
+   "lastPublishable": 7
+  },
+  "greenhouse/lendingtree": {
+   "deadWeeks": 0,
+   "emptyWeeks": 1,
+   "lastPublishable": 0
+  },
+  "greenhouse/lyft": {
+   "deadWeeks": 0,
+   "emptyWeeks": 0,
+   "lastPublishable": 1
+  },
+  "greenhouse/masterclass": {
+   "deadWeeks": 0,
+   "emptyWeeks": 1,
+   "lastPublishable": 0
+  },
+  "greenhouse/medium": {
+   "deadWeeks": 0,
+   "emptyWeeks": 0,
+   "lastPublishable": 1
+  },
+  "greenhouse/melio": {
+   "deadWeeks": 0,
+   "emptyWeeks": 1,
+   "lastPublishable": 0
+  },
+  "greenhouse/mercury": {
+   "deadWeeks": 0,
+   "emptyWeeks": 0,
+   "lastPublishable": 24
+  },
+  "greenhouse/misfitsmarket": {
+   "deadWeeks": 0,
+   "emptyWeeks": 1,
+   "lastPublishable": 0
+  },
+  "greenhouse/mixpanel": {
+   "deadWeeks": 0,
+   "emptyWeeks": 0,
+   "lastPublishable": 1
+  },
+  "greenhouse/modernhealth": {
+   "deadWeeks": 0,
+   "emptyWeeks": 0,
+   "lastPublishable": 3
+  },
+  "greenhouse/mos": {
+   "deadWeeks": 0,
+   "emptyWeeks": 0,
+   "lastPublishable": 1
+  },
+  "greenhouse/mozilla": {
+   "deadWeeks": 0,
+   "emptyWeeks": 0,
+   "lastPublishable": 68
+  },
+  "greenhouse/n26": {
+   "deadWeeks": 0,
+   "emptyWeeks": 0,
+   "lastPublishable": 6
+  },
+  "greenhouse/natera": {
+   "deadWeeks": 0,
+   "emptyWeeks": 0,
+   "lastPublishable": 29
+  },
+  "greenhouse/netlify": {
+   "deadWeeks": 0,
+   "emptyWeeks": 0,
+   "lastPublishable": 3
+  },
+  "greenhouse/newrelic": {
+   "deadWeeks": 0,
+   "emptyWeeks": 1,
+   "lastPublishable": 0
+  },
+  "greenhouse/newsela": {
+   "deadWeeks": 0,
+   "emptyWeeks": 0,
+   "lastPublishable": 3
+  },
+  "greenhouse/okta": {
+   "deadWeeks": 0,
+   "emptyWeeks": 0,
+   "lastPublishable": 2
+  },
+  "greenhouse/onemedical": {
+   "deadWeeks": 0,
+   "emptyWeeks": 0,
+   "lastPublishable": 10
+  },
+  "greenhouse/ophelia": {
+   "deadWeeks": 0,
+   "emptyWeeks": 0,
+   "lastPublishable": 3
+  },
+  "greenhouse/oscar": {
+   "deadWeeks": 0,
+   "emptyWeeks": 0,
+   "lastPublishable": 30
+  },
+  "greenhouse/pagerduty": {
+   "deadWeeks": 0,
+   "emptyWeeks": 1,
+   "lastPublishable": 0
+  },
+  "greenhouse/papa": {
+   "deadWeeks": 0,
+   "emptyWeeks": 1,
+   "lastPublishable": 0
+  },
+  "greenhouse/parloa": {
+   "deadWeeks": 1
+  },
+  "greenhouse/parsleyhealth": {
+   "deadWeeks": 0,
+   "emptyWeeks": 0,
+   "lastPublishable": 3
+  },
+  "greenhouse/payoneer": {
+   "deadWeeks": 0,
+   "emptyWeeks": 0,
+   "lastPublishable": 2
+  },
+  "greenhouse/paystand": {
+   "deadWeeks": 0,
+   "emptyWeeks": 1,
+   "lastPublishable": 0
+  },
+  "greenhouse/pendo": {
+   "deadWeeks": 0,
+   "emptyWeeks": 1,
+   "lastPublishable": 0
+  },
+  "greenhouse/pilothq": {
+   "deadWeeks": 0,
+   "emptyWeeks": 0,
+   "lastPublishable": 1
+  },
+  "greenhouse/pinterest": {
+   "deadWeeks": 0,
+   "emptyWeeks": 1,
+   "lastPublishable": 0
+  },
+  "greenhouse/planetscale": {
+   "deadWeeks": 0,
+   "emptyWeeks": 0,
+   "lastPublishable": 1
+  },
+  "greenhouse/prolific": {
+   "deadWeeks": 0,
+   "emptyWeeks": 0,
+   "lastPublishable": 8
+  },
+  "greenhouse/proton": {
+   "deadWeeks": 0,
+   "emptyWeeks": 1,
+   "lastPublishable": 0
+  },
+  "greenhouse/qualtrics": {
+   "deadWeeks": 0,
+   "emptyWeeks": 1,
+   "lastPublishable": 0
+  },
+  "greenhouse/reddit": {
+   "deadWeeks": 0,
+   "emptyWeeks": 0,
+   "lastPublishable": 23
+  },
+  "greenhouse/remotasks": {
+   "deadWeeks": 0,
+   "emptyWeeks": 1,
+   "lastPublishable": 0
+  },
+  "greenhouse/samainc": {
+   "deadWeeks": 0,
+   "emptyWeeks": 1,
+   "lastPublishable": 0
+  },
+  "greenhouse/scaleai": {
+   "deadWeeks": 0,
+   "emptyWeeks": 1,
+   "lastPublishable": 0
+  },
+  "greenhouse/smartsheet": {
+   "deadWeeks": 0,
+   "emptyWeeks": 0,
+   "lastPublishable": 13
+  },
+  "greenhouse/sproutsocial": {
+   "deadWeeks": 0,
+   "emptyWeeks": 0,
+   "lastPublishable": 2
+  },
+  "greenhouse/squarespace": {
+   "deadWeeks": 0,
+   "emptyWeeks": 1,
+   "lastPublishable": 0
+  },
+  "greenhouse/step": {
+   "deadWeeks": 0,
+   "emptyWeeks": 1,
+   "lastPublishable": 0
+  },
+  "greenhouse/stitchfix": {
+   "deadWeeks": 0,
+   "emptyWeeks": 0,
+   "lastPublishable": 10
+  },
+  "greenhouse/stripe": {
+   "deadWeeks": 0,
+   "emptyWeeks": 0,
+   "lastPublishable": 38
+  },
+  "greenhouse/suki": {
+   "deadWeeks": 0,
+   "emptyWeeks": 0,
+   "lastPublishable": 1
+  },
+  "greenhouse/swordhealth": {
+   "deadWeeks": 0,
+   "emptyWeeks": 0,
+   "lastPublishable": 8
+  },
+  "greenhouse/talkspace": {
+   "deadWeeks": 0,
+   "emptyWeeks": 0,
+   "lastPublishable": 3
+  },
+  "greenhouse/thrivemarket": {
+   "deadWeeks": 0,
+   "emptyWeeks": 0,
+   "lastPublishable": 1
+  },
+  "greenhouse/tia": {
+   "deadWeeks": 0,
+   "emptyWeeks": 1,
+   "lastPublishable": 0
+  },
+  "greenhouse/toast": {
+   "deadWeeks": 0,
+   "emptyWeeks": 1,
+   "lastPublishable": 0
+  },
+  "greenhouse/tripadvisor": {
+   "deadWeeks": 0,
+   "emptyWeeks": 1,
+   "lastPublishable": 0
+  },
+  "greenhouse/turing": {
+   "deadWeeks": 0,
+   "emptyWeeks": 0,
+   "lastPublishable": 2
+  },
+  "greenhouse/twilio": {
+   "deadWeeks": 0,
+   "emptyWeeks": 0,
+   "lastPublishable": 55
+  },
+  "greenhouse/typeform": {
+   "deadWeeks": 0,
+   "emptyWeeks": 0,
+   "lastPublishable": 1
+  },
+  "greenhouse/udacity": {
+   "deadWeeks": 0,
+   "emptyWeeks": 1,
+   "lastPublishable": 0
+  },
+  "greenhouse/udemy": {
+   "deadWeeks": 0,
+   "emptyWeeks": 1,
+   "lastPublishable": 0
+  },
+  "greenhouse/upstart": {
+   "deadWeeks": 0,
+   "emptyWeeks": 1,
+   "lastPublishable": 0
+  },
+  "greenhouse/upwork": {
+   "deadWeeks": 0,
+   "emptyWeeks": 1,
+   "lastPublishable": 0
+  },
+  "greenhouse/vercel": {
+   "deadWeeks": 0,
+   "emptyWeeks": 1,
+   "lastPublishable": 0
+  },
+  "greenhouse/webflow": {
+   "deadWeeks": 0,
+   "emptyWeeks": 1,
+   "lastPublishable": 0
+  },
+  "greenhouse/wikimedia": {
+   "deadWeeks": 0,
+   "emptyWeeks": 0,
+   "lastPublishable": 6
+  },
+  "greenhouse/wing": {
+   "deadWeeks": 0,
+   "emptyWeeks": 0,
+   "lastPublishable": 7
+  },
+  "greenhouse/wise": {
+   "deadWeeks": 0,
+   "emptyWeeks": 0,
+   "lastPublishable": 2
+  },
+  "greenhouse/zocdoc": {
+   "deadWeeks": 0,
+   "emptyWeeks": 0,
+   "lastPublishable": 3
+  },
+  "greenhouse/shipbobinc": {
+   "deadWeeks": 0,
+   "emptyWeeks": 0,
+   "lastPublishable": 3
+  },
+  "greenhouse/monzo": {
+   "deadWeeks": 0,
+   "emptyWeeks": 0,
+   "lastPublishable": 11
+  },
+  "greenhouse/zuora": {
+   "deadWeeks": 0,
+   "emptyWeeks": 0,
+   "lastPublishable": 3
+  },
+  "greenhouse/invisible": {
+   "deadWeeks": 0,
+   "emptyWeeks": 1,
+   "lastPublishable": 0
+  },
+  "greenhouse/lokalise": {
+   "deadWeeks": 0,
+   "emptyWeeks": 0,
+   "lastPublishable": 2
+  },
+  "greenhouse/ziprecruiter": {
+   "deadWeeks": 0,
+   "emptyWeeks": 0,
+   "lastPublishable": 10
+  },
+  "greenhouse/sezzle": {
+   "deadWeeks": 0,
+   "emptyWeeks": 0,
+   "lastPublishable": 5
+  },
+  "greenhouse/upgrade": {
+   "deadWeeks": 0,
+   "emptyWeeks": 0,
+   "lastPublishable": 3
+  },
+  "greenhouse/oportun": {
+   "deadWeeks": 0,
+   "emptyWeeks": 0,
+   "lastPublishable": 8
+  },
+  "greenhouse/hover": {
+   "deadWeeks": 0,
+   "emptyWeeks": 1,
+   "lastPublishable": 0
+  },
+  "greenhouse/wrike": {
+   "deadWeeks": 0,
+   "emptyWeeks": 0,
+   "lastPublishable": 1
+  },
+  "greenhouse/quillbot": {
+   "deadWeeks": 0,
+   "emptyWeeks": 1,
+   "lastPublishable": 0
+  },
+  "greenhouse/riotgames": {
+   "deadWeeks": 0,
+   "emptyWeeks": 0,
+   "lastPublishable": 1
+  },
+  "greenhouse/roblox": {
+   "deadWeeks": 0,
+   "emptyWeeks": 1,
+   "lastPublishable": 0
+  },
+  "lever/15five": {
+   "deadWeeks": 0,
+   "emptyWeeks": 0,
+   "lastPublishable": 3
+  },
+  "lever/activecampaign": {
+   "deadWeeks": 0,
+   "emptyWeeks": 0,
+   "lastPublishable": 1
+  },
+  "lever/aircall": {
+   "deadWeeks": 1
+  },
+  "lever/aledade": {
+   "deadWeeks": 0,
+   "emptyWeeks": 0,
+   "lastPublishable": 17
+  },
+  "lever/anyscale": {
+   "deadWeeks": 1
+  },
+  "lever/appen": {
+   "deadWeeks": 0,
+   "emptyWeeks": 1,
+   "lastPublishable": 0
+  },
+  "lever/binance": {
+   "deadWeeks": 0,
+   "emptyWeeks": 1,
+   "lastPublishable": 0
+  },
+  "lever/charitywater": {
+   "deadWeeks": 0,
+   "emptyWeeks": 0,
+   "lastPublishable": 1
+  },
+  "lever/fly": {
+   "deadWeeks": 0,
+   "emptyWeeks": 0,
+   "lastPublishable": 2
+  },
+  "lever/gemcareers": {
+   "deadWeeks": 0,
+   "emptyWeeks": 1,
+   "lastPublishable": 0
+  },
+  "lever/gohighlevel": {
+   "deadWeeks": 0,
+   "emptyWeeks": 0,
+   "lastPublishable": 17
+  },
+  "lever/greenlight": {
+   "deadWeeks": 0,
+   "emptyWeeks": 1,
+   "lastPublishable": 0
+  },
+  "lever/includedhealth": {
+   "deadWeeks": 0,
+   "emptyWeeks": 0,
+   "lastPublishable": 9
+  },
+  "lever/kinsta": {
+   "deadWeeks": 0,
+   "emptyWeeks": 0,
+   "lastPublishable": 2
+  },
+  "lever/lifestance": {
+   "deadWeeks": 0,
+   "emptyWeeks": 0,
+   "lastPublishable": 11
+  },
+  "lever/lyrahealth": {
+   "deadWeeks": 0,
+   "emptyWeeks": 0,
+   "lastPublishable": 51
+  },
+  "lever/neon": {
+   "deadWeeks": 0,
+   "emptyWeeks": 0,
+   "lastPublishable": 1
+  },
+  "lever/payactiv": {
+   "deadWeeks": 0,
+   "emptyWeeks": 1,
+   "lastPublishable": 0
+  },
+  "lever/prosper": {
+   "deadWeeks": 0,
+   "emptyWeeks": 0,
+   "lastPublishable": 2
+  },
+  "lever/relay": {
+   "deadWeeks": 1
+  },
+  "lever/ro": {
+   "deadWeeks": 0,
+   "emptyWeeks": 1,
+   "lastPublishable": 0
+  },
+  "lever/rover": {
+   "deadWeeks": 0,
+   "emptyWeeks": 1,
+   "lastPublishable": 0
+  },
+  "lever/rws": {
+   "deadWeeks": 0,
+   "emptyWeeks": 0,
+   "lastPublishable": 33
+  },
+  "lever/spotify": {
+   "deadWeeks": 0,
+   "emptyWeeks": 0,
+   "lastPublishable": 7
+  },
+  "lever/tala": {
+   "deadWeeks": 0,
+   "emptyWeeks": 0,
+   "lastPublishable": 3
+  },
+  "lever/toptal": {
+   "deadWeeks": 0,
+   "emptyWeeks": 0,
+   "lastPublishable": 6
+  },
+  "lever/veeva": {
+   "deadWeeks": 0,
+   "emptyWeeks": 0,
+   "lastPublishable": 80
+  },
+  "lever/wattpad": {
+   "deadWeeks": 0,
+   "emptyWeeks": 0,
+   "lastPublishable": 2
+  },
+  "lever/wealthfront": {
+   "deadWeeks": 0,
+   "emptyWeeks": 0,
+   "lastPublishable": 2
+  },
+  "lever/lodgify": {
+   "deadWeeks": 0,
+   "emptyWeeks": 1,
+   "lastPublishable": 0
+  },
+  "lever/omnisend": {
+   "deadWeeks": 0,
+   "emptyWeeks": 1,
+   "lastPublishable": 0
+  },
+  "ashby/abridge": {
+   "deadWeeks": 0,
+   "emptyWeeks": 0,
+   "lastPublishable": 4
+  },
+  "ashby/acorns": {
+   "deadWeeks": 0,
+   "emptyWeeks": 0,
+   "lastPublishable": 2
+  },
+  "ashby/airwallex": {
+   "deadWeeks": 0,
+   "emptyWeeks": 0,
+   "lastPublishable": 24
+  },
+  "ashby/amplify": {
+   "deadWeeks": 0,
+   "emptyWeeks": 0,
+   "lastPublishable": 9
+  },
+  "ashby/amplitude": {
+   "deadWeeks": 0,
+   "emptyWeeks": 0,
+   "lastPublishable": 14
+  },
+  "ashby/andela": {
+   "deadWeeks": 0,
+   "emptyWeeks": 0,
+   "lastPublishable": 2
+  },
+  "ashby/angi": {
+   "deadWeeks": 0,
+   "emptyWeeks": 0,
+   "lastPublishable": 24
+  },
+  "ashby/anrok": {
+   "deadWeeks": 0,
+   "emptyWeeks": 1,
+   "lastPublishable": 0
+  },
+  "ashby/assembledhq": {
+   "deadWeeks": 0,
+   "emptyWeeks": 0,
+   "lastPublishable": 2
+  },
+  "ashby/axiom": {
+   "deadWeeks": 0,
+   "emptyWeeks": 1,
+   "lastPublishable": 0
+  },
+  "ashby/babbel": {
+   "deadWeeks": 0,
+   "emptyWeeks": 1,
+   "lastPublishable": 0
+  },
+  "ashby/benchling": {
+   "deadWeeks": 0,
+   "emptyWeeks": 0,
+   "lastPublishable": 2
+  },
+  "ashby/brightwheel": {
+   "deadWeeks": 0,
+   "emptyWeeks": 0,
+   "lastPublishable": 7
+  },
+  "ashby/buffer": {
+   "deadWeeks": 0,
+   "emptyWeeks": 0,
+   "lastPublishable": 2
+  },
+  "ashby/cambly": {
+   "deadWeeks": 0,
+   "emptyWeeks": 1,
+   "lastPublishable": 0
+  },
+  "ashby/campfire": {
+   "deadWeeks": 0,
+   "emptyWeeks": 0,
+   "lastPublishable": 3
+  },
+  "ashby/capchase": {
+   "deadWeeks": 0,
+   "emptyWeeks": 1,
+   "lastPublishable": 0
+  },
+  "ashby/capsule": {
+   "deadWeeks": 0,
+   "emptyWeeks": 1,
+   "lastPublishable": 0
+  },
+  "ashby/cedar": {
+   "deadWeeks": 1
+  },
+  "ashby/classdojo": {
+   "deadWeeks": 0,
+   "emptyWeeks": 0,
+   "lastPublishable": 4
+  },
+  "ashby/clearco": {
+   "deadWeeks": 0,
+   "emptyWeeks": 1,
+   "lastPublishable": 0
+  },
+  "ashby/clerk": {
+   "deadWeeks": 0,
+   "emptyWeeks": 0,
+   "lastPublishable": 1
+  },
+  "ashby/clickup": {
+   "deadWeeks": 0,
+   "emptyWeeks": 0,
+   "lastPublishable": 12
+  },
+  "ashby/close": {
+   "deadWeeks": 0,
+   "emptyWeeks": 1,
+   "lastPublishable": 0
+  },
+  "ashby/cohere": {
+   "deadWeeks": 0,
+   "emptyWeeks": 0,
+   "lastPublishable": 36
+  },
+  "ashby/commure": {
+   "deadWeeks": 0,
+   "emptyWeeks": 0,
+   "lastPublishable": 3
+  },
+  "ashby/dave": {
+   "deadWeeks": 0,
+   "emptyWeeks": 0,
+   "lastPublishable": 6
+  },
+  "ashby/deepgram": {
+   "deadWeeks": 0,
+   "emptyWeeks": 0,
+   "lastPublishable": 7
+  },
+  "ashby/drata": {
+   "deadWeeks": 0,
+   "emptyWeeks": 0,
+   "lastPublishable": 3
+  },
+  "ashby/expensify": {
+   "deadWeeks": 0,
+   "emptyWeeks": 1,
+   "lastPublishable": 0
+  },
+  "ashby/fig": {
+   "deadWeeks": 0,
+   "emptyWeeks": 1,
+   "lastPublishable": 0
+  },
+  "ashby/firsthand": {
+   "deadWeeks": 0,
+   "emptyWeeks": 1,
+   "lastPublishable": 0
+  },
+  "ashby/found": {
+   "deadWeeks": 0,
+   "emptyWeeks": 1,
+   "lastPublishable": 0
+  },
+  "ashby/frontcareers": {
+   "deadWeeks": 0,
+   "emptyWeeks": 1,
+   "lastPublishable": 0
+  },
+  "ashby/fullstory": {
+   "deadWeeks": 0,
+   "emptyWeeks": 0,
+   "lastPublishable": 2
+  },
+  "ashby/gainsight": {
+   "deadWeeks": 0,
+   "emptyWeeks": 0,
+   "lastPublishable": 5
+  },
+  "ashby/gorgias": {
+   "deadWeeks": 0,
+   "emptyWeeks": 0,
+   "lastPublishable": 2
+  },
+  "ashby/guild": {
+   "deadWeeks": 0,
+   "emptyWeeks": 1,
+   "lastPublishable": 0
+  },
+  "ashby/handshake": {
+   "deadWeeks": 0,
+   "emptyWeeks": 1,
+   "lastPublishable": 0
+  },
+  "ashby/headway": {
+   "deadWeeks": 0,
+   "emptyWeeks": 0,
+   "lastPublishable": 19
+  },
+  "ashby/helpscout": {
+   "deadWeeks": 0,
+   "emptyWeeks": 0,
+   "lastPublishable": 3
+  },
+  "ashby/hopper": {
+   "deadWeeks": 0,
+   "emptyWeeks": 0,
+   "lastPublishable": 15
+  },
+  "ashby/inngest": {
+   "deadWeeks": 0,
+   "emptyWeeks": 1,
+   "lastPublishable": 0
+  },
+  "ashby/insitro": {
+   "deadWeeks": 0,
+   "emptyWeeks": 1,
+   "lastPublishable": 0
+  },
+  "ashby/instructure": {
+   "deadWeeks": 0,
+   "emptyWeeks": 1,
+   "lastPublishable": 0
+  },
+  "ashby/ironcladhq": {
+   "deadWeeks": 0,
+   "emptyWeeks": 1,
+   "lastPublishable": 0
+  },
+  "ashby/kayak": {
+   "deadWeeks": 0,
+   "emptyWeeks": 1,
+   "lastPublishable": 0
+  },
+  "ashby/kustomer": {
+   "deadWeeks": 0,
+   "emptyWeeks": 1,
+   "lastPublishable": 0
+  },
+  "ashby/lemonade": {
+   "deadWeeks": 0,
+   "emptyWeeks": 0,
+   "lastPublishable": 3
+  },
+  "ashby/linear": {
+   "deadWeeks": 0,
+   "emptyWeeks": 0,
+   "lastPublishable": 1
+  },
+  "ashby/manychat": {
+   "deadWeeks": 0,
+   "emptyWeeks": 0,
+   "lastPublishable": 1
+  },
+  "ashby/maven": {
+   "deadWeeks": 0,
+   "emptyWeeks": 1,
+   "lastPublishable": 0
+  },
+  "ashby/mercor": {
+   "deadWeeks": 0,
+   "emptyWeeks": 1,
+   "lastPublishable": 0
+  },
+  "ashby/mural": {
+   "deadWeeks": 0,
+   "emptyWeeks": 0,
+   "lastPublishable": 2
+  },
+  "ashby/nabla": {
+   "deadWeeks": 0,
+   "emptyWeeks": 1,
+   "lastPublishable": 0
+  },
+  "ashby/neon": {
+   "deadWeeks": 0,
+   "emptyWeeks": 1,
+   "lastPublishable": 0
+  },
+  "ashby/nerdwallet": {
+   "deadWeeks": 0,
+   "emptyWeeks": 0,
+   "lastPublishable": 6
+  },
+  "ashby/notion": {
+   "deadWeeks": 0,
+   "emptyWeeks": 1,
+   "lastPublishable": 0
+  },
+  "ashby/novo": {
+   "deadWeeks": 0,
+   "emptyWeeks": 1,
+   "lastPublishable": 0
+  },
+  "ashby/numeric": {
+   "deadWeeks": 0,
+   "emptyWeeks": 1,
+   "lastPublishable": 0
+  },
+  "ashby/openai": {
+   "deadWeeks": 0,
+   "emptyWeeks": 0,
+   "lastPublishable": 17
+  },
+  "ashby/outschool": {
+   "deadWeeks": 0,
+   "emptyWeeks": 1,
+   "lastPublishable": 0
+  },
+  "ashby/oyster": {
+   "deadWeeks": 0,
+   "emptyWeeks": 0,
+   "lastPublishable": 8
+  },
+  "ashby/passage": {
+   "deadWeeks": 0,
+   "emptyWeeks": 1,
+   "lastPublishable": 0
+  },
+  "ashby/patreon": {
+   "deadWeeks": 0,
+   "emptyWeeks": 1,
+   "lastPublishable": 0
+  },
+  "ashby/plaid": {
+   "deadWeeks": 0,
+   "emptyWeeks": 0,
+   "lastPublishable": 6
+  },
+  "ashby/poshmark": {
+   "deadWeeks": 0,
+   "emptyWeeks": 0,
+   "lastPublishable": 1
+  },
+  "ashby/posthog": {
+   "deadWeeks": 0,
+   "emptyWeeks": 0,
+   "lastPublishable": 4
+  },
+  "ashby/preply": {
+   "deadWeeks": 0,
+   "emptyWeeks": 0,
+   "lastPublishable": 2
+  },
+  "ashby/railway": {
+   "deadWeeks": 0,
+   "emptyWeeks": 1,
+   "lastPublishable": 0
+  },
+  "ashby/ramp": {
+   "deadWeeks": 0,
+   "emptyWeeks": 1,
+   "lastPublishable": 0
+  },
+  "ashby/render": {
+   "deadWeeks": 0,
+   "emptyWeeks": 0,
+   "lastPublishable": 11
+  },
+  "ashby/resend": {
+   "deadWeeks": 0,
+   "emptyWeeks": 1,
+   "lastPublishable": 0
+  },
+  "ashby/rev": {
+   "deadWeeks": 0,
+   "emptyWeeks": 1,
+   "lastPublishable": 0
+  },
+  "ashby/rho": {
+   "deadWeeks": 0,
+   "emptyWeeks": 1,
+   "lastPublishable": 0
+  },
+  "ashby/rillet": {
+   "deadWeeks": 0,
+   "emptyWeeks": 0,
+   "lastPublishable": 1
+  },
+  "ashby/rula": {
+   "deadWeeks": 0,
+   "emptyWeeks": 0,
+   "lastPublishable": 17
+  },
+  "ashby/scribdinc": {
+   "deadWeeks": 0,
+   "emptyWeeks": 1,
+   "lastPublishable": 0
+  },
+  "ashby/secureframe": {
+   "deadWeeks": 0,
+   "emptyWeeks": 0,
+   "lastPublishable": 2
+  },
+  "ashby/sondermind": {
+   "deadWeeks": 0,
+   "emptyWeeks": 0,
+   "lastPublishable": 1
+  },
+  "ashby/substack": {
+   "deadWeeks": 0,
+   "emptyWeeks": 0,
+   "lastPublishable": 1
+  },
+  "ashby/supabase": {
+   "deadWeeks": 0,
+   "emptyWeeks": 0,
+   "lastPublishable": 30
+  },
+  "ashby/surveymonkey": {
+   "deadWeeks": 0,
+   "emptyWeeks": 0,
+   "lastPublishable": 1
+  },
+  "ashby/thumbtack": {
+   "deadWeeks": 0,
+   "emptyWeeks": 0,
+   "lastPublishable": 21
+  },
+  "ashby/vanta": {
+   "deadWeeks": 0,
+   "emptyWeeks": 0,
+   "lastPublishable": 17
+  },
+  "ashby/vitally": {
+   "deadWeeks": 0,
+   "emptyWeeks": 0,
+   "lastPublishable": 3
+  },
+  "ashby/warp": {
+   "deadWeeks": 0,
+   "emptyWeeks": 1,
+   "lastPublishable": 0
+  },
+  "ashby/webflow": {
+   "deadWeeks": 0,
+   "emptyWeeks": 0,
+   "lastPublishable": 21
+  },
+  "ashby/wheel": {
+   "deadWeeks": 0,
+   "emptyWeeks": 0,
+   "lastPublishable": 4
+  },
+  "ashby/wistia": {
+   "deadWeeks": 0,
+   "emptyWeeks": 0,
+   "lastPublishable": 1
+  },
+  "ashby/zapier": {
+   "deadWeeks": 0,
+   "emptyWeeks": 0,
+   "lastPublishable": 1
+  },
+  "ashby/hubstaff": {
+   "deadWeeks": 0,
+   "emptyWeeks": 0,
+   "lastPublishable": 1
+  },
+  "ashby/homebase": {
+   "deadWeeks": 0,
+   "emptyWeeks": 1,
+   "lastPublishable": 0
+  },
+  "ashby/pleo": {
+   "deadWeeks": 0,
+   "emptyWeeks": 0,
+   "lastPublishable": 2
+  },
+  "ashby/moss": {
+   "deadWeeks": 0,
+   "emptyWeeks": 1,
+   "lastPublishable": 0
+  },
+  "ashby/alan": {
+   "deadWeeks": 0,
+   "emptyWeeks": 0,
+   "lastPublishable": 12
+  },
+  "ashby/mollie": {
+   "deadWeeks": 0,
+   "emptyWeeks": 0,
+   "lastPublishable": 1
+  },
+  "ashby/trustly": {
+   "deadWeeks": 0,
+   "emptyWeeks": 1,
+   "lastPublishable": 0
+  },
+  "ashby/paddle": {
+   "deadWeeks": 0,
+   "emptyWeeks": 0,
+   "lastPublishable": 10
+  },
+  "ashby/sphere": {
+   "deadWeeks": 0,
+   "emptyWeeks": 1,
+   "lastPublishable": 0
+  },
+  "ashby/phrase": {
+   "deadWeeks": 0,
+   "emptyWeeks": 0,
+   "lastPublishable": 1
+  },
+  "ashby/deepl": {
+   "deadWeeks": 0,
+   "emptyWeeks": 1,
+   "lastPublishable": 0
+  },
+  "ashby/ashby": {
+   "deadWeeks": 0,
+   "emptyWeeks": 0,
+   "lastPublishable": 31
+  },
+  "ashby/talkiatry": {
+   "deadWeeks": 0,
+   "emptyWeeks": 0,
+   "lastPublishable": 31
+  },
+  "ashby/zip": {
+   "deadWeeks": 0,
+   "emptyWeeks": 0,
+   "lastPublishable": 17
+  },
+  "ashby/brigit": {
+   "deadWeeks": 0,
+   "emptyWeeks": 1,
+   "lastPublishable": 0
+  },
+  "ashby/evolve": {
+   "deadWeeks": 0,
+   "emptyWeeks": 1,
+   "lastPublishable": 0
+  },
+  "ashby/turnkey": {
+   "deadWeeks": 0,
+   "emptyWeeks": 1,
+   "lastPublishable": 0
+  }
+ },
+ "probed": {
+  "37signals": {
+   "at": "2026-11-25",
+   "found": null,
+   "publishable": 0
+  },
+  "42technologies": {
+   "at": "2026-11-25",
+   "found": null,
+   "publishable": 0
+  },
+  "a1autotransport": {
+   "at": "2026-11-25",
+   "found": null,
+   "publishable": 0
+  },
+  "abstract": {
+   "at": "2026-11-25",
+   "found": null,
+   "publishable": 0
+  },
+  "akka": {
+   "at": "2026-11-25",
+   "found": null,
+   "publishable": 0
+  },
+  "amazon": {
+   "at": "2026-11-25",
+   "found": null,
+   "publishable": 0
+  },
+  "ambaum": {
+   "at": "2026-11-25",
+   "found": null,
+   "publishable": 0
+  },
+  "appliedaicompanyaaico": {
+   "at": "2026-11-25",
+   "found": null,
+   "publishable": 0
+  },
+  "appstractor": {
+   "at": "2026-11-25",
+   "found": null,
+   "publishable": 0
+  },
+  "argyle": {
+   "at": "2026-11-25",
+   "found": null,
+   "publishable": 0
+  },
+  "arkency": {
+   "at": "2026-11-25",
+   "found": null,
+   "publishable": 0
+  },
+  "articulate": {
+   "at": "2026-11-25",
+   "found": "lever/articulate",
+   "publishable": 1
+  },
+  "atozdebug": {
+   "at": "2026-11-25",
+   "found": null,
+   "publishable": 0
+  },
+  "audiense": {
+   "at": "2026-11-25",
+   "found": null,
+   "publishable": 0
+  },
+  "bairesdev": {
+   "at": "2026-11-25",
+   "found": null,
+   "publishable": 0
+  },
+  "bandcamp": {
+   "at": "2026-11-25",
+   "found": null,
+   "publishable": 0
+  },
+  "bandlab": {
+   "at": "2026-11-25",
+   "found": null,
+   "publishable": 0
+  },
+  "baremetrics": {
+   "at": "2026-11-25",
+   "found": null,
+   "publishable": 0
+  },
+  "basecamp": {
+   "at": "2026-11-25",
+   "found": null,
+   "publishable": 0
+  },
+  "bestpracticalsolutions": {
+   "at": "2026-11-25",
+   "found": null,
+   "publishable": 0
+  },
+  "bitzesty": {
+   "at": "2026-11-25",
+   "found": null,
+   "publishable": 0
+  },
+  "bizink": {
+   "at": "2026-11-25",
+   "found": null,
+   "publishable": 0
+  },
+  "boldare": {
+   "at": "2026-11-25",
+   "found": null,
+   "publishable": 0
+  },
+  "bonsai": {
+   "at": "2026-11-25",
+   "found": null,
+   "publishable": 0
+  },
+  "brave": {
+   "at": "2026-11-25",
+   "found": "greenhouse/brave",
+   "publishable": 3
+  },
+  "broadwing": {
+   "at": "2026-11-25",
+   "found": null,
+   "publishable": 0
+  },
+  "bugfender": {
+   "at": "2026-11-25",
+   "found": null,
+   "publishable": 0
+  },
+  "cabify": {
+   "at": "2026-11-25",
+   "found": "greenhouse/cabify",
+   "publishable": 0
+  },
+  "calcom": {
+   "at": "2026-11-25",
+   "found": null,
+   "publishable": 0
+  },
+  "calibre": {
+   "at": "2026-11-25",
+   "found": "ashby/calibre",
+   "publishable": 0
+  },
+  "canonical": {
+   "at": "2026-11-25",
+   "found": "greenhouse/canonical",
+   "publishable": 2
+  },
+  "capgemini": {
+   "at": "2026-11-25",
+   "found": null,
+   "publishable": 0
+  },
+  "capitalplacement": {
+   "at": "2026-11-25",
+   "found": null,
+   "publishable": 0
+  },
+  "carbonblack": {
+   "at": "2026-11-25",
+   "found": null,
+   "publishable": 0
+  },
+  "carecru": {
+   "at": "2026-11-25",
+   "found": null,
+   "publishable": 0
+  },
+  "cartodb": {
+   "at": "2026-11-25",
+   "found": null,
+   "publishable": 0
+  },
+  "cartstack": {
+   "at": "2026-11-25",
+   "found": null,
+   "publishable": 0
+  },
+  "chainguard": {
+   "at": "2026-11-25",
+   "found": "greenhouse/chainguard",
+   "publishable": 60
+  },
+  "chargify": {
+   "at": "2026-11-25",
+   "found": null,
+   "publishable": 0
+  },
+  "chess": {
+   "at": "2026-11-25",
+   "found": null,
+   "publishable": 0
+  },
+  "clevertech": {
+   "at": "2026-11-25",
+   "found": null,
+   "publishable": 0
+  },
+  "coalitiontechnologies": {
+   "at": "2026-11-25",
+   "found": null,
+   "publishable": 0
+  },
+  "codeait": {
+   "at": "2026-11-25",
+   "found": null,
+   "publishable": 0
+  },
+  "codepen": {
+   "at": "2026-11-25",
+   "found": null,
+   "publishable": 0
+  },
+  "cofense": {
+   "at": "2026-11-25",
+   "found": null,
+   "publishable": 0
+  },
+  "collabora": {
+   "at": "2026-11-25",
+   "found": "lever/collabora",
+   "publishable": 0
+  },
+  "compucorp": {
+   "at": "2026-11-25",
+   "found": null,
+   "publishable": 0
+  },
+  "connexa": {
+   "at": "2026-11-25",
+   "found": null,
+   "publishable": 0
+  },
+  "consensysinc": {
+   "at": "2026-11-25",
+   "found": "ashby/consensys",
+   "publishable": 0
+  },
+  "conversio": {
+   "at": "2026-11-25",
+   "found": null,
+   "publishable": 0
+  },
+  "convert": {
+   "at": "2026-11-25",
+   "found": null,
+   "publishable": 0
+  },
+  "coreapps": {
+   "at": "2026-11-25",
+   "found": null,
+   "publishable": 0
+  },
+  "creexteam": {
+   "at": "2026-11-25",
+   "found": null,
+   "publishable": 0
+  },
+  "crowdstrike": {
+   "at": "2026-11-25",
+   "found": null,
+   "publishable": 0
+  },
+  "cueup": {
+   "at": "2026-11-25",
+   "found": null,
+   "publishable": 0
+  },
+  "cwt": {
+   "at": "2026-11-25",
+   "found": null,
+   "publishable": 0
+  },
+  "dappradar": {
+   "at": "2026-11-25",
+   "found": null,
+   "publishable": 0
+  },
+  "dashboardhub": {
+   "at": "2026-11-25",
+   "found": null,
+   "publishable": 0
+  },
+  "dashlane": {
+   "at": "2026-11-25",
+   "found": "greenhouse/dashlane",
+   "publishable": 0
+  },
+  "datasciencebrigade": {
+   "at": "2026-11-25",
+   "found": null,
+   "publishable": 0
+  },
+  "datasciencedojo": {
+   "at": "2026-11-25",
+   "found": null,
+   "publishable": 0
+  },
+  "datastax": {
+   "at": "2026-11-25",
+   "found": null,
+   "publishable": 0
+  },
+  "dealdash": {
+   "at": "2026-11-25",
+   "found": null,
+   "publishable": 0
+  },
+  "deel": {
+   "at": "2026-11-25",
+   "found": "ashby/Deel",
+   "publishable": 0
+  },
+  "designcode": {
+   "at": "2026-11-25",
+   "found": null,
+   "publishable": 0
+  },
+  "deskpass": {
+   "at": "2026-11-25",
+   "found": null,
+   "publishable": 0
+  },
+  "devspotlight": {
+   "at": "2026-11-25",
+   "found": null,
+   "publishable": 0
+  },
+  "devsquad": {
+   "at": "2026-11-25",
+   "found": null,
+   "publishable": 0
+  },
+  "discourse": {
+   "at": "2026-11-25",
+   "found": null,
+   "publishable": 0
+  },
+  "doist": {
+   "at": "2026-11-25",
+   "found": null,
+   "publishable": 0
+  },
+  "drupaljedi": {
+   "at": "2026-11-25",
+   "found": null,
+   "publishable": 0
+  },
+  "duckduckgo": {
+   "at": "2026-11-25",
+   "found": null,
+   "publishable": 0
+  },
+  "dynapictures": {
+   "at": "2026-11-25",
+   "found": null,
+   "publishable": 0
+  },
+  "epam": {
+   "at": "2026-11-25",
+   "found": null,
+   "publishable": 0
+  },
+  "epicgames": {
+   "at": "2026-11-25",
+   "found": "greenhouse/epicgames",
+   "publishable": 0
+  },
+  "epilocal": {
+   "at": "2026-11-25",
+   "found": null,
+   "publishable": 0
+  },
+  "ergeon": {
+   "at": "2026-11-25",
+   "found": "greenhouse/ergeon",
+   "publishable": 1
+  },
+  "evrone": {
+   "at": "2026-11-25",
+   "found": null,
+   "publishable": 0
+  },
+  "extremenetworks": {
+   "at": "2026-11-25",
+   "found": "lever/extremenetworks",
+   "publishable": 0
+  },
+  "findify": {
+   "at": "2026-11-25",
+   "found": null,
+   "publishable": 0
+  },
+  "fingerprint": {
+   "at": "2026-11-25",
+   "found": "greenhouse/fingerprint",
+   "publishable": 5
+  },
+  "fireenginered": {
+   "at": "2026-11-25",
+   "found": null,
+   "publishable": 0
+  },
+  "firehire": {
+   "at": "2026-11-25",
+   "found": null,
+   "publishable": 0
+  },
+  "firstpoint": {
+   "at": "2026-11-25",
+   "found": null,
+   "publishable": 0
+  },
+  "fivexl": {
+   "at": "2026-11-25",
+   "found": null,
+   "publishable": 0
+  },
+  "fleetio": {
+   "at": "2026-11-25",
+   "found": "greenhouse/fleetio",
+   "publishable": 6
+  },
+  "focusnetworks": {
+   "at": "2026-11-25",
+   "found": null,
+   "publishable": 0
+  },
+  "fohboh": {
+   "at": "2026-11-25",
+   "found": null,
+   "publishable": 0
+  },
+  "folotop": {
+   "at": "2026-11-25",
+   "found": null,
+   "publishable": 0
+  },
+  "freeagent": {
+   "at": "2026-11-25",
+   "found": null,
+   "publishable": 0
+  },
+  "functionize": {
+   "at": "2026-11-25",
+   "found": null,
+   "publishable": 0
+  },
+  "generalassembly": {
+   "at": "2026-11-25",
+   "found": "greenhouse/generalassembly",
+   "publishable": 0
+  },
+  "github": {
+   "at": "2026-11-25",
+   "found": null,
+   "publishable": 0
+  },
+  "glennwebsitedesign": {
+   "at": "2026-11-25",
+   "found": null,
+   "publishable": 0
+  },
+  "godaddy": {
+   "at": "2026-11-25",
+   "found": "greenhouse/godaddy",
+   "publishable": 0
+  },
+  "graylog": {
+   "at": "2026-11-25",
+   "found": null,
+   "publishable": 0
+  },
+  "gruntwork": {
+   "at": "2026-11-25",
+   "found": null,
+   "publishable": 0
+  },
+  "harvest": {
+   "at": "2026-11-25",
+   "found": null,
+   "publishable": 0
+  },
+  "hashicorp": {
+   "at": "2026-11-25",
+   "found": null,
+   "publishable": 0
+  },
+  "heap": {
+   "at": "2026-11-25",
+   "found": null,
+   "publishable": 0
+  },
+  "helabs": {
+   "at": "2026-11-25",
+   "found": null,
+   "publishable": 0
+  },
+  "honeybadger": {
+   "at": "2026-11-25",
+   "found": null,
+   "publishable": 0
+  },
+  "hubspot": {
+   "at": "2026-11-25",
+   "found": null,
+   "publishable": 0
+  },
+  "hugo": {
+   "at": "2026-11-25",
+   "found": null,
+   "publishable": 0
+  },
+  "humanmade": {
+   "at": "2026-11-25",
+   "found": null,
+   "publishable": 0
+  },
+  "ibm": {
+   "at": "2026-11-25",
+   "found": null,
+   "publishable": 0
+  },
+  "idonethis": {
+   "at": "2026-11-25",
+   "found": null,
+   "publishable": 0
+  },
+  "interlink": {
+   "at": "2026-11-25",
+   "found": null,
+   "publishable": 0
+  },
+  "interpersonalfrequencyif": {
+   "at": "2026-11-25",
+   "found": null,
+   "publishable": 0
+  },
+  "intuitinc": {
+   "at": "2026-11-25",
+   "found": null,
+   "publishable": 0
+  },
+  "iohk": {
+   "at": "2026-11-25",
+   "found": null,
+   "publishable": 0
+  },
+  "iterative": {
+   "at": "2026-11-25",
+   "found": null,
+   "publishable": 0
+  },
+  "iwantmyname": {
+   "at": "2026-11-25",
+   "found": null,
+   "publishable": 0
+  },
+  "jayatech": {
+   "at": "2026-11-25",
+   "found": null,
+   "publishable": 0
+  },
+  "jitbit": {
+   "at": "2026-11-25",
+   "found": null,
+   "publishable": 0
+  },
+  "jitera": {
+   "at": "2026-11-25",
+   "found": null,
+   "publishable": 0
+  },
+  "jollygoodcode": {
+   "at": "2026-11-25",
+   "found": null,
+   "publishable": 0
+  },
+  "kake": {
+   "at": "2026-11-25",
+   "found": null,
+   "publishable": 0
+  },
+  "karat": {
+   "at": "2026-11-25",
+   "found": "greenhouse/karat",
+   "publishable": 5
+  },
+  "kentiktechnologiesinc": {
+   "at": "2026-11-25",
+   "found": "greenhouse/kentik",
+   "publishable": 0
+  },
+  "kestra": {
+   "at": "2026-11-25",
+   "found": "ashby/kestra",
+   "publishable": 2
+  },
+  "kona": {
+   "at": "2026-11-25",
+   "found": "greenhouse/kona",
+   "publishable": 0
+  },
+  "launchpotato": {
+   "at": "2026-11-25",
+   "found": null,
+   "publishable": 0
+  },
+  "leadershipsuccess": {
+   "at": "2026-11-25",
+   "found": null,
+   "publishable": 0
+  },
+  "leadiq": {
+   "at": "2026-11-25",
+   "found": null,
+   "publishable": 0
+  },
+  "lightspeed": {
+   "at": "2026-11-25",
+   "found": "ashby/lightspeed",
+   "publishable": 0
+  },
+  "linaro": {
+   "at": "2026-11-25",
+   "found": null,
+   "publishable": 0
+  },
+  "lionsher": {
+   "at": "2026-11-25",
+   "found": null,
+   "publishable": 0
+  },
+  "liveperson": {
+   "at": "2026-11-25",
+   "found": "greenhouse/liveperson",
+   "publishable": 0
+  },
+  "logdog": {
+   "at": "2026-11-25",
+   "found": null,
+   "publishable": 0
+  },
+  "luxoft": {
+   "at": "2026-11-25",
+   "found": null,
+   "publishable": 0
+  },
+  "luxortechnology": {
+   "at": "2026-11-25",
+   "found": "ashby/luxor",
+   "publishable": 0
+  },
+  "mailerlite": {
+   "at": "2026-11-25",
+   "found": null,
+   "publishable": 0
+  },
+  "mariadb": {
+   "at": "2026-11-25",
+   "found": null,
+   "publishable": 0
+  },
+  "marsbased": {
+   "at": "2026-11-25",
+   "found": null,
+   "publishable": 0
+  },
+  "memberful": {
+   "at": "2026-11-25",
+   "found": null,
+   "publishable": 0
+  },
+  "memory": {
+   "at": "2026-11-25",
+   "found": null,
+   "publishable": 0
+  },
+  "merico": {
+   "at": "2026-11-25",
+   "found": null,
+   "publishable": 0
+  },
+  "messagebird": {
+   "at": "2026-11-25",
+   "found": null,
+   "publishable": 0
+  },
+  "metamask": {
+   "at": "2026-11-25",
+   "found": "greenhouse/consensys",
+   "publishable": 5
+  },
+  "microsoft": {
+   "at": "2026-11-25",
+   "found": null,
+   "publishable": 0
+  },
+  "moderntribe": {
+   "at": "2026-11-25",
+   "found": null,
+   "publishable": 0
+  },
+  "modsquad": {
+   "at": "2026-11-25",
+   "found": null,
+   "publishable": 0
+  },
+  "molteo": {
+   "at": "2026-11-25",
+   "found": null,
+   "publishable": 0
+  },
+  "netsparker": {
+   "at": "2026-11-25",
+   "found": null,
+   "publishable": 0
+  },
+  "nettledinburgh": {
+   "at": "2026-11-25",
+   "found": null,
+   "publishable": 0
+  },
+  "nocodenoproblem": {
+   "at": "2026-11-25",
+   "found": null,
+   "publishable": 0
+  },
+  "nozbe": {
+   "at": "2026-11-25",
+   "found": null,
+   "publishable": 0
+  },
+  "ombulabs": {
+   "at": "2026-11-25",
+   "found": null,
+   "publishable": 0
+  },
+  "omniti": {
+   "at": "2026-11-25",
+   "found": null,
+   "publishable": 0
+  },
+  "onthegosystems": {
+   "at": "2026-11-25",
+   "found": null,
+   "publishable": 0
+  },
+  "opencraft": {
+   "at": "2026-11-25",
+   "found": null,
+   "publishable": 0
+  },
+  "openzeppelin": {
+   "at": "2026-11-25",
+   "found": "greenhouse/openzeppelin",
+   "publishable": 1
+  },
+  "optoro": {
+   "at": "2026-11-25",
+   "found": null,
+   "publishable": 0
+  },
+  "oracle": {
+   "at": "2026-11-25",
+   "found": null,
+   "publishable": 0
+  },
+  "outsourcingdev": {
+   "at": "2026-11-25",
+   "found": null,
+   "publishable": 0
+  },
+  "over": {
+   "at": "2026-11-25",
+   "found": null,
+   "publishable": 0
+  },
+  "oysterhr": {
+   "at": "2026-11-25",
+   "found": null,
+   "publishable": 0
+  },
+  "parabol": {
+   "at": "2026-11-25",
+   "found": null,
+   "publishable": 0
+  },
+  "parexel": {
+   "at": "2026-11-25",
+   "found": null,
+   "publishable": 0
+  },
+  "parsely": {
+   "at": "2026-11-25",
+   "found": null,
+   "publishable": 0
+  },
+  "particularsoftware": {
+   "at": "2026-11-25",
+   "found": null,
+   "publishable": 0
+  },
+  "payfully": {
+   "at": "2026-11-25",
+   "found": null,
+   "publishable": 0
+  },
+  "payu": {
+   "at": "2026-11-25",
+   "found": null,
+   "publishable": 0
+  },
+  "peakforce": {
+   "at": "2026-11-25",
+   "found": null,
+   "publishable": 0
+  },
+  "percona": {
+   "at": "2026-11-25",
+   "found": "ashby/percona",
+   "publishable": 0
+  },
+  "pex": {
+   "at": "2026-11-25",
+   "found": null,
+   "publishable": 0
+  },
+  "phantombuster": {
+   "at": "2026-11-25",
+   "found": null,
+   "publishable": 0
+  },
+  "polygon": {
+   "at": "2026-11-25",
+   "found": null,
+   "publishable": 0
+  },
+  "precisionnutrition": {
+   "at": "2026-11-25",
+   "found": null,
+   "publishable": 0
+  },
+  "primer": {
+   "at": "2026-11-25",
+   "found": "ashby/primer",
+   "publishable": 3
+  },
+  "prisma": {
+   "at": "2026-11-25",
+   "found": null,
+   "publishable": 0
+  },
+  "quantify": {
+   "at": "2026-11-25",
+   "found": null,
+   "publishable": 0
+  },
+  "questdb": {
+   "at": "2026-11-25",
+   "found": null,
+   "publishable": 0
+  },
+  "rackspace": {
+   "at": "2026-11-25",
+   "found": null,
+   "publishable": 0
+  },
+  "rainforestqa": {
+   "at": "2026-11-25",
+   "found": null,
+   "publishable": 0
+  },
+  "rakutentravelxchange": {
+   "at": "2026-11-25",
+   "found": null,
+   "publishable": 0
+  },
+  "raycast": {
+   "at": "2026-11-25",
+   "found": null,
+   "publishable": 0
+  },
+  "rebelmouse": {
+   "at": "2026-11-25",
+   "found": null,
+   "publishable": 0
+  },
+  "rechargepayments": {
+   "at": "2026-11-25",
+   "found": "ashby/recharge",
+   "publishable": 0
+  },
+  "redmonk": {
+   "at": "2026-11-25",
+   "found": null,
+   "publishable": 0
+  },
+  "reinteractive": {
+   "at": "2026-11-25",
+   "found": null,
+   "publishable": 0
+  },
+  "remotemore": {
+   "at": "2026-11-25",
+   "found": null,
+   "publishable": 0
+  },
+  "renespace": {
+   "at": "2026-11-25",
+   "found": null,
+   "publishable": 0
+  },
+  "renofi": {
+   "at": "2026-11-25",
+   "found": "lever/renofi",
+   "publishable": 0
+  },
+  "revenuecat": {
+   "at": "2026-11-25",
+   "found": "ashby/revenuecat",
+   "publishable": 3
+  },
+  "safeguardglobal": {
+   "at": "2026-11-25",
+   "found": null,
+   "publishable": 0
+  },
+  "salesforce": {
+   "at": "2026-11-25",
+   "found": null,
+   "publishable": 0
+  },
+  "sardineai": {
+   "at": "2026-11-25",
+   "found": "ashby/sardine",
+   "publishable": 9
+  },
+  "scalac": {
+   "at": "2026-11-25",
+   "found": null,
+   "publishable": 0
+  },
+  "scaloytechnologyllp": {
+   "at": "2026-11-25",
+   "found": null,
+   "publishable": 0
+  },
+  "scrapinghub": {
+   "at": "2026-11-25",
+   "found": null,
+   "publishable": 0
+  },
+  "seaplane": {
+   "at": "2026-11-25",
+   "found": null,
+   "publishable": 0
+  },
+  "searchapi": {
+   "at": "2026-11-25",
+   "found": "ashby/searchapi",
+   "publishable": 0
+  },
+  "seatgeek": {
+   "at": "2026-11-25",
+   "found": "greenhouse/seatgeek",
+   "publishable": 10
+  },
+  "seeq": {
+   "at": "2026-11-25",
+   "found": null,
+   "publishable": 0
+  },
+  "sendwaveinternationalremittance": {
+   "at": "2026-11-25",
+   "found": null,
+   "publishable": 0
+  },
+  "servmask": {
+   "at": "2026-11-25",
+   "found": null,
+   "publishable": 0
+  },
+  "shatteredsilicon": {
+   "at": "2026-11-25",
+   "found": null,
+   "publishable": 0
+  },
+  "shogun": {
+   "at": "2026-11-25",
+   "found": null,
+   "publishable": 0
+  }
+ },
+ "retired": [],
+ "added": [
+  {
+   "kind": "lever",
+   "slug": "articulate",
+   "company": "Articulate",
+   "at": "2026-11-25",
+   "how": "company named in its own postings",
+   "publishable": 1,
+   "origin": "remoteintech"
+  },
+  {
+   "kind": "greenhouse",
+   "slug": "brave",
+   "company": "Brave",
+   "at": "2026-11-25",
+   "how": "board name matches",
+   "publishable": 3,
+   "origin": "remoteintech"
+  },
+  {
+   "kind": "greenhouse",
+   "slug": "canonical",
+   "company": "Canonical",
+   "at": "2026-11-25",
+   "how": "board name matches",
+   "publishable": 2,
+   "origin": "remoteintech"
+  },
+  {
+   "kind": "greenhouse",
+   "slug": "chainguard",
+   "company": "Chainguard",
+   "at": "2026-11-25",
+   "how": "board name matches",
+   "publishable": 60,
+   "origin": "remoteintech"
+  },
+  {
+   "kind": "greenhouse",
+   "slug": "ergeon",
+   "company": "Ergeon",
+   "at": "2026-11-25",
+   "how": "board name matches",
+   "publishable": 1,
+   "origin": "remoteintech"
+  },
+  {
+   "kind": "greenhouse",
+   "slug": "fingerprint",
+   "company": "Fingerprint",
+   "at": "2026-11-25",
+   "how": "board name matches",
+   "publishable": 5,
+   "origin": "remoteintech"
+  },
+  {
+   "kind": "greenhouse",
+   "slug": "fleetio",
+   "company": "Fleetio",
+   "at": "2026-11-25",
+   "how": "board name matches",
+   "publishable": 6,
+   "origin": "remoteintech"
+  },
+  {
+   "kind": "greenhouse",
+   "slug": "karat",
+   "company": "Karat",
+   "at": "2026-11-25",
+   "how": "board name matches",
+   "publishable": 5,
+   "origin": "remoteintech"
+  },
+  {
+   "kind": "ashby",
+   "slug": "kestra",
+   "company": "Kestra",
+   "at": "2026-11-25",
+   "how": "company named in its own postings",
+   "publishable": 2,
+   "origin": "remoteintech"
+  },
+  {
+   "kind": "greenhouse",
+   "slug": "consensys",
+   "company": "MetaMask",
+   "at": "2026-11-25",
+   "how": "careers link",
+   "publishable": 5,
+   "origin": "remoteintech"
+  },
+  {
+   "kind": "greenhouse",
+   "slug": "openzeppelin",
+   "company": "OpenZeppelin",
+   "at": "2026-11-25",
+   "how": "board name matches",
+   "publishable": 1,
+   "origin": "remoteintech"
+  },
+  {
+   "kind": "ashby",
+   "slug": "primer",
+   "company": "Primer",
+   "at": "2026-11-25",
+   "how": "company named in its own postings",
+   "publishable": 3,
+   "origin": "remoteintech"
+  },
+  {
+   "kind": "ashby",
+   "slug": "revenuecat",
+   "company": "RevenueCat",
+   "at": "2026-11-25",
+   "how": "company named in its own postings",
+   "publishable": 3,
+   "origin": "remoteintech"
+  },
+  {
+   "kind": "ashby",
+   "slug": "sardine",
+   "company": "Sardine.ai",
+   "at": "2026-11-25",
+   "how": "company named in its own postings",
+   "publishable": 9,
+   "origin": "remoteintech"
+  },
+  {
+   "kind": "greenhouse",
+   "slug": "seatgeek",
+   "company": "SeatGeek",
+   "at": "2026-11-25",
+   "how": "board name matches",
+   "publishable": 10,
+   "origin": "remoteintech"
+  }
+ ]
+}
