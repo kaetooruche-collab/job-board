@@ -110,5 +110,16 @@ class Funnel(unittest.TestCase):
         self.assertEqual(sum(n for _, n in gc.funnel_counts(None)), 0)
 
 
+class VisitorCountries(unittest.TestCase):
+    """KT, 26 Nov 2026: who to target (outside the US or everyone) is checked against where visitors really are."""
+    def test_countries_are_listed_and_a_failed_fetch_is_said_plainly(self):
+        d = {"views": 10, "events": 2, "pages": [], "event_rows": [], "refs": [],
+             "locations": [{"name": "India", "count": 7}, {"name": "United States", "count": 3}]}
+        out = gc.render("2026-11-26", {"All time": d, "Last 7 days": dict(d, locations=None)}, None)
+        text = "\n".join(out) if isinstance(out, list) else out
+        self.assertIn("| 7 | India |", text)
+        self.assertIn("Country data could not be fetched this time.", text)
+
+
 if __name__ == "__main__":
     unittest.main()
