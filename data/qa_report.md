@@ -1,8 +1,8 @@
-# Quality report, 2026-11-26T13:27+00:00
+# Quality report, 2026-11-26T21:26+00:00
 
-- Published: **1987**
-- Held back by a quality rule (not published): **13**
-- Warnings (published, but look): **20**
+- Published: **1988**
+- Held back by a quality rule (not published): **12**
+- Warnings (published, but look): **21**
 
 ## Held back
 
@@ -13,8 +13,7 @@
 - Senior Software Engineer: Assets at MetaMask: label lists ['France', 'Germany', 'Italy'] but note says cannot hire there: The posting says it cannot hire in: France, Italy, Germany.
 - Senior Manager, Sanctions Regulatory Analysis at Airwallex: label lists ['United Kingdom'] but note says cannot hire there: The posting says it cannot hire in: EMEA, United Kingdom, European Union.
 
-### not-a-job-posting (4)
-- Expert Talent Pool, Generation and Writing at Clera: Expert Talent Pool, Generation and Writing
+### not-a-job-posting (3)
 - Expert Talent Pool, Annotation Associate at Clera: Expert Talent Pool, Annotation Associate
 - Expert Talent Pool, Generation and Writing Associate at Clera: Expert Talent Pool, Generation and Writing Associate
 - Let's stay in touch.  Join our Talent Community! at Box: Let's stay in touch.  Join our Talent Community!
@@ -25,7 +24,7 @@
 
 ## Warnings
 
-### pay-in-posting-but-card-says-not-stated (11)
+### pay-in-posting-but-card-says-not-stated (12)
 - Demand Generation & Campaign Operations Manager at Spotify: $102,981.00-$147,116
 - Senior Software Engineer, Back-end (Fraud) at Affirm: $32,000-$48,000
 - Manager, Business Technology at Webflow: 170,800 USD - 205,000
@@ -47,11 +46,11 @@
 ## Shape of the feed
 
 ```
-count: 1987
-bySource: {'Greenhouse': 886, 'Lever': 337, 'Ashby': 687, 'Recruitee': 77}
-pctEligibilityUnclear: 17.2
+count: 1988
+bySource: {'Ashby': 705, 'Lever': 328, 'Greenhouse': 878, 'Recruitee': 77}
+pctEligibilityUnclear: 17.0
 pctRemoteUnclear: 0.0
 pctWorldwide: 1.8
-pctEarlyCareer: 11.9
-pctSeniorPlus: 38.1
+pctEarlyCareer: 11.6
+pctSeniorPlus: 38.0
 ```
