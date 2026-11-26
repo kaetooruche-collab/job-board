@@ -110,6 +110,9 @@ Recommendation [Hypothesis]: post **A first** (a moment people have lived, in th
 Copy check done on all three: no "all remote jobs", no "guaranteed" or "only", no hiring-system name, no country other than the US (which is in the posting text the viewer sees), "free" and "never charge you to apply" are trust rule 1, numbers measured 26 Nov.
 
 ## 6. Yireh pronunciation
+**Decided by KT, 26 Nov 2026:** "Yi" as in "why", "reh" as in "ray" (YYE-ray, /ˈjaɪ.reɪ/). In narration text spell it "Yai-ray"; on screen and in captions it stays "Yireh". Voice: Olivia (ElevenLabs `pPoztmvzd5p26S3MsNrV`), delivery preset energetic, stability 0.35, style 0.35. Script: KT's version as edited in chat on 26 Nov (see `2026-11-26-chatgpt-sop-review.md`); presenter for opening and ending only, board footage in the middle.
+
+Earlier candidates (superseded):
 The narration must spell the name the way it sounds. Candidates (KT picks, or sends a voice note):
 1. "Yeer-eh" (Hebrew-like; stress on the second syllable: yeer-EH)
 2. "Yee-ray" (like the end of "Jehovah Jireh" in many worship songs, with a Y)
