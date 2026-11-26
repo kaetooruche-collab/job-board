@@ -31,6 +31,10 @@ class Regressions(unittest.TestCase):
                     self.assertNotIn(country, e["countries"])
                 for region in ex.get("regions_exclude", []):
                     self.assertNotIn(region, e["regions"])
+                for region in ex.get("regions_include", []):
+                    self.assertIn(region, e["regions"])
+                for country in ex.get("countries_include", []):
+                    self.assertIn(country, e["countries"])
 
 
 if __name__ == "__main__":

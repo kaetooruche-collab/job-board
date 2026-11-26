@@ -132,6 +132,16 @@ def check_listing(rec, raw=None, now=None):
                 issues.append(_issue("eligibility-label-unsupported", BLOCK, f"label={sorted(label_countries)} but nothing in the location or evidence names them"))
             elif missing and len(missing) <= 6:  # a long list is a region written out in full, not a mistake
                 issues.append(_issue("eligibility-label-partly-unsupported", WARN, f"not found in evidence: {missing}"))
+    # A region label on a job whose own location field names one country ("Remote - Japan" labelled APAC): the region
+    # usually came from background wording (the team, a time zone, a refusal). Classifier fixed 26 Nov 2026; this is the
+    # independent second opinion.
+    if elig.get("regions") and elig.get("type") in ("countries", "region"):
+        g = C.geo()
+        stated = rec.get("regionAsStated") or ""
+        sp = g.find_places(stated)
+        if (re.search(r"\bremote\b", stated, re.I) and len({p["name"] for p in sp if p["kind"] == "country"}) == 1
+                and not any(p["kind"] == "region" for p in sp)):
+            issues.append(_issue("region-label-wider-than-location", WARN, f"label={elig.get('label')!r} but location={stated!r}"))
     if elig.get("type") == "worldwide":
         g = C.geo()
         stated = rec.get("regionAsStated") or ""

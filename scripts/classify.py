@@ -687,10 +687,20 @@ def assess_eligibility(title, location, description, remote_evidence=False, remo
     # ... the APAC region (Singapore or Australia)", "part of the Asia Pacific team, based in Japan", "must be based in the
     # Philippines. If you are based in another location within APAC, we aren't able to hire" all mean the named country.
     # Without this, each was labelled APAC and shown to ~40 countries (Concentric, CircleCI, Sprout Social; 26 Nov 2026).
+    # Only a region from the description is dropped: one the employer lists as its own location option ("Remote -
+    # European Union; United Kingdom", "Remote - Canada, Remote Americas", "Remote (APAC)") is a real opening (old-vs-new
+    # comparison on 12,887 postings, 26 Nov 2026).
+    # A region the posting widens to on purpose ("from anywhere in Europe", "any other location in Europe or the EU",
+    # ElevenLabs and Azul in the same comparison) is kept too.
     named_countries = {p["name"] for p in restricted_places if p["kind"] == "country"}
+    keep_regions = {p["name"] for p in loc_places if p["kind"] == "region"}
+    for s in sents:
+        if WIDE_REGION_RE.search(s) and not re.search(r"\b(?:not|unable|aren't|can't|cannot|won't|isn't|no longer)\b", s, re.I):
+            keep_regions.update(p["name"] for p in g.find_places(s) if p["kind"] == "region")
     if named_countries:
         restricted_places = [p for p in restricted_places
-                             if not (p["kind"] == "region" and named_countries & set(g.regions[p["name"]]["members"]))]
+                             if not (p["kind"] == "region" and p["name"] not in keep_regions
+                                     and named_countries & set(g.regions[p["name"]]["members"]))]
 
     countries, regions = g.expand(restricted_places)
     explicit = []
@@ -801,6 +811,9 @@ DEGREE_RE = re.compile(r"\b(bachelor'?s?|master'?s?|phd|doctorate|associate'?s? 
 
 # A worldwide line about the company ("we hire globally", "no borders or HQ") is not a statement about this role;
 # one that names the role, candidates, applicants or "you" is, and stays a genuine conflict.
+# "anywhere in Europe", "any other location in Europe", "remote across the European Union, with a preference for Prague",
+# "ideally ... the UK or Western Europe", "will consider applicants from European countries": the region itself is the opening.
+WIDE_REGION_RE = re.compile(r"\banywhere\s+(?:in|within|across)\b|\bany\s+(?:other\s+)?(?:location|country|countries|place|where)\s+(?:in|within|across)\b|\b(?:an|any\s+)?other\s+(?:[\w-]+\s+){0,2}(?:country|countries|location)\b|\bremote\s+(?:across|throughout)\b|\b(?:with\s+a\s+)?preference\s+for\b|\bpreferabl[ey]\b|\bideally\b|\b(?:consider|accept|welcome)s?\s+(?:applicants|candidates|applications)\s+(?:from|in|across)\b|\bcan\s+be\s+(?:based|located)\s+(?:anywhere\s+)?in\b", re.I)
 ANYWHERE_IN_PLACE_RE = re.compile(r"\banywhere\s+(?:in|within|across)\s+(?:the\s+)?(?-i:[A-Z])", re.I)
 ROLE_OR_APPLICANT_RE = re.compile(r"\b(?:this|the)\s+(?:role|position|job|opening)\b|\bcandidates?\b|\bapplicants?\b|\byou(?:'re|r)?\b", re.I)
 EXPLICIT_EARLY_RE = re.compile(r"\b(?:intern(?:ship)?|junior|jr\.?|entry[- ]level|graduate|new grad|trainee|apprentice(?:ship)?)\b", re.I)
