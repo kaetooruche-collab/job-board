@@ -49,6 +49,13 @@ class ListingChecks(unittest.TestCase):
         ok = rec(regionAsStated="Remote (Philippines); Remote (APAC)", eligibility={"type": "countries", "label": "APAC, Philippines", "countries": ["Philippines", "India"], "regions": ["APAC"], "notes": []})
         self.assertNotIn("region-label-wider-than-location", rules(Q.check_listing(ok, None, NOW)))
 
+    def test_sign_up_forms_are_not_jobs(self):
+        """Box 'Let's stay in touch. Join our Talent Community!' and Truelogic '... - Open Application' (26 Nov 2026)."""
+        for t in ("Let's stay in touch.  Join our Talent Community!", "Senior Front-end Engineer - Open Application", "General Application"):
+            self.assertIn("not-a-job-posting", rules(Q.check_listing(rec(title=t), None, NOW), Q.BLOCK), t)
+        for t in ("Talent Acquisition Partner", "Community Manager", "Application Support Engineer"):
+            self.assertNotIn("not-a-job-posting", rules(Q.check_listing(rec(title=t), None, NOW)), t)
+
     def test_senior_title_cannot_be_junior(self):
         self.assertIn("level-title-conflict", rules(Q.check_listing(rec(title="Senior Marketing Operations Specialist", level="junior"), None, NOW), Q.BLOCK))
 

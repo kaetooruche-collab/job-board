@@ -502,7 +502,7 @@ def assess_work_arrangement(title, location, description, hint=None, remote_feed
 
 # ── Geographic eligibility ────────────────────────────────────────────
 
-WW_COMPANY_LEVEL_RE = re.compile(r"\b(?:many|some|most|certain|select|several|various|other)\s+(?:of our\s+)?(?:roles|positions|jobs|teams|opportunities)\b|see (?:the )?individual (?:job )?listings?|depending on (?:the )?(?:role|position|team)", re.I)
+WW_COMPANY_LEVEL_RE = re.compile(r"\b(?:many|some|most|certain|select|several|various|other)\s+(?:of our\s+)?(?:roles|positions|jobs|teams|opportunities)\b|see (?:the )?individual (?:job )?listings?|depending on (?:the )?(?:role|position|team)|\b(?:employees|people|team members|colleagues|teammates|staff|Netlifers|members)\s+(?:working\s+|based\s+|located\s+|living\s+)?(?:across|in|from)\s+(?:over\s+|more than\s+)?\d+\+?\s+countries|\bglobally distributed (?:company|teams?|organi[sz]ation|workforce)\b", re.I)
 WORLDWIDE_LOC = re.compile(r"\b(anywhere|worldwide|world[- ]wide|global(?:ly)?|all countries|any country|work from anywhere)\b", re.I)
 WORLDWIDE_DESC = re.compile(
     r"\b(?:anywhere in the world|from anywhere in the world|any (?:country|location)|all countries|worldwide|world[- ]wide|globally|work from anywhere|"
@@ -514,7 +514,7 @@ EXCLUSION_RE = re.compile(
     re.I)
 # Equal-opportunity and similar boilerplate says "does not discriminate ... in hiring" and
 # often names a country; that is not a place the employer refuses to hire.
-NON_RESTRICTION_RE = re.compile(r"\b(?:discriminat\w*|equal[- ]opportunity|equal employment|affirmative action|harass\w*|retaliat\w*|reasonable accommodations?|protected (?:class|characteristic|status)|background checks?|drug (?:test|screen)\w*|arrest|convictions?|criminal (?:history|records?)|fair chance|ordinance|pay transparency|salary history)\b", re.I)
+NON_RESTRICTION_RE = re.compile(r"\b(?:discriminat\w*|equal[- ]opportunity|equal employment|affirmative action|harass\w*|retaliat\w*|reasonable accommodations?|protected (?:class|characteristic|status)|background checks?|drug (?:test|screen)\w*|arrest|convictions?|criminal (?:history|records?)|fair chance|ordinance|pay transparency|salary history|local law(?:\s+\d+)?|automated employment decision\w*)\b|\bif you (?:are|reside|live)\b[^.]{0,40}\b(?:applicant|candidate|employee|resident|residing|located)", re.I)
 # Pay tables list US states and cities ("Based in New York, New Jersey: $136,000"); those are pay zones, not where applicants may live.
 PAY_SENT_RE = re.compile(r"\b(?:salary|pay\s+(?:range|band|scale|transparency|information|zone)s?|compensation|base\s+pay|estimated\s+pay|on-target earnings)\b|\bOTE\b|[$\u20ac\u00a3]\s?\d|\b\d{2,3},\d{3}\b", re.I)
 PAY_TIER_LINE_RE = re.compile(r"\W*(?:based|residing|located|living)\s+in\b", re.I)
@@ -541,7 +541,7 @@ RESTRICTION_CUES = [
     re.compile(r"\bwe (?:currently )?(?:hire|employ|have (?:entities|employees))\b[^.]{0,40}\b(?:in|from)\s+the following\b", re.I),
     re.compile(r"\b(?:hiring|recruiting) (?:in|from)\b", re.I),
     # "Flexible remote work from anywhere in the US" is a restriction to the US, not worldwide (Clera, 25 Nov 2026)
-    re.compile(r"\banywhere\s+(?:in|within|across)\s+(?:the\s+)?(?-i:[A-Z])", re.I),
+    re.compile(r"\banywhere\s+(?:in|within|across)\s+(?:the\s+)?(?:(?:contiguous|continental|mainland|entire|whole)\s+)?(?-i:[A-Z])", re.I),
     # "Fully remote in the United States." / "remote within Canada" (Clera card showed "not specified", 25 Nov 2026)
     re.compile(r"\b(?:fully\s+|100%\s+)?remote\s+(?:in|within|from|across)\s+(?:the\s+)?(?-i:[A-Z])", re.I),
 ]
@@ -550,6 +550,13 @@ TIMEZONE_RE = re.compile(
     r"|\b(?:UTC|GMT)\s*[+-]\s*\d{1,2}\b|\b(?:EST|PST|CST|CET|EET)\s+(?:hours|time ?zone)\b", re.I)
 AUTH_RE = re.compile(r"\b(?:existing|current|valid|legal)\s+(?:right|authori[sz]ation|work (?:permit|authori[sz]ation))|(?:will not|do not|does not|unable to)\s+(?:provide )?(?:sponsor|visa)|no (?:visa )?sponsorship|must (?:already )?have the right to work|authori[sz]ed to work", re.I)
 CONTRACTOR_RE = re.compile(r"\b(?:international |overseas |global )?(?:independent )?contractors?\b[^.]{0,60}\b(?:worldwide|any country|anywhere|around the world|globally|international)\b|\b(?:hire|engage)s? (?:contractors?|freelancers?)[^.]{0,30}\b(?:worldwide|anywhere|globally|in (?:many|most|any|over \d+) countries)\b", re.I)
+
+
+US_CLEARANCE_RE = re.compile(
+    r"\b(?:U\.?S\.?|United States)\s+(?:government\s+|federal\s+)?(?:security\s+)?clearance\b"
+    r"|\b(?:must|need to|required to)\s+(?:be\s+)?(?:a\s+)?(?:U\.?S\.?|United States)\s+citizens?\b"
+    r"|\b(?:U\.?S\.?|United States)\s+citizenship\s+(?:is\s+)?(?:required|needed|mandatory)\b", re.I)
+OPTIONAL_REQ_RE = re.compile(r"\b(?:preferred|a plus|nice[- ]to[- ]have|bonus|ideally|desirable|advantage)\b", re.I)
 
 
 def _label_for(places_countries, regions, worldwide, tz, home_countries=()):
@@ -656,7 +663,7 @@ def assess_eligibility(title, location, description, remote_evidence=False, remo
             s = s[:m_ex.start()]  # what comes before the cue (for example "must be based in X") is still read as a restriction
             if not s.strip():
                 continue
-        if any(rx.search(s) for rx in RESTRICTION_CUES) and not NON_RESTRICTION_RE.search(s):
+        if any(rx.search(s) for rx in RESTRICTION_CUES) and not NON_RESTRICTION_RE.search(s) and not WW_COMPANY_LEVEL_RE.search(s):
             places = [p for p in g.find_places(s) if p["kind"] in ("country", "region", "state", "city")]
             if places:
                 desc_places.append((s, places))
@@ -692,6 +699,23 @@ def assess_eligibility(title, location, description, remote_evidence=False, remo
     # comparison on 12,887 postings, 26 Nov 2026).
     # A region the posting widens to on purpose ("from anywhere in Europe", "any other location in Europe or the EU",
     # ElevenLabs and Azul in the same comparison) is kept too.
+    # A required US security clearance or US citizenship means only people in the US can do the job, whatever region
+    # the location field names ("Home Based - Americas", Canonical federal sales, 26 Nov 2026).
+    # Read the whole text: the sentence splitter breaks "U.S. government" at "U.S." and loses the country.
+    clearance = None
+    for m in US_CLEARANCE_RE.finditer(text):
+        clause = re.split(r"\n|(?<=[a-z])\.\s", text[m.start(): m.end() + 160], maxsplit=1)[0]
+        before = text[max(0, m.start() - 60): m.start()]
+        if not OPTIONAL_REQ_RE.search(clause) and not OPTIONAL_REQ_RE.search(before.split("\n")[-1]):
+            clearance = text[max(0, m.start() - 20): m.end() + 100]
+            break
+    if clearance:
+        us = [p for p in g.find_places("United States") if p["kind"] == "country"][:1]
+        if us:
+            restricted_places = us
+            restricted_from = [("description", clearance)]
+            worldwide_from = []
+            notes.append("Needs a US government security clearance or US citizenship.")
     named_countries = {p["name"] for p in restricted_places if p["kind"] == "country"}
     keep_regions = {p["name"] for p in loc_places if p["kind"] == "region"}
     for s in sents:
@@ -814,7 +838,7 @@ DEGREE_RE = re.compile(r"\b(bachelor'?s?|master'?s?|phd|doctorate|associate'?s? 
 # "anywhere in Europe", "any other location in Europe", "remote across the European Union, with a preference for Prague",
 # "ideally ... the UK or Western Europe", "will consider applicants from European countries": the region itself is the opening.
 WIDE_REGION_RE = re.compile(r"\banywhere\s+(?:in|within|across)\b|\bany\s+(?:other\s+)?(?:location|country|countries|place|where)\s+(?:in|within|across)\b|\b(?:an|any\s+)?other\s+(?:[\w-]+\s+){0,2}(?:country|countries|location)\b|\bremote\s+(?:across|throughout)\b|\b(?:with\s+a\s+)?preference\s+for\b|\bpreferabl[ey]\b|\bideally\b|\b(?:consider|accept|welcome)s?\s+(?:applicants|candidates|applications)\s+(?:from|in|across)\b|\bcan\s+be\s+(?:based|located)\s+(?:anywhere\s+)?in\b", re.I)
-ANYWHERE_IN_PLACE_RE = re.compile(r"\banywhere\s+(?:in|within|across)\s+(?:the\s+)?(?-i:[A-Z])", re.I)
+ANYWHERE_IN_PLACE_RE = re.compile(r"\banywhere\s+(?:in|within|across)\s+(?:the\s+)?(?:(?:contiguous|continental|mainland|entire|whole)\s+)?(?-i:[A-Z])", re.I)
 ROLE_OR_APPLICANT_RE = re.compile(r"\b(?:this|the)\s+(?:role|position|job|opening)\b|\bcandidates?\b|\bapplicants?\b|\byou(?:'re|r)?\b", re.I)
 EXPLICIT_EARLY_RE = re.compile(r"\b(?:intern(?:ship)?|junior|jr\.?|entry[- ]level|graduate|new grad|trainee|apprentice(?:ship)?)\b", re.I)
 TITLE_LEVEL_NUM_RE = re.compile(r"\b(?:II|III|IV)\b|\b(?:engineer|analyst|specialist|scientist|developer|associate|representative|consultant)\s+[2-5]\b|\bSDE[- ]?[2-5]\b", re.I)

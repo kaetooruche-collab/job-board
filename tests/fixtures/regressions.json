@@ -393,5 +393,63 @@
     "European Union"
    ]
   }
+ },
+ {
+  "name": "'work from anywhere in the contiguous United States' is the US, not worldwide (Wistia, 26 Nov 2026)",
+  "title": "Staff Product Design Lead, Hosting",
+  "location": "Remote",
+  "remote_feed": true,
+  "description": "Fully remote, work from anywhere in the contiguous United States",
+  "expect": {
+   "label": "United States only"
+  }
+ },
+ {
+  "name": "'company with 120+ employees working across 13 countries' is about the company, not who can apply (Netlify, 26 Nov 2026)",
+  "title": "Talent Partner",
+  "location": "Remote",
+  "remote_feed": true,
+  "description": "At Netlify, we're a remote-first, globally distributed company with 120+ employees working across 13 countries around the world. As a fully distributed company, we aim to create a company culture where the best idea can come from anywhere and strive to be thoughtful, compassionate, and collaborative in our work.",
+  "expect": {
+   "label": "Eligibility unclear"
+  }
+ },
+ {
+  "name": "a US government security clearance makes a 'Home Based - Americas' role US-only (Canonical, 26 Nov 2026)",
+  "title": "Enterprise Account Executive - Federal",
+  "location": "Home Based - Americas",
+  "remote_feed": true,
+  "description": "Canonical provides licensed enterprise software products, commercial support, managed services, consulting and training services to customers who are deploying Ubuntu or open source applications on the cloud, in their data center, or to the connected device and IoT ecosystem. We are just over 1,000 colleagues in 70+ countries and $250m in revenue, profitable, on a steady but relentless growth trajectory. We are almost entirely distributed, with leadership spread across many countries. We believe that talent is equally distributed across the globe, and we are excited to hire, develop, promote and ultimately trust a diverse group of exceptional leads to build the best, not biggest, enterprise software company.\nLocation: We are expanding our sales organisation globally and have open roles in every region of the Americas.\nCurrent or previous U.S. government security clearance, particularly for roles supporting defense, intelligence or other federal government customers",
+  "expect": {
+   "label": "United States only",
+   "note_present": [
+    "security clearance"
+   ]
+  }
+ },
+ {
+  "name": "a NYC Local Law 144 notice is not a restriction to New York (Okta Dublin, 26 Nov 2026)",
+  "title": "Manager, Customer Identity, Security Engineering",
+  "location": "Dublin, Ireland",
+  "remote_feed": true,
+  "description": "Hire, lead, coach, and develop globally distributed teams of security engineers. In accordance with NYC Local Law 144, if you are an applicant or employee residing in New York City, you may request information about our use of automated employment decision tools.",
+  "expect": {
+   "countries_exclude": [
+    "United States"
+   ]
+  }
+ },
+ {
+  "name": "'a globally distributed team, including colleagues based in APAC and EMEA' describes the team (Airwallex, 26 Nov 2026)",
+  "title": "Global AML Manager",
+  "location": "US - Dallas; US - Miami",
+  "remote_feed": true,
+  "description": "This is a remote role based in Dallas, Texas. You're comfortable operating across time zones with a globally distributed team, including colleagues based in APAC and EMEA.",
+  "expect": {
+   "regions_exclude": [
+    "APAC",
+    "EMEA"
+   ]
+  }
  }
 ]

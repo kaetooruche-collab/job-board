@@ -54,6 +54,8 @@ OPTIONAL_OFFICE_RE = re.compile(r"\bup to\s*$|\boptional(?:ly)?\b|\bif you (?:wi
 PAY_RANGE_RE = re.compile(r"(?:[$\u20ac\u00a3]\s?\d{2,3}(?:,\d{3})+(?:\.\d+)?|\b\d{2,3}(?:,\d{3})+\s*(?:USD|EUR|GBP))\s*(?:-|\u2013|\u2014|to)\s*(?:[$\u20ac\u00a3]\s?)?\d{2,3}(?:,\d{3})+", re.I)
 ESTIMATE_RE = re.compile(r"\b(?:estimat\w+|approx\w*|about|around|roughly)\b|~", re.I)
 EXCL_NOTE_RE = re.compile(r"cannot hire in:\s*(.+?)(?: and others)?\.?$", re.I)
+NOT_A_JOB_RE = re.compile(r"\b(?:talent (?:community|network|pool)|general (?:application|interest)|open application|"
+                          r"spontaneous application|expression of interest|stay in touch|future opportunit(?:y|ies))\b", re.I)
 HTML_JUNK_RE = re.compile(r"<[a-z/][^>]*>|&(?:amp|lt|gt|quot|#\d+);", re.I)
 
 
@@ -100,6 +102,12 @@ def check_listing(rec, raw=None, now=None):
     bad_flags = [f for f in (rec.get("flags") or []) if f in ("commission_only_or_unpaid", "applicant_fee", "suspicious_contact")]
     if bad_flags:
         issues.append(_issue("trust-flag-published", BLOCK, ", ".join(bad_flags)))
+
+    # ---- not a job at all ------------------------------------------------
+    # "Let's stay in touch. Join our Talent Community!" (Box) and "Senior Engineer - Open Application" (Truelogic),
+    # 26 Nov 2026: sign-up forms, not openings.
+    if NOT_A_JOB_RE.search(title):
+        issues.append(_issue("not-a-job-posting", BLOCK, title))
 
     # ---- experience level versus title ---------------------------------
     if level in EARLY_LEVELS and SENIOR_TITLE_RE.search(title) and not EARLY_TITLE_RE.search(title):
