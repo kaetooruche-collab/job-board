@@ -73,3 +73,9 @@ Openings to test later, with the same body:
 1. **Presenter:** AI presenter for the opening and ending only, with the board in the middle (recommended), or voice-only over the board with no face at all (most trust, cheapest), or the presenter throughout.
 2. **Approve the merged Video 1 wording** above (public copy rule).
 3. **Paid testing:** no (organic, one variable a week) or yes with a budget.
+
+## 5. Progress (26 Nov 2026)
+- KT chose: presenter for opening and ending only, board footage in the middle; KT's script with Claude's three edits; "Yireh" = YYE-ray; voice Olivia.
+- Spent so far today: two name tests (7.4 s and 6.1 s) and the full voiceover (26.3 s, approved by KT), about 41 credits.
+- Board footage recorded from the live site (14 s, 1080x1920, free). Voice timings: hook 0–5.0 s, "Remote doesn't always mean anywhere" 6.0–7.6 s, Yireh and the country line 7.9–13.3 s, original posting 14.1–18.4 s, free and CTA 18.9–25.8 s.
+- Next: a woman presenter (KT picks the look; generation costs credits), the render plan with its cost, then assembly with captions and the on-screen statistic.
