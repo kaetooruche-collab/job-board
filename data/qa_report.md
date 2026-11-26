@@ -1,8 +1,8 @@
-# Quality report, 2026-11-26T08:08+00:00
+# Quality report, 2026-11-26T10:26+00:00
 
-- Published: **1761**
+- Published: **1759**
 - Held back by a quality rule (not published): **13**
-- Warnings (published, but look): **12**
+- Warnings (published, but look): **14**
 
 ## Held back
 
@@ -27,17 +27,21 @@
 - Senior Power Procurement Manager  at Antora Energy: 158,000 USD - $225,000
 - Senior Site Reliability Engineer  at Censys: 174,000 USD - $206,000
 
+### region-label-wider-than-location (2)
+- Senior Software Engineer, Data Platform at Doximity: label='South America, United States, Canada' but location='San Francisco, CA or Remote (U.S.)'
+- Senior Director, Product Management at Azul Systems: label='Europe, European Union, Prague, United Kingdom, Czech Republic, Cyprus' but location='Prague; Limassol; United Kingdom - Remote'
+
 ### eligibility-label-partly-unsupported (1)
 - Enterprise Account Executive, West at Assembled: not found in evidence: ['United Kingdom']
 
 ## Shape of the feed
 
 ```
-count: 1761
-bySource: {'Ashby': 700, 'Lever': 226, 'Greenhouse': 834, 'Recruitee': 1}
+count: 1759
+bySource: {'Ashby': 701, 'Greenhouse': 831, 'Lever': 226, 'Recruitee': 1}
 pctEligibilityUnclear: 14.2
 pctRemoteUnclear: 0.0
 pctWorldwide: 1.1
-pctEarlyCareer: 10.8
+pctEarlyCareer: 10.9
 pctSeniorPlus: 39.7
 ```
