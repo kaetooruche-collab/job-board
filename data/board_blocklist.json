@@ -1,5 +1,10 @@
 {
  "note": "Companies that asked to be removed, or that must never be added automatically. scripts/discover_boards.py never adds a board whose company or slug is listed here. To honour a removal request: delete the company's line from data/boards.json AND add its name here, in the same commit.",
- "companies": [],
+ "companies": [
+  "Destination Knot",
+  "Rehire",
+  "Levelup",
+  "Truelogic"
+ ],
  "boards": []
 }

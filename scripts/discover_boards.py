@@ -49,6 +49,10 @@ OUTAGE_SHARE = 0.30
 REPROBE_DAYS = 90
 MIN_PUBLISHABLE = 1
 MAX_LIVE_LISTINGS = 2000   # stop adding boards while this many listings are live; equals fetch_jobs.MAX_LISTINGS
+# Alion's open Global South Remote Hiring Index (CC BY 4.0, monthly): employers whose own postings are open to applicants
+# outside the US. Used ONLY to learn which employers to read; nothing from it is shown. KT, 26 Nov 2026: positioning is
+# "people outside the US, wherever they live" (drafts/decisions/2026-11-26-who-to-target.md).
+ALION_INDEX = "https://alion.io/data/remote-global-south"
 EARLY_CAREER_LISTS = [     # SimplifyJobs public lists: used ONLY to learn which employer boards hire early-career people
     "https://raw.githubusercontent.com/SimplifyJobs/New-Grad-Positions/dev/.github/scripts/listings.json",
     "https://raw.githubusercontent.com/SimplifyJobs/Summer2026-Internships/dev/.github/scripts/listings.json",
@@ -131,7 +135,7 @@ def priority(entry):
     within a group, fully remote before remote-friendly."""
     region = (entry.get("region") or "").lower()
     policy = (entry.get("remote_policy") or "").lower()
-    group = 0 if "worldwide" in region else 1 if entry.get("origin") == "early-career list" else 2
+    group = 0 if ("worldwide" in region or entry.get("origin") == "alion") else 1 if entry.get("origin") == "early-career list" else 2
     return (group, 0 if "fully" in policy else 1, norm(entry.get("title")))
 
 
@@ -154,6 +158,32 @@ def early_career_seeds(lists):
                 seen.add(key)
                 out.append({"title": x["company_name"], "known": key, "origin": "early-career list"})
     return out
+
+
+def alion_seeds(data):
+    """Employers from Alion's index whose postings are open outside the US. Agencies are left out (/verify: we don't
+    copy from recruiters); Alion's own flag misses some, so data/board_blocklist.json holds the ones found by hand."""
+    out, seen = [], set()
+    for x in (data or {}).get("employers") or []:
+        if x.get("is_agency") or not x.get("company") or not x.get("domain") or not (x.get("open_south") or x.get("worldwide")):
+            continue
+        k = norm(x["company"])
+        if k in seen:
+            continue
+        seen.add(k)
+        out.append({"title": x["company"], "website": "https://" + x["domain"], "origin": "alion",
+                    "region": "worldwide" if x.get("worldwide") else "outside-us"})
+    return out
+
+
+def latest_alion(get=None):
+    """The newest edition's JSON, found from the index page (one link per monthly edition)."""
+    get = get or http_get
+    page = get(ALION_INDEX, timeout=60).text
+    files = sorted(set(re.findall(r"/storage/data/alion-remote-global-south-index-(\d{4}-\d{2})\.json", page)))
+    if not files:
+        raise ValueError("no edition linked")
+    return get(f"https://alion.io/storage/data/alion-remote-global-south-index-{files[-1]}.json", timeout=60).json()
 
 
 def update_health(rec, status, publishable):
@@ -311,6 +341,7 @@ def main(argv=None):
     ap.add_argument("--max-adds", type=int, default=100)
     ap.add_argument("--max-live", type=int, default=MAX_LIVE_LISTINGS)
     ap.add_argument("--early-career", action="store_true", help="also take employers from the early-career lists")
+    ap.add_argument("--alion", action="store_true", help="also take employers from Alion's Global South index (hire outside the US)")
     ap.add_argument("--skip-prune", action="store_true")
     ap.add_argument("--dry-run", action="store_true")
     a = ap.parse_args(argv)
@@ -365,6 +396,11 @@ def main(argv=None):
             except Exception as e:  # a missing list must not stop the run
                 lines.append(f"- Early-career list unavailable ({u.rsplit('/', 5)[1]}): {type(e).__name__}")
         cands += early_career_seeds(lists)
+    if a.alion:
+        try:
+            cands += alion_seeds(latest_alion())
+        except Exception as e:  # a missing index must not stop the run
+            lines.append(f"- Alion index unavailable: {type(e).__name__}")
     cands = [c for c in cands if norm(c["title"]) not in have_names and norm(c["title"]) not in blocked_names
              and not (c.get("known") and f"{c['known'][0]}/{c['known'][1]}" in have_boards)]
     cands.sort(key=priority)
