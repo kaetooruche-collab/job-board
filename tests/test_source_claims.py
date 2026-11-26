@@ -28,6 +28,14 @@ class SourceClaims(unittest.TestCase):
             text = (ROOT / f).read_text(encoding="utf-8")
             self.assertNotRegex(text, r"(?i)every 6 hours|every six hours", f)
 
+    def test_no_public_page_uses_the_retired_eligibility_label(self):
+        """KT, 25 Nov 2026: "Eligibility unclear can't keep appearing." Cards say "Location not specified"; a UX audit on 26 Nov
+        found the old label still on /verify. The data may keep it (card-text.js turns it into plain words); pages may not."""
+        for f in [x for x in LIVE if x.endswith(".html")]:
+            text = (ROOT / f).read_text(encoding="utf-8")
+            for retired in ("Eligibility unclear", "Remote: not confirmed", "Why this label"):
+                self.assertNotIn(retired, text, f"{f}: {retired}")
+
     def test_no_public_surface_names_a_hiring_system(self):
         """KT, 25 Nov 2026: "don't mention greenhouse, lever, ashby, recruitee or personio. there is no reason to mention
         any of them or include any of them." Cards say "Source: the company's hiring page" instead."""

@@ -567,6 +567,7 @@
     .pill-region { background: var(--accent-light); color: var(--accent); }
     .pill-unsure { background: var(--new-bg); color: var(--new-text); }
     .pill-quiet { background: var(--tag-bg); color: var(--text-secondary); font-weight: 500; }
+    .job-salary-none { background: var(--tag-bg); color: var(--text-secondary); font-weight: 500; }
     .job-heads { font-size: 0.8rem; line-height: 1.5; color: var(--text-secondary); margin-bottom: var(--block-gap); }
     .link-btn { background: none; border: 0; padding: 0; color: var(--accent); font: inherit; text-decoration: underline; cursor: pointer; }
     .job-card .job-title a { color: inherit; text-decoration: none; }
@@ -1910,7 +1911,9 @@
       }      var cards = filtered.slice(0, state.shown).map(function (job) {
         var posted = job.postedAt;
         var absolute = formatDate(posted);
-        var salary = job.salaryText ? '<span class="job-salary">' + esc(job.salaryText) + '</span>' : '';
+        /* Listing standard 4 and /verify: when the posting gives no pay, say so instead of leaving a gap */
+        var salary = job.salaryText ? '<span class="job-salary">' + esc(job.salaryText) + '</span>'
+          : '<span class="job-salary job-salary-none" title="The posting doesn\u2019t state the pay.">Pay not stated</span>';
         var newBadge = isNew(job.firstSeenAt || job.postedAt) ? '<span class="badge-new">New</span>' : '';
         var heads = YCCard.heads(job);
         var unsure = heads.length ? '<div class="job-heads">' + heads.map(esc).join(' &middot; ') + '</div>' : '';
