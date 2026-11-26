@@ -42,6 +42,13 @@ class ListingChecks(unittest.TestCase):
     def test_clean_record_passes(self):
         self.assertEqual(Q.check_listing(rec(), {"description": "Fully remote role.", "result": {}}, NOW), [])
 
+    def test_region_label_on_a_one_country_location_is_flagged(self):
+        """CircleCI 'Remote - Japan' was labelled 'APAC, Japan' and shown to ~40 countries (26 Nov 2026)."""
+        bad = rec(regionAsStated="Remote - Japan", eligibility={"type": "countries", "label": "APAC, Japan", "countries": ["Japan", "India"], "regions": ["APAC"], "notes": []})
+        self.assertIn("region-label-wider-than-location", rules(Q.check_listing(bad, None, NOW), Q.WARN))
+        ok = rec(regionAsStated="Remote (Philippines); Remote (APAC)", eligibility={"type": "countries", "label": "APAC, Philippines", "countries": ["Philippines", "India"], "regions": ["APAC"], "notes": []})
+        self.assertNotIn("region-label-wider-than-location", rules(Q.check_listing(ok, None, NOW)))
+
     def test_senior_title_cannot_be_junior(self):
         self.assertIn("level-title-conflict", rules(Q.check_listing(rec(title="Senior Marketing Operations Specialist", level="junior"), None, NOW), Q.BLOCK))
 
