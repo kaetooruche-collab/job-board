@@ -1,6 +1,6 @@
 # Who should Yireh Careers target? (26 Nov 2026)
 
-Status: **PROPOSED**, for KT. KT's question: limit to Africa and Asia, or go worldwide? Is targeting non-US people a waste, when the board is mostly US roles and a US visitor might find it more useful?
+Status: **APPROVED by KT, 26 Nov 2026**: positioning "people outside the US, wherever they live"; PR #80 merged; supply work (employers that hire outside the US) approved. KT's question: limit to Africa and Asia, or go worldwide? Is targeting non-US people a waste, when the board is mostly US roles and a US visitor might find it more useful?
 
 ## Facts (measured 26 Nov unless stated)
 | Fact | Number | Label |
