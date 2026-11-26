@@ -20,8 +20,16 @@ from pathlib import Path
 FEED_URL = "https://yirehcareers.vercel.app/jobs.json"
 SITE = "https://yirehcareers.vercel.app/"
 
-# Regions that include Africa, South Asia or South-East Asia (our audience).
-AUDIENCE_REGIONS = {"EMEA", "Africa", "APAC", "Asia", "Asia Pacific", "Europe, Middle East, Africa"}
+# Audience scope is KT's decision (pending, 26 Nov 2026): "africa_asia" (the brief) or "outside_us" (everyone outside
+# the US). Set with the environment variable YC_SOCIAL_SCOPE; the default stays the brief until KT decides.
+import os
+SCOPES = {
+    "africa_asia": {"EMEA", "Africa", "APAC", "Asia", "Asia Pacific", "Europe, Middle East, Africa"},
+    "outside_us": {"EMEA", "Africa", "APAC", "Asia", "Asia Pacific", "Europe, Middle East, Africa", "Europe",
+                   "European Union", "Latin America", "South America", "Caribbean", "Middle East", "ANZ", "Americas"},
+}
+SCOPE = os.environ.get("YC_SOCIAL_SCOPE", "africa_asia")
+AUDIENCE_REGIONS = SCOPES[SCOPE]
 # Companies whose names are hiring systems: never featured (no post names a hiring system).
 SKIP_COMPANIES = {"ashby", "greenhouse", "lever", "workable", "personio", "recruitee", "workday"}
 EXCLUDE_FILE = Path(__file__).resolve().parents[1] / "data" / "exclude_jobs.json"
