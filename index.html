@@ -568,6 +568,20 @@
     .pill-unsure { background: var(--new-bg); color: var(--new-text); }
     .pill-quiet { background: var(--tag-bg); color: var(--text-secondary); font-weight: 500; }
     .job-salary-none { background: var(--tag-bg); color: var(--text-secondary); font-weight: 500; }
+    .country-hint { font-size: 0.8rem; color: var(--text-secondary); margin: 0.35rem 0 0; min-height: 0; }
+    .country-hint:empty { display: none; }
+    .elig-legend { font-size: 0.78rem; line-height: 1.55; color: var(--text-secondary); margin-top: 0.5rem; max-width: 70ch; }
+    .saved-row { margin-top: 0.4rem; font-size: 0.85rem; }
+    .guide-note { font-size: 0.82rem; color: var(--text-secondary); margin: -0.2rem 0 0.8rem; }
+    .job-req { font-size: 0.8rem; line-height: 1.5; color: var(--text); margin-bottom: var(--block-gap); }
+    .job-req strong { font-weight: 600; }
+    .job-variants { font-size: 0.8rem; line-height: 1.55; color: var(--text-secondary); margin-bottom: var(--block-gap); }
+    .job-variants a { color: var(--accent); }
+    .job-applied { font-size: 0.78rem; color: var(--green); font-weight: 600; }
+    .card-tools { display: inline-flex; flex-wrap: wrap; gap: 0.4rem 0.9rem; align-items: center; font-size: 0.82rem; }
+    .card-tools .link-btn, .card-tools a { font-size: 0.82rem; font-weight: 600; color: var(--accent); text-decoration: none; }
+    .card-tools .link-btn:hover, .card-tools a:hover { text-decoration: underline; }
+    .card-tools .cv-link { color: var(--text-secondary); font-weight: 500; }
     .job-heads { font-size: 0.8rem; line-height: 1.5; color: var(--text-secondary); margin-bottom: var(--block-gap); }
     .link-btn { background: none; border: 0; padding: 0; color: var(--accent); font: inherit; text-decoration: underline; cursor: pointer; }
     .job-card .job-title a { color: inherit; text-decoration: none; }
@@ -587,6 +601,7 @@
       font-weight: 700; font-size: 0.85rem; padding: 0.45rem 1.05rem; border-radius: var(--radius-md);
       text-decoration: none; border: 1.5px solid var(--accent);
     }
+    .job-actions .cv-btn.cv-quiet { border: 0; padding: 0.45rem 0.2rem; font-weight: 500; color: var(--text-secondary); text-decoration: underline; min-height: 0; }
     .cv-btn:hover { background: var(--accent-light); }
     .cv-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
     .apply-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
@@ -695,7 +710,7 @@
       .filter-btn { white-space: normal; text-align: left; min-height: 34px; line-height: 1.3; padding: 0.45rem 0.7rem; }
       .level-row { flex-wrap: wrap; }
       .lvl-btn { min-height: 34px; }
-      .guide-open { display: flex; }
+      .guide-open { display: flex; border: 0; background: none; justify-content: flex-start; padding: 0; margin-top: 0.4rem; font-weight: 600; text-decoration: underline; }
       .guide-options { grid-template-columns: 1fr; }
     }
     @media (min-width: 721px) {
@@ -990,6 +1005,7 @@
       Yireh <span>Careers</span>
     </a>
     <div class="nav-links">
+      <a href="/" class="nav-link">Jobs</a>
       <a href="/verify" class="nav-link">How We Verify</a>
       <a href="/free-check" class="nav-link">Free CV check</a>
       <a href="/services" class="nav-cta" onclick="trackEvent('nav-get-job-ready','Header')">Get Job-Ready</a>
@@ -1018,7 +1034,7 @@
     <!-- DISCLAIMER -->
     <details class="disclaimer">
       <summary><strong>How these listings work</strong> &mdash; always check the employer&rsquo;s eligibility rules for your location before applying.</summary>
-      <p class="disclaimer-body">Every card links to the original posting on the company&rsquo;s hiring page, shows its real posting date, and says where applicants can be based &mdash; or &ldquo;not specified&rdquo; when the employer doesn&rsquo;t. The &ldquo;Get a CV for this role&rdquo; button is our own paid CV service, not part of the employer&rsquo;s application.</p>
+      <p class="disclaimer-body">Every card links to the original posting on the company&rsquo;s hiring page, shows its real posting date, and says where applicants can be based &mdash; or &ldquo;not specified&rdquo; when the employer doesn&rsquo;t. We check each listing, not the employer behind it. The &ldquo;Get a CV for this role&rdquo; link is our own paid CV service, not part of the employer&rsquo;s application.</p>
     </details>
 
     <!-- SERVICES: above the listings, so the paid offer is reachable without scrolling past every job -->
@@ -1026,9 +1042,12 @@
     <!-- TOOLBAR: SEARCH + FILTERS -->
     <div class="toolbar" id="jobs">
       <div class="search-bar">
-        <input type="text" id="search-input" placeholder="Search by title, company or keyword..." aria-label="Search jobs">
-        <select id="f-country" class="search-country" aria-label="Where you can work from (optional)"><option value="">Where can you work from?</option></select>
+        <input type="text" id="f-country-input" class="search-country" list="country-list" autocomplete="off" placeholder="Where do you live?" aria-label="Where do you live? Type your country to see only jobs open to it" aria-describedby="country-hint">
+        <input type="text" id="search-input" placeholder="Job title, company or keyword" aria-label="Search by job title, company or keyword">
       </div>
+      <datalist id="country-list"></datalist>
+      <select id="f-country" hidden aria-hidden="true" tabindex="-1"><option value="">Any location</option></select>
+      <p class="country-hint" id="country-hint" aria-live="polite"></p>
       <div class="filter-group">
         <span class="group-label" id="level-group-label">Experience</span>
         <div class="level-row" id="level-row" role="group" aria-labelledby="level-group-label">
@@ -1046,25 +1065,12 @@
             <button class="filter-btn active" data-category="all" aria-pressed="true">All fields</button>
           </div>
         </details>
-        <button type="button" class="guide-open" id="guide-open">Not sure where to look? Answer 3 quick questions</button>
+        <button type="button" class="guide-open" id="guide-open">Prefer to answer 3 quick questions instead?</button>
       </div>
       <details class="more-filters" id="more-filters">
         <summary>More filters</summary>
         <div class="filter-row">
-          <label class="filter-field"><span>Experience</span>
-            <select id="f-level">
-              <option value="">Any level</option>
-              <option value="early">Early career (internship, entry-level, junior)</option>
-              <option value="senior_plus">Senior and leadership</option>
-              <option value="unspecified">Level not stated</option>
-              <option value="internship">Internship or student</option>
-              <option value="entry">Entry-level</option>
-              <option value="junior">Junior</option>
-              <option value="mid">Mid-level</option>
-              <option value="senior">Senior or specialist</option>
-              <option value="leadership">Management or leadership</option>
-            </select>
-          </label>
+
                     <label class="filter-field"><span>Job type</span>
             <select id="f-type">
               <option value="">Any type</option>
@@ -1080,7 +1086,7 @@
               <option value="14">Last 14 days</option>
             </select>
           </label>
-          <label class="filter-field"><span>Experience asked for</span>
+          <label class="filter-field"><span>Years of experience the posting asks for</span>
             <select id="f-years">
               <option value="">Any</option>
               <option value="none">None stated (great for a first role)</option>
@@ -1109,12 +1115,23 @@
               <option value="80000">80,000</option>
               <option value="100000">100,000</option>
             </select>
-            <p class="row-note">Pay is shown exactly as the employer wrote it, and other currencies are converted at rounded approximate rates &mdash; treat them as a rough guide.</p>
+            <p class="row-note">Setting a minimum hides jobs that don&rsquo;t state pay. Hourly pay is counted as 2,080 hours a year and monthly pay as 12 months. Pay is shown exactly as the employer wrote it; other currencies are converted at rounded approximate rates, so treat the minimum as a rough guide.</p>
           </div>
+        </div>
+        <div class="filter-row">
+          <label class="filter-field"><span>Sort</span>
+            <select id="f-sort">
+              <option value="">Newest first</option>
+              <option value="years">Least experience asked first</option>
+              <option value="pay">Pay stated first</option>
+            </select>
+          </label>
         </div>
         <div class="check-row">
           <label><input type="checkbox" id="f-stated"> Only jobs that say where you can apply from</label>
-          <button type="button" class="link-btn" id="f-reset">Clear filters</button>
+          <label><input type="checkbox" id="f-notemp"> Hide internships and temporary roles</label>
+          <label><input type="checkbox" id="f-nodeg"> Hide jobs that mention a degree (unless they accept equivalent experience)</label>
+          <button type="button" class="link-btn" id="f-reset">Clear all filters</button>
         </div>
       </details>
     </div>
@@ -1126,6 +1143,8 @@
         <p class="last-updated" id="last-updated"></p>
       </div>
       <div class="active-filters" id="active-filters" hidden></div>
+      <p class="elig-legend" id="elig-legend" hidden><strong>Worldwide</strong>: open to applicants anywhere. <strong>Apply from</strong>: only the places the employer names. <strong>Location not specified</strong>: the employer doesn&rsquo;t say. Choosing your country shows only jobs open to it; the employer still decides who they hire.</p>
+      <p class="saved-row" id="saved-row" hidden><button type="button" class="link-btn" id="saved-toggle" aria-pressed="false">Saved jobs (0)</button></p>
     </div>
 
     <!-- GUIDED FINDER: an alternative to working through the chip wall, one question at a time -->
@@ -1135,6 +1154,7 @@
           <h2 id="guide-title">Let&rsquo;s narrow it down</h2>
           <button type="button" class="guide-close" id="guide-close" aria-label="Close">&#10005;</button>
         </div>
+        <p class="guide-note">Optional. Your answers set the field, experience and country filters; your other filters stay. Open it again any time to change an answer.</p>
         <div id="guide-steps">
           <section data-step="0">
             <p class="guide-step-n">Question 1 of 3</p>
@@ -1268,7 +1288,7 @@
     var geoLexicon = null;
     var loadFailed = false;
     var baseQuery = null; /* campaign/foreign params preserved when filters rewrite the URL */
-    var state = { unspec: '', category: 'all', query: '', level: '', country: '', type: '', posted: '', confirmed: false, stated: false, years: '', salary: '', minsal: '', currency: 'USD', shown: 40 };
+    var state = { unspec: '', category: 'all', query: '', level: '', country: '', type: '', posted: '', confirmed: false, stated: false, years: '', salary: '', minsal: '', currency: 'USD', sort: '', notemp: false, nodeg: false, job: '', saved: false, shown: 40 };
     var PAGE_SIZE = 40;
 
     /* The nine fields the guided finder offers first, plus anything else in the data */
@@ -1342,8 +1362,8 @@
         if (!res.ok) throw new Error('HTTP ' + res.status);
         allJobs = (await res.json()).filter(function (j) { return j.workArrangement !== 'remote_unclear'; });
       } catch (err) { allJobs = []; loadFailed = true; }
-      document.getElementById('total-jobs').textContent = loadFailed ? '\u2014' : allJobs.length;
-      document.getElementById('total-companies').textContent = loadFailed ? '\u2014' : new Set(allJobs.map(function(j) { return j.company; })).size;
+      document.getElementById('total-jobs').textContent = loadFailed ? '\u2014' : allJobs.length.toLocaleString();
+      document.getElementById('total-companies').textContent = loadFailed ? '\u2014' : new Set(allJobs.map(function(j) { return j.company; })).size.toLocaleString();
       // collapsed on every screen size: the listings come first, the refinements are one tap away
       document.getElementById('more-filters').open = false;
       document.getElementById('fields-group').open = false;
@@ -1354,6 +1374,7 @@
       buildLevelCounts();
       baseQuery = new URLSearchParams(location.search);
       readURL();
+      updateSavedToggle();
       renderJobs();
       updateLastUpdated();
     }
@@ -1363,7 +1384,7 @@
        When the URL carries NO filter state, a returning visitor's own last choices are restored
        from this device (localStorage). A URL that does carry filter state always wins, so
        shared links, the kit's ?level=deep links and campaign links behave exactly as they did. */
-    var FILTER_KEYS = ['q', 'field', 'level', 'country', 'type', 'posted', 'years', 'minsal', 'cur', 'pay', 'confirmed', 'stated'];
+    var FILTER_KEYS = ['q', 'field', 'level', 'country', 'type', 'posted', 'years', 'minsal', 'cur', 'pay', 'confirmed', 'stated', 'sort', 'notemp', 'nodeg', 'job'];
 
     function savedQuery() {
       try {
@@ -1416,14 +1437,21 @@
       if (get('pay') === 'stated') state.salary = 'yes';
       state.confirmed = get('confirmed') === '1';
       state.stated = get('stated') === '1';
+      var srt = get('sort'); if (srt === 'years' || srt === 'pay') state.sort = srt;
+      state.notemp = get('notemp') === '1';
+      state.nodeg = get('nodeg') === '1';
+      var jid = get('job'); if (jid && /^[A-Za-z0-9_-]{4,40}$/.test(jid)) state.job = jid;
       var query = (get('q') || '').slice(0, 100);
       if (query) { state.query = query.toLowerCase(); document.getElementById('search-input').value = query; }
     }
 
     /* reflect everything on the controls so the chips and selects agree with the state */
     function reflectControls() {
-      document.getElementById('f-level').value = state.level;
       document.getElementById('f-country').value = state.country;
+      setCountryInput();
+      document.getElementById('f-sort').value = state.sort;
+      document.getElementById('f-notemp').checked = state.notemp;
+      document.getElementById('f-nodeg').checked = state.nodeg;
       document.getElementById('f-type').value = state.type;
       document.getElementById('f-posted').value = state.posted;
       document.getElementById('f-years').value = state.years;
@@ -1453,6 +1481,10 @@
       set('pay', state.salary === 'yes' ? 'stated' : '');
       set('confirmed', state.confirmed ? '1' : '');
       set('stated', state.stated ? '1' : '');
+      set('sort', state.sort);
+      set('notemp', state.notemp ? '1' : '');
+      set('nodeg', state.nodeg ? '1' : '');
+      set('job', state.job);
       var qs = p.toString();
       try {
         history.replaceState(null, '', (location.pathname || '/') + (qs ? '?' + qs : '') + (location.hash || ''));
@@ -1466,7 +1498,7 @@
     function saveFilters(p) {
       try {
         var o = {};
-        FILTER_KEYS.forEach(function (k) { var v = p.get(k); if (v) o[k] = v; });
+        FILTER_KEYS.forEach(function (k) { var v = p.get(k); if (v && k !== 'job') o[k] = v; });
         if (Object.keys(o).length) localStorage.setItem('yf-filters', JSON.stringify(o));
         else localStorage.removeItem('yf-filters');
       } catch (e) {}
@@ -1520,6 +1552,62 @@
           sel.appendChild(o);
         });
       });
+      COUNTRY_NAMES = names;
+      var dl = document.getElementById('country-list');
+      var ww = allJobs.filter(function (j) { return (j.eligibility || {}).type === 'worldwide'; }).length;
+      var html = '<option value="Worldwide roles only" label="' + ww + ' open anywhere"></option>';
+      names.forEach(function (n) {
+        var c = countOpen(n);
+        html += '<option value="' + esc(n) + '" label="' + c + (c === 1 ? ' job open' : ' jobs open') + '"></option>';
+      });
+      dl.innerHTML = html;
+    }
+
+    /* Jobs whose employer says applicants in this country can apply (worldwide, named, or inside a named region) */
+    var COUNTRY_NAMES = [];
+    function openTo(job, country) {
+      var el = job.eligibility || {};
+      if (el.type === 'worldwide') return true;
+      if ((el.countries || []).indexOf(country) !== -1) return true;
+      if (el.type === 'region') return (el.regions || []).some(function (r) {
+        var reg = geoLexicon && geoLexicon.regions && geoLexicon.regions[r];
+        return reg ? reg.members.indexOf(country) !== -1 : false;
+      });
+      return false;
+    }
+    function countOpen(country) {
+      var n = 0;
+      for (var i = 0; i < allJobs.length; i++) if (openTo(allJobs[i], country)) n++;
+      return n;
+    }
+    function countryFromText(txt) {
+      var s = String(txt || '').trim().toLowerCase();
+      if (!s) return '';
+      if (/^worldwide/.test(s)) return '__worldwide';
+      for (var i = 0; i < COUNTRY_NAMES.length; i++) if (COUNTRY_NAMES[i].toLowerCase() === s) return COUNTRY_NAMES[i];
+      return null;
+    }
+    function setCountryInput() {
+      var inp = document.getElementById('f-country-input');
+      if (inp) inp.value = state.country === '__worldwide' ? 'Worldwide roles only' : state.country;
+      var hint = document.getElementById('country-hint');
+      if (hint) hint.textContent = '';
+    }
+
+    /* Saved jobs and opened applications live only on this device (localStorage), never sent anywhere */
+    function readStore(key) { try { return JSON.parse(localStorage.getItem(key) || '{}') || {}; } catch (e) { return {}; } }
+    function writeStore(key, o) { try { localStorage.setItem(key, JSON.stringify(o)); } catch (e) {} }
+    function updateSavedToggle() {
+      var b = document.getElementById('saved-toggle');
+      if (!b) return;
+      var n = Object.keys(readStore('yf-saved')).length;
+      b.textContent = state.saved ? 'Show all jobs' : 'Saved jobs (' + n + ')';
+      document.getElementById('saved-row').hidden = !n && !state.saved;   /* only once something is saved */
+      b.setAttribute('aria-pressed', state.saved ? 'true' : 'false');
+    }
+    function shortDate(iso) {
+      var d = new Date(iso);
+      return isNaN(d.getTime()) ? '' : d.toLocaleDateString(undefined, { day: 'numeric', month: 'short' });
     }
 
     function bindControls() {
@@ -1537,7 +1625,7 @@
         trackSearchUse();
         clearTimeout(searchTimer);
         searchTimer = setTimeout(resetAndRender, 120);
-      });      [['f-level', 'level'], ['f-country', 'country'], ['f-type', 'type'], ['f-posted', 'posted'], ['f-years', 'years'], ['f-salary', 'salary'], ['f-minsal', 'minsal'], ['f-currency', 'currency']].forEach(function (pair) {
+      });      [['f-type', 'type'], ['f-posted', 'posted'], ['f-years', 'years'], ['f-salary', 'salary'], ['f-minsal', 'minsal'], ['f-currency', 'currency'], ['f-sort', 'sort']].forEach(function (pair) {
         document.getElementById(pair[0]).addEventListener('change', function (e) {
           state[pair[1]] = e.target.value;
           if (['country', 'level', 'years', 'minsal'].indexOf(pair[1]) !== -1) trackEvent('filter-' + pair[1], e.target.value || 'any');
@@ -1551,8 +1639,25 @@
           resetAndRender();
         });
       });
-      document.getElementById('f-level').addEventListener('change', syncLevelUI);
       document.getElementById('f-stated').addEventListener('change', function(e) { state.stated = e.target.checked; resetAndRender(); });
+      document.getElementById('f-notemp').addEventListener('change', function(e) { state.notemp = e.target.checked; trackEvent('filter-notemp', e.target.checked ? 'on' : 'off'); resetAndRender(); });
+      document.getElementById('f-nodeg').addEventListener('change', function(e) { state.nodeg = e.target.checked; trackEvent('filter-nodeg', e.target.checked ? 'on' : 'off'); resetAndRender(); });
+      document.getElementById('saved-toggle').addEventListener('click', function () { state.saved = !state.saved; state.job = ''; updateSavedToggle(); trackEvent('saved-view', state.saved ? 'on' : 'off'); resetAndRender(); });
+      /* Country: type to search the list; an exact name (or "Worldwide") applies at once */
+      var cin = document.getElementById('f-country-input');
+      function applyCountryText(final) {
+        var c = countryFromText(cin.value);
+        var hint = document.getElementById('country-hint');
+        if (c === null) { if (final) hint.textContent = 'Pick your country from the list (we couldn\u2019t find \u201c' + cin.value.trim() + '\u201d).'; return; }
+        hint.textContent = '';
+        if (c === state.country) return;
+        state.country = c; state.unspec = '';
+        document.getElementById('f-country').value = c;
+        trackEvent('filter-country', c || 'any');
+        resetAndRender();
+      }
+      cin.addEventListener('input', function () { applyCountryText(false); });
+      cin.addEventListener('change', function () { applyCountryText(true); });
       /* "Show N more that don't say where you can apply from" under a country filter */
       document.getElementById('job-count').addEventListener('click', function (e) {
         var id = e.target && e.target.id;
@@ -1578,6 +1683,7 @@
         state.level = e2 ? e2.value : ''; syncLevelUI();
         state.country = document.getElementById('guide-country').value || '';
         document.getElementById('f-country').value = state.country;
+        setCountryInput();
         trackEvent('guide-finder', 'applied');
         closeGuide();
         resetAndRender();
@@ -1586,7 +1692,29 @@
         var more = e.target.closest('.show-more');
         if (more) { state.shown += PAGE_SIZE; renderJobs(); return; }
         var link = e.target.closest('[data-apply]');
-        if (link) trackApply(link.getAttribute('data-id'), link.getAttribute('data-source'));
+        if (link) {
+          trackApply(link.getAttribute('data-id'), link.getAttribute('data-source'));
+          var opened = readStore('yf-applied'); opened[link.getAttribute('data-id')] = new Date().toISOString(); writeStore('yf-applied', opened);
+          setTimeout(renderJobs, 300);
+        }
+        var sv = e.target.closest('[data-save]');
+        if (sv) {
+          var saved = readStore('yf-saved'), id = sv.getAttribute('data-save');
+          if (saved[id]) delete saved[id]; else saved[id] = 1;
+          writeStore('yf-saved', saved);
+          trackEvent('job-save', saved[id] ? 'save' : 'unsave');
+          updateSavedToggle(); renderJobs(); return;
+        }
+        var sh = e.target.closest('[data-share]');
+        if (sh) {
+          var u = location.origin + '/?job=' + encodeURIComponent(sh.getAttribute('data-share'));
+          trackEvent('job-share', 'share');
+          if (navigator.share) { navigator.share({ title: sh.getAttribute('data-title'), url: u }).catch(function () {}); return; }
+          var done = function () { sh.textContent = 'Link copied'; setTimeout(function () { sh.textContent = 'Share'; }, 2000); };
+          if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(u).then(done, function () { window.prompt('Copy this link:', u); });
+          else window.prompt('Copy this link:', u);
+          return;
+        }
         var cv = e.target.closest('[data-cv]');
         if (cv) trackCv('job-cv-button', cv.getAttribute('data-id'));
       });
@@ -1623,12 +1751,13 @@
 
     function resetAll() {
       trackEvent('filters-cleared', 'clear all');
-      state = { unspec: '', category: 'all', query: '', level: '', country: '', type: '', posted: '', confirmed: false, stated: false, years: '', salary: '', minsal: '', currency: 'USD', shown: PAGE_SIZE };
+      state = { unspec: '', category: 'all', query: '', level: '', country: '', type: '', posted: '', confirmed: false, stated: false, years: '', salary: '', minsal: '', currency: 'USD', sort: '', notemp: false, nodeg: false, job: '', saved: false, shown: PAGE_SIZE };
       document.getElementById('search-input').value = '';
-      ['f-level', 'f-country', 'f-type', 'f-posted', 'f-years', 'f-salary', 'f-minsal'].forEach(function (id) { document.getElementById(id).value = ''; });
+      ['f-country', 'f-type', 'f-posted', 'f-years', 'f-salary', 'f-minsal', 'f-sort'].forEach(function (id) { document.getElementById(id).value = ''; });
       document.getElementById('f-currency').value = 'USD';
-      document.getElementById('f-confirmed').checked = false;
-      document.getElementById('f-stated').checked = false;
+      ['f-stated', 'f-notemp', 'f-nodeg'].forEach(function (id) { document.getElementById(id).checked = false; });
+      setCountryInput();
+      updateSavedToggle();
       syncLevelUI();
       syncCategoryUI();
       renderJobs();
@@ -1649,6 +1778,11 @@
       if (state.years) out.push({ key: 'years', label: 'Experience asked: ' + YEARS_FILTER_NAME[state.years] });
       if (state.salary === 'yes') out.push({ key: 'salary', label: 'Pay stated' });
       if (state.minsal) out.push({ key: 'minsal', label: 'Min ~' + state.currency + ' ' + Number(state.minsal).toLocaleString() });
+      if (state.notemp) out.push({ key: 'notemp', label: 'No internships or temporary roles' });
+      if (state.nodeg) out.push({ key: 'nodeg', label: 'No degree mentioned' });
+      if (state.sort) out.push({ key: 'sort', label: state.sort === 'years' ? 'Sorted: least experience first' : 'Sorted: pay stated first' });
+      if (state.saved) out.push({ key: 'saved', label: 'Saved jobs only' });
+      if (state.job) out.push({ key: 'job', label: 'One shared job' });
       if (state.query) out.push({ key: 'query', label: 'Search: "' + state.query + '"' });
       return out;
     }
@@ -1672,7 +1806,12 @@
       if (key === 'all') { resetAll(); return; }
       if (key === 'category') { state.category = 'all'; syncCategoryUI(); }
       else if (key === 'level') { state.level = ''; syncLevelUI(); trackEvent('filter-level', 'any'); }
-      else if (key === 'country') { state.country = ''; document.getElementById('f-country').value = ''; trackEvent('filter-country', 'any'); }
+      else if (key === 'country') { state.country = ''; state.unspec = ''; document.getElementById('f-country').value = ''; setCountryInput(); trackEvent('filter-country', 'any'); }
+      else if (key === 'notemp') { state.notemp = false; document.getElementById('f-notemp').checked = false; }
+      else if (key === 'nodeg') { state.nodeg = false; document.getElementById('f-nodeg').checked = false; }
+      else if (key === 'sort') { state.sort = ''; document.getElementById('f-sort').value = ''; }
+      else if (key === 'saved') { state.saved = false; updateSavedToggle(); }
+      else if (key === 'job') { state.job = ''; }
       else if (key === 'query') { state.query = ''; document.getElementById('search-input').value = ''; }
       else if (key === 'confirmed') { state.confirmed = false; }
       else if (key === 'stated') { state.stated = false; document.getElementById('f-stated').checked = false; }
@@ -1711,7 +1850,6 @@
       return j.level === l;
     }
     function syncLevelUI() {
-      var sel = document.getElementById('f-level'); if (sel) sel.value = state.level;
       document.querySelectorAll('.lvl-btn').forEach(function(b) {
         var on = b.dataset.lvl === state.level;
         b.classList.toggle('active', on);
@@ -1785,6 +1923,9 @@
     var hiddenUnspecified = 0;
     function applyFilters() {
       hiddenUnspecified = 0;
+      var savedIds = state.saved ? readStore('yf-saved') : {};
+      var sharedJob = state.job ? allJobs.filter(function (j) { return j.id === state.job; })[0] : null;
+      var sharedKey = sharedJob ? groupKey(sharedJob) : null;
       var cutoff = state.posted ? Date.now() - Number(state.posted) * 86400000 : 0;
       var out = allJobs.filter(function (j) {
         if (state.category !== 'all' && (j.categories || [j.category]).indexOf(state.category) === -1) return false;
@@ -1796,6 +1937,10 @@
         if (!yearsMatch(j)) return false;
         if (!salaryMatch(j)) return false;
         if (state.query && !YCSearch.matches(j, state.query)) return false;
+        if (state.job && j.id !== state.job && groupKey(j) !== sharedKey) return false;
+        if (state.saved && !savedIds[j.id]) return false;
+        if (state.notemp && (/Internship|Temporary/.test(j.jobType || '') || j.level === 'internship')) return false;
+        if (state.nodeg && mentionsDegree(j) && !j.equivalentExperienceAccepted) return false;
         if (state.country && !matchesCountry(j, state.country)) {
           if ((j.eligibility || {}).type === 'unclear' && state.country !== '__worldwide') hiddenUnspecified++;
           return false;
@@ -1805,7 +1950,39 @@
       /* Search results are ranked by relevance (title first), instead of raw feed order, so
          the listings that actually name the role land on the first page. Ties keep feed order. */
       if (state.query) out = YCSearch.rank(out, state.query);
+      if (state.sort) {
+        out = out.map(function (j, i) { return { j: j, i: i }; }).sort(function (a, b) {
+          if (state.sort === 'pay') return (b.j.salaryText ? 1 : 0) - (a.j.salaryText ? 1 : 0) || a.i - b.i;
+          var ya = a.j.yearsExperienceMin, yb = b.j.yearsExperienceMin;   /* not stated goes last: it may still ask for a lot */
+          return (ya == null ? 99 : ya) - (yb == null ? 99 : yb) || a.i - b.i;
+        }).map(function (x) { return x.j; });
+      }
+      return groupRoles(out);
+    }
+
+    /* One card per role: the same title at the same company, listed once per country by the employer, becomes one card
+       with its other locations linked underneath (audit 26 Nov: Mozilla showed one role as 7 cards). */
+    function groupKey(j) { return (String(j.company || '') + '|' + String(j.title || '')).toLowerCase().replace(/\s+/g, ' ').trim(); }
+    function groupRoles(list) {
+      var lead = {}, out = [];
+      list.forEach(function (j) {
+        var k = groupKey(j);
+        if (lead[k]) { lead[k]._variants.push(j); return; }
+        j._variants = []; lead[k] = j; out.push(j);
+      });
       return out;
+    }
+    function mentionsDegree(j) {
+      return (j.qualificationsMentioned || []).some(function (q) { return /degree|bachelor|master|phd|doctorate/i.test(q); });
+    }
+    /* What the posting asks for, from our reading of it: years and qualifications. Shown only when stated. */
+    function reqLine(j) {
+      var bits = [];
+      if (j.yearsExperienceMin) bits.push(j.yearsExperienceMin + '+ years of experience');
+      if (mentionsDegree(j)) bits.push(j.equivalentExperienceAccepted ? 'a degree or equivalent experience' : 'a degree');
+      if ((j.qualificationsMentioned || []).some(function (q) { return /licen[cs]e|certif/i.test(q); })) bits.push('a licence or certification');
+      if (!bits.length) return '';
+      return '<div class="job-req"><strong>The posting asks for:</strong> ' + esc(bits.join(' \u00b7 ')) + '</div>';
     }
 
     function arrangementPill(job) {
@@ -1818,7 +1995,8 @@
       if (el.type === 'worldwide') return '<span class="pill pill-world">' + ICONS.globe + 'Worldwide</span>';
       if (!where) return '<span class="pill pill-quiet" title="The employer doesn\u2019t say where you can apply from. The posting may tell you more.">Location not specified</span>';
       var lead = (el.type === 'countries' || el.type === 'region') ? 'Apply from: ' : '';
-      return '<span class="pill pill-region" title="Where the employer says you can apply from">' + ICONS.pin + lead + esc(where) + '</span>';
+      var incl = (state.country && state.country !== '__worldwide' && where.indexOf(state.country) === -1 && openTo(job, state.country)) ? ' (includes ' + state.country + ')' : '';
+      return '<span class="pill pill-region" title="Where the employer says you can apply from">' + ICONS.pin + lead + esc(where + incl) + '</span>';
     }
 
     function whyBlock(job) {
@@ -1875,8 +2053,8 @@
       if (dismissed || filteredCount <= 12 || state.shown < 40) { slot.innerHTML = ''; return; }
       slot.innerHTML = '<aside class="service-nudge" aria-label="Yireh Careers services">'
         + '<button type="button" class="nudge-hide" aria-label="Hide this message">&times;</button>'
-        + '<h3>You&rsquo;ve read ' + Math.min(state.shown, filteredCount) + ' listings. Your CV is the next step.</h3>'
-        + '<p>When one of these roles is worth applying to, our paid CV and LinkedIn service writes the application to match. Not ready yet? The free quick CV check tells you what we would fix first.</p>'
+        + '<h3>Found a role worth applying for?</h3>'
+        + '<p>If you want help, our paid CV and LinkedIn service can tailor your application to it. Or start with the free CV check, which tells you what we would change first. Both are optional: you apply to the employer directly either way.</p>'
         + '<div class="nudge-actions"><a class="apply-btn" href="/services" onclick="trackEvent(\'services-click-nudge-packages\',\'Nudge\')">See what each package includes</a>'
         + '<a class="cv-btn" href="/free-check" onclick="trackEvent(\'services-click-nudge-free-check\',\'Nudge\')">Get my free CV check</a></div></aside>';
       slot.querySelector('.nudge-hide').addEventListener('click', function () {
@@ -1893,11 +2071,14 @@
 
     function renderJobs() {
       var filtered = applyFilters();
-      var countEl = document.getElementById('job-count');        var totalNote = filtered.length < allJobs.length ? ' (' + allJobs.length.toLocaleString() + ' on the board)' : '';
+      var countEl = document.getElementById('job-count');        var postings = filtered.reduce(function (n, j) { return n + 1 + (j._variants || []).length; }, 0);
+        var totalNote = (postings > filtered.length ? ' <span title="A role the employer lists once per country shows as one card">(' + postings.toLocaleString() + ' postings, one card per role)</span>' : '')
+          + (postings < allJobs.length ? ' &middot; ' + allJobs.length.toLocaleString() + ' on the board' : '');
         countEl.innerHTML = 'Showing <strong>' + Math.min(state.shown, filtered.length).toLocaleString() + '</strong> of <strong>' + filtered.length.toLocaleString() + '</strong> matching jobs' + totalNote
           + (hiddenUnspecified ? ' <button type="button" class="link-btn" id="show-unspec">Show ' + hiddenUnspecified + ' more that don\u2019t say where you can apply from</button>' : '')
           + (state.country && state.unspec === state.country ? ' <button type="button" class="link-btn" id="hide-unspec">Hide jobs that don\u2019t say where you can apply from</button>' : '');
       renderActiveFilters();
+      document.getElementById('elig-legend').hidden = !state.country;   /* explains the pills when where-you-live matters */
       var list = document.getElementById('job-list');
 
       if (filtered.length === 0) {
@@ -1914,7 +2095,7 @@
         /* Listing standard 4 and /verify: when the posting gives no pay, say so instead of leaving a gap */
         var salary = job.salaryText ? '<span class="job-salary">' + esc(job.salaryText) + '</span>'
           : '<span class="job-salary job-salary-none" title="The posting doesn\u2019t state the pay.">Pay not stated</span>';
-        var newBadge = isNew(job.firstSeenAt || job.postedAt) ? '<span class="badge-new">New</span>' : '';
+        var newBadge = isNew(job.postedAt) ? '<span class="badge-new" title="Posted by the employer in the last 2 days">New</span>' : '';
         var heads = YCCard.heads(job);
         var unsure = heads.length ? '<div class="job-heads">' + heads.map(esc).join(' &middot; ') + '</div>' : '';
         var postedRow = posted || newBadge
@@ -1928,6 +2109,13 @@
         if (job.jobType) meta.push('<span class="m">' + ICONS.case + '<span>' + esc(job.jobType) + '</span></span>');
         if (job.level && job.level !== 'unspecified') meta.push('<span class="m">' + ICONS.lvl + '<span>' + esc(LEVEL_LABEL[job.level] || job.level) + '</span></span>');
         meta.push('<span class="m"><span>Source: the company\u2019s hiring page</span></span>');  /* KT, 25 Nov 2026: no hiring-system names */
+        if (job.lastVerifiedAt) meta.push('<span class="m"><span>Still in the employer\u2019s job feed ' + esc(timeAgo(job.lastVerifiedAt)) + '</span></span>');
+        var variants = (job._variants || []).length
+          ? '<div class="job-variants">Also listed for: ' + job._variants.map(function (v) { return '<a href="' + esc(safeUrl(v.sourceUrl)) + '" target="_blank" rel="noopener noreferrer" data-apply="1" data-id="' + esc(v.id) + '" data-source="' + esc(v.sourceName) + '">' + esc(v.regionAsStated || YCCard.applyFrom(v) || 'another location') + '</a>'; }).join(', ') + ' (each opens its own posting)</div>'
+          : '';
+        var savedNow = !!readStore('yf-saved')[job.id];
+        var openedAt = readStore('yf-applied')[job.id];
+        var report = 'mailto:yirehcareers@gmail.com?subject=' + encodeURIComponent('Report a listing: ' + job.title + ' at ' + job.company + ' (' + job.id + ')') + '&body=' + encodeURIComponent('What is wrong with this listing?\n\n');
         var url = safeUrl(job.sourceUrl);
         return '<article class="job-card">'
           + '<div class="job-card-header"><div class="job-headings">'
@@ -1940,10 +2128,19 @@
           + '</div>' + salary + '</div>'
           + '<div class="job-status"><div class="job-badges">' + arrangementPill(job) + eligibilityPill(job) + '</div>' + postedRow + '</div>'
           + unsure
+          + reqLine(job)
+          + variants
           + '<div class="job-meta-line">' + meta.join('<span class="m-sep" aria-hidden="true">&middot;</span>') + '</div>'
-          + '<div class="job-actions"><a class="apply-btn" href="' + esc(url) + '" target="_blank" rel="noopener noreferrer" data-apply="1" data-id="' + esc(job.id) + '" data-source="' + esc(job.sourceName) + '">' + ICONS.ext + 'Apply on employer site</a>'
-          + '<a class="cv-btn" href="' + esc(cvLink(job)) + '" target="_blank" rel="noopener" data-cv="1" data-id="' + esc(job.id) + '" title="Opens WhatsApp with a message to Yireh Careers, our paid CV and LinkedIn service">Get a CV for this role</a>'
-          + whyBlock(job) + '</div>'
+          + '<div class="job-actions"><a class="apply-btn" href="' + esc(url) + '" target="_blank" rel="noopener noreferrer" data-apply="1" data-id="' + esc(job.id) + '" data-source="' + esc(job.sourceName) + '" title="Opens the original posting on the company\u2019s hiring page in a new tab. You apply there, not through us.">' + ICONS.ext + 'Apply on employer site</a>'
+          + (openedAt ? '<span class="job-applied">You opened this application on ' + esc(shortDate(openedAt)) + '</span>' : '')
+          + '<span class="card-tools">'
+          + '<button type="button" class="link-btn" data-save="' + esc(job.id) + '" aria-pressed="' + (savedNow ? 'true' : 'false') + '">' + (savedNow ? '\u2605 Saved' : '\u2606 Save') + '</button>'
+          + '<button type="button" class="link-btn" data-share="' + esc(job.id) + '" data-title="' + esc(job.title + ' at ' + job.company) + '">Share</button>'
+          + '<a href="' + esc(report) + '">Report</a>'
+          + '</span>'
+          + whyBlock(job)
+          + '<a class="cv-btn cv-quiet" href="' + esc(cvLink(job)) + '" target="_blank" rel="noopener" data-cv="1" data-id="' + esc(job.id) + '" title="Opens WhatsApp with a message to Yireh Careers. This is our paid CV and LinkedIn service, not part of the employer\u2019s application.">Get a CV for this role (paid service)</a>'
+          + '</div>'
           + '</article>';
       });
       if (cards.length > 5 && !isSubscribed()) cards.splice(5, 0, inlineSignupCard());
@@ -1965,7 +2162,7 @@
       var c = (state.country && state.country !== '__worldwide') ? state.country : '';
       return '<aside class="inline-signup" aria-label="Weekly job email">'
         + '<h3>Get the best new roles in your inbox</h3>'
-        + '<p>One short email a week. Every role links to its original posting. Free, and one tap to unsubscribe.</p>'
+        + '<p>One short email a week: a hand-picked selection of roles posted that week, the most widely open first. Every role links to its original posting. Free, and one tap to unsubscribe.</p>'
         + '<form onsubmit="return submitSiteForm(event, \'signup\')"><div class="row">'
         + '<input type="email" name="email" required placeholder="Your email address" aria-label="Email address" autocomplete="email" maxlength="254">'
         + '<input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" class="hp">'
