@@ -30,7 +30,10 @@ const words = t => t.toLowerCase().replace(/[^a-z0-9 ]+/g, ' ').split(/\s+/).fil
       const page = await ctx.newPage();
       let check = { checked_open_on: today, ok: false };
       try {
-        const resp = await page.goto(j.sourceUrl, { waitUntil: 'networkidle', timeout: 45000 });
+        // Some hiring pages never go quiet (chat widgets, trackers): fall back to a plain page load.
+        let resp;
+        try { resp = await page.goto(j.sourceUrl, { waitUntil: 'networkidle', timeout: 30000 }); }
+        catch (e) { resp = await page.goto(j.sourceUrl, { waitUntil: 'domcontentloaded', timeout: 45000 }); await page.waitForTimeout(4000); }
         await page.waitForTimeout(1500);
         const text = (await page.innerText('body')).replace(/\s+/g, ' ');
         const need = words(j.title);

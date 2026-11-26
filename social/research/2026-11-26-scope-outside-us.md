@@ -2,6 +2,8 @@
 
 **Status:** KT decided on 26 Nov 2026: "people outside the US, wherever they live" (`drafts/decisions/2026-11-26-who-to-target.md`, APPROVED). Applied the same day: role picker scope `outside_us` (default), posting time 15:00 UTC, cover wording "across a whole region", and the `w49-p1` video line fixed as proposed below (awaiting KT's yes with the week). Niche research for these regions: `2026-11-26-niche-outside-us.md`. Labels as in the other research notes.
 
+> **Update, 26 Nov 13:32 UTC** (after PRs 81-83 went live): 1,987 jobs; Canada 369, UK 294, Germany 171, India 159, Brazil 153, Mexico 133, Philippines 90, Nigeria 74, South Africa 73, Kenya 68, Ghana 67, Indonesia 47, worldwide 36; US 689. Africa and South-East Asia roughly doubled. The table below is the morning's measurement.
+
 ## 1. Where our supply is (measured on the live feed, 26 Nov 2026, the site's own "open to" rule) [Established]
 | Region | Jobs open to (example countries) |
 |---|---|
