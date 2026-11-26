@@ -1,7 +1,7 @@
 {
   "week": "2026-12-08",
   "title": "Week of Tuesday 8 December 2026",
-  "status": "DRAFT for KT's approval (Phase 1: approve the week). Nothing is scheduled. The plan for this week is revised on Monday 7 Dec with week 1's results.",
+  "status": "DRAFT for KT's approval (Phase 1: approve the week). Nothing is scheduled. Audience: people outside the US, wherever they live (KT, 26 Nov 2026). The plan for this week is revised on Monday 7 Dec with week 1's results.",
   "measured_on": "2026-11-26",
   "test": "Video opening C' (a number: 'three in four remote jobs are open to one country') against B; and a role carousel whose cover leads with a number (Wed) against the plain cover of week 1.",
   "posts": [
@@ -9,8 +9,12 @@
       "id": "w50-p1",
       "date": "2026-12-08",
       "day": "Tue",
-      "time_utc": "12:00",
-      "platforms": ["tiktok", "instagram", "facebook"],
+      "time_utc": "15:00",
+      "platforms": [
+        "tiktok",
+        "instagram",
+        "facebook"
+      ],
       "pillar": "proof",
       "format": "video",
       "title": "Weekly video: \"One country\"",
@@ -33,25 +37,45 @@
       "ai_label": true,
       "measured_on": "2026-11-26",
       "number_dated_on_screen": true,
-      "spelling_ok": ["Yai"]
+      "spelling_ok": [
+        "Yai"
+      ]
     },
     {
       "id": "w50-p2",
       "date": "2026-12-09",
       "day": "Wed",
-      "time_utc": "12:00",
-      "platforms": ["instagram", "tiktok", "facebook"],
+      "time_utc": "15:00",
+      "platforms": [
+        "instagram",
+        "tiktok",
+        "facebook"
+      ],
       "pillar": "jobs",
       "format": "carousel",
       "title": "Real roles: number-led cover (carousel)",
-      "hook": "Of 1,759 remote jobs on our board, 28 are open worldwide or across a region that includes Africa or Asia.",
+      "hook": "Most remote jobs on our board are open to one country. These aren't.",
       "variable": "Cover: leads with our measured number, against week 1's plain cover. Same three-role format.",
       "visuals": "Cover with the day's numbers (filled at render time from the live feed), three role cards, closing slide.",
-      "render": {"slides": [
-        {"t": "cover", "kicker": "We counted", "title": "{open_to_audience_regions} of {jobs:,} remote jobs are open beyond one country", "sub": "Open worldwide, or across a region that includes Africa or Asia. Here are three of them."},
-        {"t": "jobs", "count": 3},
-        {"t": "cta", "title": "See the rest on the board", "sub": "Type where you live and see only the jobs open to you."}
-      ]},
+      "render": {
+        "slides": [
+          {
+            "t": "cover",
+            "kicker": "We counted",
+            "title": "{open_to_audience_regions} of {jobs:,} remote jobs are open beyond one country",
+            "sub": "Open worldwide, or across a whole region. Here are three of them."
+          },
+          {
+            "t": "jobs",
+            "count": 3
+          },
+          {
+            "t": "cta",
+            "title": "See the rest on the board",
+            "sub": "Type where you live and see only the jobs open to you."
+          }
+        ]
+      },
       "caption": "Most remote jobs are open to one country. These aren't.\n\nThree roles open worldwide or across a whole region, each posting opened today to check it's still live. Swipe for where you can apply from, the date and the pay, if stated.\n\nLink in bio. Check each employer's rules for your country before you apply.\n\n#remotejobs #remotework #jobsearch #hiring",
       "featured_jobs": [],
       "measured_on": "2026-11-26",
@@ -61,18 +85,34 @@
       "id": "w50-p3",
       "date": "2026-12-10",
       "day": "Thu",
-      "time_utc": "12:00",
-      "platforms": ["instagram", "facebook"],
+      "time_utc": "15:00",
+      "platforms": [
+        "instagram",
+        "facebook"
+      ],
       "pillar": "service",
       "format": "carousel",
       "title": "Service: the free CV check (1 of 12 posts across the two weeks)",
       "hook": "Not sure if it's your CV or the jobs?",
       "variable": "First service post; measures whether the free check gets requests from social (GoatCounter: free-check visits with utm_source).",
       "visuals": "Two slides in the site's look: the question, then how it works. No price on the slides.",
-      "render": {"date_line": "Yireh Careers", "slides": [
-        {"t": "cover", "kicker": "Free CV check", "title": "Not sure if it's your CV or the jobs?", "sub": "Ask on our site and we'll reply with the three things we'd fix first. One per person."},
-        {"t": "tip", "n": "→", "title": "How it works", "body": "Fill in the short form on our site, then email your CV. Never by DM. We reply within 2 working days, and delete your CV within 30 days if you don't order."}
-      ]},
+      "render": {
+        "date_line": "Yireh Careers",
+        "slides": [
+          {
+            "t": "cover",
+            "kicker": "Free CV check",
+            "title": "Not sure if it's your CV or the jobs?",
+            "sub": "Ask on our site and we'll reply with the three things we'd fix first. One per person."
+          },
+          {
+            "t": "tip",
+            "n": "→",
+            "title": "How it works",
+            "body": "Fill in the short form on our site, then email your CV. Never by DM. We reply within 2 working days, and delete your CV within 30 days if you don't order."
+          }
+        ]
+      },
       "caption": "Not sure if it's your CV or the jobs?\n\nAsk for a free CV check on our site and we'll reply with the three things we'd fix first. One per person. Your CV goes by email, never by DM, and if you don't order we delete it within 30 days.\n\nLink in bio, then tap “Free CV check”.\n\n#cvtips #jobsearch #remotejobs",
       "needs_kt": "Public service copy: KT's yes on this wording (CLAUDE.md copy rule). Terms read from /free-check on 26 Nov 2026.",
       "measured_on": "2026-11-26",
@@ -82,15 +122,27 @@
       "id": "w50-p4",
       "date": "2026-12-11",
       "day": "Fri",
-      "time_utc": "12:00",
-      "platforms": ["instagram", "tiktok", "facebook"],
+      "time_utc": "15:00",
+      "platforms": [
+        "instagram",
+        "tiktok",
+        "facebook"
+      ],
       "pillar": "jobs",
       "format": "image",
       "title": "Real role: one open worldwide (single image)",
       "hook": "A remote role that's open worldwide.",
       "variable": "Second single-image reading (format test continues).",
       "visuals": "One role card, open worldwide, picked on the day.",
-      "render": {"slides": [{"t": "jobs", "count": 1, "worldwide_only": true}]},
+      "render": {
+        "slides": [
+          {
+            "t": "jobs",
+            "count": 1,
+            "worldwide_only": true
+          }
+        ]
+      },
       "caption": "A remote role that's open worldwide.\n\nWhere you can apply from, the posted date and the pay (if the posting states it) are on the card. The original posting is one tap away on the board.\n\nLink in bio. Check the employer's rules for your country before you apply.\n\n#remotejobs #remotework #hiring",
       "featured_jobs": []
     },
@@ -98,19 +150,37 @@
       "id": "w50-p5",
       "date": "2026-12-12",
       "day": "Sat",
-      "time_utc": "12:00",
-      "platforms": ["instagram", "tiktok", "facebook"],
+      "time_utc": "15:00",
+      "platforms": [
+        "instagram",
+        "tiktok",
+        "facebook"
+      ],
       "pillar": "jobs",
       "format": "carousel",
       "title": "Real roles: 3 more open beyond one country (carousel)",
       "hook": "More remote roles that aren't limited to one country.",
       "variable": "Plain cover again (so Wednesday's number-led cover has a same-week comparison).",
       "visuals": "As week 1's carousel.",
-      "render": {"slides": [
-        {"t": "cover", "kicker": "Open beyond one country", "title": "More remote roles open across whole regions", "sub": "Each is open worldwide, or across a region that includes Africa or Asia. Swipe for the details."},
-        {"t": "jobs", "count": 3},
-        {"t": "cta", "title": "Find yours on the board", "sub": "Type where you live and see only the jobs open to you."}
-      ]},
+      "render": {
+        "slides": [
+          {
+            "t": "cover",
+            "kicker": "Open beyond one country",
+            "title": "More remote roles open across whole regions",
+            "sub": "Each is open worldwide, or across a whole region. Swipe for the details."
+          },
+          {
+            "t": "jobs",
+            "count": 3
+          },
+          {
+            "t": "cta",
+            "title": "Find yours on the board",
+            "sub": "Type where you live and see only the jobs open to you."
+          }
+        ]
+      },
       "caption": "More remote roles that aren't limited to one country.\n\nThree more, open worldwide or across a whole region. We opened each posting today to check it's still live.\n\nThe rest are on the board: link in bio. Check each employer's rules for your country before you apply.\n\n#remotejobs #remotework #jobsearch #hiring",
       "featured_jobs": []
     },
@@ -118,21 +188,53 @@
       "id": "w50-p6",
       "date": "2026-12-14",
       "day": "Mon",
-      "time_utc": "12:00",
-      "platforms": ["instagram", "tiktok", "facebook"],
+      "time_utc": "15:00",
+      "platforms": [
+        "instagram",
+        "tiktok",
+        "facebook"
+      ],
       "pillar": "tips",
       "format": "carousel",
       "title": "Tip: read a remote posting in a minute",
       "hook": "Read a remote posting in a minute, before you spend an hour on it.",
       "variable": "Tip format: a checklist people save, against week 1's warning-sign tip.",
       "visuals": "Five text slides: cover, three checks, closing slide.",
-      "render": {"date_line": "Yireh Careers tips", "slides": [
-        {"t": "cover", "kicker": "Save this", "title": "Read a remote posting in a minute", "sub": "Three checks before you spend an hour on the form."},
-        {"t": "tip", "n": "1", "title": "Where you can apply from", "body": "Countries, regions or time zones, in the location line or the text. No answer? Ask first."},
-        {"t": "tip", "n": "2", "title": "The pay", "body": "If it's stated, check the currency and whether it's yearly, monthly or hourly."},
-        {"t": "tip", "n": "3", "title": "When it was posted", "body": "Our board shows the date from the posting itself, not the day we found it."},
-        {"t": "cta", "kicker": "Or start with the board", "title": "Tell it where you live", "sub": "It shows only the jobs that say they're open to you."}
-      ]},
+      "render": {
+        "date_line": "Yireh Careers tips",
+        "slides": [
+          {
+            "t": "cover",
+            "kicker": "Save this",
+            "title": "Read a remote posting in a minute",
+            "sub": "Three checks before you spend an hour on the form."
+          },
+          {
+            "t": "tip",
+            "n": "1",
+            "title": "Where you can apply from",
+            "body": "Countries, regions or time zones, in the location line or the text. No answer? Ask first."
+          },
+          {
+            "t": "tip",
+            "n": "2",
+            "title": "The pay",
+            "body": "If it's stated, check the currency and whether it's yearly, monthly or hourly."
+          },
+          {
+            "t": "tip",
+            "n": "3",
+            "title": "When it was posted",
+            "body": "Our board shows the date from the posting itself, not the day we found it."
+          },
+          {
+            "t": "cta",
+            "kicker": "Or start with the board",
+            "title": "Tell it where you live",
+            "sub": "It shows only the jobs that say they're open to you."
+          }
+        ]
+      },
       "caption": "Read a remote posting in a minute, before you spend an hour on it.\n\nThree checks: where you can apply from; the pay, its currency and whether it's yearly or hourly; and when it was posted.\n\nSave this for your next application.\n\n#remotejobs #jobsearch #jobtips #remotework"
     }
   ]

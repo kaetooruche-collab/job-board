@@ -14,6 +14,9 @@ const COUNTRY = lex.countries.map(c => c.name).concat(['US', 'U.S.', 'USA', 'UK'
   .map(n => n.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('|');
 const LIMIT = new RegExp('(?:anywhere|based|located|reside|residing|live|living|resident|residents|eligible to work) (?:with)?in (?:the )?(?:contiguous |continental |lower 48 )?(?:' + COUNTRY + ')\\b|(?:' + COUNTRY + ')[- ](?:only|based only)\\b', 'i');
 
+// US citizenship or a US security clearance makes a "region" card misleading for people outside the US.
+const US_ONLY = /(?:U\.?S\.?|United States) (?:citizen(?:ship)?|government security clearance|security clearance)|security clearance \(U\.?S|must be a U\.?S\.? (?:citizen|person)/i;
+
 const words = t => t.toLowerCase().replace(/[^a-z0-9 ]+/g, ' ').split(/\s+/).filter(w => w.length > 2);
 
 (async () => {
@@ -35,7 +38,7 @@ const words = t => t.toLowerCase().replace(/[^a-z0-9 ]+/g, ' ').split(/\s+/).fil
         const found = need.filter(w => have.has(w)).length;
         const closed = (text.match(CLOSED) || [null])[0];
         const wideCard = j.apply_from === 'Worldwide' || !/\b(?:only)\b/.test(j.apply_from || '') && !lex.countries.some(c => (j.apply_from || '').includes(c.name));
-        const limit = wideCard ? (text.match(LIMIT) || [null])[0] : null;
+        const limit = wideCard ? ((text.match(LIMIT) || text.match(US_ONLY)) || [null])[0] : null;
         check = { ...check, http: resp && resp.status(), final_url: page.url(),
           title_found: `${found}/${need.length} title words`, closed_wording: closed, contradiction: limit,
           ok: !!resp && resp.status() < 400 && found >= Math.ceil(need.length * 0.75) && !closed && !limit };

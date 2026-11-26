@@ -3,7 +3,9 @@
 Status: **PROPOSED** (Phase 0). Binding rules come from `CLAUDE.md` and `drafts/voice-and-copy-guide.md`; this guide applies them to TikTok, Instagram and Facebook. Where they differ, CLAUDE.md wins. Every post is checked by `social/tools/check_post.py` before it is scheduled.
 
 ## 1. Who we are talking to
-Remote job seekers across Africa, South Asia and South-East Asia (and anyone else), often on a phone, often reading in a second language, tired of applying to "remote" jobs that turn out to be closed to them, and wary of scams. Their words: legit, real, scam, fake, "remote but not for me", tired, 100+ applications. Ours ("verified", "eligibility", "classifier") are weaker; use theirs. (Evidence: `drafts/marketing/audience-research-and-icp.md`.)
+**People outside the US, wherever they live** (KT, 26 Nov 2026; `drafts/decisions/2026-11-26-who-to-target.md`): Canada, the UK and Europe, Latin America, South Asia, South-East Asia and Africa. US viewers are welcome but not chased. Often on a phone, often reading in a second language, tired of applying to "remote" jobs that turn out to be closed to them, and wary of scams. Their words: legit, real, scam, fake, "remote but not for me", tired, 100+ applications. Ours ("verified", "eligibility", "classifier") are weaker; use theirs. (Evidence: `drafts/marketing/audience-research-and-icp.md`, `research/2026-11-26-niche.md`, `research/2026-11-26-niche-outside-us.md`.)
+
+**Supply differs a lot by country** (26 Nov: Canada 193, UK 146, most of the EU and India, Mexico and Brazil about 55-85, Africa and South-East Asia about 26-38, worldwide 19). So never imply plenty for everyone: no board-wide totals as a promise; prefer numbers true for every viewer (open worldwide, open beyond one country). See `research/2026-11-26-scope-outside-us.md`.
 
 ## 2. Voice
 - **A kind, capable person across a table.** Short sentences, plain words, contractions, "you" and "we". Calm, a little warm. At most one exclamation mark in a post.
@@ -16,7 +18,7 @@ Remote job seekers across Africa, South Asia and South-East Asia (and anyone els
 ## 3. Content pillars (6 posts a week to start)
 | Pillar | Share | What | Why |
 |---|---|---|---|
-| **Jobs**: real roles | 3 a week | Role cards and carousels from the live feed: open worldwide or across a region that includes Africa or Asia, newest first, posting opened that day | The proof. Saves and shares. |
+| **Jobs**: real roles | 3 a week | Role cards and carousels from the live feed: open worldwide or across a whole region beyond the US, newest first, posting opened that day | The proof. Saves and shares. |
 | **Proof**: the weekly video | 1 a week (Tuesday) | Presenter hook and close, live-board footage in the middle, one dated number | Reach; explains what the board does |
 | **Tips**: check before you apply | 2 a week | Eligibility wording, scam signs, reading a posting | Trust and saves; useful without us |
 | **Service**: CV help | at most 1 in 6 posts, never inside a jobs post | The free CV check first; paid packages only with KT's yes on the wording | Revenue, after trust |
@@ -72,10 +74,10 @@ Every slide: the mark and "Yireh Careers" top-left, "n / total" top-right on car
 | Eligibility tips | `#remotejobs #jobsearch #jobtips #remotework` |
 | Scam and safety tips | `#jobscams #remotejobs #jobsearch #careertips` |
 | CV service | `#cvtips #jobsearch #remotejobs` |
-Region tags (#africa, #asia) are a later test, not a default. Hashtags are a weak lever (Instagram's own Dec 2025 guidance); the hook and the content matter more.
+Region tags and Spanish or Portuguese captions are later tests (Latin America's remote-job niche runs in Spanish and Portuguese), not defaults; other languages need KT's yes. Hashtags are a weak lever (Instagram's own Dec 2025 guidance); the hook and the content matter more.
 
 ## 9. AI label
 Any post with the AI presenter or the AI voice: platform AI label ON (TikTok "AI-generated content"; Meta "AI info") and "AI-generated presenter" on screen. Screen recordings, role cards and text slides need no label.
 
 ## 10. Timing
-All posts at **12:00 UTC** for the first two weeks (afternoon in Africa, evening in South and South-East Asia); no Sunday posts; the weekly video on Tuesday. Evidence and the planned time test: `research/2026-11-26-posting-times.md`.
+All posts at **15:00 UTC** for the first two weeks (morning to midday in the Americas, afternoon in Europe and Africa, evening in South Asia; late in South-East Asia); no Sunday posts; the weekly video on Tuesday. Changed from 12:00 UTC on 26 Nov after KT widened the audience. Evidence and the planned time test: `research/2026-11-26-posting-times.md`.

@@ -1,6 +1,6 @@
 # Addendum: if the audience is "everyone outside the US" (26 Nov 2026)
 
-**Status:** KT is weighing two scopes: "everyone" or "people outside the US" (message from the job-board session, 26 Nov). Phase 0 was briefed on Africa, South Asia and South-East Asia. Until KT decides, the calendar keeps that brief; this note says what changes under the wider scope. Labels as in the other research notes.
+**Status:** KT decided on 26 Nov 2026: "people outside the US, wherever they live" (`drafts/decisions/2026-11-26-who-to-target.md`, APPROVED). Applied the same day: role picker scope `outside_us` (default), posting time 15:00 UTC, cover wording "across a whole region", and the `w49-p1` video line fixed as proposed below (awaiting KT's yes with the week). Niche research for these regions: `2026-11-26-niche-outside-us.md`. Labels as in the other research notes.
 
 ## 1. Where our supply is (measured on the live feed, 26 Nov 2026, the site's own "open to" rule) [Established]
 | Region | Jobs open to (example countries) |
@@ -33,7 +33,7 @@ Supply is strongest for Canada and the UK, then the EU, India and Latin America 
 | **15:00** | 09:00 | 10:00 | 12:00 | 15:00 | 16:00 | 16:00 | 18:00 | 20:30 | 23:00 |
 | 18:00 | 12:00 | 13:00 | 15:00 | 18:00 | 19:00 | 19:00 | 21:00 | 23:30 | 02:00 |
 
-12:00 UTC is too early for the Americas. **15:00 UTC** is the best single compromise for "outside the US": afternoon in Europe and Africa, morning to midday in the Americas, evening in South Asia; it loses South-East Asia (23:00). If the scope widens, move the default to 15:00 UTC and make "12:00 vs 15:00" the week-3 test.
+12:00 UTC is too early for the Americas. **15:00 UTC** is the best single compromise for "outside the US": afternoon in Europe and Africa, morning to midday in the Americas, evening in South Asia; it loses South-East Asia (23:00). Default moved to 15:00 UTC on 26 Nov; "15:00 vs 12:00" (or 18:00 for the Americas) is the week-3 test.
 
 ## 4. Niche accounts beyond Africa and Asia
-Not researched yet. The 26 Nov sample (`2026-11-26-niche.md`) already shows the large US-facing list accounts; a pass on Europe, UK, Canada and Latin America (including Spanish and Portuguese-language accounts) costs about 6-10 Firecrawl credits and is worth doing once KT picks the scope.
+Done: `2026-11-26-niche-outside-us.md` (UK, Canada, Spanish- and Portuguese-language Latin America).

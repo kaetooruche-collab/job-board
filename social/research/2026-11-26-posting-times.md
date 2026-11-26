@@ -1,5 +1,7 @@
 # When to post for an audience across Africa, South Asia and South-East Asia (26 Nov 2026)
 
+> **Update, 26 Nov 2026:** KT widened the audience to "people outside the US, wherever they live". The default is now **15:00 UTC** (see `2026-11-26-scope-outside-us.md`, section 3). The analysis below still holds for Africa and Asia.
+
 **Labels:** **[Reported]** = from a vendor study (large samples, but their customers, mostly US/UK/Australia, and their own definitions); **[Established]** = arithmetic or a fact we checked; **[Hypothesis]** = our reasoning, to be tested.
 
 ## 1. What the studies say (all times are the viewer's local time)

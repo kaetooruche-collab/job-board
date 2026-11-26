@@ -19,8 +19,9 @@ import check_post  # noqa: E402
 
 ROOT = Path(__file__).resolve().parents[2]
 # Audience time zones (cities named only here, in a working file, to show local times; never in posts)
-ZONES = [("Lagos", "Africa/Lagos"), ("Nairobi", "Africa/Nairobi"), ("Karachi", "Asia/Karachi"),
-         ("Delhi", "Asia/Kolkata"), ("Manila", "Asia/Manila")]
+ZONES = [("Mexico City", "America/Mexico_City"), ("Toronto", "America/Toronto"), ("São Paulo", "America/Sao_Paulo"),
+         ("London", "Europe/London"), ("Berlin", "Europe/Berlin"), ("Lagos", "Africa/Lagos"),
+         ("Nairobi", "Africa/Nairobi"), ("Delhi", "Asia/Kolkata"), ("Manila", "Asia/Manila")]
 
 
 def local_times(date: str, hhmm: str) -> str:
