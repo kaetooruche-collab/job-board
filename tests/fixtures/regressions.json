@@ -296,5 +296,54 @@
    "countries_exclude": [],
    "label": "United States only"
   }
+ },
+ {
+  "name": "a region beside a named country is not wider eligibility: APAC (Singapore or Australia) (Concentric, 26 Nov 2026)",
+  "title": "Threat Assessment Manager, Australia",
+  "location": "Remote",
+  "remote_feed": true,
+  "description": "We are currently hiring a Behavioral Threat Assessment Manager to join our team embedded with our client in Sydney, Australia! This is a remote position open to those based in Australia. This is a full-time position located in the APAC region (Singapore or Australia). International experience and/or regional expertise (APAC).",
+  "expect": {
+   "countries_exclude": [
+    "India",
+    "Philippines",
+    "Japan"
+   ],
+   "regions_exclude": [
+    "APAC"
+   ]
+  }
+ },
+ {
+  "name": "'part of the Asia Pacific team, based in Japan' means Japan (CircleCI, 26 Nov 2026)",
+  "title": "Senior Support Engineer",
+  "location": "Remote - Japan",
+  "remote_feed": true,
+  "description": "Location: This role is based in Japan (remote). Candidates must currently reside in Japan and have the legal right to work in Japan. We are unable to consider applicants based outside Japan. Our team works around the clock across North America, Asia Pacific, and Europe. This role is part of the Asia Pacific team, based in Japan. Current residence in Japan and the legal right to work in Japan.",
+  "expect": {
+   "label": "Japan only",
+   "countries_exclude": [
+    "India"
+   ],
+   "regions_exclude": [
+    "APAC"
+   ]
+  }
+ },
+ {
+  "name": "'another location within APAC, we aren't able to hire' is not an APAC opening (Sprout Social, 26 Nov 2026)",
+  "title": "Financial Planning and Analysis Analyst, Corporate FP&A",
+  "location": "Remote Philippines",
+  "remote_feed": true,
+  "description": "This role reports to the Director of Corporate FP&A and is based in the Philippines. Candidates for this remote work opportunity must be based in the Philippines. If you are based in another location within APAC, we aren't able to hire in your location at this time.",
+  "expect": {
+   "label": "Philippines only",
+   "countries_exclude": [
+    "India"
+   ],
+   "regions_exclude": [
+    "APAC"
+   ]
+  }
  }
 ]

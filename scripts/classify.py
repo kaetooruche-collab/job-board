@@ -683,6 +683,15 @@ def assess_eligibility(title, location, description, remote_evidence=False, remo
     for s in desc_ww[:2]:
         worldwide_from.append(("description", s))
 
+    # A region named beside a country inside it does not widen who can apply: "remote, open to those based in Australia
+    # ... the APAC region (Singapore or Australia)", "part of the Asia Pacific team, based in Japan", "must be based in the
+    # Philippines. If you are based in another location within APAC, we aren't able to hire" all mean the named country.
+    # Without this, each was labelled APAC and shown to ~40 countries (Concentric, CircleCI, Sprout Social; 26 Nov 2026).
+    named_countries = {p["name"] for p in restricted_places if p["kind"] == "country"}
+    if named_countries:
+        restricted_places = [p for p in restricted_places
+                             if not (p["kind"] == "region" and named_countries & set(g.regions[p["name"]]["members"]))]
+
     countries, regions = g.expand(restricted_places)
     explicit = []
     for p in restricted_places:
