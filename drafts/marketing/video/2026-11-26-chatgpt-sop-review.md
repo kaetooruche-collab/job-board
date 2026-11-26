@@ -49,7 +49,7 @@ Each claim that matters was checked on 26 Nov. Labels:
 8. **"Job-detail views"** as a metric: there are no job pages, so we measure apply clicks and searches instead (both already tracked).
 
 ## 3. Merged Video 1 (KT's hook + ChatGPT's concept 1 + our rules)
-Voice: Olivia (warm British female). "Yireh" is said like "Jireh" with a Y (YYE-ruh). It is spelled phonetically in the narration only; the exact spelling is tested in a 5-second clip first. 79 spoken words, about 30 s.
+Voice: Olivia (warm British female). "Yireh" is said like "Jireh" with a Y (YYE-ruh). It is spelled phonetically in the narration only; the exact spelling is tested in a 5-second clip first. 83 spoken words, about 30 s at 165 words a minute.
 
 | Time | Spoken | On screen |
 |---|---|---|
