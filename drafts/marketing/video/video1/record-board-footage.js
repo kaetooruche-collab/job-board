@@ -1,0 +1,30 @@
+const {chromium}=require('playwright'); const fs=require('fs');
+const sleep=ms=>new Promise(r=>setTimeout(r,ms));
+const OUT='/tmp/claude-0/vid/frames6'; fs.rmSync(OUT,{recursive:true,force:true}); fs.mkdirSync(OUT);
+(async()=>{const b=await chromium.launch();
+ const ctx=await b.newContext({viewport:{width:432,height:768},deviceScaleFactor:2.5,isMobile:true,hasTouch:true});
+ await ctx.route(/goatcounter|gc\.zgo\.at/, r=>r.abort());
+ const p=await ctx.newPage();
+ await p.goto('https://yirehcareers.vercel.app/?utm_source=video',{waitUntil:'networkidle'});
+ await p.addStyleTag({content:'.inline-signup{display:none!important} html{scroll-behavior:smooth}'});
+ const us=p.locator('.job-card',{hasText:'Apply from: United States'}).first();
+ await us.scrollIntoViewIfNeeded(); await p.evaluate(()=>window.scrollBy({top:-160,behavior:'instant'})); await sleep(400);
+ let done=false, n=0; const log=[]; const t0=Date.now();
+ const cap=(async()=>{while(!done){const buf=await p.screenshot({type:'jpeg',quality:88}); fs.writeFileSync(`${OUT}/f${String(n).padStart(5,'0')}.jpg`,buf); log.push(Date.now()-t0); n++;}})();
+ const marks={A:0};
+ await sleep(2700);
+ // B: the empty "Where do you live?" box, then Worldwide
+ await p.evaluate(()=>window.scrollTo({top:document.querySelector('.toolbar').getBoundingClientRect().top+scrollY-70}));
+ await sleep(700); marks.B=Date.now()-t0;
+ await p.click('#f-country-input'); await sleep(900);
+ await p.keyboard.type('India',{delay:190}); await p.locator('#f-country-input').dispatchEvent('change'); await p.locator('#f-country-input').blur();
+ await sleep(2600);
+ // C: a job that names India
+ const card=p.locator('.job-card').filter({has:p.locator('.job-company',{hasText:'India'})}).first();
+ const bb=await card.boundingBox();
+ await p.evaluate(y=>window.scrollBy({top:y-90}), bb.y); marks.C=Date.now()-t0; await sleep(5000);
+ console.log('card:', (await card.locator('.job-title').innerText()), '|', (await card.locator('.job-company').innerText()));
+ done=true; await cap;
+ fs.writeFileSync('/tmp/claude-0/vid/frames6.json',JSON.stringify({log,marks}));
+ console.log('frames',n,JSON.stringify(marks),(await p.innerText('#job-count')).slice(0,60));
+ await b.close();})();
