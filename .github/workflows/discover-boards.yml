@@ -41,7 +41,7 @@ jobs:
         run: git clone --depth 1 https://github.com/remoteintech/remote-jobs "$RUNNER_TEMP/remote-jobs"
       - name: Prune and discover
         # early-career employers come from the SimplifyJobs lists (only the employer board in each link is used)
-        run: python -I scripts/discover_boards.py --remoteintech "$RUNNER_TEMP/remote-jobs" --early-career --max-probes "${{ inputs.max_probes || '300' }}" --max-adds "${{ inputs.max_adds || '100' }}"
+        run: python -I scripts/discover_boards.py --remoteintech "$RUNNER_TEMP/remote-jobs" --early-career --alion --max-probes "${{ inputs.max_probes || '300' }}" --max-adds "${{ inputs.max_adds || '100' }}"
       - name: Show the report
         if: always()
         run: cat data/discovery_report.md >> "$GITHUB_STEP_SUMMARY" || true

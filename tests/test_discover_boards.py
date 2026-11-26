@@ -116,6 +116,31 @@ class Discovery(unittest.TestCase):
         es = [{"title": "C", "region": "europe"}, {"title": "B", "origin": "early-career list"}, {"title": "A", "region": "worldwide"}]
         self.assertEqual([e["title"] for e in sorted(es, key=D.priority)], ["A", "B", "C"])
 
+    def test_alion_seeds_skip_agencies_and_employers_closed_outside_the_us(self):
+        data = {"employers": [
+            {"company": "Moniepoint Group", "domain": "moniepoint.com", "is_agency": 0, "open_south": 9, "worldwide": 0},
+            {"company": "Pavago", "domain": "pavago.co", "is_agency": 1, "open_south": 770, "worldwide": 0},
+            {"company": "Closed Co", "domain": "closed.example", "is_agency": 0, "open_south": 0, "worldwide": 0},
+            {"company": "Trafilea", "domain": "trafilea.com", "is_agency": 0, "open_south": 4, "worldwide": 4}]}
+        seeds = D.alion_seeds(data)
+        self.assertEqual([s["title"] for s in seeds], ["Moniepoint Group", "Trafilea"])
+        self.assertEqual(seeds[0]["website"], "https://moniepoint.com")
+        self.assertEqual(D.priority(seeds[0])[0], 0)  # employers hiring outside the US are tried first (KT, 26 Nov 2026)
+
+    def test_latest_alion_edition_is_found_from_the_index_page(self):
+        class R:
+            def __init__(self, text=None, data=None): self.text, self._d = text, data
+            def json(self): return self._d
+        calls = []
+        def get(url, timeout=None):
+            calls.append(url)
+            if url.endswith(".json"):
+                return R(data={"employers": []})
+            return R(text='<a href="/storage/data/alion-remote-global-south-index-2026-10.json">'
+                          '<a href="/storage/data/alion-remote-global-south-index-2026-11.json">')
+        self.assertEqual(D.latest_alion(get), {"employers": []})
+        self.assertTrue(calls[-1].endswith("2026-11.json"))
+
     def test_probe_window(self):
         st = {"probed": {"doist": {"at": "2026-10-01"}}}
         self.assertFalse(D.due_for_probe(st, "doist", date(2026, 11, 25)))
