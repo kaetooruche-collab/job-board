@@ -75,8 +75,14 @@ def fetch(key, start, end):
         refs = [r for r in ((refs_raw or {}).get("stats") or []) if isinstance(r, dict)]
     except RuntimeError:
         refs = None
+    try:  # visitor countries (KT, 26 Nov 2026: who to target is decided on this); a bonus, never fails the snapshot
+        loc_raw = get(f"/stats/locations?start={start}&end={end}&limit=30", key)
+        locations = [r for r in ((loc_raw or {}).get("stats") or []) if isinstance(r, dict)]
+    except RuntimeError:
+        locations = None
     return {
         "refs": refs,
+        "locations": locations,
         "views": total.get("total", 0),
         "events": total.get("total_events", 0),
         "pages": sorted((r for r in rows if not r.get("event")), key=lambda r: -(r.get("count") or 0)),
@@ -197,6 +203,16 @@ def render(date, data, prev):
         else:
             lines += ["| Visitors | Referrer or tagged source |", "|---|---|"]
             lines += [f"| {r.get('count', 0)} | {str(r.get('name') or '(direct)')[:60]} |" for r in refs[:15]]
+    for window in ("Last 7 days", "All time"):
+        locs = (data.get(window) or {}).get("locations")
+        lines += ["", f"## Visitor countries ({window.lower()})", ""]
+        if locs is None:
+            lines.append("Country data could not be fetched this time.")
+        elif not locs:
+            lines.append("No country recorded.")
+        else:
+            lines += ["| Visitors | Country |", "|---|---|"]
+            lines += [f"| {r.get('count', 0)} | {str(r.get('name') or r.get('id') or '(unknown)')[:40]} |" for r in locs[:20]]
     lines += render_funnel(data)
     lines += [
         "",
