@@ -1,6 +1,6 @@
 # A region named beside a country no longer widens who can apply (26 Nov 2026)
 
-Status: built and tested; PR #79 waits for KT's yes to merge.
+Status: **live** (PR #79 merged on KT's yes, 26 Nov 2026; refresh run 45801361058). Checked on the live site: Concentric "Australia, Singapore", CircleCI "Japan only", Sprout Social "Philippines only"; jobs open to India 81 -> 78.
 
 **Bug:** postings limited to one country were labelled with the whole region and shown to ~40 countries:
 - Concentric "open to those based in Australia" was labelled APAC.
