@@ -18,6 +18,6 @@ Scale: 19 jobs are labelled Worldwide today; 3 of them (16%) are wrong or doubtf
 - The board's apply button reads **"Apply on employer site"** (`index.html`, job card). CLAUDE.md bans "straight to the employer" and "the employer's own posting/page" because links open the hiring-system page. "Employer site" is close to that wording; the button's tooltip already says "Opens the original posting on the company's hiring page". Worth a look under the copy-change rule; the social posts use "Apply on the original posting".
 
 ## Status (26 Nov 2026, 13:25 UTC)
-- Rows 1-4 are fixed in **PR #82** (open, waiting for KT's merge). Box's talent community and Truelogic's "Open Application" will be held back as non-jobs.
-- Related open PRs: **#81** adds 50 employers that hire outside the US; **#83** keeps jobs open outside the US first under the caps (simulated: 1,221 of 2,000 jobs open outside the US, against 693 now; 39 worldwide, against 27).
+- Rows 1-4 are fixed in **PR #82**, merged by KT's instruction on 26 Nov 2026 with #81 and #83 (main 91b0d62; tests pass). Box's talent community and Truelogic's "Open Application" will be held back as non-jobs.
+- Also merged: **#81** adds 50 employers that hire outside the US; **#83** keeps jobs open outside the US first under the caps (simulated: 1,221 of 2,000 jobs open outside the US, against 693 now; 39 worldwide, against 27).
 - `social/data/exclude_jobs.json` stays as it is until the first feed refresh after the merge. Then re-check these jobs on the live feed and remove the entries that are fixed.
