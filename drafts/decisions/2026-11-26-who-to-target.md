@@ -35,3 +35,6 @@ Status: **APPROVED by KT, 26 Nov 2026**: positioning "people outside the US, whe
   2. Add those that use the hiring systems we already read.
   3. Track "jobs open to the median non-US country" weekly as the board's key growth number.
 - **Measure:** visitor countries (PR #80), and return visits by country, from the next weekly snapshot.
+
+## Result (26 Nov 2026, live board after PRs #81-#83)
+1,141 of 1,987 jobs open outside the US (before: about 614 of 1,759). US-only 683 -> 439. Worldwide 19 -> 36. Jobs open to India 78 -> 159, Philippines 38 -> 90, Nigeria 33 -> 74, Kenya 33 -> 68, Brazil 61 -> 153, Mexico 69 -> 133, UK 152 -> 294, Canada 193 -> 369. Trade-off: 340 employers on the board (was 363): some employers with only US-only roles were cut to keep jobs open outside the US.
