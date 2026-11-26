@@ -46,7 +46,8 @@ LINK_STATE_FILE = REPO_ROOT / "data" / "link_state.json"
 BOARDS_FILE = REPO_ROOT / "data" / "boards.json"
 
 MAX_AGE_DAYS = 30
-MAX_PER_COMPANY = 15
+MAX_PER_COMPANY = 15            # US-only roles, and roles that do not say, per employer
+MAX_PER_COMPANY_OUTSIDE_US = 40  # roles open outside the US per employer (KT, 26 Nov 2026: positioning "people outside the US")
 MAX_LISTINGS = 2000   # 25 Nov 2026: was 1200, which silently cut 594 checked jobs (oldest first, early-career included).
                       # The site serves jobs.json compressed: about 0.5 MB at 2000 listings. Matches discover_boards.MAX_LIVE_LISTINGS.
 LOG_SAMPLE = 40
@@ -478,6 +479,21 @@ capped_out = [0]
 EARLY_CAREER = ("entry", "junior", "internship")
 
 
+def us_only(j):
+    """Open only to people in the United States, by the employer's own wording."""
+    el = (j.get("result") or {}).get("eligibility") or {}
+    return el.get("type") == "countries" and el.get("countries") == ["United States"]
+
+
+def open_outside_us(j):
+    """The employer's wording opens the role to someone outside the US (worldwide, a region, or another country).
+    A role that does not say where applicants may live is neither this nor US-only."""
+    el = (j.get("result") or {}).get("eligibility") or {}
+    if el.get("type") == "worldwide":
+        return True
+    return el.get("type") in ("countries", "region") and any(c != "United States" for c in el.get("countries") or [])
+
+
 def _cap_order(j):
     """Within one employer's limit, early-career roles are kept first, then the newest (25 Nov 2026: the old
     newest-only rule dropped publishable junior roles at employers with many senior openings)."""
@@ -486,22 +502,26 @@ def _cap_order(j):
 
 
 def cap_total(items, limit=None):
-    """At most `limit` listings, newest first; when cutting, early-career roles are kept before older others."""
+    """At most `limit` listings, newest first. When cutting, roles open outside the US are kept first (KT, 26 Nov
+    2026: the board is for people outside the US), then roles that do not say, then US-only roles; within each,
+    early-career roles first, then the newest."""
     limit = MAX_LISTINGS if limit is None else limit
     items = sorted(items, key=lambda x: x["posted"], reverse=True)
     if len(items) <= limit:
         return items
-    early = [j for j in items if ((j.get("result") or {}).get("experience") or {}).get("level") in EARLY_CAREER][:limit]
-    rest = [j for j in items if j not in early][: limit - len(early)]
-    return sorted(early + rest, key=lambda x: x["posted"], reverse=True)
+    def keep_rank(j):
+        early = ((j.get("result") or {}).get("experience") or {}).get("level") in EARLY_CAREER
+        return (0 if open_outside_us(j) else 2 if us_only(j) else 1, 0 if early else 1)
+    kept = sorted(items, key=keep_rank)[:limit]   # sorted() is stable: newest first within each group
+    return sorted(kept, key=lambda x: x["posted"], reverse=True)
 
 
 def cap_per_company(items, removed):
     items.sort(key=_cap_order)
     counts, out = Counter(), []
     for j in items:
-        c = norm_key(j["company"])
-        if counts[c] < MAX_PER_COMPANY:
+        c = (norm_key(j["company"]), open_outside_us(j))
+        if counts[c] < (MAX_PER_COMPANY_OUTSIDE_US if c[1] else MAX_PER_COMPANY):
             counts[c] += 1
             out.append(j)
         else:
