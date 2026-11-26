@@ -79,3 +79,5 @@ Openings to test later, with the same body:
 - Spent so far today: two name tests (7.4 s and 6.1 s) and the full voiceover (26.3 s, approved by KT), about 41 credits.
 - Board footage recorded from the live site (14 s, 1080x1920, free). Voice timings: hook 0–5.0 s, "Remote doesn't always mean anywhere" 6.0–7.6 s, Yireh and the country line 7.9–13.3 s, original posting 14.1–18.4 s, free and CTA 18.9–25.8 s.
 - Next: a woman presenter (KT picks the look; generation costs credits), the render plan with its cost, then assembly with captions and the on-screen statistic.
+- KT, 26 Nov: **no country named in videos** (a named country whose viewers then find few jobs works against us); long term, keep growing the number of jobs open outside the US. The board footage blurs the typed country and the filter tag.
+- KT chose the **warm, at-home presenter** (BHuman presenter 53bb213d; the attached copy is visually identical). Render estimate: standard 480p = 27 Speakeasy seconds; HD 720p = 54. Waiting for KT's confirmation before any render.
