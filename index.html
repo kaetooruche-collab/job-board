@@ -1995,7 +1995,11 @@
       if (el.type === 'worldwide') return '<span class="pill pill-world">' + ICONS.globe + 'Worldwide</span>';
       if (!where) return '<span class="pill pill-quiet" title="The employer doesn\u2019t say where you can apply from. The posting may tell you more.">Location not specified</span>';
       var lead = (el.type === 'countries' || el.type === 'region') ? 'Apply from: ' : '';
-      var incl = (state.country && state.country !== '__worldwide' && where.indexOf(state.country) === -1 && openTo(job, state.country)) ? ' (includes ' + state.country + ')' : '';
+      /* KT, 26 Nov 2026: "Europe (includes Cyprus)" says twice what the country filter already says. The note stays
+         only after an abbreviation a reader may not decode ("EMEA (includes Kenya)"). */
+      var incl = (state.country && state.country !== '__worldwide' && where.indexOf(state.country) === -1
+                  && /\b(?:EMEA|APAC|APJ|LATAM|AMER|AMERS|DACH|MENA|GCC|ANZ|SEA|CEE|EEA|NORAM|NA)\b/.test(where)
+                  && openTo(job, state.country)) ? ' (includes ' + state.country + ')' : '';
       return '<span class="pill pill-region" title="Where the employer says you can apply from">' + ICONS.pin + lead + esc(where + incl) + '</span>';
     }
 
