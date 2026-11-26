@@ -131,14 +131,19 @@ test('a query with no real roles never shows a listing that claims that role', L
   // a real inflection of the same word is an honest match too ("Nurse" for "nursing")
   // (25 Nov 2026: a "Translation & Localization Specialist" arrived with new employers; translation is the
   // same word family as translator, the way nurse is for nursing. "booking" for "bookkeeper" stays forbidden.)
-  const FORMS = { nursing: 'nurs(?:e|es|ing)', translator: 'translat(?:or|ors|ion|ions|ing)' };
+  const FORMS = { nursing: 'nurs(?:e|es|ing)', translator: 'translat(?:e|es|ed|or|ors|ion|ions|ing)', bookkeeper: 'bookkeep(?:er|ers|ing)' };
   const literal = (x, q) => new RegExp('\\b' + (FORMS[q] || q.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + 's?') + '\\b', 'i').test(x.title);
   for (const q of ['translator', 'nursing', 'bookkeeper']) {
     const hits = jobs.filter((x) => S.matches(x, q));
     const claimed = hits.filter((x) => inTitle(x, q));
     const fabricated = claimed.filter((x) => !literal(x, q));
     assert.strictEqual(fabricated.length, 0, `"${q}": ${fabricated.length} title(s) claim a role the word is not in`);
-    assert.ok(hits.length < 25, `"${q}": ${hits.length} results is noise, not a match`);
+    // Every result must really contain the word family somewhere (title, field or description). A fixed count
+    // ("under 25") broke on 26 Nov 2026 when a translation company joined and "translator" honestly returned 34;
+    // the bug this guards against was a stray initial ("t") matching 104 listings, which this still catches.
+    const wordRe = new RegExp('\\b' + (FORMS[q] || q + 's?') + '\\b', 'i');
+    const noise = hits.filter((x) => !wordRe.test([x.title, (x.categories || []).join(' '), x.description || ''].join(' ')));
+    assert.strictEqual(noise.length, 0, `"${q}": ${noise.length} result(s) never use the word: ${noise.slice(0, 3).map((x) => x.title).join(' | ')}`);
   }
 });
 
