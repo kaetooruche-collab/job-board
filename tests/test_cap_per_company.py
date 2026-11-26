@@ -61,3 +61,43 @@ class Dates(unittest.TestCase):
         self.assertEqual(F.parse_dt("2026-11-24 10:10:44 UTC"), datetime(2026, 11, 24, 10, 10, 44, tzinfo=timezone.utc))
         self.assertEqual(F.parse_dt("2026-11-24T10:10:44Z"), datetime(2026, 11, 24, 10, 10, 44, tzinfo=timezone.utc))
         self.assertIsNone(F.parse_dt("Posted 3 Days Ago"))
+
+
+def job_where(i, level, company, countries):
+    j = job(i, level, company)
+    j["result"]["eligibility"] = {"type": "countries", "countries": countries}
+    return j
+
+
+class OutsideUsFirst(unittest.TestCase):
+    """KT, 26 Nov 2026: the board is for people outside the US, so US-only roles are the first to go."""
+    def test_total_cap_cuts_us_only_roles_before_roles_open_outside_the_us(self):
+        items = ([job_where(i, "senior", f"U{i}", ["United States"]) for i in range(6)]
+                 + [job_where(10 + i, "senior", f"G{i}", ["Germany", "India"]) for i in range(4)])
+        titles = [j["title"] for j in F.cap_total(items, limit=5)]
+        self.assertTrue(all(f"senior {10 + i}" in titles for i in range(4)), "every role open outside the US stays")
+        self.assertIn("senior 0", titles)            # the newest US-only role fills the last place
+        self.assertNotIn("senior 1", titles)
+
+    def test_per_company_limit_is_wider_for_roles_open_outside_the_us(self):
+        items = ([job_where(i, "senior", "Elastic", ["United States"]) for i in range(30)]
+                 + [job_where(40 + i, "senior", "Elastic", ["Spain", "Brazil"]) for i in range(50)])
+        out = F.cap_per_company(items, [])
+        us = [j for j in out if F.us_only(j)]
+        self.assertEqual(len(us), F.MAX_PER_COMPANY)
+        self.assertEqual(len(out) - len(us), F.MAX_PER_COMPANY_OUTSIDE_US)
+
+    def test_roles_that_do_not_say_keep_the_strict_limit_and_sit_between(self):
+        self.assertFalse(F.open_outside_us(job(0, "mid")))
+        self.assertTrue(F.open_outside_us(job_where(0, "mid", "A", ["United States", "Canada"])))
+        items = ([job_where(i, "mid", f"U{i}", ["United States"]) for i in range(3)] + [job(10 + i, "mid", f"N{i}") for i in range(3)]
+                 + [job_where(20 + i, "mid", f"G{i}", ["Brazil"]) for i in range(3)])
+        titles = [j["title"] for j in F.cap_total(items, limit=5)]
+        self.assertTrue(all(f"mid {20 + i}" in titles for i in range(3)))   # outside the US: all kept
+        self.assertIn("mid 10", titles); self.assertIn("mid 11", titles)    # then roles that do not say
+        self.assertFalse(any(f"mid {i}" in titles for i in range(3)))        # US-only go first
+
+    def test_us_only_means_only_the_united_states(self):
+        self.assertTrue(F.us_only(job_where(0, "mid", "A", ["United States"])))
+        self.assertFalse(F.us_only(job_where(0, "mid", "A", ["United States", "Canada"])))
+        self.assertFalse(F.us_only(job(0, "mid")))  # not stated: not counted as US-only
