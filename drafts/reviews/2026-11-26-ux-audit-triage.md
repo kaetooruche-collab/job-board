@@ -1,6 +1,6 @@
 # UX audit (pasted by KT, 26 Nov 2026): checked against the live site
 
-Method: every claim that could be checked was checked on the live site in a real browser (Playwright, 1280px and 360px), in the code on `main`, or in the live `jobs.json` (1,765 jobs, 26 Nov). Status: **PROPOSED**; the build batch waits for KT's yes.
+Method: every claim that could be checked was checked on the live site in a real browser (Playwright, 1280px and 360px), in the code on `main`, or in the live `jobs.json` (1,765 jobs, 26 Nov). Status: **SUPERSEDED** the same day by `2026-11-26-ux-audit-ledger.md` (all 102 points worked through; merged as PR #78 on KT's yes; KT kept the CV link on every card).
 
 ## 1. Where the audit is wrong or out of date
 | Audit point | What is actually true |
