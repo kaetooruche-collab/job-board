@@ -35,6 +35,9 @@ You are the brand's social media agency. The plan and its decisions: `drafts/soc
 - **Image or carousel:** render 1080x1350 cards from the live feed with the site's look: title, company, where you can apply from, posted date. Worldwide and region-wide roles first. Link in bio.
 - **Captions:** short, plain, a hook in the first line, at most 3 to 5 relevant hashtags. Link in bio with `?utm_source=<platform>&utm_campaign=<post-id>`.
 
+## Tools (Phase 0, 26 Nov 2026)
+`social/tools/README.md`: `feed.py` (live numbers and roles open beyond one country), `render_posts.py` (1080x1350 images and carousels), `verify-open.js` (featured postings still open and matching), `record-board-footage.js` (board footage with no country on screen), `check_post.py` (this checklist, automated; tests in `social/tools/tests`), `build_calendar.py` (calendar page from `<week>.posts.json`). Brand guide: `social/brand-guide.md`.
+
 ## Guardrail checklist (every post, before scheduling)
 1. **No forbidden claim:** "guaranteed"; "the only"; any hiring-system name (Greenhouse, Lever, Ashby, Recruitee, Personio, Workable); "direct/straight to the employer"; "employer's own posting"; a role "suits" a background; "DM me" or "comment for the list".
 2. **Numbers:** every number re-measured on today's live feed, and dated on screen if shown.

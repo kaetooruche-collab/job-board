@@ -1,0 +1,139 @@
+{
+  "week": "2026-12-01",
+  "title": "Week of Tuesday 1 December 2026",
+  "status": "DRAFT for KT's approval (Phase 1: approve the week). Nothing is scheduled.",
+  "measured_on": "2026-11-26",
+  "test": "Video opening B ('Pay to look') against Video 1's 'Halfway'; and role posts as a 3-role carousel (Wed, Sat) against a single role image (Fri).",
+  "posts": [
+    {
+      "id": "w49-p1",
+      "date": "2026-12-01",
+      "day": "Tue",
+      "time_utc": "12:00",
+      "platforms": ["tiktok", "instagram", "facebook"],
+      "pillar": "proof",
+      "format": "video",
+      "title": "Weekly video: \"Pay to look\"",
+      "hook": "Stop paying to look at remote jobs.",
+      "variable": "Opening line. Video 1 opened on a moment (\"halfway through an application\"); this one opens on a cost (paying to search). Everything after the hook keeps Video 1's shape: board footage in the middle, presenter at both ends.",
+      "script": "Stop paying to look at remote jobs.\nSome sites charge you every month just to search... and a real employer will never ask you to pay to apply.\nYai-ray Careers is free to search. No account needed.\nOver seventeen hundred remote jobs, from more than three hundred and sixty companies... in one place.\nTell it where you live... and see the ones that say they're open to you.\nLink in bio.",
+      "on_screen": [
+        "Stop paying to look at remote jobs",
+        "1,759 remote jobs · 362 companies",
+        "From our live board, 26 Nov 2026",
+        "Free to search · no account",
+        "Link in bio",
+        "AI-generated presenter"
+      ],
+      "visuals": "0-4 s presenter (warm, at-home; HD). 4-20 s live-board footage from social/tools/record-board-footage.js: the empty \"Where do you live?\" box, \"Worldwide roles only\" typed, the list filtering, the first card held. 20-26 s presenter close. Captions burned in (Inter, captions.ass styles). The statistic line is on screen with its date.",
+      "production": "Presenter: BHuman HD render, about 54 credits, plus about 30 voice credits (Olivia, energetic). Needs KT's monthly credit budget (plan 6b). Free fallback if there is no budget: the same footage with on-screen text only, no presenter and no voice.",
+      "caption": "Stop paying to look at remote jobs.\n\nOn Yireh Careers you don't need an account. Tell it where you live and it shows the remote jobs that say they're open to you, each linked to its original posting.\n\nLink in bio.\n\n#remotejobs #remotework #jobsearch #workfromhome",
+      "ai_presenter": true,
+      "ai_voice": true,
+      "ai_label": true,
+      "measured_on": "2026-11-26",
+      "number_dated_on_screen": true,
+      "spelling_ok": ["Yai"]
+    },
+    {
+      "id": "w49-p2",
+      "date": "2026-12-02",
+      "day": "Wed",
+      "time_utc": "12:00",
+      "platforms": ["instagram", "tiktok", "facebook"],
+      "pillar": "jobs",
+      "format": "carousel",
+      "title": "Real roles: 3 open beyond one country (carousel)",
+      "hook": "Remote roles that aren't limited to one country.",
+      "variable": "Format: carousel of 3 roles (baseline). Compare saves, shares and profile taps with Friday's single-role image.",
+      "visuals": "1080x1350 slides from social/tools/render_posts.py: cover, three role cards (where you can apply from, title, company, posted date, pay or \"Not stated\"), closing slide. Roles picked on the day from the live feed: open worldwide or across a region that includes Africa or Asia, posted in the last 14 days, no office-visit or excluded-country notes, at most 2 per company.",
+      "render": {"slides": [
+        {"t": "cover", "kicker": "Open beyond one country", "title": "Remote roles you can apply for across whole regions", "sub": "Each is open worldwide, or across a region that includes Africa or Asia. Swipe for the details."},
+        {"t": "jobs", "count": 3},
+        {"t": "cta", "title": "Find yours on the board", "sub": "Type where you live and see only the jobs open to you."}
+      ]},
+      "caption": "Remote roles that aren't limited to one country.\n\nThese three are open worldwide or across a whole region, and we opened each posting today to check it's still live. Swipe for where you can apply from, the posted date and the pay, if the posting states it.\n\nMore on the board: link in bio. Check each employer's rules for your country before you apply.\n\n#remotejobs #remotework #jobsearch #hiring",
+      "featured_jobs": [],
+      "measured_on": "2026-11-26",
+      "number_dated_on_screen": true
+    },
+    {
+      "id": "w49-p3",
+      "date": "2026-12-03",
+      "day": "Thu",
+      "time_utc": "12:00",
+      "platforms": ["instagram", "tiktok", "facebook"],
+      "pillar": "tips",
+      "format": "carousel",
+      "title": "Tip: \"Remote\" doesn't always mean anywhere",
+      "hook": "\"Remote\" doesn't always mean anywhere.",
+      "variable": "None new (tips are the control post for saves).",
+      "visuals": "Five text slides in the site's look: cover, three checks, closing slide.",
+      "render": {"date_line": "Yireh Careers tips", "slides": [
+        {"t": "cover", "kicker": "Before you apply", "title": "“Remote” doesn't always mean anywhere", "sub": "Three places to look first. It takes about a minute."},
+        {"t": "tip", "n": "1", "title": "The location line", "body": "A country or region there tells you more than the word Remote in the title."},
+        {"t": "tip", "n": "2", "title": "Search the posting", "body": "Look for “reside”, “based in”, “right to work” and “time zone”."},
+        {"t": "tip", "n": "3", "title": "Not clear? Ask first", "body": "Email the recruiter before you spend an hour on the form."},
+        {"t": "cta", "kicker": "Or start with the board", "title": "Tell it where you live", "sub": "It shows only the jobs that say they're open to you."}
+      ]},
+      "caption": "“Remote” doesn't always mean anywhere.\n\nBefore you spend an hour on an application, check three things: the location line; the words “reside”, “based in” and “time zone” in the posting; and, if it's still unclear, ask the recruiter.\n\nSave this for your next application.\n\n#remotejobs #jobsearch #jobtips #remotework"
+    },
+    {
+      "id": "w49-p4",
+      "date": "2026-12-04",
+      "day": "Fri",
+      "time_utc": "12:00",
+      "platforms": ["instagram", "tiktok", "facebook"],
+      "pillar": "jobs",
+      "format": "image",
+      "title": "Real role: one open worldwide (single image)",
+      "hook": "A remote role that's open worldwide.",
+      "variable": "Format: single role image, against Wednesday's carousel.",
+      "visuals": "One 1080x1350 role card, picked on the day: open worldwide, posted in the last 14 days, not used earlier in the week.",
+      "render": {"slides": [{"t": "jobs", "count": 1, "worldwide_only": true}]},
+      "caption": "A remote role that's open worldwide.\n\nWhere you can apply from, the posted date and the pay (if the posting states it) are on the card. The original posting is one tap away on the board.\n\nLink in bio. Check the employer's rules for your country before you apply.\n\n#remotejobs #remotework #hiring",
+      "featured_jobs": []
+    },
+    {
+      "id": "w49-p5",
+      "date": "2026-12-05",
+      "day": "Sat",
+      "time_utc": "12:00",
+      "platforms": ["instagram", "tiktok", "facebook"],
+      "pillar": "jobs",
+      "format": "carousel",
+      "title": "Real roles: 3 more open beyond one country (carousel)",
+      "hook": "More remote roles that aren't limited to one country.",
+      "variable": "Same as Wednesday (second carousel reading, so one post's luck counts less).",
+      "visuals": "As Wednesday, three different roles.",
+      "render": {"slides": [
+        {"t": "cover", "kicker": "Open beyond one country", "title": "More remote roles open across whole regions", "sub": "Each is open worldwide, or across a region that includes Africa or Asia. Swipe for the details."},
+        {"t": "jobs", "count": 3},
+        {"t": "cta", "title": "Find yours on the board", "sub": "Type where you live and see only the jobs open to you."}
+      ]},
+      "caption": "More remote roles that aren't limited to one country.\n\nThree more, open worldwide or across a whole region. We opened each posting today to check it's still live.\n\nThe rest are on the board: link in bio. Check each employer's rules for your country before you apply.\n\n#remotejobs #remotework #jobsearch #hiring",
+      "featured_jobs": []
+    },
+    {
+      "id": "w49-p6",
+      "date": "2026-12-07",
+      "day": "Mon",
+      "time_utc": "12:00",
+      "platforms": ["instagram", "tiktok", "facebook"],
+      "pillar": "tips",
+      "format": "carousel",
+      "title": "Tip: three signs of a job scam",
+      "hook": "A real employer won't ask you to pay to get a job.",
+      "variable": "Topic: safety (our audience's top fear) against Thursday's eligibility tip; compare saves and shares.",
+      "visuals": "Five text slides: cover, three signs, closing slide.",
+      "render": {"date_line": "Yireh Careers tips", "slides": [
+        {"t": "cover", "kicker": "Stay safe", "title": "A real employer won't ask you to pay", "sub": "Three warning signs to know before you share any details."},
+        {"t": "tip", "n": "1", "title": "A fee to apply or train", "body": "Registration fees, training kits or equipment you must buy first are a warning sign."},
+        {"t": "tip", "n": "2", "title": "Interviews only by text", "body": "An interview held only by text on Telegram or WhatsApp is a common scam pattern."},
+        {"t": "tip", "n": "3", "title": "A role you can't find", "body": "Look for the job on the company's careers site before you send anything."},
+        {"t": "cta", "kicker": "How our board works", "title": "We never charge you to apply", "sub": "Every job on it opens its original posting, with the date it was posted."}
+      ]},
+      "caption": "A real employer won't ask you to pay to get a job.\n\nThree warning signs: a fee to apply or train; interviews held only by text on Telegram or WhatsApp; and a role you can't find on the company's careers site.\n\nSave this, and share it with someone who's job hunting.\n\n#jobscams #remotejobs #jobsearch #careertips"
+    }
+  ]
+}

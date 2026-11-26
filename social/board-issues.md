@@ -1,0 +1,17 @@
+# Board issues spotted by the social agency
+
+For the job-board session and KT. The social session never edits the site, `scripts/`, `data/` or `jobs.json`; it only reports here and keeps affected jobs out of posts (`social/data/exclude_jobs.json`).
+
+## 26 Nov 2026 (found while checking roles for the week of 1 Dec)
+Checked against the live postings in a real browser on 26 Nov 2026.
+
+| # | Job | Board says | Posting says | Class | Suggested fix (job-board session, with the quality rule: fixture, fix, QA rule, old-vs-new) |
+|---|---|---|---|---|---|
+| 1 | `jf86468317e` Wistia, Staff Product Design Lead, Hosting ([posting](https://jobs.ashbyhq.com/wistia/23542c6c-90d9-4958-b47b-3a4de4721ee5)) | **Worldwide** | "Fully remote, work from anywhere in the contiguous United States" (the classifier quoted this line in its own evidence) | "anywhere in <country>" read as worldwide | Treat "anywhere in (the contiguous/continental)? <country>" as that country. Add to `tests/fixtures/regressions.json`. |
+| 2 | `j63a0b6fc93` Box, "Let's stay in touch. Join our Talent Community!" | **Worldwide** job | Not a job: a talent-community sign-up | Non-job posting | Drop titles like "talent community", "stay in touch", "general application". |
+| 3 | `jb19e156074` Netlify, Talent Partner ([posting](https://job-boards.greenhouse.io/netlify/jobs/8919217002)) | **Worldwide** | Location only "Remote". Evidence is company-level: "a remote-first, globally distributed company with 120+ employees working across 13 countries". Pay: "$97,000 - $150,000 for most US-based locations and $95,000 - $143,000 CAD for most Canada-based locations" (opened 26 Nov) | Company-level wording counted as proof (CLAUDE.md says it must not); pay ranges name only the US and Canada | Classify as "Location not specified" (or US/Canada if pay ranges are taken as a signal); the board's card shows only the CAD range, which also understates the US range. |
+
+Scale: 19 jobs are labelled Worldwide today; 3 of them (16%) are wrong or doubtful. Worldwide roles are exactly what the social posts feature, so this matters more for us than its share of the board suggests.
+
+## Question for KT (not a data bug)
+- The board's apply button reads **"Apply on employer site"** (`index.html`, job card). CLAUDE.md bans "straight to the employer" and "the employer's own posting/page" because links open the hiring-system page. "Employer site" is close to that wording; the button's tooltip already says "Opens the original posting on the company's hiring page". Worth a look under the copy-change rule; the social posts use "Apply on the original posting".
