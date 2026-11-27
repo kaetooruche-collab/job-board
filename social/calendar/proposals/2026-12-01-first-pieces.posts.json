@@ -132,6 +132,53 @@
       "spelling_ok": [
         "cheque"
       ]
+    },
+    {
+      "id": "v2-screen",
+      "date": "2026-12-04",
+      "pillar": "demo",
+      "series": "demo",
+      "format": "video",
+      "platforms": [
+        "tiktok",
+        "instagram",
+        "facebook"
+      ],
+      "funnel": "consideration",
+      "goal_metric": "board visits (utm) and saves",
+      "title": "V2 screen-led demo: the box that changes the whole board",
+      "hook": "Do this before you apply.",
+      "variable": "Screen-led video with no presenter (first test against presenter-led V1)",
+      "caption": "Do this before you apply.\n\nTell the board where you live. You'll see only the jobs that say they're open to you, each with where it hires from, the posted date, and the pay when it's stated. Apply goes to the original posting.\n\nLink in bio.\n\n#remotejobs #jobsearch #remotework #workfromhome",
+      "render": {
+        "theme": "blue",
+        "date_line": "yirehcareers.vercel.app",
+        "slides": [
+          {
+            "t": "cover",
+            "kicker": "Before you apply",
+            "title": "Tell the board where you live",
+            "sub": "One box. It changes everything you see."
+          },
+          {
+            "t": "cover",
+            "kicker": "Every card shows",
+            "title": "Where it hires from",
+            "sub": "Plus the posted date, and the pay when the employer states it."
+          },
+          {
+            "t": "cover",
+            "kicker": "Then",
+            "title": "Apply on the original posting",
+            "sub": "No account. Nothing to pay."
+          },
+          {
+            "t": "cta",
+            "title": "Try it with where you live",
+            "sub": "Link in bio."
+          }
+        ]
+      }
     }
   ]
 }

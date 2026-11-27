@@ -1,7 +1,7 @@
 {
   "week": "2026-12-01",
   "title": "Week of Tuesday 1 December 2026",
-  "status": "DRAFT for KT's approval (Phase 1: approve the week). Nothing is scheduled. Audience: people outside the US, wherever they live (KT, 26 Nov 2026).",
+  "status": "DRAFT for KT's approval (Phase 1: approve the week). Nothing is scheduled. Audience: people outside the US, wherever they live (KT, 26 Nov 2026). | Swaps applied 27 Nov (KT 'yes swaps'): V1 Tue, C1 Thu, V2 screen-led Fri, S1 Sat (Facebook); V3 Mon pending credits.",
   "measured_on": "2026-11-26",
   "test": "Video opening B ('Pay to look') against Video 1's 'Halfway'; and role posts as a 3-role carousel (Wed, Sat) against a single role image (Fri).",
   "posts": [
@@ -10,45 +10,31 @@
       "date": "2026-12-01",
       "day": "Tue",
       "time_utc": "15:00",
+      "pillar": "eligibility",
+      "series": "weekly-video",
+      "format": "video",
       "platforms": [
         "tiktok",
-        "instagram",
-        "facebook"
+        "instagram"
       ],
-      "pillar": "proof",
-      "format": "video",
-      "title": "Weekly video: \"Pay to look\"",
-      "hook": "Stop paying to look at remote jobs.",
-      "variable": "Opening line. Video 1 opened on a moment (\"halfway through an application\"); this one opens on a cost (paying to search). Everything after the hook keeps Video 1's shape: board footage in the middle, presenter at both ends.",
-      "script": "Stop paying to look at remote jobs.\nSome sites charge you every month just to search... and a real employer will never ask you to pay to apply.\nYai-ray Careers is free to search. No account needed.\nTell it where you live... and see only the remote jobs that say they're open to you.\nSo you don't spend an hour on one you can't apply for.\nLink in bio.",
-      "on_screen": [
-        "Stop paying to look at remote jobs",
-        "Free to search · no account",
-        "Only the jobs open to where you live",
-        "36 open to applicants anywhere",
-        "From our live board, 26 Nov 2026",
-        "Link in bio",
-        "AI-generated presenter"
-      ],
-      "visuals": "0-4 s presenter (warm, at-home; HD). 4-20 s live-board footage from social/tools/record-board-footage.js: the empty \"Where do you live?\" box, \"Worldwide roles only\" typed, the list filtering, the first card held. 20-26 s presenter close. Captions burned in (Inter, captions.ass styles). The statistic line is on screen with its date.",
-      "production": "Presenter: BHuman HD render, about 54 credits, plus about 30 voice credits (Olivia, energetic). Needs KT's monthly credit budget (plan 6b). Free fallback if there is no budget: the same footage with on-screen text only, no presenter and no voice.",
-      "caption": "Stop paying to look at remote jobs.\n\nOn Yireh Careers you don't need an account. Tell it where you live and it shows the remote jobs that say they're open to you, each linked to its original posting.\n\nLink in bio.\n\n#remotejobs #remotework #jobsearch #workfromhome",
+      "funnel": "awareness",
+      "goal_metric": "average watch time (Buffer) and profile visits",
+      "title": "V1 Remote… but not for you? (Amara)",
+      "brief": "social/video-briefs/V1-not-your-country.md",
+      "hook": "You find a remote job that actually fits.",
+      "variable": "Presenter-led, hook on screen from frame 0, 170 wpm",
       "ai_presenter": true,
       "ai_voice": true,
       "ai_label": true,
-      "measured_on": "2026-11-26",
-      "number_dated_on_screen": true,
-      "spelling_ok": [
-        "Yai"
+      "on_screen": [
+        "Remote… but not for you?",
+        "yirehcareers.vercel.app"
       ],
-      "change_note": "26 Nov 2026: dropped 'over seventeen hundred jobs ... 360 companies'. Most of those are open only to the US; a viewer in a low-supply country finds 26-38 (net-impression risk, KT's 'don't overpromise'). Replaced with the worldwide count (36 on 26 Nov after the refresh), which is true for every viewer. Needs KT's yes with the rest of the week.",
-      "series": "weekly-video",
-      "funnel": "awareness",
-      "goal_metric": "2-second hold rate and profile visits (TikTok Studio, Instagram Insights)",
-      "cast": {
-        "presenter": "amara",
-        "setting": "home desk by a window, morning light, plant in the background"
-      }
+      "caption": "Remote tells you where you'll work. It doesn't always tell you where you can live.\n\nBefore you write the cover letter, find the line that says where applicants must be based. If it isn't you, you've just saved an hour.\n\nOur board shows that line on every job, or says when the employer doesn't. Link in bio.\n\n#remotejobs #jobsearch #remotework #workfromhome",
+      "captions": {
+        "tiktok": "That one line at the bottom of a 'remote' job. Check it before anything else. #remotejobs #jobsearch #remotework #workfromhome"
+      },
+      "note": "Facebook skipped: Buffer can't set Facebook's AI label (KT can post it by hand with 'AI info' ticked)."
     },
     {
       "id": "w49-p2",
@@ -96,89 +82,85 @@
     {
       "id": "w49-p3",
       "date": "2026-12-03",
-      "day": "Thu",
-      "time_utc": "15:00",
+      "pillar": "eligibility",
+      "series": "numbers",
+      "format": "carousel",
       "platforms": [
         "instagram",
         "tiktok",
         "facebook"
       ],
-      "pillar": "tips",
-      "format": "carousel",
-      "title": "Tip: \"Remote\" doesn't always mean anywhere",
-      "hook": "\"Remote\" doesn't always mean anywhere.",
-      "variable": "None new (tips are the control post for saves).",
-      "visuals": "Five text slides in the site's look: cover, three checks, closing slide.",
+      "funnel": "awareness",
+      "goal_metric": "saves and sends per reach",
+      "title": "We sorted the board by who can apply",
+      "hook": "We sorted 1,987 remote jobs by who can apply.",
+      "variable": "Data-story carousel (first of its kind for us)",
+      "caption": "We sorted 1,987 remote jobs by who can apply.\n\nToday's count: a handful are open to anyone, anywhere. Most name a country or a region, and that's useful, once you know where to look for it.\n\nSwipe for the numbers, then filter by where you live. Link in bio.\n\n#remotejobs #jobsearch #remotework #workfromhome",
+      "measured_on": "2026-11-27",
+      "number_dated_on_screen": true,
       "render": {
-        "date_line": "Yireh Careers tips",
+        "theme": "light",
         "slides": [
           {
             "t": "cover",
-            "kicker": "Before you apply",
-            "title": "“Remote” doesn't always mean anywhere",
-            "sub": "Three places to look first. It takes about a minute."
+            "kicker": "We sorted them all",
+            "title": "{jobs:,} remote jobs. Who can apply?",
+            "sub": "Every job on our board, sorted by what the employer says."
           },
           {
             "t": "tip",
-            "n": "1",
-            "title": "The location line",
-            "body": "A country or region there tells you more than the word Remote in the title."
+            "n": "{worldwide}",
+            "title": "Open to anyone, anywhere",
+            "body": "Checked against each company's own job data on the day we counted."
           },
           {
             "t": "tip",
-            "n": "2",
-            "title": "Search the posting",
-            "body": "Look for “reside”, “based in”, “right to work” and “time zone”."
+            "n": "{region_wide}",
+            "title": "Open across a region",
+            "body": "A whole region, like EMEA or the Americas. Check that yours is in it."
           },
           {
             "t": "tip",
-            "n": "3",
-            "title": "Not clear? Ask first",
-            "body": "Email the recruiter before you spend an hour on the form."
+            "n": "{named_countries:,}",
+            "title": "Name one or more countries",
+            "body": "The most common answer by far. The country is on every card."
+          },
+          {
+            "t": "tip",
+            "n": "{location_not_specified}",
+            "title": "Don't say",
+            "body": "The posting doesn't state it. Ask the employer before you spend an hour."
           },
           {
             "t": "cta",
-            "kicker": "Or start with the board",
-            "title": "Tell it where you live",
-            "sub": "It shows only the jobs that say they're open to you."
+            "title": "Start with where you live",
+            "sub": "Tell the board, and it shows the jobs that say they're open to you."
           }
         ]
       },
-      "caption": "“Remote” doesn't always mean anywhere.\n\nBefore you spend an hour on an application, check three things: the location line; the words “reside”, “based in” and “time zone” in the posting; and, if it's still unclear, ask the recruiter.\n\nSave this for your next application.\n\n#remotejobs #jobsearch #jobtips #remotework",
-      "series": "tips",
-      "funnel": "awareness",
-      "goal_metric": "saves and shares (Buffer, platform insights)"
+      "day": "Thu",
+      "time_utc": "15:00"
     },
     {
       "id": "w49-p4",
       "date": "2026-12-04",
-      "day": "Fri",
-      "time_utc": "15:00",
+      "pillar": "demo",
+      "series": "demo",
+      "format": "video",
       "platforms": [
-        "instagram",
         "tiktok",
+        "instagram",
         "facebook"
       ],
-      "pillar": "jobs",
-      "format": "image",
-      "title": "Real role: one open worldwide (single image)",
-      "hook": "A remote role that's open worldwide.",
-      "variable": "Format: single role image, against Wednesday's carousel.",
-      "visuals": "One 1080x1350 role card, picked on the day: open worldwide, posted in the last 14 days, not used earlier in the week.",
-      "render": {
-        "slides": [
-          {
-            "t": "jobs",
-            "count": 1,
-            "worldwide_only": true
-          }
-        ]
-      },
-      "caption": "A remote role that's open worldwide.\n\nWhere you can apply from, the posted date and the pay (if the posting states it) are on the card. The original posting is one tap away on the board.\n\nLink in bio. Check the employer's rules for your country before you apply.\n\n#remotejobs #remotework #hiring",
-      "featured_jobs": [],
-      "series": "role-single",
       "funnel": "consideration",
-      "goal_metric": "board visits from the bio link (GoatCounter by utm_source)"
+      "goal_metric": "board visits (utm) and saves",
+      "title": "V2 screen-led demo: the box that changes the whole board",
+      "hook": "Do this before you apply.",
+      "variable": "Screen-led video with no presenter (first test against presenter-led V1)",
+      "caption": "Do this before you apply.\n\nTell the board where you live. You'll see only the jobs that say they're open to you, each with where it hires from, the posted date, and the pay when it's stated. Apply goes to the original posting.\n\nLink in bio.\n\n#remotejobs #jobsearch #remotework #workfromhome",
+      "day": "Fri",
+      "time_utc": "15:00",
+      "note": "Prebuilt video (slides + live-board footage, no numbers): do not re-render; check frames on the day."
     },
     {
       "id": "w49-p5",
@@ -220,6 +202,36 @@
       "series": "roles-carousel",
       "funnel": "consideration",
       "goal_metric": "board visits from the bio link (GoatCounter by utm_source) and saves"
+    },
+    {
+      "id": "w49-p7",
+      "date": "2026-12-05",
+      "pillar": "brand",
+      "series": "trust",
+      "format": "image",
+      "platforms": [
+        "facebook"
+      ],
+      "funnel": "consideration",
+      "goal_metric": "board visits from the tagged link",
+      "title": "We check the job, not the employer",
+      "hook": "We check the job. Not the employer.",
+      "variable": "Honesty-led trust message",
+      "caption": "We check the job. Not the employer.\n\nEvery job on our board comes from the company's own hiring page, has its real posting date, and says where you can apply from, or that the employer doesn't say. We don't audit companies and we can't promise interviews, so read each employer's rules for your country before you apply.\n\nWhat we check, in full: link in bio.\n\n#remotejobs #jobsearch",
+      "render": {
+        "theme": "light",
+        "date_line": "From yirehcareers.vercel.app/verify",
+        "slides": [
+          {
+            "t": "cover",
+            "kicker": "What we check",
+            "title": "We check the job. Not the employer.",
+            "sub": "Original posting · real posted date · where you can apply from. No promises we can't keep."
+          }
+        ]
+      },
+      "day": "Sat",
+      "time_utc": "15:00"
     },
     {
       "id": "w49-p6",
@@ -275,7 +287,145 @@
       "caption": "A real employer won't ask you to pay to get a job.\n\nThree warning signs: a fee to apply or train; interviews held only by text on Telegram or WhatsApp; and a role you can't find on the company's careers site.\n\nSave this, and share it with someone who's job hunting.\n\n#jobscams #remotejobs #jobsearch #careertips",
       "series": "safety",
       "funnel": "awareness",
-      "goal_metric": "saves and shares (Buffer, platform insights)"
+      "goal_metric": "saves and shares (Buffer, platform insights)",
+      "pending_swap": "V3 'Three messages a real employer won't send you' replaces this post once rendered (KT 'yes swaps'; V3 credits awaiting KT, total would pass the 135 quote by about 12)"
+    }
+  ],
+  "moved_out": [
+    {
+      "id": "w49-p1",
+      "date": "2026-12-01",
+      "day": "Tue",
+      "time_utc": "15:00",
+      "platforms": [
+        "tiktok",
+        "instagram",
+        "facebook"
+      ],
+      "pillar": "proof",
+      "format": "video",
+      "title": "Weekly video: \"Pay to look\"",
+      "hook": "Stop paying to look at remote jobs.",
+      "variable": "Opening line. Video 1 opened on a moment (\"halfway through an application\"); this one opens on a cost (paying to search). Everything after the hook keeps Video 1's shape: board footage in the middle, presenter at both ends.",
+      "script": "Stop paying to look at remote jobs.\nSome sites charge you every month just to search... and a real employer will never ask you to pay to apply.\nYai-ray Careers is free to search. No account needed.\nTell it where you live... and see only the remote jobs that say they're open to you.\nSo you don't spend an hour on one you can't apply for.\nLink in bio.",
+      "on_screen": [
+        "Stop paying to look at remote jobs",
+        "Free to search · no account",
+        "Only the jobs open to where you live",
+        "36 open to applicants anywhere",
+        "From our live board, 26 Nov 2026",
+        "Link in bio",
+        "AI-generated presenter"
+      ],
+      "visuals": "0-4 s presenter (warm, at-home; HD). 4-20 s live-board footage from social/tools/record-board-footage.js: the empty \"Where do you live?\" box, \"Worldwide roles only\" typed, the list filtering, the first card held. 20-26 s presenter close. Captions burned in (Inter, captions.ass styles). The statistic line is on screen with its date.",
+      "production": "Presenter: BHuman HD render, about 54 credits, plus about 30 voice credits (Olivia, energetic). Needs KT's monthly credit budget (plan 6b). Free fallback if there is no budget: the same footage with on-screen text only, no presenter and no voice.",
+      "caption": "Stop paying to look at remote jobs.\n\nOn Yireh Careers you don't need an account. Tell it where you live and it shows the remote jobs that say they're open to you, each linked to its original posting.\n\nLink in bio.\n\n#remotejobs #remotework #jobsearch #workfromhome",
+      "ai_presenter": true,
+      "ai_voice": true,
+      "ai_label": true,
+      "measured_on": "2026-11-26",
+      "number_dated_on_screen": true,
+      "spelling_ok": [
+        "Yai"
+      ],
+      "change_note": "26 Nov 2026: dropped 'over seventeen hundred jobs ... 360 companies'. Most of those are open only to the US; a viewer in a low-supply country finds 26-38 (net-impression risk, KT's 'don't overpromise'). Replaced with the worldwide count (36 on 26 Nov after the refresh), which is true for every viewer. Needs KT's yes with the rest of the week.",
+      "series": "weekly-video",
+      "funnel": "awareness",
+      "goal_metric": "2-second hold rate and profile visits (TikTok Studio, Instagram Insights)",
+      "cast": {
+        "presenter": "amara",
+        "setting": "home desk by a window, morning light, plant in the background"
+      },
+      "moved_out": "replaced by V1 (KT 'yes swaps', 27 Nov)"
+    },
+    {
+      "id": "w49-p3",
+      "date": "2026-12-03",
+      "day": "Thu",
+      "time_utc": "15:00",
+      "platforms": [
+        "instagram",
+        "tiktok",
+        "facebook"
+      ],
+      "pillar": "tips",
+      "format": "carousel",
+      "title": "Tip: \"Remote\" doesn't always mean anywhere",
+      "hook": "\"Remote\" doesn't always mean anywhere.",
+      "variable": "None new (tips are the control post for saves).",
+      "visuals": "Five text slides in the site's look: cover, three checks, closing slide.",
+      "render": {
+        "date_line": "Yireh Careers tips",
+        "slides": [
+          {
+            "t": "cover",
+            "kicker": "Before you apply",
+            "title": "“Remote” doesn't always mean anywhere",
+            "sub": "Three places to look first. It takes about a minute."
+          },
+          {
+            "t": "tip",
+            "n": "1",
+            "title": "The location line",
+            "body": "A country or region there tells you more than the word Remote in the title."
+          },
+          {
+            "t": "tip",
+            "n": "2",
+            "title": "Search the posting",
+            "body": "Look for “reside”, “based in”, “right to work” and “time zone”."
+          },
+          {
+            "t": "tip",
+            "n": "3",
+            "title": "Not clear? Ask first",
+            "body": "Email the recruiter before you spend an hour on the form."
+          },
+          {
+            "t": "cta",
+            "kicker": "Or start with the board",
+            "title": "Tell it where you live",
+            "sub": "It shows only the jobs that say they're open to you."
+          }
+        ]
+      },
+      "caption": "“Remote” doesn't always mean anywhere.\n\nBefore you spend an hour on an application, check three things: the location line; the words “reside”, “based in” and “time zone” in the posting; and, if it's still unclear, ask the recruiter.\n\nSave this for your next application.\n\n#remotejobs #jobsearch #jobtips #remotework",
+      "series": "tips",
+      "funnel": "awareness",
+      "goal_metric": "saves and shares (Buffer, platform insights)",
+      "moved_out": "moved to week 2 by the planner (KT 'yes swaps', 27 Nov)"
+    },
+    {
+      "id": "w49-p4",
+      "date": "2026-12-04",
+      "day": "Fri",
+      "time_utc": "15:00",
+      "platforms": [
+        "instagram",
+        "tiktok",
+        "facebook"
+      ],
+      "pillar": "jobs",
+      "format": "image",
+      "title": "Real role: one open worldwide (single image)",
+      "hook": "A remote role that's open worldwide.",
+      "variable": "Format: single role image, against Wednesday's carousel.",
+      "visuals": "One 1080x1350 role card, picked on the day: open worldwide, posted in the last 14 days, not used earlier in the week.",
+      "render": {
+        "slides": [
+          {
+            "t": "jobs",
+            "count": 1,
+            "worldwide_only": true
+          }
+        ]
+      },
+      "caption": "A remote role that's open worldwide.\n\nWhere you can apply from, the posted date and the pay (if the posting states it) are on the card. The original posting is one tap away on the board.\n\nLink in bio. Check the employer's rules for your country before you apply.\n\n#remotejobs #remotework #hiring",
+      "featured_jobs": [],
+      "series": "role-single",
+      "funnel": "consideration",
+      "goal_metric": "board visits from the bio link (GoatCounter by utm_source)",
+      "moved_out": "replaced by V2 screen-led demo (KT 'yes swaps', 27 Nov)"
     }
   ]
 }

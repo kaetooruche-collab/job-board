@@ -165,7 +165,8 @@ def payloads_for(post: dict, today: str, check_urls: bool = True, formats: bool 
             meta["facebook"] = {"type": "reel" if videos else "post"}
         elif plat == "tiktok":
             meta["tiktok"] = {"isAiGenerated": True} if (ai and videos) else {}
-        text = facebook_text(post) if (formats and plat == "facebook") else post["caption"]
+        base = dict(post, caption=(post.get("captions") or {}).get(plat) or post["caption"])   # per-platform captions
+        text = facebook_text(base) if (formats and plat == "facebook") else base["caption"]
         out.append({"_post": post["id"], "_platform": plat, "channelId": CHANNELS[plat], "schedulingType": "automatic",
                     "mode": "customScheduled", "dueAt": due.isoformat(), "text": text, "assets": assets,
                     "metadata": meta})
