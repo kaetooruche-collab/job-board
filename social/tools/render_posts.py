@@ -50,10 +50,12 @@ THEMES = {
                   tip_bg="#2563eb", tip_fg="#ffffff", url_bg="#2563eb", url_fg="#ffffff"),
     "blue":  dict(bg="linear-gradient(135deg,#2563eb 0%,#1d4ed8 100%)", fg="#ffffff", kicker="#dbeafe", sub="#eff6ff",
                   foot="#dbeafe", em="#fde68a", tip_bg="#ffffff", tip_fg="#1d4ed8", url_bg="#ffffff", url_fg="#1d4ed8"),
-    "amber": dict(bg="#fbbc04", fg="#1a1a2e", kicker="#78350f", sub="#3b2a06", foot="#78350f", em="#78350f",
-                  tip_bg="#1a1a2e", tip_fg="#fbbc04", url_bg="#1a1a2e", url_fg="#ffffff"),
-    "teal":  dict(bg="linear-gradient(135deg,#0f766e 0%,#115e59 100%)", fg="#ffffff", kicker="#99f6e4", sub="#ecfdf5",
-                  foot="#ccfbf1", em="#99f6e4", tip_bg="#ffffff", tip_fg="#0f766e", url_bg="#ffffff", url_fg="#0f766e"),
+    # Amber and teal are accents on the light background, not full backgrounds (27 Nov 2026: distinctive-asset
+    # research says keep the brand colours dominant; see social/research/2026-11-27-question-bank-and-sources.md).
+    "amber": dict(bg="#eef2f8", fg="#1a1a2e", kicker="#b45309", sub="#3c4043", foot="#5f6368", em="#b45309",
+                  tip_bg="#f59e0b", tip_fg="#1a1a2e", url_bg="#2563eb", url_fg="#ffffff", bar="#f59e0b"),
+    "teal":  dict(bg="#eef2f8", fg="#1a1a2e", kicker="#0f766e", sub="#3c4043", foot="#5f6368", em="#0f766e",
+                  tip_bg="#0f766e", tip_fg="#ffffff", url_bg="#2563eb", url_fg="#ffffff", bar="#0f766e"),
 }
 # Default theme by series; a post can override with render.theme.
 SERIES_THEME = {"roles-carousel": "navy", "role-single": "navy", "tips": "light", "safety": "amber",
@@ -62,7 +64,7 @@ SERIES_THEME = {"roles-carousel": "navy", "role-single": "navy", "tips": "light"
 CSS = """
 *{box-sizing:border-box;margin:0;padding:0}
 html,body{width:%(w)dpx;height:%(h)dpx}
-body{font-family:'Inter',sans-serif;color:var(--fg);background:var(--bg);
+body{font-family:'Inter',sans-serif;color:var(--fg);background:var(--bg);border-top:18px solid var(--bar);
  position:relative;overflow:hidden;-webkit-font-smoothing:antialiased}
 .wrap{position:absolute;inset:0;padding:84px 84px 0;display:flex;flex-direction:column}
 .brand{display:flex;align-items:center;gap:20px;font-weight:700;font-size:34px;letter-spacing:-.01em}
@@ -95,7 +97,8 @@ h1 em{font-style:normal;color:var(--em)}
 
 def theme_css(name: str) -> str:
     t = dict(THEMES.get(name) or THEMES["navy"])
-    t.setdefault("ring", "#ffffff" if name in ("blue", "teal") else "transparent")
+    t.setdefault("ring", "#ffffff" if name == "blue" else "transparent")
+    t.setdefault("bar", "transparent")
     return ":root{" + ";".join(f"--{k}:{v}" for k, v in t.items()) + "}"
 
 

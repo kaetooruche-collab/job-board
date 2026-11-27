@@ -54,10 +54,10 @@ Status: **PROPOSED** (Phase 0). Binding rules come from `CLAUDE.md` and `drafts/
 |---|---|---|---|
 | Roles (carousels, single role) | navy | hero navy gradient | white |
 | Tips (eligibility, reading a posting) | light | `#eef2f8` | `#1a1a2e`, blue kickers |
-| Safety and scams | amber | `#fbbc04` | `#1a1a2e`, brown kickers |
+| Safety and scams | amber accent | `#eef2f8` with an amber top bar and number tiles | `#1a1a2e`, dark amber kickers |
 | Numbers and the weekly video's cover | blue | `#2563eb` → `#1d4ed8` | white; mark ringed in white |
-| CV service | teal | `#0f766e` → `#115e59` | white; mark ringed in white |
-The mark, Inter, the card and the footer never change, so every colour still reads as Yireh.
+| CV service | teal accent | `#eef2f8` with a teal top bar and tiles | `#1a1a2e`, teal kickers |
+Blue and white dominate every post; amber and teal are accents only, never full backgrounds (distinctive-asset evidence: `research/2026-11-27-question-bank-and-sources.md`, section 3). The mark, Inter, the card and the footer never change.
 
 **Templates** (all built by `social/tools/render_posts.py`, 1080x1350):
 1. **Cover**: kicker (caps, light blue) → headline (Inter 800, ~104 px) → one-line sub. Content centred vertically.
