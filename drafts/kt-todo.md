@@ -93,6 +93,7 @@ Moved to its own chat and its own list: `jobsearch/TODO.md`. Not tracked here.
 - [ ] **Weekly newsletter:** the ready-to-paste Brevo email from the pipeline, if you decide to send one weekly. Only KT sends.
 
 ## 3. Decisions waiting for KT
+- [ ] **(27 Nov 2026) Merge the location-and-pay fix?** Wrong "Worldwide"/region labels (Trafilea, Airwallex, Ajax and others) and missed "$105k" pay. 57 labels and 16 pay lines change; 5 correct labels become "Location not specified". Evidence and the Fastly/Tether questions: `drafts/decisions/2026-11-27-structured-locations-and-k-pay.md`. Branch `claude/lucid-lovelace-3ribsh`.
 - [ ] **Approve the weekly independent audit** (a scheduled Claude task that opens random listings and compares them with the real postings; `drafts/weekly-audit-prompt.md`). Yes or no.
 - [ ] **Newsletter consent:** the signup is one step (single opt-in). Brevo recommends double opt-in for GDPR. You chose one step; confirm it stays, or switch.
 - [ ] **Legal check (recommended, not required):** have a qualified adviser read the privacy policy, the refund/cooling-off wording and the free-check terms for the countries you sell to. Claude's reading is not legal advice.
