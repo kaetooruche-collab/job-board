@@ -11,7 +11,8 @@ The raw data is `social/post-log.csv`: one row per post per platform. The Friday
 ## Baseline (before scheduled posting)
 | Date | What | Number | Source |
 |---|---|---|---|
-| 26 Nov 2026 | Video 1 (Amara, "halfway through an application…") on TikTok | 84 views | `post-log.csv`, KT |
+| 26 Nov 2026 | Video 1 (Amara, "halfway through an application…") on TikTok | 84 views (26 Nov); 425 views, avg watch 1.3 s of 26 s (27 Nov) | KT; Buffer metrics |
+| 26 Nov 2026 | Video 1 on Instagram / Facebook | reach 8, avg watch 6.3 s / reach 0 | Buffer metrics |
 | 20-27 Nov 2026 | Board visits from social | Facebook 9, Instagram 2, TikTok 0 | GoatCounter, 27 Nov |
 | 27 Nov 2026 | Video 1 delivery | 195 wpm (too fast), watermark present | `voice_qc.py`, frame check |
 
@@ -19,7 +20,8 @@ The raw data is `social/post-log.csv`: one row per post per platform. The Friday
 | Date | Lesson | Status | Evidence |
 |---|---|---|---|
 | 27 Nov | Voice pace needs directing: the default delivery ran at 195 wpm | hypothesis (one video) | voice_qc on Video 1 |
-| 27 Nov | Facebook's clickable link sends more board visits than bio links so far | hypothesis (tiny numbers) | GoatCounter 20-27 Nov |
+| 27 Nov | Facebook visits (9) came from somewhere other than the Page posts (reach 0-1, 0 clicks): likely group shares | hypothesis | Buffer + GoatCounter 20-27 Nov |
+| 27 Nov | Video 1 lost most TikTok viewers in the first 1-2 s (avg 1.3 s): the opening must show the point in frame 0 | hypothesis (one video) | Buffer avg watch time; review 2026-11-27 |
 
 ## Tests queue (one at a time)
 1. Hook type: a specific fact vs a recognisable situation (Instagram Trial Reels).

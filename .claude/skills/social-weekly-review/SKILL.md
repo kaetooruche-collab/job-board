@@ -5,7 +5,7 @@ description: Friday runbook for the Yireh Careers social agency - collect the we
 
 # Weekly review (Fridays)
 
-1. **Buffer.** `get_account`, then for each post in `social/post-log.csv` from the last 14 days with a `buffer_post_id`: `get_post` for its status and metrics. Also `get_aggregated_post_metrics` per channel for the last 7 days. Buffer gives reactions, comments and impressions only; watch time and 3-second views are not in its API.
+1. **Buffer.** `get_account`, then for each post in `social/post-log.csv` from the last 14 days with a `buffer_post_id`: `get_post` for its status and metrics. Also `get_aggregated_post_metrics` per channel for the last 7 days. Use `list_posts` with `includeMetrics: true`: TikTok and Instagram give views, reach, likes, shares, saves (Instagram), total and average watch time; Facebook gives reach, impressions, clicks. Not in Buffer: the retention curve and 2-second hold (KT pastes from TikTok Studio when needed).
 2. **Board visits.** `python3 social/tools/social_metrics.py --days 7`. Exit 1 means GoatCounter is not connected: say "board visits unknown" (never estimate).
 3. **Platform figures.** If KT pasted TikTok Studio or Instagram Insights numbers, add them with `metrics_source` = where they came from.
 4. **Log.** Fill the metric columns of `social/post-log.csv` (one row per post per platform; `metrics_source` is required). Commit.

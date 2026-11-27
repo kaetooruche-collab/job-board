@@ -26,7 +26,7 @@ US viewers are welcome but not chased.
 ## 4. Objectives and how each is measured
 | Objective | Measure | Source | Note |
 |---|---|---|---|
-| Awareness | reach, 2-second hold, views per post | TikTok Studio, Instagram Insights (KT pastes); Buffer impressions | Buffer has no watch time |
+| Awareness | reach, 2-second hold, views per post | Buffer per-post metrics (`list_posts` with `includeMetrics`: views, reach, avg and total watch time for TikTok and Instagram; saves on Instagram) + TikTok Studio retention curve (KT pastes) | Buffer gives average watch time, not the retention curve or 2-s hold |
 | Trust and usefulness | saves and sends per reach | platform insights; Buffer reactions | Instagram's head ranks sends and likes; saves signal reference value |
 | Qualified traffic | board visits by `utm_source` / campaign | GoatCounter (`tools/social_metrics.py`) | baseline 20-27 Nov: Facebook 9, Instagram 2 |
 | Conversion (later) | free-check requests and signups after a social visit | GoatCounter conversion events | judged monthly, not per post |
