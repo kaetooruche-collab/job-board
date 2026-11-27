@@ -5,6 +5,8 @@
 //   node social/tools/record-board-footage.js --out social/output/footage/2026-12-01 [--seconds 14]
 // Cards are hidden until the worldwide filter is applied; the final view is scanned for country names (exit 1 if any).
 // Then: ffmpeg -framerate <fps from meta.json> -i <out>/frames/f%05d.jpg -vf "scale=1080:1920,format=yuv420p" -c:v libx264 <out>/board.mp4
+// Hidden while recording (QA 27 Nov): undated counts (.hero-facts, #job-count), the paid "Get a CV" link (.cv-btn) and the
+// hero's "Free. No fee to apply." (a post says free at most once). Nothing else on the live page is changed.
 // Writes <out>/frames/*.jpg (1080x1920), <out>/meta.json (frame times, scene marks, the job shown at the end,
 // today's job count as the page shows it). The job in the last shot must still be checked against its posting.
 const { chromium } = require('playwright');
@@ -28,7 +30,7 @@ const sleep = ms => new Promise(r => setTimeout(r, ms));
   const p = await ctx.newPage();
   await p.goto('https://yirehcareers.vercel.app/?utm_source=video', { waitUntil: 'networkidle' });
   // Cards stay hidden until the worldwide filter is on, so no card's country label is ever filmed.
-  await p.addStyleTag({ content: '.inline-signup{display:none!important} html{scroll-behavior:smooth} body.yc-rec .job-card{visibility:hidden}' });
+  await p.addStyleTag({ content: '.inline-signup{display:none!important} html{scroll-behavior:smooth} body.yc-rec .job-card{visibility:hidden} .hero-facts,#job-count,.cv-btn{visibility:hidden!important} #level-row,#level-group-label{display:none!important} .hero-sub{font-size:0!important} .hero-sub::after{content:"Every job shows where it hires from.";font-size:16px}' });
   await p.evaluate(() => document.body.classList.add('yc-rec'));
 
   let done = false, n = 0;

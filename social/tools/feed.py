@@ -78,10 +78,25 @@ def is_audience_open(job: dict) -> bool:
     return False
 
 
+# A post headed "open beyond one country", aimed at people outside the US, must not lead with roles that are in practice
+# US/Canada only (QA 27 Nov: Clera "North America", Fastly) or name a country in the title ("Head of US").
+NARROW_REGIONS = {"North America"}
+
+
+def _title_names_country(title: str) -> bool:
+    import check_post
+    return bool(check_post._country_hits(title, set())[0])
+
+
 def featurable(job: dict, now: dt.datetime, max_age_days: int = 14) -> bool:
     if job.get("id") in excluded():
         return False
     if not is_audience_open(job):
+        return False
+    el = job.get("eligibility") or {}
+    if el.get("type") == "region" and set(el.get("regions") or []) <= NARROW_REGIONS:
+        return False
+    if _title_names_country(job.get("title", "")):
         return False
     if NOT_A_JOB.search(job.get("title", "")):
         return False

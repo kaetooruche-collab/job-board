@@ -187,6 +187,16 @@ def build(posts: list[dict], jobs: list[dict], out_root: Path, only: set[str] | 
                         break
                     if j["id"] not in used and (not check or verify_source.ok(j)):
                         picks.append(j)
+                # Reachable mix (QA 27 Nov): if every pick is senior, swap the last one for a non-senior role, preferring
+                # one that states pay, so more readers can act on the post.
+                SENIOR = ("senior", "leadership", "senior_plus")
+                if len(picks) >= 2 and all((j.get("level") or "") in SENIOR for j in picks):
+                    alts = [j for j in src if j["id"] not in used and j not in picks and j.get("level") in ("mid", "junior", "entry")]
+                    alts.sort(key=lambda j: not j.get("salaryText"))
+                    for j in alts:
+                        if not check or verify_source.ok(j):
+                            picks[-1] = j
+                            break
                 if len(picks) < s.get("count", 3):
                     print(f"WARNING {p['id']}: only {len(picks)} roles open to the audience are available", file=sys.stderr)
                 for j in picks:

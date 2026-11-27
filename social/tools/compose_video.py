@@ -38,6 +38,30 @@ def ts(t: float) -> str:
     return f"{int(h)}:{int(m):02d}:{s:05.2f}"
 
 
+def align_to_script(timed: list[dict], script: str) -> list[dict]:
+    """Captions must show the SCRIPT's words, not the recogniser's guesses ("our country" for "a country", QA 27 Nov).
+    Script words take the timings of the matching heard words; unmatched script words share the time span of the
+    heard words they replace."""
+    from difflib import SequenceMatcher
+    import re as _re
+    sw = [w for w in _re.findall(r"\S+", script.replace("Yai-ray", "Yireh"))]
+    norm = lambda w: _re.sub(r"[^a-z0-9]", "", w.lower().replace("yairay", "yireh"))
+    a, b = [norm(w) for w in sw], [norm(w["word"]) for w in timed]
+    out = []
+    for tag, i1, i2, j1, j2 in SequenceMatcher(None, a, b, autojunk=False).get_opcodes():
+        if tag == "equal":
+            out += [{"word": sw[i1 + k], "start": timed[j1 + k]["start"], "end": timed[j1 + k]["end"]} for k in range(i2 - i1)]
+        elif i2 > i1:
+            if j2 > j1:
+                t0, t1 = timed[j1]["start"], timed[j2 - 1]["end"]
+            else:   # nothing heard: squeeze between neighbours
+                t0 = out[-1]["end"] if out else (timed[j1]["start"] if j1 < len(timed) else 0)
+                t1 = timed[j1]["start"] if j1 < len(timed) else t0 + 0.3 * (i2 - i1)
+            step = max((t1 - t0) / (i2 - i1), 0.05)
+            out += [{"word": sw[i1 + k], "start": round(t0 + k * step, 2), "end": round(t0 + (k + 1) * step, 2)} for k in range(i2 - i1)]
+    return out
+
+
 def chunks(words: list[dict], max_words: int = 4, max_len: float = 1.8) -> list[list[dict]]:
     out, cur = [], []
     for w in words:
@@ -51,7 +75,7 @@ def chunks(words: list[dict], max_words: int = 4, max_len: float = 1.8) -> list[
     return out
 
 
-def ass(words: list[dict], emph: set[str], hook: str | None, hook_s: float) -> str:
+def ass(words: list[dict], emph: set[str], hook: str | None, hook_s: float, endcard_at: float | None = None) -> str:
     head = f"""[Script Info]
 ScriptType: v4.00+
 PlayResX: {W}
@@ -61,6 +85,7 @@ WrapStyle: 0
 [V4+ Styles]
 Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
 Style: Cap,Inter ExtraBold,74,{WHITE},{WHITE},{NAVY},{NAVY},1,0,0,0,100,100,0,0,3,18,0,2,90,150,560,1
+Style: End,Inter ExtraBold,64,{WHITE},{WHITE},&H00EB6325&,&H00EB6325&,1,0,0,0,100,100,0,0,3,24,0,5,90,90,0,1
 Style: Hook,Inter ExtraBold,86,{WHITE},{WHITE},{NAVY},{NAVY},1,0,0,0,100,100,-1,0,3,26,0,8,90,150,330,1
 
 [Events]
@@ -69,6 +94,8 @@ Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
     lines = []
     if hook:
         lines.append(f"Dialogue: 1,{ts(0)},{ts(hook_s)},Hook,,0,0,0,,{hook}")
+    if endcard_at is not None:
+        lines.append(f"Dialogue: 2,{ts(endcard_at)},{ts(endcard_at + 5)},End,,0,0,0,,yirehcareers.vercel.app")
     cs = chunks(words)
     for i, c in enumerate(cs):
         start = c[0]["start"]
@@ -98,15 +125,23 @@ def main(argv=None) -> int:
     ap.add_argument("--emph", default="")
     ap.add_argument("--hook")
     ap.add_argument("--hook-seconds", type=float, default=2.2)
+    ap.add_argument("--script", help="script text file: captions use its words (with the speech's timings)")
+    ap.add_argument("--endcard", action="store_true", help="last 2.2 s: the YC mark and yirehcareers.vercel.app")
     ap.add_argument("--crop-bottom", type=float, default=0.11,
                     help="fraction of the presenter frame cut from the bottom before scaling; removes the BHuman watermark "
                          "(at 91-92%% of the height; KT, 27 Nov: crop out all watermarks). 0 to keep the full frame")
     a = ap.parse_args(argv)
     src, out = Path(a.presenter), Path(a.out)
     words = voice_qc.transcribe(src)
+    if a.script:
+        words = align_to_script(words, Path(a.script).read_text(encoding="utf-8"))
     emph = {w.strip().lower() for w in a.emph.split(",") if w.strip()}
     sub = out.with_suffix(".captions.ass")
-    sub.write_text(ass(words, emph, a.hook, a.hook_seconds), encoding="utf-8")
+    dur = float(subprocess.check_output(["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", str(src)]))
+    end_at = max(dur - 2.2, 0) if a.endcard else None
+    if end_at is not None:   # captions stop when the end card starts
+        words = [w for w in words if w["start"] < end_at]
+    sub.write_text(ass(words, emph, a.hook, a.hook_seconds, end_at), encoding="utf-8")
     inputs = ["-i", str(src)]
     keep = 1 - max(0.0, min(a.crop_bottom, 0.3))
     chain = [f"[0:v]crop=iw:trunc(ih*{keep:.3f}/2)*2:0:0,scale={W}:{H}:force_original_aspect_ratio=increase,crop={W}:{H},setsar=1,fps=30[base]"]
@@ -118,6 +153,14 @@ def main(argv=None) -> int:
                      f"tpad=stop_mode=clone:stop_duration=30,setpts=PTS-STARTPTS+{float(start)}/TB[b{k}]")
         chain.append(f"[{last}][b{k}]overlay=enable='between(t,{float(start)},{float(end)})':eof_action=pass[o{k}]")
         last = f"o{k}"
+    if end_at is not None:
+        mark = Path(__file__).resolve().parents[2] / "drafts" / "whatsapp-profile" / "yc-mark.png"
+        if mark.exists():
+            k = len(inputs) // 2
+            inputs += ["-i", str(mark)]
+            chain.append(f"[{k}:v]scale=200:200[mk]")
+            chain.append(f"[{last}][mk]overlay=(W-w)/2:(H/2)-260:enable='gte(t,{end_at:.2f})'[em]")
+            last = "em"
     subpath = str(sub).replace(":", r"\:")
     chain.append(f"[{last}]subtitles='{subpath}':fontsdir=/usr/share/fonts,format=yuv420p[v]")
     chain.append(f"[0:a]{loudnorm_filter(src)},aresample=48000[a]")

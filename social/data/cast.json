@@ -6,7 +6,7 @@
       "status": "active",
       "bhuman_presenter_id": "53bb213d-afdc-4aab-b7bb-a73a2104deb6",
       "bhuman_presenter_name": "Yireh presenter - warm home",
-      "voice": "Olivia-style project voice (saved voice 03fdb21e-f95b-472b-bf8d-28fb973eb5b6, ElevenLabs pPoztmvzd5p26S3MsNrV)",
+      "voice": "ElevenLabs pPoztmvzd5p26S3MsNrV via create_narration voice {source: direct, provider: elevenlabs, voice_id: pPoztmvzd5p26S3MsNrV} (the saved-voice reference 03fdb21e failed with VOICE_REQUEST_INVALID on 27 Nov); speed 0.92 gave 170 wpm",
       "persona": "Warm, a little wry; talks like a friend who has been through the job hunt. Short sentences. Relatable frustration, reassurance.",
       "look": "Woman, early 30s, dark wavy hair, navy knit jumper, home office with a plant"
     },
@@ -15,16 +15,16 @@
       "status": "active",
       "bhuman_presenter_id": "78b7e5ad-aff1-48fc-896a-6e113c4ffcd6",
       "bhuman_presenter_name": "Yireh cast - Daniel (practical)",
-      "voice": "to be fixed on first narration from catalog candidates: Joe (warm, neutral, steady; cdUhV8G3eltjOJdoi4lk) first choice, Chris (calm, slow; t3w9KdcqUZPgHazmeinf) second",
+      "voice": "Saved voice 348220ae-5319-4202-ae9f-8444bcf02496 (catalog 'Joe', ElevenLabs cdUhV8G3eltjOJdoi4lk, public_owner_id b0f5e02abf1769281d5777b1d0250a5c4575a8b5dcf79156e49ee439bbb0007d); preset deliberate, speed 0.97 gave 156 wpm (V3, 27 Nov)",
       "persona": "Practical and direct; 'here is the one thing to check'. Demonstrations, how-to, safety.",
       "look": "Man, mid 30s, short dark hair, trimmed beard, charcoal sweater, study with bookshelf and lamp"
     },
     {
       "id": "zee",
-      "status": "active",
+      "status": "paused",
       "bhuman_presenter_id": "e86c752d-95f9-42b0-ad79-4f9e347b4362",
       "bhuman_presenter_name": "Yireh cast - Zee (curious)",
-      "voice": "designed audition 'Voice option 1' (vTY0k99cZ1kYJcuV50Xq, 27 Nov; 173 wpm, full script heard correctly); save it on first narration",
+      "voice": "PAUSED: designed voice vTY0k99cZ1kYJcuV50Xq (saved 2c120330) failed voice QC twice on 27 Nov (187-192 wpm at speed 0.85-0.95; brand said 'Yari'). Before Zee is used again: audition free catalog voices (preview files), pick one that measures 150-170 wpm on our script and says 'Yai-ray', then set status active.",
       "persona": "Bright and curious; surprising numbers, discoveries, 'wait, look at this'. Light humour.",
       "look": "Woman, mid 20s, curly hair, mustard cardigan, kitchen table with laptop and mug"
     }
@@ -59,5 +59,6 @@
       "evidence": "Eisend, Rossner & Hermann 2025 (J. Marketing) meta-analysis: 106 papers, 1,276 effect sizes, 21 countries, ethnic diversity effects 'small' and context-dependent, larger for ethnic minorities within a country; Alden, Steenkamp & Batra 1999 (J. Marketing) global consumer culture positioning used across Asia. Claude's earlier 'viewers identify more with presenters like them' overstated the evidence.",
       "test_later": "Presenter look may be one tested variable once there are about 1,000 views per variant; never a default change."
     }
-  ]
+  ],
+  "presenters_status_note": "pick_cast uses status 'active' only; 'paused' presenters are skipped (Zee, 27 Nov)."
 }

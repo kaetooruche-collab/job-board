@@ -168,3 +168,39 @@ def test_gate_needs_todays_source_check(tmp_path, monkeypatch):
             "platforms": ["instagram"], "funnel": "consideration", "goal_metric": "visits", "render": {"slides": []}}
     with pytest.raises(bp.Refused, match="employer's own data"):
         bp.payloads_for(post, "2030-01-08", check_urls=False)
+
+
+# Regressions from the QA run of 27 Nov 2026
+def test_facebook_text_replaces_the_whole_bio_sentence():
+    t = bp.facebook_text({"id": "w49-p5", "pillar": "jobs", "caption": "Hook.\n\nThe rest are on the board: link in bio. Check rules.\n\n#a"})
+    assert "The rest are on the board" not in t and t.count("See them on the board") == 1
+    t2 = bp.facebook_text({"id": "w49-p6", "pillar": "safety", "caption": "Hook.\n\nSave this.\n\n#jobscams"})
+    assert t2.index("On the board") < t2.index("#jobscams")
+    own = "Read more: https://yirehcareers.vercel.app/verify?utm_source=facebook&utm_campaign=w49-p7"
+    assert bp.facebook_text({"id": "w49-p7", "caption": own}) == own
+
+
+def test_same_platform_posts_are_spaced_out():
+    p = [{"_platform": "facebook", "dueAt": "2026-12-05T18:00:00+03:00"}, {"_platform": "facebook", "dueAt": "2026-12-05T18:00:00+03:00"},
+         {"_platform": "instagram_story", "dueAt": "2026-12-05T18:30:00+03:00"}]
+    out = bp.space_out(p)
+    assert out[1]["dueAt"] == "2026-12-05T21:00:00+03:00" and out[2]["dueAt"] == "2026-12-05T18:30:00+03:00"
+
+
+def test_captions_use_the_script_words_not_the_recogniser():
+    import compose_video
+    heard = "Must be based in our country that isn't yours. Links in the bio.".split()
+    timed = [{"word": w, "start": i * 0.5, "end": i * 0.5 + 0.4} for i, w in enumerate(heard)]
+    words = compose_video.align_to_script(timed, '"Must be based in" a country that isn\'t yours. Link\'s in the bio.')
+    text = " ".join(w["word"] for w in words)
+    assert "a country" in text and "our" not in text.split() and "Link's" in text
+
+
+def test_picker_skips_north_america_only_and_country_titles():
+    import datetime as dt
+    import feed
+    now = dt.datetime(2026, 11, 27, tzinfo=dt.timezone.utc)
+    base = {"postedAt": "2026-11-25T10:00:00Z", "company": "X", "eligibility": {"type": "region", "regions": ["EMEA"], "label": "EMEA"}}
+    assert feed.featurable(dict(base, id="a", title="Engineer"), now)
+    assert not feed.featurable(dict(base, id="b", title="Engineer", eligibility={"type": "region", "regions": ["North America"], "label": "North America"}), now)
+    assert not feed.featurable(dict(base, id="c", title="Head of US, Clearing"), now)

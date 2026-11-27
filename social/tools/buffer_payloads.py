@@ -87,14 +87,21 @@ STORY_SERIES = ("roles-carousel",)   # format plan: an Instagram Story with a li
 
 def facebook_text(post: dict) -> str:
     """Facebook captions can carry a clickable link (assets and a link card can't be combined in Buffer), so the
-    'link in bio' line becomes a tagged link to the board: per-post clicks in GoatCounter."""
+    'link in bio' sentence becomes a tagged link to the board: per-post clicks in GoatCounter.
+    The whole sentence that mentions the bio is replaced (QA 27 Nov: "The rest are on the board: See them on the board:"),
+    the link goes before the hashtags, and a caption that already links the site keeps its own link."""
+    import re
     url = f"{BOARD}?utm_source=facebook&utm_campaign={post['id']}"
     text = post["caption"]
-    for old in ("Link in bio.", "More on the board: link in bio.", "link in bio."):
-        if old in text:
-            new = text.replace(old, f"See them on the board: {url}" if post.get("pillar") == "jobs" else f"On the board: {url}", 1)
-            return new.replace(f"{url} ", f"{url}\n\n", 1)   # keep the link on its own line
-    return text + f"\n\n{url}"
+    if "yirehcareers.vercel.app" in text:
+        return text
+    line = f"See them on the board: {url}" if post.get("pillar") == "jobs" else f"On the board: {url}"
+    pat = re.compile(r"[^.\n]*\blink(?:'s)? in (?:the )?bio\b[^.\n]*\.?", re.I)
+    if pat.search(text):
+        new = pat.sub(line, text, count=1)
+        return re.sub(re.escape(url) + r"[ \t]+", url + "\n\n", new, count=1)   # anything after the link starts a new paragraph
+    parts = re.split(r"\n(?=#)", text, maxsplit=1)            # put the link before the hashtags
+    return parts[0].rstrip() + "\n\n" + line + ("\n\n" + parts[1] if len(parts) > 1 else "")
 
 
 def story_image(src: Path) -> Path:
@@ -180,6 +187,21 @@ def payloads_for(post: dict, today: str, check_urls: bool = True, formats: bool 
     return out
 
 
+def space_out(payloads: list[dict], gap_minutes: int = 180) -> list[dict]:
+    """Two posts on the same platform on the same day go out at least three hours apart (QA 27 Nov: two Facebook
+    posts at the same minute on Saturday). Stories are exempt (they follow their post)."""
+    seen: dict[str, int] = {}
+    for x in payloads:
+        key = x["_platform"]
+        if key == "instagram_story":
+            continue
+        n = seen.get(key, 0)
+        if n:
+            x["dueAt"] = (dt.datetime.fromisoformat(x["dueAt"]) + dt.timedelta(minutes=gap_minutes * n)).isoformat()
+        seen[key] = n + 1
+    return payloads
+
+
 def record(arg: str, posts: dict) -> None:
     pid, plat, bid = arg.split(":")
     p = posts[pid]
@@ -220,6 +242,7 @@ def main(argv=None) -> int:
             import backup
             lib = backup.approved_posts(state)
         out = [x for p in todays for x in payloads_for(p, today, check_urls=not a.dry_run, formats=fmt, backup_only=lib)]
+        out = space_out(out)
     except Refused as e:
         print(json.dumps({"refused": str(e)}, indent=2))
         return 1
