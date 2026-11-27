@@ -26,5 +26,5 @@ The rules and reasons are in `.claude/skills/bhuman-presenter-director/SKILL.md`
 ## Known behaviour (observed)
 - `generate_presenter` can take over 60 s and time out on our side while still completing: run `list_presenters` before retrying (one duplicate was created this way).
 - `find_voice_candidates` with `source: "catalog"` returned designed voices once (charged). Check `source` in the result.
-- Video 1's download was `output_watermarked.mp4` and shows a "BHuman" mark at the bottom. Check the next render's file name and frames; if the mark remains on the Ultimate plan, ask BHuman support or crop it out only if their terms allow.
+- Renders still carry a small "BHuman" mark at 91-92% of the frame height on the Ultimate plan (V1, 27 Nov). KT's rule (27 Nov): crop out all watermarks. `compose_video.py` crops the bottom 11% of the presenter frame by default; check a frame after every composite.
 - Free catalog previews read the voice's own sample sentence, so they show the voice's quality but not our script.

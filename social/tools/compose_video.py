@@ -11,7 +11,8 @@
   repeat for several. Footage shorter than the gap is held on its last frame.
 - --hook: optional on-screen headline for the first seconds (six words or fewer; the humanizer's rule).
 - Audio normalised to about -14 LUFS (two-pass loudnorm). No AI badge or watermark is added (KT, 27 Nov): disclosure
-  is the platform's own AI label.
+  is the platform's own AI label. The BHuman watermark is cropped off the bottom of the presenter frame (--crop-bottom,
+  default 0.11; KT, 27 Nov 2026); board footage and slides are not cropped.
 Writes the video and <out>.captions.ass; prints the duration.
 """
 from __future__ import annotations
@@ -97,6 +98,9 @@ def main(argv=None) -> int:
     ap.add_argument("--emph", default="")
     ap.add_argument("--hook")
     ap.add_argument("--hook-seconds", type=float, default=2.2)
+    ap.add_argument("--crop-bottom", type=float, default=0.11,
+                    help="fraction of the presenter frame cut from the bottom before scaling; removes the BHuman watermark "
+                         "(at 91-92%% of the height; KT, 27 Nov: crop out all watermarks). 0 to keep the full frame")
     a = ap.parse_args(argv)
     src, out = Path(a.presenter), Path(a.out)
     words = voice_qc.transcribe(src)
@@ -104,7 +108,8 @@ def main(argv=None) -> int:
     sub = out.with_suffix(".captions.ass")
     sub.write_text(ass(words, emph, a.hook, a.hook_seconds), encoding="utf-8")
     inputs = ["-i", str(src)]
-    chain = [f"[0:v]scale={W}:{H}:force_original_aspect_ratio=increase,crop={W}:{H},setsar=1,fps=30[base]"]
+    keep = 1 - max(0.0, min(a.crop_bottom, 0.3))
+    chain = [f"[0:v]crop=iw:trunc(ih*{keep:.3f}/2)*2:0:0,scale={W}:{H}:force_original_aspect_ratio=increase,crop={W}:{H},setsar=1,fps=30[base]"]
     last = "base"
     for k, spec in enumerate(a.broll, 1):
         start, end, f = spec.split(":", 2)

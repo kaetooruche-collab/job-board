@@ -48,6 +48,15 @@
       "on": "2026-11-27",
       "words": "yes V3",
       "scope": "V3 narration + HD render, about 48 credits; total for the three videos about 147 (12 over the 135 quote), approved"
+    },
+    {
+      "bhuman_render": [
+        "V3"
+      ],
+      "by": "KT",
+      "on": "2026-11-27",
+      "words": "V3 HD",
+      "scope": "HD render 80 Speakeasy seconds (about 20 credits); V3 about 59, three videos about 158"
     }
   ],
   "bhuman_monthly_credit_budget": 200,
@@ -88,6 +97,16 @@
         "on": "2026-11-27",
         "what": "presenter edits Amara kitchen, Zee kitchen (edit_presenter)",
         "credits_estimate": "unknown"
+      },
+      {
+        "on": "2026-11-27",
+        "what": "V3 narration (Daniel, 39.2 s)",
+        "credits_estimate": 39
+      },
+      {
+        "on": "2026-11-27",
+        "what": "V3 HD render, 80 Speakeasy seconds",
+        "credits_estimate": 20
       }
     ]
   },
@@ -105,5 +124,11 @@
   },
   "bhuman_budget_note": "Social agency may use up to 200 of the 500 monthly credits (KT asked Claude to allocate, 27 Nov); the other 300 stay untouched for KT. Every render still needs KT's yes on its plan_render estimate, given in the weekly approval.",
   "backup_after_deadline": "approved-material-only",
-  "backup_note": "KT, 27 Nov 2026 (reversing the earlier 'silence counts as yes'): 'I need to check and approve before it goes out, and if I can't check, a good back-up solution should exist.' KT's yes is required. Reminders escalate (review reminder, then a last call at 20:00 on deadline day). After 23:00 Istanbul on the Monday before the week with no answer, only KT-approved material goes out (backup.py swaps other posts for approved ones of the same series, or holds them). No BHuman render without KT's yes."
+  "backup_note": "KT, 27 Nov 2026 (reversing the earlier 'silence counts as yes'): 'I need to check and approve before it goes out, and if I can't check, a good back-up solution should exist.' KT's yes is required. Reminders escalate (review reminder, then a last call at 20:00 on deadline day). After 23:00 Istanbul on the Monday before the week with no answer, only KT-approved material goes out (backup.py swaps other posts for approved ones of the same series, or holds them). No BHuman render without KT's yes.",
+  "watermark_policy": {
+    "by": "KT",
+    "on": "2026-11-27",
+    "words": "crop out all watermarks",
+    "rule": "Crop the BHuman watermark out of every presenter video at compositing (compose_video.py --crop-bottom). Platform AI labels stay on."
+  }
 }

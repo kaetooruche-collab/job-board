@@ -57,7 +57,7 @@ Status: **rendered and composited 27 Nov; waiting for KT to listen** (KT approve
   - Hook visible from frame 0; captions inside the safe zone.
   - "Yireh" spelled correctly in captions.
   - Board footage (22-27.5 s) shows real cards with "Worldwide" pills while the line says "where it hires from"; no country shown.
-- **Watermark:** a small "BHuman" mark sits at the bottom of the presenter shots (the file is still `output_watermarked.mp4` on the Ultimate plan). Not removed: BHuman's terms on this couldn't be found. KT to check with BHuman.
+- **Watermark:** a small "BHuman" mark sits at the bottom of the presenter shots (the file is still `output_watermarked.mp4` on the Ultimate plan). **Cropped out** at compositing on KT's instruction (27 Nov: "crop out all watermarks"); frames checked.
 - **Presenter and project:** Amara re-dressed for an evening kitchen (`edit_presenter`); BHuman project `de0d2b5e-3edc-4c36-a84e-62f5df8fc50a`.
 - **Credits:** narration about 28, HD render 58 Speakeasy seconds (about 14.5).
 - **Output:** `social/output/2026-12-01/w49-p1/video.mp4` (28.8 s, 1080x1920).

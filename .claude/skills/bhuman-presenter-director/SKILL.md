@@ -20,7 +20,7 @@ Read the docs before relying on anything (bhuman.ai/docs: speakeasy, projects-an
 | Render | `start_render` | video credits (a 30 s standard render was estimated at 30 Speakeasy seconds = 7.5 shared credits; 1 Speakeasy minute = 15 credits, bhuman.ai/pricing) | **Only after KT explicitly confirms the plan's estimate** (BHuman's rule and ours). Unique `idempotency_key`. Poll `get_render`. |
 | Layouts | `list_visual_presets` (16), `select_visual_preset`, `plan_visuals`, `generate_visual_scene`, `prepare_visual_upload` | planning free | Presets put captions and titles in BHuman's own colours (pink, yellow); cutout presets need a local matte helper. **Our default is to render the plain presenter and composite ourselves** (section 7), so captions and footage match the brand. |
 | Subtitles | BHuman subtitles are an AI Studio campaign feature from the template transcript | — | Not used for Speakeasy videos; we burn our own captions from word timings. |
-| Download | the finished `video_url` is a plain MP4 | — | Video 1's URL was `output_watermarked.mp4`; check whether renders on the Ultimate plan still carry a watermark. |
+| Download | the finished `video_url` is a plain MP4 | — | Renders on the Ultimate plan still carry a small "BHuman" mark at 91-92% of the frame height (`output_watermarked.mp4`, checked 27 Nov). **KT, 27 Nov: crop out all watermarks**: `compose_video.py` does it by default (`--crop-bottom 0.11`). Always check a frame after compositing. |
 | Publishing | BHuman's own social sharing exists in the app | — | Not used: publishing goes through Buffer and the gate only. |
 
 ## 2. The cast (`social/data/cast.json`, `social/PRESENTER_PROFILES.md`)
@@ -78,7 +78,7 @@ Render the presenter full-frame 9:16 at standard quality. Then composite locally
 3. **Opening frame:** the first frame must already show the subject (the presenter mid-thought, or the screen) **with a six-word-or-fewer hook on screen from frame 0** (`--hook`). No logo sting. Why: Video 1 opened without one and averaged 1.3 s of watch time on TikTok (review 27 Nov).
 4. **Ending:** a short, natural close; the last frame can hold the board URL for one second.
 5. **Audio:** loudness normalised (about -14 LUFS). Music only if it fits the emotion and stays under the voice; on business accounts only the platforms' commercial music libraries, added inside the app at posting, never baked in.
-6. **No visible "AI presenter" badge, watermark or tag** in the video, caption or design (KT, 27 Nov). Disclosure is done with each platform's own AI label: `isAiGenerated` on TikTok and Instagram (the gate sets it), and on Facebook KT ticks "AI info" or the screen-only version goes there. Never switch a required platform label off.
+6. **No visible "AI presenter" badge, tool watermark or tag** in the video, caption or design (KT, 27 Nov: no AI badges; crop out all watermarks). Disclosure is done with each platform's own AI label: `isAiGenerated` on TikTok and Instagram (the gate sets it), and on Facebook KT ticks "AI info" or the screen-only version goes there. Never switch a required platform label off.
 
 ## 8. Final inspection before a video can be scheduled
 - Frames at 0, 1, 3 s and every scene change: subject visible at once, text readable, nothing under the app buttons, no country shown, no hiring-system name.
