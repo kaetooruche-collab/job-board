@@ -100,6 +100,11 @@ def analyse(path: Path, script: str | None) -> dict:
                      + ": fine only if the direction sheet asks for a reveal pause there")
     if script and res.get("match", 1) < 0.95:
         flags.append(f"transcript matches the script at {res['match']:.0%}: check the differences (pronunciation or dropped words)")
+    # The brand (KT, 27 Nov 2026): "Yi" is "hi" with a Y (yai, no W sound), "reh" is "ray". A W sound ("why ray",
+    # "worry", "wiric") or one merged syllable is wrong. Any brand difference is a hard flag, never waved through.
+    for d in res.get("differences", []):
+        if "yireh" in d["script"].split():
+            flags.append(f"BRAND said wrong: heard '{d['heard']}' (say Yai-ray: 'hi' with a Y, then 'ray'; no W sound)")
     res["flags"] = flags
     return res
 

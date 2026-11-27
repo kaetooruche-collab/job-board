@@ -128,3 +128,7 @@ Pills (as on the site), number tiles, a thin brand-blue underline for emphasis, 
 
 ## 16. Templates in use (built by `social/tools/render_posts.py`, `free_video.py`, `compose_video.py`)
 Cover, role card, tip with number tile, closing slide (section 6); Story frame (slide 1 on a 1080x1920 navy canvas plus link sticker); video cover (a frame with the hook in the Hook caption style); static post (one headline, one supporting line, optional screenshot); free screen-only video (text slides, board footage, closing slide).
+
+
+## Saying the name (KT, 27 Nov 2026)
+"Yireh" is two syllables: **YAI-ray**. "Yi" is "hi" with a Y (no W sound); "reh" is "ray" as in ray of sunshine. "Why Ray", "Worry" and a merged one-syllable "Yare" are wrong. Every new voice's first take of the name is checked by KT's ear before a render (`voice_qc.py` flags misheard brand words, but speech recognition can't confirm the right sound by itself).

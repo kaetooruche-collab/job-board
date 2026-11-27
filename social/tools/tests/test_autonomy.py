@@ -204,3 +204,13 @@ def test_picker_skips_north_america_only_and_country_titles():
     assert feed.featurable(dict(base, id="a", title="Engineer"), now)
     assert not feed.featurable(dict(base, id="b", title="Engineer", eligibility={"type": "region", "regions": ["North America"], "label": "North America"}), now)
     assert not feed.featurable(dict(base, id="c", title="Head of US, Clearing"), now)
+
+
+def test_voice_qc_flags_a_misheard_brand():
+    import voice_qc
+    import inspect
+    src = inspect.getsource(voice_qc)
+    assert "BRAND said wrong" in src
+    # the brand compare: script 'Yai-ray' normalises to yireh, a heard 'Y Ray' does not
+    assert "yireh" in voice_qc.words("On Yai-ray Careers")
+    assert "yireh" not in voice_qc.words("On Y Ray Careers")
