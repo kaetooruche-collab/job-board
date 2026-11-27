@@ -45,7 +45,7 @@ def approval_deadline(week: str) -> dt.datetime:
 
 def week_status(state: dict, week: str, now: dt.datetime | None = None) -> str:
     """'yes' (KT said yes), 'no' (KT said no), 'backup' (deadline passed, no answer: approved material only), 'waiting'."""
-    kt = [a for a in state.get("approvals", []) if a.get("week") == week and a.get("by") == "KT"]
+    kt = [a for a in state.get("approvals", []) if a.get("week") == week and a.get("by") == "KT" and "post" not in a]
     if any(a.get("decision") == "no" for a in kt):
         return "no"
     if kt:

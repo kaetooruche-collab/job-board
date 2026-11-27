@@ -32,17 +32,25 @@ def _body(caption: str, hook: str) -> str:
 
 
 def approved_posts(state: dict) -> list[dict]:
-    weeks = {a["week"] for a in state.get("approvals", []) if a.get("by") == "KT" and a.get("decision", "yes") == "yes"}
+    yes = [a for a in state.get("approvals", []) if a.get("by") == "KT" and a.get("decision", "yes") == "yes"]
+    weeks = {a["week"] for a in yes if "post" not in a}
+    single = {a["post"]: a["week"] for a in yes if "post" in a}
     out = []
     for w in sorted(weeks):
         f = CAL / f"{w}.posts.json"
         if f.exists():
             out += json.loads(f.read_text(encoding="utf-8"))["posts"]
+    for pid, w in single.items():   # one post approved on its own (e.g. w50-p3)
+        f = CAL / f"{w}.posts.json"
+        if f.exists() and w not in weeks:
+            out += [p for p in json.loads(f.read_text(encoding="utf-8"))["posts"] if p["id"] == pid]
     return out
 
 
 def is_approved_material(post: dict, approved: list[dict]) -> bool:
-    if post.get("series") in NEVER or post.get("ai_presenter") or post.get("ai_voice") or post.get("needs_writing"):
+    if post.get("series") in NEVER and not any(a["id"] == post["id"] for a in approved):
+        return False
+    if post.get("ai_presenter") or post.get("ai_voice") or post.get("needs_writing"):
         return False
     h, b = _norm(post.get("hook")), _body(post.get("caption"), post.get("hook"))
     return any(_norm(a.get("hook")) == h and _body(a.get("caption"), a.get("hook")) == b for a in approved)
