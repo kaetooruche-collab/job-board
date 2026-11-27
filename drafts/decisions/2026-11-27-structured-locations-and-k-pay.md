@@ -1,6 +1,6 @@
 # Job location lists, conflicts and "$105k" pay (27 Nov 2026)
 
-Status: built on branch `claude/lucid-lovelace-3ribsh`, tests pass, **not merged**: needs KT's yes.
+Status: **APPROVED by KT (27 Nov 2026)** and merged to main (PR #86). KT's decision on Fastly: keep the consistent rule ("Location not specified").
 Reported by the social agency (`social/board-issues.md`, branch `claude/social-agency`), confirmed against the employers' public feeds on 27 Nov 2026.
 
 ## What was wrong (established, checked in the live feeds)
