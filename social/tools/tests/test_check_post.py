@@ -235,3 +235,11 @@ def test_needs_writing_is_draft_only():
     assert rules(p, "draft") == set()
     assert "needs-writing" in rules(p, "draft", cp.WARN)
     assert "needs-writing" in rules(p, "schedule")
+
+
+def test_humanizer_flags_filler_and_ai_badges():
+    import check_post as cp
+    p = dict(BASE, caption="Unlock your potential with seamless remote jobs! Apply now!", on_screen=["AI-generated presenter"])
+    codes = [f.rule for f in cp.check_post(p, "draft")]
+    assert codes.count("humanizer") >= 3 and "ai-badge" in codes
+    assert all(f.level == cp.WARN for f in cp.check_post(p, "draft") if f.rule in ("humanizer", "ai-badge"))

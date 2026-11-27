@@ -201,6 +201,14 @@ def check_spelling(text: str, extra_ok: set[str]) -> list[Finding]:
     return out
 
 
+AI_BADGE = re.compile(r"\bAI[- ](?:generated|presenter|avatar)\b", re.I)
+CLICHES = re.compile(r"unlock (?:your|the) (?:potential|future)|in today'?s (?:competitive|fast[- ]paced)|dream job awaits|"
+                     r"(?:take|level up) your career to the next level|game[- ]?changer|\belevate\b|\bseamless(?:ly)?\b|"
+                     r"\bleverag(?:e|ing)\b|navigate the (?:job market|landscape)|\bempower(?:s|ing)?\b|embark on|"
+                     r"look no further|it'?s no secret|the ultimate guide|\bdelve\b|let'?s dive in|buckle up|"
+                     r"\bhey guys\b|welcome back|in this video|today we(?:'re| are) going to", re.I)
+
+
 def _all_text(post: dict) -> dict[str, str]:
     parts = {
         "on_screen": "\n".join(post.get("on_screen") or []),
@@ -264,9 +272,21 @@ def check_post(post: dict, mode: str = "draft") -> list[Finding]:
     # 4. Spelling
     f.extend(check_spelling(full, set(post.get("spelling_ok") or [])))
 
-    # 5. AI label
+    # 5. AI label: the platform's own AI label is required (ai_label = set the platform flag); a visible badge in the
+    # video, design or caption is not added by default (KT, 27 Nov 2026).
     if (post.get("ai_presenter") or post.get("ai_voice")) and not post.get("ai_label"):
-        f.append(Finding(BLOCK, "ai-label", "AI presenter or cloned/AI voice without ai_label: true"))
+        f.append(Finding(BLOCK, "ai-label", "AI presenter or AI voice without ai_label: true (the platform AI label must be switched on)"))
+    for where, text in parts.items():
+        if AI_BADGE.search(text or ""):
+            f.append(Finding(WARN, "ai-badge", f"{where}: visible AI badge ('{AI_BADGE.search(text)[0]}'); KT's rule is the platform label only"))
+
+    # 5b. Humanizer: AI and corporate filler (social-media-humanizer skill, section 5)
+    for where, text in parts.items():
+        for m in CLICHES.finditer(text or ""):
+            f.append(Finding(WARN, "humanizer", f"{where}: '{m[0]}' reads like filler; say the specific thing instead"))
+    excl = sum((t or "").count("!") for t in parts.values())
+    if excl > 1:
+        f.append(Finding(WARN, "humanizer", f"{excl} exclamation marks; one at most"))
 
     # 6. Featured jobs must be re-opened before scheduling
     if post.get("featured_jobs"):
