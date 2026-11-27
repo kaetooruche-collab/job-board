@@ -135,6 +135,7 @@
     "by": "KT",
     "on": "2026-11-27",
     "words": "you are a marketing agent, debating about a tiny little wording in accuracy, your goal is conversion",
-    "rule": "The agency decides small wording itself (hooks, covers, captions, CTAs) inside CLAUDE.md's copy rules and the humanizer skill, aiming at conversion, and logs the edit on the post (copy_edits). KT is asked only about new claims, prices, service terms, spend, and publishing approvals."
+    "rule": "The agency decides small wording itself (hooks, covers, captions, CTAs) inside CLAUDE.md's copy rules and the humanizer skill, aiming at conversion, and logs the edit on the post (copy_edits). KT is asked only about new claims, prices, service terms, spend, and publishing approvals.",
+    "framing": "Positive framing of true facts (KT, 27 Nov): 'jobs open to you', not 'jobs that say they're open to you'. Caveats once, in the caption's last line or on the board."
   }
 }

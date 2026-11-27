@@ -85,7 +85,7 @@ Don't: invent suspense the content can't pay off; use "you won't believe"; promi
 
 **Rewrite examples (from our own drafts):**
 - "Verified remote opportunities for every stage of your career." → "See which remote jobs hire where you live."
-- "Our platform empowers job seekers to discover eligible roles seamlessly." → "Tell the board where you live. It shows the jobs that say they're open to you."
+- "Our platform empowers job seekers to discover eligible roles seamlessly." → "Tell the board where you live. It shows the jobs open to you."
 - "Unlock remote jobs worldwide today!" → (claim isn't true; most aren't worldwide) "Most remote jobs name a country. These three don't."
 - "Remote roles you can apply for across whole regions." → "Open beyond one country." (shorter, and doesn't promise eligibility)
 
@@ -119,12 +119,21 @@ One primary action per piece, and only after giving value. Choose the one that f
 see the board · filter by where you live · look at a category · save this · send it to someone who's job hunting · answer a question in the comments · get the free CV check · read about a service.
 Don't force a CTA where it would feel tacked on; a useful tip can just end. Never: "DM me", "comment JOBS and I'll send the list", fake urgency ("only today!"), fake scarcity ("spots filling fast").
 
-## 10. Truth comes first (non-negotiable)
+## 10. Think like the marketer, not the operator (KT, 27 Nov 2026)
+The agency built and runs the board, but on social it is the **marketer**. The operator's habit of hedging every sentence ("jobs that *say* they're open to you", "listings we *believe*…") makes the product sound unsure of itself and costs attention and trust. KT: "as a marketer, your goal is to frame information such that it influences people to perceive it positively."
+- **Frame true facts positively** (attribute framing: "75% lean" beat "25% fat" for the same beef; Levin & Gaeth 1988; consistent across studies in Levin, Schneider & Gaeth 1998). Say what the product does in confident, plain words: "See the jobs open to you." "Every job shows where it hires from." "Free to apply."
+- **Lead with the gain, not the gap:** "27 roles open to anyone, anywhere: here they are", not "only 27"; "1,500+ jobs name where they hire, so you know before you apply", not "most jobs aren't open to you".
+- **Caveats live in one place, once**, in the caption's closing line or on the board itself (the board's cards and /verify already explain the detail). Never in the hook, the cover or the CTA.
+- **The line not to cross is truth, not tone:** positive framing of true facts, yes; claims that aren't true, never (no "guaranteed", no "worldwide" for a role that isn't, no invented numbers or outcomes). Those are CLAUDE.md rules and legal lines (FTC net impression).
+- Small wording is the agency's call; don't ask KT about it (`state.json` copy_authority).
+
+## 11. Truth comes first (non-negotiable)
 Humanising never bends a fact. No invented jobs, numbers, testimonials, outcomes or customer stories. "Free" said once. Eligibility in the employer's words; never imply all remote jobs are worldwide; numbers measured on the post day and dated. When a vivid line and a true line compete, the true line wins and you find a vivid way to say it.
 
-## 11. Final check (write the answers in the brief or the week's calendar notes)
+## 12. Final check (write the answers in the brief or the week's calendar notes)
 **Humanisation:** human-sounding? natural aloud? right emotion? varied sentences? no AI phrasing?
 **Attention:** is the first thing interesting to *this* reader? reason to keep going? interest held?
 **Truth:** every claim supported? eligibility accurate? prices and service details current (`site-config.js`, services page)? any misleading impression (FTC net impression)?
 **Action:** one clear, natural next step, after value?
-If an important answer is no, revise before approval. Then run `python3 social/tools/check_post.py <posts file>`.
+If an important answer is no, revise before approval. **Framing:** is every true fact framed as a gain? Any hedge that makes us sound unsure (cut it, or move the one caveat to the caption's last line)?
+Then run `python3 social/tools/check_post.py <posts file>`.

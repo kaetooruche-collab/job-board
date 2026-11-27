@@ -4,14 +4,14 @@ Status: **draft, waiting for KT** · Presenter: Zee (opening and close) + screen
 1. **Objective:** consideration → board visits. Goal metric: board visits by utm (GoatCounter), saves.
 2. **Audience:** anyone who has wasted time on jobs they couldn't apply for; first-time visitors.
 3. **Audience insight:** "Has finding genuine remote jobs become much harder, or is it just me?"; people outside the US asking "where do I even look?" (`AUDIENCE_RESEARCH.md`). They want a straight, quick answer.
-4. **Concept:** show, don't tell. Within 3 seconds the viewer sees the box; by 15 seconds they've seen the board filter itself. The viewer remembers: *type where you live, see only jobs that say they're open to you.* Spoken by the team ("we"), not a fake user story.
+4. **Concept:** show, don't tell. Within 3 seconds the viewer sees the box; by 15 seconds they've seen the board filter itself. The viewer remembers: *type where you live, see only jobs open to you.* Spoken by the team ("we"), not a fake user story.
 5. **Emotion:** curious → happy (a small "oh, nice" moment) → reassuring.
 6. **Opening visual:** Zee, eyebrows up, pointing down-screen; hook text "Do this before you apply".
 7. **Opening spoken hook:** "Here's the quickest way to see which remote jobs you can actually apply for."
 8. **Spoken script** (74 words, about 28 s at 160 wpm):
    > Here's the quickest way to see which remote jobs you can actually apply for.
    > On Yai-ray Careers, there's a box right at the top: "Where do you live?"
-   > Type it in, or pick worldwide roles only… and the board shows the jobs that say they're open to you.
+   > Type it in, or pick worldwide roles only… and the board shows the jobs open to you.
    > Every card tells you where it hires from, when it was posted, and the pay, if the employer stated it. Tap apply, and you're on the original posting.
    > No account. Nothing to pay.
    > Link's in the bio.
@@ -22,7 +22,7 @@ Status: **draft, waiting for KT** · Presenter: Zee (opening and close) + screen
 |---|---|---|---|---|---|---|---|
 | Here's the quickest way… you can actually apply for. | curious | 4 | brisk | *actually* | — | falling | eye contact, slight lean in |
 | On Yai-ray Careers, there's a box right at the top: "Where do you live?" | curious | 3 | natural | *top* | short before the quote | rising on the quote | reading it out |
-| Type it in, or pick worldwide roles only… and the board shows the jobs that say they're open to you. | pleased | 3 | natural | *say*, *you* | long after "only" | falling | the small "oh, nice" |
+| Type it in, or pick worldwide roles only… and the board shows the jobs open to you. | pleased | 3 | natural | *say*, *you* | long after "only" | falling | the small "oh, nice" |
 | Every card tells you… if the employer stated it. | reassuring | 3 | even | *where*, *when*, *pay* | short between items | falling | clear list, not rushed |
 | Tap apply, and you're on the original posting. | confident | 3 | natural | *original* | — | falling | plain |
 | No account. Nothing to pay. | warm | 3 | slower | — | short between | falling | matter-of-fact |
@@ -41,7 +41,7 @@ Status: **draft, waiting for KT** · Presenter: Zee (opening and close) + screen
 17. **Ending/CTA:** "Link's in the bio." (board)
 18. **Captions:**
    - TikTok: "The box at the top of the board that hides every job you can't apply for. #remotejobs #jobsearch #remotework #workfromhome"
-   - Instagram: "Before you apply anywhere: tell the board where you live.\n\nYou'll see only the jobs that say they're open to you, each with where it hires from, the posted date, and the pay when it's stated. Apply goes straight to the original posting.\n\nLink in bio.\n\n#remotejobs #jobsearch #remotework #workfromhome"
+   - Instagram: "Before you apply anywhere: tell the board where you live.\n\nYou'll see only the jobs open to you, each with where it hires from, the posted date, and the pay when it's stated. Apply goes straight to the original posting.\n\nLink in bio.\n\n#remotejobs #jobsearch #remotework #workfromhome"
    - Facebook: as Instagram, with the tagged board link.
 19. **Hashtags:** as above.
 20. **QC:** humanizer passed (removed a line that pretended the presenter was a user: "this took me way too long to notice" would be an invented experience). `check_post`: "Nothing to pay" is the one free claim; no country typed or shown. voice_qc / frames / KT listened / credits: pending.
