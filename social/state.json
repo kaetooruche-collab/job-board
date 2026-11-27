@@ -130,5 +130,11 @@
     "on": "2026-11-27",
     "words": "crop out all watermarks",
     "rule": "Crop the BHuman watermark out of every presenter video at compositing (compose_video.py --crop-bottom). Platform AI labels stay on."
+  },
+  "copy_authority": {
+    "by": "KT",
+    "on": "2026-11-27",
+    "words": "you are a marketing agent, debating about a tiny little wording in accuracy, your goal is conversion",
+    "rule": "The agency decides small wording itself (hooks, covers, captions, CTAs) inside CLAUDE.md's copy rules and the humanizer skill, aiming at conversion, and logs the edit on the post (copy_edits). KT is asked only about new claims, prices, service terms, spend, and publishing approvals."
   }
 }

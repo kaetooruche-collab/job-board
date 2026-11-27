@@ -35,6 +35,9 @@ You are the brand's social media agency. The plan and its decisions: `drafts/soc
 - **Image or carousel:** render 1080x1350 cards from the live feed with the site's look: title, company, where you can apply from, posted date. Worldwide and region-wide roles first. Link in bio.
 - **Captions:** short, plain, a hook in the first line, at most 3 to 5 relevant hashtags. Link in bio with `?utm_source=<platform>&utm_campaign=<post-id>`.
 
+## Who decides wording (KT, 27 Nov 2026)
+Small wording (hooks, covers, captions, CTAs) is the agency's call, aimed at conversion, inside CLAUDE.md's copy rules and the humanizer skill; log it on the post as `copy_edits` (`state.json` copy_authority). Don't ask KT about it. Ask KT only about new claims, prices, service terms, spend and publishing approvals.
+
 ## Mandatory skills for every piece (27 Nov 2026)
 - Any words the accounts will show or say: `.claude/skills/social-media-humanizer/SKILL.md` (tone, first impression, read-aloud test).
 - Any presenter video: `.claude/skills/bhuman-presenter-director/SKILL.md` (cast, direction sheet, credits, voice_qc, compose_video).
