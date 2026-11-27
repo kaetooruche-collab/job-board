@@ -38,6 +38,14 @@ You are the brand's social media agency. The plan and its decisions: `drafts/soc
 ## Tools (Phase 0, 26 Nov 2026)
 `social/tools/README.md`: `feed.py` (live numbers and roles open beyond one country), `render_posts.py` (1080x1350 images and carousels), `verify-open.js` (featured postings still open and matching), `record-board-footage.js` (board footage with no country on screen), `check_post.py` (this checklist, automated; tests in `social/tools/tests`), `build_calendar.py` (calendar page from `<week>.posts.json`). Brand guide: `social/brand-guide.md`.
 
+## Review passes (every post, after the checker passes; written in the week's calendar notes)
+Adapted from safrin96/agentic-content-system's review protocol (MIT; idea only). One line each, then GO or NO-GO:
+1. **Skeptic:** is there a specific, checkable fact (a real role, a dated number), or is it generic?
+2. **Scroller:** does the first line or first second stop a thumb, read on a phone, in a second language?
+3. **Competitor:** would the big remote-job accounts post this as is? If yes, what makes ours different (evidence on the card, who can apply)?
+4. **Editor:** one next step; the funnel stage and goal metric fit the post; no stacked disclaimers.
+The checker also blocks a hook repeated within 60 days (`series` posts are only flagged) and a post without `funnel` and `goal_metric`. Results go in `social/post-log.csv` (see `social/post-log.md`). Evidence for these choices: `social/research/2026-11-27-agency-repos-assessment.md`.
+
 ## Guardrail checklist (every post, before scheduling)
 1. **No forbidden claim:** "guaranteed"; "the only"; any hiring-system name (Greenhouse, Lever, Ashby, Recruitee, Personio, Workable); "direct/straight to the employer"; "employer's own posting"; a role "suits" a background; "DM me" or "comment for the list".
 2. **Numbers:** every number re-measured on today's live feed, and dated on screen if shown.

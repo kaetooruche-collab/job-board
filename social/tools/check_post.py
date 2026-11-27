@@ -303,7 +303,50 @@ def check_post(post: dict, mode: str = "draft") -> list[Finding]:
         f.append(Finding(WARN, "tone", "more than one exclamation mark (voice guide: at most one)"))
     if post.get("format") == "video" and not post.get("captions_burned_in", True):
         f.append(Finding(WARN, "captions", "video without burned-in captions"))
+
+    # 10. Every post states its job in the funnel and the number that judges it (assessment, 27 Nov 2026)
+    if "id" in post and post.get("id") != "text":
+        if post.get("funnel") not in FUNNEL:
+            f.append(Finding(BLOCK, "funnel", f"funnel must be one of {sorted(FUNNEL)}"))
+        if not post.get("goal_metric"):
+            f.append(Finding(BLOCK, "funnel", "goal_metric missing (the one number that says whether this post worked)"))
     return f
+
+
+FUNNEL = {"awareness", "consideration", "conversion"}
+
+
+def _norm_hook(post: dict) -> str:
+    h = post.get("hook") or (post.get("caption") or "").split("\n", 1)[0]
+    return re.sub(r"[^a-z0-9 ]+", "", re.sub(r"\d[\d,]*", "#", h.lower())).strip()
+
+
+def check_repetition(posts: list[dict], window_days: int = 60) -> dict[str, list[Finding]]:
+    """Hook repetition across posts (idea from safrin96/agentic-content-system's content-deduplicator, MIT).
+    Near-identical hooks within the window block, unless both posts share a `series` (a recurring slot), which is
+    only flagged. Numbers are masked so "19 jobs" and "36 jobs" count as the same hook."""
+    import datetime as _dt
+    from difflib import SequenceMatcher
+    out: dict[str, list[Finding]] = {}
+    ordered = sorted(posts, key=lambda p: (p.get("date", ""), p.get("id", "")))
+    for i, p in enumerate(ordered):
+        hp = _norm_hook(p)
+        if not hp:
+            continue
+        for q in ordered[:i]:
+            try:
+                gap = (_dt.date.fromisoformat(p["date"]) - _dt.date.fromisoformat(q["date"])).days
+            except (KeyError, ValueError):
+                gap = 0
+            if gap > window_days:
+                continue
+            ratio = SequenceMatcher(None, hp, _norm_hook(q)).ratio()
+            if ratio >= 0.8:
+                same_series = p.get("series") and p.get("series") == q.get("series")
+                out.setdefault(p["id"], []).append(Finding(
+                    WARN if same_series else BLOCK, "repeat-hook",
+                    f"hook is {ratio:.0%} like {q['id']} ({q.get('date')})" + (" (same series)" if same_series else "; rewrite or mark both as one series")))
+    return out
 
 
 def load_posts(path: Path) -> list[dict]:
@@ -324,9 +367,15 @@ def main(argv=None) -> int:
         posts = load_posts(Path(a.posts))
     else:
         ap.error("give a posts file or --text")
+    history = []
+    if a.posts:
+        for other in sorted(Path(a.posts).resolve().parent.glob("*.posts.json")):
+            if other.resolve() != Path(a.posts).resolve():
+                history += load_posts(other)
+    reps = check_repetition(history + posts)
     blocked = 0
     for p in posts:
-        fs = check_post(p, a.mode)
+        fs = check_post(p, a.mode) + reps.get(p.get("id"), [])
         b = [x for x in fs if x.level == BLOCK]
         blocked += bool(b)
         status = "FAIL" if b else ("CHECK" if fs else "PASS")

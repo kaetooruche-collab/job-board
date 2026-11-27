@@ -41,7 +41,10 @@
       "spelling_ok": [
         "Yai"
       ],
-      "change_note": "26 Nov 2026: dropped 'over seventeen hundred jobs ... 360 companies'. Most of those are open only to the US; a viewer in a low-supply country finds 26-38 (net-impression risk, KT's 'don't overpromise'). Replaced with the worldwide count (36 on 26 Nov after the refresh), which is true for every viewer. Needs KT's yes with the rest of the week."
+      "change_note": "26 Nov 2026: dropped 'over seventeen hundred jobs ... 360 companies'. Most of those are open only to the US; a viewer in a low-supply country finds 26-38 (net-impression risk, KT's 'don't overpromise'). Replaced with the worldwide count (36 on 26 Nov after the refresh), which is true for every viewer. Needs KT's yes with the rest of the week.",
+      "series": "weekly-video",
+      "funnel": "awareness",
+      "goal_metric": "2-second hold rate and profile visits (TikTok Studio, Instagram Insights)"
     },
     {
       "id": "w49-p2",
@@ -81,7 +84,10 @@
       "caption": "Remote roles that aren't limited to one country.\n\nThese three are open worldwide or across a whole region, and we opened each posting today to check it's still live. Swipe for where you can apply from, the posted date and the pay, if the posting states it.\n\nMore on the board: link in bio. Check each employer's rules for your country before you apply.\n\n#remotejobs #remotework #jobsearch #hiring",
       "featured_jobs": [],
       "measured_on": "2026-11-26",
-      "number_dated_on_screen": true
+      "number_dated_on_screen": true,
+      "series": "roles-carousel",
+      "funnel": "consideration",
+      "goal_metric": "board visits from the bio link (GoatCounter by utm_source) and saves"
     },
     {
       "id": "w49-p3",
@@ -134,7 +140,10 @@
           }
         ]
       },
-      "caption": "“Remote” doesn't always mean anywhere.\n\nBefore you spend an hour on an application, check three things: the location line; the words “reside”, “based in” and “time zone” in the posting; and, if it's still unclear, ask the recruiter.\n\nSave this for your next application.\n\n#remotejobs #jobsearch #jobtips #remotework"
+      "caption": "“Remote” doesn't always mean anywhere.\n\nBefore you spend an hour on an application, check three things: the location line; the words “reside”, “based in” and “time zone” in the posting; and, if it's still unclear, ask the recruiter.\n\nSave this for your next application.\n\n#remotejobs #jobsearch #jobtips #remotework",
+      "series": "tips",
+      "funnel": "awareness",
+      "goal_metric": "saves and shares (Buffer, platform insights)"
     },
     {
       "id": "w49-p4",
@@ -162,7 +171,10 @@
         ]
       },
       "caption": "A remote role that's open worldwide.\n\nWhere you can apply from, the posted date and the pay (if the posting states it) are on the card. The original posting is one tap away on the board.\n\nLink in bio. Check the employer's rules for your country before you apply.\n\n#remotejobs #remotework #hiring",
-      "featured_jobs": []
+      "featured_jobs": [],
+      "series": "role-single",
+      "funnel": "consideration",
+      "goal_metric": "board visits from the bio link (GoatCounter by utm_source)"
     },
     {
       "id": "w49-p5",
@@ -177,7 +189,7 @@
       "pillar": "jobs",
       "format": "carousel",
       "title": "Real roles: 3 more open beyond one country (carousel)",
-      "hook": "More remote roles that aren't limited to one country.",
+      "hook": "Three more remote roles, open across whole regions.",
       "variable": "Same as Wednesday (second carousel reading, so one post's luck counts less).",
       "visuals": "As Wednesday, three different roles.",
       "render": {
@@ -199,8 +211,11 @@
           }
         ]
       },
-      "caption": "More remote roles that aren't limited to one country.\n\nThree more, open worldwide or across a whole region. We opened each posting today to check it's still live.\n\nThe rest are on the board: link in bio. Check each employer's rules for your country before you apply.\n\n#remotejobs #remotework #jobsearch #hiring",
-      "featured_jobs": []
+      "caption": "Three more remote roles, open across whole regions.\n\nThree more, open worldwide or across a whole region. We opened each posting today to check it's still live.\n\nThe rest are on the board: link in bio. Check each employer's rules for your country before you apply.\n\n#remotejobs #remotework #jobsearch #hiring",
+      "featured_jobs": [],
+      "series": "roles-carousel",
+      "funnel": "consideration",
+      "goal_metric": "board visits from the bio link (GoatCounter by utm_source) and saves"
     },
     {
       "id": "w49-p6",
@@ -253,7 +268,10 @@
           }
         ]
       },
-      "caption": "A real employer won't ask you to pay to get a job.\n\nThree warning signs: a fee to apply or train; interviews held only by text on Telegram or WhatsApp; and a role you can't find on the company's careers site.\n\nSave this, and share it with someone who's job hunting.\n\n#jobscams #remotejobs #jobsearch #careertips"
+      "caption": "A real employer won't ask you to pay to get a job.\n\nThree warning signs: a fee to apply or train; interviews held only by text on Telegram or WhatsApp; and a role you can't find on the company's careers site.\n\nSave this, and share it with someone who's job hunting.\n\n#jobscams #remotejobs #jobsearch #careertips",
+      "series": "tips",
+      "funnel": "awareness",
+      "goal_metric": "saves and shares (Buffer, platform insights)"
     }
   ]
 }

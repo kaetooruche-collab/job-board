@@ -40,7 +40,10 @@
       "spelling_ok": [
         "Yai"
       ],
-      "change_note": "26 Nov 13:32 UTC: re-measured after PRs 81-83 (was 1,287 of 1,759, 'three in four'; now 1,225 of 1,987, 62%)."
+      "change_note": "26 Nov 13:32 UTC: re-measured after PRs 81-83 (was 1,287 of 1,759, 'three in four'; now 1,225 of 1,987, 62%).",
+      "series": "weekly-video",
+      "funnel": "awareness",
+      "goal_metric": "2-second hold rate and profile visits (TikTok Studio, Instagram Insights)"
     },
     {
       "id": "w50-p2",
@@ -80,7 +83,10 @@
       "caption": "Most remote jobs on our board are open to one country. These aren't.\n\nThree roles open worldwide or across a whole region, each posting opened today to check it's still live. Swipe for where you can apply from, the date and the pay, if stated.\n\nLink in bio. Check each employer's rules for your country before you apply.\n\n#remotejobs #remotework #jobsearch #hiring",
       "featured_jobs": [],
       "measured_on": "2026-11-26",
-      "number_dated_on_screen": true
+      "number_dated_on_screen": true,
+      "series": "roles-carousel",
+      "funnel": "consideration",
+      "goal_metric": "board visits from the bio link (GoatCounter by utm_source) and saves"
     },
     {
       "id": "w50-p3",
@@ -117,7 +123,10 @@
       "caption": "Not sure if it's your CV or the jobs?\n\nAsk for a free CV check on our site and we'll reply with the three things we'd fix first. One per person. Your CV goes by email, never by DM, and if you don't order we delete it within 30 days.\n\nLink in bio, then tap “Free CV check”.\n\n#cvtips #jobsearch #remotejobs",
       "needs_kt": "Public service copy: KT's yes on this wording (CLAUDE.md copy rule). Terms read from /free-check on 26 Nov 2026.",
       "measured_on": "2026-11-26",
-      "numbers_source": "free-check.html, read 26 Nov 2026 (reply within 2 working days; deleted within 30 days)"
+      "numbers_source": "free-check.html, read 26 Nov 2026 (reply within 2 working days; deleted within 30 days)",
+      "funnel": "conversion",
+      "goal_metric": "free CV check requests (free-check page visits by utm_source, then form submissions)",
+      "series": "service"
     },
     {
       "id": "w50-p4",
@@ -132,7 +141,7 @@
       "pillar": "jobs",
       "format": "image",
       "title": "Real role: one open worldwide (single image)",
-      "hook": "A remote role that's open worldwide.",
+      "hook": "This week's pick: a remote role open to applicants anywhere.",
       "variable": "Second single-image reading (format test continues).",
       "visuals": "One role card, open worldwide, picked on the day.",
       "render": {
@@ -144,8 +153,11 @@
           }
         ]
       },
-      "caption": "A remote role that's open worldwide.\n\nWhere you can apply from, the posted date and the pay (if the posting states it) are on the card. The original posting is one tap away on the board.\n\nLink in bio. Check the employer's rules for your country before you apply.\n\n#remotejobs #remotework #hiring",
-      "featured_jobs": []
+      "caption": "This week's pick: a remote role open to applicants anywhere.\n\nWhere you can apply from, the posted date and the pay (if the posting states it) are on the card. The original posting is one tap away on the board.\n\nLink in bio. Check the employer's rules for your country before you apply.\n\n#remotejobs #remotework #hiring",
+      "featured_jobs": [],
+      "series": "role-single",
+      "funnel": "consideration",
+      "goal_metric": "board visits from the bio link (GoatCounter by utm_source)"
     },
     {
       "id": "w50-p5",
@@ -160,7 +172,7 @@
       "pillar": "jobs",
       "format": "carousel",
       "title": "Real roles: 3 more open beyond one country (carousel)",
-      "hook": "More remote roles that aren't limited to one country.",
+      "hook": "Three roles you can apply for beyond one country.",
       "variable": "Plain cover again (so Wednesday's number-led cover has a same-week comparison).",
       "visuals": "As week 1's carousel.",
       "render": {
@@ -182,8 +194,11 @@
           }
         ]
       },
-      "caption": "More remote roles that aren't limited to one country.\n\nThree more, open worldwide or across a whole region. We opened each posting today to check it's still live.\n\nThe rest are on the board: link in bio. Check each employer's rules for your country before you apply.\n\n#remotejobs #remotework #jobsearch #hiring",
-      "featured_jobs": []
+      "caption": "Three roles you can apply for beyond one country.\n\nThree more, open worldwide or across a whole region. We opened each posting today to check it's still live.\n\nThe rest are on the board: link in bio. Check each employer's rules for your country before you apply.\n\n#remotejobs #remotework #jobsearch #hiring",
+      "featured_jobs": [],
+      "series": "roles-carousel",
+      "funnel": "consideration",
+      "goal_metric": "board visits from the bio link (GoatCounter by utm_source) and saves"
     },
     {
       "id": "w50-p6",
@@ -236,7 +251,10 @@
           }
         ]
       },
-      "caption": "Read a remote posting in a minute, before you spend an hour on it.\n\nThree checks: where you can apply from; the pay, its currency and whether it's yearly or hourly; and when it was posted.\n\nSave this for your next application.\n\n#remotejobs #jobsearch #jobtips #remotework"
+      "caption": "Read a remote posting in a minute, before you spend an hour on it.\n\nThree checks: where you can apply from; the pay, its currency and whether it's yearly or hourly; and when it was posted.\n\nSave this for your next application.\n\n#remotejobs #jobsearch #jobtips #remotework",
+      "series": "tips",
+      "funnel": "awareness",
+      "goal_metric": "saves and shares (Buffer, platform insights)"
     }
   ]
 }

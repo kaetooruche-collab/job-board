@@ -8,7 +8,8 @@ import pytest
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 import check_post as cp  # noqa: E402
 
-BASE = {"id": "t", "date": "2026-12-01", "platforms": ["instagram"], "pillar": "tips", "format": "image"}
+BASE = {"id": "t", "date": "2026-12-01", "platforms": ["instagram"], "pillar": "tips", "format": "image",
+        "funnel": "awareness", "goal_metric": "saves"}
 
 
 def post(**kw):
@@ -175,13 +176,55 @@ def test_cli_exit_codes(tmp_path):
     assert cp.main([str(f)]) == 1
 
 
+def test_funnel_and_goal_required():
+    p = post(caption="Check the location line first.")
+    del p["funnel"]
+    assert "funnel" in rules(p)
+    p["funnel"] = "virality"
+    assert "funnel" in rules(p)
+    p["funnel"] = "conversion"
+    del p["goal_metric"]
+    assert "funnel" in rules(p)
+
+
+def _rep(posts):
+    return {k: {f.level for f in v} for k, v in cp.check_repetition(posts).items()}
+
+
+def test_repeated_hook_blocks_within_60_days():
+    a = post(id="a", date="2026-12-01", hook="Remote doesn't always mean anywhere.")
+    b = post(id="b", date="2026-12-20", hook="Remote doesn't always mean anywhere!")
+    assert _rep([a, b]) == {"b": {cp.BLOCK}}
+
+
+def test_numbers_are_masked_in_hooks():
+    a = post(id="a", date="2026-12-01", hook="19 remote jobs open worldwide this week")
+    b = post(id="b", date="2026-12-08", hook="36 remote jobs open worldwide this week")
+    assert "b" in _rep([a, b])
+
+
+def test_same_series_only_flags_and_old_hooks_are_free():
+    a = post(id="a", date="2026-12-01", hook="A remote role that's open worldwide.", series="role-single")
+    b = post(id="b", date="2026-12-08", hook="A remote role that's open worldwide.", series="role-single")
+    assert _rep([a, b]) == {"b": {cp.WARN}}
+    c = post(id="c", date="2027-03-01", hook="A remote role that's open worldwide.")
+    assert "c" not in _rep([a, c])
+
+
+def test_different_hooks_pass():
+    a = post(id="a", date="2026-12-01", hook="Remote doesn't always mean anywhere.")
+    b = post(id="b", date="2026-12-02", hook="A real employer won't ask you to pay.")
+    assert _rep([a, b]) == {}
+
+
 def test_calendar_files_pass_in_draft_mode():
-    """Every planned post in social/calendar/*.posts.json passes the checker (draft mode)."""
+    """Every planned post in social/calendar/*.posts.json passes the checker (draft mode), repetition included."""
     cal = Path(__file__).resolve().parents[2] / "calendar"
     files = sorted(cal.glob("*.posts.json"))
     if not files:
         pytest.skip("no calendar yet")
-    for path in files:
-        for p in cp.load_posts(path):
-            blocks = [str(x) for x in cp.check_post(p, "draft") if x.level == cp.BLOCK]
-            assert not blocks, f"{path.name} {p.get('id')}: {blocks}"
+    allposts = [p for path in files for p in cp.load_posts(path)]
+    reps = cp.check_repetition(allposts)
+    for p in allposts:
+        blocks = [str(x) for x in cp.check_post(p, "draft") + reps.get(p["id"], []) if x.level == cp.BLOCK]
+        assert not blocks, f"{p.get('id')}: {blocks}"
