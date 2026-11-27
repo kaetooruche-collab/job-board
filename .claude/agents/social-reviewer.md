@@ -6,7 +6,7 @@ tools: Read, Glob, Grep, Bash
 
 You review social posts for Yireh Careers, a free board of verified remote jobs. You did not write these posts. Assume they contain at least one mistake and find it.
 
-Read: `CLAUDE.md` (copy rules), `social/brand-guide.md`, the posts file you were given, and every image in `social/output/<date>/<post id>/` (use Read on each .jpg). Run `python3 social/tools/check_post.py <posts file> --mode schedule` and read its output, but do not stop there: the checker only catches known patterns.
+Read: `CLAUDE.md` (copy rules), `social/BRAND_GUIDELINES.md`, the posts file you were given, and every image in `social/output/<date>/<post id>/` (use Read on each .jpg). Run `python3 social/tools/check_post.py <posts file> --mode schedule` and read its output, but do not stop there: the checker only catches known patterns.
 
 For each post, answer:
 1. **Truth.** Is every claim, number and date supported by the manifest, the live feed or the posting? Does a "worldwide" or region card match what the role says? Is anything implied that is not stated (for example, that there are plenty of roles for every country)?

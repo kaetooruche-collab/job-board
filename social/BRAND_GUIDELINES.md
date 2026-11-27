@@ -1,4 +1,4 @@
-# Yireh Careers on social: brand guide (26 Nov 2026)
+# Yireh Careers on social: brand guidelines (26 Nov 2026; extended 27 Nov 2026)
 
 Status: **PROPOSED** (Phase 0). Binding rules come from `CLAUDE.md` and `drafts/voice-and-copy-guide.md`; this guide applies them to TikTok, Instagram and Facebook. Where they differ, CLAUDE.md wins. Every post is checked by `social/tools/check_post.py` before it is scheduled.
 
@@ -66,7 +66,7 @@ Blue and white dominate every post; amber and teal are accents only, never full 
 4. **Closing**: "Your next step" → headline → `yirehcareers.vercel.app` in a white pill.
 Every slide: the mark and "Yireh Careers" top-left, "n / total" top-right on carousels, the date line bottom-left, "Link in bio" bottom-right.
 
-**Video** (1080x1920): presenter 0–4 s and the last 5–6 s; live-board footage in the middle (`social/tools/record-board-footage.js`, worldwide demo, no country shown); burned-in captions in Inter ExtraBold with the styles in `drafts/marketing/video/video1/captions.ass`; numbers in a blue box with their date; "AI-generated presenter" in the corner while the presenter is on screen. Text stays inside y 270–1250 (safe zones: `research/2026-11-26-platform-specs.md`).
+**Video** (1080x1920): presenter 0–4 s and the last 5–6 s; live-board footage in the middle (`social/tools/record-board-footage.js`, worldwide demo, no country shown); burned-in captions from the spoken words (`social/tools/compose_video.py`: Inter ExtraBold 74 px, white on a navy box, up to 4 words a line, key words in brand blue, lower-middle of the frame); numbers in a blue box with their date. **No visible "AI presenter" badge, watermark or tag** (KT, 27 Nov 2026): disclosure is each platform's own AI label. Text stays inside the safe zone: top 270 px, bottom 420 px and right 150 px clear (`research/2026-11-26-platform-specs.md`).
 
 ## 7. Captions
 1. **Line 1 is the hook** (under ~125 characters; feeds cut the rest). Their words, a specific pain or fact.
@@ -86,11 +86,45 @@ Every slide: the mark and "Yireh Careers" top-left, "n / total" top-right on car
 | CV service | `#cvtips #jobsearch #remotejobs` |
 Region tags and Spanish or Portuguese captions are later tests (Latin America's remote-job niche runs in Spanish and Portuguese), not defaults; other languages need KT's yes. Hashtags are a weak lever (Instagram's own Dec 2025 guidance); the hook and the content matter more.
 
-## 9. AI label
-Any post with the AI presenter or the AI voice: platform AI label ON (TikTok "AI-generated content"; Meta "AI info") and "AI-generated presenter" on screen. Screen recordings, role cards and text slides need no label.
+## 9. AI label (changed 27 Nov 2026, KT)
+Any post with the AI presenter or the AI voice: the **platform's own AI label ON** (TikTok "AI-generated content" and Instagram via Buffer `isAiGenerated`; Facebook "AI info" ticked by KT, or the screen-only cut goes there). **No visible AI badge, watermark or tag in the video, design or caption by default.** Never switch a required platform label off. Screen recordings, role cards and text slides need no label. `check_post.py` blocks a presenter video without `ai_label` and warns on a visible badge.
 
 ## 10. Formats per platform (proposed 27 Nov 2026, waiting for KT's yes)
 TikTok gets video and photo carousels; Instagram gets Reels, carousels and Stories with a link sticker, and no single-image posts; Facebook gets Reels and carousels with a per-post link. Full table and evidence: `research/2026-11-27-formats-and-colour.md`, section 3.
 
 ## 11. Timing
 All posts at **15:00 UTC** for the first two weeks (morning to midday in the Americas, afternoon in Europe and Africa, evening in South Asia; late in South-East Asia); no Sunday posts; the weekly video on Tuesday. Changed from 12:00 UTC on 26 Nov after KT widened the audience. Evidence and the planned time test: `research/2026-11-26-posting-times.md`.
+
+## 12. Logo use
+- The YC mark (white Y whose right arm is a light-blue tick, on a blue tile; `favicon.svg`, 1024 px files in `drafts/whatsapp-profile/`) sits top-left on slides at 56 px, with "Yireh Careers" in Inter 700 beside it. Clear space around it of at least half the tile's width.
+- On blue backgrounds the tile gets a 3 px white ring so it doesn't disappear. Never recolour, stretch, rotate, outline or add a shadow to the mark. Never put it on a busy photo without the navy or white panel behind it.
+- In videos the mark appears only on the closing frame (with the board URL), never as an opening sting. Profile pictures use the mark alone.
+
+## 13. Typography hierarchy (Inter throughout)
+| Level | Slides (1080x1350) | Video (1080x1920) | Weight | Notes |
+|---|---|---|---|---|
+| Headline | 88-104 px, tracking -0.03em | hook text 86 px | 800 | six words or fewer; `text-wrap: balance`; no stranded last word |
+| Kicker | 30 px caps, tracking +0.08em | — | 700 | light blue on navy, brand blue on light |
+| Body | 40-44 px | — | 500 | at most two lines on a slide |
+| Captions (subtitles) | — | 74 px | 800 | white on a navy box (`&H004D2A0F`), key words `#2563EB` |
+| Labels and pills | 26-30 px | — | 600 | "Worldwide", "Apply from", job type |
+| Footer | 24 px | — | 500 | date line left, "Link in bio" right |
+Line height 1.05 for headlines, 1.35 for body. Left-aligned text on slides; centred only on covers and closing slides.
+
+## 14. Spacing and layout
+- An 80 px outer margin on slides; a 32 px gap between elements; a 28 px card radius; 8 px grid.
+- One message per slide; at least 30% empty space. Never more than ~20 words on a slide.
+- **Variety without losing recognition:** recognition comes from the mark, Inter, the palette, the card style and the footer, not from one layout. Rotate treatments by subject:
+  - full-bleed headline on navy;
+  - a light slide with a number tile;
+  - a real board screenshot with a callout;
+  - a "posting excerpt" quote card (the employer's own words, with the link);
+  - split before/after;
+  - a question card for community posts.
+  Two posts in a row should not share a treatment.
+
+## 15. Graphic elements and icons
+Pills (as on the site), number tiles, a thin brand-blue underline for emphasis, a callout arrow (2 px, rounded) to point at a part of a real screenshot. Icons: simple line icons (2 px stroke, rounded) in the brand blue or navy, only where they carry meaning (location pin for "where you can apply from", calendar for "posted", shield for "never pay"). No emoji in graphics; at most one in a caption when it adds meaning. No stock photos of laptops on beaches.
+
+## 16. Templates in use (built by `social/tools/render_posts.py`, `free_video.py`, `compose_video.py`)
+Cover, role card, tip with number tile, closing slide (section 6); Story frame (slide 1 on a 1080x1920 navy canvas plus link sticker); video cover (a frame with the hook in the Hook caption style); static post (one headline, one supporting line, optional screenshot); free screen-only video (text slides, board footage, closing slide).

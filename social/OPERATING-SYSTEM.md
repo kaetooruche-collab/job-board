@@ -34,6 +34,9 @@ Scheduled tasks created 27 Nov with KT's yes; they fire into the social agency s
 | `social_metrics.py` | Board visits by platform from GoatCounter (needs its credential) |
 | `build_calendar.py` | The readable calendar page for KT |
 
+## The creative system (27 Nov 2026)
+Skills: `social-media-humanizer` (all copy), `bhuman-presenter-director` (all presenter video). Documents: `SOCIAL_STRATEGY.md`, `AUDIENCE_RESEARCH.md`, `CONTENT_PILLARS.md`, `PLATFORM_GUIDELINES.md`, `PRESENTER_PROFILES.md`, `BHUMAN_WORKFLOW.md`, `BRAND_GUIDELINES.md`, `CONTENT_CALENDAR.md`, `PERFORMANCE_LOG.md`. Tools added: `voice_qc.py` (transcript, pace, pauses, loudness), `compose_video.py` (brand captions, b-roll, -14 LUFS), `verify_source.py` (cards match the employer's data).
+
 ## The reviewer
 `.claude/agents/social-reviewer.md`: a fresh-eyes critic that reads the posts and images and returns BLOCK/WARN. It cannot edit, schedule or publish.
 

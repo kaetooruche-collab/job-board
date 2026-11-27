@@ -2,7 +2,7 @@
 
 Owned by the "Yireh Social Agency" session (branch `claude/social-agency`). Plan: `drafts/social/agency-plan.md`. Operating manual: `.claude/skills/social-agency/SKILL.md`.
 
-- `brand-guide.md` - voice, pillars, visual templates, caption rules, hashtag sets
+- `BRAND_GUIDELINES.md` - voice, pillars, visual templates, caption rules, hashtag sets
 - `calendar/` - one week per file: `<week>.posts.json` (source; read by the checker and renderer) and `<week>.md` (generated, for reading)
 - `output/<date>/<post-id>/` - rendered images and carousels with `manifest.json` (roles used and their open-check)
 - `tools/` - free production tools and the guardrail checker (see `tools/README.md`)

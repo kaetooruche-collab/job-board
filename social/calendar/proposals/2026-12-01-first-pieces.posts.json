@@ -1,0 +1,137 @@
+{
+  "week": "2026-12-01",
+  "title": "First pieces from the 27 Nov brief (proposal; not scheduled; KT approves before anything replaces a week-1 slot)",
+  "status": "PROPOSAL. Video posts carry their scripts in social/video-briefs/.",
+  "posts": [
+    {
+      "id": "c1-what-remote-meant",
+      "date": "2026-12-03",
+      "pillar": "eligibility",
+      "series": "numbers",
+      "format": "carousel",
+      "platforms": [
+        "instagram",
+        "tiktok",
+        "facebook"
+      ],
+      "funnel": "awareness",
+      "goal_metric": "saves and sends per reach",
+      "title": "We sorted the board by who can apply",
+      "hook": "We sorted 1,987 remote jobs by who can apply.",
+      "variable": "Data-story carousel (first of its kind for us)",
+      "caption": "We sorted 1,987 remote jobs by who can apply.\n\nToday's count: a handful are open to anyone, anywhere. Most name a country or a region, and that's useful, once you know where to look for it.\n\nSwipe for the numbers, then filter by where you live. Link in bio.\n\n#remotejobs #jobsearch #remotework #workfromhome",
+      "measured_on": "2026-11-27",
+      "number_dated_on_screen": true,
+      "render": {
+        "theme": "light",
+        "slides": [
+          {
+            "t": "cover",
+            "kicker": "We sorted them all",
+            "title": "{jobs:,} remote jobs. Who can apply?",
+            "sub": "Every job on our board, sorted by what the employer says."
+          },
+          {
+            "t": "tip",
+            "n": "{worldwide}",
+            "title": "Open to anyone, anywhere",
+            "body": "Checked against each company's own job data on the day we counted."
+          },
+          {
+            "t": "tip",
+            "n": "{region_wide}",
+            "title": "Open across a region",
+            "body": "A whole region, like EMEA or the Americas. Check that yours is in it."
+          },
+          {
+            "t": "tip",
+            "n": "{named_countries:,}",
+            "title": "Name one or more countries",
+            "body": "The most common answer by far. The country is on every card."
+          },
+          {
+            "t": "tip",
+            "n": "{location_not_specified}",
+            "title": "Don't say",
+            "body": "The posting doesn't state it. Ask the employer before you spend an hour."
+          },
+          {
+            "t": "cta",
+            "title": "Start with where you live",
+            "sub": "Tell the board, and it shows the jobs that say they're open to you."
+          }
+        ]
+      }
+    },
+    {
+      "id": "s1-we-check-the-job",
+      "date": "2026-12-05",
+      "pillar": "brand",
+      "series": "trust",
+      "format": "image",
+      "platforms": [
+        "facebook"
+      ],
+      "funnel": "consideration",
+      "goal_metric": "board visits from the tagged link",
+      "title": "We check the job, not the employer",
+      "hook": "We check the job. Not the employer.",
+      "variable": "Honesty-led trust message",
+      "caption": "We check the job. Not the employer.\n\nEvery job on our board comes from the company's own hiring page, has its real posting date, and says where you can apply from, or that the employer doesn't say. We don't audit companies and we can't promise interviews, so read each employer's rules for your country before you apply.\n\nWhat we check, in full: link in bio.\n\n#remotejobs #jobsearch",
+      "render": {
+        "theme": "light",
+        "date_line": "From yirehcareers.vercel.app/verify",
+        "slides": [
+          {
+            "t": "cover",
+            "kicker": "What we check",
+            "title": "We check the job. Not the employer.",
+            "sub": "Original posting · real posted date · where you can apply from. No promises we can't keep."
+          }
+        ]
+      }
+    },
+    {
+      "id": "v3-cards",
+      "date": "2026-12-07",
+      "pillar": "safety",
+      "series": "safety",
+      "format": "carousel",
+      "platforms": [
+        "instagram"
+      ],
+      "funnel": "awareness",
+      "goal_metric": "b-roll for V3 (not posted on its own)",
+      "title": "V3 message cards",
+      "hook": "Three messages a real employer won't send you.",
+      "caption": "Three messages a real employer won't send you. (b-roll only)",
+      "render": {
+        "theme": "amber",
+        "date_line": "Example messages",
+        "slides": [
+          {
+            "t": "cover",
+            "kicker": "Example message",
+            "title": "“There's a small fee to start your training.”",
+            "sub": "Real employers don't charge you to get a job."
+          },
+          {
+            "t": "cover",
+            "kicker": "Another example",
+            "title": "“Deposit this cheque and send the rest back.”",
+            "sub": "The cheque bounces. Your money doesn't come back."
+          },
+          {
+            "t": "cover",
+            "kicker": "And another",
+            "title": "“We'll do the whole interview by chat.”",
+            "sub": "No call. No company email. Stop there."
+          }
+        ]
+      },
+      "spelling_ok": [
+        "cheque"
+      ]
+    }
+  ]
+}

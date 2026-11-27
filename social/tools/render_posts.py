@@ -88,7 +88,7 @@ h1 em{font-style:normal;color:var(--em)}
 .rows{margin-top:44px;border-top:2px solid #e2e5e9;padding-top:30px;display:grid;grid-template-columns:auto 1fr;gap:20px 32px;font-size:34px}
 .rows dt{color:#5f6368;font-weight:500}.rows dd{font-weight:600}
 .btn{margin-top:48px;display:inline-block;background:#2563eb;color:#fff;font-weight:700;font-size:32px;padding:22px 38px;border-radius:14px}
-.tipn{width:132px;height:132px;border-radius:30px;background:var(--tip_bg);color:var(--tip_fg);display:flex;align-items:center;
+.tipn{min-width:132px;width:max-content;padding:0 34px;box-sizing:border-box;height:132px;border-radius:30px;background:var(--tip_bg);color:var(--tip_fg);display:flex;align-items:center;
  justify-content:center;font-size:64px;font-weight:800}
 .big{margin-top:44px;font-size:96px}
 .url{margin-top:54px;display:inline-block;background:var(--url_bg);color:var(--url_fg);font-weight:800;font-size:44px;padding:24px 40px;border-radius:18px}

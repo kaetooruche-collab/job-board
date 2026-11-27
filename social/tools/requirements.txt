@@ -1,3 +1,4 @@
 # Social agency tools. Python 3.11+. Playwright (Node) and Chromium are preinstalled in the cloud session.
 pyspellchecker==0.8.1   # spelling guardrail in check_post.py (MIT licence); without it only the known-typo list runs
 pytest                  # tests in social/tools/tests
+faster-whisper==1.2.1   # voice_qc.py / compose_video.py: local speech-to-text (MIT); downloads the base.en model from huggingface.co on first use

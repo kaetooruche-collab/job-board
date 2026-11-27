@@ -132,6 +132,7 @@ def stats(jobs: list[dict], now: dt.datetime | None = None) -> dict:
         "region_wide": sum(1 for e in el if e.get("type") == "region"),
         "open_to_audience_regions": sum(1 for j in jobs if is_audience_open(j)),
         "location_not_specified": sum(1 for e in el if e.get("type") == "unclear"),
+        "named_countries": sum(1 for e in el if e.get("type") == "countries"),
         "single_country": sum(1 for e in el if e.get("type") == "countries" and len(e.get("countries") or []) == 1),
         "us_only": us_only,
         "us_only_pct": round(100 * us_only / len(jobs), 1) if jobs else 0,

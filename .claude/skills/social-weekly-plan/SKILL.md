@@ -5,7 +5,7 @@ description: Monday runbook for the Yireh Careers social agency - draft next wee
 
 # Weekly plan (Mondays)
 
-Read first: `social/OPERATING-SYSTEM.md`, `social/state.json`, `.claude/skills/social-agency/SKILL.md` (rules), `social/brand-guide.md`.
+Read first: `social/OPERATING-SYSTEM.md`, `social/state.json`, `.claude/skills/social-agency/SKILL.md` (rules), `social/BRAND_GUIDELINES.md`.
 
 1. **State.** If `mode` is `hold`, stop and tell KT nothing was planned. Otherwise continue (planning is allowed in every other mode).
 2. **Draft.** `python3 social/tools/plan_week.py <the Tuesday 8 days ahead>` (a full week for KT to approve). If that week's file already exists, finish it. Refuses to overwrite: if the file exists, read it and finish it instead of replacing it (use `--force` only for a draft no human has touched).
