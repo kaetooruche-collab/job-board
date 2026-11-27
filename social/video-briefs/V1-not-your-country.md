@@ -1,5 +1,5 @@
 # V1: "Remote… but not for you?"
-Status: **draft, waiting for KT** (script, presenter and credits) · Presenter: Amara · Length target: 25-30 s · Platforms: TikTok, Instagram Reel, Facebook (screen-only cut unless KT ticks "AI info")
+Status: **rendered and composited 27 Nov; waiting for KT to listen** (KT approved script, swaps and credits 27 Nov) · Presenter: Amara · Length target: 25-30 s · Platforms: TikTok, Instagram Reel, Facebook (screen-only cut unless KT ticks "AI info")
 
 1. **Objective:** awareness → profile visits and board visits. Goal metric: 2-second hold and completion (TikTok Studio), profile visits.
 2. **Audience:** people outside the US who keep finding "remote" jobs they can't apply for, at any level.
@@ -46,5 +46,19 @@ Status: **draft, waiting for KT** (script, presenter and credits) · Presenter: 
    - Instagram: "Remote tells you where you'll work. It doesn't always tell you where you can live.\n\nBefore you write the cover letter, find the line that says where applicants must be based. If it isn't you, you've just saved an hour.\n\nOur board shows that line on every job, or says when the employer doesn't. Link in bio.\n\n#remotejobs #jobsearch #remotework #workfromhome"
    - Facebook: the same as Instagram, with "Link in bio" replaced by the tagged board link (the gate does it).
 19. **Hashtags:** in the captions (four, from the video set).
-20. **QC:** humanizer final check passed (read-aloud done; no filler phrases; one CTA; mild tone suits the topic). `check_post`: no country named (the script avoids naming one), no hiring system, "free" not used. voice_qc: pending. Frames: pending. KT listened: no. Credits: none yet.
+20. **QC (27 Nov):**
+- Humanizer final check passed.
+- `check_post` passed.
+- **voice_qc:** narration 80 words in 28.2 s = **170 wpm** (Video 1: 195). Pauses fall where the sheet asks (0.9 s after "application", 1.0 s after "bottom", 1.1 s after "isn't yours"). Final MP4 -14.9 LUFS.
+- **Speech-to-text differences:**
+  - "a country" heard as "**our** country" (10-13 s): probably a recogniser slip. **KT to listen.**
+  - "Link's" heard as "links": same sound.
+- **Frames:**
+  - Hook visible from frame 0; captions inside the safe zone.
+  - "Yireh" spelled correctly in captions.
+  - Board footage (22-27.5 s) shows real cards with "Worldwide" pills while the line says "where it hires from"; no country shown.
+- **Watermark:** a small "BHuman" mark sits at the bottom of the presenter shots (the file is still `output_watermarked.mp4` on the Ultimate plan). Not removed: BHuman's terms on this couldn't be found. KT to check with BHuman.
+- **Presenter and project:** Amara re-dressed for an evening kitchen (`edit_presenter`); BHuman project `de0d2b5e-3edc-4c36-a84e-62f5df8fc50a`.
+- **Credits:** narration about 28, HD render 58 Speakeasy seconds (about 14.5).
+- **Output:** `social/output/2026-12-01/w49-p1/video.mp4` (28.8 s, 1080x1920).
 **Evidence and claims:** "every job shows where it hires from, or says when the employer doesn't" = the live home page, 27 Nov ("Every job shows where it hires from, or says when that's unclear"). No numbers in this video.
