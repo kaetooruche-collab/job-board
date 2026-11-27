@@ -23,12 +23,12 @@
 | 2026-12-07 | v3-cards | proposal-draft | carousel | instagram | Three messages a real employer won't send you. |  |  |
 | 2026-12-07 | w49-p6 | ready | video | tiktok instagram | 3 messages real employers won't send | yes |  |
 | 2026-12-07 | w49-p6-carousel | moved-out | carousel | instagram tiktok facebook | A real employer won't ask you to pay to get a job. | yes |  |
-| 2026-12-08 | w50-p1 | needs-writing | video | tiktok instagram facebook | About six in ten remote jobs on our board are open to people |  |  |
-| 2026-12-09 | w50-p2 | draft | carousel | instagram tiktok facebook | Most remote jobs on our board are open to one country. These |  |  |
+| 2026-12-08 | w50-p1 | draft | video | tiktok instagram | Ever skipped a remote job because it said EMEA? | yes |  |
+| 2026-12-09 | w50-p2 | draft | carousel | instagram tiktok facebook | Most remote jobs on our board are open to one country. These | yes |  |
 | 2026-12-10 | w50-p3 | draft | carousel | instagram facebook | Not sure if it's your CV or the jobs? | yes |  |
-| 2026-12-11 | w50-p4 | draft | image | instagram tiktok facebook | This week's pick: a remote role open to applicants anywhere. |  |  |
-| 2026-12-12 | w50-p5 | draft | carousel | instagram tiktok facebook | Three roles you can apply for beyond one country. |  |  |
-| 2026-12-14 | w50-p6 | draft | carousel | instagram tiktok facebook | Read a remote posting in a minute, before you spend an hour  |  |  |
+| 2026-12-11 | w50-p4 | draft | image | instagram tiktok facebook | This week's pick: a remote role open to applicants anywhere. | yes |  |
+| 2026-12-12 | w50-p5 | draft | carousel | instagram tiktok facebook | Three roles you can apply for beyond one country. | yes |  |
+| 2026-12-14 | w50-p6 | draft | carousel | instagram tiktok facebook | Read a remote posting in a minute, before you spend an hour  | yes |  |
 | 2026-12-15 | w51-p1 | needs-writing | video | instagram tiktok facebook | Before you apply for another remote job, check one thing. |  |  |
 | 2026-12-16 | w51-p2 | draft | carousel | instagram tiktok facebook | Open worldwide or across a whole region: this week's picks. |  |  |
 | 2026-12-17 | w51-p3 | draft | carousel | instagram tiktok facebook | Three words to search for in a remote job posting. |  |  |

@@ -12,47 +12,66 @@
       "time_utc": "15:00",
       "platforms": [
         "tiktok",
-        "instagram",
-        "facebook"
+        "instagram"
       ],
       "pillar": "proof",
       "format": "video",
-      "title": "Weekly video: \"One country\"",
-      "hook": "About six in ten remote jobs on our board are open to people in just one country.",
-      "variable": "Opening line: our own number, with no country named, against week 1's cost hook. Body and footage unchanged.",
-      "script": "About six in ten remote jobs on our board... are open to people in just one country.\nWe counted.\nIf you live somewhere else, that's a lot of applications going nowhere.\nSo tell Yai-ray Careers where you live... and it shows you only the remote jobs open to you.\nEvery job opens its original posting. It's free, and we never charge you to apply.\nLink in bio.",
+      "title": "Weekly video: \"EMEA, APAC, LATAM: is that you?\" (Amara)",
+      "hook": "Ever skipped a remote job because it said EMEA?",
+      "variable": "Topic: decoding region labels (new eligibility angle, gain-framed) with message-style cards, against week 1's 'check this line' videos.",
+      "script": "Ever skipped a remote job because it said EMEA?\nEMEA is Europe, the Middle East and Africa.\nAPAC is Asia and the Pacific. LATAM is Latin America.\nSo a job marked EMEA can include you... even when it never names your country.\nSome employers narrow it down further in the posting, so give it a quick read.\nOn Yai-ray Careers, the card tells you where a job hires from, before you click.\nFind your region. Link's in the bio.",
       "on_screen": [
-        "1,225 of 1,987 remote jobs: open to one country only",
-        "From our live board, 26 Nov 2026",
-        "We counted.",
-        "Tell it where you live",
-        "Link in bio",
-        "AI-generated presenter"
+        "EMEA, APAC, LATAM: is that you?",
+        "EMEA: Europe, the Middle East and Africa",
+        "APAC: Asia and the Pacific",
+        "LATAM: Latin America",
+        "yirehcareers.vercel.app"
       ],
-      "visuals": "0-5 s presenter with the number on screen. 5-20 s live-board footage (worldwide demo, no country shown). 20-27 s presenter close. Captions burned in.",
-      "production": "As week 1 (about 54 render credits plus about 30 voice credits), or the free screen-led fallback.",
-      "caption": "About six in ten remote jobs on our board are open to people in just one country. We counted.\n\nSo the board asks where you live, and shows only the jobs open to you, each linked to its original posting.\n\nLink in bio.\n\n#remotejobs #remotework #jobsearch #workfromhome",
+      "visuals": "0-3 s Amara with the hook on screen. Region cards as b-roll while each is named. Amara for the close, then the end card. Captions burned in.",
+      "production": "Narrate and render on 1 Dec 2026 (December's BHuman budget, KT's yes 27 Nov): about 27 voice credits + about 15 render credits (HD, ~28 s).",
+      "caption": "Ever skipped a remote job because it said EMEA?\n\nEMEA is Europe, the Middle East and Africa. APAC is Asia and the Pacific. LATAM is Latin America. A job marked EMEA can include you even when your country isn't named, so give the posting a quick read.\n\nSave this for your next search. Link in bio.\n\n#remotejobs #remotework #jobsearch #workfromhome",
       "ai_presenter": true,
       "ai_voice": true,
       "ai_label": true,
-      "measured_on": "2026-11-26",
-      "number_dated_on_screen": true,
       "spelling_ok": [
-        "Yai"
+        "Yai",
+        "Latin"
       ],
-      "change_note": "26 Nov 13:32 UTC: re-measured after PRs 81-83 (was 1,287 of 1,759, 'three in four'; now 1,225 of 1,987, 62%).",
       "series": "weekly-video",
       "funnel": "awareness",
       "goal_metric": "2-second hold rate and profile visits (TikTok Studio, Instagram Insights)",
       "cast": {
-        "presenter": "daniel",
-        "voice": "a calm male catalog voice, chosen by audition (find_voice_candidates) on first use and then fixed",
-        "persona": "Practical and direct; 'here is the one thing to check'. Good for safety and how-to scripts.",
-        "look": "Man, 30s, short hair, plain shirt",
-        "setting": "sofa with a laptop on the knees, relaxed",
-        "new_presenter": true
+        "presenter": "amara",
+        "setting": "home office with a plant (presenter 'Yireh presenter - warm home'); V1 used her kitchen, so the pair doesn't repeat",
+        "voice": "Amara's fixed voice (cast.json)"
       },
-      "needs_writing": "Re-fit the script to presenter daniel (practical, direct) in the 'sofa' setting; generate daniel's look and audition his voice first (cast.json). Render only after KT's yes for this week, which includes the plan_render credit estimate."
+      "captions": {
+        "tiktok": "EMEA, APAC, LATAM: the three labels that might include you. Link in bio. #remotejobs #remotework #jobsearch #workfromhome"
+      },
+      "note": "Facebook skipped: Buffer can't set Facebook's AI label.",
+      "rewrite_27nov": "Re-angled per QA (no 'one country' framing, no repeat of week 1's 'check before you apply'); no board numbers, so nothing goes stale in a fixed render. Evidence: Reddit r/RemoteJobs 'Try searching for EMEA roles', r/micro1_ai 'Does Micro1 really hire people from the EMEA zones/Africa' (read 27 Nov).",
+      "previous_version": {
+        "hook": "About six in ten remote jobs on our board are open to people in just one country.",
+        "script": "About six in ten remote jobs on our board... are open to people in just one country.\nWe counted.\nIf you live somewhere else, that's a lot of applications going nowhere.\nSo tell Yai-ray Careers where you live... and it shows you only the remote jobs open to you.\nEvery job opens its original posting. It's free, and we never charge you to apply.\nLink in bio.",
+        "on_screen": [
+          "1,225 of 1,987 remote jobs: open to one country only",
+          "From our live board, 26 Nov 2026",
+          "We counted.",
+          "Tell it where you live",
+          "Link in bio",
+          "AI-generated presenter"
+        ],
+        "caption": "About six in ten remote jobs on our board are open to people in just one country. We counted.\n\nSo the board asks where you live, and shows only the jobs open to you, each linked to its original posting.\n\nLink in bio.\n\n#remotejobs #remotework #jobsearch #workfromhome",
+        "cast": {
+          "presenter": "daniel",
+          "voice": "a calm male catalog voice, chosen by audition (find_voice_candidates) on first use and then fixed",
+          "persona": "Practical and direct; 'here is the one thing to check'. Good for safety and how-to scripts.",
+          "look": "Man, 30s, short hair, plain shirt",
+          "setting": "sofa with a laptop on the knees, relaxed",
+          "new_presenter": true
+        },
+        "visuals": "0-5 s presenter with the number on screen. 5-20 s live-board footage (worldwide demo, no country shown). 20-27 s presenter close. Captions burned in."
+      }
     },
     {
       "id": "w50-p2",

@@ -164,12 +164,15 @@
       "goal_metric": "board visits (utm) and saves",
       "title": "V2 screen-led demo: the box that changes the whole board",
       "hook": "Do this before you apply.",
-      "variable": "Screen-led video with no presenter (first test against presenter-led V1)",
+      "variable": "Screen-led video with an AI voiceover (Daniel's voice), no presenter on screen; against presenter-led V1",
       "caption": "Do this before you apply.\n\nTell the board where you live. You'll see only the jobs open to you, each with where it hires from, the posted date, and the pay when it's stated. Apply goes to the original posting.\n\nLink in bio.\n\n#remotejobs #jobsearch #remotework #workfromhome",
       "day": "Fri",
       "time_utc": "15:00",
-      "note": "Prebuilt video (slides + live-board footage, no numbers): do not re-render; check frames on the day.",
-      "copy_edits": "27 Nov (QA): rebuilt with footage that hides counts, the CV link and the second 'free'; closing slide 'Try it: type where you live'"
+      "note": "Daniel voiceover (KT, 27 Nov: 'I would like Daniel to voice V2'): narrate on 1 Dec (December budget, ~24 credits), re-time the slides to the voice, voice_qc. Until then the silent cut is in place and still publishable if narration fails.",
+      "copy_edits": "27 Nov (QA): rebuilt with footage that hides counts, the CV link and the second 'free'; closing slide 'Try it: type where you live'",
+      "ai_voice": true,
+      "ai_label": true,
+      "voiceover": "social/video-briefs/assets/v2/voiceover.txt"
     },
     {
       "id": "w49-p5",
