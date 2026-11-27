@@ -54,3 +54,32 @@ def test_gate_refuses_blocked_post():
             "platforms": ["instagram"], "funnel": "awareness", "goal_metric": "saves"}
     with pytest.raises(bp.Refused):
         bp.payloads_for(post, "2030-01-08", check_urls=False)
+
+
+def test_facebook_caption_gets_tagged_board_link():
+    post = {"id": "w49-p2", "pillar": "jobs", "caption": "Hook.\n\nMore on the board: link in bio. Check rules."}
+    t = bp.facebook_text(post)
+    assert "utm_source=facebook&utm_campaign=w49-p2" in t and "link in bio" not in t.lower()
+    tip = {"id": "w49-p3", "pillar": "tips", "caption": "Hook.\n\nLink in bio.\n\n#jobtips"}
+    assert "utm_campaign=w49-p3" in bp.facebook_text(tip)
+
+
+def test_format_plan_needs_video_for_single_role(tmp_path, monkeypatch):
+    monkeypatch.setattr(bp, "ROOT", tmp_path)
+    d = tmp_path / "social/output/2030-01-11/x"
+    d.mkdir(parents=True)
+    (d / "01.jpg").write_bytes(b"jpg")
+    post = {"id": "x", "date": "2030-01-11", "series": "role-single", "pillar": "jobs", "format": "image",
+            "hook": "A remote role open worldwide.", "caption": "A remote role open worldwide. Link in bio.",
+            "platforms": ["instagram"], "funnel": "consideration", "goal_metric": "visits", "render": {"slides": []}}
+    with pytest.raises(bp.Refused, match="video"):
+        bp.payloads_for(post, "2030-01-11", check_urls=False, formats=True)
+
+
+def test_cast_rotates_presenter_and_setting():
+    import plan_week as pw
+    used = [{"date": "2026-12-01", "cast": {"presenter": "amara", "setting": "home desk by a window, morning light, plant in the background"}}]
+    c = pw.pick_cast("2026-12-08", used)
+    assert c["presenter"] != "amara"          # used last week: a new presenter is brought in
+    c2 = pw.pick_cast("2026-12-15", used + [{"date": "2026-12-08", "cast": c}])
+    assert c2["setting"] != "home desk by a window, morning light, plant in the background"

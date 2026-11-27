@@ -77,6 +77,30 @@ def pick_tip_set(series: str, used: list[dict]) -> tuple[str, dict] | None:
     return (cands[0], sets[cands[0]]) if cands else None
 
 
+def pick_cast(date: str, used: list[dict]) -> dict:
+    """Presenter and setting for the weekly video: least-recently-used active presenter, then a setting not used with
+    them within rotation_weeks (social/data/cast.json). Falls back to a 'to-create' presenter when only one is active
+    and it was used last week, so the cast grows inside the credit budget."""
+    cast = json.loads((DATA / "cast.json").read_text(encoding="utf-8"))
+    d = dt.date.fromisoformat(date)
+    past = [(p["date"], p.get("cast", {})) for p in used if p.get("cast")]
+    def last(pid):
+        return max([dd for dd, c in past if c.get("presenter") == pid] + [""])
+    pool = [x for x in cast["presenters"] if x["status"] == "active"]
+    pick = sorted(pool, key=lambda x: last(x["id"]))[0]
+    if last(pick["id"]) and (d - dt.date.fromisoformat(last(pick["id"]))).days <= 7:
+        new = [x for x in cast["presenters"] if x["status"] == "to-create"]
+        if new:
+            pick = new[0]
+    window = d - dt.timedelta(weeks=cast["rotation_weeks"])
+    taken = {c.get("setting") for dd, c in past if c.get("presenter") == pick["id"] and dt.date.fromisoformat(dd) >= window}
+    def set_last(s):
+        return max([dd for dd, c in past if c.get("setting") == s] + [""])
+    setting = sorted((s for s in cast["settings"] if s not in taken), key=set_last)[0]
+    return {"presenter": pick["id"], "voice": pick["voice"], "persona": pick["persona"], "look": pick["look"],
+            "setting": setting, "new_presenter": pick["status"] == "to-create"}
+
+
 def roles_post(pid, date, series, hook, count, stats):
     plain = series == "role-single"
     slides = ([{"t": "jobs", "count": 1, "worldwide_only": True}] if plain else [
@@ -129,7 +153,10 @@ def build(tuesday: str, jobs: list[dict], state: dict) -> dict:
                  "title": "Weekly video", "ai_presenter": True, "ai_voice": True, "ai_label": True,
                  "needs_writing": "script, on-screen lines and caption (Monday session, video recipe); or the free screen-only version",
                  "caption": "", "script": "", "on_screen": [], "visuals": "Presenter hook and close, live-board footage in the middle.",
-                 "variable": "Opening line.", "measured_on": stats["measured_on"], "number_dated_on_screen": True}
+                 "variable": "Opening line.", "measured_on": stats["measured_on"], "number_dated_on_screen": True,
+                 "cast": pick_cast(date, used + posts)}
+            p["needs_writing"] += (f" Write it for {p['cast']['presenter']} ({p['cast']['persona']}) in this setting: "
+                                   f"{p['cast']['setting']}." + (" New presenter: generate the look and audition the voice first, then add the BHuman ids to cast.json." if p['cast']['new_presenter'] else ""))
         p.setdefault("platforms", PLATFORMS)
         p.setdefault("time_utc", state.get("posting_time_utc", "15:00"))
         p["day"] = dt.date.fromisoformat(date).strftime("%a")

@@ -56,16 +56,43 @@ def url_ok(url: str) -> bool:
         return False
 
 
-def payloads_for(post: dict, today: str, check_urls: bool = True) -> list[dict]:
+BOARD = "https://yirehcareers.vercel.app/"
+STORY_SERIES = ("roles-carousel",)   # format plan: an Instagram Story with a link sticker on roles days
+
+
+def facebook_text(post: dict) -> str:
+    """Facebook captions can carry a clickable link (assets and a link card can't be combined in Buffer), so the
+    'link in bio' line becomes a tagged link to the board: per-post clicks in GoatCounter."""
+    url = f"{BOARD}?utm_source=facebook&utm_campaign={post['id']}"
+    text = post["caption"]
+    for old in ("Link in bio.", "More on the board: link in bio.", "link in bio."):
+        if old in text:
+            return text.replace(old, f"See them on the board: {url}" if post.get("pillar") == "jobs" else f"On the board: {url}", 1)
+    return text + f"\n\n{url}"
+
+
+def story_image(src: Path) -> Path:
+    """Slide 1 (1080x1350) padded onto a 1080x1920 navy canvas for a Story."""
+    import subprocess
+    out = src.parent / "story.jpg"
+    if not out.exists() or out.stat().st_mtime < src.stat().st_mtime:
+        subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", str(src), "-vf",
+                        "pad=1080:1920:0:285:color=0x131c35", "-q:v", "3", str(out)], check=True)
+    return out
+
+
+def payloads_for(post: dict, today: str, check_urls: bool = True, formats: bool = False) -> list[dict]:
     fs = [f for f in check_post.check_post(post, "schedule") if f.level == check_post.BLOCK]
     if fs:
         raise Refused(f"{post['id']}: " + "; ".join(str(f) for f in fs))
     d = ROOT / "social" / "output" / post["date"] / post["id"]
-    images = sorted(d.glob("*.jpg"))
+    images = sorted(d.glob("[0-9][0-9].jpg"))
     videos = sorted(d.glob("*.mp4"))
     manifest = json.loads((d / "manifest.json").read_text(encoding="utf-8")) if (d / "manifest.json").exists() else {}
     if post.get("render") and not images:
         raise Refused(f"{post['id']}: no rendered images in {d.relative_to(ROOT)}")
+    if formats and post.get("series") == "role-single" and not videos:
+        raise Refused(f"{post['id']}: format plan: the single-role post goes out as a short video (run slides_to_video.py)")
     if post.get("format") == "video" and not videos:
         raise Refused(f"{post['id']}: no video file in {d.relative_to(ROOT)}")
     for j in manifest.get("jobs", []):
@@ -73,9 +100,13 @@ def payloads_for(post: dict, today: str, check_urls: bool = True) -> list[dict]:
         if not c.get("ok") or c.get("checked_open_on") != today:
             raise Refused(f"{post['id']}: featured role {j['id']} not confirmed open today (run verify-open.js)")
     media = [("video", v) for v in videos] or [("image", im) for im in images]
+    story = story_image(images[0]) if (formats and post.get("series") in STORY_SERIES and images
+                                       and "instagram" in post["platforms"]) else None
     urls = [RAW + str(p.relative_to(ROOT)) for _, p in media]
+    if story:
+        urls_story = RAW + str(story.relative_to(ROOT))
     if check_urls:
-        bad = [u for u in urls if not url_ok(u)]
+        bad = [u for u in urls + ([urls_story] if story else []) if not url_ok(u)]
         if bad:
             raise Refused(f"{post['id']}: not publicly reachable yet (commit and push first): {bad[0]}")
     hh, mm = map(int, post.get("time_utc", "15:00").split(":"))
@@ -100,9 +131,17 @@ def payloads_for(post: dict, today: str, check_urls: bool = True) -> list[dict]:
             meta["facebook"] = {"type": "reel" if videos else "post"}
         elif plat == "tiktok":
             meta["tiktok"] = {"isAiGenerated": True} if (ai and videos) else {}
+        text = facebook_text(post) if (formats and plat == "facebook") else post["caption"]
         out.append({"_post": post["id"], "_platform": plat, "channelId": CHANNELS[plat], "schedulingType": "automatic",
-                    "mode": "customScheduled", "dueAt": due.isoformat(), "text": post["caption"], "assets": assets,
+                    "mode": "customScheduled", "dueAt": due.isoformat(), "text": text, "assets": assets,
                     "metadata": meta})
+    if story:
+        out.append({"_post": post["id"], "_platform": "instagram_story", "channelId": CHANNELS["instagram"],
+                    "schedulingType": "automatic", "mode": "customScheduled",
+                    "dueAt": (due + dt.timedelta(minutes=30)).isoformat(), "text": "",
+                    "assets": [{"image": {"url": urls_story, "metadata": {"altText": alt_text(story, manifest, 1)}}}],
+                    "metadata": {"instagram": {"type": "story", "shouldShareToFeed": False,
+                                               "link": f"{BOARD}?utm_source=instagram_story&utm_campaign={post['id']}"}}})
     return out
 
 
@@ -140,7 +179,8 @@ def main(argv=None) -> int:
         todays = [p for p in data["posts"] if p["date"] == a.date]
         if not todays:
             raise Refused(f"no posts dated {a.date} in {a.posts}")
-        out = [x for p in todays for x in payloads_for(p, today, check_urls=not a.dry_run)]
+        fmt = bool(state.get("formats_plan_approved"))
+        out = [x for p in todays for x in payloads_for(p, today, check_urls=not a.dry_run, formats=fmt)]
     except Refused as e:
         print(json.dumps({"refused": str(e)}, indent=2))
         return 1

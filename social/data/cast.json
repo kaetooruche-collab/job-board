@@ -1,0 +1,24 @@
+{
+  "note": "Weekly video cast (KT, 27 Nov 2026: don't reuse one presenter, background and voice every time). Rule: a small recurring cast, each presenter ALWAYS with their own voice (a face and voice that match keep trust; research: spokes-character studies, Ehrenberg-Bass). The setting, outfit and framing change every video; no presenter+setting pair repeats within 8 weeks. Scripts are written for the chosen presenter's persona and setting. New presenters are generated in BHuman inside the monthly credit budget; add them here with their BHuman ids once made. Hypothesis to test, not established.",
+  "presenters": [
+    {"id": "amara", "status": "active", "bhuman_presenter": "warm at-home presenter used in Video 1 (project 96c7bb1f-c240-4e60-a377-f504d67dc005)",
+     "voice": "Olivia (energetic delivery)", "persona": "Warm, calm, a little wry; talks like a friend who has done the job hunt. Short sentences.",
+     "look": "Woman, late 20s to 30s, dark wavy hair, casual knitwear"},
+    {"id": "daniel", "status": "to-create", "bhuman_presenter": null, "voice": "a calm male catalog voice, chosen by audition (find_voice_candidates) on first use and then fixed",
+     "persona": "Practical and direct; 'here is the one thing to check'. Good for safety and how-to scripts.",
+     "look": "Man, 30s, short hair, plain shirt"},
+    {"id": "zee", "status": "to-create", "bhuman_presenter": null, "voice": "a bright, quick female catalog voice, chosen by audition on first use and then fixed",
+     "persona": "Upbeat and quick; numbers and 'this week on the board'. Good for proof and roles videos.",
+     "look": "Woman, mid 20s, natural hair, bright top"}
+  ],
+  "settings": [
+    "home desk by a window, morning light, plant in the background",
+    "kitchen table with a laptop and a mug, evening lamp light",
+    "sofa with a laptop on the knees, relaxed",
+    "small study with a bookshelf behind",
+    "co-working cafe corner, blurred people far behind",
+    "balcony or doorway with daylight, phone in hand"
+  ],
+  "rotation_weeks": 8,
+  "never_on_screen": ["country flags or landmarks", "a brand or hiring-system logo", "text that names a country", "anything that looks like an office the viewer is told to go to"]
+}

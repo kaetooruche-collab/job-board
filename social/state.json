@@ -1,16 +1,33 @@
 {
   "note": "The agency's switches. Only KT changes mode, budgets and approvals; sessions read this file before every action.",
-  "mode": "drafts-only",
+  "mode": "approve-week",
   "modes_help": {
     "drafts-only": "Phase 0: plan and render, never schedule or publish.",
     "approve-week": "Phase 1: schedule a week only after KT's yes is recorded in approvals.",
     "autopilot": "Phase 2: schedule automatically unless hold is set.",
     "hold": "Stop: schedule nothing new; leave already-scheduled posts alone and tell KT."
   },
-  "approvals": [],
-  "bhuman_monthly_credit_budget": 0,
+  "approvals": [
+    {
+      "week": "2026-12-01",
+      "by": "KT",
+      "on": "2026-11-27",
+      "words": "5. yes (week 1 wording and the free CV-check post)"
+    }
+  ],
+  "bhuman_monthly_credit_budget": 200,
   "bhuman_credits_spent": {},
   "posting_time_utc": "15:00",
   "scope": "outside_us",
-  "formats_plan_approved": false
+  "formats_plan_approved": true,
+  "formats_plan_note": "KT, 27 Nov: 'what does the data say, if support- yes'. Evidence: research/2026-11-27-formats-and-colour.md; verdict in decisions/2026-11-27-autonomy-setup.md.",
+  "bhuman_plan": {
+    "name": "Ultimate",
+    "usd_per_month": 150,
+    "credits_per_month": 500,
+    "credits_left_on_2026-11-27": 497.75,
+    "speakeasy_credits_per_minute": 15,
+    "source": "KT's screenshots of app.bhuman.ai Plan & usage, 27 Nov 2026; bhuman.ai/pricing"
+  },
+  "bhuman_budget_note": "Social agency may use up to 200 of the 500 monthly credits (KT asked Claude to allocate, 27 Nov); the other 300 stay untouched for KT. Every render still needs KT's yes on its plan_render estimate, given in the weekly approval."
 }

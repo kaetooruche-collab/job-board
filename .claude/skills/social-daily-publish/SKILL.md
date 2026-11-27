@@ -13,7 +13,8 @@ The gate decides; this session does not override it. Read `social/state.json` fi
    - `curl -s https://yirehcareers.vercel.app/jobs.json -o <scratchpad>/jobs.json`
    - Set each post's `measured_on` to today. Re-render: `python3 social/tools/render_posts.py <posts.json> --feed <scratchpad>/jobs.json --only <post id>` then `node social/tools/shoot.js <dir>`.
    - `node social/tools/verify-open.js <dir>/manifest.json`. A failure: add the job to `social/data/exclude_jobs.json` and `social/board-issues.md`, re-render, verify again. Two failures in a row: skip the post, tell KT.
-   - Friday role post with the format plan approved: `python3 social/tools/slides_to_video.py <dir>` after rendering.
+   - Format plan (on since 27 Nov): Friday's single role goes out as a video: `python3 social/tools/slides_to_video.py <dir>` after rendering. The gate adds a tagged board link to Facebook captions and an Instagram Story (slide 1 + link sticker, 30 minutes after the post) on roles-carousel days.
+   - Weekly video with a presenter: rendered in the Monday run after KT's yes; download the finished MP4 into the post's output folder as `video.mp4`.
 4. **Check.** `python3 social/tools/check_post.py <posts.json> --mode schedule` must show 0 blocked for today's posts.
 5. **Publish media.** Commit and push the new images (Buffer fetches them from raw.githubusercontent.com).
 6. **Gate.** `python3 social/tools/buffer_payloads.py <posts.json> --date <today>`. Refused: report the reason and stop. Never edit the gate, the state file or a post to get past a refusal (KT changes state; the post gets fixed properly).

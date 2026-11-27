@@ -43,7 +43,16 @@
       "change_note": "26 Nov 13:32 UTC: re-measured after PRs 81-83 (was 1,287 of 1,759, 'three in four'; now 1,225 of 1,987, 62%).",
       "series": "weekly-video",
       "funnel": "awareness",
-      "goal_metric": "2-second hold rate and profile visits (TikTok Studio, Instagram Insights)"
+      "goal_metric": "2-second hold rate and profile visits (TikTok Studio, Instagram Insights)",
+      "cast": {
+        "presenter": "daniel",
+        "voice": "a calm male catalog voice, chosen by audition (find_voice_candidates) on first use and then fixed",
+        "persona": "Practical and direct; 'here is the one thing to check'. Good for safety and how-to scripts.",
+        "look": "Man, 30s, short hair, plain shirt",
+        "setting": "sofa with a laptop on the knees, relaxed",
+        "new_presenter": true
+      },
+      "needs_writing": "Re-fit the script to presenter daniel (practical, direct) in the 'sofa' setting; generate daniel's look and audition his voice first (cast.json). Render only after KT's yes for this week, which includes the plan_render credit estimate."
     },
     {
       "id": "w50-p2",
