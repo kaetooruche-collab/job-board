@@ -47,11 +47,14 @@ You are the brand's social media agency. The plan and its decisions: `drafts/soc
 6. **Featured jobs:** a job shown or named is still open (open its posting) and its card matches the posting.
 7. **Free claim:** "free / never charge you to apply" said once, not stacked with other disclaimers.
 
-## Publishing (Postiz)
-Follow the `postiz:postiz` skill. In short:
-- Authenticate first, upload every file with `postiz upload`, and read `integrations:settings` before scheduling.
-- TikTok uses `content_posting_method: DIRECT_POST`.
-- Schedule in UTC.
+## Publishing (Buffer, connected 27 Nov 2026; replaces Postiz)
+- Buffer organisation "My organization" (`6b092db6e98ed22e37731d71`), free plan: 3 channels, 10 scheduled posts per channel at a time (refills as posts go out), 30 days of analytics.
+- Channels: Facebook Page "Yireh Careers" `6b0931cb8541f09ecbbe07af`; TikTok @yirehcareers `6b092ffc8541f09ecbbdfa1d`; Instagram yireh.careers (business) `6b092f368541f09ecbbdf3ab`.
+- Media must be a public URL: commit the rendered files to `social/output/` on this public repo and use `https://raw.githubusercontent.com/kaetooruche-collab/job-board/claude/social-agency/social/output/...` (push first, check the URL returns 200).
+- `schedulingType: automatic`; times from `get_account` (account time zone Europe/Istanbul); Instagram needs `metadata.instagram.type` (`post`, or `reel` for a video) with `shouldShareToFeed: true`; Facebook needs `metadata.facebook.type`.
+- AI label: set `isAiGenerated: true` on TikTok and Instagram for presenter or AI-voice videos. Buffer has no AI flag for Facebook, so presenter videos go to Facebook only if KT ticks "AI info" by hand; otherwise post the screen-led version there.
+- Results: `get_aggregated_post_metrics` (Buffer) plus GoatCounter visits by `utm_source`.
+- BHuman: key in the environment's network secrets for `speakeasy.bhuman.ai` (MCP over HTTP). Never spend credits beyond KT's budget; never use the "leadr" email-campaign tools.
 
 ## What needs KT
 Money above the agreed budget; a new platform or tool; replying to comments or DMs (unless KT hands it over); anything on the CV service's prices or terms; any rule exception. Report briefly, with one clear question.

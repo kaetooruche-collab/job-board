@@ -12,7 +12,7 @@ essentially the social media agency for this particular brand, but that is still
 | Sync with the board | Every plan and every post reads the **live** feed (`https://yirehcareers.vercel.app/jobs.json`) and pulls `main` for rule changes (CLAUDE.md, copy rules, decisions). Numbers in posts are measured the same day. |
 | Operating manual | Skill `.claude/skills/social-agency/SKILL.md`: the weekly cycle, recipes, guardrails, what needs KT. |
 | Working files | `social/`: brand guide, content calendar, scripts, post log, performance log, research. |
-| Publishing | **Postiz** (one API for Instagram, TikTok and Facebook: schedule, publish, analytics). TikTok posts use `DIRECT_POST`. |
+| Publishing | **Buffer** (connected 27 Nov 2026, free plan; replaces Postiz): Instagram, TikTok and the Facebook Page; schedule, publish, analytics. |
 | Production | BHuman (presenter and voice, the video 1 recipe), live-board screen recordings and ffmpeg assembly (free), image and carousel posts rendered from the live feed (free). |
 | Rhythm | Scheduled tasks into the agency session: Monday plan, daily produce-and-check, Friday performance review. |
 | Measurement | Postiz analytics (views, watch time, follows, per post) plus GoatCounter visits from `utm_source=tiktok|instagram|facebook` links, then apply clicks and CV enquiries. |
