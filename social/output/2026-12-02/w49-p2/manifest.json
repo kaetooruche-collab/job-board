@@ -1,22 +1,24 @@
 {
   "post": "w49-p2",
-  "rendered_at": "2026-11-27 08:19 UTC",
+  "rendered_at": "2026-11-27 09:22 UTC",
   "stats": {
-    "measured_at": "2026-11-27 08:19 UTC",
+    "measured_at": "2026-11-27 09:22 UTC",
     "measured_on": "2026-11-27",
-    "jobs": 1988,
-    "companies": 339,
-    "posted_last_7_days": 633,
-    "worldwide": 36,
-    "region_wide": 53,
-    "open_to_audience_regions": 89,
-    "location_not_specified": 338,
-    "single_country": 1238,
-    "us_only": 332,
-    "us_only_pct": 16.7,
-    "single_country_pct": 62,
-    "pay_stated": 885,
-    "entry_or_junior": 231
+    "jobs": 1987,
+    "companies": 338,
+    "posted_last_7_days": 628,
+    "worldwide": 27,
+    "region_wide": 52,
+    "open_to_audience_regions": 87,
+    "location_not_specified": 335,
+    "single_country": 1253,
+    "us_only": 349,
+    "us_only_pct": 17.6,
+    "single_country_pct": 63,
+    "pay_stated": 897,
+    "entry_or_junior": 231,
+    "worldwide_on_board": 35,
+    "worldwide_note": "counted only roles whose employer data confirms no country limit (verify_source.py)"
   },
   "jobs": [
     {
@@ -27,14 +29,13 @@
       "postedAt": "2026-11-26T10:01:30-05:00",
       "salaryText": null,
       "sourceUrl": "https://job-boards.greenhouse.io/alpaca/jobs/6268426004",
-      "check": {
-        "checked_open_on": "2026-11-27",
+      "source_check": {
+        "checked_on": "2026-11-27",
         "ok": true,
-        "http": 200,
-        "final_url": "https://job-boards.greenhouse.io/alpaca/jobs/6268426004",
-        "title_found": "4/4 title words",
-        "closed_wording": null,
-        "contradiction": null
+        "label": "EMEA",
+        "locations": [
+          "Remote - EMEA"
+        ]
       }
     },
     {
@@ -45,14 +46,13 @@
       "postedAt": "2026-11-25T22:06:23.726000+00:00",
       "salaryText": null,
       "sourceUrl": "https://jobs.ashbyhq.com/supabase/da282b12-4c4a-4eb1-b983-58543ed58ec5",
-      "check": {
-        "checked_open_on": "2026-11-27",
+      "source_check": {
+        "checked_on": "2026-11-27",
         "ok": true,
-        "http": 200,
-        "final_url": "https://jobs.ashbyhq.com/supabase/da282b12-4c4a-4eb1-b983-58543ed58ec5",
-        "title_found": "3/3 title words",
-        "closed_wording": null,
-        "contradiction": null
+        "label": "Worldwide",
+        "locations": [
+          "Remote, Global"
+        ]
       }
     },
     {
@@ -63,14 +63,13 @@
       "postedAt": "2026-11-25T17:06:17.238000+00:00",
       "salaryText": "$200K - $250K",
       "sourceUrl": "https://jobs.ashbyhq.com/Clera/8122b215-3802-465f-ab67-b2dbe9bf823a",
-      "check": {
-        "checked_open_on": "2026-11-27",
+      "source_check": {
+        "checked_on": "2026-11-27",
         "ok": true,
-        "http": 200,
-        "final_url": "https://jobs.ashbyhq.com/Clera/8122b215-3802-465f-ab67-b2dbe9bf823a",
-        "title_found": "3/3 title words",
-        "closed_wording": null,
-        "contradiction": null
+        "label": "North America",
+        "locations": [
+          "remote"
+        ]
       }
     }
   ]

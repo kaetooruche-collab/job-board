@@ -50,7 +50,8 @@ def main(argv=None) -> int:
     data = json.loads(posts_file.read_text(encoding="utf-8"))
     post = next(p for p in data["posts"] if p["id"] == pid)
     jobs = feed.load(None)
-    stats = feed.stats(jobs)
+    import verify_source
+    stats = verify_source.verified_stats(jobs, feed.stats(jobs))
     slides, footage_after, date_line = slides_from(post.get("on_screen") or [post.get("hook", "")], stats)
     tmp = dict(post, render={"theme": "blue", "date_line": date_line or "Yireh Careers", "slides": slides})
     made = render_posts.build([tmp], jobs, ROOT / "social" / "output", {pid}, dt.datetime.now(dt.timezone.utc))

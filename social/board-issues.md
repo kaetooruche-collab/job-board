@@ -21,3 +21,13 @@ Scale: 19 jobs are labelled Worldwide today; 3 of them (16%) are wrong or doubtf
 - Rows 1-4 are fixed in **PR #82**, merged by KT's instruction on 26 Nov 2026 with #81 and #83 (main 91b0d62; tests pass). Box's talent community and Truelogic's "Open Application" will be held back as non-jobs.
 - Also merged: **#81** adds 50 employers that hire outside the US; **#83** keeps jobs open outside the US first under the caps (simulated: 1,221 of 2,000 jobs open outside the US, against 693 now; 39 worldwide, against 27).
 - `social/data/exclude_jobs.json` stays as it is until the first feed refresh after the merge. Then re-check these jobs on the live feed and remove the entries that are fixed.
+
+## 27 Nov 2026: card labels and pay that contradict the employer's own data (found by the social-reviewer agent, confirmed via the employers' public feeds)
+| Job id | Company | Board shows | Employer's own data | Class of bug |
+|---|---|---|---|---|
+| j3837f4403a, j16645dc320, j6b2e4703c7, j91e5680f17 | Trafilea | Worldwide | Recruitee `locations[]`: Argentina, Brazil, Chile (location text only says "Remote job") | Classifier ignores Recruitee `locations[]` |
+| j8424dc775e | Airwallex | EMEA | Ashby location "UK - Manchester", secondary "UK - Birmingham"; label flipped from "Eligibility unclear" (26 Nov) to EMEA (27 Nov) and the conflict note was emptied | Body text overrides structured locations |
+| j0665e514b8 | Fastly | North America | US places only | Same |
+| jcee32b0502, j012bfcb29d | Customer.io | Pay: Not stated | "Starting salary for this role is $105k–$122k" / "$170k–$200k" | Pay extraction misses "Starting salary … $Xk–$Yk" in Greenhouse content |
+| TransPerfect (4 rows) | TransPerfect | Worldwide | Not checkable from a public feed | Unverifiable source |
+Effect on the board: the "Worldwide" count is 35, but only 27 survive the check. The social tools now feature only roles that pass `social/tools/verify_source.py` and count only those. All rows above are in `social/data/exclude_jobs.json` until the board is fixed. Per CLAUDE.md's quality rule, the fix needs regression fixtures (`tests/fixtures/regressions.json`), a QA rule in `scripts/qa_checks.py` comparing labels with structured locations, and an old-versus-new comparison.

@@ -129,6 +129,10 @@ def payloads_for(post: dict, today: str, check_urls: bool = True, formats: bool 
         c = j.get("check") or {}
         if not c.get("ok") or c.get("checked_open_on") != today:
             raise Refused(f"{post['id']}: featured role {j['id']} not confirmed open today (run verify-open.js)")
+        sc = j.get("source_check") or {}
+        if not sc.get("ok") or sc.get("checked_on") != today:
+            raise Refused(f"{post['id']}: featured role {j['id']} not matched to the employer's own data today "
+                          f"(verify_source.py): {sc.get('reason', 'not checked')}")
     media = [("video", v) for v in videos] or [("image", im) for im in images]
     story = story_image(images[0]) if (formats and post.get("series") in STORY_SERIES and images
                                        and "instagram" in post["platforms"]) else None

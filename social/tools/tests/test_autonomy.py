@@ -135,3 +135,36 @@ def test_free_video_uses_only_approved_lines_and_refreshes_the_number():
     assert titles[0] == "Stop paying to look at remote jobs" and slides[0]["sub"] == "Free to search · no account"
     assert "41 open to applicants anywhere" in titles and not any("AI" in t for t in titles)
     assert date_line == "From our live board, 1 Dec 2026"
+
+
+def _job(kind, label, salary=None):
+    return {"id": "t", "title": "T", "company": "C", "sourceUrl": "https://x", "salaryText": salary,
+            "eligibility": {"type": kind, "label": label}}
+
+
+@pytest.mark.parametrize("kind,label,locs,text,salary,ok", [
+    ("worldwide", "Worldwide", ["South America - LATAM Argentina", "Brasil Brazil"], "", None, False),   # Trafilea case
+    ("region", "EMEA", ["UK - Manchester", "UK - Birmingham"], "", None, False),                        # Airwallex case
+    ("region", "Americas", ["Americas Remote"], "Starting salary for this role is $105k–$122k USD", None, False),  # Customer.io
+    ("region", "Americas", ["Americas Remote"], "Starting salary for this role is $105k–$122k USD", "$105K - $122K", True),
+    ("worldwide", "Worldwide", ["Remote, Global"], "We raised $1B. Home-office budget $1,500.", None, True),
+    ("region", "EMEA", ["Remote - EMEA"], "", None, True),
+])
+def test_source_check_rules(monkeypatch, kind, label, locs, text, salary, ok):
+    import verify_source
+    monkeypatch.setattr(verify_source, "fetch", lambda url: {"locations": locs, "text": text})
+    assert verify_source.check_job(_job(kind, label, salary))["ok"] is ok
+
+
+def test_gate_needs_todays_source_check(tmp_path, monkeypatch):
+    monkeypatch.setattr(bp, "ROOT", tmp_path)
+    d = tmp_path / "social/output/2030-01-08/x"
+    d.mkdir(parents=True)
+    (d / "01.jpg").write_bytes(b"jpg")
+    (d / "manifest.json").write_text(json.dumps({"jobs": [{"id": "j1", "check": {"ok": True, "checked_open_on": "2030-01-08"},
+                                                          "source_check": {"ok": False, "checked_on": "2030-01-08", "reason": "x"}}]}))
+    post = {"id": "x", "date": "2030-01-08", "series": "roles-carousel", "pillar": "jobs", "format": "carousel",
+            "hook": "Remote roles open beyond one country.", "caption": "Remote roles open beyond one country. Link in bio.",
+            "platforms": ["instagram"], "funnel": "consideration", "goal_metric": "visits", "render": {"slides": []}}
+    with pytest.raises(bp.Refused, match="employer's own data"):
+        bp.payloads_for(post, "2030-01-08", check_urls=False)

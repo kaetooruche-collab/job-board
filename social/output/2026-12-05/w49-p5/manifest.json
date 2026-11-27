@@ -1,58 +1,41 @@
 {
   "post": "w49-p5",
-  "rendered_at": "2026-11-27 08:19 UTC",
+  "rendered_at": "2026-11-27 09:22 UTC",
   "stats": {
-    "measured_at": "2026-11-27 08:19 UTC",
+    "measured_at": "2026-11-27 09:22 UTC",
     "measured_on": "2026-11-27",
-    "jobs": 1988,
-    "companies": 339,
-    "posted_last_7_days": 633,
-    "worldwide": 36,
-    "region_wide": 53,
-    "open_to_audience_regions": 89,
-    "location_not_specified": 338,
-    "single_country": 1238,
-    "us_only": 332,
-    "us_only_pct": 16.7,
-    "single_country_pct": 62,
-    "pay_stated": 885,
-    "entry_or_junior": 231
+    "jobs": 1987,
+    "companies": 338,
+    "posted_last_7_days": 628,
+    "worldwide": 27,
+    "region_wide": 52,
+    "open_to_audience_regions": 87,
+    "location_not_specified": 335,
+    "single_country": 1253,
+    "us_only": 349,
+    "us_only_pct": 17.6,
+    "single_country_pct": 63,
+    "pay_stated": 897,
+    "entry_or_junior": 231,
+    "worldwide_on_board": 35,
+    "worldwide_note": "counted only roles whose employer data confirms no country limit (verify_source.py)"
   },
   "jobs": [
     {
-      "id": "jcee32b0502",
-      "title": "Accounting Manager",
-      "company": "Customer.io",
+      "id": "j25c1086d4a",
+      "title": "Head of US, Multimodal Clearing",
+      "company": "Alpaca",
       "apply_from": "Americas",
-      "postedAt": "2026-11-24T15:21:43-05:00",
+      "postedAt": "2026-11-24T07:48:02-05:00",
       "salaryText": null,
-      "sourceUrl": "https://job-boards.greenhouse.io/customerio/jobs/8415048",
-      "check": {
-        "checked_open_on": "2026-11-27",
+      "sourceUrl": "https://job-boards.greenhouse.io/alpaca/jobs/6268865004",
+      "source_check": {
+        "checked_on": "2026-11-27",
         "ok": true,
-        "http": 200,
-        "final_url": "https://job-boards.greenhouse.io/customerio/jobs/8415048",
-        "title_found": "2/2 title words",
-        "closed_wording": null,
-        "contradiction": null
-      }
-    },
-    {
-      "id": "j8424dc775e",
-      "title": "Manager, Global Controls & Obligations Management, EMEA",
-      "company": "Airwallex",
-      "apply_from": "EMEA",
-      "postedAt": "2026-11-23T23:47:15.763000+00:00",
-      "salaryText": null,
-      "sourceUrl": "https://jobs.ashbyhq.com/airwallex/9d1f04bd-98a1-494d-a7a8-977892888fdd",
-      "check": {
-        "checked_open_on": "2026-11-27",
-        "ok": true,
-        "http": 200,
-        "final_url": "https://jobs.ashbyhq.com/airwallex/9d1f04bd-98a1-494d-a7a8-977892888fdd",
-        "title_found": "6/6 title words",
-        "closed_wording": null,
-        "contradiction": null
+        "label": "Americas",
+        "locations": [
+          "Remote - Americas"
+        ]
       }
     },
     {
@@ -63,14 +46,30 @@
       "postedAt": "2026-11-23T23:46:57.816000+00:00",
       "salaryText": "$12K - $19K",
       "sourceUrl": "https://jobs.ashbyhq.com/clipboard/2dfae75c-66e8-4243-aa46-2f1c7238d942",
-      "check": {
-        "checked_open_on": "2026-11-27",
+      "source_check": {
+        "checked_on": "2026-11-27",
         "ok": true,
-        "http": 200,
-        "final_url": "https://jobs.ashbyhq.com/clipboard/2dfae75c-66e8-4243-aa46-2f1c7238d942",
-        "title_found": "5/5 title words",
-        "closed_wording": null,
-        "contradiction": null
+        "label": "APAC",
+        "locations": [
+          "Remote (APAC)"
+        ]
+      }
+    },
+    {
+      "id": "jb70a4b0e47",
+      "title": "Senior Chip Design Engineer \u2013 Technical Reviewer",
+      "company": "Anyone AI",
+      "apply_from": "Latin America",
+      "postedAt": "2026-11-23T21:29:29.399000+00:00",
+      "salaryText": null,
+      "sourceUrl": "https://jobs.ashbyhq.com/anyone-ai/6a6178e4-b5a9-48e3-bd66-7005b3d8c0cb",
+      "source_check": {
+        "checked_on": "2026-11-27",
+        "ok": true,
+        "label": "Latin America",
+        "locations": [
+          "Remote"
+        ]
       }
     }
   ]

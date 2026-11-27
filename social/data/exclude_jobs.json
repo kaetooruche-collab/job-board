@@ -1,6 +1,15 @@
 {
   "note": "Jobs the social tools must never feature, with the reason. Board problems are reported in social/board-issues.md for the job-board session; remove an entry once the board is fixed.",
-  "jobs": {},
+  "jobs": {
+    "j3837f4403a": "Card label contradicts the employer's own location list (Recruitee locations[]: Argentina/Brazil/Chile); reviewer 27 Nov, confirmed via the employer feed",
+    "j16645dc320": "Card label contradicts the employer's own location list (Recruitee locations[]: Argentina/Brazil/Chile); reviewer 27 Nov, confirmed via the employer feed",
+    "j6b2e4703c7": "Card label contradicts the employer's own location list (Recruitee locations[]: Argentina/Brazil/Chile); reviewer 27 Nov, confirmed via the employer feed",
+    "j91e5680f17": "Card label contradicts the employer's own location list (Recruitee locations[]: Argentina/Brazil/Chile); reviewer 27 Nov, confirmed via the employer feed",
+    "j8424dc775e": "Card says EMEA; employer's locations are UK - Manchester and UK - Birmingham (Ashby); label flipped from 'Eligibility unclear' on 26 Nov",
+    "jcee32b0502": "Card says pay not stated; posting states $105k-$122k (Greenhouse content)",
+    "j012bfcb29d": "Card says pay not stated; posting states $170k-$200k",
+    "j0665e514b8": "Card says North America; employer's locations are US places only"
+  },
   "lifted": {
     "2026-11-26": "Wistia jf86468317e and Box j63a0b6fc93 off the board; Netlify jb19e156074 now 'Location not specified'; Canonical j724aa7d5d9 now 'United States only' (PR #82, checked on the live feed 13:32 UTC)"
   }

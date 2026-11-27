@@ -159,7 +159,12 @@ def fill(text: str, st: dict) -> str:
 
 
 def build(posts: list[dict], jobs: list[dict], out_root: Path, only: set[str] | None, now: dt.datetime) -> list[Path]:
+    import os
+    import verify_source
+    check = os.environ.get("YC_SKIP_SOURCE_CHECK") != "1"   # tests run offline
     st = feed.stats(jobs, now)
+    if check:
+        st = verify_source.verified_stats(jobs, st)
     by_id = {j["id"]: j for j in jobs}
     used: set[str] = set()
     pool = feed.wide(jobs, now, limit=40)
@@ -176,7 +181,12 @@ def build(posts: list[dict], jobs: list[dict], out_root: Path, only: set[str] | 
             s = {k: (fill(v, st) if isinstance(v, str) else v) for k, v in s.items()}
             if s["t"] == "jobs":
                 src = ww_pool if s.get("worldwide_only") else pool
-                picks = [j for j in src if j["id"] not in used][: s.get("count", 3)]
+                picks = []
+                for j in src:   # only roles whose card matches the employer's own data (verify_source.py)
+                    if len(picks) >= s.get("count", 3):
+                        break
+                    if j["id"] not in used and (not check or verify_source.ok(j)):
+                        picks.append(j)
                 if len(picks) < s.get("count", 3):
                     print(f"WARNING {p['id']}: only {len(picks)} roles open to the audience are available", file=sys.stderr)
                 for j in picks:
@@ -202,7 +212,8 @@ def build(posts: list[dict], jobs: list[dict], out_root: Path, only: set[str] | 
             "post": p["id"], "rendered_at": st["measured_at"], "stats": st,
             "jobs": [{"id": j["id"], "title": j["title"].strip(), "company": j["company"].strip(),
                       "apply_from": feed.apply_from(j), "postedAt": j["postedAt"], "salaryText": j.get("salaryText"),
-                      "sourceUrl": j["sourceUrl"]} for j in manifest_jobs]}, indent=2), encoding="utf-8")
+                      "sourceUrl": j["sourceUrl"],
+                      "source_check": verify_source._CACHE.get(j["id"]) if check else None} for j in manifest_jobs]}, indent=2), encoding="utf-8")
         made.append(d)
     if made:
         subprocess.run(["node", str(TOOLS / "shoot.js"), *map(str, made)], check=True)

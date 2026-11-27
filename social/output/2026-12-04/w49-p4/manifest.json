@@ -1,40 +1,41 @@
 {
   "post": "w49-p4",
-  "rendered_at": "2026-11-27 08:19 UTC",
+  "rendered_at": "2026-11-27 09:22 UTC",
   "stats": {
-    "measured_at": "2026-11-27 08:19 UTC",
+    "measured_at": "2026-11-27 09:22 UTC",
     "measured_on": "2026-11-27",
-    "jobs": 1988,
-    "companies": 339,
-    "posted_last_7_days": 633,
-    "worldwide": 36,
-    "region_wide": 53,
-    "open_to_audience_regions": 89,
-    "location_not_specified": 338,
-    "single_country": 1238,
-    "us_only": 332,
-    "us_only_pct": 16.7,
-    "single_country_pct": 62,
-    "pay_stated": 885,
-    "entry_or_junior": 231
+    "jobs": 1987,
+    "companies": 338,
+    "posted_last_7_days": 628,
+    "worldwide": 27,
+    "region_wide": 52,
+    "open_to_audience_regions": 87,
+    "location_not_specified": 335,
+    "single_country": 1253,
+    "us_only": 349,
+    "us_only_pct": 17.6,
+    "single_country_pct": 63,
+    "pay_stated": 897,
+    "entry_or_junior": 231,
+    "worldwide_on_board": 35,
+    "worldwide_note": "counted only roles whose employer data confirms no country limit (verify_source.py)"
   },
   "jobs": [
     {
-      "id": "j3837f4403a",
-      "title": "Security Engineer",
-      "company": "Trafilea",
+      "id": "jf92eaffcdb",
+      "title": "Data Scientist Senior -  Causal Inference - Databricks",
+      "company": "Mutt Data",
       "apply_from": "Worldwide",
-      "postedAt": "2026-11-20T14:31:33+00:00",
+      "postedAt": "2026-11-18T21:17:41.771000+00:00",
       "salaryText": null,
-      "sourceUrl": "https://trafilea.recruitee.com/o/security-engineer",
-      "check": {
-        "checked_open_on": "2026-11-27",
+      "sourceUrl": "https://jobs.lever.co/muttdata/70ea6a1f-b943-4928-8502-60327b429736",
+      "source_check": {
+        "checked_on": "2026-11-27",
         "ok": true,
-        "http": 200,
-        "final_url": "https://trafilea.recruitee.com/o/security-engineer",
-        "title_found": "2/2 title words",
-        "closed_wording": null,
-        "contradiction": null
+        "label": "Worldwide",
+        "locations": [
+          "Remote"
+        ]
       }
     }
   ]
