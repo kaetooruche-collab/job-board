@@ -1,7 +1,7 @@
-# Quality report, 2026-11-26T21:26+00:00
+# Quality report, 2026-11-27T08:18+00:00
 
-- Published: **1988**
-- Held back by a quality rule (not published): **12**
+- Published: **1987**
+- Held back by a quality rule (not published): **13**
 - Warnings (published, but look): **21**
 
 ## Held back
@@ -13,14 +13,15 @@
 - Senior Software Engineer: Assets at MetaMask: label lists ['France', 'Germany', 'Italy'] but note says cannot hire there: The posting says it cannot hire in: France, Italy, Germany.
 - Senior Manager, Sanctions Regulatory Analysis at Airwallex: label lists ['United Kingdom'] but note says cannot hire there: The posting says it cannot hire in: EMEA, United Kingdom, European Union.
 
+### says-not-remote-but-published-as-remote (3)
+- Software Quality Assurance Engineer at Natera: LOCATION : Remote / Hybrid / or On-Site in Boulder, CO (Foresight Dx business unit, a 
+- Product Operations Manager at Monzo: 00 - £68,000 ➕ Incentive Awards tied to your performance.  📍This role is based in our London office  ⏰ We offer flexible working hours and trust you to work en
+- Global Director of Sales at Monzo: 00 ➕ equity & Incentive Awards tied to your performance.  📍 This role is based in our London office  ⏰ We offer flexible working hours and trust you to work en
+
 ### not-a-job-posting (3)
 - Expert Talent Pool, Annotation Associate at Clera: Expert Talent Pool, Annotation Associate
 - Expert Talent Pool, Generation and Writing Associate at Clera: Expert Talent Pool, Generation and Writing Associate
 - Let's stay in touch.  Join our Talent Community! at Box: Let's stay in touch.  Join our Talent Community!
-
-### says-not-remote-but-published-as-remote (2)
-- Product Operations Manager at Monzo: 00 - £68,000 ➕ Incentive Awards tied to your performance.  📍This role is based in our London office  ⏰ We offer flexible working hours and trust you to work en
-- Global Director of Sales at Monzo: 00 ➕ equity & Incentive Awards tied to your performance.  📍 This role is based in our London office  ⏰ We offer flexible working hours and trust you to work en
 
 ## Warnings
 
@@ -46,11 +47,11 @@
 ## Shape of the feed
 
 ```
-count: 1988
-bySource: {'Ashby': 705, 'Lever': 328, 'Greenhouse': 878, 'Recruitee': 77}
-pctEligibilityUnclear: 17.0
+count: 1987
+bySource: {'Lever': 327, 'Greenhouse': 891, 'Ashby': 692, 'Recruitee': 77}
+pctEligibilityUnclear: 16.9
 pctRemoteUnclear: 0.0
 pctWorldwide: 1.8
 pctEarlyCareer: 11.6
-pctSeniorPlus: 38.0
+pctSeniorPlus: 38.7
 ```

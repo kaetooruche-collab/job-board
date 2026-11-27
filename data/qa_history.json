@@ -1,23 +1,5 @@
 [
  {
-  "at": "2026-11-12T23:33:12.446701+00:00",
-  "summary": {
-   "count": 1016,
-   "bySource": {
-    "Ashby": 373,
-    "Greenhouse": 516,
-    "Lever": 127
-   },
-   "pctEligibilityUnclear": 24.9,
-   "pctRemoteUnclear": 7.2,
-   "pctWorldwide": 1.0,
-   "pctEarlyCareer": 8.6,
-   "pctSeniorPlus": 43.3
-  },
-  "held": 1,
-  "warnings": 5
- },
- {
   "at": "2026-11-13T06:34:21.317861+00:00",
   "summary": {
    "count": 1016,
@@ -507,6 +489,25 @@
    "pctSeniorPlus": 38.0
   },
   "held": 12,
+  "warnings": 21
+ },
+ {
+  "at": "2026-11-27T08:18:01.605620+00:00",
+  "summary": {
+   "count": 1987,
+   "bySource": {
+    "Lever": 327,
+    "Greenhouse": 891,
+    "Ashby": 692,
+    "Recruitee": 77
+   },
+   "pctEligibilityUnclear": 16.9,
+   "pctRemoteUnclear": 0.0,
+   "pctWorldwide": 1.8,
+   "pctEarlyCareer": 11.6,
+   "pctSeniorPlus": 38.7
+  },
+  "held": 13,
   "warnings": 21
  }
 ]
