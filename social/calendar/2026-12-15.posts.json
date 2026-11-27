@@ -88,59 +88,34 @@
     {
       "id": "w51-p3",
       "date": "2026-12-17",
-      "pillar": "tips",
-      "format": "carousel",
-      "series": "tips",
-      "tip_set": "eligibility-three-places",
-      "title": "Tip: eligibility three places",
-      "hook": "Three words to search for in a remote job posting.",
-      "caption": "Three words to search for in a remote job posting.\n\nBefore you spend an hour on an application, check three things: the location line; the words “reside”, “based in” and “time zone” in the posting; and, if it's still unclear, ask the recruiter.\n\nSave this for your next application.\n\n#remotejobs #jobsearch #jobtips #remotework",
-      "visuals": "Tip carousel from the library.",
-      "variable": "Hook wording on a reused tip set.",
-      "render": {
-        "date_line": "Yireh Careers tips",
-        "slides": [
-          {
-            "t": "cover",
-            "kicker": "Before you apply",
-            "title": "Three words to search for in a remote job posting",
-            "sub": "Three places to look first. It takes about a minute."
-          },
-          {
-            "t": "tip",
-            "n": "1",
-            "title": "The location line",
-            "body": "A country or region there tells you more than the word Remote in the title."
-          },
-          {
-            "t": "tip",
-            "n": "2",
-            "title": "Search the posting",
-            "body": "Look for “reside”, “based in”, “right to work” and “time zone”."
-          },
-          {
-            "t": "tip",
-            "n": "3",
-            "title": "Not clear? Ask first",
-            "body": "Email the recruiter before you spend an hour on the form."
-          },
-          {
-            "t": "cta",
-            "kicker": "Or start with the board",
-            "title": "Tell it where you live",
-            "sub": "It shows only the jobs open to you."
-          }
-        ]
-      },
-      "platforms": [
-        "instagram",
-        "tiktok",
-        "facebook"
-      ],
-      "time_utc": "15:00",
       "day": "Thu",
-      "funnel": "awareness",
-      "goal_metric": "saves and shares (Buffer, platform insights)"
+      "time_utc": "15:00",
+      "platforms": [
+        "tiktok",
+        "instagram"
+      ],
+      "pillar": "demo",
+      "series": "demo",
+      "format": "video",
+      "funnel": "consideration",
+      "goal_metric": "average watch time (Buffer) and board visits (utm); compare with V2 screen-led (4 Dec)",
+      "title": "Zee board demo: 'Do this before you apply'",
+      "brief": "social/video-briefs/V2-where-do-you-live-demo.md",
+      "hook": "Do this before you apply",
+      "variable": "Presenter-led demo (Zee) against V2's screen-led cut of the same demo (4 Dec, Daniel voiceover): does a face hold viewers longer? No winner under about 1,000 views each.",
+      "ai_presenter": true,
+      "ai_voice": true,
+      "ai_label": true,
+      "on_screen": [
+        "Do this before you apply",
+        "yirehcareers.vercel.app"
+      ],
+      "caption": "Before you apply anywhere: tell the board where you live.\n\nYou'll see the jobs open to you, each with where it hires from, the posted date, and the pay when it's stated. Apply goes straight to the original posting.\n\nLink in bio.\n\n#remotejobs #jobsearch #remotework #workfromhome",
+      "captions": {
+        "tiktok": "The box at the top of the board that changes every job you see. #remotejobs #jobsearch #remotework #workfromhome"
+      },
+      "rebuild": "bash social/tools/rebuild_zee_demo.sh social/output/2026-12-17/w51-p3",
+      "note": "On the post day the daily run re-films the board and rebuilds the video (free; Zee's voice and render reused), so the cards shown are open, verified and say the right posted age. If the rebuild refuses, skip the post. Facebook skipped: Buffer can't set the AI label. Pin to TikTok and Instagram profiles after it posts (KT does pinning in the apps)."
     },
     {
       "id": "w51-p4",
@@ -276,5 +251,65 @@
       "goal_metric": "saves and shares (Buffer, platform insights)"
     }
   ],
-  "planner_notes": "QA 27 Nov: avoid repeating week 1 - 'jobs open to you' closed four posts; both week-1 videos taught 'check before you apply'; re-angle w50-p1/w50-p2 to the gain (not 'most are open to one country'); w51-p3 overlaps V1 and w51-p6 repeats the scam tips. Vary CTA lines."
+  "planner_notes": "QA 27 Nov: avoid repeating week 1 - 'jobs open to you' closed four posts; both week-1 videos taught 'check before you apply'; re-angle w50-p1/w50-p2 to the gain (not 'most are open to one country'); w51-p3 overlaps V1 and w51-p6 repeats the scam tips. Vary CTA lines.",
+  "moved_out": [
+    {
+      "id": "w51-p3-tip",
+      "date": "2026-12-17",
+      "pillar": "tips",
+      "format": "carousel",
+      "series": "tips",
+      "tip_set": "eligibility-three-places",
+      "title": "Tip: eligibility three places",
+      "hook": "Three words to search for in a remote job posting.",
+      "caption": "Three words to search for in a remote job posting.\n\nBefore you spend an hour on an application, check three things: the location line; the words “reside”, “based in” and “time zone” in the posting; and, if it's still unclear, ask the recruiter.\n\nSave this for your next application.\n\n#remotejobs #jobsearch #jobtips #remotework",
+      "visuals": "Tip carousel from the library.",
+      "variable": "Hook wording on a reused tip set.",
+      "render": {
+        "date_line": "Yireh Careers tips",
+        "slides": [
+          {
+            "t": "cover",
+            "kicker": "Before you apply",
+            "title": "Three words to search for in a remote job posting",
+            "sub": "Three places to look first. It takes about a minute."
+          },
+          {
+            "t": "tip",
+            "n": "1",
+            "title": "The location line",
+            "body": "A country or region there tells you more than the word Remote in the title."
+          },
+          {
+            "t": "tip",
+            "n": "2",
+            "title": "Search the posting",
+            "body": "Look for “reside”, “based in”, “right to work” and “time zone”."
+          },
+          {
+            "t": "tip",
+            "n": "3",
+            "title": "Not clear? Ask first",
+            "body": "Email the recruiter before you spend an hour on the form."
+          },
+          {
+            "t": "cta",
+            "kicker": "Or start with the board",
+            "title": "Tell it where you live",
+            "sub": "It shows only the jobs open to you."
+          }
+        ]
+      },
+      "platforms": [
+        "instagram",
+        "tiktok",
+        "facebook"
+      ],
+      "time_utc": "15:00",
+      "day": "Thu",
+      "funnel": "awareness",
+      "goal_metric": "saves and shares (Buffer, platform insights)",
+      "moved_out": "Replaced by Zee's board-demo video (KT, 27 Nov: 'Sure, let's do that'); QA had flagged this tip as overlapping V1."
+    }
+  ]
 }

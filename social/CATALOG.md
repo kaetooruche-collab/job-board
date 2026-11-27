@@ -4,7 +4,6 @@
 
 | Date | Post | Status | Format | Platforms | Hook | Approved | Results |
 |---|---|---|---|---|---|---|---|
-|  | v2-zee | held | video | tiktok instagram | Do this before you apply | yes |  |
 | 2026-11-26 | kt-fb-image-26nov | published |  | facebook |  |  | reach 1 |
 | 2026-11-26 | video1 | published |  | tiktok | You're halfway through a remote job application... and then  |  | 425 views, avg watch 1.31s |
 | 2026-11-26 | video1 | published |  | instagram | You're halfway through a remote job application... and then  |  | reach 8; 12 views, avg watch 6.28s |
@@ -32,7 +31,8 @@
 | 2026-12-14 | w50-p6 | draft | carousel | instagram tiktok facebook | Read a remote posting in a minute, before you spend an hour  | yes |  |
 | 2026-12-15 | w51-p1 | needs-writing | video | instagram tiktok facebook | Before you apply for another remote job, check one thing. |  |  |
 | 2026-12-16 | w51-p2 | draft | carousel | instagram tiktok facebook | Open worldwide or across a whole region: this week's picks. |  |  |
-| 2026-12-17 | w51-p3 | draft | carousel | instagram tiktok facebook | Three words to search for in a remote job posting. |  |  |
+| 2026-12-17 | w51-p3 | ready | video | tiktok instagram | Do this before you apply |  |  |
+| 2026-12-17 | w51-p3-tip | moved-out | carousel | instagram tiktok facebook | Three words to search for in a remote job posting. |  |  |
 | 2026-12-18 | w51-p4 | draft | image | instagram tiktok facebook | Open to applicants anywhere, posted in the last two weeks. |  |  |
 | 2026-12-19 | w51-p5 | draft | carousel | instagram tiktok facebook | Remote jobs you don't have to live in one country for. |  |  |
 | 2026-12-21 | w51-p6 | draft | carousel | instagram tiktok facebook | An interview only by text is a warning sign. |  |  |

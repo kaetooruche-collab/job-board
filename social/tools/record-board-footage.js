@@ -17,6 +17,7 @@ const arg = (k, d) => { const i = process.argv.indexOf('--' + k); return i > -1 
 const OUT = path.resolve(arg('out', `social/output/footage/${new Date().toISOString().slice(0, 10)}`));
 const SCENE = 'worldwide';   // the only scene that cannot show a country (KT, 26 Nov 2026)
 const SECONDS = Number(arg('seconds', 14));
+const SCROLL = process.argv.includes('--scroll');   // after the first card, scroll slowly through the cards (27 Nov: Zee video)
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 
 (async () => {
@@ -62,8 +63,26 @@ const sleep = ms => new Promise(r => setTimeout(r, ms));
   const bb = await card.boundingBox();
   if (bb) await p.evaluate(y => window.scrollBy({ top: y - 90 }), bb.y);
   mark('D_card');
-  const remaining = Math.max(2000, SECONDS * 1000 - (Date.now() - t0));
-  await sleep(remaining);
+  const seenText = [], seenCards = [];
+  const visibleNow = () => p.evaluate(() => [...document.querySelectorAll('body *')].filter(e => {
+    const r = e.getBoundingClientRect(); return e.children.length === 0 && r.bottom > 0 && r.top < innerHeight && r.width > 0;
+  }).map(e => e.innerText).join(' '));
+  const cardsNow = () => p.evaluate(() => [...document.querySelectorAll('.job-card')].filter(c => {
+    const r = c.getBoundingClientRect(); return r.bottom > 0 && r.top < innerHeight; }).map(c => ({
+      title: (c.querySelector('.job-title') || {}).innerText, link: (c.querySelector('a[href^="http"]') || {}).href })));
+  if (SCROLL) {
+    await sleep(1500);
+    while (Date.now() - t0 < SECONDS * 1000 - 600) {
+      await p.evaluate(() => window.scrollBy({ top: 14, behavior: 'instant' }));
+      await sleep(40);
+      if (Math.random() < 0.08) { seenText.push(await visibleNow()); seenCards.push(...await cardsNow()); }
+    }
+    mark('E_scrolled');
+    seenCards.push(...await cardsNow());
+  } else {
+    const remaining = Math.max(2000, SECONDS * 1000 - (Date.now() - t0));
+    await sleep(remaining);
+  }
   const shown = {
     title: await card.locator('.job-title').innerText().catch(() => null),
     company: await card.locator('.job-company').innerText().catch(() => null),
@@ -72,9 +91,7 @@ const sleep = ms => new Promise(r => setTimeout(r, ms));
   const countText = (await p.innerText('#job-count').catch(() => '')).slice(0, 80);
   // Country scan of everything filmed in the final view (KT's rule): lexicon names and aliases.
   const lex = JSON.parse(fs.readFileSync(path.join(__dirname, '..', '..', 'data', 'geo_lexicon.json'), 'utf8'));
-  const visible = await p.evaluate(() => [...document.querySelectorAll('body *')].filter(e => {
-    const r = e.getBoundingClientRect(); return e.children.length === 0 && r.bottom > 0 && r.top < innerHeight && r.width > 0;
-  }).map(e => e.innerText).join(' '));
+  const visible = [await visibleNow(), ...seenText].join(' ');
   const countries = [];
   for (const c of lex.countries) for (const nm of [c.name, ...c.aliases.filter(a => a.length > 3 && a !== 'america')])
     if (new RegExp('\\b' + nm.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '\\b', 'i').test(visible)) countries.push(c.name);
@@ -83,6 +100,7 @@ const sleep = ms => new Promise(r => setTimeout(r, ms));
   const meta = { recorded_at: new Date().toISOString(), scene: SCENE, frames: n, seconds: secs,
     fps: +(n / secs).toFixed(2), frame_ms: times, marks, last_card: shown, job_count_text: countText,
     countries_visible_at_end: [...new Set(countries)],
+    cards_shown: [...new Map(seenCards.filter(c => c.link).map(c => [c.link, c])).values()],
     reminder: 'Open last_card.link and confirm the role is open before using this footage (skill guardrail 6).' };
   fs.writeFileSync(path.join(OUT, 'meta.json'), JSON.stringify(meta, null, 2));
   console.log(JSON.stringify({ out: OUT, frames: n, fps: meta.fps, marks, last_card: shown, countText, countries_visible_at_end: meta.countries_visible_at_end }, null, 1));
