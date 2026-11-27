@@ -215,6 +215,9 @@ def _all_text(post: dict) -> dict[str, str]:
 
 def check_post(post: dict, mode: str = "draft") -> list[Finding]:
     f: list[Finding] = []
+    if post.get("needs_writing"):
+        # A planner draft that a session still has to finish: fine as a draft, never schedulable.
+        return [Finding(BLOCK if mode == "schedule" else WARN, "needs-writing", str(post["needs_writing"]))]
     parts = _all_text(post)
     full = "\n".join(parts.values())
     allow = {a for a in (post.get("allow_countries") or [])}

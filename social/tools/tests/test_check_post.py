@@ -228,3 +228,10 @@ def test_calendar_files_pass_in_draft_mode():
     for p in allposts:
         blocks = [str(x) for x in cp.check_post(p, "draft") + reps.get(p["id"], []) if x.level == cp.BLOCK]
         assert not blocks, f"{p.get('id')}: {blocks}"
+
+
+def test_needs_writing_is_draft_only():
+    p = post(needs_writing="script")
+    assert rules(p, "draft") == set()
+    assert "needs-writing" in rules(p, "draft", cp.WARN)
+    assert "needs-writing" in rules(p, "schedule")

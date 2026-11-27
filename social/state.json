@@ -1,0 +1,16 @@
+{
+  "note": "The agency's switches. Only KT changes mode, budgets and approvals; sessions read this file before every action.",
+  "mode": "drafts-only",
+  "modes_help": {
+    "drafts-only": "Phase 0: plan and render, never schedule or publish.",
+    "approve-week": "Phase 1: schedule a week only after KT's yes is recorded in approvals.",
+    "autopilot": "Phase 2: schedule automatically unless hold is set.",
+    "hold": "Stop: schedule nothing new; leave already-scheduled posts alone and tell KT."
+  },
+  "approvals": [],
+  "bhuman_monthly_credit_budget": 0,
+  "bhuman_credits_spent": {},
+  "posting_time_utc": "15:00",
+  "scope": "outside_us",
+  "formats_plan_approved": false
+}

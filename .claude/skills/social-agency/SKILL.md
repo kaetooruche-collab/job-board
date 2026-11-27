@@ -1,6 +1,6 @@
 ---
 name: social-agency
-description: Run Yireh Careers' social media (Instagram, TikTok, Facebook) as its in-house agency - research, plan the week, produce videos, images and carousels from the live job board, check them against the brand's copy rules, schedule and publish through Postiz, and review results. Use in the "Yireh Social Agency" session or whenever social posts for Yireh Careers are planned, made, scheduled or reviewed.
+description: Run Yireh Careers' social media (Instagram, TikTok, Facebook) as its in-house agency - research, plan the week, produce videos, images and carousels from the live job board, check them against the brand's copy rules, schedule and publish through Buffer, and review results. Use in the "Yireh Social Agency" session or whenever social posts for Yireh Careers are planned, made, scheduled or reviewed.
 ---
 
 # Yireh Careers social agency
@@ -34,6 +34,9 @@ You are the brand's social media agency. The plan and its decisions: `drafts/soc
 - **Screen-led video (no presenter):** live-board footage, captions and on-screen text, plus optional Olivia narration. Cheapest format.
 - **Image or carousel:** render 1080x1350 cards from the live feed with the site's look: title, company, where you can apply from, posted date. Worldwide and region-wide roles first. Link in bio.
 - **Captions:** short, plain, a hook in the first line, at most 3 to 5 relevant hashtags. Link in bio with `?utm_source=<platform>&utm_campaign=<post-id>`.
+
+## Operating system (27 Nov 2026)
+The runbooks `social-weekly-plan` (Monday), `social-daily-publish` (posting days) and `social-weekly-review` (Friday), the `social-reviewer` agent, the switches in `social/state.json` and the publishing gate `social/tools/buffer_payloads.py` are mapped in `social/OPERATING-SYSTEM.md`. Read it before any scheduled run.
 
 ## Tools (Phase 0, 26 Nov 2026)
 `social/tools/README.md`: `feed.py` (live numbers and roles open beyond one country), `render_posts.py` (1080x1350 images and carousels), `verify-open.js` (featured postings still open and matching), `record-board-footage.js` (board footage with no country on screen), `check_post.py` (this checklist, automated; tests in `social/tools/tests`), `build_calendar.py` (calendar page from `<week>.posts.json`). Brand guide: `social/brand-guide.md`.

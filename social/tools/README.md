@@ -12,3 +12,10 @@
 Day-of sequence (also at the end of each calendar file): `feed.py stats` → update numbers → `render_posts.py --only <id>` → `verify-open.js <manifest>` → copy checked roles into `featured_jobs` → `check_post.py --mode schedule` → look at every slide → schedule.
 
 Video assembly (ffmpeg, free): `ffmpeg -framerate <fps from meta.json> -i <out>/frames/f%05d.jpg -vf "scale=1080:1920,format=yuv420p" -c:v libx264 board.mp4`, then cut presenter + board + presenter and burn captions with an `.ass` file as in `drafts/marketing/video/video1/README.md`.
+
+## Autonomy (27 Nov 2026)
+- `plan_week.py <tuesday>`: drafts a week from the feed, `data/hook_bank.json` and `data/tip_sets.json`.
+- `buffer_payloads.py <posts.json> --date <day>`: the publishing gate; prints Buffer `create_post` calls or refuses with the reason. `--record id:platform:buffer_id` logs a scheduled post.
+- `slides_to_video.py <dir>`: slides to a 1080x1920 MP4 (ffmpeg, silent track).
+- `social_metrics.py --days 7`: board visits by platform (GoatCounter; needs its credential).
+Map of the whole system: `social/OPERATING-SYSTEM.md`.
