@@ -36,22 +36,23 @@ class Refused(Exception):
 
 
 def approval_deadline(week: str) -> dt.datetime:
-    """KT's silence counts as yes after 23:00 Istanbul on the Monday before the week's Tuesday (KT, 27 Nov 2026:
-    'my yes should not hold up things ... if you don't get my yes, it goes out as is and as scheduled')."""
+    """23:00 Istanbul on the Monday before the week's Tuesday. After it, with no answer from KT, only KT-approved
+    material may go out (backup.py; KT, 27 Nov 2026: "I need to check and approve ... if I can't check, a good
+    back-up solution should exist")."""
     t = dt.date.fromisoformat(week)
     return dt.datetime.combine(t - dt.timedelta(days=1), dt.time(23, 0), tzinfo=ACCOUNT_TZ)
 
 
 def week_status(state: dict, week: str, now: dt.datetime | None = None) -> str:
-    """'yes' (KT said yes), 'no' (KT said no or hold), 'auto' (deadline passed, no answer), 'waiting'."""
+    """'yes' (KT said yes), 'no' (KT said no), 'backup' (deadline passed, no answer: approved material only), 'waiting'."""
     kt = [a for a in state.get("approvals", []) if a.get("week") == week and a.get("by") == "KT"]
     if any(a.get("decision") == "no" for a in kt):
         return "no"
     if kt:
         return "yes"
     now = now or dt.datetime.now(ACCOUNT_TZ)
-    if state.get("auto_approve_after_deadline") and now >= approval_deadline(week):
-        return "auto"
+    if state.get("backup_after_deadline") == "approved-material-only" and now >= approval_deadline(week):
+        return "backup"
     return "waiting"
 
 
@@ -64,7 +65,7 @@ def gate_mode(state: dict, week: str, now: dt.datetime | None = None) -> None:
         if st == "no":
             raise Refused(f"KT said no to week {week}")
         if mode == "approve-week" and st == "waiting":
-            raise Refused(f"week {week}: no answer from KT yet; it goes ahead automatically after {approval_deadline(week).isoformat()}")
+            raise Refused(f"week {week}: waiting for KT's yes; after {approval_deadline(week).isoformat()} only approved material may go out")
 
 
 def alt_text(slide_path: Path, manifest: dict, i: int) -> str:
@@ -105,7 +106,11 @@ def story_image(src: Path) -> Path:
     return out
 
 
-def payloads_for(post: dict, today: str, check_urls: bool = True, formats: bool = False) -> list[dict]:
+def payloads_for(post: dict, today: str, check_urls: bool = True, formats: bool = False, backup_only: list | None = None) -> list[dict]:
+    if backup_only is not None:
+        import backup
+        if not backup.is_approved_material(post, backup_only):
+            raise Refused(f"{post['id']}: KT hasn't approved this week and this post isn't approved material (run backup.py)")
     fs = [f for f in check_post.check_post(post, "schedule") if f.level == check_post.BLOCK]
     if fs:
         raise Refused(f"{post['id']}: " + "; ".join(str(f) for f in fs))
@@ -204,7 +209,11 @@ def main(argv=None) -> int:
         if not todays:
             raise Refused(f"no posts dated {a.date} in {a.posts}")
         fmt = bool(state.get("formats_plan_approved"))
-        out = [x for p in todays for x in payloads_for(p, today, check_urls=not a.dry_run, formats=fmt)]
+        lib = None
+        if not a.dry_run and week_status(state, data["week"]) == "backup":
+            import backup
+            lib = backup.approved_posts(state)
+        out = [x for p in todays for x in payloads_for(p, today, check_urls=not a.dry_run, formats=fmt, backup_only=lib)]
     except Refused as e:
         print(json.dumps({"refused": str(e)}, indent=2))
         return 1

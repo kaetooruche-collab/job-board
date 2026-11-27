@@ -85,20 +85,40 @@ def test_cast_rotates_presenter_and_setting():
     assert c2["setting"] != "home desk by a window, morning light, plant in the background"
 
 
-def test_silence_becomes_yes_after_the_deadline():
+def test_no_answer_means_backup_not_publish_everything():
     import datetime as dt
-    st = {"mode": "approve-week", "approvals": [], "auto_approve_after_deadline": True}
+    st = {"mode": "approve-week", "approvals": [], "backup_after_deadline": "approved-material-only"}
     before = dt.datetime(2026, 12, 7, 22, 0, tzinfo=bp.ACCOUNT_TZ)
     after = dt.datetime(2026, 12, 7, 23, 1, tzinfo=bp.ACCOUNT_TZ)
-    with pytest.raises(bp.Refused, match="automatically"):
+    with pytest.raises(bp.Refused, match="waiting"):
         bp.gate_mode(st, "2026-12-08", before)
-    bp.gate_mode(st, "2026-12-08", after)
-    assert bp.week_status(st, "2026-12-08", after) == "auto"
+    assert bp.week_status(st, "2026-12-08", after) == "backup"
+
+
+def test_backup_lets_through_only_approved_material():
+    import backup
+    approved = [{"id": "a1", "series": "tips", "hook": "Remote doesn't always mean anywhere.",
+                 "caption": "Remote doesn't always mean anywhere.\n\n36 roles today. Link in bio."}]
+    same_new_numbers = {"id": "n1", "series": "tips", "hook": "Remote doesn't always mean anywhere.",
+                        "caption": "Remote doesn't always mean anywhere.\n\n41 roles today. Link in bio."}
+    new_words = dict(same_new_numbers, hook="A brand new hook KT never saw.")
+    assert backup.is_approved_material(same_new_numbers, approved)
+    assert not backup.is_approved_material(new_words, approved)
+    assert not backup.is_approved_material(dict(same_new_numbers, ai_presenter=True), approved)
+    assert not backup.is_approved_material(dict(same_new_numbers, series="service"), approved)
+    sub = backup.substitute(dict(new_words, date="2026-12-10"), approved, set())
+    assert sub["hook"] == approved[0]["hook"] and sub["date"] == "2026-12-10"
+
+
+def test_gate_refuses_unapproved_post_in_backup():
+    post = {"id": "x", "series": "tips", "hook": "Never seen.", "caption": "Never seen. Link in bio."}
+    with pytest.raises(bp.Refused, match="approved material"):
+        bp.payloads_for(post, "2030-01-08", check_urls=False, backup_only=[])
 
 
 def test_kts_no_still_stops_the_week():
     import datetime as dt
-    st = {"mode": "approve-week", "auto_approve_after_deadline": True,
+    st = {"mode": "approve-week", "backup_after_deadline": "approved-material-only",
           "approvals": [{"week": "2026-12-08", "by": "KT", "decision": "no"}]}
     with pytest.raises(bp.Refused, match="no"):
         bp.gate_mode(st, "2026-12-08", dt.datetime(2026, 12, 9, 12, 0, tzinfo=bp.ACCOUNT_TZ))

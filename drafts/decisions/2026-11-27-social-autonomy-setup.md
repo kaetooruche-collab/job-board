@@ -40,3 +40,16 @@ KT: "my yes should not hold up things ... set up a backup that if you don't get 
 - BHuman renders without an answer: allowed when `plan_render` estimates 30 credits or fewer and the month stays within the 200-credit budget (KT's standing confirmation, recorded in `state.json`). Otherwise the free screen-only video goes out on time.
 - What still protects quality without KT: the copy checker in schedule mode, same-day role checks, the `social-reviewer` agent every week (a BLOCK it can't fix drops the post), and the publishing gate.
 - Residual risk: a post that passes every check but reads badly goes out unseen. Accepted by KT for autonomy. The Friday review looks for it.
+
+## 8. Reversed: KT's yes is required again, with a backup (KT, 27 Nov, after section 7)
+KT: "your risk is valid and very true, you were right to leave things as before, I need to check and approve before it goes out and if I can't check, a good back-up solution should exist." Section 7 is withdrawn.
+- **Approval required.** Nothing new goes out without KT's yes.
+- **Escalation.** A review reminder the day after planning, then a last call at 20:00 on the deadline Monday (pop-up and email).
+- **Backup when KT can't check** (`social/tools/backup.py`; the gate enforces it): past the deadline with no answer, a post goes out only if its hook and caption (numbers masked) come from a week KT approved. It must have no AI presenter or voice and must not be a service post. Other posts are swapped for an approved post of the same series (an unapproved video becomes an approved roles post), or held until KT is back.
+  - Roles, numbers and dates are still refreshed and re-checked on the day: that is data, not new wording.
+- **No BHuman render without KT's yes.**
+- **Why this backup** (alternatives considered):
+  - (a) Publish anyway: rejected; the unseen-awkward-post risk.
+  - (b) Skip the week: safe, but it breaks posting consistency, which the platforms reward and an audience-building account needs.
+  - (c) Approved material only: no unseen wording reaches the public, and the account keeps posting.
+  - Its cost: repeats. The Friday review watches for fatigue.
