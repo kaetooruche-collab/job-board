@@ -24,7 +24,8 @@ from pathlib import Path
 
 WORD = re.compile(r"[a-z0-9']+")
 # Brand words the recogniser spells differently; the narration spelling "Yai-ray" is how Yireh is said aloud.
-SAME = {"yairay": "yireh", "yai": "yireh", "yaire": "yireh", "yireh": "yireh", "yai-ray": "yireh"}
+# "yari": how the recogniser writes Zee's "Yi-ray", which KT judged correct by ear (27 Nov, brand-tests/test3).
+SAME = {"yari": "yireh", "yi-ray": "yireh", "yiray": "yireh", "yairay": "yireh", "yai": "yireh", "yaire": "yireh", "yireh": "yireh", "yai-ray": "yireh"}
 
 
 _ONES = "zero one two three four five six seven eight nine ten eleven twelve thirteen fourteen fifteen sixteen seventeen eighteen nineteen".split()
@@ -46,7 +47,7 @@ def _spell(n: int) -> str:
 def words(text: str) -> list[str]:
     """Normalised words; digits are spelled out so '2,000' and 'two thousand' compare equal."""
     num2words = _spell
-    t = re.sub(r"(\d)\s?[ ,]\s?(\d{3})\b", r"\1\2", text.lower().replace("yai-ray", "yairay"))
+    t = re.sub(r"(\d)\s?[ ,]\s?(\d{3})\b", r"\1\2", text.lower().replace("yai-ray", "yairay").replace("yi-ray", "yiray"))
     if num2words:
         t = re.sub(r"\d+", lambda m: num2words(int(m[0])), t)
     out = []

@@ -132,3 +132,4 @@ Cover, role card, tip with number tile, closing slide (section 6); Story frame (
 
 ## Saying the name (KT, 27 Nov 2026)
 "Yireh" is two syllables: **YAI-ray**. "Yi" is "hi" with a Y (no W sound); "reh" is "ray" as in ray of sunshine. "Why Ray", "Worry" and a merged one-syllable "Yare" are wrong. Every new voice's first take of the name is checked by KT's ear before a render (`voice_qc.py` flags misheard brand words, but speech recognition can't confirm the right sound by itself).
+For AI voices, spell it **"Yi-ray"** in the narration script (approved by KT's ear with Zee's voice, 27 Nov). "Yai-ray" works for Amara's voice. Captions and on-screen text always say "Yireh".
