@@ -12,3 +12,5 @@ description: Friday runbook for the Yireh Careers social agency - collect the we
 5. **Judge against the goal metric of each post** (its `funnel` and `goal_metric`), never on likes alone. Under about 1,000 views per variant, call nothing a winner; write "too early" and keep the test running. Label each statement established, hypothesis or assumption.
 6. **One change.** Propose at most one change for next week (a hook style, a time, a format), with the evidence and its tier (`social/research/2026-11-27-question-bank-and-sources.md`). Write it in `social/reviews/<date>.md`; the Monday plan reads the latest review.
 7. **Report to KT** in plain words: what went out, the numbers that matter, the one change, and anything that needs them.
+
+After publishing or logging results, run `python3 social/tools/catalog.py` and commit `social/CATALOG.*`.

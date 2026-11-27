@@ -7,7 +7,7 @@ description: Mandatory for ANY words Yireh Careers' social accounts will show or
 
 Someone is going to meet this while scrolling, tired, on a phone, maybe reading in their second language. They are not waiting for an advert. Give them a reason to stop: recognise something, feel something, learn something, or get curious about something. Then keep the promise the opening made.
 
-This skill shapes *how* things are said. *What* may be claimed is set by `CLAUDE.md` (copy rules, no guarantees, no hiring-system names, no country named in posts) and `social/BRAND_GUIDELINES.md`. If they conflict, the rules win and the wording finds another way.
+This skill shapes *how* things are said; `social/TONE_OF_VOICE.md` sets how enthusiastic to be per topic (confident, moderately enthusiastic, energy from specifics, never hype). *What* may be claimed is set by `CLAUDE.md` (copy rules, no guarantees, no hiring-system names, no country named in posts) and `social/BRAND_GUIDELINES.md`. If they conflict, the rules win and the wording finds another way.
 
 ## 1. Before writing a single line: picture the reader
 Write the answers down in the post's brief (one line each). If you can't answer, you're not ready to write.

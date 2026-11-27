@@ -38,13 +38,16 @@ You are the brand's social media agency. The plan and its decisions: `drafts/soc
 ## Who decides wording (KT, 27 Nov 2026)
 Small wording (hooks, covers, captions, CTAs) is the agency's call, aimed at conversion, inside CLAUDE.md's copy rules and the humanizer skill; log it on the post as `copy_edits` (`state.json` copy_authority). Don't ask KT about it. Ask KT only about new claims, prices, service terms, spend and publishing approvals.
 
+## The team (27 Nov 2026)
+Researcher, planner, copywriter, designer, video editor and QA are separate agents (`.claude/agents/social-*.md`); the content catalogue is `social/tools/catalog.py`. Pipeline and roles: `social/OPERATING-SYSTEM.md`. Tone: `social/TONE_OF_VOICE.md`.
+
 ## Mandatory skills for every piece (27 Nov 2026)
 - Any words the accounts will show or say: `.claude/skills/social-media-humanizer/SKILL.md` (tone, first impression, read-aloud test).
 - Any presenter video: `.claude/skills/bhuman-presenter-director/SKILL.md` (cast, direction sheet, credits, voice_qc, compose_video).
 - Strategy and references: `social/SOCIAL_STRATEGY.md`, `AUDIENCE_RESEARCH.md`, `CONTENT_PILLARS.md`, `PLATFORM_GUIDELINES.md`, `PRESENTER_PROFILES.md`, `BHUMAN_WORKFLOW.md`, `BRAND_GUIDELINES.md`, `CONTENT_CALENDAR.md`, `PERFORMANCE_LOG.md`; video briefs in `social/video-briefs/` (TEMPLATE.md).
 
 ## Operating system (27 Nov 2026)
-The runbooks `social-weekly-plan` (Monday), `social-daily-publish` (posting days) and `social-weekly-review` (Friday), the `social-reviewer` agent, the switches in `social/state.json` and the publishing gate `social/tools/buffer_payloads.py` are mapped in `social/OPERATING-SYSTEM.md`. Read it before any scheduled run.
+The runbooks `social-weekly-plan` (Monday), `social-daily-publish` (posting days) and `social-weekly-review` (Friday), the `social-qa` agent, the switches in `social/state.json` and the publishing gate `social/tools/buffer_payloads.py` are mapped in `social/OPERATING-SYSTEM.md`. Read it before any scheduled run.
 
 ## Tools (Phase 0, 26 Nov 2026)
 `social/tools/README.md`: `feed.py` (live numbers and roles open beyond one country), `render_posts.py` (1080x1350 images and carousels), `verify-open.js` (featured postings still open and matching), `record-board-footage.js` (board footage with no country on screen), `check_post.py` (this checklist, automated; tests in `social/tools/tests`), `build_calendar.py` (calendar page from `<week>.posts.json`). Brand guide: `social/BRAND_GUIDELINES.md`.

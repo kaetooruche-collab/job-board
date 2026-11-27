@@ -23,3 +23,5 @@ The gate decides; this session does not override it. Read `social/state.json` fi
 9. **Report** one line per post: scheduled for when, on which platforms, Buffer id.
 
 Never: reply to comments or DMs (KT's), spend BHuman credits beyond `bhuman_monthly_credit_budget`, publish "now" instead of scheduling, or post to a channel not listed in the agency skill.
+
+After publishing or logging results, run `python3 social/tools/catalog.py` and commit `social/CATALOG.*`.

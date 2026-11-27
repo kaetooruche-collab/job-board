@@ -37,8 +37,22 @@ Scheduled tasks created 27 Nov with KT's yes; they fire into the social agency s
 ## The creative system (27 Nov 2026)
 Skills: `social-media-humanizer` (all copy), `bhuman-presenter-director` (all presenter video). Documents: `SOCIAL_STRATEGY.md`, `AUDIENCE_RESEARCH.md`, `CONTENT_PILLARS.md`, `PLATFORM_GUIDELINES.md`, `PRESENTER_PROFILES.md`, `BHUMAN_WORKFLOW.md`, `BRAND_GUIDELINES.md`, `CONTENT_CALENDAR.md`, `PERFORMANCE_LOG.md`. Tools added: `voice_qc.py` (transcript, pace, pauses, loudness), `compose_video.py` (brand captions, b-roll, -14 LUFS), `verify_source.py` (cards match the employer's data).
 
-## The reviewer
-`.claude/agents/social-reviewer.md`: a fresh-eyes critic that reads the posts and images and returns BLOCK/WARN. It cannot edit, schedule or publish.
+## The team (27 Nov 2026, KT: "different agents or skills so the best possible output is produced")
+Each role is a separate agent in `.claude/agents/`, so it works in a fresh context with only its own instructions and tools. The main session is the **producer**: it runs the pipeline, talks to KT, and is the only one that spends BHuman credits or schedules.
+| Step | Agent | Produces |
+|---|---|---|
+| 1 Research | `social-researcher` | `social/research/<date>-<topic>.md`: pain points in their words, stats with sources and tiers, angles to use, things not to claim |
+| 2 Plan | `social-planner` | the week's `posts.json`, balanced by pillar, tone, format and test; assignments; credit estimate |
+| 3 Copy | `social-copywriter` | hooks (5 options, 1 chosen), per-platform captions, slide and on-screen text, scripts for the ear (`TONE_OF_VOICE.md`, humanizer) |
+| 4a Design | `social-designer` | slides, covers, Story frames, rendered and inspected, plus `preview.jpg` |
+| 4b Video | `social-video-editor` | composited videos (captions, b-roll, -14 LUFS, watermark cropped) with QC in the brief; BHuman renders are done by the producer after KT's yes |
+| 5 QA | `social-qa` | PASS / BLOCK / WARN per post: truth, rules, tone, conversion score, video frames |
+| 6 Catalogue | `python3 social/tools/catalog.py` | `social/CATALOG.md` and `.csv`: every piece, its status, assets, approvals, Buffer ids and results |
+| 7 Publish | producer + `social-daily-publish` + the gate | scheduled posts and the log |
+| 8 Review | producer + `social-weekly-review` | the week's numbers and one change, which feeds back into step 1 |
+
+## The reviewer (now QA)
+`.claude/agents/social-qa.md`: the QA agent, a fresh-eyes critic that reads the posts and images and returns BLOCK/WARN. It cannot edit, schedule or publish.
 
 ## What stays with KT
 Comments and DMs, the AI label on Facebook (Buffer can't set it), any spend, changing `state.json`, new countries or languages, the CV-service posts' wording, and anything in CLAUDE.md that says "KT's approval".

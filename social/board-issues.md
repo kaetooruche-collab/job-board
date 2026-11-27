@@ -22,7 +22,7 @@ Scale: 19 jobs are labelled Worldwide today; 3 of them (16%) are wrong or doubtf
 - Also merged: **#81** adds 50 employers that hire outside the US; **#83** keeps jobs open outside the US first under the caps (simulated: 1,221 of 2,000 jobs open outside the US, against 693 now; 39 worldwide, against 27).
 - `social/data/exclude_jobs.json` stays as it is until the first feed refresh after the merge. Then re-check these jobs on the live feed and remove the entries that are fixed.
 
-## 27 Nov 2026: card labels and pay that contradict the employer's own data (found by the social-reviewer agent, confirmed via the employers' public feeds)
+## 27 Nov 2026: card labels and pay that contradict the employer's own data (found by the social-qa agent, confirmed via the employers' public feeds)
 | Job id | Company | Board shows | Employer's own data | Class of bug |
 |---|---|---|---|---|
 | j3837f4403a, j16645dc320, j6b2e4703c7, j91e5680f17 | Trafilea | Worldwide | Recruitee `locations[]`: Argentina, Brazil, Chile (location text only says "Remote job") | Classifier ignores Recruitee `locations[]` |
