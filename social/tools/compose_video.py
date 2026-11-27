@@ -44,8 +44,8 @@ def align_to_script(timed: list[dict], script: str) -> list[dict]:
     heard words they replace."""
     from difflib import SequenceMatcher
     import re as _re
-    sw = [w for w in _re.findall(r"\S+", script.replace("Yai-ray", "Yireh"))]
-    norm = lambda w: _re.sub(r"[^a-z0-9]", "", w.lower().replace("yairay", "yireh"))
+    sw = [w for w in _re.findall(r"\S+", _re.sub(r"\b(?:Yai-ray|Yi-ray|Yi Ray|Yiray|Why Ray)\b", "Yireh", script))]
+    norm = lambda w: _re.sub(r"[^a-z0-9]", "", w.lower().replace("yairay", "yireh").replace("yari", "yireh"))
     a, b = [norm(w) for w in sw], [norm(w["word"]) for w in timed]
     out = []
     for tag, i1, i2, j1, j2 in SequenceMatcher(None, a, b, autojunk=False).get_opcodes():
@@ -102,7 +102,7 @@ Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
         end = cs[i + 1][0]["start"] if i + 1 < len(cs) and cs[i + 1][0]["start"] - c[-1]["end"] < 0.5 else c[-1]["end"] + 0.15
         txt = []
         for w in c:
-            word = w["word"].replace("Yairay", "Yireh").replace("Yai-ray", "Yireh")
+            word = re.sub(r"(?i)\b(?:yairay|yai-ray|yi-ray|yari)\b", "Yireh", w["word"])
             key = re.sub(r"[^a-z0-9']", "", word.lower())
             txt.append("{\\c" + BLUE + "}" + word + "{\\c" + WHITE + "}" if key in emph else word)
         lines.append(f"Dialogue: 0,{ts(start)},{ts(end)},Cap,,0,0,0,,{' '.join(txt)}")

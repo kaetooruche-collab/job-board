@@ -214,3 +214,10 @@ def test_voice_qc_flags_a_misheard_brand():
     # the brand compare: script 'Yai-ray' normalises to yireh, a heard 'Y Ray' does not
     assert "yireh" in voice_qc.words("On Yai-ray Careers")
     assert "yireh" not in voice_qc.words("On Y Ray Careers")
+
+
+def test_captions_always_spell_the_brand_yireh():
+    import compose_video
+    timed = [{"word": w, "start": i * 0.3, "end": i * 0.3 + 0.25} for i, w in enumerate(["On", "Yari", "Careers"])]
+    out = compose_video.align_to_script(timed, "On Yi-ray Careers")
+    assert [w["word"] for w in out][1] == "Yireh"
