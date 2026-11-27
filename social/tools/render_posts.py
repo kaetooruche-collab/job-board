@@ -41,24 +41,42 @@ MARK = ("<svg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'><defs><li
         "stroke-linecap='round' stroke-linejoin='round'><path d='M25 31 L48 56' stroke='#fff'/><path d='M48 56 L48 82' "
         "stroke='#fff'/><path d='M48 56 L83 17' stroke='#bfdbfe'/></g></svg>")
 
+# Colour themes, all from the site's own tokens (index.html :root), one per kind of post (KT, 27 Nov 2026:
+# "they all have the same colour"). Text colours chosen for WCAG AA contrast on their backgrounds.
+THEMES = {
+    "navy":  dict(bg="linear-gradient(135deg,#131c35 0%,#0f2a4d 58%,#17407a 100%)", fg="#ffffff", kicker="#7cb3ff",
+                  sub="#dbe7ff", foot="#a9ccff", em="#7cb3ff", tip_bg="#2563eb", tip_fg="#ffffff", url_bg="#ffffff", url_fg="#1d4ed8"),
+    "light": dict(bg="#eef2f8", fg="#1a1a2e", kicker="#2563eb", sub="#3c4043", foot="#5f6368", em="#2563eb",
+                  tip_bg="#2563eb", tip_fg="#ffffff", url_bg="#2563eb", url_fg="#ffffff"),
+    "blue":  dict(bg="linear-gradient(135deg,#2563eb 0%,#1d4ed8 100%)", fg="#ffffff", kicker="#dbeafe", sub="#eff6ff",
+                  foot="#dbeafe", em="#fde68a", tip_bg="#ffffff", tip_fg="#1d4ed8", url_bg="#ffffff", url_fg="#1d4ed8"),
+    "amber": dict(bg="#fbbc04", fg="#1a1a2e", kicker="#78350f", sub="#3b2a06", foot="#78350f", em="#78350f",
+                  tip_bg="#1a1a2e", tip_fg="#fbbc04", url_bg="#1a1a2e", url_fg="#ffffff"),
+    "teal":  dict(bg="linear-gradient(135deg,#0f766e 0%,#115e59 100%)", fg="#ffffff", kicker="#99f6e4", sub="#ecfdf5",
+                  foot="#ccfbf1", em="#99f6e4", tip_bg="#ffffff", tip_fg="#0f766e", url_bg="#ffffff", url_fg="#0f766e"),
+}
+# Default theme by series; a post can override with render.theme.
+SERIES_THEME = {"roles-carousel": "navy", "role-single": "navy", "tips": "light", "safety": "amber",
+                "weekly-video": "blue", "numbers": "blue", "service": "teal"}
+
 CSS = """
 *{box-sizing:border-box;margin:0;padding:0}
 html,body{width:%(w)dpx;height:%(h)dpx}
-body{font-family:'Inter',sans-serif;color:#fff;background:linear-gradient(135deg,#131c35 0%%,#0f2a4d 58%%,#17407a 100%%);
+body{font-family:'Inter',sans-serif;color:var(--fg);background:var(--bg);
  position:relative;overflow:hidden;-webkit-font-smoothing:antialiased}
 .wrap{position:absolute;inset:0;padding:84px 84px 0;display:flex;flex-direction:column}
 .brand{display:flex;align-items:center;gap:20px;font-weight:700;font-size:34px;letter-spacing:-.01em}
-.brand svg{width:64px;height:64px}
-.count{margin-left:auto;font-weight:600;font-size:26px;color:#a9ccff}
+.brand svg{width:64px;height:64px;border-radius:14px;box-shadow:0 0 0 3px var(--ring)}
+.count{margin-left:auto;font-weight:600;font-size:26px;color:var(--foot)}
 .main{flex:1;display:flex;flex-direction:column;justify-content:center;padding-bottom:150px}
-.kicker{font-size:32px;font-weight:700;color:#7cb3ff;text-transform:uppercase;letter-spacing:.08em}
+.kicker{font-size:32px;font-weight:700;color:var(--kicker);text-transform:uppercase;letter-spacing:.08em}
 h1{margin-top:30px;font-size:104px;line-height:1.04;font-weight:800;letter-spacing:-.03em;text-wrap:balance}
-h1 em{font-style:normal;color:#7cb3ff}
-.sub{margin-top:44px;font-size:44px;line-height:1.35;color:#dbe7ff;font-weight:500;text-wrap:pretty}
+h1 em{font-style:normal;color:var(--em)}
+.sub{margin-top:44px;font-size:44px;line-height:1.35;color:var(--sub);font-weight:500;text-wrap:pretty}
 .foot{position:absolute;left:84px;right:84px;bottom:64px;display:flex;justify-content:space-between;align-items:flex-end;
- font-size:24px;color:#a9ccff;font-weight:500}
-.foot b{color:#fff;font-weight:700}
-.card{background:#fff;color:#1a1a2e;border-radius:28px;padding:60px 56px;box-shadow:0 24px 60px rgba(0,0,0,.35)}
+ font-size:24px;color:var(--foot);font-weight:500}
+.foot b{color:var(--fg);font-weight:700}
+.card{background:#fff;color:#1a1a2e;border-radius:28px;padding:60px 56px;box-shadow:0 24px 60px rgba(0,0,0,.25)}
 .pills{display:flex;flex-wrap:wrap;gap:14px}
 .pill{font-size:30px;font-weight:600;padding:10px 24px;border-radius:999px;line-height:1.3}
 .pill-world{background:#f0fdfa;color:#0d9488}.pill-region{background:#eff6ff;color:#2563eb}
@@ -68,11 +86,17 @@ h1 em{font-style:normal;color:#7cb3ff}
 .rows{margin-top:44px;border-top:2px solid #e2e5e9;padding-top:30px;display:grid;grid-template-columns:auto 1fr;gap:20px 32px;font-size:34px}
 .rows dt{color:#5f6368;font-weight:500}.rows dd{font-weight:600}
 .btn{margin-top:48px;display:inline-block;background:#2563eb;color:#fff;font-weight:700;font-size:32px;padding:22px 38px;border-radius:14px}
-.tipn{width:132px;height:132px;border-radius:30px;background:#2563eb;display:flex;align-items:center;
+.tipn{width:132px;height:132px;border-radius:30px;background:var(--tip_bg);color:var(--tip_fg);display:flex;align-items:center;
  justify-content:center;font-size:64px;font-weight:800}
 .big{margin-top:44px;font-size:96px}
-.url{margin-top:54px;display:inline-block;background:#fff;color:#1d4ed8;font-weight:800;font-size:44px;padding:24px 40px;border-radius:18px}
+.url{margin-top:54px;display:inline-block;background:var(--url_bg);color:var(--url_fg);font-weight:800;font-size:44px;padding:24px 40px;border-radius:18px}
 """ % {"w": W, "h": H}
+
+
+def theme_css(name: str) -> str:
+    t = dict(THEMES.get(name) or THEMES["navy"])
+    t.setdefault("ring", "#ffffff" if name in ("blue", "teal") else "transparent")
+    return ":root{" + ";".join(f"--{k}:{v}" for k, v in t.items()) + "}"
 
 
 def esc(s) -> str:
@@ -80,9 +104,9 @@ def esc(s) -> str:
     return html.escape(re.sub(r"(?<=\w)'(?=\w)", "\u2019", str(s or "")), quote=True)
 
 
-def page(inner: str, idx: int, total: int, date_line: str) -> str:
+def page(inner: str, idx: int, total: int, date_line: str, theme: str = "navy") -> str:
     count = f"<span class='count'>{idx} / {total}</span>" if total > 1 else ""
-    return (f"<!doctype html><html><head><meta charset='utf-8'><style>{CSS}</style></head><body><div class='wrap'>"
+    return (f"<!doctype html><html><head><meta charset='utf-8'><style>{theme_css(theme)}{CSS}</style></head><body><div class='wrap'>"
             f"<div class='brand'>{MARK}<span>Yireh Careers</span>{count}</div><div class='main'>{inner}</div></div>"
             f"<div class='foot'><span>{esc(date_line)}</span><span><b>Link in bio</b></span></div></body></html>")
 
@@ -144,6 +168,7 @@ def build(posts: list[dict], jobs: list[dict], out_root: Path, only: set[str] | 
             continue
         slides, manifest_jobs = [], []
         date_line = r.get("date_line") or f"From our live board, {fmt_day(now)}"
+        theme = r.get("theme") or SERIES_THEME.get(p.get("series", ""), "navy")
         for s in r["slides"]:
             s = {k: (fill(v, st) if isinstance(v, str) else v) for k, v in s.items()}
             if s["t"] == "jobs":
@@ -169,7 +194,7 @@ def build(posts: list[dict], jobs: list[dict], out_root: Path, only: set[str] | 
         for old in list(d.glob("*.png")) + list(d.glob("*.jpg")):
             old.unlink()
         for i, inner in enumerate(slides, 1):
-            (d / f"{i:02d}.html").write_text(page(inner, i, len(slides), date_line), encoding="utf-8")
+            (d / f"{i:02d}.html").write_text(page(inner, i, len(slides), date_line, theme), encoding="utf-8")
         (d / "manifest.json").write_text(json.dumps({
             "post": p["id"], "rendered_at": st["measured_at"], "stats": st,
             "jobs": [{"id": j["id"], "title": j["title"].strip(), "company": j["company"].strip(),

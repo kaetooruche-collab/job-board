@@ -49,6 +49,16 @@ Status: **PROPOSED** (Phase 0). Binding rules come from `CLAUDE.md` and `drafts/
 | Type | **Inter**: 800 headlines (tight, -0.03em), 700 brand and buttons, 600 labels, 500 body | Everything |
 | Mark | The YC mark: white Y whose right arm is a light-blue tick, on a blue tile (`favicon.svg`; 1024 px versions in `drafts/whatsapp-profile/`; wordmarks in `drafts/brand/`) | Top-left of every slide; profile pictures |
 
+**Series colours** (27 Nov 2026, all from the site's own palette; renderer themes; evidence in `research/2026-11-27-formats-and-colour.md`):
+| Series | Theme | Background | Text |
+|---|---|---|---|
+| Roles (carousels, single role) | navy | hero navy gradient | white |
+| Tips (eligibility, reading a posting) | light | `#eef2f8` | `#1a1a2e`, blue kickers |
+| Safety and scams | amber | `#fbbc04` | `#1a1a2e`, brown kickers |
+| Numbers and the weekly video's cover | blue | `#2563eb` → `#1d4ed8` | white; mark ringed in white |
+| CV service | teal | `#0f766e` → `#115e59` | white; mark ringed in white |
+The mark, Inter, the card and the footer never change, so every colour still reads as Yireh.
+
 **Templates** (all built by `social/tools/render_posts.py`, 1080x1350):
 1. **Cover**: kicker (caps, light blue) → headline (Inter 800, ~104 px) → one-line sub. Content centred vertically.
 2. **Role card**: white card on navy: pills (where you can apply from · Remote · job type) → title → company → Posted / Pay / Source rows → "Apply on the original posting" button.
@@ -79,5 +89,8 @@ Region tags and Spanish or Portuguese captions are later tests (Latin America's 
 ## 9. AI label
 Any post with the AI presenter or the AI voice: platform AI label ON (TikTok "AI-generated content"; Meta "AI info") and "AI-generated presenter" on screen. Screen recordings, role cards and text slides need no label.
 
-## 10. Timing
+## 10. Formats per platform (proposed 27 Nov 2026, waiting for KT's yes)
+TikTok gets video and photo carousels; Instagram gets Reels, carousels and Stories with a link sticker, and no single-image posts; Facebook gets Reels and carousels with a per-post link. Full table and evidence: `research/2026-11-27-formats-and-colour.md`, section 3.
+
+## 11. Timing
 All posts at **15:00 UTC** for the first two weeks (morning to midday in the Americas, afternoon in Europe and Africa, evening in South Asia; late in South-East Asia); no Sunday posts; the weekly video on Tuesday. Changed from 12:00 UTC on 26 Nov after KT widened the audience. Evidence and the planned time test: `research/2026-11-26-posting-times.md`.
