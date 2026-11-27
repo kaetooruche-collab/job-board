@@ -1,5 +1,5 @@
 # V2: "The box that changes the whole board" (demonstration)
-Status: **built as a screen-led cut on 27 Nov (no presenter: Zee's voice failed QC twice); sources in assets/v2/ (slides.posts.json, slides/, board.mp4). The presenter script below is kept for a later version** · Presenter: Zee (opening and close) + screen recording (middle) · Length target: 25-30 s · Platforms: TikTok, Instagram Reel, Facebook (screen-led cut, no presenter, unless KT ticks "AI info")
+Status: **built as a screen-led cut on 27 Nov (no presenter: Zee's voice failed QC twice); sources in assets/v2/ (slides.posts.json, slides/, board.mp4). The presenter cut was also made on 27 Nov at KT's request (Zee, take 4; held, not in the calendar; sources in assets/v2-zee/, video social/output/extra/v2-zee/video.mp4)** · Presenter: Zee (opening and close) + screen recording (middle) · Length target: 25-30 s · Platforms: TikTok, Instagram Reel, Facebook (screen-led cut, no presenter, unless KT ticks "AI info")
 
 1. **Objective:** consideration → board visits. Goal metric: board visits by utm (GoatCounter), saves.
 2. **Audience:** anyone who has wasted time on jobs they couldn't apply for; first-time visitors.
