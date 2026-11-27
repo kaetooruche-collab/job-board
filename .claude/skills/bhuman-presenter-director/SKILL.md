@@ -3,7 +3,7 @@ name: bhuman-presenter-director
 description: Governs every Yireh Careers video made with BHuman (Speakeasy) - choosing the presenter and voice, writing the spoken script for the ear, the delivery direction sheet, voice tuning, render planning, credit rules, objective voice QC with voice_qc.py, compositing with board footage and captions, and final inspection. Use whenever a presenter video is planned, voiced, rendered, checked or re-made.
 ---
 
-> **Connection (27 Nov 2026):** BHuman is a claude.ai connector named `bhuman_ai` (tools `mcp__bhuman_ai__*`), so every new session has it. Older notes say `mcp__bhuman-speakeasy__*`: same tools, use whichever prefix ToolSearch returns.
+> **Connection (27 Nov 2026):** BHuman is a claude.ai connector, so every new session has it (verified in a fresh session, 27 Nov). Its tool prefix differs by session (`mcp__bhuman_ai__*`, `mcp__<id>__*` or the older `mcp__bhuman-speakeasy__*`): find the tools with ToolSearch "speakeasy get_capabilities" and use whatever prefix it returns.
 
 # BHuman presenter director (Yireh Careers)
 
