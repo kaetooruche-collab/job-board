@@ -8,15 +8,16 @@ Buffer can only be reached by Claude inside a session, so "autonomous" means: **
 ## The weekly loop
 | When (Istanbul time) | Runbook (skill) | What happens | Needs KT? |
 |---|---|---|---|
-| Monday 10:00 | `social-weekly-plan` | Draft next week from the live board, finish scripts, render, check, review, commit; ask KT for "yes week <date>" | Yes, in `approve-week` mode |
-| Tue-Sat and Mon, 11:00 (4 h before posting) | `social-daily-publish` | Re-measure numbers, re-open featured roles, re-render, check in schedule mode, gate, schedule in Buffer, log | No, once the week is approved |
-| Friday 16:00 | `social-weekly-review` | Buffer numbers, board visits by platform, log, judge against each post's goal, one change for next week | Only to paste platform numbers Buffer can't read |
-The times are a proposal; the scheduled tasks are created only after KT's yes.
+| Monday 09:43 | `social-weekly-plan` | Draft next week from the live board, finish scripts, render, check, review, commit; ask KT for "yes week <date>" | Yes, in `approve-week` mode |
+| Mon-Sat 10:41 (posts go out at 18:00) | `social-daily-publish` | Re-measure numbers, re-open featured roles, re-render, check in schedule mode, gate, schedule in Buffer, log | No, once the week is approved |
+| Friday 15:41 | `social-weekly-review` | Buffer numbers, board visits by platform, log, judge against each post's goal, one change for next week | Only to paste platform numbers Buffer can't read |
+Scheduled tasks created 27 Nov with KT's yes; they fire into the social agency session (ids: plan trig_01DZVLMvHmVw5EstL27eSceH, publish trig_01PkKVZeEQ9JruuPT6VkQvy3, review trig_01GscxB42RQqnz9tbADCHYJj). KT's Google Calendar holds approve/check/review reminders for the first two weeks (30 Nov to 11 Dec).
 
 ## The switches (`social/state.json`, only KT changes them)
-- `mode`: `drafts-only` (now: plan and render, never schedule) → `approve-week` (schedule a week after KT's recorded yes) → `autopilot` (schedule unless `hold`) · `hold` stops everything new.
-- `bhuman_monthly_credit_budget`: 0 now, so videos are the free screen-only kind.
-- `formats_plan_approved`: false now, so every post goes to all three platforms as one file.
+- `mode`: now `approve-week` (week of 1 Dec approved). `drafts-only` means plan and render, never schedule → `approve-week` (schedule a week after KT's recorded yes) → `autopilot` (schedule unless `hold`) · `hold` stops everything new.
+- `bhuman_monthly_credit_budget`: 200 of the Ultimate plan's 500 a month; every render still needs KT's yes on its estimate.
+- `formats_plan_approved`: true since 27 Nov (Facebook tagged links, Instagram Stories on roles days, single role as a video).
+- Presenter cast: `data/cast.json` (rotating presenter, each with a fixed voice, and a new setting each video).
 
 ## The scripts (`social/tools/`)
 | Script | Job |
