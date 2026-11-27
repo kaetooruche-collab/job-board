@@ -71,3 +71,7 @@ What is not established: how our own readers respond. Judge this copy by replies
 - Fees, exchange rate and wrong-network warnings: in the payment messages, in plain words.
 - Eligibility tip and "we do not promise interviews or offers": on the job messages and the services page, not in every email.
 - A lawyer or accountant should still review terms before the company is registered; this guide only changes how we say things, not what we promise.
+
+
+## How to say "Yireh" (KT, 27 Nov 2026)
+"YAI-ray": "yi" like "hi" with a Y, "reh" like "ray" of sunshine (IPA /ˈjaɪ.reɪ/). For text-to-speech tools write it as "Yai-ray" in the script or add `Yireh` -> `Yai-ray` to the tool's pronunciation dictionary.
