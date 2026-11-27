@@ -92,7 +92,8 @@ def facebook_text(post: dict) -> str:
     text = post["caption"]
     for old in ("Link in bio.", "More on the board: link in bio.", "link in bio."):
         if old in text:
-            return text.replace(old, f"See them on the board: {url}" if post.get("pillar") == "jobs" else f"On the board: {url}", 1)
+            new = text.replace(old, f"See them on the board: {url}" if post.get("pillar") == "jobs" else f"On the board: {url}", 1)
+            return new.replace(f"{url} ", f"{url}\n\n", 1)   # keep the link on its own line
     return text + f"\n\n{url}"
 
 
