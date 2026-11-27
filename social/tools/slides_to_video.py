@@ -20,7 +20,7 @@ NAVY = "0x131c35"
 FADE = 0.4
 
 
-def build(d: Path, seconds: float, footage: Path | None, out: Path) -> float:
+def build(d: Path, seconds: float, footage: Path | None, out: Path, footage_after: int | None = None) -> float:
     slides = sorted(d.glob("[0-9][0-9].jpg"))
     if not slides:
         raise SystemExit(f"no slides (NN.jpg) in {d}")
@@ -40,10 +40,13 @@ def build(d: Path, seconds: float, footage: Path | None, out: Path) -> float:
     durs = [seconds] * len(slides)
     if footage:
         durs.append(float(subprocess.check_output(["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", str(footage)]).strip()))
-    last, t = "v0", durs[0]
-    for i in range(1, n):
-        parts.append(f"[{last}][v{i}]xfade=transition=fade:duration={FADE}:offset={t - FADE:.2f}[x{i}]")
-        last, t = f"x{i}", t + durs[i] - FADE
+    order = list(range(n))
+    if footage and footage_after is not None:   # board footage in the middle, after that many slides
+        order = list(range(footage_after)) + [len(slides)] + list(range(footage_after, len(slides)))
+    last, t = f"v{order[0]}", durs[order[0]]
+    for k, i in enumerate(order[1:], 1):
+        parts.append(f"[{last}][v{i}]xfade=transition=fade:duration={FADE}:offset={t - FADE:.2f}[x{k}]")
+        last, t = f"x{k}", t + durs[i] - FADE
     cmd += ["-filter_complex", ";".join(parts), "-map", f"[{last}]", "-map", f"{n}:a", "-shortest",
             "-c:v", "libx264", "-preset", "medium", "-crf", "20", "-pix_fmt", "yuv420p", "-c:a", "aac", "-b:a", "128k",
             "-movflags", "+faststart", "-t", f"{t:.2f}", str(out)]
@@ -56,10 +59,11 @@ def main(argv=None) -> int:
     ap.add_argument("dir")
     ap.add_argument("--seconds", type=float, default=4.0)
     ap.add_argument("--footage")
+    ap.add_argument("--footage-after", type=int, help="play the footage after this many slides (default: at the end)")
     a = ap.parse_args(argv)
     d = Path(a.dir)
     out = d / "video.mp4"
-    t = build(d, a.seconds, Path(a.footage) if a.footage else None, out)
+    t = build(d, a.seconds, Path(a.footage) if a.footage else None, out, a.footage_after)
     m = d / "manifest.json"
     if m.exists():
         man = json.loads(m.read_text(encoding="utf-8"))

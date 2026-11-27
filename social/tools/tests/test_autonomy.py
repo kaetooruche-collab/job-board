@@ -124,3 +124,14 @@ def test_kts_no_still_stops_the_week():
         bp.gate_mode(st, "2026-12-08", dt.datetime(2026, 12, 9, 12, 0, tzinfo=bp.ACCOUNT_TZ))
     with pytest.raises(bp.Refused):
         bp.gate_mode({"mode": "hold", "approvals": []}, "2026-12-08")
+
+
+def test_free_video_uses_only_approved_lines_and_refreshes_the_number():
+    import free_video
+    lines = ["Stop paying to look at remote jobs", "Free to search · no account", "Only the jobs open to where you live",
+             "36 open to applicants anywhere", "From our live board, 26 Nov 2026", "Link in bio", "AI-generated presenter"]
+    slides, after, date_line = free_video.slides_from(lines, {"worldwide": 41, "measured_on": "2026-12-01"})
+    titles = [s["title"] for s in slides]
+    assert titles[0] == "Stop paying to look at remote jobs" and slides[0]["sub"] == "Free to search · no account"
+    assert "41 open to applicants anywhere" in titles and not any("AI" in t for t in titles)
+    assert date_line == "From our live board, 1 Dec 2026"
