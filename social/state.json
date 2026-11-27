@@ -24,7 +24,21 @@
     }
   ],
   "bhuman_monthly_credit_budget": 200,
-  "bhuman_credits_spent": {},
+  "bhuman_credits_spent": {
+    "2026-11": [
+      {
+        "on": "2026-11-27",
+        "what": "voice design auditions (3 x ~10 s) for presenter Zee; requested catalog, BHuman returned designed voices",
+        "credits_estimate": 30,
+        "note": "find_voice_candidates with source=catalog fell back to voice design, which charges 1 credit per second. Guard added to the presenter-director skill: check the result's source field; KT to confirm the real balance in the BHuman app."
+      },
+      {
+        "on": "2026-11-27",
+        "what": "presenter images Daniel, Zee, Zee v2 (generate_presenter)",
+        "credits_estimate": "unknown: the tool does not state a price; check the balance in the app"
+      }
+    ]
+  },
   "posting_time_utc": "15:00",
   "scope": "outside_us",
   "formats_plan_approved": true,

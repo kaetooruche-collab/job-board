@@ -1,15 +1,33 @@
 {
   "note": "Weekly video cast (KT, 27 Nov 2026: don't reuse one presenter, background and voice every time). Rule: a small recurring cast, each presenter ALWAYS with their own voice (a face and voice that match keep trust; research: spokes-character studies, Ehrenberg-Bass). The setting, outfit and framing change every video; no presenter+setting pair repeats within 8 weeks. Scripts are written for the chosen presenter's persona and setting. New presenters are generated in BHuman inside the monthly credit budget; add them here with their BHuman ids once made. Hypothesis to test, not established.",
   "presenters": [
-    {"id": "amara", "status": "active", "bhuman_presenter": "warm at-home presenter used in Video 1 (project 96c7bb1f-c240-4e60-a377-f504d67dc005)",
-     "voice": "Olivia (energetic delivery)", "persona": "Warm, calm, a little wry; talks like a friend who has done the job hunt. Short sentences.",
-     "look": "Woman, late 20s to 30s, dark wavy hair, casual knitwear"},
-    {"id": "daniel", "status": "to-create", "bhuman_presenter": null, "voice": "a calm male catalog voice, chosen by audition (find_voice_candidates) on first use and then fixed",
-     "persona": "Practical and direct; 'here is the one thing to check'. Good for safety and how-to scripts.",
-     "look": "Man, 30s, short hair, plain shirt"},
-    {"id": "zee", "status": "to-create", "bhuman_presenter": null, "voice": "a bright, quick female catalog voice, chosen by audition on first use and then fixed",
-     "persona": "Upbeat and quick; numbers and 'this week on the board'. Good for proof and roles videos.",
-     "look": "Woman, mid 20s, natural hair, bright top"}
+    {
+      "id": "amara",
+      "status": "active",
+      "bhuman_presenter_id": "53bb213d-afdc-4aab-b7bb-a73a2104deb6",
+      "bhuman_presenter_name": "Yireh presenter - warm home",
+      "voice": "Olivia-style project voice (saved voice 03fdb21e-f95b-472b-bf8d-28fb973eb5b6, ElevenLabs pPoztmvzd5p26S3MsNrV)",
+      "persona": "Warm, a little wry; talks like a friend who has been through the job hunt. Short sentences. Relatable frustration, reassurance.",
+      "look": "Woman, early 30s, dark wavy hair, navy knit jumper, home office with a plant"
+    },
+    {
+      "id": "daniel",
+      "status": "active",
+      "bhuman_presenter_id": "78b7e5ad-aff1-48fc-896a-6e113c4ffcd6",
+      "bhuman_presenter_name": "Yireh cast - Daniel (practical)",
+      "voice": "to be fixed on first narration from catalog candidates: Joe (warm, neutral, steady; cdUhV8G3eltjOJdoi4lk) first choice, Chris (calm, slow; t3w9KdcqUZPgHazmeinf) second",
+      "persona": "Practical and direct; 'here is the one thing to check'. Demonstrations, how-to, safety.",
+      "look": "Man, mid 30s, short dark hair, trimmed beard, charcoal sweater, study with bookshelf and lamp"
+    },
+    {
+      "id": "zee",
+      "status": "active",
+      "bhuman_presenter_id": "e86c752d-95f9-42b0-ad79-4f9e347b4362",
+      "bhuman_presenter_name": "Yireh cast - Zee (curious)",
+      "voice": "designed audition 'Voice option 1' (vTY0k99cZ1kYJcuV50Xq, 27 Nov; 173 wpm, full script heard correctly); save it on first narration",
+      "persona": "Bright and curious; surprising numbers, discoveries, 'wait, look at this'. Light humour.",
+      "look": "Woman, mid 20s, curly hair, mustard cardigan, kitchen table with laptop and mug"
+    }
   ],
   "settings": [
     "home desk by a window, morning light, plant in the background",
@@ -20,5 +38,26 @@
     "balcony or doorway with daylight, phone in hand"
   ],
   "rotation_weeks": 8,
-  "never_on_screen": ["country flags or landmarks", "a brand or hiring-system logo", "text that names a country", "anything that looks like an office the viewer is told to go to"]
+  "never_on_screen": [
+    "country flags or landmarks",
+    "a brand or hiring-system logo",
+    "text that names a country",
+    "anything that looks like an office the viewer is told to go to"
+  ],
+  "not_used": [
+    {
+      "bhuman_presenter_id": "6edc0aa2-768e-4ff7-8b5f-fcd7e9d80b91",
+      "name": "Yireh cast - Zee (curious) v2",
+      "why": "Created by a call KT stopped (27 Nov). KT decided to keep the current cast; never use. Delete in the BHuman app if wanted (the MCP has no delete tool)."
+    }
+  ],
+  "decisions": [
+    {
+      "on": "2026-11-27",
+      "by": "KT",
+      "decision": "Keep the current cast; presenter ethnicity is not changed by default.",
+      "evidence": "Eisend, Rossner & Hermann 2025 (J. Marketing) meta-analysis: 106 papers, 1,276 effect sizes, 21 countries, ethnic diversity effects 'small' and context-dependent, larger for ethnic minorities within a country; Alden, Steenkamp & Batra 1999 (J. Marketing) global consumer culture positioning used across Asia. Claude's earlier 'viewers identify more with presenters like them' overstated the evidence.",
+      "test_later": "Presenter look may be one tested variable once there are about 1,000 views per variant; never a default change."
+    }
+  ]
 }
