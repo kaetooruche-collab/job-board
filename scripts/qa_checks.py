@@ -51,7 +51,13 @@ NOT_REMOTE_RE = [
 # several ("up to two days", "... or remotely within the UK"); the older patterns keep their original behaviour.
 GUARDED_NOT_REMOTE = NOT_REMOTE_RE[-2:]
 OPTIONAL_OFFICE_RE = re.compile(r"\bup to\s*$|\boptional(?:ly)?\b|\bif you (?:wish|prefer|choose|live)\b|\bor (?:fully )?remote(?:ly)?\b|\bor work remotely\b", re.I)
-PAY_RANGE_RE = re.compile(r"(?:[$\u20ac\u00a3]\s?\d{2,3}(?:,\d{3})+(?:\.\d+)?|\b\d{2,3}(?:,\d{3})+\s*(?:USD|EUR|GBP))\s*(?:-|\u2013|\u2014|to)\s*(?:[$\u20ac\u00a3]\s?)?\d{2,3}(?:,\d{3})+", re.I)
+# "$105,000 - $122,000" and "$105k–$122k" (Customer.io, 27 Nov 2026: the comma-only pattern missed the k form, so the
+# card said "Not stated" and this check stayed silent too).
+_PAY_FIG = r"(?:\d{2,3}(?:,\d{3})+(?:\.\d+)?|\d{2,3}(?:\.\d)?\s?[kK]\b)"
+PAY_RANGE_RE = re.compile(rf"(?:[$\u20ac\u00a3]\s?{_PAY_FIG}|\b\d{{2,3}}(?:,\d{{3}})+\s*(?:USD|EUR|GBP))\s*(?:-|\u2013|\u2014|to)\s*(?:[$\u20ac\u00a3]\s?)?{_PAY_FIG}", re.I)
+# Words in a hiring system's location entry that make it more than a place ("Remote - US", "Americas", "Anywhere").
+STRUCT_WIDE_RE = re.compile(r"\b(?:anywhere|worldwide|world[- ]wide|global(?:ly)?|international|distributed)\b", re.I)
+STRUCT_REMOTE_RE = re.compile(r"\b(?:remote|home[- ]based|virtual|wfh)\b", re.I)
 ESTIMATE_RE = re.compile(r"\b(?:estimat\w+|approx\w*|about|around|roughly)\b|~", re.I)
 EXCL_NOTE_RE = re.compile(r"cannot hire in:\s*(.+?)(?: and others)?\.?$", re.I)
 NOT_A_JOB_RE = re.compile(r"\b(?:talent (?:community|network|pool)|general (?:application|interest)|open application|"
@@ -155,6 +161,31 @@ def check_listing(rec, raw=None, now=None):
         stated = rec.get("regionAsStated") or ""
         if not re.search(r"\b(anywhere|worldwide|global|remote)\b", stated, re.I) and [p for p in g.find_places(stated) if p["kind"] in ("country",)]:
             issues.append(_issue("worldwide-label-but-location-names-a-country", WARN, f"regionAsStated={stated!r}"))
+
+    # ---- label versus the hiring system's own location list -----------
+    # Trafilea (Recruitee) listed Argentina, Brazil and Chile while the card said Worldwide; Airwallex (Ashby) listed two
+    # UK cities while the card said EMEA; Fastly (Greenhouse) listed San Francisco while the card said North America
+    # (27 Nov 2026). This reads the employer's structured list, which the classifier never sees as a list.
+    structured = [x for x in ((raw or {}).get("structured_locations") or []) if x and x.strip()]
+    if structured and elig.get("type") in ("worldwide", "countries", "region"):
+        g = C.geo()
+        joined = " ; ".join(structured)
+        places = g.find_places(joined, allow_state_abbr=True)
+        specific = [p for p in places if p["kind"] in ("country", "state", "city")]
+        has_region = any(p["kind"] == "region" for p in places)
+        if elig.get("type") == "worldwide" and specific and not STRUCT_WIDE_RE.search(joined):
+            issues.append(_issue("worldwide-label-but-job-locations-name-places", BLOCK,
+                                 f"label=Worldwide but the job's locations are {structured[:4]}"))
+        elif (elig.get("type") in ("countries", "region") and specific and not has_region
+              and not STRUCT_WIDE_RE.search(joined) and not STRUCT_REMOTE_RE.search(joined)):
+            listed = {p["name"] for p in specific}
+            label_countries, _ = g.expand([p for r in (elig.get("regions") or []) for p in g.find_places(r)])
+            outside = (set(label_countries) | set(elig.get("countries") or [])) - listed
+            if outside:
+                # WARN, not BLOCK: on the 27 Nov 2026 feed most hits were deliberate widenings the employer wrote
+                # ("anywhere in Europe", "will consider applicants from European countries"); a person checks the rest.
+                issues.append(_issue("eligibility-label-wider-than-job-locations", WARN,
+                                     f"label={elig.get('label')!r} but the job's locations are {structured[:4]} (only {sorted(listed)})"))
 
     if raw is not None and not sal and PAY_RANGE_RE.search(C.clean_text(raw.get("description", ""))):
         issues.append(_issue("pay-in-posting-but-card-says-not-stated", WARN, PAY_RANGE_RE.search(C.clean_text(raw.get("description", ""))).group(0)))

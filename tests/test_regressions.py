@@ -7,6 +7,8 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "scripts"))
 from classify import classify_listing, feed_decision  # noqa: E402
+from fetch_jobs import recruitee_location  # noqa: E402
+from pay_text import pay_from_text  # noqa: E402
 
 CASES = json.loads((ROOT / "tests" / "fixtures" / "regressions.json").read_text(encoding="utf-8"))
 
@@ -15,8 +17,16 @@ class Regressions(unittest.TestCase):
     def test_every_fixture(self):
         for c in CASES:
             with self.subTest(c["name"]):
-                r = classify_listing(c["title"], c.get("location", ""), c["description"], hint=c.get("hint"), remote_feed=c.get("remote_feed", False))
+                # a Recruitee fixture keeps the offer's own location list; the location goes through the real reader
+                loc = recruitee_location(c["recruitee_offer"]) if "recruitee_offer" in c else c.get("location", "")
+                r = classify_listing(c["title"], loc, c["description"], hint=c.get("hint"), remote_feed=c.get("remote_feed", False))
                 e, notes, ex = r["eligibility"], " | ".join(r["eligibility"]["notes"]), c["expect"]
+                if "pay" in ex:
+                    self.assertEqual(pay_from_text(c["description"]), ex["pay"])
+                if "type_not" in ex:
+                    self.assertNotEqual(e["type"], ex["type_not"])
+                if "label_not" in ex:
+                    self.assertNotEqual(e["label"], ex["label_not"])
                 if ex.get("not_published"):
                     self.assertNotEqual(feed_decision(r)[0], "publish")
                 if "level" in ex:
