@@ -1,16 +1,17 @@
 {
   "post": "w49-p5",
-  "rendered_at": "2026-11-27 09:22 UTC",
+  "rendered_at": "2026-11-27 13:27 UTC",
   "stats": {
-    "measured_at": "2026-11-27 09:22 UTC",
+    "measured_at": "2026-11-27 13:27 UTC",
     "measured_on": "2026-11-27",
     "jobs": 1987,
     "companies": 338,
-    "posted_last_7_days": 628,
+    "posted_last_7_days": 618,
     "worldwide": 27,
     "region_wide": 52,
     "open_to_audience_regions": 87,
     "location_not_specified": 335,
+    "named_countries": 1556,
     "single_country": 1253,
     "us_only": 349,
     "us_only_pct": 17.6,
@@ -18,40 +19,24 @@
     "pay_stated": 897,
     "entry_or_junior": 231,
     "worldwide_on_board": 35,
-    "worldwide_note": "counted only roles whose employer data confirms no country limit (verify_source.py)"
+    "worldwide_note": "counted only roles whose employer data confirms no country limit (verify_source.py)",
+    "other_eligibility": 17
   },
   "jobs": [
     {
-      "id": "j25c1086d4a",
-      "title": "Head of US, Multimodal Clearing",
+      "id": "j080edc40ca",
+      "title": "Lead Product Manager, Multimodal Clearing",
       "company": "Alpaca",
-      "apply_from": "Americas",
-      "postedAt": "2026-11-24T07:48:02-05:00",
+      "apply_from": "Americas, European Union",
+      "postedAt": "2026-11-23T17:44:07-05:00",
       "salaryText": null,
-      "sourceUrl": "https://job-boards.greenhouse.io/alpaca/jobs/6268865004",
+      "sourceUrl": "https://job-boards.greenhouse.io/alpaca/jobs/6268872004",
       "source_check": {
         "checked_on": "2026-11-27",
         "ok": true,
-        "label": "Americas",
+        "label": "Americas, European Union",
         "locations": [
-          "Remote - Americas"
-        ]
-      }
-    },
-    {
-      "id": "ja45e25a554",
-      "title": "Workforce Management - Real Time Analyst",
-      "company": "Clipboard Health",
-      "apply_from": "APAC",
-      "postedAt": "2026-11-23T23:46:57.816000+00:00",
-      "salaryText": "$12K - $19K",
-      "sourceUrl": "https://jobs.ashbyhq.com/clipboard/2dfae75c-66e8-4243-aa46-2f1c7238d942",
-      "source_check": {
-        "checked_on": "2026-11-27",
-        "ok": true,
-        "label": "APAC",
-        "locations": [
-          "Remote (APAC)"
+          "Remote - Americas, Remote EU "
         ]
       }
     },
@@ -69,6 +54,25 @@
         "label": "Latin America",
         "locations": [
           "Remote"
+        ]
+      }
+    },
+    {
+      "id": "j5834f2d9db",
+      "title": "Developer Support Engineer",
+      "company": "RevenueCat",
+      "apply_from": "Americas, APAC, EMEA",
+      "postedAt": "2026-11-19T11:05:08.335000+00:00",
+      "salaryText": "$118K",
+      "sourceUrl": "https://jobs.ashbyhq.com/revenuecat/edcc931f-acd1-49ee-9b58-207cdcf31b43",
+      "source_check": {
+        "checked_on": "2026-11-27",
+        "ok": true,
+        "label": "Americas, APAC, EMEA",
+        "locations": [
+          "Americas",
+          "APAC",
+          "EMEA"
         ]
       }
     }

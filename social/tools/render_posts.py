@@ -190,8 +190,12 @@ def build(posts: list[dict], jobs: list[dict], out_root: Path, only: set[str] | 
                 # Reachable mix (QA 27 Nov): if every pick is senior, swap the last one for a non-senior role, preferring
                 # one that states pay, so more readers can act on the post.
                 SENIOR = ("senior", "leadership", "senior_plus")
-                if len(picks) >= 2 and all((j.get("level") or "") in SENIOR for j in picks):
-                    alts = [j for j in src if j["id"] not in used and j not in picks and j.get("level") in ("mid", "junior", "entry")]
+                import re as _re
+                senior_title = _re.compile(r"\b(senior|sr\.?|lead|head|principal|staff|director|vp|chief|founding)\b", _re.I)
+                is_senior = lambda j: (j.get("level") or "") in SENIOR or bool(senior_title.search(j.get("title", "")))
+                if len(picks) >= 2 and all(is_senior(j) for j in picks):
+                    alts = [j for j in src if j["id"] not in used and j not in picks and not is_senior(j)
+                            and j.get("level") in ("mid", "junior", "entry", "unspecified")]
                     alts.sort(key=lambda j: not j.get("salaryText"))
                     for j in alts:
                         if not check or verify_source.ok(j):

@@ -3,7 +3,7 @@
   "title": "Week of Tuesday 1 December 2026",
   "status": "DRAFT for KT's approval (Phase 1: approve the week). Nothing is scheduled. Audience: people outside the US, wherever they live (KT, 26 Nov 2026). | Swaps applied 27 Nov (KT 'yes swaps'): V1 Tue, C1 Thu, V2 screen-led Fri, S1 Sat (Facebook); V3 Mon pending credits.",
   "measured_on": "2026-11-26",
-  "test": "Video opening B ('Pay to look') against Video 1's 'Halfway'; and role posts as a 3-role carousel (Wed, Sat) against a single role image (Fri).",
+  "test": "Week 1 test: does an on-screen hook in frame 0 and slower narration lift average watch time? V1 vs Video 1 (1.3 s on TikTok).",
   "posts": [
     {
       "id": "w49-p1",
@@ -22,7 +22,7 @@
       "title": "V1 Remote… but not for you? (Amara)",
       "brief": "social/video-briefs/V1-not-your-country.md",
       "hook": "You find a remote job that actually fits.",
-      "variable": "Presenter-led, hook on screen from frame 0, 170 wpm",
+      "variable": "Presenter-led, hook on screen from frame 0, 170 wpm (vs Video 1's 195 wpm and no on-screen hook)",
       "ai_presenter": true,
       "ai_voice": true,
       "ai_label": true,
@@ -32,7 +32,7 @@
       ],
       "caption": "Remote tells you where you'll work. It doesn't always tell you where you can live.\n\nBefore you write the cover letter, find the line that says where applicants must be based. If it isn't you, you've just saved an hour.\n\nOur board shows that line on every job, or says when the employer doesn't. Link in bio.\n\n#remotejobs #jobsearch #remotework #workfromhome",
       "captions": {
-        "tiktok": "That one line at the bottom of a 'remote' job. Check it before anything else. #remotejobs #jobsearch #remotework #workfromhome"
+        "tiktok": "That one line at the bottom of a 'remote' job. Check it before anything else. Link in bio. #remotejobs #jobsearch #remotework #workfromhome"
       },
       "note": "Facebook skipped: Buffer can't set Facebook's AI label (KT can post it by hand with 'AI info' ticked)."
     },
@@ -78,7 +78,7 @@
       "series": "roles-carousel",
       "funnel": "consideration",
       "goal_metric": "board visits from the bio link (GoatCounter by utm_source) and saves",
-      "copy_edits": "27 Nov, agency (KT: small wording is the agency's call): shorter cover; 'jobs open to you' (KT: positive framing); cover sub works for the Story too"
+      "copy_edits": "27 Nov: shorter cover; 'jobs open to you' (KT framing)"
     },
     {
       "id": "w49-p3",
@@ -94,9 +94,9 @@
       "funnel": "awareness",
       "goal_metric": "saves and sends per reach",
       "title": "We sorted the board by who can apply",
-      "hook": "We sorted 1,987 remote jobs by who can apply.",
+      "hook": "We sorted our whole board by who can apply.",
       "variable": "Data-story carousel (first of its kind for us)",
-      "caption": "We sorted 1,987 remote jobs by who can apply.\n\nToday's count: a handful are open to anyone, anywhere. Most name a country or a region, and that's useful, once you know where to look for it.\n\nSwipe for the numbers, then filter by where you live. Link in bio.\n\n#remotejobs #jobsearch #remotework #workfromhome",
+      "caption": "We sorted our whole board by who can apply.\n\nSome jobs take anyone, anywhere. Many more are open across a whole region. And most tell you exactly which countries they hire in, so you know before you apply.\n\nSwipe for today's split, then type where you live on the board. Link in bio.\n\n#remotejobs #jobsearch #remotework #workfromhome",
       "measured_on": "2026-11-27",
       "number_dated_on_screen": true,
       "render": {
@@ -104,15 +104,15 @@
         "slides": [
           {
             "t": "cover",
-            "kicker": "We sorted them all",
+            "kicker": "Here's how they split",
             "title": "{jobs:,} remote jobs. Who can apply?",
-            "sub": "Every job on our board, sorted by what the employer says."
+            "sub": "Every job on our board, by what the employer says."
           },
           {
             "t": "tip",
             "n": "{worldwide}",
             "title": "Open to anyone, anywhere",
-            "body": "Checked against each company's own job data on the day we counted."
+            "body": "Checked against each company's job data on the day we counted."
           },
           {
             "t": "tip",
@@ -129,8 +129,14 @@
           {
             "t": "tip",
             "n": "{location_not_specified}",
-            "title": "Don't say",
-            "body": "The posting doesn't state it. Ask the employer before you spend an hour."
+            "title": "Location not stated",
+            "body": "The posting doesn't say. Ask the employer before you spend an hour."
+          },
+          {
+            "t": "tip",
+            "n": "{other_eligibility}",
+            "title": "Other limits, or still checking",
+            "body": "Time-zone rules, or labels we're re-checking against the posting."
           },
           {
             "t": "cta",
@@ -140,7 +146,8 @@
         ]
       },
       "day": "Thu",
-      "time_utc": "15:00"
+      "time_utc": "15:00",
+      "copy_edits": "27 Nov (QA): numbers now add up (other slide), 'Location not stated', no board numbers in the caption, gain-framed caption"
     },
     {
       "id": "w49-p4",
@@ -161,7 +168,8 @@
       "caption": "Do this before you apply.\n\nTell the board where you live. You'll see only the jobs open to you, each with where it hires from, the posted date, and the pay when it's stated. Apply goes to the original posting.\n\nLink in bio.\n\n#remotejobs #jobsearch #remotework #workfromhome",
       "day": "Fri",
       "time_utc": "15:00",
-      "note": "Prebuilt video (slides + live-board footage, no numbers): do not re-render; check frames on the day."
+      "note": "Prebuilt video (slides + live-board footage, no numbers): do not re-render; check frames on the day.",
+      "copy_edits": "27 Nov (QA): rebuilt with footage that hides counts, the CV link and the second 'free'; closing slide 'Try it: type where you live'"
     },
     {
       "id": "w49-p5",
@@ -196,14 +204,15 @@
             "title": "Find yours on the board",
             "sub": "Type where you live. See the jobs open to you."
           }
-        ]
+        ],
+        "theme": "blue"
       },
       "caption": "Three more remote roles, open across whole regions.\n\nEach one is open worldwide or across a whole region, and we opened every posting today to check it's still live.\n\nThe rest are on the board: link in bio. Check each employer's rules for your country before you apply.\n\n#remotejobs #remotework #jobsearch #hiring",
       "featured_jobs": [],
       "series": "roles-carousel",
       "funnel": "consideration",
       "goal_metric": "board visits from the bio link (GoatCounter by utm_source) and saves",
-      "copy_edits": "27 Nov, agency: shorter cover; caption line 2 no longer repeats 'Three more'; 'jobs open to you' (KT: positive framing)"
+      "copy_edits": "27 Nov: shorter cover; blue treatment so it differs from Wednesday's navy (QA); caption line 2 reworded"
     },
     {
       "id": "w49-p7",
@@ -217,9 +226,9 @@
       "funnel": "consideration",
       "goal_metric": "board visits from the tagged link",
       "title": "We check the job, not the employer",
-      "hook": "We check the job. Not the employer.",
+      "hook": "Every job, checked at the source.",
       "variable": "Honesty-led trust message",
-      "caption": "We check the job. Not the employer.\n\nEvery job on our board comes from the company's own hiring page, has its real posting date, and says where you can apply from, or that the employer doesn't say. We don't audit companies and we can't promise interviews, so read each employer's rules for your country before you apply.\n\nWhat we check, in full: link in bio.\n\n#remotejobs #jobsearch",
+      "caption": "Every job, checked at the source.\n\nEach one comes from the company's hiring page, shows its real posting date, and tells you where you can apply from. Read each employer's rules for your country before you apply.\n\nWhat we check: https://yirehcareers.vercel.app/verify?utm_source=facebook&utm_campaign=w49-p7\n\n#remotejobs #jobsearch #remotework #jobsearchtips",
       "render": {
         "theme": "light",
         "date_line": "From yirehcareers.vercel.app/verify",
@@ -227,13 +236,14 @@
           {
             "t": "cover",
             "kicker": "What we check",
-            "title": "We check the job. Not the employer.",
-            "sub": "Original posting · real posted date · where you can apply from. No promises we can't keep."
+            "title": "Every job, checked at the source",
+            "sub": "Original posting · real posted date · where you can apply from."
           }
         ]
       },
       "day": "Sat",
-      "time_utc": "15:00"
+      "time_utc": "15:00",
+      "copy_edits": "27 Nov (QA): gain-led headline, no stacked disclaimers, caption links /verify directly, 4 tags"
     },
     {
       "id": "w49-p6",
@@ -241,56 +251,31 @@
       "day": "Mon",
       "time_utc": "15:00",
       "platforms": [
-        "instagram",
         "tiktok",
-        "facebook"
+        "instagram"
       ],
       "pillar": "tips",
-      "format": "carousel",
-      "title": "Tip: three signs of a job scam",
-      "hook": "A real employer won't ask you to pay to get a job.",
-      "variable": "Topic: safety (our audience's top fear) against Thursday's eligibility tip; compare saves and shares.",
-      "visuals": "Five text slides: cover, three signs, closing slide.",
-      "render": {
-        "date_line": "Yireh Careers tips",
-        "slides": [
-          {
-            "t": "cover",
-            "kicker": "Stay safe",
-            "title": "A real employer won't ask you to pay",
-            "sub": "Three warning signs to know before you share any details."
-          },
-          {
-            "t": "tip",
-            "n": "1",
-            "title": "A fee to apply or train",
-            "body": "Registration fees, training kits or equipment you must buy first are a warning sign."
-          },
-          {
-            "t": "tip",
-            "n": "2",
-            "title": "Interviews only by text",
-            "body": "An interview held only by text on Telegram or WhatsApp is a common scam pattern."
-          },
-          {
-            "t": "tip",
-            "n": "3",
-            "title": "A role you can't find",
-            "body": "Look for the job on the company's careers site before you send anything."
-          },
-          {
-            "t": "cta",
-            "kicker": "How our board works",
-            "title": "We never charge you to apply",
-            "sub": "Every job on it opens its original posting, with the date it was posted."
-          }
-        ]
-      },
-      "caption": "A real employer won't ask you to pay to get a job.\n\nThree warning signs: a fee to apply or train; interviews held only by text on Telegram or WhatsApp; and a role you can't find on the company's careers site.\n\nSave this, and share it with someone who's job hunting.\n\n#jobscams #remotejobs #jobsearch #careertips",
       "series": "safety",
+      "format": "video",
       "funnel": "awareness",
-      "goal_metric": "saves and shares (Buffer, platform insights)",
-      "pending_swap": "V3 'Three messages a real employer won't send you' replaces this post once rendered (KT 'yes swaps'; V3 credits awaiting KT, total would pass the 135 quote by about 12)"
+      "goal_metric": "saves and shares (platform insights), average watch time (Buffer)",
+      "title": "V3 Three messages a real employer won't send you (Daniel)",
+      "brief": "social/video-briefs/V3-three-messages-scam.md",
+      "hook": "3 messages real employers won't send",
+      "variable": "Topic: safety (our audience's top fear) as a presenter video with message cards, against V1's eligibility topic.",
+      "ai_presenter": true,
+      "ai_voice": true,
+      "ai_label": true,
+      "on_screen": [
+        "3 messages real employers won't send",
+        "yirehcareers.vercel.app"
+      ],
+      "caption": "Three messages a real employer won't send you.\n\n1. A fee to start training or get the job.\n2. A cheque to deposit and send part back.\n3. An interview done entirely by chat message.\n\nIf you get one, stop and find the job on the company's own careers page. Save this, or send it to a friend who's job hunting.\n\n#jobscams #remotejobs #jobsearch #careertips",
+      "captions": {
+        "tiktok": "If a job message looks like one of these, stop. #jobscams #remotejobs #jobsearch #careertips"
+      },
+      "note": "Facebook skipped: Buffer can't set Facebook's AI label (KT can post it by hand with 'AI info' ticked). Prebuilt video: do not re-render; check frames on the day.",
+      "numbers_source": "self: 3 is the count of example messages in this video (and the 1-3 list in the caption), not a board figure"
     }
   ],
   "moved_out": [
@@ -428,6 +413,63 @@
       "funnel": "consideration",
       "goal_metric": "board visits from the bio link (GoatCounter by utm_source)",
       "moved_out": "replaced by V2 screen-led demo (KT 'yes swaps', 27 Nov)"
+    },
+    {
+      "id": "w49-p6-carousel",
+      "date": "2026-12-07",
+      "day": "Mon",
+      "time_utc": "15:00",
+      "platforms": [
+        "instagram",
+        "tiktok",
+        "facebook"
+      ],
+      "pillar": "tips",
+      "format": "carousel",
+      "title": "Tip: three signs of a job scam",
+      "hook": "A real employer won't ask you to pay to get a job.",
+      "variable": "Topic: safety (our audience's top fear) against Thursday's eligibility tip; compare saves and shares.",
+      "visuals": "Five text slides: cover, three signs, closing slide.",
+      "render": {
+        "date_line": "Yireh Careers tips",
+        "slides": [
+          {
+            "t": "cover",
+            "kicker": "Stay safe",
+            "title": "A real employer won't ask you to pay",
+            "sub": "Three warning signs to know before you share any details."
+          },
+          {
+            "t": "tip",
+            "n": "1",
+            "title": "A fee to apply or train",
+            "body": "Registration fees, training kits or equipment you must buy first are a warning sign."
+          },
+          {
+            "t": "tip",
+            "n": "2",
+            "title": "Interviews only by text",
+            "body": "An interview held only by text on Telegram or WhatsApp is a common scam pattern."
+          },
+          {
+            "t": "tip",
+            "n": "3",
+            "title": "A role you can't find",
+            "body": "Look for the job on the company's careers site before you send anything."
+          },
+          {
+            "t": "cta",
+            "kicker": "How our board works",
+            "title": "We never charge you to apply",
+            "sub": "Every job on it opens its original posting, with the date it was posted."
+          }
+        ]
+      },
+      "caption": "A real employer won't ask you to pay to get a job.\n\nThree warning signs: a fee to apply or train; interviews held only by text on Telegram or WhatsApp; and a role you can't find on the company's careers site.\n\nSave this, and share it with someone who's job hunting.\n\n#jobscams #remotejobs #jobsearch #careertips",
+      "series": "safety",
+      "funnel": "awareness",
+      "goal_metric": "saves and shares (Buffer, platform insights)",
+      "moved_out": "Replaced by V3 (presenter video, same topic) on 27 Nov after KT's 'yes swaps' and 'yes V3'. Kept as a ready fallback."
     }
   ]
 }

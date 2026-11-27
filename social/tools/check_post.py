@@ -82,7 +82,7 @@ KNOWN_TYPOS = {"dosen't": "doesn't", "dosent": "doesn't", "doesnt": "doesn't", "
                "wont": "won't", "cant": "can't", "youre": "you're", "theyre": "they're", "its'": "it's"}
 
 # Words the dictionary does not know but we use on purpose.
-BRAND_WORDS = {"yireh", "yai-ray", "yirehcareers", "vercel", "app", "utm", "tiktok", "instagram", "facebook",
+BRAND_WORDS = {"cheque", "cheques", "yireh", "yai-ray", "yirehcareers", "vercel", "app", "utm", "tiktok", "instagram", "facebook",
                "linkedin", "whatsapp", "cv", "cvs", "emea", "apac", "anz", "latam", "reels", "reel", "dm", "dms",
                "fyp", "wfh", "ai", "ok", "postiz", "goatcounter", "online", "onboarding", "carousel", "screenshot",
                "remotejobs", "remotework", "jobsearch", "workfromhome", "worldwide", "eu", "hr", "fp&a", "saas",
@@ -256,6 +256,10 @@ def check_post(post: dict, mode: str = "draft") -> list[Finding]:
     # 3. Numbers must be measured on the live board, on the post day when scheduling
     numbers = re.findall(r"(?<![\w/.:#-])\d[\d,]*(?:\.\d+)?%?(?![\w:])", _strip_for_spelling(parts["on_screen"] + "\n" + parts["script"] + "\n" + parts["caption"] + "\n" + "\n".join(v for k, v in parts.items() if k.startswith("slide"))))
     numbers = [n for n in numbers if not re.fullmatch(r"20\d\d", n)]  # years
+    # A count of the post's own items ("3 messages", a numbered list) is not a board figure (27 Nov, V3):
+    # the post says so with numbers_source "self: ...", and then needs no measured date or date line.
+    if numbers and str(post.get("numbers_source", "")).startswith("self:") and all(int(n.replace(",", "").rstrip("%").split(".")[0]) <= 10 for n in numbers):
+        numbers = []
     if numbers:
         mo = post.get("measured_on")
         if not mo:
@@ -268,6 +272,11 @@ def check_post(post: dict, mode: str = "draft") -> list[Finding]:
         if post.get("format") in ("video", "image", "carousel") and not post.get("number_dated_on_screen", False) \
                 and not post.get("numbers_source"):
             f.append(Finding(BLOCK, "numbers", "a number is shown but the on-screen date line is missing (set number_dated_on_screen when the date is on the media)"))
+
+    # 3b. Board numbers in captions don't refresh on the post day (only slides are re-rendered): keep them on the slides.
+    if post.get("render") and re.search(r"\b\d{1,3},\d{3}\b|\b\d{3,}\b", post.get("caption") or ""):
+        f.append(Finding(BLOCK if mode == "schedule" else WARN, "caption-numbers",
+                         "a board-sized number is in the caption, which isn't refreshed on the post day; put numbers on the slides"))
 
     # 4. Spelling
     f.extend(check_spelling(full, set(post.get("spelling_ok") or [])))

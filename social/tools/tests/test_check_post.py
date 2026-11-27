@@ -243,3 +243,18 @@ def test_humanizer_flags_filler_and_ai_badges():
     codes = [f.rule for f in cp.check_post(p, "draft")]
     assert codes.count("humanizer") >= 3 and "ai-badge" in codes
     assert all(f.level == cp.WARN for f in cp.check_post(p, "draft") if f.rule in ("humanizer", "ai-badge"))
+
+
+def test_self_count_numbers_need_no_measured_date():
+    base = {"id": "t", "date": "2026-12-07", "platforms": ["tiktok"], "format": "video", "ai_presenter": True,
+            "ai_voice": True, "ai_label": True, "funnel": "awareness", "goal_metric": "saves", "caption": "3 messages a real employer won't send you.\n1. A fee.\n2. A cheque.\n3. A chat."}
+    blocked = [x for x in cp.check_post(base, "schedule") if x.level == cp.BLOCK and x.rule == "numbers"]
+    assert blocked, "an unexplained number must still block"
+    ok = dict(base, numbers_source="self: count of the post's own items")
+    assert not [x for x in cp.check_post(ok, "schedule") if x.level == cp.BLOCK]
+
+
+def test_self_label_does_not_excuse_board_sized_numbers():
+    p = {"id": "t", "date": "2026-12-07", "platforms": ["tiktok"], "format": "video", "ai_presenter": True,
+         "ai_voice": True, "ai_label": True, "numbers_source": "self: x", "caption": "27 roles open to anyone."}
+    assert [x for x in cp.check_post(p, "schedule") if x.level == cp.BLOCK and x.rule == "numbers"]

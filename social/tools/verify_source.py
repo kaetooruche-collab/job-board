@@ -140,6 +140,8 @@ def verified_stats(jobs: list[dict], st: dict) -> dict:
     st["worldwide_on_board"] = len(ww)
     st["worldwide"] = sum(1 for j in ww if ok(j))
     st["worldwide_note"] = "counted only roles whose employer data confirms no country limit (verify_source.py)"
+    # everything not in the four shown groups (time-zone-only rules, worldwide labels not confirmed) so a split adds up
+    st["other_eligibility"] = st.get("jobs", len(jobs)) - st["worldwide"] - st.get("region_wide", 0) - st.get("named_countries", 0) - st.get("location_not_specified", 0)
     return st
 
 
