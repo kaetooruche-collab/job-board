@@ -503,6 +503,7 @@ def assess_work_arrangement(title, location, description, hint=None, remote_feed
 # ── Geographic eligibility ────────────────────────────────────────────
 
 WW_COMPANY_LEVEL_RE = re.compile(r"\b(?:many|some|most|certain|select|several|various|other)\s+(?:of our\s+)?(?:roles|positions|jobs|teams|opportunities)\b|see (?:the )?individual (?:job )?listings?|depending on (?:the )?(?:role|position|team)|\b(?:employees|people|team members|colleagues|teammates|staff|Netlifers|members)\s+(?:working\s+|based\s+|located\s+|living\s+)?(?:across|in|from)\s+(?:over\s+|more than\s+)?\d+\+?\s+countries|\bglobally distributed (?:company|teams?|organi[sz]ation|workforce)\b", re.I)
+TITLE_WORLDWIDE_RE = re.compile(r"\b(?:worldwide|world[- ]wide|anywhere|work from anywhere)\b", re.I)
 WORLDWIDE_LOC = re.compile(r"\b(anywhere|worldwide|world[- ]wide|global(?:ly)?|all countries|any country|work from anywhere)\b", re.I)
 WORLDWIDE_DESC = re.compile(
     r"\b(?:anywhere in the world|from anywhere in the world|any (?:country|location)|all countries|worldwide|world[- ]wide|globally|work from anywhere|"
@@ -670,6 +671,33 @@ def assess_eligibility(title, location, description, remote_evidence=False, remo
         if tz_hit is None and TIMEZONE_RE.search(s):
             tz_hit = s
 
+    # The job's own location list against the body (27 Nov 2026): Airwallex listed "UK - Manchester; UK - Birmingham"
+    # while the body said "This role is remote in the EMEA region", and the card showed EMEA; Fastly listed
+    # "San Francisco, CA" and the body said North America. When the location list names specific places, does not
+    # say remote, and the body names places outside them, the employer has said two different things: neither wins.
+    # Not a conflict: a body that stays inside the listed places ("New York, NY" + "remote within the United States"),
+    # or one that widens on purpose and so explains the list ("remote across the European Union, with a preference for
+    # Prague" with location "Prague", Wrike; "candidates based in Canada or the United States" with "Toronto, ON").
+    loc_conflict = None
+    spec_loc = [p for p in loc_places if p["kind"] in ("country", "state", "city")]
+    # The list's own text decides, not a remote flag from the system: Ajax Systems' Lever roles (flagged remote, listing
+    # Manchester, London ...) took Ukraine, Turkey and Vietnam from "factories ... located in Ukraine" into the label.
+    if spec_loc and desc_places and not LOC_REMOTE.search(loc) and not loc_ww and len(spec_loc) == len(loc_places):
+        loc_countries = {p["name"] for p in spec_loc}
+        loc_raw = {p["raw"].lower() for p in spec_loc}
+
+        def _explains_list(sent, ps):
+            return bool(WIDE_REGION_RE.search(sent)) or any(
+                (p["kind"] == "country" and p["name"] in loc_countries) or (p["kind"] in ("city", "state") and p["raw"].lower() in loc_raw)
+                for p in ps)
+        loc_conflict = next((sent for sent, ps in desc_places
+                             if not set(g.expand(ps)[0]) <= loc_countries and not _explains_list(sent, ps)), None)
+    # A title that says worldwide against a list of countries: Tether posts "Senior Devops Engineer (100% Remote,
+    # Worldwide)" once per country with one country each; "Spain only" would contradict the employer's own title.
+    # "Global" in a title is the job's scope ("Senior Director of Global Tax"), not where applicants may live.
+    if spec_loc and not loc_ww and TITLE_WORLDWIDE_RE.search(title or "") and not g.find_places(title or ""):
+        loc_conflict = loc_conflict or title
+
     restricted_places = []
     restricted_from = []
     if loc_places and (loc_has_remote or not loc_ww) and not (desc_places and not loc_has_remote):
@@ -743,7 +771,12 @@ def assess_eligibility(title, location, description, remote_evidence=False, remo
 
     etype = "unclear"
     confidence = "low"
-    if worldwide_from and restricted_places and remote_feed and loc_places:
+    if loc_conflict and not clearance:
+        conflict = True
+        notes.append("The location field and the description disagree about where applicants can be; check the employer's wording.")
+        ev.append({"signal": "location field", "text": _snip(loc), "effect": "restricted"})
+        ev.append({"signal": "description", "text": _snip(loc_conflict), "effect": "restricted"})
+    elif worldwide_from and restricted_places and remote_feed and loc_places:
         etype = "region" if (regions and not explicit) else "countries"
         confidence = "medium"
         notes.append("The listing text mentions worldwide wording, but the job feed's location field limits applicants; the feed's field is shown.")

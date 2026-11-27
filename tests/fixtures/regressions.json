@@ -451,5 +451,136 @@
     "EMEA"
    ]
   }
+ },
+ {
+  "name": "Recruitee lists Argentina, Brazil and Chile in locations[] while the location text says only 'Remote job'; the card said Worldwide (Trafilea j3837f4403a, 27 Nov 2026)",
+  "title": "Security Engineer",
+  "hint": "remote",
+  "recruitee_offer": {
+   "remote": true,
+   "location": "Remote job",
+   "locations": [
+    {
+     "name": "South America - LATAM",
+     "city": "-",
+     "country": "Argentina",
+     "country_code": "AR"
+    },
+    {
+     "name": "Brasil",
+     "city": "Remote",
+     "country": "Brazil",
+     "country_code": "BR"
+    },
+    {
+     "name": "Chile",
+     "city": "Santiago",
+     "country": "Chile",
+     "country_code": "CL"
+    }
+   ]
+  },
+  "description": " About Trafilea Trafilea is a Consumer Tech Platform for Transformative Brand Growth. We’re building the AI Growth Engine that powers the next generation of consumer brands. With over $1B+ in cumulative revenue, 12M+ customers, and 500+ talents across 19 countries, we combine technology, growth marketing, and operational excellence to scale purpose-driven, digitally native brands. We own and operate our own digitally native brands (not an agency), with presence in Walmart, Nordstrom, and Amazon, and a strong global D2C footprint. Why Trafilea We’re a tech-led eCommerce group scaling our own globally loved DTC brands, while helping ambitious talent grow just as fast. 🚀 We build and scale our own brands. 🦾 We invest in AI and automation like few others in eCom. 📈 We test fast, grow fast, and help you do the same. 🤝 Be part of a dynamic, diverse, and talented global team. 🌍 100% Remote, USD competitive salary, paid time off, and more. Job Responsibilities As a Security Engineer , you’ll own security within our Platform team: continuously reducing Trafilea’s attack surface, detecting quickly whatever slips through, and making security scale with our platform and our use of AI, without ",
+  "expect": {
+   "type_not": "worldwide",
+   "countries_include": [
+    "Brazil",
+    "Chile"
+   ],
+   "label_not": "Worldwide"
+  }
+ },
+ {
+  "name": "Ashby location list is two UK cities but the body says 'remote in the EMEA region'; the card said EMEA and the conflict note was dropped (Airwallex j8424dc775e, 27 Nov 2026)",
+  "title": "Manager, Global Controls & Obligations Management, EMEA",
+  "location": "UK - Manchester; UK - Birmingham",
+  "description": "- Help establish consistent obligations-management practices that can scale with Airwallex’s EMEA business and align with the broader global regulatory operating model.\n   \n   \n\nThis role is remote in the EMEA region. \n\n\n\n\nWHAT WE'RE LOOKING FOR\n\nWe're looking for people who meet the minimum requirements for this role. The preferred qualifications are great to have, but are not mandatory.\n\n\n\nEssentials\n\n - 7+ years of experience in regulatory operations, regulatory compliance, internal audit, risk management, or a similar discipline within a fast-growing technology company and/or financial services, payments, or fintech company.\n\n - Proven experience translating legal, regulatory, or partner requirements into operational controls, procedures, and testing or assurance activities, not just policy drafting.\n\n - Direct involvement in supporting regulatory exams, audits, inspections, RFIs, or partner due-diligence reviews, with clear personal ownership for planning, coordination, documentation, or remediation workstreams.\n\n - Strong project management skills, with a track record of driving cross-functional control or reporting initiatives to completion across Product, Operations, Engineering, Legal, Compliance, and Risk.\n\n - Excellent analytical and writing skills, with the ability to turn complex regulatory concepts into clear, concise control requirements and exam-ready materials.\n\n - Comfort operating in a fast-moving, high-standards environment with evolving priorities and meaningful cross-functional ownership.\n   \n   \n\nPreferred\n\n - Experience with payments, e-money, card issuing or acquiring, treasury, embedded finance, or other multi-jurisdiction fintech business models.\n\n - Prior exposure to EMEA regulators and regulatory frameworks, as well as European bank, financial institution, or card scheme partners on control or reporting topics.\n\n - Experience building or enhancing obligations registers, control libraries, regulatory reporting operating models, or similar second-line compliance infrastructure.\n\n - Familiarity with GRC or similar tooling to manage obligations, controls, issues, and evidence at scale.\n\n - Relevant professional certifications, such as CAMS, CRCM, CIA, or CISA, or formal legal, compliance, risk, or audit-related education.\n   \n   \n\n\nYOU'LL THRIVE HERE IF\n\n - You're comfortable with ambiguity. Give you a problem, not a prescription, and you'll run with it.\n\n - You connect dots across functions and hold the big picture without losing grip on the details.\n\n - You simplify complexity rather than hiding behind it.\n\n - You own the outcome and you don't wait for permission to fix what's broken.\n\n - You’re comfortable operating across time zones with a globally distributed team, including colleagues based in APAC and EMEA.\n   \n   \n\n\n",
+  "expect": {
+   "label": "Eligibility unclear",
+   "regions_exclude": [
+    "EMEA"
+   ],
+   "note_present": [
+    "disagree about where applicants can be"
+   ]
+  }
+ },
+ {
+  "name": "Greenhouse location 'San Francisco, CA' but the body says 'open to candidates residing in ... North America'; the card said North America (Fastly j0665e514b8, 27 Nov 2026)",
+  "title": "Senior Software Engineer, Edge Security",
+  "location": "San Francisco, CA",
+  "description": "&lt;li&gt;This position will require you to be available during core US business hours as well as participating in an on call rotation&lt;/li&gt;\n&lt;/ul&gt;\n&lt;p&gt;&lt;strong&gt;Work Location(s) &amp;amp; Travel Requirements:&lt;/strong&gt;&amp;nbsp;&lt;/p&gt;\n&lt;p&gt;This position is a remote role and open to candidates residing in the following locations: North America&lt;/p&gt;\n&lt;p&gt;This position may require travel as required by your role or requested by your manager.&lt;/p&gt;\n&lt;p&gt;&lt;strong&gt;SF / LA Fair Chance Ordinance Statement&lt;/strong&gt;&lt;/p&gt;\n",
+  "expect": {
+   "label": "Eligibility unclear",
+   "regions_exclude": [
+    "North America"
+   ],
+   "note_present": [
+    "disagree about where applicants can be"
+   ]
+  }
+ },
+ {
+  "name": "Greenhouse pay written as '$105k–$122k USD' inside <strong>; the card said Not stated (Customer.io jcee32b0502, 27 Nov 2026)",
+  "title": "Accounting Manager",
+  "location": "Americas Remote",
+  "description": "&lt;h3&gt;Compensation &amp;amp; Benefits&lt;/h3&gt;\n&lt;p&gt;We believe in transparency. Starting salary for this role is &lt;strong&gt;$105k–$122k USD&lt;/strong&gt; (or equivalent in local currency) depending on experience and subject to market rate adjustment.&lt;/p&gt;\n",
+  "expect": {
+   "pay": "$105k - $122k USD"
+  }
+ },
+ {
+  "name": "Greenhouse pay '$170k–$200k USD' with zone ranges in k; the card said Not stated (Customer.io j012bfcb29d, 27 Nov 2026)",
+  "title": "Senior Product Manager, Workflows",
+  "location": "Americas Remote",
+  "description": "&lt;h3&gt;Compensation &amp;amp; Benefits&lt;/h3&gt;\n&lt;p&gt;We believe in transparency. Starting salary for this role is &lt;strong&gt;$170k–$200k USD&lt;/strong&gt; (or equivalent in local currency) depending on experience and subject to market rate adjustment.&lt;/p&gt;\n&lt;p&gt;Zone 1: $204k–$240k USD&lt;br&gt;Zone 2: $187k–$220k USD&lt;br&gt;Zone 3: $170k–$200k USD&lt;/p&gt;\n",
+  "expect": {
+   "pay": "$170k - $240k USD (varies by location)"
+  }
+ },
+ {
+  "name": "An office city plus a body that stays inside its country is not a conflict (guard for the 27 Nov 2026 rule)",
+  "title": "Support Specialist",
+  "location": "New York, NY",
+  "description": "This role is remote within the United States.",
+  "expect": {
+   "label": "United States only"
+  }
+ },
+ {
+  "name": "Title says '100% Remote, Worldwide' but the Recruitee list has one country per posting; must not read as that country only (Tether, 27 Nov 2026)",
+  "title": "Senior Devops Engineer (100% Remote, Worldwide)",
+  "hint": "remote",
+  "recruitee_offer": {
+   "remote": true,
+   "location": "Remote job",
+   "locations": [
+    {
+     "name": "Spain, Madrid",
+     "city": "Madrid",
+     "country": "Spain",
+     "country_code": "ES"
+    }
+   ]
+  },
+  "description": "Join Tether and Shape the Future of Digital Finance. Tether enables you to store, send, and receive digital tokens instantly, securely, and globally.",
+  "expect": {
+   "label": "Eligibility unclear",
+   "countries_exclude": [
+    "Spain"
+   ]
+  }
+ },
+ {
+  "name": "'Global' in a title is the job's scope, not worldwide eligibility (Monzo 'Senior Director of Global Tax', 27 Nov 2026 comparison)",
+  "title": "Senior Director of Global Tax",
+  "location": "Cardiff, London or Remote (UK)",
+  "remote_feed": false,
+  "description": "This role is remote within the UK, or based in our Cardiff or London office.",
+  "expect": {
+   "countries_include": [
+    "United Kingdom"
+   ]
+  }
  }
 ]

@@ -149,5 +149,61 @@ class RunChecks(unittest.TestCase):
         self.assertTrue(any("Ashby" in w for w in warn))
 
 
+class JobLocationsVersusLabel(unittest.TestCase):
+    """The hiring system's own location list against the card (Trafilea, Airwallex, Fastly, 27 Nov 2026)."""
+    WW = {"type": "worldwide", "label": "Worldwide", "countries": [], "regions": [], "notes": []}
+
+    def test_worldwide_card_with_a_country_list_is_held(self):
+        raw = {"structured_locations": ["South America - LATAM (Argentina)", "Brasil (Brazil)", "Chile (Chile)"], "description": ""}
+        self.assertIn("worldwide-label-but-job-locations-name-places",
+                      rules(Q.check_listing(rec(regionAsStated="Remote job", eligibility=self.WW), raw, NOW), Q.BLOCK))
+
+    def test_worldwide_card_whose_list_says_worldwide_passes(self):
+        for locs in (["Worldwide (Spain)"], ["Remote - Anywhere"], ["Remote"]):
+            raw = {"structured_locations": locs, "description": ""}
+            self.assertNotIn("worldwide-label-but-job-locations-name-places",
+                             rules(Q.check_listing(rec(regionAsStated="Remote", eligibility=self.WW), raw, NOW)), locs)
+
+    def test_region_card_wider_than_a_one_country_list_is_flagged(self):
+        for locs, label, regions in ((["UK - Manchester", "UK - Birmingham"], "EMEA", ["EMEA"]),
+                                     (["San Francisco, CA"], "North America", ["North America"])):
+            el = {"type": "region", "label": label, "countries": [], "regions": regions, "notes": []}
+            raw = {"structured_locations": locs, "description": ""}
+            self.assertIn("eligibility-label-wider-than-job-locations",
+                          rules(Q.check_listing(rec(regionAsStated="; ".join(locs), eligibility=el), raw, NOW), Q.WARN), label)
+
+    def test_label_inside_the_list_or_a_remote_list_passes(self):
+        ok = [(["New York, NY"], {"type": "countries", "label": "United States only", "countries": ["United States"], "regions": [], "notes": []}),
+              (["Americas Remote"], {"type": "region", "label": "Americas", "countries": [], "regions": ["Americas"], "notes": []}),
+              (["Remote - Canada"], {"type": "countries", "label": "Canada, United States", "countries": ["Canada", "United States"], "regions": [], "notes": []})]
+        for locs, el in ok:
+            raw = {"structured_locations": locs, "description": ""}
+            self.assertNotIn("eligibility-label-wider-than-job-locations",
+                             rules(Q.check_listing(rec(regionAsStated="; ".join(locs), eligibility=el), raw, NOW)), locs)
+
+    def test_pay_in_k_form_is_seen_when_the_card_says_not_stated(self):
+        raw = {"description": "Starting salary for this role is <strong>$105k–$122k USD</strong> (or equivalent in local currency)."}
+        self.assertIn("pay-in-posting-but-card-says-not-stated", rules(Q.check_listing(rec(), raw, NOW), Q.WARN))
+
+
+class RecruiteeLocations(unittest.TestCase):
+    def setUp(self):
+        import fetch_jobs as F
+        self.loc = F.recruitee_location
+
+    def test_location_list_replaces_remote_job_text(self):
+        o = {"remote": True, "location": "Remote job", "locations": [
+            {"name": "Argentina", "country": "Argentina"}, {"name": "Brasil", "country": "Brazil"}, {"name": "LATAM", "country": "Argentina"}]}
+        self.assertEqual(self.loc(o), "Remote - Argentina; Brazil; LATAM")
+
+    def test_worldwide_name_is_not_replaced_by_the_company_address(self):
+        o = {"remote": True, "location": "Remote job", "locations": [{"name": "Worldwide", "country": "Spain"}]}
+        self.assertEqual(self.loc(o), "Remote - Worldwide")
+
+    def test_onsite_offer_keeps_its_own_text(self):
+        o = {"remote": False, "location": "Barcelona, Catalunya, Spain", "locations": [{"name": "Barcelona", "country": "Spain"}]}
+        self.assertEqual(self.loc(o), "Barcelona, Catalunya, Spain")
+
+
 if __name__ == "__main__":
     unittest.main()

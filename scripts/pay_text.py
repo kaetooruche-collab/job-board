@@ -6,7 +6,10 @@ import re
 
 import classify as C
 
-RANGE_RE = re.compile(r"((?:[$€£]|USD|EUR|GBP|CAD|AUD)\s?\d{2,3}(?:,\d{3})+(?:\.\d+)?)\s*(?:-|–|—|to)\s*((?:[$€£]|USD|EUR|GBP|CAD|AUD)?\s?\d{2,3}(?:,\d{3})+(?:\.\d+)?)", re.I)
+# A figure is "105,000" or, as several employers write it, "105k" ("Starting salary for this role is $105k–$122k USD",
+# Customer.io, 27 Nov 2026: cards said "Not stated"). The k form needs 2-3 digits so "$1.5k" stipends never count.
+_FIG = r"\d{2,3}(?:,\d{3})+(?:\.\d+)?|\d{2,3}(?:\.\d)?\s?[kK]\b"
+RANGE_RE = re.compile(rf"((?:[$€£]|USD|EUR|GBP|CAD|AUD)\s?(?:{_FIG}))\s*(?:-|–|—|to)\s*((?:[$€£]|USD|EUR|GBP|CAD|AUD)?\s?(?:{_FIG}))", re.I)
 PAY_WORDS_RE = re.compile(r"\U0001F4B0|\b(?:salary|base pay|base salary|pay range|pay ranges|compensation|starting (?:salary|pay)|on-target earnings|OTE|total target|annual (?:base|pay|salary))\b", re.I)
 NOT_PAY_RE = re.compile(r"\b(?:revenue|funding|raised|valuation|budget|ARR|stipend|bonus of up to|signing bonus|relocation|contract value|deal size|quota)\b", re.I)
 # The label must sit directly in front of the figures ("New hire equity: $16,000"). A word further
@@ -17,7 +20,8 @@ CODE_RE = re.compile(r"\b(USD|EUR|GBP|CAD|AUD|CHF)\b", re.I)
 
 
 def _num(s):
-    return float(re.sub(r"[^\d.]", "", s))
+    n = float(re.sub(r"[^\d.]", "", s))
+    return n * 1000 if re.search(r"[kK]\s*$", s) else n
 
 
 # How far back a pay word ("salary", "compensation", 💰…) may sit and still vouch for a range.

@@ -133,6 +133,7 @@ def fetch_greenhouse_board(board):
             "location": (j.get("location") or {}).get("name", ""),
             "description": j.get("content", ""), "hint": None, "posted": posted,
             "source": "Greenhouse", "employment": None, "salary": None, "remote_feed": False,
+            "structured_locations": [x for x in [(j.get("location") or {}).get("name", "")] if x],
             "gh": (board["slug"], j.get("id")),
         })
     return out
@@ -209,7 +210,7 @@ def fetch_lever_board(board):
         out.append({
             "title": j.get("text", ""), "company": board["company"], "url": j.get("hostedUrl", ""),
             "location": loc, "description": desc, "hint": j.get("workplaceType"), "posted": posted,
-            "source": "Lever", "employment": cats.get("commitment"),
+            "source": "Lever", "employment": cats.get("commitment"), "structured_locations": all_locs or ([cats["location"]] if cats.get("location") else []),
             "salary": _salary_text(sr.get("currency"), sr.get("interval"), sr.get("min"), sr.get("max")),
             "remote_feed": False,
         })
@@ -224,6 +225,7 @@ def fetch_ashby_board(board):
             continue
         loc = j.get("location") or ""
         sec = [s.get("location") if isinstance(s, dict) else str(s) for s in (j.get("secondaryLocations") or [])]
+        structured = [x for x in [loc] + sec if x]
         if sec:
             loc = "; ".join([loc] + [s for s in sec if s])
         hint = j.get("workplaceType") or ("remote" if j.get("isRemote") else None)
@@ -232,7 +234,7 @@ def fetch_ashby_board(board):
             "title": j.get("title", ""), "company": board["company"], "url": j.get("jobUrl", ""),
             "location": loc, "description": j.get("descriptionPlain") or j.get("descriptionHtml") or "",
             "hint": hint, "posted": parse_dt(j.get("publishedAt")),
-            "source": "Ashby", "employment": j.get("employmentType"),
+            "source": "Ashby", "employment": j.get("employmentType"), "structured_locations": structured,
             "salary": comp.get("scrapeableCompensationSalarySummary") or comp.get("compensationTierSummary"),
             "remote_feed": False,
         })
@@ -255,13 +257,45 @@ def _recruitee_hint(j):
     return None
 
 
+def recruitee_location(j):
+    """The offer's own location list, as one location string for the classifier.
+
+    Recruitee's `location` text is "Remote job" on every remote offer of all six boards (27 Nov 2026); the places are
+    only in `locations[]`. Reading the text alone showed Trafilea's Argentina/Brazil/Chile roles as Worldwide.
+    Each entry's `country` is a required address field, so a region the employer typed as the name ("LATAM",
+    "South America - LATAM") or a worldwide word ("Worldwide", "Anywhere") is kept as written and its address country
+    is ignored; any other name ("Remote",
+    "Brasil", "Anywhere in Thailand", "London") gives way to the structured country.
+    """
+    stated = j.get("location") or ", ".join(x for x in (j.get("city"), j.get("country")) if x)
+    if not j.get("remote"):
+        return stated   # on-site and hybrid offers already name their place; they are excluded anyway
+    parts = []
+    for l in j.get("locations") or []:
+        name, country = (l.get("name") or "").strip(), (l.get("country") or "").strip()
+        named = C.geo().find_places(name) if name else []
+        if any(p["kind"] == "region" for p in named) or (C.WORLDWIDE_LOC.search(name) and not named):
+            part = name   # "LATAM", "Worldwide": the employer's own wording, not the company's address
+        else:
+            part = country or name
+        if part and part not in parts:
+            parts.append(part)
+    return ("Remote - " + "; ".join(parts)) if parts else stated
+
+
+def recruitee_structured(j):
+    return [f"{(l.get('name') or '').strip()} ({(l.get('country') or '').strip()})".replace(" ()", "")
+            for l in j.get("locations") or []]
+
+
 def fetch_recruitee_board(board):
     """{slug}.recruitee.com/api/offers/ — Recruitee's public Careers Site API (no key)."""
     data = get_json(f"https://{board['slug']}.recruitee.com/api/offers/", timeout=40)
     out = []
     for j in (data or {}).get("offers", []):
-        loc = j.get("location") or ", ".join(x for x in (j.get("city"), j.get("country")) if x)
+        loc = recruitee_location(j)
         out.append({
+            "structured_locations": recruitee_structured(j),
             "title": j.get("title", ""), "company": board["company"], "url": j.get("careers_url", ""),
             "location": loc, "description": "\n".join(x for x in (j.get("description"), j.get("requirements")) if x),
             "hint": _recruitee_hint(j), "posted": parse_dt(j.get("published_at")),
@@ -295,6 +329,7 @@ def fetch_personio_board(board):
             "title": _xml_text(own, "name"), "company": board["company"],
             "url": f"https://{board['slug']}.jobs.personio.de/job/{pid}" if pid else "",
             "location": "; ".join(dict.fromkeys(o for o in offices if o)), "description": desc,
+            "structured_locations": list(dict.fromkeys(o for o in offices if o)),
             "hint": None, "posted": parse_dt(_xml_text(own, "createdAt")),
             "source": "Personio", "employment": _xml_text(own, "employmentType") or None,
             "salary": None, "remote_feed": False,
