@@ -149,10 +149,11 @@ def _job(kind, label, salary=None):
     ("region", "Americas", ["Americas Remote"], "Starting salary for this role is $105k–$122k USD", "$105K - $122K", True),
     ("worldwide", "Worldwide", ["Remote, Global"], "We raised $1B. Home-office budget $1,500.", None, True),
     ("region", "EMEA", ["Remote - EMEA"], "", None, True),
+    ("worldwide", "Worldwide", ["Remote, Worldwide United States"], "", None, True),                       # TransPerfect
 ])
 def test_source_check_rules(monkeypatch, kind, label, locs, text, salary, ok):
     import verify_source
-    monkeypatch.setattr(verify_source, "fetch", lambda url: {"locations": locs, "text": text})
+    monkeypatch.setattr(verify_source, "fetch", lambda url, company=None: {"locations": locs, "text": text})
     assert verify_source.check_job(_job(kind, label, salary))["ok"] is ok
 
 
@@ -221,3 +222,11 @@ def test_captions_always_spell_the_brand_yireh():
     timed = [{"word": w, "start": i * 0.3, "end": i * 0.3 + 0.25} for i, w in enumerate(["On", "Yari", "Careers"])]
     out = compose_video.align_to_script(timed, "On Yi-ray Careers")
     assert [w["word"] for w in out][1] == "Yireh"
+
+
+def test_recruitee_custom_domain_reads_the_slug_feed(monkeypatch):
+    import verify_source
+    seen = []
+    monkeypatch.setattr(verify_source, "_get", lambda url: seen.append(url) or {"offers": [{"slug": "x", "locations": [], "description": "", "requirements": ""}]})
+    verify_source.fetch("https://transperfect.com/o/x", "TransPerfect")
+    assert seen == ["https://transperfect.recruitee.com/api/offers/"]

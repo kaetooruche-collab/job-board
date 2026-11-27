@@ -68,7 +68,7 @@ def _get(url: str):
         return json.loads(r.read().decode())
 
 
-def fetch(source_url: str) -> dict:
+def fetch(source_url: str, company: str | None = None) -> dict:
     """{'locations': [str], 'text': str} from the hiring system's public feed, or raise."""
     u = source_url
     m = re.search(r"greenhouse\.io/([^/]+)/jobs/(\d+)", u)
@@ -90,10 +90,20 @@ def fetch(source_url: str) -> dict:
                 + " " + json.dumps(j.get("salaryRange") or {})}
     m = re.search(r"https://([^/]+)/o/([^/?#]+)", u)
     if m:
-        d = _get(f"https://{m[1]}/api/offers/")
+        host = m[1]
+        if not host.endswith(".recruitee.com"):
+            # Custom careers domain (e.g. transperfect.com): the feed lives at <slug>.recruitee.com (job-board session,
+            # 27 Nov). The slug comes from data/boards.json, matched on the company name.
+            boards = json.loads((ROOT / "data" / "boards.json").read_text(encoding="utf-8")).get("recruitee", [])
+            slug = next((b["slug"] for b in boards if company and b.get("company", "").lower() == company.lower()), None) \
+                or next((b["slug"] for b in boards if b["slug"] in host), None) \
+                or host.split(".")[-2]   # boards.json on this branch can lag main: try the domain's name as the slug
+            if slug:
+                host = f"{slug}.recruitee.com"
+        d = _get(f"https://{host}/api/offers/")
         o = next(x for x in d["offers"] if x["slug"] == m[2])
         locs = [f"{l.get('name', '')} {l.get('country', '')}".strip() for l in o.get("locations") or []] or [o.get("location", "")]
-        return {"locations": locs, "text": html.unescape(re.sub("<[^>]+>", " ", o.get("description", "") + " " + o.get("requirements", "")))}
+        return {"locations": locs, "text": html.unescape(re.sub("<[^>]+>", " ", (o.get("description") or "") + " " + (o.get("requirements") or "")))}
     raise LookupError("source not supported for structured checks")
 
 
@@ -103,13 +113,16 @@ def check_job(job: dict) -> dict:
     kind = elig.get("type") or ("worldwide" if "worldwide" in label.lower() else "region")
     res = {"checked_on": dt.date.today().isoformat(), "ok": False, "label": label}
     try:
-        src = fetch(job["sourceUrl"])
+        src = fetch(job["sourceUrl"], job.get("company"))
     except Exception as e:  # unknown or unreachable: never featured
         res["reason"] = f"could not read the employer's structured data ({type(e).__name__}: {str(e)[:80]})"
         return res
     locs = [l for l in src["locations"] if l]
     res["locations"] = locs
-    named = set().union(*[countries_in(l) for l in locs]) if locs else set()
+    # A location that itself says Worldwide/Anywhere/Global is not a country limit, even when Recruitee appends the
+    # office's address country ("Remote, Worldwide United States": TransPerfect, job-board session 27 Nov).
+    limiting = [l for l in locs if not re.search(r"\b(worldwide|anywhere|global|globally)\b", l, re.I)]
+    named = set().union(*[countries_in(l) for l in limiting]) if limiting else set()
     if kind == "worldwide" and named:
         res["reason"] = f"card says Worldwide but the posting's locations name {sorted(named)}"
         return res
