@@ -33,3 +33,10 @@ Weakest part: Stories (few followers). Kept because they cost nothing and give t
   - Against a new face each time: research on recurring brand characters (Garretson & Niedrich 2004; Callcott & Lee 1995) and Ehrenberg-Bass on distinctive assets says a recurring character builds recognition and trust.
 - **Decision:** a small cast of 2-3 presenters (`social/data/cast.json`), each always with its own voice. The setting, outfit and framing change every video; no presenter and setting pair repeats within 8 weeks. Scripts are written for the presenter's persona and setting. The planner picks the presenter and setting.
 - Label: hypothesis. Test it with Instagram Trial Reels once there are numbers.
+
+## 7. Silence counts as yes (KT, 27 Nov, later the same day; overrides the 'needs KT's yes' parts above)
+KT: "my yes should not hold up things ... set up a backup that if you don't get my yes, it goes out as is and as scheduled based on your researched data. The goal is autonomy."
+- A week with no answer is approved automatically at 23:00 Istanbul on the Monday before its Tuesday (`state.json` `auto_approve_after_deadline`). KT's "no" or `hold` still stops it.
+- BHuman renders without an answer: allowed when `plan_render` estimates 30 credits or fewer and the month stays within the 200-credit budget (KT's standing confirmation, recorded in `state.json`). Otherwise the free screen-only video goes out on time.
+- What still protects quality without KT: the copy checker in schedule mode, same-day role checks, the `social-reviewer` agent every week (a BLOCK it can't fix drops the post), and the publishing gate.
+- Residual risk: a post that passes every check but reads badly goes out unseen. Accepted by KT for autonomy. The Friday review looks for it.

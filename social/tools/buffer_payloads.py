@@ -35,12 +35,36 @@ class Refused(Exception):
     pass
 
 
-def gate_mode(state: dict, week: str) -> None:
+def approval_deadline(week: str) -> dt.datetime:
+    """KT's silence counts as yes after 23:00 Istanbul on the Monday before the week's Tuesday (KT, 27 Nov 2026:
+    'my yes should not hold up things ... if you don't get my yes, it goes out as is and as scheduled')."""
+    t = dt.date.fromisoformat(week)
+    return dt.datetime.combine(t - dt.timedelta(days=1), dt.time(23, 0), tzinfo=ACCOUNT_TZ)
+
+
+def week_status(state: dict, week: str, now: dt.datetime | None = None) -> str:
+    """'yes' (KT said yes), 'no' (KT said no or hold), 'auto' (deadline passed, no answer), 'waiting'."""
+    kt = [a for a in state.get("approvals", []) if a.get("week") == week and a.get("by") == "KT"]
+    if any(a.get("decision") == "no" for a in kt):
+        return "no"
+    if kt:
+        return "yes"
+    now = now or dt.datetime.now(ACCOUNT_TZ)
+    if state.get("auto_approve_after_deadline") and now >= approval_deadline(week):
+        return "auto"
+    return "waiting"
+
+
+def gate_mode(state: dict, week: str, now: dt.datetime | None = None) -> None:
     mode = state.get("mode")
     if mode in ("drafts-only", "hold", None):
         raise Refused(f"state.json mode is '{mode}': nothing may be scheduled")
-    if mode == "approve-week" and not any(a.get("week") == week and a.get("by") == "KT" for a in state.get("approvals", [])):
-        raise Refused(f"mode is approve-week and KT's yes for week {week} is not recorded in state.json approvals")
+    if mode in ("approve-week", "autopilot"):
+        st = week_status(state, week, now)
+        if st == "no":
+            raise Refused(f"KT said no to week {week}")
+        if mode == "approve-week" and st == "waiting":
+            raise Refused(f"week {week}: no answer from KT yet; it goes ahead automatically after {approval_deadline(week).isoformat()}")
 
 
 def alt_text(slide_path: Path, manifest: dict, i: int) -> str:

@@ -83,3 +83,24 @@ def test_cast_rotates_presenter_and_setting():
     assert c["presenter"] != "amara"          # used last week: a new presenter is brought in
     c2 = pw.pick_cast("2026-12-15", used + [{"date": "2026-12-08", "cast": c}])
     assert c2["setting"] != "home desk by a window, morning light, plant in the background"
+
+
+def test_silence_becomes_yes_after_the_deadline():
+    import datetime as dt
+    st = {"mode": "approve-week", "approvals": [], "auto_approve_after_deadline": True}
+    before = dt.datetime(2026, 12, 7, 22, 0, tzinfo=bp.ACCOUNT_TZ)
+    after = dt.datetime(2026, 12, 7, 23, 1, tzinfo=bp.ACCOUNT_TZ)
+    with pytest.raises(bp.Refused, match="automatically"):
+        bp.gate_mode(st, "2026-12-08", before)
+    bp.gate_mode(st, "2026-12-08", after)
+    assert bp.week_status(st, "2026-12-08", after) == "auto"
+
+
+def test_kts_no_still_stops_the_week():
+    import datetime as dt
+    st = {"mode": "approve-week", "auto_approve_after_deadline": True,
+          "approvals": [{"week": "2026-12-08", "by": "KT", "decision": "no"}]}
+    with pytest.raises(bp.Refused, match="no"):
+        bp.gate_mode(st, "2026-12-08", dt.datetime(2026, 12, 9, 12, 0, tzinfo=bp.ACCOUNT_TZ))
+    with pytest.raises(bp.Refused):
+        bp.gate_mode({"mode": "hold", "approvals": []}, "2026-12-08")

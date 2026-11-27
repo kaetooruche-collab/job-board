@@ -3,7 +3,7 @@
   "mode": "approve-week",
   "modes_help": {
     "drafts-only": "Phase 0: plan and render, never schedule or publish.",
-    "approve-week": "Phase 1: schedule a week only after KT's yes is recorded in approvals.",
+    "approve-week": "Schedule a week after KT's yes, or automatically once the approval deadline passes without an answer (auto_approve_after_deadline). KT's 'no' stops the week.",
     "autopilot": "Phase 2: schedule automatically unless hold is set.",
     "hold": "Stop: schedule nothing new; leave already-scheduled posts alone and tell KT."
   },
@@ -29,5 +29,14 @@
     "speakeasy_credits_per_minute": 15,
     "source": "KT's screenshots of app.bhuman.ai Plan & usage, 27 Nov 2026; bhuman.ai/pricing"
   },
-  "bhuman_budget_note": "Social agency may use up to 200 of the 500 monthly credits (KT asked Claude to allocate, 27 Nov); the other 300 stay untouched for KT. Every render still needs KT's yes on its plan_render estimate, given in the weekly approval."
+  "bhuman_budget_note": "Social agency may use up to 200 of the 500 monthly credits (KT asked Claude to allocate, 27 Nov); the other 300 stay untouched for KT. Every render still needs KT's yes on its plan_render estimate, given in the weekly approval.",
+  "auto_approve_after_deadline": true,
+  "auto_approve_note": "KT, 27 Nov 2026: 'my yes should not hold up things ... if you don't get my yes, it goes out as is and as scheduled based on your researched data. The goal is autonomy.' A week with no answer by 23:00 Istanbul on the Monday before its Tuesday is approved automatically. KT's 'no' or mode 'hold' still stops it. The checker, same-day role checks and the social-reviewer agent still run; a post they block is dropped, not published.",
+  "bhuman_standing_confirmation": {
+    "by": "KT",
+    "on": "2026-11-27",
+    "words": "if you dont get my yes, it goes out as is and as scheduled",
+    "rule": "Without an answer, a weekly video render may start if plan_render estimates 30 credits or fewer and the month stays within bhuman_monthly_credit_budget; otherwise the free screen-only version goes out."
+  },
+  "bhuman_max_credits_per_render_without_answer": 30
 }

@@ -14,8 +14,8 @@ Buffer can only be reached by Claude inside a session, so "autonomous" means: **
 Scheduled tasks created 27 Nov with KT's yes; they fire into the social agency session (ids: plan trig_01DZVLMvHmVw5EstL27eSceH, publish trig_01PkKVZeEQ9JruuPT6VkQvy3, review trig_01GscxB42RQqnz9tbADCHYJj). KT's Google Calendar holds approve/check/review reminders for the first two weeks (30 Nov to 11 Dec).
 
 ## The switches (`social/state.json`, only KT changes them)
-- `mode`: now `approve-week` (week of 1 Dec approved). `drafts-only` means plan and render, never schedule → `approve-week` (schedule a week after KT's recorded yes) → `autopilot` (schedule unless `hold`) · `hold` stops everything new.
-- `bhuman_monthly_credit_budget`: 200 of the Ultimate plan's 500 a month; every render still needs KT's yes on its estimate.
+- `mode`: now `approve-week` (week of 1 Dec approved). **Silence counts as yes** after 23:00 Istanbul on the Monday before each week (`auto_approve_after_deadline`, KT 27 Nov: "the goal is autonomy"); KT's "no" or `hold` stops it. `drafts-only` means plan and render, never schedule → `approve-week` (schedule a week after KT's recorded yes) → `autopilot` (schedule unless `hold`) · `hold` stops everything new.
+- `bhuman_monthly_credit_budget`: 200 of the Ultimate plan's 500 a month; renders go ahead on KT's yes, or without an answer when the estimate is 30 credits or fewer and within budget (`bhuman_standing_confirmation`).
 - `formats_plan_approved`: true since 27 Nov (Facebook tagged links, Instagram Stories on roles days, single role as a video).
 - Presenter cast: `data/cast.json` (rotating presenter, each with a fixed voice, and a new setting each video).
 
