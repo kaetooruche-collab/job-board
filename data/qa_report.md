@@ -1,12 +1,12 @@
-# Quality report, 2026-11-27T21:09+00:00
+# Quality report, 2026-11-28T07:39+00:00
 
 - Published: **1985**
 - Held back by a quality rule (not published): **15**
-- Warnings (published, but look): **32**
+- Warnings (published, but look): **31**
 
 ## Held back
 
-### eligibility-contradicts-exclusion (8)
+### eligibility-contradicts-exclusion (7)
 - Staff Product Manager, Core UX at MetaMask: label lists ['France', 'Germany', 'Italy'] but note says cannot hire there: The posting says it cannot hire in: France, Italy, Germany.
 - Partner Account Manager at Branch: label lists ['United States'] but note says cannot hire there: The posting says it cannot hire in: United States.
 - Senior Director, Compensation & Benefits at MetaMask: label lists ['France', 'Germany', 'Italy'] but note says cannot hire there: The posting says it cannot hire in: France, Italy, Germany.
@@ -20,7 +20,8 @@
 - Expert Talent Pool, Generation and Writing Associate at Clera: Expert Talent Pool, Generation and Writing Associate
 - Let's stay in touch.  Join our Talent Community! at Box: Let's stay in touch.  Join our Talent Community!
 
-### says-not-remote-but-published-as-remote (2)
+### says-not-remote-but-published-as-remote (3)
+- Software Quality Assurance Engineer at Natera: LOCATION : Remote / Hybrid / or On-Site in Boulder, CO (Foresight Dx business unit, a 
 - Product Operations Manager at Monzo: 00 - £68,000 ➕ Incentive Awards tied to your performance.  📍This role is based in our London office  ⏰ We offer flexible working hours and trust you to work en
 - Global Director of Sales at Monzo: 00 ➕ equity & Incentive Awards tied to your performance.  📍 This role is based in our London office  ⏰ We offer flexible working hours and trust you to work en
 
@@ -40,20 +41,19 @@
 - Software Engineer II, Backend at Affirm: $24,000 - $36,000
 - Senior Site Reliability Engineer  at Censys: 174,000 USD - $206,000
 
-### region-label-wider-than-location (4)
+### region-label-wider-than-location (3)
 - Cloud Engineer at Valtech: label='Europe, Canada, Ontario, Quebec' but location='Canada - Remote'
 - Senior Software Engineer, Data Platform at Doximity: label='South America, United States, Canada' but location='San Francisco, CA or Remote (U.S.)'
-- Senior Project Manager at Valtech: label='Europe, Canada, Ontario' but location='Canada - Remote'
 - Senior Director, Product Management at Azul Systems: label='Europe, European Union, Prague, United Kingdom, Czech Republic, Cyprus' but location='Prague; Limassol; United Kingdom - Remote'
 
 ## Shape of the feed
 
 ```
 count: 1985
-bySource: {'Ashby': 688, 'Greenhouse': 879, 'Lever': 316, 'Recruitee': 102}
-pctEligibilityUnclear: 16.6
+bySource: {'Ashby': 687, 'Greenhouse': 881, 'Lever': 315, 'Recruitee': 102}
+pctEligibilityUnclear: 16.5
 pctRemoteUnclear: 0.0
 pctWorldwide: 1.6
-pctEarlyCareer: 11.5
-pctSeniorPlus: 37.8
+pctEarlyCareer: 11.1
+pctSeniorPlus: 38.4
 ```
